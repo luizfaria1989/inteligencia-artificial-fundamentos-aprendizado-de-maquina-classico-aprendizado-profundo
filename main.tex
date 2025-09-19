@@ -1,0 +1,150 @@
+% ===================================================================
+% ARQUIVO MESTRE DO LIVRO
+% Autor: Seu Nome
+% Projeto: Um Mergulho Profundo no Aprendizado de Máquina
+% ===================================================================
+
+% --- CLASSE DO DOCUMENTO ---
+% Usamos a classe 'abntex2' para seguir as normas da ABNT.
+% As opções configuram o formato para um livro acadêmico padrão.
+\documentclass[
+    12pt,            % Tamanho da fonte do corpo do texto
+    a4paper,         % Tamanho do papel
+    book,            % Formato de livro
+    openright,       % Força capítulos a começarem em páginas ímpares (da direita)
+    twoside,         % Layout para impressão frente e verso (margens diferentes)
+    brazil           % Configurações para o idioma português do Brasil
+]{abntex2}
+
+
+% --- PREÂMBULO ---
+% Importa todas as configurações, pacotes e comandos customizados
+% do arquivo 'preambulo.tex'. Isso mantém este arquivo principal limpo
+% e focado apenas na estrutura do conteúdo do livro.
+\input{preambulo.tex}
+
+
+% --- INFORMAÇÕES DO DOCUMENTO (para a folha de rosto) ---
+\title{APRENDIZADO DE MÁQUINA}
+\author{Luiz Guilherme Morais da Costa Faria}
+\date{\today} % Usa a data atual no momento da compilação
+
+% Informações adicionais que o abntex2 usa (opcional)
+\instituicao{Universidade de Brasília}
+\local{Brasília, DF}
+\orientador{Nome do Orientador/Revisor (se aplicável)}
+
+
+% ===================================================================
+% INÍCIO DO DOCUMENTO
+% ===================================================================
+\begin{document}
+
+% --- ELEMENTOS PRÉ-TEXTUAIS ---
+% O comando \frontmatter inicia a contagem de páginas em algarismos romanos (i, ii, ...)
+% e desativa a numeração de capítulos para os elementos iniciais.
+\frontmatter
+
+% Gera a capa e a folha de rosto com base nas informações acima,
+% seguindo o padrão ABNT.
+\imprimircapa
+\imprimirfolhaderosto
+
+% Páginas opcionais como Dedicatória, Agradecimentos, Epígrafe...
+% \begin{dedicatoria}
+%    \vspace*{\fill} % Centraliza verticalmente
+%    \noindent
+%    \textit{Para ...}
+%    \vspace*{\fill}
+% \end{dedicatoria}
+
+% Gera o Sumário automaticamente com base nos comandos \part, \chapter, \section, etc.
+\tableofcontents
+
+
+% --- ELEMENTOS TEXTUAIS (O CONTEÚDO PRINCIPAL DO LIVRO) ---
+% O comando \mainmatter reinicia a contagem de páginas em algarismos arábicos (1, 2, ...)
+% e reativa a numeração de capítulos.
+\mainmatter
+
+% =======================================================
+% PARTE I: HISTÓRIA DA IA E DO COMPUTADOR
+% =======================================================
+\part{História da IA e do Computador}
+
+\include{capitulos/parte-I-historia/cap-01-historia-do-computador}
+\include{capitulos/parte-I-historia/cap-02-historia-da-ia}
+
+% =======================================================
+% PARTE II: Conceitos Matemáticos
+% =======================================================
+\part{Conceitos Matemáticos}
+
+\include{capitulos/parte-II-matematica/cap-03-calculo}
+\include{capitulos/parte-II-matematica/cap-04-algebra-linear}
+\include{capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica}
+
+% =======================================================
+% PARTE III: Pilares das Redes Neurais
+% =======================================================
+\part{Pilares das Redes Neurais}
+
+\include{capitulos/parte-III-pilares/cap-06-sigmoidais}
+\include{capitulos/parte-III-pilares/cap-07-retificadoras}
+\include{capitulos/parte-III-pilares/cap-08-perda-binaria}
+\include{capitulos/parte-III-pilares/cap-09-perda-multi}
+\include{capitulos/parte-III-pilares/cap-10-retropropagacao-e-gradiente}
+\include{capitulos/parte-III-pilares/cap-11-metaheuristicas}
+
+% =======================================================
+% PARTE IV: APRENDIZADO DE MÁQUINA CLÁSSICO
+% =======================================================
+\part{Aprendizado de Máquina Clássico}
+
+% O comando '\include' inicia uma nova página para cada capítulo e
+% carrega o conteúdo do arquivo .tex especificado.
+\include{capitulos/parte-IV-ml-classico/cap-12-regressao}
+\include{capitulos/parte-IV-ml-classico/cap-13-arvores}
+\include{capitulos/parte-IV-ml-classico/cap-14-svm}
+\include{capitulos/parte-IV-ml-classico/cap-15-dimensionalidade}
+\include{capitulos/parte-IV-ml-classico/cap-16-clusterizacao}
+
+% =======================================================
+% PARTE V: REDES NEURAIS PROFUNDAS (DNNs)
+% =======================================================
+\part{Redes Neurais Profundas (DNNs)}
+
+\include{capitulos/parte-V-deep-learning/cap-17-mlp}
+\include{capitulos/parte-V-deep-learning/cap-18-ffns}
+\include{capitulos/parte-V-deep-learning/cap-19-dbns}
+\include{capitulos/parte-V-deep-learning/cap-20-cnns}
+\include{capitulos/parte-V-deep-learning/cap-21-resnets}
+\include{capitulos/parte-V-deep-learning/cap-22-rnns}
+\include{capitulos/parte-V-deep-learning/cap-23-transformers}
+\include{capitulos/parte-V-deep-learning/cap-24-gans}
+\include{capitulos/parte-V-deep-learning/cap-25-moe}
+\include{capitulos/parte-V-deep-learning/cap-26-diffusion}
+\include{capitulos/parte-V-deep-learning/cap-27-gnns}
+% Adicione o capítulo de otimizadores se ele estiver aqui
+
+
+% --- APÊNDICES ---
+% O comando \appendix muda a formatação dos capítulos para "Apêndice A", "Apêndice B", etc.
+\appendix
+\part{Apêndices}
+% \include{apendices/ap_B_guia_setup}
+
+
+% --- ELEMENTOS PÓS-TEXTUAIS ---
+% O comando \backmatter é usado para as seções finais do livro.
+\backmatter
+
+% Gera a lista de Referências a partir do arquivo 'bibliografia.bib',
+% formatada no estilo ABNT pelo biblatex.
+\printbibliography[title={Referências}]
+
+
+\end{document}
+% ===================================================================
+% FIM DO DOCUMENTO
+% ===================================================================

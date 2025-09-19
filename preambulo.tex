@@ -1,0 +1,123 @@
+% ===================================================================
+% ARQUIVO DE PREÂMBULO
+% Contém todas as configurações de pacotes e layout para o livro.
+% ===================================================================
+
+
+% --- CONFIGURAÇÕES ESSENCIAIS DO DOCUMENTO ---
+
+% Codificacao da fonte. Essencial para a correta exibição de caracteres acentuados no PDF.
+\usepackage[T1]{fontenc}
+
+% Codificacao de entrada do arquivo .tex. Permite que você escreva com acentos diretamente.
+\usepackage[utf8]{inputenc}
+
+% Suporte ao idioma Português do Brasil.
+% A classe abntex2 já cuida disso, mas é uma boa prática garantir.
+% A opção 'brazil' ajusta hifenizacao, nomes de seções ("Sumário"), etc.
+\usepackage[brazil]{babel}
+
+% Para usar a fonte Palatino
+\usepackage{mathpazo}
+
+% --- PACOTES PARA CONTEÚDO TÉCNICO E MATEMÁTICO ---
+
+% Pacotes padrao e essenciais para matemática avançada.
+\usepackage{amsmath, amsfonts, amssymb}
+
+% Pacote para inclusão de imagens.
+\usepackage{graphicx}
+% Define um ou mais diretórios padrão para suas imagens.
+% Isso evita que você precise digitar "imagens/" toda vez.
+\graphicspath{ {./imagens/} }
+
+% Pacote para formatar e incluir snippets de código-fonte.
+\usepackage{listings}
+\usepackage{xcolor} % Necessário para definir cores no listings
+
+% Define um estilo customizado para código Python, para ficar mais bonito.
+\lstdefinestyle{PythonStyle}{
+    language=Python,
+    backgroundcolor=\color{gray!10},   % Cor de fundo leve
+    basicstyle=\ttfamily\small,       % Fonte monoespaçada e pequena
+    keywordstyle=\color{blue},        % Palavras-chave em azul
+    commentstyle=\color{green!50!black},% Comentários em verde escuro
+    stringstyle=\color{purple},       % Strings em roxo
+    breaklines=true,                  % Quebra de linhas longas
+    showstringspaces=false,           % Não mostra espaços em strings com um símbolo
+    frame=single,                     % Adiciona uma moldura
+    rulecolor=\color{black!30},       % Cor da moldura
+    numbers=left,                     % Numeração de linhas à esquerda
+    numberstyle=\tiny\color{gray},    % Estilo dos números de linha
+}
+
+
+% --- REFERÊNCIAS, CITAÇÕES E LINKS (PADRÃO ABNT) ---
+
+% O sistema moderno e mais poderoso para bibliografia em LaTeX, já configurado para ABNT.
+\usepackage[
+    backend=biber,     % Ferramenta que processa a bibliografia (mais moderna que bibtex)
+    style=abnt,        % Estilo de citação e referência da ABNT
+    ittitles,          % Títulos de artigos, livros, etc., em itálico
+    backref=true       % Nas referências, mostra em quais páginas a citação aparece
+]{biblatex}
+
+% Aponta para o arquivo que contém seu banco de dados de referências.
+\addbibresource{bibliografia.bib}
+
+% Melhora a formatação de URLs nas referências.
+\usepackage{url}
+\urlstyle{same} % Usa a mesma fonte do texto para as URLs.
+
+
+% --- LAYOUT E ESTRUTURA ---
+
+% Pacote para ajustar as margens e geometria da página.
+% A classe abntex2 já define margens padrão ABNT, use para sobrescrever se necessário.
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+
+% --- CONFIGURAÇÃO DO HYPERREF ---
+% A classe abntex2 já carrega o pacote hyperref.
+% Apenas usamos \hypersetup para definir as opções que queremos.
+
+\hypersetup{
+    pdftitle={O Título do Seu Livro},
+    pdfauthor={Seu Nome},
+    pdfsubject={Assunto do Livro},
+    pdfkeywords={Palavra-chave1, Palavra-chave2},
+    colorlinks=true,                % Habilita links coloridos
+    linkcolor=blue,                 % Cor dos links internos (sumário, etc.)
+    citecolor=red,                  % Cor das citações
+    urlcolor=cyan,                  % Cor das URLs
+    hidelinks=false,                % Se 'true', esconde as caixas e cores (bom para impressão)
+    pdfstartview={FitH},            % Abre o PDF ajustado à largura da página
+    bookmarksopen=true              % Abre o painel de bookmarks (índices)
+}
+
+% Pacote para customização avançada de cabeçalhos e rodapés.
+% Descomente as linhas abaixo apenas se precisar de um layout diferente
+% do padrão oferecido pelo abntex2.
+%
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{} % Limpa todos os campos
+% \fancyhead[LE,RO]{\nouppercase{\leftmark}} % Nome do capítulo no cabeçalho
+% \fancyfoot[LE,RO]{\thepage} % Número da página no rodapé
+
+
+% --- COMANDOS CUSTOMIZADOS (OPCIONAL) ---
+% Aqui você pode definir seus próprios comandos para agilizar a escrita.
+% Exemplo:
+% \newcommand{\keras}{\texttt{Keras}}
+
+
+% ===================================================================
+% FIM DO PREÂMBULO
+% ===================================================================
