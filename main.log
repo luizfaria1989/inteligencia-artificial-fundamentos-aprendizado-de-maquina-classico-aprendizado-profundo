@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  20 SEP 2025 15:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  20 SEP 2025 20:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1170,22 +1170,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[3])
+[3]
+
+[4]
+
+[5]
+
+[6]
+Underfull \vbox (badness 1259) has occurred while \output is active []
+
+
+
+[7])
 
 Package babel Info: 'brazil' activates 'portuges' shorthands.
 (babel)             Reported  on input line 73.
-[4]
+[8]
 
-[5
+[9
 
 ]
 
-[6]
+[10]
 \openout2 = `capitulos/parte-I-historia/cap-01-historia-do-computador.aux'.
 
  (./capitulos/parte-I-historia/cap-01-historia-do-computador.tex)
 
-[7
+[11
 
 
 ]
@@ -1193,29 +1204,29 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 
  (./capitulos/parte-I-historia/cap-02-historia-da-ia.tex
 
-[8
+[12
 
 
 
 
 ])
 
-[9]
+[13]
 
-[10
+[14
 
 
 
 ]
 
-[11]
+[15]
 
-[12]
+[16]
 \openout2 = `capitulos/parte-II-matematica/cap-03-calculo.aux'.
 
  (./capitulos/parte-II-matematica/cap-03-calculo.tex)
 
-[13
+[17
 
 
 ]
@@ -1223,71 +1234,47 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 
  (./capitulos/parte-II-matematica/cap-04-algebra-linear.tex
 
-[14
+[18
 
 
 
 
 ])
 
-[15]
+[19]
 \openout2 = `capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux'.
 
  (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.tex
 
-[16
+[20
 
 
 
 
 ])
 
-[17]
+[21]
 
-[18
+[22
 
 
 
 ]
 
-[19]
+[23]
 
-[20]
+[24]
 \openout2 = `capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux'.
 
  (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex)
 
-[21
+[25
 
 
 ]
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
-
-[22
-
-
-
-
-])
-
-[23]
-\openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
-
- (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
-
-[24
-
-
-
-
-])
-
-[25]
-\openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
-
- (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
 [26
 
@@ -1297,9 +1284,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [27]
-\openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
 
- (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
+ (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
 
 [28
 
@@ -1309,9 +1296,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [29]
-\openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
 
- (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
+ (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
 [30
 
@@ -1321,9 +1308,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [31]
-\openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
 
- (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
+ (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
 
 [32
 
@@ -1333,51 +1320,56 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [33]
+\openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
+
+ (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
 
 [34
 
 
 
+
 ]
+Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
+[]\T1/cmss/m/n/17.28 Entropia Cru-zada Ca-te-gó-rica Es-parsa (Sparse Ca-te-go-ri-cal Cross-
+ []
+
+)
 
 [35]
+\openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
 
-[36]
+ (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
+
+[36
+
+
+
+
+])
+
+[37]
+
+[38
+
+
+
+]
+
+[39]
+
+[40]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
 
-[37
+[41
 
 
 ]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
-
-[38
-
-
-
-
-])
-
-[39]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
-
-[40
-
-
-
-
-])
-
-[41]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [42
 
@@ -1387,9 +1379,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [43]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
+ (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [44
 
@@ -1399,9 +1391,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [45]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+ (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [46
 
@@ -1411,51 +1403,51 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [47]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
 [48
 
 
 
-]
+
+])
 
 [49]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
 
-[50]
+ (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+
+[50
+
+
+
+
+])
+
+[51]
+
+[52
+
+
+
+]
+
+[53]
+
+[54]
 \openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
 
-[51
+[55
 
 
 ]
 \openout2 = `capitulos/parte-V-deep-learning/cap-20-ffns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
-
-[52
-
-
-
-
-])
-
-[53]
-\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
-
-[54
-
-
-
-
-])
-
-[55]
-\openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
 [56
 
@@ -1465,9 +1457,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [57]
-\openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-23-resnets.tex
+ (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
 
 [58
 
@@ -1477,33 +1469,44 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [59]
-\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
+ (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
 [60
 
 
 
 
-])
+]
+Overfull \hbox (4.34975pt too wide) in paragraph at lines 14--14
+[]\T1/cmss/m/n/17.28 Camadas Con-vo-lu-ci-o-nais: O Bloco Fun-da-men-tal para as CNNs 
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [61]
-\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
-
-[62
+Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 
 
 
+[62]
+\openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
-])
+ (./capitulos/parte-V-deep-learning/cap-23-resnets.tex)
 
-[63]
-\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
+[63
 
- (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
+
+
+
+]
+\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
 [64
 
@@ -1513,9 +1516,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [65]
-\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-27-gans.tex
+ (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [66
 
@@ -1525,9 +1528,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [67]
-\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-28-moe.tex
+ (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
 [68
 
@@ -1537,9 +1540,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [69]
-\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
+ (./capitulos/parte-V-deep-learning/cap-27-gans.tex
 
 [70
 
@@ -1549,9 +1552,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [71]
-\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+ (./capitulos/parte-V-deep-learning/cap-28-moe.tex
 
 [72
 
@@ -1561,16 +1564,40 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [73]
+\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
 [74
 
 
 
-]
+
+])
 
 [75]
+\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
 
-[76]
+ (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+
+[76
+
+
+
+
+])
+
+[77]
+
+[78
+
+
+
+]
+
+[79]
+
+[80]
 
 LaTeX Warning: Empty bibliography on input line 147.
 
@@ -1587,18 +1614,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26549 strings out of 467888
- 478170 string characters out of 5434061
- 1454523 words of memory out of 5000000
- 54467 multiletter control sequences out of 15000+600000
- 653736 words of font info for 100 fonts, out of 8000000 for 9000
+ 26803 strings out of 467888
+ 480682 string characters out of 5434061
+ 1459507 words of memory out of 5000000
+ 54593 multiletter control sequences out of 15000+600000
+ 654505 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,107p,1228b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (78 pages, 137073 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (82 pages, 216379 bytes).
 PDF statistics:
- 610 PDF objects out of 1000 (max. 8388607)
- 508 compressed objects within 6 object streams
- 122 named destinations out of 1000 (max. 500000)
- 305 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1290 PDF objects out of 1440 (max. 8388607)
+ 1174 compressed objects within 12 object streams
+ 249 named destinations out of 1000 (max. 500000)
+ 1289 words of extra memory for PDF output out of 10000 (max. 10000000)
 
