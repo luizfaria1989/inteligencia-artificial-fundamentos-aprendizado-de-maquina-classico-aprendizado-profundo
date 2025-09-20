@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  19 SEP 2025 17:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  20 SEP 2025 15:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -943,7 +943,7 @@ LaTeX Warning: Unused global option(s):
 (./main.aux
 Package babel Info: 'brazil' activates 'portuges' shorthands.
 (babel)             Reported  on input line 12.
- (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-sigmoidais.aux) (./capitulos/parte-III-pilares/cap-07-retificadoras.aux) (./capitulos/parte-III-pilares/cap-08-perda-binaria.aux) (./capitulos/parte-III-pilares/cap-09-perda-multi.aux) (./capitulos/parte-III-pilares/cap-10-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-11-metaheuristicas.aux) (./capitulos/parte-IV-ml-classico/cap-12-regressao.aux) (./capitulos/parte-IV-ml-classico/cap-13-arvores.aux) (./capitulos/parte-IV-ml-classico/cap-14-svm.aux) (./capitulos/parte-IV-ml-classico/cap-15-dimensionalidade.aux) (./capitulos/parte-IV-ml-classico/cap-16-clusterizacao.aux) (./capitulos/parte-V-deep-learning/cap-17-mlp.aux) (./capitulos/parte-V-deep-learning/cap-18-ffns.aux) (./capitulos/parte-V-deep-learning/cap-19-dbns.aux) (./capitulos/parte-V-deep-learning/cap-20-cnns.aux) (./capitulos/parte-V-deep-learning/cap-21-resnets.aux) (./capitulos/parte-V-deep-learning/cap-22-rnns.aux) (./capitulos/parte-V-deep-learning/cap-23-transformers.aux) (./capitulos/parte-V-deep-learning/cap-24-gans.aux) (./capitulos/parte-V-deep-learning/cap-25-moe.aux) (./capitulos/parte-V-deep-learning/cap-26-diffusion.aux) (./capitulos/parte-V-deep-learning/cap-27-gnns.aux))
+ (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-07-sigmoidais.aux) (./capitulos/parte-III-pilares/cap-08-retificadoras.aux) (./capitulos/parte-III-pilares/cap-09-modernas.aux) (./capitulos/parte-III-pilares/cap-10-perda-binaria.aux) (./capitulos/parte-III-pilares/cap-11-perda-multi.aux) (./capitulos/parte-III-pilares/cap-12-metaheuristicas.aux) (./capitulos/parte-IV-ml-classico/cap-13-regressao.aux) (./capitulos/parte-IV-ml-classico/cap-14-arvores.aux) (./capitulos/parte-IV-ml-classico/cap-15-svm.aux) (./capitulos/parte-IV-ml-classico/cap-16-ensemble.aux) (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux) (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux) (./capitulos/parte-V-deep-learning/cap-19-mlp.aux) (./capitulos/parte-V-deep-learning/cap-20-ffns.aux) (./capitulos/parte-V-deep-learning/cap-21-dbns.aux) (./capitulos/parte-V-deep-learning/cap-22-cnns.aux) (./capitulos/parte-V-deep-learning/cap-23-resnets.aux) (./capitulos/parte-V-deep-learning/cap-24-rnns.aux) (./capitulos/parte-V-deep-learning/cap-25-regularizacao.aux) (./capitulos/parte-V-deep-learning/cap-26-transformers.aux) (./capitulos/parte-V-deep-learning/cap-27-gans.aux) (./capitulos/parte-V-deep-learning/cap-28-moe.aux) (./capitulos/parte-V-deep-learning/cap-29-diffusion.aux) (./capitulos/parte-V-deep-learning/cap-30-gnns.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -1253,17 +1253,17 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 [19]
 
 [20]
-\openout2 = `capitulos/parte-III-pilares/cap-06-sigmoidais.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux'.
 
- (./capitulos/parte-III-pilares/cap-06-sigmoidais.tex)
+ (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex)
 
 [21
 
 
 ]
-\openout2 = `capitulos/parte-III-pilares/cap-07-retificadoras.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
- (./capitulos/parte-III-pilares/cap-07-retificadoras.tex
+ (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
 
 [22
 
@@ -1273,9 +1273,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [23]
-\openout2 = `capitulos/parte-III-pilares/cap-08-perda-binaria.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
 
- (./capitulos/parte-III-pilares/cap-08-perda-binaria.tex
+ (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
 
 [24
 
@@ -1285,9 +1285,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [25]
-\openout2 = `capitulos/parte-III-pilares/cap-09-perda-multi.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
 
- (./capitulos/parte-III-pilares/cap-09-perda-multi.tex
+ (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
 [26
 
@@ -1297,9 +1297,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [27]
-\openout2 = `capitulos/parte-III-pilares/cap-10-retropropagacao-e-gradiente.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
 
- (./capitulos/parte-III-pilares/cap-10-retropropagacao-e-gradiente.tex
+ (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
 
 [28
 
@@ -1309,9 +1309,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [29]
-\openout2 = `capitulos/parte-III-pilares/cap-11-metaheuristicas.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
 
- (./capitulos/parte-III-pilares/cap-11-metaheuristicas.tex
+ (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
 
 [30
 
@@ -1321,39 +1321,39 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [31]
+\openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
+
+ (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 
 [32
-
-
-
-]
-
-[33]
-
-[34]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-12-regressao.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-12-regressao.tex)
-
-[35
-
-
-]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-13-arvores.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-13-arvores.tex
-
-[36
 
 
 
 
 ])
 
-[37]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-14-svm.aux'.
+[33]
 
- (./capitulos/parte-IV-ml-classico/cap-14-svm.tex
+[34
+
+
+
+]
+
+[35]
+
+[36]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
+
+[37
+
+
+]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
 
 [38
 
@@ -1363,9 +1363,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [39]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-15-dimensionalidade.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-15-dimensionalidade.tex
+ (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [40
 
@@ -1375,9 +1375,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [41]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-16-clusterizacao.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-16-clusterizacao.tex
+ (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [42
 
@@ -1387,51 +1387,51 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [43]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
 [44
 
 
 
-]
+
+])
 
 [45]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
 
-[46]
-\openout2 = `capitulos/parte-V-deep-learning/cap-17-mlp.aux'.
+ (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
 
- (./capitulos/parte-V-deep-learning/cap-17-mlp.tex)
-
-[47
+[46
 
 
-]
-\openout2 = `capitulos/parte-V-deep-learning/cap-18-ffns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-18-ffns.tex
+
+])
+
+[47]
 
 [48
 
 
 
-
-])
+]
 
 [49]
-\openout2 = `capitulos/parte-V-deep-learning/cap-19-dbns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-19-dbns.tex
+[50]
+\openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
 
-[50
+ (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
+
+[51
 
 
+]
+\openout2 = `capitulos/parte-V-deep-learning/cap-20-ffns.aux'.
 
-
-])
-
-[51]
-\openout2 = `capitulos/parte-V-deep-learning/cap-20-cnns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-20-cnns.tex
+ (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
 
 [52
 
@@ -1441,9 +1441,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [53]
-\openout2 = `capitulos/parte-V-deep-learning/cap-21-resnets.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-21-resnets.tex
+ (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
 
 [54
 
@@ -1453,9 +1453,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [55]
-\openout2 = `capitulos/parte-V-deep-learning/cap-22-rnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-22-rnns.tex
+ (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
 [56
 
@@ -1465,9 +1465,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [57]
-\openout2 = `capitulos/parte-V-deep-learning/cap-23-transformers.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-23-transformers.tex
+ (./capitulos/parte-V-deep-learning/cap-23-resnets.tex
 
 [58
 
@@ -1477,9 +1477,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [59]
-\openout2 = `capitulos/parte-V-deep-learning/cap-24-gans.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-24-gans.tex
+ (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
 [60
 
@@ -1489,9 +1489,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [61]
-\openout2 = `capitulos/parte-V-deep-learning/cap-25-moe.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-25-moe.tex
+ (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [62
 
@@ -1501,9 +1501,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [63]
-\openout2 = `capitulos/parte-V-deep-learning/cap-26-diffusion.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-26-diffusion.tex
+ (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
 [64
 
@@ -1513,9 +1513,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [65]
-\openout2 = `capitulos/parte-V-deep-learning/cap-27-gnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-27-gnns.tex
+ (./capitulos/parte-V-deep-learning/cap-27-gans.tex
 
 [66
 
@@ -1525,23 +1525,59 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [67]
+\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-28-moe.tex
 
 [68
 
 
 
-]
+
+])
 
 [69]
+\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
 
-[70]
+ (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
-LaTeX Warning: Empty bibliography on input line 144.
+[70
+
+
+
+
+])
+
+[71]
+\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+
+[72
+
+
+
+
+])
+
+[73]
+
+[74
+
+
+
+]
+
+[75]
+
+[76]
+
+LaTeX Warning: Empty bibliography on input line 147.
 
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
-(./main.aux (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-sigmoidais.aux) (./capitulos/parte-III-pilares/cap-07-retificadoras.aux) (./capitulos/parte-III-pilares/cap-08-perda-binaria.aux) (./capitulos/parte-III-pilares/cap-09-perda-multi.aux) (./capitulos/parte-III-pilares/cap-10-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-11-metaheuristicas.aux) (./capitulos/parte-IV-ml-classico/cap-12-regressao.aux) (./capitulos/parte-IV-ml-classico/cap-13-arvores.aux) (./capitulos/parte-IV-ml-classico/cap-14-svm.aux) (./capitulos/parte-IV-ml-classico/cap-15-dimensionalidade.aux) (./capitulos/parte-IV-ml-classico/cap-16-clusterizacao.aux) (./capitulos/parte-V-deep-learning/cap-17-mlp.aux) (./capitulos/parte-V-deep-learning/cap-18-ffns.aux) (./capitulos/parte-V-deep-learning/cap-19-dbns.aux) (./capitulos/parte-V-deep-learning/cap-20-cnns.aux) (./capitulos/parte-V-deep-learning/cap-21-resnets.aux) (./capitulos/parte-V-deep-learning/cap-22-rnns.aux) (./capitulos/parte-V-deep-learning/cap-23-transformers.aux) (./capitulos/parte-V-deep-learning/cap-24-gans.aux) (./capitulos/parte-V-deep-learning/cap-25-moe.aux) (./capitulos/parte-V-deep-learning/cap-26-diffusion.aux) (./capitulos/parte-V-deep-learning/cap-27-gnns.aux))
+(./main.aux (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-07-sigmoidais.aux) (./capitulos/parte-III-pilares/cap-08-retificadoras.aux) (./capitulos/parte-III-pilares/cap-09-modernas.aux) (./capitulos/parte-III-pilares/cap-10-perda-binaria.aux) (./capitulos/parte-III-pilares/cap-11-perda-multi.aux) (./capitulos/parte-III-pilares/cap-12-metaheuristicas.aux) (./capitulos/parte-IV-ml-classico/cap-13-regressao.aux) (./capitulos/parte-IV-ml-classico/cap-14-arvores.aux) (./capitulos/parte-IV-ml-classico/cap-15-svm.aux) (./capitulos/parte-IV-ml-classico/cap-16-ensemble.aux) (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux) (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux) (./capitulos/parte-V-deep-learning/cap-19-mlp.aux) (./capitulos/parte-V-deep-learning/cap-20-ffns.aux) (./capitulos/parte-V-deep-learning/cap-21-dbns.aux) (./capitulos/parte-V-deep-learning/cap-22-cnns.aux) (./capitulos/parte-V-deep-learning/cap-23-resnets.aux) (./capitulos/parte-V-deep-learning/cap-24-rnns.aux) (./capitulos/parte-V-deep-learning/cap-25-regularizacao.aux) (./capitulos/parte-V-deep-learning/cap-26-transformers.aux) (./capitulos/parte-V-deep-learning/cap-27-gans.aux) (./capitulos/parte-V-deep-learning/cap-28-moe.aux) (./capitulos/parte-V-deep-learning/cap-29-diffusion.aux) (./capitulos/parte-V-deep-learning/cap-30-gnns.aux))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1551,18 +1587,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26459 strings out of 467888
- 473467 string characters out of 5434061
- 1442770 words of memory out of 5000000
- 54407 multiletter control sequences out of 15000+600000
+ 26549 strings out of 467888
+ 478170 string characters out of 5434061
+ 1454523 words of memory out of 5000000
+ 54467 multiletter control sequences out of 15000+600000
  653736 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,107p,1228b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (72 pages, 134546 bytes).
+Output written on main.pdf (78 pages, 137073 bytes).
 PDF statistics:
- 564 PDF objects out of 1000 (max. 8388607)
- 469 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
- 281 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 610 PDF objects out of 1000 (max. 8388607)
+ 508 compressed objects within 6 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 305 words of extra memory for PDF output out of 10000 (max. 10000000)
 

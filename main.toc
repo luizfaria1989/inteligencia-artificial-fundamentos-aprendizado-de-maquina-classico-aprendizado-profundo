@@ -16,49 +16,55 @@
 \contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Probabilidade e Estatística para Aprendizado de Máquina}}{17}{chapter.5}%
 \contentsline {part}{\partnumberline {III}\MakeTextUppercase []{Pilares das Redes Neurais}}{19}{part.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{21}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente}}{21}{chapter.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Retificadoras}}{23}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{23}{chapter.7}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {8}\MakeTextUppercase []{Funções de Perda para Classificação Binária}}{25}{chapter.8}%
+\contentsline {chapter}{\chapternumberline {8}\MakeTextUppercase []{Funções de Ativação Retificadoras}}{25}{chapter.8}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {9}\MakeTextUppercase []{Funções de Perda para Classificação Multilabel}}{27}{chapter.9}%
+\contentsline {chapter}{\chapternumberline {9}\MakeTextUppercase []{Funções de Ativação Modernas e Outras Funções de Ativação}}{27}{chapter.9}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {10}\MakeTextUppercase []{O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente}}{29}{chapter.10}%
+\contentsline {chapter}{\chapternumberline {10}\MakeTextUppercase []{Funções de Perda para Classificação Binária}}{29}{chapter.10}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {11}\MakeTextUppercase []{Metaheurísticas: Otimizando Redes Neurais Sem o Gradiente}}{31}{chapter.11}%
-\contentsline {part}{\partnumberline {IV}\MakeTextUppercase []{Aprendizado de Máquina Clássico}}{33}{part.4}%
+\contentsline {chapter}{\chapternumberline {11}\MakeTextUppercase []{Funções de Perda para Classificação Multilabel}}{31}{chapter.11}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {12}\MakeTextUppercase []{Regressão Linear e Logística}}{35}{chapter.12}%
+\contentsline {chapter}{\chapternumberline {12}\MakeTextUppercase []{Metaheurísticas: Otimizando Redes Neurais Sem o Gradiente}}{33}{chapter.12}%
+\contentsline {part}{\partnumberline {IV}\MakeTextUppercase []{Aprendizado de Máquina Clássico}}{35}{part.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {13}\MakeTextUppercase []{Árvores de Decisão e Florestas Aleatórias}}{37}{chapter.13}%
+\contentsline {chapter}{\chapternumberline {13}\MakeTextUppercase []{Regressão Linear e Logística}}{37}{chapter.13}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {14}\MakeTextUppercase []{Máquinas de Vetores de Suporte}}{39}{chapter.14}%
+\contentsline {chapter}{\chapternumberline {14}\MakeTextUppercase []{Árvores de Decisão e Florestas Aleatórias}}{39}{chapter.14}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {15}\MakeTextUppercase []{Dimensionalidade}}{41}{chapter.15}%
+\contentsline {chapter}{\chapternumberline {15}\MakeTextUppercase []{Máquinas de Vetores de Suporte}}{41}{chapter.15}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {16}\MakeTextUppercase []{Clusterização}}{43}{chapter.16}%
-\contentsline {part}{\partnumberline {V}\MakeTextUppercase []{Redes Neurais Profundas (DNNs)}}{45}{part.5}%
+\contentsline {chapter}{\chapternumberline {16}\MakeTextUppercase []{Ensamble}}{43}{chapter.16}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {17}\MakeTextUppercase []{Perceptrons MLP - Redes Neurais Artificiais}}{47}{chapter.17}%
+\contentsline {chapter}{\chapternumberline {17}\MakeTextUppercase []{Dimensionalidade}}{45}{chapter.17}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {18}\MakeTextUppercase []{Redes FeedForward (FFNs)}}{49}{chapter.18}%
+\contentsline {chapter}{\chapternumberline {18}\MakeTextUppercase []{Clusterização}}{47}{chapter.18}%
+\contentsline {part}{\partnumberline {V}\MakeTextUppercase []{Redes Neurais Profundas (DNNs)}}{49}{part.5}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {19}\MakeTextUppercase []{Redes de Crença Profunda (DBNs) e Máquinas de Boltzmann Restritas}}{51}{chapter.19}%
+\contentsline {chapter}{\chapternumberline {19}\MakeTextUppercase []{Perceptrons MLP - Redes Neurais Artificiais}}{51}{chapter.19}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {20}\MakeTextUppercase []{Redes Neurais Convolucionais (CNN)}}{53}{chapter.20}%
+\contentsline {chapter}{\chapternumberline {20}\MakeTextUppercase []{Redes FeedForward (FFNs)}}{53}{chapter.20}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {21}\MakeTextUppercase []{Redes Residuais (ResNets)}}{55}{chapter.21}%
+\contentsline {chapter}{\chapternumberline {21}\MakeTextUppercase []{Redes de Crença Profunda (DBNs) e Máquinas de Boltzmann Restritas}}{55}{chapter.21}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {22}\MakeTextUppercase []{Redes Neurais Recorrentes (RNN)}}{57}{chapter.22}%
+\contentsline {chapter}{\chapternumberline {22}\MakeTextUppercase []{Redes Neurais Convolucionais (CNN)}}{57}{chapter.22}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {23}\MakeTextUppercase []{Transformers}}{59}{chapter.23}%
+\contentsline {chapter}{\chapternumberline {23}\MakeTextUppercase []{Redes Residuais (ResNets)}}{59}{chapter.23}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {24}\MakeTextUppercase []{Redes Adversárias Generativas (GANs)}}{61}{chapter.24}%
+\contentsline {chapter}{\chapternumberline {24}\MakeTextUppercase []{Redes Neurais Recorrentes (RNN)}}{61}{chapter.24}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {25}\MakeTextUppercase []{Mixture of Experts (MoE)}}{63}{chapter.25}%
+\contentsline {chapter}{\chapternumberline {25}\MakeTextUppercase []{Técnicas para Melhorar o Desempenho de Redes Neurais}}{63}{chapter.25}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {26}\MakeTextUppercase []{Modelos de Difusão}}{65}{chapter.26}%
+\contentsline {chapter}{\chapternumberline {26}\MakeTextUppercase []{Transformers}}{65}{chapter.26}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {27}\MakeTextUppercase []{Redes Neurais de Grafos (GNNs)}}{67}{chapter.27}%
-\contentsline {part}{\partnumberline {VI}\MakeTextUppercase []{Apêndices}}{69}{part.6}%
+\contentsline {chapter}{\chapternumberline {27}\MakeTextUppercase []{Redes Adversárias Generativas (GANs)}}{67}{chapter.27}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {28}\MakeTextUppercase []{Mixture of Experts (MoE)}}{69}{chapter.28}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {29}\MakeTextUppercase []{Modelos de Difusão}}{71}{chapter.29}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {30}\MakeTextUppercase []{Redes Neurais de Grafos (GNNs)}}{73}{chapter.30}%
+\contentsline {part}{\partnumberline {VI}\MakeTextUppercase []{Apêndices}}{75}{part.6}%
