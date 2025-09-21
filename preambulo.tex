@@ -117,6 +117,53 @@
 % Exemplo:
 % \newcommand{\keras}{\texttt{Keras}}
 
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta} % Para setas mais modernas
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- Definindo as cores (hues) ---
+\definecolor{darkblue}{rgb}{0.16, 0.32, 0.75}
+\definecolor{darkorange}{rgb}{0.9, 0.35, 0.0}
+\definecolor{pointred}{rgb}{0.85, 0.2, 0.2}
+
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins} % Necessário para o estilo enhanced
+
+\newtcolorbox{definicaomoderna}{
+    enhanced,
+    frame hidden, % Remove a moldura da caixa
+    borderline west={2pt}{0pt}{gray!80}, % Cria uma linha de 2pt à esquerda (west)
+    colback=gray!5, % Um fundo cinza muito sutil para diferenciar
+    fonttitle=\bfseries,
+    coltitle=black,
+    sharp corners, % Cantos retos
+    boxsep=5pt,
+    left=10pt, % Espaço interno à esquerda
+    attach boxed title to top left={yshift=-2mm, xshift=5mm}, % Posição do título
+    boxed title style={
+        frame hidden,
+        colback=gray!5 % Fundo do título igual ao da caixa
+    },
+}
+
+% --- Comando especial para equação destacada COM NOME ---
+\newtcolorbox{equacaodestaque}[1]{ % O [1] indica que o comando aceita um argumento
+    enhanced, ams equation,
+    frame hidden,
+    borderline west={2pt}{0pt}{gray!80},
+    colback=gray!5,
+    sharp corners,
+    % --- Opções para o título ---
+    fonttitle=\bfseries,
+    coltitle=black,
+    attach boxed title to top left={yshift=-2mm, xshift=5mm}, % Posiciona o título
+    boxed title style={
+        frame hidden,
+        colback=gray!5 % Faz o fundo do título ser igual ao da caixa
+    },
+    title={#1} % Usa o argumento como título da caixa
+}
 
 % ===================================================================
 % FIM DO PREÂMBULO

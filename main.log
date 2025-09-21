@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  20 SEP 2025 20:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  21 SEP 2025 11:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -925,13 +925,320 @@ Package hyperref Warning: Unexpected value for option `hidelinks'
 (hyperref)                is ignored on input line 102.
 
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 102.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks35
+\pgfutil@tempdima=\dimen280
+\pgfutil@tempdimb=\dimen281
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box63
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks36
+\pgfkeys@temptoks=\toks37
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks38
+))
+\pgf@x=\dimen282
+\pgf@y=\dimen283
+\pgf@xa=\dimen284
+\pgf@ya=\dimen285
+\pgf@xb=\dimen286
+\pgf@yb=\dimen287
+\pgf@xc=\dimen288
+\pgf@yc=\dimen289
+\pgf@xd=\dimen290
+\pgf@yd=\dimen291
+\w@pgf@writea=\write5
+\r@pgf@reada=\read5
+\c@pgf@counta=\count512
+\c@pgf@countb=\count513
+\c@pgf@countc=\count514
+\c@pgf@countd=\count515
+\t@pgf@toka=\toks39
+\t@pgf@tokb=\toks40
+\t@pgf@tokc=\toks41
+\pgf@sys@id@count=\count516
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count517
+\pgfsyssoftpath@bigbuffer@items=\count518
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen292
+\pgfmath@count=\count519
+\pgfmath@box=\box64
+\pgfmath@toks=\toks42
+\pgfmath@stack@operand=\toks43
+\pgfmath@stack@operation=\toks44
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count520
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen293
+\pgf@picmaxx=\dimen294
+\pgf@picminy=\dimen295
+\pgf@picmaxy=\dimen296
+\pgf@pathminx=\dimen297
+\pgf@pathmaxx=\dimen298
+\pgf@pathminy=\dimen299
+\pgf@pathmaxy=\dimen300
+\pgf@xx=\dimen301
+\pgf@xy=\dimen302
+\pgf@yx=\dimen303
+\pgf@yy=\dimen304
+\pgf@zx=\dimen305
+\pgf@zy=\dimen306
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen307
+\pgf@path@lasty=\dimen308
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen309
+\pgf@shorten@start@additional=\dimen310
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box65
+\pgf@hbox=\box66
+\pgf@layerbox@main=\box67
+\pgf@picture@serial@count=\count521
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen311
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen312
+\pgf@pt@y=\dimen313
+\pgf@pt@temp=\dimen314
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen315
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen316
+\pgf@sys@shading@range@num=\count522
+\pgf@shadingcount=\count523
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box68
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box69
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen317
+\pgf@nodesepend=\dimen318
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen319
+\pgffor@skip=\dimen320
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count524
+\pgfplotmarksize=\dimen321
+)
+\tikz@lastx=\dimen322
+\tikz@lasty=\dimen323
+\tikz@lastxsaved=\dimen324
+\tikz@lastysaved=\dimen325
+\tikz@lastmovetox=\dimen326
+\tikz@lastmovetoy=\dimen327
+\tikzleveldistance=\dimen328
+\tikzsiblingdistance=\dimen329
+\tikz@figbox=\box70
+\tikz@figbox@bg=\box71
+\tikz@tempbox=\box72
+\tikz@tempbox@bg=\box73
+\tikztreelevel=\count525
+\tikznumberofchildren=\count526
+\tikznumberofcurrentchild=\count527
+\tikz@fig@count=\count528
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count529
+\pgfmatrixcurrentcolumn=\count530
+\pgf@matrix@numberofcolumns=\count531
+)
+\tikz@expandcount=\count532
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen330
+\pgfarrowlength=\dimen331
+\pgfarrowwidth=\dimen332
+\pgfarrowlinewidth=\dimen333
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks47
+\t@pgfplots@tokb=\toks48
+\t@pgfplots@tokc=\toks49
+\pgfplots@tmpa=\dimen334
+\c@pgfplots@coordindex=\count533
+\c@pgfplots@scanlineindex=\count534
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks50
+\t@pgf@tokb=\toks51
+\t@pgf@tokc=\toks52
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count535
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count536
+\t@pgfplotstable@a=\toks53
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count537
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen335
+\pgfdecoratedremainingdistance=\dimen336
+\pgfdecoratedinputsegmentcompleteddistance=\dimen337
+\pgfdecoratedinputsegmentremainingdistance=\dimen338
+\pgf@decorate@distancetomove=\dimen339
+\pgf@decorate@repeatstate=\count538
+\pgfdecorationsegmentamplitude=\dimen340
+\pgfdecorationsegmentlength=\dimen341
+)
+\tikz@lib@dec@box=\box74
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count539
+\pgfplots@xmin@reg=\dimen342
+\pgfplots@xmax@reg=\dimen343
+\pgfplots@ymin@reg=\dimen344
+\pgfplots@ymax@reg=\dimen345
+\pgfplots@zmin@reg=\dimen346
+\pgfplots@zmax@reg=\dimen347
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2025/06/04 version 6.6.0 text color boxes
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box75
+\tcb@upperbox=\box76
+\tcb@lowerbox=\box77
+\tcb@phantombox=\box78
+\c@tcbbreakpart=\count540
+\c@tcblayer=\count541
+\c@tcolorbox@number=\count542
+\l__tcobox_tmpa_box=\box79
+\l__tcobox_tmpa_dim=\dimen348
+\tcb@temp=\box80
+\tcb@temp=\box81
+\tcb@temp=\box82
+\tcb@temp=\box83
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.6.0'
+\c@tcbrastercolumn=\count543
+\c@tcbrasterrow=\count544
+\c@tcbrasternum=\count545
+\c@tcbraster=\count546
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.6.0'
+(/usr/local/texlive/2025/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box84
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.6.0'
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.6.0'
+(/usr/local/texlive/2025/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box85
+\tcb@totalupperbox=\box86
+\tcb@totallowerbox=\box87
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.6.0'
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.6.0'
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.6.0'
+\tcbfitdim=\dimen349
+\tcb@lowerfitdim=\dimen350
+\tcb@upperfitdim=\dimen351
+\tcb@cur@hbadness=\count547
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.6.0'
+(/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.6.0'
+(/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.6.0'
+(/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.6.0'
+)
+\c@tcblisting=\count548
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
+Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.6.0'
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.6.0'
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.6.0'
+(/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.6.0'
+)))
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count512
-\@quotereset=\count513
+\@quotelevel=\count549
+\@quotereset=\count550
 LaTeX Font Info:    Trying to load font information for T1+ppl on input line 41.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
@@ -965,28 +1272,28 @@ LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 Package hyperref Info: Link coloring OFF on input line 41.
-\myptabbox=\box63
+\myptabbox=\box88
 \myptabboxwidth=\skip282
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count514
-\scratchdimen=\dimen280
-\scratchbox=\box64
-\nofMPsegments=\count515
-\nofMParguments=\count516
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count517
-\MPscratchDim=\dimen281
-\MPnumerator=\count518
-\makeMPintoPDFobject=\count519
-\everyMPtoPDFconversion=\toks36
+\scratchcounter=\count551
+\scratchdimen=\dimen352
+\scratchbox=\box89
+\nofMPsegments=\count552
+\nofMParguments=\count553
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count554
+\MPscratchDim=\dimen353
+\MPnumerator=\count555
+\makeMPintoPDFobject=\count556
+\everyMPtoPDFconversion=\toks55
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count520
+\c@lstlisting=\count557
 Package biblatex Info: Trying to load language 'brazil' -> 'brazil-abnt'...
 Package biblatex Info: ... file 'brazil-abnt.lbx' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex-abnt/brazil-abnt.lbx
@@ -1092,6 +1399,8 @@ Package biblatex Info: Reference segment=0 on input line 41.
 * \@mparswitchtrue
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 
 
@@ -1266,39 +1575,36 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 [24]
 \openout2 = `capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux'.
 
- (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex)
+ (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex
 
 [25
 
 
 ]
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 53.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
+
+[26]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=581, 903.375pt x 250.9375pt>
+File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
+<use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 63.
+(pdftex.def)             Requested size: 455.24411pt x 126.46014pt.
+
+
+[27 <./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>])
+Underfull \vbox (badness 1931) has occurred while \output is active []
+
+
+
+[28]
+
+[29]
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
-
-[26
-
-
-
-
-])
-
-[27]
-\openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
-
- (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
-
-[28
-
-
-
-
-])
-
-[29]
-\openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
-
- (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
 [30
 
@@ -1308,9 +1614,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [31]
-\openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
+\openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
 
- (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
+ (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
 
 [32
 
@@ -1320,11 +1626,35 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 ])
 
 [33]
+\openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
+
+ (./capitulos/parte-III-pilares/cap-09-modernas.tex
+
+[34
+
+
+
+
+])
+
+[35]
+\openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
+
+ (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
+
+[36
+
+
+
+
+])
+
+[37]
 \openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
 
  (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
 
-[34
+[38
 
 
 
@@ -1336,64 +1666,40 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
 )
 
-[35]
+[39]
 \openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
 
  (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 
-[36
+[40
 
 
 
 
 ])
 
-[37]
+[41]
 
-[38
+[42
 
 
 
 ]
 
-[39]
+[43]
 
-[40]
+[44]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
 
-[41
+[45
 
 
 ]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
-
-[42
-
-
-
-
-])
-
-[43]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
-
-[44
-
-
-
-
-])
-
-[45]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [46
 
@@ -1403,9 +1709,9 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [47]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
+ (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [48
 
@@ -1415,9 +1721,9 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [49]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+ (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [50
 
@@ -1427,21 +1733,45 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [51]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
 [52
 
 
 
-]
+
+])
 
 [53]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
 
-[54]
+ (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+
+[54
+
+
+
+
+])
+
+[55]
+
+[56
+
+
+
+]
+
+[57]
+
+[58]
 \openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
 
-[55
+[59
 
 
 ]
@@ -1449,31 +1779,31 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
  (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
 
-[56
+[60
 
 
 
 
 ])
 
-[57]
+[61]
 \openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
 
-[58
+[62
 
 
 
 
 ])
 
-[59]
+[63]
 \openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
-[60
+[64
 
 
 
@@ -1488,17 +1818,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[61]
+[65]
 Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 
 
 
-[62]
+[66]
 \openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-23-resnets.tex)
 
-[63
+[67
 
 
 
@@ -1508,30 +1838,6 @@ Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 
  (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
-[64
-
-
-
-
-])
-
-[65]
-\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
-
-[66
-
-
-
-
-])
-
-[67]
-\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
-
 [68
 
 
@@ -1540,9 +1846,9 @@ Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 ])
 
 [69]
-\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-27-gans.tex
+ (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [70
 
@@ -1552,9 +1858,9 @@ Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 ])
 
 [71]
-\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-28-moe.tex
+ (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
 [72
 
@@ -1564,9 +1870,9 @@ Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 ])
 
 [73]
-\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
+ (./capitulos/parte-V-deep-learning/cap-27-gans.tex
 
 [74
 
@@ -1576,9 +1882,9 @@ Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 ])
 
 [75]
-\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+ (./capitulos/parte-V-deep-learning/cap-28-moe.tex
 
 [76
 
@@ -1588,23 +1894,48 @@ Overfull \vbox (99.64847pt too high) has occurred while \output is active []
 ])
 
 [77]
+\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
 [78
 
 
 
-]
+
+])
 
 [79]
+\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
 
-[80]
+ (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
 
-LaTeX Warning: Empty bibliography on input line 147.
+[80
 
-\tf@toc=\write5
-\openout5 = `main.toc'.
 
-(./main.aux (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-07-sigmoidais.aux) (./capitulos/parte-III-pilares/cap-08-retificadoras.aux) (./capitulos/parte-III-pilares/cap-09-modernas.aux) (./capitulos/parte-III-pilares/cap-10-perda-binaria.aux) (./capitulos/parte-III-pilares/cap-11-perda-multi.aux) (./capitulos/parte-III-pilares/cap-12-metaheuristicas.aux) (./capitulos/parte-IV-ml-classico/cap-13-regressao.aux) (./capitulos/parte-IV-ml-classico/cap-14-arvores.aux) (./capitulos/parte-IV-ml-classico/cap-15-svm.aux) (./capitulos/parte-IV-ml-classico/cap-16-ensemble.aux) (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux) (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux) (./capitulos/parte-V-deep-learning/cap-19-mlp.aux) (./capitulos/parte-V-deep-learning/cap-20-ffns.aux) (./capitulos/parte-V-deep-learning/cap-21-dbns.aux) (./capitulos/parte-V-deep-learning/cap-22-cnns.aux) (./capitulos/parte-V-deep-learning/cap-23-resnets.aux) (./capitulos/parte-V-deep-learning/cap-24-rnns.aux) (./capitulos/parte-V-deep-learning/cap-25-regularizacao.aux) (./capitulos/parte-V-deep-learning/cap-26-transformers.aux) (./capitulos/parte-V-deep-learning/cap-27-gans.aux) (./capitulos/parte-V-deep-learning/cap-28-moe.aux) (./capitulos/parte-V-deep-learning/cap-29-diffusion.aux) (./capitulos/parte-V-deep-learning/cap-30-gnns.aux))
+
+
+])
+
+[81]
+
+[82
+
+
+
+]
+
+[83]
+
+[84]
+
+[85
+
+]
+\tf@toc=\write6
+\openout6 = `main.toc'.
+
+ (./main.aux (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-07-sigmoidais.aux) (./capitulos/parte-III-pilares/cap-08-retificadoras.aux) (./capitulos/parte-III-pilares/cap-09-modernas.aux) (./capitulos/parte-III-pilares/cap-10-perda-binaria.aux) (./capitulos/parte-III-pilares/cap-11-perda-multi.aux) (./capitulos/parte-III-pilares/cap-12-metaheuristicas.aux) (./capitulos/parte-IV-ml-classico/cap-13-regressao.aux) (./capitulos/parte-IV-ml-classico/cap-14-arvores.aux) (./capitulos/parte-IV-ml-classico/cap-15-svm.aux) (./capitulos/parte-IV-ml-classico/cap-16-ensemble.aux) (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux) (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux) (./capitulos/parte-V-deep-learning/cap-19-mlp.aux) (./capitulos/parte-V-deep-learning/cap-20-ffns.aux) (./capitulos/parte-V-deep-learning/cap-21-dbns.aux) (./capitulos/parte-V-deep-learning/cap-22-cnns.aux) (./capitulos/parte-V-deep-learning/cap-23-resnets.aux) (./capitulos/parte-V-deep-learning/cap-24-rnns.aux) (./capitulos/parte-V-deep-learning/cap-25-regularizacao.aux) (./capitulos/parte-V-deep-learning/cap-26-transformers.aux) (./capitulos/parte-V-deep-learning/cap-27-gans.aux) (./capitulos/parte-V-deep-learning/cap-28-moe.aux) (./capitulos/parte-V-deep-learning/cap-29-diffusion.aux) (./capitulos/parte-V-deep-learning/cap-30-gnns.aux))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1614,18 +1945,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26803 strings out of 467888
- 480682 string characters out of 5434061
- 1459507 words of memory out of 5000000
- 54593 multiletter control sequences out of 15000+600000
- 654505 words of font info for 101 fonts, out of 8000000 for 9000
+ 53060 strings out of 467888
+ 1216957 string characters out of 5434061
+ 3288015 words of memory out of 5000000
+ 80368 multiletter control sequences out of 15000+600000
+ 663311 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,107p,1228b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (82 pages, 216379 bytes).
+ 99i,13n,107p,1228b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (87 pages, 415563 bytes).
 PDF statistics:
- 1290 PDF objects out of 1440 (max. 8388607)
- 1174 compressed objects within 12 object streams
- 249 named destinations out of 1000 (max. 500000)
- 1289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1547 PDF objects out of 1728 (max. 8388607)
+ 1386 compressed objects within 14 object streams
+ 288 named destinations out of 1000 (max. 500000)
+ 1670 words of extra memory for PDF output out of 10000 (max. 10000000)
 
