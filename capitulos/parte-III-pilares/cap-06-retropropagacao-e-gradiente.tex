@@ -15,7 +15,7 @@
 
 \section{O Método do Gradiente Descendente}
 
-O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{\citetitle{CauchyMetodoDoGradiente}} (Método geral para resolução de sistemas de equações simultâneos em portguês) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
+O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em portguês) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
 Nesse texto, o autor apresenta uma forma de minimizar uma função de múltiplas variáveis ($u=f(x,y,z)$) que não assume valores negativos, para fazer isso, ele faz uso do cálculo de derivadas parciais dessa função de cada um dos seus componentes ($D_x u, D_y u, D_z u$), em seguida, ele realiza um passo de atualização, de forma que os os valores de cada uma das variáveis sejam ligeiramente incrementados por valores ($\alpha, \beta, \gamma$) \parencite{CauchyMetodoDoGradiente}. Um ponto importante destacado por \textcite{CauchyMetodoDoGradiente} é de que esses incrementos devem ser proporcionais ao negativo das suas respectivas derivadas parciais, ele descreve que esse processo de calcular as derivadas e fazer pequenos incrementos deve ser feito de forma iterativa, assim, calculá-se as derivadas, faz-se os incrementos, e o passo é repetido até convergir para o valor mínimo de $u$.
 
@@ -40,7 +40,7 @@ Na matemática, existe um método semelhante a este, que busca com base em uma b
 
 \subsection{O Método em Si}
 
-A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \citetitle{DeepLearningBook}, \textcite{DeepLearningBook} explicam essa ferramenta através da equação \ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
+A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \textit{Deep Learning}, \textcite{DeepLearningBook} explicam essa ferramenta através da equação \ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
 
 \begin{equacaodestaque}{Método do Gradiente Descendente}
     x' = x - \epsilon \nabla f(x)
@@ -145,29 +145,34 @@ Na figura \ref{fig:funcao-convexa-nao-convexa} é possível ver o gráfico de du
 
 \subsection{Implementação em Python}
 
-Para implementar o método do gradiente utilizando Python e a biblioteca de cálculos Numpy, deve-se seguir como base a equação \ref{eq:metodo-do-gradiente}, criando uma classe implenta essa ferramenta, recebendo como parâmetros de entrada a taxa de aprendizado, a função que se quer encontrar o ponto de mínimo, e um ponto inicial, que pode ser um conjunto de coordenadas aleatórias ou escolhidas pelo programador.
+Para implementar o método do gradiente utilizando Python e a biblioteca de cálculos Numpy, deve-se seguir como base a equação \ref{eq:metodo-do-gradiente}, criando uma classe implenta essa ferramenta, recebendo como parâmetros de entrada a taxa de aprendizado (\texttt{learning\_rate}), a função que se quer encontrar o ponto de mínimo (\texttt{function}), e um ponto inicial (\texttt{initial\_point}), que pode ser um conjunto de coordenadas aleatórias ou escolhidas pelo programador.
+
+Outro ponto que deve ser destacado nas informações dessa função é de que ela também irá receber a derivada da função (\texttt{function\_prime}) que se quer descobrir o ponto de mínimo, pois não será feito cálculo simbólico para calcular o vetor gradiente. Dessa forma os cálculos serão mais rápidos. Além disso, também é preciso definir outros parâmetros auxiliares, como a quantidade máxima de iterações que o modelo irá seguir (\texttt{tolerance}), que são chamadas de épocas \texttt{epochs}, também será definida um grau de tolerância para o modelo, pois, podem existir casos em que a norma do vetor gradiente são será exatemente zero, mas um valor muito próximo de zero, assim a tolerância será responsável por definir qual valor dessa diferença será aceitável para o problema.
+
+Por fim, um ponto interessante que é possível adicionar nessa função é uma lista, que irá armazenar todos os pontos que o modelo passou em cada uma de suas iterações, indicando o seu caminho pela função que está sendo estudada.
 
 \begin{codelisting}{Classe completa do otimizador GradientDescent}{gd_class}
 class GradientDescent:
 
-    def __init__(self, function, function_prime, initial_point, learning_rate=0.001, max_iterations=100, tolerance=1e-6):
+    def __init__(self, function, function_prime, initial_point, learning_rate=0.001, epochs=100, tolerance=1e-6):
         self.f = function
         self.fp = function_prime
         self.ip = initial_point
         self.lr = learning_rate
-        self.iterations = max_iterations
+        self.ep = epochs
         self.tol = tolerance
         self.path = []
 
     def update_step(self):
-        for i in range(self.iterations):
+        for i in range(self.ep):
             self.path.append(self.ip)
             grad = self.fp(self.ip)
             if abs(grad) < self.tol: break
             self.ip = self.ip + self.lr * (-grad)
         return self.ip, self.path
-
 \end{codelisting}
+
+Note que a classe apresenta apenas dois métodos, o primeiro sendo o \texttt{\_\_init\_\_}, que inicializa os parâmetros da classe, e a \texttt{update\_step} a qual é responsável por implementar de fato o método do gradiente, ela irá retornar o ponto de mínimo e também a lista com os pontos pelos quais o modelo passou ao longo das iterações.
 
 % ===================================================================
 % A Retropropagação
@@ -181,7 +186,7 @@ Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de r
 A \textbf{retropropagação} é uma ferramenta que veio para permitir que redes que fazem o uso de unidades de neurônios possam aprender, para isso, o procedimento ajusta repetidamente os pesos das conexões da rede para minimizar a diferença entre o valor atual da saída do vetor da rede neural com o valor real desejado \parencite{BackpropagationArticle}.
 \end{definicaomoderna}
 
-Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{\citetitle{BackpropagationArticle}}, 
+Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{Learning Representations by Back-Propagating Errors}, 
 
 % ===================================================================
 % Otimizadores Baseados em Gradiente

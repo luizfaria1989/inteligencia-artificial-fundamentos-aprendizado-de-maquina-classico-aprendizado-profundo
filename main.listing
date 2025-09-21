@@ -1,19 +1,18 @@
 class GradientDescent:
 
-    def __init__(self, function, function_prime, initial_point, learning_rate=0.001, max_iterations=100, tolerance=1e-6):
+    def __init__(self, function, function_prime, initial_point, learning_rate=0.001, epochs=100, tolerance=1e-6):
         self.f = function
         self.fp = function_prime
         self.ip = initial_point
         self.lr = learning_rate
-        self.iterations = max_iterations
+        self.ep = epochs
         self.tol = tolerance
         self.path = []
 
     def update_step(self):
-        for i in range(self.iterations):
+        for i in range(self.ep):
             self.path.append(self.ip)
             grad = self.fp(self.ip)
             if abs(grad) < self.tol: break
             self.ip = self.ip + self.lr * (-grad)
         return self.ip, self.path
-
