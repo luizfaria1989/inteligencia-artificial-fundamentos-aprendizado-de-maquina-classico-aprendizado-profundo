@@ -165,6 +165,60 @@
     title={#1} % Usa o argumento como título da caixa
 }
 
+\usepackage{xcolor} % Para definir cores customizadas
+\usepackage{listings} % Para formatar o código
+\usepackage[most]{tcolorbox} % Para criar a caixa estilizada
+
+% --- 1. Definição das Cores para o Código ---
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0,0,0.8}
+\definecolor{codered}{rgb}{0.8,0,0}
+
+% --- 2. Configuração Global do Pacote listings ---
+\lstset{
+    language=Python,
+    backgroundcolor=\color{white},   
+    commentstyle=\color{codegray}\itshape,
+    keywordstyle=\color{codeblue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codered},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+
+% --- Criação do Ambiente de Listagem de Código Estilizado (Fundo Branco) ---
+\newtcblisting{codelisting}[2]{
+  listing only,
+  enhanced,
+  colback=white,  % Fundo branco, igual ao da página
+  colframe=gray!80,
+  frame hidden,
+  borderline west={2pt}{0pt}{gray!80},
+  sharp corners,
+  top=5pt,
+  bottom=5pt,
+  % --- Título e numeração (Listagem X: Título) ---
+  fonttitle=\bfseries,
+  coltitle=black,
+  title={Bloco de Código~\thetcbcounter: #1},
+  label={lst:#2},
+  % --- Opções passadas para o pacote listings ---
+  listing options={
+    language=Python,
+    numbers=left,
+  }
+}
+
 % ===================================================================
 % FIM DO PREÂMBULO
 % ===================================================================
