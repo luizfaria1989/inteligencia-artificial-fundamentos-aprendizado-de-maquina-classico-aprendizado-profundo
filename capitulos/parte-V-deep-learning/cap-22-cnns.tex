@@ -15,19 +15,254 @@
 
 \subsection{Implementação em Python}
 
+\begin{codelisting}{Classe completa de Convolution2D}{gd_class}
+import numpy as np
+from layers.base import Layer
+
+class Convolution2D(Layer):
+    def __init__(self, input_channels, num_filters, kernel_size, stride=1, padding=0):
+        super().__init__()
+        self.input_channels = input_channels
+        self.num_filters = num_filters
+        self.kernel_size = kernel_size
+        self.stride = (stride, stride) if isinstance(stride, int) else stride
+        self.padding = padding
+
+        kernel_height, kernel_width = self.kernel_size
+        self.kernels = np.random.randn(num_filters, input_channels, kernel_height, kernel_width) * 0.01
+        self.biases = np.zeros((num_filters, 1))
+        self.params = [self.kernels, self.biases]
+        self.cache = None
+
+    def forward(self, input_data):
+        (batch_size, input_height, input_width, input_channels) = input_data.shape
+        filters, _, kernel_height, kernel_width = self.kernels.shape
+        stride_height, stride_width = self.stride
+
+        pad_config = ((0, 0), (self.padding, self.padding), (self.padding, self.padding), (0, 0))
+        input_padded = np.pad(input_data, pad_config, mode='constant')
+        self.cache = input_padded
+
+        output_height = int((input_height - kernel_height + 2 * self.padding) / stride_height) + 1
+        output_width = int((input_width - kernel_width + 2 * self.padding) / stride_width) + 1
+
+        output_matrix = np.zeros((batch_size, output_height, output_width, filters))
+
+        for n in range(batch_size):
+            for f in range(filters):
+                for h in range(output_height):
+                    for w in range(output_width):
+                        start_height, start_width = h * stride_height, w * stride_width
+                        end_height, end_width = start_height + kernel_height, start_width + kernel_width
+
+                        window = input_padded[n, start_height:end_height, start_width:end_width, :]
+                        current_kernel = self.kernels[f, ...].transpose(1, 2, 0)
+
+                        conv_sum = np.sum(window * current_kernel)
+                        output_matrix[n, h, w, f] = conv_sum + self.biases[f]
+
+        return output_matrix
+
+    def backward(self, output_gradient):
+        input_padded = self.cache
+        (filters, input_channels, kernel_height, kernel_width) = self.kernels.shape
+        (batch_size, output_height, output_width, _) = output_gradient.shape
+        stride_height, stride_width = self.stride
+
+        grad_kernels = np.zeros_like(self.kernels)
+        grad_biases = np.zeros_like(self.biases)
+        grad_input_padded = np.zeros_like(input_padded)
+
+        for n in range(batch_size):
+            for f in range(filters):
+                for h in range(output_height):
+                    for w in range(output_width):
+                        start_height, start_width = h * stride_height, w * stride_width
+                        end_height, end_width = start_height + kernel_height, start_width + kernel_width
+
+                        window = input_padded[n, start_height:end_height, start_width:end_width, :]
+                        grad_pixel = output_gradient[n, h, w, f]
+
+                        grad_kernels[f, ...] += window.transpose(2, 0, 1) * grad_pixel
+                        grad_biases[f] += grad_pixel
+                        grad_input_padded[n, start_height:end_height, start_width:end_width, :] += self.kernels[f, ...].transpose(1, 2,
+                                                                                                             0) * grad_pixel
+        if self.padding > 0:
+            p = self.padding
+            grad_input = grad_input_padded[:, p:-p, p:-p, :]
+        else:
+            grad_input = grad_input_padded
+        return grad_input, [grad_kernels, grad_biases]
+
+
+\end{codelisting}
+
 \section{Camadas de Poooling: Reduzindo a Dimensionalidade}
 
 \subsection{Max Pooling}
 
-\subsection{Avg Pooling}
+\subsubsection{Implementação em Python}
 
-\subsection{Global Abg Pooling}
+\begin{codelisting}{Classe completa de MaxPooling2D}{gd_class}
+import numpy as np
+from layers.base import Layer
 
-\subsection{Implementação em Python}
+class MaxPooling2D(Layer):
+    def __init__(self, pool_size=(2,2), stride=None):
+        super().__init__()
+        self.pool_size = pool_size
+        self.stride = stride if stride is not None else pool_size
+        self.cache = None
+
+    def forward(self, input_data):
+        (batches, input_height, input_width, channels) = input_data.shape
+
+        pool_height, pool_width = self.pool_size
+        stride_height, stride_width = self.stride
+
+        output_height = int((input_height - pool_height) / stride_height) + 1
+        output_width = int((input_width - pool_width) / stride_width) + 1
+
+        output_matrix = np.zeros((batches, output_height, output_width, channels))
+        self.cache = np.zeros_like(input_data)
+
+        for b in range(batches):
+            for c in range(channels):
+                for h in range(output_height):
+                    for w in range(output_width):
+
+                        start_height = h * stride_height
+                        start_width = w * stride_width
+                        end_height = start_height + pool_height
+                        end_width = start_width + pool_width
+
+                        pooling_window = input_data[b, start_height:end_height, start_width:end_width, c]
+
+                        max_arg_value = np.max(pooling_window)
+
+                        output_matrix[b, h, w, c] = max_arg_value
+
+                        mask = (pooling_window == max_arg_value)
+
+                        self.cache[b, start_height:end_height, start_width:end_width, c] = mask
+
+        return output_matrix
+
+    def backward(self, output_gradient):
+        upsampled_grad = np.repeat(output_gradient, self.pool_size[0], axis=1)
+        upsampled_grad = np.repeat(upsampled_grad, self.pool_size[1], axis=2)
+
+        grad_input = upsampled_grad * self.cache
+
+        return grad_input, None
+
+\end{codelisting}
+
+\subsection{Average Pooling}
+
+\subsubsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa de AveragePooling2D}{gd_class}
+import numpy as np
+from layers.base import Layer
+
+class AveragePooling2D(Layer):
+    def __init__(self, pool_size=(2, 2), stride=None):
+        super().__init__()
+        self.pool_size = pool_size
+        self.stride = stride if stride is not None else pool_size
+
+    def forward(self, input_data):
+        (batches, input_height, input_width, channels) = input_data.shape
+        pool_h, pool_w = self.pool_size
+        stride_h, stride_w = self.stride
+
+        output_height = int((input_height - pool_h) / stride_h) + 1
+        output_width = int((input_width - pool_w) / stride_w) + 1
+
+        output_matrix = np.zeros((batches, output_height, output_width, channels))
+
+        for b in range(batches):
+            for c in range(channels):
+                for h in range(output_height):
+                    for w in range(output_width):
+                        start_h = h * stride_h
+                        start_w = w * stride_w
+                        end_h = start_h + pool_h
+                        end_w = start_w + pool_w
+
+                        pooling_window = input_data[b, start_h:end_h, start_w:end_w, c]
+                        output_matrix[b, h, w, c] = np.mean(pooling_window)  # Changed to mean
+
+        return output_matrix
+
+    def backward(self, output_gradient):
+        pool_h, pool_w = self.pool_size
+
+        distributed_grad = output_gradient / (pool_h * pool_w)
+
+        upsampled_grad = np.repeat(distributed_grad, pool_h, axis=1)
+        upsampled_grad = np.repeat(upsampled_grad, pool_w, axis=2)
+
+        return upsampled_grad, None
+
+\end{codelisting}
+
+\subsection{Global Average Pooling}
+
+\subsubsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa de GlobalAveragePooling2D}{gd_class}
+import numpy as np
+from layers.base import Layer
+
+class GlobalAveragePooling2D(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input_shape = None
+
+    def forward(self, input_data):
+        self.input_shape = input_data.shape
+
+        output = np.mean(input_data, axis=(1, 2), keepdims=True)
+
+        return output
+
+    def backward(self, output_gradient):
+        _, input_h, input_w, _ = self.input_shape
+
+        distributed_grad = output_gradient / (input_h * input_w)
+
+        upsampled_grad = np.ones(self.input_shape) * distributed_grad
+
+        return upsampled_grad, None
+\end{codelisting}
 
 \section{Camada Flatten: Achatando os Dados}
 
 \subsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa de Flatten}{gd_class}
+import numpy as np
+from layers.base import Layer
+
+class Flatten(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input_shape = None
+
+    def forward(self, input_data):
+        self.input_shape = input_data.shape
+
+        flatten_output = input_data.reshape(input_data.shape[0], -1)
+
+        return flatten_output
+
+    def backward(self, output_gradient):
+        input_gradient = output_gradient.reshape(self.input_shape)
+        return input_gradient, None
+\end{codelisting}
+
 
 \section{Criando uma CNN}
 

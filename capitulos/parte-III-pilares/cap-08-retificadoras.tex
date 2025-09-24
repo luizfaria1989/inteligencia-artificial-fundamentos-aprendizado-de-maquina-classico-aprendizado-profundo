@@ -17,11 +17,55 @@
 
 \section{Rectified Linear Unit e Revolução Retificadora}
 
+\subsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa do função de ativação Rectified Linear Unit}{gd_class}
+import numpy as np
+from layers.base import Layer
+
+class ReLU(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input = None
+
+    def forward(self, input_data):
+        self.input = input_data
+        return np.maximum(0, self.input)
+
+    def backward(self, grad_output):
+        relu_grad = (self.input > 0)
+
+        # Apply the chain rule
+        return grad_output * relu_grad, None
+\end{codelisting}
+
 \section{Dying ReLUs Problem}
 
 \section{Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}
 
 \subsection{Leaky ReLU}
+
+\subsubsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa do função de ativação Leaky ReLU}{gd_class}
+import numpy as np
+from layers.base import Layer
+
+
+class LeakyReLU(Layer):
+    def __init__(self, alpha=0.01):
+        super().__init__()
+        self.input = None
+        self.alpha = alpha
+
+    def forward(self, input_data):
+        self.input = input_data
+        return np.maximum(self.input * self.alpha, self.input)
+
+    def backward(self, grad_output):
+        leaky_relu_grad = np.where(self.input > 0, 1, self.alpha)
+        return grad_output * leaky_relu_grad, None
+\end{codelisting}
 
 \subsection{Parametric ReLU}
 

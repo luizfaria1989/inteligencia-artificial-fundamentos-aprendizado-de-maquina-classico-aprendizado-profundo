@@ -19,11 +19,124 @@
 
 \section{A Sigmoide Logística}
 
+\subsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa do função de ativação Sigmoid}{gd_class}
+import numpy as np
+
+class Sigmoid(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input = None
+        self.sigmoid = None
+
+    def forward(self, input_data):
+        self.input = input_data
+        self.sigmoid_output = 1/ (1 + np.exp(-input_data))
+        return self.sigmoid_output
+
+    def backward(self, grad_output):
+        sigmoid_grad = self.sigmoid_output * (1 - self.sigmoid_output)
+        return grad_output * sigmoid_grad, None
+\end{codelisting}
+
 \section{Tangente Hiperbólica}
+
+\subsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa do função de ativação Tangente Hiperbólica}{gd_class}
+import numpy as np
+from layers.base import Layer  # Assuming your base class is here
+
+class Tanh(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input = None
+        self.tanh_output = None
+
+    def forward(self, input_data):
+        self.input = input_data
+        self.tanh_output = np.tanh(self.input)
+        return self.tanh_output
+
+    def backward(self, grad_output):
+        tanh_grad = 1 - self.tanh_output**2
+        return grad_output * tanh_grad, None
+\end{codelisting}
 
 \section{Softsign: Uma Sigmoidal Mais Barata}
 
+\subsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa do função de ativação Softsign}{gd_class}
+from layers.base import Layer
+import numpy as np
+
+class Softsign(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input = None
+
+    def forward(self, input_data):
+        self.input = input_data
+        return self.input / (1 + np.abs(self.input))
+
+    def backward(self, grad_output):
+        grad =  (1 / (1 + np.abs(self.input))**2)
+        return grad_output * softsign_grad, None
+\end{codelisting}
+
 \section{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}
+
+\subsection{Implementação em Python}
+
+\begin{codelisting}{Classe completa do função de ativação Hard Sigmoid}{gd_class}
+from layers.base import Layer
+import numpy as np
+
+class HardSigmoid(Layer):
+
+    def __init__(self):
+        super().__init__()
+        self.input = None
+
+    def forward(self, input_data):
+        self.input = input_data
+
+        output = self.input / 6 + 0.5
+        output = np.clip(output, 0, 1)  # A more concise way to handle the bounds
+
+        return output
+
+    def backward(self, grad_output):
+        hard_sigmoid_grad = np.full_like(self.input, 1 / 6)
+
+        hard_sigmoid_grad[self.input < -3] = 0
+        hard_sigmoid_grad[self.input > 3] = 0
+
+        return grad_output * hard_sigmoid_grad, None
+\end{codelisting}
+
+\begin{codelisting}{Classe completa do função de ativação Hard Sigmoid}{gd_class}
+from layers.base import Layer
+import numpy as np
+
+
+class HardTanh(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input = None
+
+    def forward(self, input_data):
+        self.input = input_data
+        return np.clip(self.input, -1, 1)
+
+    def backward(self, grad_output):
+
+        hard_tanh_grad = np.where((self.input > -1) & (self.input < 1), 1, 0)
+
+        return grad_output * hard_tanh_grad, None
+\end{codelisting}
 
 \section{O Desaparecimento de Gradientes}
 
