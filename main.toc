@@ -78,12 +78,12 @@
 \contentsline {subsection}{\numberline {7.3.1}Implementação em Python}{33}{subsection.7.3.1}%
 \contentsline {section}{\numberline {7.4}Tangente Hiperbólica}{34}{section.7.4}%
 \contentsline {subsection}{\numberline {7.4.1}Implementação em Python}{34}{subsection.7.4.1}%
-\contentsline {section}{\numberline {7.5}Softsign: Uma Sigmoidal Mais Barata}{35}{section.7.5}%
+\contentsline {section}{\numberline {7.5}Softsign: Uma Sigmoidal Mais Barata}{34}{section.7.5}%
 \contentsline {subsection}{\numberline {7.5.1}Implementação em Python}{35}{subsection.7.5.1}%
-\contentsline {section}{\numberline {7.6}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{36}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Implementação em Python}{36}{subsection.7.6.1}%
-\contentsline {section}{\numberline {7.7}O Desaparecimento de Gradientes}{37}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Comparativo de Desempenho das Sigmoidais}{37}{section.7.8}%
+\contentsline {section}{\numberline {7.6}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{35}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Implementação em Python}{37}{subsection.7.6.1}%
+\contentsline {section}{\numberline {7.7}O Desaparecimento de Gradientes}{38}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Comparativo de Desempenho das Sigmoidais}{38}{section.7.8}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {8}\MakeTextUppercase []{Funções de Ativação Retificadoras}}{39}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Exemplo Ilustrativo}{39}{section.8.1}%
@@ -97,10 +97,10 @@
 \contentsline {subsection}{\numberline {8.4.3}Randomized Leaky ReLU}{41}{subsection.8.4.3}%
 \contentsline {section}{\numberline {8.5}Em Busca da Suavidade}{41}{section.8.5}%
 \contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit}{41}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit}{41}{subsection.8.5.2}%
-\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU}{41}{subsection.8.5.3}%
-\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{41}{section.8.6}%
-\contentsline {section}{\numberline {8.7}Comparativo de Desempenho das Funções Retificadoras}{41}{section.8.7}%
+\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit}{42}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU}{42}{subsection.8.5.3}%
+\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{42}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Comparativo de Desempenho das Funções Retificadoras}{42}{section.8.7}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {9}\MakeTextUppercase []{Funções de Ativação Modernas e Outras Funções de Ativação}}{43}{chapter.9}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }

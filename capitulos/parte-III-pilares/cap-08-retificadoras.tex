@@ -17,6 +17,16 @@
 
 \section{Rectified Linear Unit e Revolução Retificadora}
 
+\begin{equacaodestaque}{Rectified Linear Unit (ReLU)}
+    \text{ReLU}(z_i) = \begin{cases}z_i, & \text{se } z_i > 0 \\0, & \text{se } z_i \leq 0\end{cases}
+    \label{eq:relu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Rectified Linear Unit (ReLU)}
+    \frac{d}{dz_i} [ReLU](z_i) = \begin{cases}1, & \text{se } z_i > 0 \\0, & \text{se } z_i \leqslant 0 \end{cases}
+    \label{eq:relu-derivada}
+\end{equacaodestaque}
+
 \subsection{Implementação em Python}
 
 \begin{codelisting}{Classe completa do função de ativação Rectified Linear Unit}{gd_class}
@@ -45,6 +55,16 @@ class ReLU(Layer):
 
 \subsection{Leaky ReLU}
 
+\begin{equacaodestaque}{Leaky ReLU (LReLU)}
+    \text{LReLU}(z_i) = \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha \cdot z_i, & \text{se } z_i < 0\end{cases}
+    \label{eq:leaky-relu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Leaky ReLU (LReLU)}
+    \frac{d}{dz_i} [LReLU](z_i) = \begin{cases}1, & \text{se } z_i > 0 \\ \alpha, & \text{se } z_i \leqslant  0 \end{cases}
+    \label{eq:leaky-relu-derivada}
+\end{equacaodestaque}
+
 \subsubsection{Implementação em Python}
 
 \begin{codelisting}{Classe completa do função de ativação Leaky ReLU}{gd_class}
@@ -69,15 +89,71 @@ class LeakyReLU(Layer):
 
 \subsection{Parametric ReLU}
 
+\begin{equacaodestaque}{Parametric ReLU (PReLU)}
+    \text{PReLU}(z_i) = \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha_i \cdot z_i, & \text{se } z_i < 0\end{cases}
+    \label{eq:prelu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Parametric ReLU (PReLU)}
+    \frac{d}{dz_i} [PReLU](z_i) = \begin{cases}1, & \text{se } z_i > 0 \\ \alpha_i, & \text{se } z_i < 0 \\ \nexists, & \text{se } z_i = 0\end{cases}
+    \label{eq:prelu-derivada}
+\end{equacaodestaque}
+
 \subsection{Randomized Leaky ReLU}
+
+\begin{equacaodestaque}{Randomized Leaky ReLU (RReLU)}
+    \text{RReLU}(z_i) = \begin{cases} z_i, & \text{se } z_i > 0 \\ \alpha_i z_i, & \text{se } z_i \leq 0 \end{cases}
+    \label{eq:rrelu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Randomized Leaky ReLU (RReLU)}
+    \frac{d}{dz_i} [RReLU](z_i) = \begin{cases}1, & \text{se } z_i > 0 \\ \alpha_i, & \text{se } z_i \leqslant  0 \end{cases}
+    \label{eq:rrelu-derivada}
+\end{equacaodestaque}
 
 \section{Em Busca da Suavidade}
 
 \subsection{Exponential Linear Unit}
 
+\begin{equacaodestaque}{Exponential Linear Unit (ELU)}
+    \text{ELU}(z_i) = \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha \cdot (e^{z_i} - 1), & \text{se } z_i < 0\end{cases}
+    \label{eq:elu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Exponential Linear Unit (ELU)}
+    \frac{d}{dz_i} [ELU](z_i) = \begin{cases}1, & \text{se } z_i > 0 \\ \alpha \cdot e^{z_i}, & \text{se } z_i \le 0 \end{cases}
+    \label{eq:elu-derivada}
+\end{equacaodestaque}
+
 \subsection{Scaled Exponential Linear Unit}
 
+\begin{equacaodestaque}{Scaled Exponential Linear Unit (ELU)}
+    \text{SELU}(z_i) = \lambda \begin{cases}z_i, & \text{se } z_i > 0 \\ \alpha \cdot (e^{z_i} - 1), & \text{se } z_i \le 0\end{cases}
+    \label{eq:selu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Scaled Exponential Linear Unit (ELU)}
+    \frac{d}{dz_i} [SELU](z_i) = \lambda \begin{cases}1, & \text{se } z_i > 0 \\ \alpha \cdot e^{z_i}, & \text{se } z_i \le 0\end{cases}
+    \label{eq:selu-derivada}
+\end{equacaodestaque}
+
 \subsection{Noisy ReLU}
+
+\begin{equacaodestaque}{Noisy ReLU (NReLU)}
+    \text{NReLU}(z_i) = \begin{cases} 
+    0 & \text{se } z_i \le 0 \\ 
+    z_i + \mathcal{N} (0, \sigma(z_i)) & \text{se } z_i > 0 
+    \end{cases}
+    \label{eq:nrelu}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada Noisy ReLU (NReLU)}
+    \frac{d}{dz_i}[\text{NReLU}](z_i) = \begin{cases} 
+    0 & \text{se } z_i \le 0 \\ 
+    1 & \text{se } z_i > 0 
+    \end{cases}
+    \label{eq:nrelu-derivada}
+\end{equacaodestaque}
 
 \section{O Problema dos Gradientes Explosivos}
 

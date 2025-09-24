@@ -19,6 +19,16 @@
 
 \section{A Sigmoide Logística}
 
+\begin{equacaodestaque}{Sigmoide Logística}
+    \sigma(z_i) = \frac{1}{1 + e^{-z_i}}
+    \label{eq:sigmoide}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada da sigmoide logística}
+    \frac{d}{dz_i}\sigma(z_i) = \frac{e^{-z_i}}{(1 + e^{-z_i})^2}
+    \label{eq:sigmoide-derivada}
+\end{equacaodestaque}
+
 \subsection{Implementação em Python}
 
 \begin{codelisting}{Classe completa do função de ativação Sigmoid}{gd_class}
@@ -41,6 +51,16 @@ class Sigmoid(Layer):
 \end{codelisting}
 
 \section{Tangente Hiperbólica}
+
+\begin{equacaodestaque}{Tangente Hiperbólica}
+    \tanh(z_i) = \frac{\sinh(z_i)}{\cosh(z_i)} = \frac{e^z_i - e^{-z_i}}{e^z_i + e^{-z_i}}
+    \label{eq:tangente-hiperbolica}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada da tangente hiperbólica}
+    \frac{d}{dz_i}\tanh(z_i) = \text{sech}^2(z_i)
+    \label{eq:tangente-hiperbolica-derivada}
+\end{equacaodestaque}
 
 \subsection{Implementação em Python}
 
@@ -66,6 +86,16 @@ class Tanh(Layer):
 
 \section{Softsign: Uma Sigmoidal Mais Barata}
 
+\begin{equacaodestaque}{Softsign}
+    \text{softsign}(z_i) = \frac{z_i}{1 + |z_i|}
+    \label{eq:softsign}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada da softsign}
+    \frac{d}{dz_i}\text{softsign}(z_i) = \frac{1}{(1 + |z_i|)^2}
+    \label{eq:softsgin-derivada}
+\end{equacaodestaque}
+
 \subsection{Implementação em Python}
 
 \begin{codelisting}{Classe completa do função de ativação Softsign}{gd_class}
@@ -87,6 +117,26 @@ class Softsign(Layer):
 \end{codelisting}
 
 \section{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}
+
+\begin{equacaodestaque}{Hard Sigmoid}
+        \text{hard sigmoid}(z_i) = \begin{cases} 0 & \text{se } z_i < -3 \\ z_i/6 + 0.5 & \text{se } -3 \le z_i \le 3 \\ 1 & \text{se } z_i > 3 \end{cases}
+    \label{eq:hard-sigmoid}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada da Hard Sigmoid}
+        \frac{d}{dz_i}\text{hard sigmoid}(z_i) = \begin{cases} 0 & \text{se } z_i < -3 \\ 1/6 & \text{se } -3 < z_i < 3 \\ 0 & \text{se } z_i > 3 \end{cases}
+    \label{eq:hard-sigmoid-derivada}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Hard Tanh}
+        \text{hard tanh}(z_i) = \begin{cases} -1 & \text{se } z_i < -1 \\ z_i & \text{se } -1 \le z_i \le 1 \\ 1 & \text{se } z_i > 1 \end{cases}
+    \label{eq:hard-tanh}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada da Hard Tanh}
+        \frac{d}{dz_i}\text{hard tanh}(z_i) = \begin{cases} 0 & \text{se } z_i < -1 \\ 1 & \text{se } -1 < z_i < 1 \\ 0 & \text{se } z_i > 1 \end{cases}
+    \label{eq:hard-tanh-derivada}
+\end{equacaodestaque}
 
 \subsection{Implementação em Python}
 
