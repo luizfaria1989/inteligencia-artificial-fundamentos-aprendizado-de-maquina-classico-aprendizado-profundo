@@ -145,6 +145,23 @@ Na figura \ref{fig:funcao-convexa-nao-convexa} é possível ver o gráfico de du
 
 \subsection{Implementação em Python}
 
+\begin{algorithm}[H]
+\caption{O Método do Gradiente (Descida do Gradiente)}
+\label{alg:gradient_descent}
+\begin{algorithmic}[1]
+\Require Taxa de aprendizado global $\epsilon$
+\Require Parâmetros iniciais $\boldsymbol{\theta}$
+
+\State Inicialize os parâmetros $\boldsymbol{\theta}$
+
+\While{critério de parada não for atingido}
+    \State Calcule o gradiente $\mathbf{g} \gets \nabla_{\boldsymbol{\theta}} L(\boldsymbol{\theta})$, usando \textbf{todo} o conjunto de treinamento
+    \State Calcule a atualização: $\Delta \boldsymbol{\theta} \gets -\epsilon \mathbf{g}$
+    \State Aplique a atualização: $\boldsymbol{\theta} \gets \boldsymbol{\theta} + \Delta \boldsymbol{\theta}$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
 Para implementar o método do gradiente utilizando Python e a biblioteca de cálculos Numpy, deve-se seguir como base a equação \ref{eq:metodo-do-gradiente}, criando uma classe implenta essa ferramenta, recebendo como parâmetros de entrada a taxa de aprendizado (\texttt{learning\_rate}), a função que se quer encontrar o ponto de mínimo (\texttt{function}), e um ponto inicial (\texttt{initial\_point}), que pode ser um conjunto de coordenadas aleatórias ou escolhidas pelo programador.
 
 Outro ponto que deve ser destacado nas informações dessa função é de que ela também irá receber a derivada da função (\texttt{function\_prime}) que se quer descobrir o ponto de mínimo, pois não será feito cálculo simbólico para calcular o vetor gradiente. Dessa forma os cálculos serão mais rápidos. Além disso, também é preciso definir outros parâmetros auxiliares, como a quantidade máxima de iterações que o modelo irá seguir (\texttt{tolerance}), que são chamadas de épocas \texttt{epochs}, também será definida um grau de tolerância para o modelo, pois, podem existir casos em que a norma do vetor gradiente são será exatemente zero, mas um valor muito próximo de zero, assim a tolerância será responsável por definir qual valor dessa diferença será aceitável para o problema.
@@ -358,6 +375,8 @@ Assim, é possível concluir que o gradiente do erro em relação a um peso espe
 \subsection{Método do Gradiente com Momentum}
 
 \subsubsection{Implementação em Python}
+
+\section{Otimizadores Modernos Baseados em Gradiente}
 
 \subsection{Nesterov}
 

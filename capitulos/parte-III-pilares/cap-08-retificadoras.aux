@@ -7,35 +7,63 @@
 \@writefile{toc}{\contentsline {section}{\numberline {8.2}Rectified Linear Unit e Revolução Retificadora}{57}{section.8.2}\protected@file@percent }
 \newlabel{eq:relu}{{8.1}{57}{Rectified Linear Unit e Revolução Retificadora}{equation.8.1}{}}
 \newlabel{eq:relu-derivada}{{8.2}{57}{Rectified Linear Unit e Revolução Retificadora}{equation.8.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Implementação em Python}{57}{subsection.8.2.1}\protected@file@percent }
-\newlabel{lst:gd_class}{{8.2.1}{57}{Implementação em Python}{subsection.8.2.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Dying ReLUs Problem}{58}{section.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.4}Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}{58}{section.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Leaky ReLU}{58}{subsection.8.4.1}\protected@file@percent }
-\newlabel{eq:leaky-relu}{{8.3}{58}{Leaky ReLU}{equation.8.3}{}}
-\newlabel{eq:leaky-relu-derivada}{{8.4}{58}{Leaky ReLU}{equation.8.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.1.1}Implementação em Python}{58}{subsubsection.8.4.1.1}\protected@file@percent }
-\newlabel{lst:gd_class}{{8.4.1.1}{58}{Implementação em Python}{subsubsection.8.4.1.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Parametric ReLU}{59}{subsection.8.4.2}\protected@file@percent }
-\newlabel{eq:prelu}{{8.5}{59}{Parametric ReLU}{equation.8.5}{}}
-\newlabel{eq:prelu-derivada}{{8.6}{59}{Parametric ReLU}{equation.8.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Randomized Leaky ReLU}{59}{subsection.8.4.3}\protected@file@percent }
-\newlabel{eq:rrelu}{{8.7}{59}{Randomized Leaky ReLU}{equation.8.7}{}}
-\newlabel{eq:rrelu-derivada}{{8.8}{59}{Randomized Leaky ReLU}{equation.8.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Em Busca da Suavidade}{59}{section.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit}{59}{subsection.8.5.1}\protected@file@percent }
-\newlabel{eq:elu}{{8.9}{59}{Exponential Linear Unit}{equation.8.9}{}}
-\newlabel{eq:elu-derivada}{{8.10}{59}{Exponential Linear Unit}{equation.8.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit}{60}{subsection.8.5.2}\protected@file@percent }
-\newlabel{eq:selu}{{8.11}{60}{Scaled Exponential Linear Unit}{equation.8.11}{}}
-\newlabel{eq:selu-derivada}{{8.12}{60}{Scaled Exponential Linear Unit}{equation.8.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU}{60}{subsection.8.5.3}\protected@file@percent }
-\newlabel{eq:nrelu}{{8.13}{60}{Noisy ReLU}{equation.8.13}{}}
-\newlabel{eq:nrelu-derivada}{{8.14}{60}{Noisy ReLU}{equation.8.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{60}{section.8.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.7}Comparativo de Desempenho das Funções Retificadoras}{60}{section.8.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Gráfico da função ReLU.}}{57}{figure.8.15}\protected@file@percent }
+\newlabel{fig:relu}{{15}{57}{Gráfico da função ReLU}{figure.8.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Gráfico da Derivada da Função ReLU}}{58}{figure.8.16}\protected@file@percent }
+\newlabel{fig:relu-derivada}{{16}{58}{Gráfico da Derivada da Função ReLU}{figure.8.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Implementação em Python}{58}{subsection.8.2.1}\protected@file@percent }
+\newlabel{lst:gd_class}{{8.2.1}{58}{Implementação em Python}{subsection.8.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Dying ReLUs Problem}{59}{section.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}{59}{section.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Leaky ReLU}{59}{subsection.8.4.1}\protected@file@percent }
+\newlabel{eq:leaky-relu}{{8.3}{59}{Leaky ReLU}{equation.8.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}}{59}{figure.8.17}\protected@file@percent }
+\newlabel{fig:leaky-relu}{{17}{59}{Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}{figure.8.17}{}}
+\newlabel{eq:leaky-relu-derivada}{{8.4}{59}{Leaky ReLU}{equation.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}}{60}{figure.8.18}\protected@file@percent }
+\newlabel{fig:leaky-relu-derivada}{{18}{60}{Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}{figure.8.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.1.1}Implementação em Python}{60}{subsubsection.8.4.1.1}\protected@file@percent }
+\newlabel{lst:gd_class}{{8.4.1.1}{60}{Implementação em Python}{subsubsection.8.4.1.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Parametric ReLU}{60}{subsection.8.4.2}\protected@file@percent }
+\newlabel{eq:prelu}{{8.5}{60}{Parametric ReLU}{equation.8.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Gráfico da Função Parametric ReLU (PReLU) com $\alpha =0.2$}}{61}{figure.8.19}\protected@file@percent }
+\newlabel{fig:prelu}{{19}{61}{Gráfico da Função Parametric ReLU (PReLU) com $\alpha =0.2$}{figure.8.19}{}}
+\newlabel{eq:prelu-derivada}{{8.6}{61}{Parametric ReLU}{equation.8.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha =0.2$)}}{61}{figure.8.20}\protected@file@percent }
+\newlabel{fig:prelu-derivada}{{20}{61}{Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha =0.2$)}{figure.8.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Randomized Leaky ReLU}{61}{subsection.8.4.3}\protected@file@percent }
+\newlabel{eq:rrelu}{{8.7}{61}{Randomized Leaky ReLU}{equation.8.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}}{62}{figure.8.21}\protected@file@percent }
+\newlabel{fig:rrelu}{{21}{62}{Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}{figure.8.21}{}}
+\newlabel{eq:rrelu-derivada}{{8.8}{62}{Randomized Leaky ReLU}{equation.8.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}}{62}{figure.8.22}\protected@file@percent }
+\newlabel{fig:rrelu-derivada}{{22}{62}{Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}{figure.8.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Em Busca da Suavidade}{62}{section.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit}{62}{subsection.8.5.1}\protected@file@percent }
+\newlabel{eq:elu}{{8.9}{62}{Exponential Linear Unit}{equation.8.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Gráfico da Função Exponential Linear Unit (ELU) com $\alpha =1$}}{63}{figure.8.23}\protected@file@percent }
+\newlabel{fig:elu}{{23}{63}{Gráfico da Função Exponential Linear Unit (ELU) com $\alpha =1$}{figure.8.23}{}}
+\newlabel{eq:elu-derivada}{{8.10}{63}{Exponential Linear Unit}{equation.8.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha =1$}}{63}{figure.8.24}\protected@file@percent }
+\newlabel{fig:elu-derivada}{{24}{63}{Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha =1$}{figure.8.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit}{63}{subsection.8.5.2}\protected@file@percent }
+\newlabel{eq:selu}{{8.11}{63}{Scaled Exponential Linear Unit}{equation.8.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}}{64}{figure.8.25}\protected@file@percent }
+\newlabel{fig:selu}{{25}{64}{Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}{figure.8.25}{}}
+\newlabel{eq:selu-derivada}{{8.12}{64}{Scaled Exponential Linear Unit}{equation.8.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}}{64}{figure.8.26}\protected@file@percent }
+\newlabel{fig:selu-derivada}{{26}{64}{Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}{figure.8.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU}{64}{subsection.8.5.3}\protected@file@percent }
+\newlabel{eq:nrelu}{{8.13}{64}{Noisy ReLU}{equation.8.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Gráfico da Função Noisy ReLU (NReLU)}}{65}{figure.8.27}\protected@file@percent }
+\newlabel{fig:nrelu}{{27}{65}{Gráfico da Função Noisy ReLU (NReLU)}{figure.8.27}{}}
+\newlabel{eq:nrelu-derivada}{{8.14}{65}{Noisy ReLU}{equation.8.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Gráfico da função Backward Pass da Noisy ReLU}}{65}{figure.8.28}\protected@file@percent }
+\newlabel{fig:nrelu-derivada}{{28}{65}{Gráfico da função Backward Pass da Noisy ReLU}{figure.8.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{65}{section.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.7}Comparativo de Desempenho das Funções Retificadoras}{65}{section.8.7}\protected@file@percent }
 \@setckpt{capitulos/parte-III-pilares/cap-08-retificadoras}{
-\setcounter{page}{61}
+\setcounter{page}{66}
 \setcounter{equation}{14}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
@@ -83,10 +111,10 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{63}
-\setcounter{lastsheet}{121}
-\setcounter{lastpage}{119}
-\setcounter{figure}{14}
+\setcounter{sheetsequence}{68}
+\setcounter{lastsheet}{127}
+\setcounter{lastpage}{125}
+\setcounter{figure}{28}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
 \setcounter{lotdepth}{1}
@@ -224,5 +252,14 @@
 \setcounter{tcbrasternum}{1}
 \setcounter{tcbraster}{0}
 \setcounter{tcblisting}{8}
+\setcounter{float@type}{32}
+\setcounter{algorithm}{1}
+\setcounter{ALG@line}{6}
+\setcounter{ALG@rem}{0}
+\setcounter{ALG@nested}{0}
+\setcounter{ALG@Lnr}{2}
+\setcounter{ALG@blocknr}{10}
+\setcounter{ALG@storecount}{0}
+\setcounter{ALG@tmpcounter}{0}
 \setcounter{lstlisting}{0}
 }
