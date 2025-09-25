@@ -186,7 +186,164 @@ Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de r
 A \textbf{retropropagação} é uma ferramenta que veio para permitir que redes que fazem o uso de unidades de neurônios possam aprender, para isso, o procedimento ajusta repetidamente os pesos das conexões da rede para minimizar a diferença entre o valor atual da saída do vetor da rede neural com o valor real desejado \parencite{BackpropagationArticle}.
 \end{definicaomoderna}
 
-Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{Learning Representations by Back-Propagating Errors}, 
+Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{Learning Representations by Back-Propagating Errors}, e será explicada nesse capítulo de forma detalhada. Para issom \textcite{BackpropagationArticle} comecam introduzindo três diferentes funções que serão utilizadas ao longo do texto para deduzir o os conceitos da retropropagação do gradiente, sendo elas: a equação do neurônio, a função de ativação sigmoide e a função de custo do erro quadrático médio.
+
+A primeira função, representada na equação xx, explica como um neurônio de uma camada densa irá funcionar quando recebe determinadas entradas.
+
+\begin{equacaodestaque}{Equação do Neurônio}
+    x_j = (\sum{j} y_i + w_{ji}) + b_j
+    \label{eq:neuronio-camada-densa}
+\end{equacaodestaque}
+
+Sendo que:
+
+\begin{itemize}
+    \item $x_j$: representa a saída de um neurônio $j$;
+    \item $y_i$: representa a entrada do neurônio $j$, a qual é resultado da saída de um neurônio $i$ da camada anterior;
+    \item $w_{ij}$: representa o peso da conexão entre o neurônio $i$ com o neurônio $j$;
+    \item $b_j$: representa o viés do neurônio $j$.
+\end{itemize}
+
+Caso você leitor decida olhar o artigo original, verá que os autores utilizaram notações diferentes na fórmula do neurônio, eles utilizam algo na forma $x_i = \sum_j y_i + w_{ji}$, sem o viés, mas na prática, eles adicionam o viés como um peso extra que terá valor fixo igual a 1, na prática, ele pode ser tratado com um peso normal, por isso a notação mais simplificada \parencite{BackpropagationArticle}.
+
+A segunda fórmula diz respeito a função de ativação que será utilizada, neste caso, \textcite{BackpropagationArticle} utilizam a sigmoide logísitca, representada na fórmula xx, mas eles explicam que essa função pode variar conforme o problema, porém recomendam ter uma derivada limitada além de ser não linear, para que o modelo possa aprender de forma mais efciente.
+
+\begin{equacaodestaque}{Sigmoide Logística}
+    y_j = \sigma(x_j) = \frac{1}{1 + e^{x_j}}
+    \label{eq:sigmoide}
+\end{equacaodestaque}
+
+Assim, a sigmoide é a função que irá transformar a saída do neurônio $x_j$ em uma saída $y_j$ que vai ser passada para o neurônio da camada seguinte. Além das duas notações da equação do neurônio, existe uma terceira, que já imbute a função de ativação na equação do neurônio, nesse livro, utilizaremos uma implementação de camadas, em que elas não possuem a função embutida, assim, caso decida que a saída da camada densa deva passar por uma função de ativação, ela deverá ser passada como uma camada separada, sendo algo da forma: camada densa, seguida de camada de ativação.
+
+Por fim, a última equação que os autores discutem para entender a retropropagação é a da função de custo, ou também chamada de erro. No texto, \textcite{BackpropagationArticle} utilizam a função do erro quadrático médio (MSE), a qual calcula o erro entre a saída atual do modelo e o valor real desejado, depois ela eleva ao quadrado esse valor, e por último, divide por dois. Ela é dada pela equação:
+
+\begin{equacaodestaque}{Erro Quadrático Médio (MSE)}
+    E = \frac{1}{2} \sum_{c} \sum_{j} (y_{j, c} - d_{j, c})^2 
+    \label{eq:mse}
+\end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $E$: representa o valor do erro;
+    \item $y_{j, c}$: representa o valor atual da saída do neurônio $j$ para o caso $c$;
+    \item $d_{j, c}$: representa o valor desejado para o neurônio $j$ para o caso $c$
+\end{itemize}
+
+Considerando essas equações, \textcite{BackpropagationArticle} explicam que o objetivo é reduzir o valor do erro $E$, para isso, eles aplicam o método do gradiente para encontrar o ponto de mínimo da função MSE. Para isso, o primeiro passo é diferenciar o valor da função de erro em relação a cada um dos pesos da rede neural, assim, deve-se calcular $\partial E / \partial y_k$ para um caso específico $k$, e depois generalizar a situação. Assim, é possível encontrar uma expressão da forma:
+
+\[
+    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_c \sum_k (y_{k, c} - d_{j, c}^2)\right]
+\]
+
+O primeiro passo é suprimir a soma sobre os casos $c$, pois, consideramos apenas de um caso específico $k$, então a expressão se simplifica para:
+
+\[
+    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_k (y_{k, c} - d_{j, c}^2)\right]
+\]
+
+O próximo passo é abrir a soma, para isso, será considerado que existem $n$ neurônios na camada, assim, a expressão fica:
+
+\[
+    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \left( (y_1 - d_1)^2 + (y_2 - d_2)^2 + \cdots (y_k + d_k)^2 + \cdots + (y_n + d_n)^2 \right) \right]
+\]
+
+Note que todos os termos que não possuem o índice $k$, como a parte $(y_1 - d_1)^2$, serão valores constantes, e que estrão fora do obejtivo de calcular a derivada para o neurônio $k$, como eles são constantes, a sua derivada será igual a zero. Com base nisso, é possível obter uma versão ainda mais simplificada, sendo ela:
+
+\[
+    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} (y_k + d_k)^2 \right]
+\]
+
+Agora, o último passo é aplicar a regra da cadeia na expressão que sobrou para poder calcular a derivada, neste caso, será considerado que $u = (y_k + d_k)$, assim a expressão final fica:
+
+\[
+    \frac{\partial E}{\partial y_k} = \frac{1}{2} \cdot 2u \cdot \frac{\partial u}{\partial y_k} = (y_k - d_k) \cdot 1 = (y_k - d_k)
+\]
+
+Voltando para o índice $j$ da notação inicial, é possível concluir que o gradiente do erro (para a função MSE) em relação a uma saída específica de um neurônio é dado pela diferença da saída da unidade pela resultado desejado, ou seja
+
+\[
+    \frac{\partial E}{\partial y_j} = y_j - d_j 
+\]
+
+O próximo passo proposto pelos autores, consiste em calcular o gradiente do erro em relação a entrada do neurônio $j$, para entender como o erro total muda em relação a uma variação na entrada do neurônio. Para isso, é preciso encontrar então a expressão $\partial E / \partial x_j$ \parencite{BackpropagationArticle}.
+
+Assim, a primeira etepa é aplicar a regra da cadeia, pois, como a entrada do neurônio $x_j$ não aparece diretamente na equação do erro, é preciso aplicar a regra da cadeia, derivando o erro em relação a saída do neurônio $y_j$ e multiplicando esse resultado pela derivada da saída do neurônio em relação a sua entrada, assim, a expressão inicial é:
+
+\[
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_i}{\partial x_j}
+\]
+
+Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é resultamente o primeiro que foi calculado e desenvolvido na expressão \ref{eq:gradiente-do-erro-em-relacao-a-saida-de-um-neuronio}, com isso, é possível substituir esse termo na expressão por $y_j - d_j$. A segunda informação, é de que o termo $\partial y_i / \partial x_j$ é justamente a derivada da função de ativação em relação a sua entrada, ou seja, $\sigma'(x_j)$, assim, a derivada da sigmoide será dada por:
+
+\[
+    \frac{d y_i}{d x_j} = y_j (1 - y_j)
+\]
+
+Sendo assim, a expressão final fica:
+
+\[
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} (1 - y_i)
+\]
+
+Note que é possível generalizar essa expressão, dessa forma o gradiente do erro da entrada de um neurônio é o gradiente do erro da saída do neurônio multiplicado pela derivada da função de ativação $\sigma'$ em relação a sua entrada $x_j$.
+
+\begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação à Entrada de um Neurônio}
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
+    \label{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}
+\end{equacaodestaque}
+
+em que $\sigma'(x_j)$ representa a derivada de uma função de ativação qualquer, neste caso representa a sigmoide logística. Mas pode ser outra função, como a tangente hiperbólica ou a ReLU. Um ponto importante a ser destacado, é que como a retropropagação trabalha com o método do gradiente, as derivadas são parte essencial do algoritmo, utilizar funções de ativação que possuem derivadas complexas, ou que não podem ser derivadas em grande parte do seu domínio, acabam por difultar o algortimo. Caso a função possua uma derivada complexa, o cálculo do gradiente irá demorar mais, pois levará uma quantidade maior de operações para computar o valor da derivada.
+
+O próximo passo vai mais além ainda, agora, como \textcite{BackpropagationArticle} explicam, o seu objetivo é entender como o gradiente muda em relação a um peso $w_ij$ específico da rede neural, para isso, é preciso calcular a expressão $\partial E / \partial w_{ij}$, note mais uma vez que o peso $w_{ij}$ não aparece diretamente na equação do erro, assim, é necessário mais uma vez aplicar a regra da cadeia para calcular essa derivada. Assim, a expressão inicial é:
+
+\[
+    \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot \frac{\partial x_j}{\partial w_{ij}}
+\]
+
+Note que o primeiro termo da expressão é justamente o que foi calculado na equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso calcular apenas o segundo termo, $\partial x_i / \partial w_{ij}$, ou seja, a derivada do neurônio em relação a um peso específico. Assim, tem-se a expressão incial:
+
+\[
+    \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[ \left( \sum_i y_i \cdot w_{ji} \right) + b_j\right]
+\]
+
+Note que o viés, dado por $b_j$ é uma constante, e por isso, não depende do peso $w_{ij}$, então a sua derivada será igual a zero, isso nos permite simplicar a expressão para:
+
+\[
+    \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[\sum_i y_i \cdot w_{ji}\right]
+\]
+
+Em seguida, é possível abrir a soma, assim, temos a expressão:
+
+\[
+    \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[ (y_1 \cdot w_{j1}) + (y_2 \cdot w_{j2}) + \cdots (y_i \cdot w_{ji}) + \cdots (y_n \cdot w_{jn})\right]
+\]
+
+Note que para qualquer termo que o índice não é $w_{ji}$ a derivada será iguala zero, pois eles serão constantes em relação ao peso $w_{ji}$, dessa forma, é possível simplificar mais uma vez a expressão obtendo:
+
+
+\[
+    \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[  y_i \cdot w_{ji} \right]
+\]
+
+Como $y_i$ é uma constante em relação a $w_ij$ a derivada final será dada por:
+
+\[
+    \frac{\partial x_j}{partial w_{ij}} = y_i
+\]
+
+Agora é possível voltar para a expressão inicial, obtendo então a expressão final para o gradiente do erro em relação a um peso específico da rede neural, sendo ela:
+
+\begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Peso de um Neurônio}
+    \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot y_i = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
+    \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
+\end{equacaodestaque}
+
+Assim, é possível concluir que o gradiente do erro em relação a um peso específico de um neurônio é dado pelo gradiente do erro da saída do neurônio multiplicado pela derivada da função de ativação em relação a sua entrada e, por fim, multiplicado pela entrada do neurônio.
+
+\subsection{Utilizando o Gradiente para Atualizar os Pesos e Vieses}
+
+
 
 % ===================================================================
 % Otimizadores Baseados em Gradiente
