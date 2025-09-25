@@ -49,6 +49,37 @@
       \field{pages}{536\bibrangedash 538}
       \range{pages}{3}
     \endentry
+    \entry{Cybenko1989}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5f82e084564c9fa2622446ae39f882ed}{%
+           family={Cybenko},
+           familyi={C\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{fullhash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{fullhashraw}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{bibnamehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authorbibnamehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authornamehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authorfullhash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authorfullhashraw}{5f82e084564c9fa2622446ae39f882ed}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics of Control, Signals, and Systems}
+      \field{number}{4}
+      \field{title}{Approximation by Superpositions of a Sigmoidal Function}
+      \field{volume}{2}
+      \field{year}{1989}
+      \field{pages}{303\bibrangedash 314}
+      \range{pages}{12}
+    \endentry
     \entry{DeepLearningBook}{book}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=5d2585c11210cf1d4512e6e0a03ec315}{%
@@ -89,6 +120,67 @@
       \field{labeltitlesource}{title}
       \field{title}{Deep Learning}
       \field{year}{2016}
+    \endentry
+    \entry{Leshno1993}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=049edb158a50c71989347ee731860f1b}{%
+           family={Leshno},
+           familyi={L\bibinitperiod},
+           given={Moshe},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3b29d2b577a15a7eca17145f08c72027}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Vladimir\bibnamedelima Ya.},
+           giveni={V\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dd74c7fbb9c42c0ffe2c20ef9666f59b}{%
+           family={Pinkus},
+           familyi={P\bibinitperiod},
+           given={Allan},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=826c6510225a8fe3d36e12e39fd5ebc8}{%
+           family={Schocken},
+           familyi={S\bibinitperiod},
+           given={Shimon},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{fullhash}{7bcf76dd33587b28a5127137c3fc0601}
+      \strng{fullhashraw}{7bcf76dd33587b28a5127137c3fc0601}
+      \strng{bibnamehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{authorbibnamehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{authornamehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{authorfullhash}{7bcf76dd33587b28a5127137c3fc0601}
+      \strng{authorfullhashraw}{7bcf76dd33587b28a5127137c3fc0601}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Several researchers characterized the activation function under which multilayer feedforward networks can act as universal approximators. We show that most of all the characterizations that were reported thus far in the literature are special cases of the following general result: A standard multilayer feedforward network with a locally bounded piecewise continuous activation function can approximate any continuous function to any degree of accuracy if and only if the network's activation function is not a polynomial. We also emphasize the important role of the threshold, asserting that without it the last theorem does not hold.}
+      \field{issn}{0893-6080}
+      \field{journaltitle}{Neural Networks}
+      \field{number}{6}
+      \field{title}{Multilayer feedforward networks with a nonpolynomial activation function can approximate any function}
+      \field{volume}{6}
+      \field{year}{1993}
+      \field{pages}{861\bibrangedash 867}
+      \range{pages}{7}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0893-6080(05)80131-5
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0893608005801315
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0893608005801315
+      \endverb
+      \keyw{Multilayer feedforward networks,Activation functions,Role of threshold,Universal approximation capabilities,(μ) approximation}
     \endentry
     \entry{BackpropagationArticle}{article}{}{}
       \name{author}{3}{}{%

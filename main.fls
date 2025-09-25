@@ -397,6 +397,16 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfad
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
 OUTPUT main.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/witharrows/witharrows.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/witharrows/witharrows.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulebending.code.tex
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulenonlineartransformations.code.tex
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/varwidth/varwidth.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/varwidth/varwidth.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -715,6 +725,12 @@ OUTPUT capitulos/parte-III-pilares/cap-07-sigmoidais.aux
 INPUT ./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
 INPUT ./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
 INPUT capitulos/parte-III-pilares/cap-07-sigmoidais.tex
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplri8t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 OUTPUT main.listing
 INPUT ./main.listing
 INPUT ./main.listing
@@ -724,7 +740,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8t.tfm
 OUTPUT main.listing

@@ -4,35 +4,61 @@
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase    []{Funções de Ativação Sigmoidais}}{33}{chapter.7}\protected@file@percent }
 \newlabel{cap:ativacao-sigmoidais}{{7}{33}{\texorpdfstring {\MakeTextUppercase {\tempf@rtoc }}{\tempf@rtoc }}{chapter.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal}{33}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Exemplos Ilustrativo}{33}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}A Sigmoide Logística}{33}{section.7.3}\protected@file@percent }
-\newlabel{eq:sigmoide}{{7.1}{33}{A Sigmoide Logística}{equation.7.1}{}}
-\newlabel{eq:sigmoide-derivada}{{7.2}{33}{A Sigmoide Logística}{equation.7.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Implementação em Python}{33}{subsection.7.3.1}\protected@file@percent }
-\newlabel{lst:gd_class}{{7.3.1}{33}{Implementação em Python}{subsection.7.3.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.4}Tangente Hiperbólica}{34}{section.7.4}\protected@file@percent }
-\newlabel{eq:tangente-hiperbolica}{{7.3}{34}{Tangente Hiperbólica}{equation.7.3}{}}
-\newlabel{eq:tangente-hiperbolica-derivada}{{7.4}{34}{Tangente Hiperbólica}{equation.7.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Implementação em Python}{34}{subsection.7.4.1}\protected@file@percent }
-\newlabel{lst:gd_class}{{7.4.1}{34}{Implementação em Python}{subsection.7.4.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.5}Softsign: Uma Sigmoidal Mais Barata}{34}{section.7.5}\protected@file@percent }
-\newlabel{eq:softsign}{{7.5}{34}{Softsign: Uma Sigmoidal Mais Barata}{equation.7.5}{}}
-\newlabel{eq:softsgin-derivada}{{7.6}{35}{Softsign: Uma Sigmoidal Mais Barata}{equation.7.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.1}Implementação em Python}{35}{subsection.7.5.1}\protected@file@percent }
-\newlabel{lst:gd_class}{{7.5.1}{35}{Implementação em Python}{subsection.7.5.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.6}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{35}{section.7.6}\protected@file@percent }
-\newlabel{eq:hard-sigmoid}{{7.7}{35}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.7}{}}
-\newlabel{eq:hard-sigmoid-derivada}{{7.8}{36}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.8}{}}
-\newlabel{eq:hard-tanh}{{7.9}{36}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.9}{}}
-\newlabel{eq:hard-tanh-derivada}{{7.10}{36}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.6.1}Implementação em Python}{37}{subsection.7.6.1}\protected@file@percent }
-\newlabel{lst:gd_class}{{7.6.1}{37}{Implementação em Python}{subsection.7.6.1}{}}
-\newlabel{lst:gd_class}{{7.6.1}{38}{Implementação em Python}{lstnumber.-5.24}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.7}O Desaparecimento de Gradientes}{38}{section.7.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.8}Comparativo de Desempenho das Sigmoidais}{38}{section.7.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Conjunto de pontos dispostos no plano cartesiano.}}{33}{figure.7.3}\protected@file@percent }
+\newlabel{fig: pontos_addplot}{{3}{33}{Conjunto de pontos dispostos no plano cartesiano}{figure.7.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Conjunto de pontos dispostos no plano cartesiano.}}{34}{figure.7.4}\protected@file@percent }
+\newlabel{fig: regressao-linear}{{4}{34}{Conjunto de pontos dispostos no plano cartesiano}{figure.7.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Exemplo Ilustrativo: Empurrando para extremos}{35}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}A Sigmoide Logística}{36}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Contexto Histórico: Popularização da Sigmoide em Redes Neurais}{36}{section.7.4}\protected@file@percent }
+\newlabel{eq:neuronio-de-wilson-cowan}{{7.1}{37}{Contexto Histórico: Popularização da Sigmoide em Redes Neurais}{equation.7.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Gráfico da função sigmoide conforme proposta por Wilson e Cowan (1972), com parâmetros de exemplo $a=1.2$ e $\theta =2.8$.}}{38}{figure.7.5}\protected@file@percent }
+\newlabel{fig: ComportamentoNeuronios}{{5}{38}{Gráfico da função sigmoide conforme proposta por Wilson e Cowan (1972), com parâmetros de exemplo $a=1.2$ e $\theta =2.8$}{figure.7.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gráfico da função degrau de Heaviside.}}{38}{figure.7.6}\protected@file@percent }
+\newlabel{fig:degrau-unitario}{{6}{38}{Gráfico da função degrau de Heaviside}{figure.7.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.5}Expressões Matemáticas}{39}{section.7.5}\protected@file@percent }
+\newlabel{eq:sigmoide}{{7.2}{39}{Expressões Matemáticas}{equation.7.2}{}}
+\newlabel{eq:sigmoide-derivada}{{7.3}{39}{Expressões Matemáticas}{equation.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.1}Implementação em Python}{39}{subsection.7.5.1}\protected@file@percent }
+\newlabel{lst:gd_class}{{7.5.1}{39}{Implementação em Python}{subsection.7.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.6}Tangente Hiperbólica}{40}{section.7.6}\protected@file@percent }
+\newlabel{eq:tangente-hiperbolica}{{7.4}{40}{Tangente Hiperbólica}{equation.7.4}{}}
+\newlabel{eq:tangente-hiperbolica-derivada}{{7.5}{40}{Tangente Hiperbólica}{equation.7.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Gráfico da tangente hiperbólica.}}{41}{figure.7.7}\protected@file@percent }
+\newlabel{fig: GraphTanh}{{7}{41}{Gráfico da tangente hiperbólica}{figure.7.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Gráfico da derivada da tangente hiperbólica.}}{41}{figure.7.8}\protected@file@percent }
+\newlabel{fig: GraphTanh}{{8}{41}{Gráfico da derivada da tangente hiperbólica}{figure.7.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6.1}Implementação em Python}{42}{subsection.7.6.1}\protected@file@percent }
+\newlabel{lst:gd_class}{{7.6.1}{42}{Implementação em Python}{subsection.7.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.7}Softsign: Uma Sigmoidal Mais Barata}{42}{section.7.7}\protected@file@percent }
+\newlabel{eq:softsign}{{7.6}{43}{Softsign: Uma Sigmoidal Mais Barata}{equation.7.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Gráfico da função Softsign.}}{43}{figure.7.9}\protected@file@percent }
+\newlabel{eq:softsgin-derivada}{{7.7}{43}{Softsign: Uma Sigmoidal Mais Barata}{equation.7.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Gráfico da derivada da função Softsign.}}{44}{figure.7.10}\protected@file@percent }
+\newlabel{fig:GraphSoftsignDerivative}{{10}{44}{Gráfico da derivada da função Softsign}{figure.7.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.1}Implementação em Python}{44}{subsection.7.7.1}\protected@file@percent }
+\newlabel{lst:gd_class}{{7.7.1}{44}{Implementação em Python}{subsection.7.7.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.8}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{45}{section.7.8}\protected@file@percent }
+\newlabel{eq:hard-sigmoid}{{7.8}{45}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Gráfico da função hard sigmoid.}}{45}{figure.7.11}\protected@file@percent }
+\newlabel{fig: GraphHardSigmoid}{{11}{45}{Gráfico da função hard sigmoid}{figure.7.11}{}}
+\newlabel{eq:hard-sigmoid-derivada}{{7.9}{45}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.9}{}}
+\newlabel{eq:hard-tanh}{{7.10}{45}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Gráfico da derivada da Hard Sigmoid.}}{46}{figure.7.12}\protected@file@percent }
+\newlabel{fig: GraphDerivadaHardSigmoid}{{12}{46}{Gráfico da derivada da Hard Sigmoid}{figure.7.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Gráfico da função Hard Tanh. Fonte: PyTorch.}}{46}{figure.7.13}\protected@file@percent }
+\newlabel{fig: GraphHardTanh}{{13}{46}{Gráfico da função Hard Tanh. Fonte: PyTorch}{figure.7.13}{}}
+\newlabel{eq:hard-tanh-derivada}{{7.11}{46}{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{equation.7.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Gráfico da derivada da Hard Tanh.}}{47}{figure.7.14}\protected@file@percent }
+\newlabel{fig: GraphDerivadaHardTanh}{{14}{47}{Gráfico da derivada da Hard Tanh}{figure.7.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.8.1}Implementação em Python}{48}{subsection.7.8.1}\protected@file@percent }
+\newlabel{lst:gd_class}{{7.8.1}{48}{Implementação em Python}{subsection.7.8.1}{}}
+\newlabel{lst:gd_class}{{7.8.1}{49}{Implementação em Python}{lstnumber.-5.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.9}O Desaparecimento de Gradientes}{49}{section.7.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.10}Comparativo de Desempenho das Sigmoidais}{49}{section.7.10}\protected@file@percent }
 \@setckpt{capitulos/parte-III-pilares/cap-07-sigmoidais}{
-\setcounter{page}{39}
-\setcounter{equation}{10}
+\setcounter{page}{50}
+\setcounter{equation}{11}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -44,7 +70,7 @@
 \setcounter{book}{0}
 \setcounter{part}{3}
 \setcounter{chapter}{7}
-\setcounter{section}{8}
+\setcounter{section}{10}
 \setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
@@ -79,10 +105,10 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{41}
-\setcounter{lastsheet}{103}
-\setcounter{lastpage}{101}
-\setcounter{figure}{2}
+\setcounter{sheetsequence}{52}
+\setcounter{lastsheet}{115}
+\setcounter{lastpage}{113}
+\setcounter{figure}{14}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
 \setcounter{lotdepth}{1}
@@ -107,7 +133,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{10}
+\setcounter{instcount}{18}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -214,7 +240,7 @@
 \setcounter{bbx:relatedtotal}{0}
 \setcounter{tcbbreakpart}{1}
 \setcounter{tcblayer}{0}
-\setcounter{tcolorbox@number}{29}
+\setcounter{tcolorbox@number}{31}
 \setcounter{tcbrastercolumn}{1}
 \setcounter{tcbrasterrow}{1}
 \setcounter{tcbrasternum}{1}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  24 SEP 2025 20:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  25 SEP 2025 09:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1232,15 +1232,60 @@ File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.6.0'
-)) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/witharrows/witharrows.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulebending.code.tex
+File: pgfmodulebending.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulenonlineartransformations.code.tex
+File: pgfmodulenonlineartransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgftransformnonlinearflatness=\dimen352
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
+File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@curvilinear@time@a=\dimen353
+\pgf@curvilinear@length@a=\dimen354
+\pgf@curvilinear@length@b=\dimen355
+\pgf@curvilinear@length@c=\dimen356
+\pgf@curvilinear@length@d=\dimen357
+)
+\pgf@arrows@the@rigidity=\dimen358
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+)
+Package: witharrows 2024/10/19 v2.9a Draws arrows for explanations on the right
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box88
+\sift@deathcycles=\count549
+\@vwid@loff=\dimen359
+\@vwid@roff=\dimen360
+)
+==> First Aid for varwidth.sty applied!
+\g__witharrows_last_env_int=\count550
+\l__witharrows_pos_env_int=\count551
+\l__witharrows_pos_arrow_int=\count552
+\g__witharrows_arrow_int=\count553
+\g__witharrows_line_int=\count554
+\g__witharrows_col_int=\count555
+\g__witharrows_static_col_int=\count556
+\l__witharrows_nb_cols_int=\count557
+\l__witharrows_arrow_width_dim=\dimen361
+\l__witharrows_up_and_down_radius_dim=\dimen362
+\l__witharrows_xoffset_for_o_arrows_dim=\dimen363
+\l__witharrows_max_length_of_arrow_dim=\dimen364
+\l__witharrows_ygap_dim=\dimen365
+\l__witharrows_ystart_dim=\dimen366
+\l__witharrows_xoffset_dim=\dimen367
+\l__witharrows_interline_skip=\skip282
+\l__witharrows_start_adjust_dim=\dimen368
+\l__witharrows_end_adjust_dim=\dimen369
+\l__witharrows_mathindent_skip=\skip283
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 ))
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count549
-\@quotereset=\count550
+\@quotelevel=\count558
+\@quotereset=\count559
 LaTeX Font Info:    Trying to load font information for T1+ppl on input line 41.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
@@ -1255,6 +1300,9 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
  (./capitulos/parte-I-historia/cap-01-historia-do-computador.aux) (./capitulos/parte-I-historia/cap-02-historia-da-ia.aux) (./capitulos/parte-II-matematica/cap-03-calculo.aux) (./capitulos/parte-II-matematica/cap-04-algebra-linear.aux) (./capitulos/parte-II-matematica/cap-05-probabilidade-e-estatistica.aux) (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux) (./capitulos/parte-III-pilares/cap-07-sigmoidais.aux
 
 LaTeX Warning: Label `lst:gd_class' multiply defined.
+
+
+LaTeX Warning: Label `fig: GraphTanh' multiply defined.
 
 
 LaTeX Warning: Label `lst:gd_class' multiply defined.
@@ -1313,20 +1361,20 @@ LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 Package hyperref Info: Link coloring OFF on input line 41.
-\myptabbox=\box88
-\myptabboxwidth=\skip282
+\myptabbox=\box89
+\myptabboxwidth=\skip284
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count551
-\scratchdimen=\dimen352
-\scratchbox=\box89
-\nofMPsegments=\count552
-\nofMParguments=\count553
+\scratchcounter=\count560
+\scratchdimen=\dimen370
+\scratchbox=\box90
+\nofMPsegments=\count561
+\nofMParguments=\count562
 \everyMPshowfont=\toks54
-\MPscratchCnt=\count554
-\MPscratchDim=\dimen353
-\MPnumerator=\count555
-\makeMPintoPDFobject=\count556
+\MPscratchCnt=\count563
+\MPscratchDim=\dimen371
+\MPnumerator=\count564
+\makeMPintoPDFobject=\count565
 \everyMPtoPDFconversion=\toks55
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1334,7 +1382,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count557
+\c@lstlisting=\count566
 Package biblatex Info: Trying to load language 'brazil' -> 'brazil-abnt'...
 Package biblatex Info: ... file 'brazil-abnt.lbx' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex-abnt/brazil-abnt.lbx
@@ -1520,11 +1568,11 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 [3]
 
 [4]
-Underfull \vbox (badness 1394) has occurred while \output is active []
-
-
 
 [5]
+Underfull \vbox (badness 1968) has occurred while \output is active []
+
+
 
 [6]
 Underfull \vbox (badness 1394) has occurred while \output is active []
@@ -1534,8 +1582,68 @@ Underfull \vbox (badness 1394) has occurred while \output is active []
 [7]
 
 [8]
-Overfull \hbox (2.03697pt too wide) detected at line 252
+Overfull \hbox (2.03697pt too wide) detected at line 232
  \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 233
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 234
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 235
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 236
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 237
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 238
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 242
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 244
+ \T1/cmss/bx/n/12 103
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 246
+ \T1/cmss/bx/n/12 105
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 248
+ \T1/cmss/bx/n/12 107
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 250
+ \T1/cmss/bx/n/12 109
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 254
+ \T1/cmss/bx/n/12 113
  []
 
 )
@@ -1637,7 +1745,7 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
 [28]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=650, 903.375pt x 250.9375pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=654, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 65.
@@ -1669,9 +1777,23 @@ Underfull \vbox (badness 5893) has occurred while \output is active []
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
-\openout6 = `main.listing'.
+\l__witharrows_x_dim=\dimen372
+\l__witharrows_initial_int=\count567
+\l__witharrows_final_int=\count568
+\l__witharrows_arrow_int=\count569
+\l__witharrows_pos_of_arrow_int=\count570
+\l__witharrows_jump_int=\count571
+\l__witharrows_env_box=\box91
+\l__witharrows_first_arrow_of_group_int=\count572
+\l__witharrows_first_line_of_group_int=\count573
+\l__witharrows_last_line_of_group_int=\count574
+\l__witharrows_first_arrow_int=\count575
+\l__witharrows_last_arrow_int=\count576
+\g__witharrows_x_initial_dim=\dimen373
+\g__witharrows_x_final_dim=\dimen374
+\g__witharrows_y_initial_dim=\dimen375
+\g__witharrows_y_final_dim=\dimen376
 
- (./main.listing)
 
 [33
 
@@ -1679,27 +1801,112 @@ Underfull \vbox (badness 5893) has occurred while \output is active []
 
 
 ]
-\openout6 = `main.listing'.
-
- (./main.listing)
 
 [34]
-\openout6 = `main.listing'.
-
- (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [35]
-\openout6 = `main.listing'.
-
- (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [36]
+
+LaTeX Warning: Reference `eq: EquacaoNeuronio' on page 37 undefined on input line 142.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[37]
+Underfull \vbox (badness 2181) has occurred while \output is active []
+
+
+
+[38]
+\openout6 = `main.listing'.
+
+ (./main.listing)
+
+[39]
+
+LaTeX Warning: Reference `eq: EquacaoTanh' on page 40 undefined on input line 260.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\openout6 = `main.listing'.
+
+(./main.listing)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[40]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[41]
+
+LaTeX Warning: Reference `fig:GraphSoftsign' on page 42 undefined on input line 336.
+
+
+LaTeX Warning: Reference `eq:EquacaoSoftsign' on page 42 undefined on input line 338.
+
+
+
+[42]
+
+LaTeX Warning: Reference `fig:GraphSoftsign' on page 43 undefined on input line 340.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\openout6 = `main.listing'.
+
+(./main.listing)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[43]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[44]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[45]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\openout6 = `main.listing'.
+
+(./main.listing)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[46]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[47]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -1707,17 +1914,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[37])
+[48])
 
-[38]
+[49]
 \openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
 
  (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
-\openout6 = `main.listing'.
 
- (./main.listing)
-
-[39
+[50
 
 
 
@@ -1727,16 +1931,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  (./main.listing)
 
-[40]
+[51]
+\openout6 = `main.listing'.
 
-[41])
+ (./main.listing)
 
-[42]
+[52]
+
+[53])
+
+[54]
 \openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
 
  (./capitulos/parte-III-pilares/cap-09-modernas.tex)
 
-[43
+[55
 
 
 
@@ -1746,19 +1955,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
 
-[44
+[56
 
 
 
 
 ])
 
-[45]
+[57]
 \openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
 
  (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
 
-[46
+[58
 
 
 
@@ -1770,76 +1979,10 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
 )
 
-[47]
+[59]
 \openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
 
  (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
-
-[48
-
-
-
-
-])
-
-[49]
-
-[50
-
-
-
-]
-
-[51]
-
-[52]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
-
-[53
-
-
-]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
-
-[54
-
-
-
-
-])
-
-[55]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
-
-[56
-
-
-
-
-])
-
-[57]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
-
-[58
-
-
-
-
-])
-
-[59]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
 [60
 
@@ -1849,39 +1992,39 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [61]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
 
 [62
+
+
+
+]
+
+[63]
+
+[64]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
+
+[65
+
+
+]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
+
+[66
 
 
 
 
 ])
 
-[63]
+[67]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
-[64
-
-
-
-]
-
-[65]
-
-[66]
-\openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
-
-[67
-
-
-]
-\openout2 = `capitulos/parte-V-deep-learning/cap-20-ffns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
+ (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [68
 
@@ -1891,9 +2034,9 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [69]
-\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
+ (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [70
 
@@ -1903,11 +2046,77 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [71]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
+
+[72
+
+
+
+
+])
+
+[73]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+
+[74
+
+
+
+
+])
+
+[75]
+
+[76
+
+
+
+]
+
+[77]
+
+[78]
+\openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
+
+[79
+
+
+]
+\openout2 = `capitulos/parte-V-deep-learning/cap-20-ffns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
+
+[80
+
+
+
+
+])
+
+[81]
+\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
+
+[82
+
+
+
+
+])
+
+[83]
 \openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
-[72
+[84
 
 
 
@@ -1924,12 +2133,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[73]
+[85]
 Overfull \vbox (1272.7535pt too high) has occurred while \output is active []
 
 
 
-[74]
+[86]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -1937,12 +2146,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[75]
+[87]
 Overfull \vbox (493.3008pt too high) has occurred while \output is active []
 
 
 
-[76]
+[88]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -1950,12 +2159,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[77]
+[89]
 Overfull \vbox (256.19066pt too high) has occurred while \output is active []
 
 
 
-[78]
+[90]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -1966,89 +2175,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[79])
+[91])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[80]
+[92]
 
-[81]
+[93]
 \openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-23-resnets.tex
-
-[82
-
-
-
-
-])
-
-[83]
-\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
-
-[84
-
-
-
-
-])
-
-[85]
-\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
-
-[86
-
-
-
-
-])
-
-[87]
-\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
-
-[88
-
-
-
-
-])
-
-[89]
-\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-27-gans.tex
-
-[90
-
-
-
-
-])
-
-[91]
-\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-28-moe.tex
-
-[92
-
-
-
-
-])
-
-[93]
-\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
 [94
 
@@ -2058,9 +2195,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [95]
-\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+ (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
 [96
 
@@ -2070,18 +2207,90 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [97]
+\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [98
 
 
 
-]
+
+])
 
 [99]
+\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
-[100]
+ (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
-[101
+[100
+
+
+
+
+])
+
+[101]
+\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-27-gans.tex
+
+[102
+
+
+
+
+])
+
+[103]
+\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-28-moe.tex
+
+[104
+
+
+
+
+])
+
+[105]
+\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
+
+[106
+
+
+
+
+])
+
+[107]
+\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+
+[108
+
+
+
+
+])
+
+[109]
+
+[110
+
+
+
+]
+
+[111]
+
+[112]
+
+[113
 
 ]
 \tf@toc=\write7
@@ -2094,6 +2303,9 @@ L3 programming layer <2020/03/25>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -2101,18 +2313,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 54241 strings out of 467888
- 1231843 string characters out of 5434061
- 4110523 words of memory out of 5000000
- 81067 multiletter control sequences out of 15000+600000
- 671368 words of font info for 135 fonts, out of 8000000 for 9000
+ 55480 strings out of 467888
+ 1269364 string characters out of 5434061
+ 4141810 words of memory out of 5000000
+ 82254 multiletter control sequences out of 15000+600000
+ 673221 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,1247b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (103 pages, 607475 bytes).
+Output written on main.pdf (115 pages, 658011 bytes).
 PDF statistics:
- 2297 PDF objects out of 2487 (max. 8388607)
- 2097 compressed objects within 21 object streams
- 727 named destinations out of 1000 (max. 500000)
- 1934 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2399 PDF objects out of 2487 (max. 8388607)
+ 2186 compressed objects within 22 object streams
+ 756 named destinations out of 1000 (max. 500000)
+ 1950 words of extra memory for PDF output out of 10000 (max. 10000000)
 

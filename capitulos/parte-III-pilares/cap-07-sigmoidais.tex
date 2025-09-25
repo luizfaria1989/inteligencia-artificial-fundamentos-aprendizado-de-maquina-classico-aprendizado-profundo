@@ -15,9 +15,208 @@
 
 \section{Teoremas da Aproximação Universal}
 
-\section{Exemplos Ilustrativo}
+Pense que você tem uma função matemática, como $f(t) = 40t + 12$, a qual representa o deslocamento em quilˆmetros de um carro em uma cidade, onde $t$ é o tempo em horas. Caso você queira encontrar o valor de deslocamento quando o carro tiver andando por 3 horas, basta substituir a variável $t$ por 3 e resolver a expressão. Assim temos:
+
+\[\begin{WithArrows}
+    f(t) & = 40t + 12 \Arrow{Quando t = 3} \\
+    f(3) & = 40\cdot 3 + 12 = 132 km
+\end{WithArrows}\]
+
+Esse cenário é o mais comum quando estamos estudando, contudo existe um segundo cenário que também é possível de acontecer. Isso ocorre quando temos um conjunto de pontos e, com base neles, queremos encontrar uma função que descreva o comportamento desses pontos.
+
+Pense que temos os pontos dispostos no gráfico da figura \ref{fig: pontos_addplot} e queremos encontrar uma reta que tente passar o mais próximo de cada um deles.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Pontos},
+            xlabel={$x$},
+            ylabel={$\sigma(x)$},
+            xmin=-1, xmax=5,
+            ymin=-1, ymax=5,
+            axis lines=middle,
+            grid=major,
+            enlarge x limits=0.1, 
+            enlarge y limits=0.1,
+        ]
+        \addplot[
+            only marks,                     
+            mark=*,                       
+            mark size=2pt,              
+            nodes near coords,             
+            point meta=explicit symbolic,   
+            nodes near coords align={above right}, 
+        ] table [meta=label] { 
+            x y label
+            1 1 $P_1$
+            1.7 2 $P_2$
+            3.2 3 $P_3$
+            4.3 4 $P_4$ 
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Conjunto de pontos dispostos no plano cartesiano.}
+    \label{fig: pontos_addplot}
+\end{figure}
+
+Existe uma técnica que permite que nos façamos isso, ela se chama \textbf{regressão linear} (a qual é um dos tópicos discutidos no capítulo \ref{cap:regressao}), e com base nela, é possível dado um conjunto de pontos em um plano, traçar uma reta que se aproxime igualmente de cada um desses pontos. Existem diferentes técnicas de regressão linear, neste caso aplicaremos a dos mínimos quadrados e encontramos a expressão:
+
+\[ y=0.8623x+0.3011 \]
+
+Com base nessa função que encontramos, podemos desenhá-la junto ao gráfico dos pontos e vermos se ela é realmente uma boa aproximação, assim temos a figura \ref{fig: regressao-linear}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Pontos},
+            xlabel={$x$},
+            ylabel={$\sigma(x)$},
+            xmin=-1, xmax=5,
+            ymin=-1, ymax=5,
+            axis lines=middle,
+            grid=major,
+            enlarge x limits=0.1, 
+            enlarge y limits=0.1,
+        ]
+        \addplot[
+            only marks,                     
+            mark=*,                       
+            mark size=2pt,              
+            nodes near coords,             
+            point meta=explicit symbolic,   
+            nodes near coords align={above right}, 
+        ] table [meta=label] { 
+            x y label
+            1 1 $P_1$
+            1.7 2 $P_2$
+            3.2 3 $P_3$
+            4.3 4 $P_4$ 
+        };
+        \addplot[blue, thick, domain=-8:8, samples=100] {0.8623(x) + 0.3011};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Conjunto de pontos dispostos no plano cartesiano.}
+    \label{fig: regressao-linear}
+\end{figure}
+
+Existem diversas aproximações além da regressão linear, se quisermos, podemos tentar aproximar esses pontos utilizando uma função quadrática, cúbica ou até mesmo exponencial.
+
+Esse tema parece não ter uma conexão com esse capítulo de funções de ativação, mas na realidade, o que muitas das vezes é feito por uma rede neural é justamente esse trabalho de encontrar uma função que aproxima o comportamento de um conjunto de pontos. Só que neste caso, não teremos um conjunto de pontos, vamos ter várias informações em uma base de dados, como imagens de exames médicos ou informações sobre o valor de imóveis e queremos encontrar de alguma forma uma conexão entre esses dados.
+
+Para isso, existe um conjunto de teoremas que servem justamente para provar que uma determinada rede neural criada será capaz de encontrar uma função que descreva o comportamento que você esteja estudando. Eles são os teoremas da aproximação universal.
+
+No livro \textit{Deep Learning}, \textcite{DeepLearningBook} dedicam uma seção explicando esses teoremas. Segundo os autores, o teorema da aproximação universal, introduzido \textcite{Cybenko1989} para a comunidade científica no texto \textit{Approximation by Superpositions of a Sigmoidal Function}, afirma que uma rede feedforward com uma camada de saída linear e no mínimo uma camada oculta com qualquer função que possui a propriedade de "esmagamento", como a sigmoide logística, é capaz de aproximar qualquer função mensurável de Borel de um espaço de dimensão finita para outro com qualquer quantidade de erro diferente de zero desejada desde que essa rede neural possua unidades ocultas suficientes.
+
+Para entendermos esse teorema, devemos primeiro entender o conceito de mensurabilidade de Borel, segundo \textcite{DeepLearningBook} uma função contínua em um subconjunto fechado e limitado de $\mathcal{R}^N$ é mensurável por Borel. Assim esse tipo de função pode ser aproximada por uma rede neural. Além disso, os autores ressaltam que por mais que o teorema original tenha conseguido provar apenas para as funções que saturam tanto para termos muito negativos ou termos muito positivos, diversos outros autores como \textcite{Leshno1993}, no texto \textit{Multilayer feedforward networks with a nonpolynomial activation function can approximate any function}, foram capazes de provar que o teorema da aproximação universal pode funcionar para outras funções, no caso de Leshno, eles provaram para funções não polinomiais, como a Rectified Linear Unit (ReLU), a qual é o tema central do capítulo \ref{cap:ativacao-retificadoras}.
+
+Basicamente os teoremas da aproximação universal reforçam o uso de funções de ativação para permitir que as redes neurais resolvam os problemas propostos por meio da aproximação de uma função. Isso acontece porque essas funções introduzem a não linearidade para a rede, como nos vimos na equação do neurônio de uma rede neural, uma RNA é composta por diferentes camadas de neurônios que são capazes de pegar valores de entrada, multiplicar por um peso dado e somar com um viés, esse resultado passa então por uma função de ativação.
+
+\[ y = x \cdot w + b\]
+
+Se nos tivéssemos uma rede neural em que os neurônios não possuíssem uma função de ativação, ou, fosse uma função linear, mesmo juntando todas essas camadas de neurônios que trazem expressões lineares, a junção disso, ainda seria uma expressão linear. Mas quando introduzimos uma função não linear, como a sigmoide, o teorema da aproximação universal, nos garante que somos capazes de encontrar qualquer função que estivermos procurando, desde que ela seja mensurável de Borel.
+
+\section{Exemplo Ilustrativo: Empurrando para extremos}
+
+Imagine que você está trabalhando para uma empresa na área de marketing e precisa analisar como foi a recepção do público para um novo produto anunciado. Para isso, você ficou responsável por classificar os comentários do público sobre esse produto. Você precisa colocar eles em duas categorias: avaliação positiva ou negativa. Então você precisa ler cada comentário e colocar ele em uma dessas categorias. 
+
+No começo foi fácil, mas depois de um tempo foi ficando repetitivo, então você teve a ideia de automatizar esse processo. Assim, você decide criar um diagrama de uma “caixa-preta” responsável por classificar automaticamente esses comentários da mesma forma que estava fazendo. Essa “caixa” irá receber uma entrada, neste caso, o texto do comentário sobre o produto, e irá retornar uma saída, uma classificação positiva ou negativa sobre o comentário. 
+
+Na matematica, as funções do tipo sigmoide são excelentes para esse tipo de problema, pois possuem uma propriedade muito interessante: dado um valor de entrada, elas são capazes de "empurrar" esse valor para dois diferentes extremos. No caso da sigmoide logísitca, a função que dá nome a essa família, ela é capaz de empurrar essa entrada para valores próximos de zero ou um. Se nós consideramos que zero é uma avaliação negativa e um é uma avaliação positiva, essa função se torna perfeita para resolver o seu problema de classificar comentários.
 
 \section{A Sigmoide Logística}
+
+Por mais que a sigmoide hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textbf{"Recherches mathématiques sur la loi d'accroissement de la population"} (Pesquisas matemáticas sobre a lei de crescimento da população), em que Verhulst propõem a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em "S" característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
+
+\section{Contexto Histórico: Popularização da Sigmoide em Redes Neurais}
+
+A primeira familia de funções que iremos conhecer são as sigmodais, sendo a principal delas, e que da nome a essa família a sigmoide logística. Para isso, vamos entender o contexto em que elas se popularizaram.
+
+Nos anos 1980, estavam ocorrendo mudanças com as funções que eram utilizadas para construir uma rede neural, um desses motivos foi a introdução da retropropagação pelos pesquisadores Daviel Rumelhart, Geoffrey Hinton e Ronald Williams. A retropropagação era uma técnica que permitia que um modelo aprendesse com base nos seus erros, ajustando automaticamente os seus parâmetros em busca de conseguir uma melhor acurácia. 
+
+Além disso, na pesquisa que introduz a retropropagação, \textbf{"Learning representations by back-propagating errors"} de 1986, os cientistas propõem o uso da função sigmoide logística como uma das candidatas para ser utilizada junto com a retropropagação como uma função de ativação. Como justificativa, eles citam o fato dela ser uma função que é capaz de introduzir a não-linearidade para o modelo, permitindo que ele aprenda padrões mais complexos, e também por possui uma derivada limitada.
+
+Mas esse não foi o único fator que fez com que a sigmoide e sua familia se tornassem funções populares para a época. Pouco antes da criação da retropropagação, na década passada, haviam cientistas estudando o comportamento dos neurônios humanos como inspiração para a criação de redes neurais artificiais. Um exemplo desse caso foi o dos cientistas Wilson Hugh e Jack Cowan, em 1972 eles publicaram um artigo intitulado \textbf{"excitatory and Inhibitory interactions in localized populations of model neurons"}, em que buscam estudar como os neurônios respondiam a determinados estímulos.
+
+No artigo, Hugh e Cowan buscam analisar o comportamento de populações localizadas de neurônios excitatórios (denotados pela função $E(t)$) e inibitórios (representados por $I(t)$) e como as duas interagem entre si. Para isso, eles utilizam como variável a proporção de células em uma subpopulação que dispara/reage por unidade de tempo. Para modelar essa atividade eles fizeram o uso uma variação da função sigmoide, representada para expressão \ref{eq: EquacaoNeuronio}, que era capaz de descrever o comportamento dos neurônios a certos estímulos.
+
+\begin{equacaodestaque}{Neurônio de Wilson e Cowan}
+    \mathcal{S}(x) = \frac{1}{1 + e^{-a(x - \theta)}} - \frac{1}{1 + e^{a\theta}}
+    \label{eq:neuronio-de-wilson-cowan}
+\end{equacaodestaque}
+
+
+Nessa equação, o parâmetro $a$ representa a inclinação, a qual foi ajustada para passar pela origem ($\mathcal{S}(0) = 0$) e $\theta$ 
+é o limiar. Para o plotar o gráfico da figura \ref{fig: ComportamentoNeuronios}, foi utilizado os mesmos valores escolhidos pelos cientistas na pesquisa, assim $a = 1.2$ e $\theta = 2.8$.
+
+\begin{figure}[h!]
+
+    \pgfmathdeclarefunction{wilson_sigmoid}{3}{% 
+        \pgfmathparse{1/(1+exp(-#1*(#3-#2))) - 1/(1+exp(#1*#2))}%
+    }
+
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função Sigmoide de Wilson-Cowan},
+            xlabel={$x$ (Estímulo)},
+            ylabel={$s(x)$ (Proporção de Ativação)},
+            xmin=-2, xmax=10, % Ajusta o eixo x para centralizar a curva
+            ymin=-0.1, ymax=1.1, % Ajusta o eixo y
+            axis lines=middle,
+            grid=major,
+            legend pos=north west,
+            % Define os parâmetros para a função
+            /pgf/declare function={a=1.2; theta=2.8;}
+            ]
+            \addplot[blue, thick, domain=-2:10, samples=150] {wilson_sigmoid(a, theta, x)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função sigmoide conforme proposta por Wilson e Cowan (1972), com parâmetros de exemplo $a=1.2$ e $\theta=2.8$.}
+    \label{fig: ComportamentoNeuronios}
+\end{figure}
+
+Os cientistas demonstram que a população de neurônios reage de formas distintas quando sofrem determinados estímulos. Os níveis baixos de excitação não conseguem ativar a população, porém, existe uma região de alta sensibilidade, na qual pequenos aumentos no estímulo geram um grande aumento na atividade. Além disso, existe um terceiro nível, o de saturação, em que níveis muito altos de estímulos são capazes de ativar todas as células e a partir disso, a resposta da população atinge o comportamento de uma função constante, indicando que ela saturou. Ao juntar todos esses três níveis, temos a famosa curva em "S", caraterística da função sigmoide.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função Degrau de Heaviside},
+            xlabel={$x$},
+            ylabel={$H(x)$},
+            xmin=-8.5, xmax=8.5,
+            ymin=-0.3, ymax=1.1,
+            axis lines=middle,
+            grid=major,
+            ytick={0,1}, % Define os ticks no eixo y para 0 e 1
+        ]
+        % Desenha a parte da função para x < 0
+        \addplot[blue, thick, domain=-8:0] {0};
+        % Desenha a parte da função para x >= 0
+        \addplot[blue, thick, domain=0:8] {1};
+
+        % Adiciona os marcadores para a descontinuidade em x=0
+        % Círculo aberto em (0,0) para indicar que o ponto não pertence a essa parte
+        \addplot[only marks, mark=o, mark size=1.5pt, blue, fill=white] coordinates {(0,0)};
+        % Círculo fechado em (0,1) para indicar que o ponto pertence a essa parte
+        \addplot[only marks, mark=*, mark size=1.5pt, blue] coordinates {(0,1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função degrau de Heaviside.}
+    \label{fig:degrau-unitario}
+\end{figure}
+
+Com isso, ao consideramos esses dois cenários: a criação da retropropagação e busca na natureza para inspiração na criação de redes neurais. A sigmoide, junto com a sua família, se tornaram funções muito populares para a época, estando presentes em varias redes neurais criadas. Um desses exemplos é a rede de Elman, um tipo de rede neural recorrente criada para aprender e representar estruturas em dados sequenciais. Elman cita em seu estudo \textbf{"Finding structure in time"} de 1990 que era ideal o uso de uma função de ativação com valores limitados entre zero e um, um cenário ideal para o uso da sigmoide.
+
+Cabe destacar também que, as sigmodais nao foram as primeiras funções de ativação a serem utilizadas na criação de uma rede neural. Nesse cenário de redes neurais, existem sempre funções que são mais populares, e que com o tempo e o surgimento de novas pesquisas, são deixadas de lado para novamos funções mais interessantes.
+
+Uma função que era muito utilizada era a heavside, ou degrau em português. Ela inclusive esteve presente na produção da rede neural Perceptron criada por Frank Rosenblatt e introduzida para a comunidade científica no artigo \textbf{"The Perceptron: A probabilistic model for informations storage and organization in the brain"} em 1958.
+
+Quando a comparamos a degrau unitário com a sigmoide, notamos uma diferença crucial, a sigmoide é uma função contínua em todos os pontos, podemos dizer que para desenhar seu gráfico não precisamos tirar o lápis do papel nenhuma vez, algo que não ocorre com a heavside. Além disso, a derivada da heavside é zero em quase todos os seus pontos, por esse motivo, ela impossibilitava a retropropagação do erro, uma vez que quando fossemos calcular o gradiente para uma parte de um modelo que usasse essa função, ele provavelmente seria zero.
+
+\section{Expressões Matemáticas}
 
 \begin{equacaodestaque}{Sigmoide Logística}
     \sigma(z_i) = \frac{1}{1 + e^{-z_i}}
@@ -52,15 +251,61 @@ class Sigmoid(Layer):
 
 \section{Tangente Hiperbólica}
 
+Assim como a função sigmoide, a tangente hiperbólica não possui suas origens voltadas para o uso em redes neurais. Neste caso, um dos matemáticos que ficou reconhecido por criar a notação das funções hiperbólicas, seno, cosseno e tangente, foi o suíço Johann Heinrich Lambert no trabalho de 1769 \textbf{"Mémoire sur quelques propriétés remarquables des quantités transcendantes circulaires et logarithmiques"} (Memória sobre algumas propriedades notáveis de grandezas transcendentais circulares e logarítmicas), em que provou que muitas das identidades trigonométricas possuíam suas equivalentes hiperbólicas.
+
+Passando mais de dois séculos, a tangente hiperbólica já estava sendo utilizada em diversas redes neurais, ela inclusive fez parte da primeira rede neural convolucional criada, estando presente na Le-Net-5, uma rede neural criada para identificar e classificar imagens de cheques em caixas eletrônicos. No artigo acadêmico \textbf{"Gradient-based learning applied to document recognition"} de 1998, os cientistas Yann LeCun, Léon Bottou, Yousha Bengio e Patrick Haffner explicam a criação dessa rede além de destacar suas métricas alcançadas.
+
+Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parecidas. Como afirma Lederer em \textbf{"Activation Functions in Artificial Neural Networks: A Systematic Overview"} a tangente hiperbólica é infinitamente diferenciável, sendo uma versão escalada e rotacionada da sigmoide logística. Assim, como podemos ver no gráfico da figura \ref{fig: GraphTanh}, ela é uma função que está centrada em zero, e seus valores variam agora em um intervalo de -1 a 1, diferente da sigmoide, que varia somente de 0 a 1.
+
+Podemos escrever a tangente hiperbólica utilizando a definição de tangente, que é o quociente a função seno com a função cosseno, só que neste caso usaremos as funções hiperbólicas. Assim temos a expressão \ref{eq: EquacaoTanh} e seu gráfico \ref{fig: GraphTanh}.
+
 \begin{equacaodestaque}{Tangente Hiperbólica}
     \tanh(z_i) = \frac{\sinh(z_i)}{\cosh(z_i)} = \frac{e^z_i - e^{-z_i}}{e^z_i + e^{-z_i}}
     \label{eq:tangente-hiperbolica}
 \end{equacaodestaque}
 
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função Tangente Hiperbólica},
+            xlabel={$z_i$},
+            ylabel={$\tanh(z_i)$},
+            xmin=-5, xmax=5,
+            ymin=-1.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+        ]
+        \addplot[blue, thick, domain=-5:5, samples=100] {tanh(x)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da tangente hiperbólica.}
+    \label{fig: GraphTanh}
+\end{figure}
+
 \begin{equacaodestaque}{Derivada da tangente hiperbólica}
     \frac{d}{dz_i}\tanh(z_i) = \text{sech}^2(z_i)
     \label{eq:tangente-hiperbolica-derivada}
 \end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Tangente Hiperbólica},
+            xlabel={$z_i$},
+            ylabel={$\tanh'(z_i)$},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+        ]
+        \addplot[red, thick, domain=-5:5, samples=100] {1-(tanh(x))^2};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da tangente hiperbólica.}
+    \label{fig: GraphTanh}
+\end{figure}
 
 \subsection{Implementação em Python}
 
@@ -86,15 +331,64 @@ class Tanh(Layer):
 
 \section{Softsign: Uma Sigmoidal Mais Barata}
 
+A próxima função que vamos conhecer é a softsign, diferente da tangente hiperbólica e da sigmoide que tiveram suas origens em outros campos diferentes da ciência da computação, a softsign foi criada com o intuito de ser trabalhada em uma rede neural. Ela foi introduzida no artigo \textbf{"A Better Activation Function for Artificial Neural Networks"} de 1993, do cientista D.L. Elliott. No texto ele propõem a softsign como uma alternativa para as funções sigmodais tradicionais.
+
+Como podemos ver no seu gráfico \ref{fig:GraphSoftsign}, ela possui o formato em "S" característico das sigmodais além de ser centrada em zero como a tangente hiperbólica. Além disso, como Elliot destaca em seu texto, ela é uma função que é diferenciável em toda a reta possuindo também a mesma propriedade das outras sigmodais de empurrar os valores de entrada para os seus extremos. Podemos notar também pelo seu gráfico que ela também uma função contínua, suave e não linear
+
+Contudo, a principal diferença dela com as outras sigmodais está na sua fórmula, como podemos ver na equação \ref{eq:EquacaoSoftsign} ela não utiliza nenhum exponencial para compor sua função. Isso faz com que ela seja uma função mais "barata" em termos de poder computacional para ser implementada em redes neurais. Assim, podemos obter resultados parecidos porem utilizando cálculos menos complexos e com isso teremos redes mais rápidas de serem treinadas. Um comparativo com as funções sigmodais desse texto e como elas reagem poderá ser visto em uma seção futura.
+
+Com base em sua expressão, também podemos plotar o seu gráfico na figura \ref{fig:GraphSoftsign}.
+
 \begin{equacaodestaque}{Softsign}
     \text{softsign}(z_i) = \frac{z_i}{1 + |z_i|}
     \label{eq:softsign}
 \end{equacaodestaque}
 
+\begin{figure}[h!]
+    \centering
+    % Gráfico da função Softsign usando PGFPlots
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função Softsign},
+            xlabel={$z_i$},
+            ylabel={$\text{softsign}(z_i)$},
+            xmin=-15, xmax=15,
+            ymin=-1.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+        ]
+        % A função softsign(x) = x / (1 + abs(x))
+        \addplot[blue, thick, domain=-10:10, samples=101] {x / (1 + abs(x))};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função Softsign.}
+\end{figure}
+
 \begin{equacaodestaque}{Derivada da softsign}
     \frac{d}{dz_i}\text{softsign}(z_i) = \frac{1}{(1 + |z_i|)^2}
     \label{eq:softsgin-derivada}
 \end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    % Gráfico da derivada da função Softsign
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Softsign},
+            xlabel={$z_i$},
+            ylabel={$\text{softsign}'(z_i)$},
+            xmin=-10, xmax=10,
+            ymin=-0.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+        ]
+        % A derivada da softsign é 1 / (1 + |x|)^2
+        \addplot[red, thick, domain=-10:10, samples=101] {1/((1+abs(x))^2)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da função Softsign.}
+    \label{fig:GraphSoftsignDerivative}
+\end{figure}
 
 \subsection{Implementação em Python}
 
@@ -123,20 +417,130 @@ class Softsign(Layer):
     \label{eq:hard-sigmoid}
 \end{equacaodestaque}
 
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função Hard Sigmoid},
+            xlabel={$z_i$},
+            ylabel={$\text{hard sigmoid}(z_i)$},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+            domain=-5:5,
+            samples=200, % More samples for a smoother piecewise look
+            restrict y to domain*=-0.2:1.2 % Keep plot within y limits
+        ]
+        % Define the piecewise function using if-else logic for plotting
+        \addplot[blue, thick] {
+            (x < -3) * 0 +
+            (x >= -3 && x <= 3) * (x/6 + 0.5) +
+            (x > 3) * 1
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função hard sigmoid.}
+    \label{fig: GraphHardSigmoid}
+\end{figure}
+
 \begin{equacaodestaque}{Derivada da Hard Sigmoid}
         \frac{d}{dz_i}\text{hard sigmoid}(z_i) = \begin{cases} 0 & \text{se } z_i < -3 \\ 1/6 & \text{se } -3 < z_i < 3 \\ 0 & \text{se } z_i > 3 \end{cases}
     \label{eq:hard-sigmoid-derivada}
 \end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Hard Sigmoid},
+            xlabel={$z_i$},
+            ylabel={$\text{hard sigmoid}'(z_i)$},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=0.8,
+            axis lines=middle,
+            grid=major,
+            domain=-5:5,
+            samples=200, % More samples to show step clearly
+            restrict y to domain*=-0.2:0.8
+        ]
+        % Plot the derivative: 1/6 between -3 and 3, 0 otherwise
+        \addplot[red, thick] {
+            (x > -3 && x < 3) * (1/6)
+        };
+        % Add lines for the jumps (optional, but makes it clearer)
+        \draw[dashed, blue] (axis cs:-3, 0) -- (axis cs:-3, 1/6);
+        \draw[dashed, blue] (axis cs:3, 0) -- (axis cs:3, 1/6);
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Hard Sigmoid.}
+    \label{fig: GraphDerivadaHardSigmoid}
+\end{figure}
 
 \begin{equacaodestaque}{Hard Tanh}
         \text{hard tanh}(z_i) = \begin{cases} -1 & \text{se } z_i < -1 \\ z_i & \text{se } -1 \le z_i \le 1 \\ 1 & \text{se } z_i > 1 \end{cases}
     \label{eq:hard-tanh}
 \end{equacaodestaque}
 
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função Hard Tanh},
+            xlabel={$z_i$},
+            ylabel={$\text{hard tanh}(z_i)$},
+            xmin=-5, xmax=5,
+            ymin=-1.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+            domain=-5:5,
+            samples=200, % More samples for clarity
+            restrict y to domain*=-1.2:1.2 % Keep plot within y limits
+        ]
+        % Define the piecewise function for plotting
+        \addplot[blue, thick] {
+            (x < -1) * -1 +
+            (x >= -1 && x <= 1) * x +
+            (x > 1) * 1
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função Hard Tanh. Fonte: PyTorch.}
+    \label{fig: GraphHardTanh}
+\end{figure}
+
 \begin{equacaodestaque}{Derivada da Hard Tanh}
         \frac{d}{dz_i}\text{hard tanh}(z_i) = \begin{cases} 0 & \text{se } z_i < -1 \\ 1 & \text{se } -1 < z_i < 1 \\ 0 & \text{se } z_i > 1 \end{cases}
     \label{eq:hard-tanh-derivada}
 \end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Hard Tanh},
+            xlabel={$z_i$},
+            ylabel={$\text{hard tanh}'(z_i)$},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=1.2,
+            axis lines=middle,
+            grid=major,
+            domain=-5:5,
+            samples=200, % More samples to show step clearly
+            restrict y to domain*=-0.2:1.2
+        ]
+        % Plot the derivative: 1 between -1 and 1, 0 otherwise
+        \addplot[red, thick] {
+            (x > -1 && x < 1) * 1
+        };
+        % Add lines for the jumps (optional, but makes it clearer)
+        \draw[dashed, blue] (axis cs:-1, 0) -- (axis cs:-1, 1);
+        \draw[dashed, blue] (axis cs:1, 0) -- (axis cs:1, 1);
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Hard Tanh.}
+    \label{fig: GraphDerivadaHardTanh}
+\end{figure}
 
 \subsection{Implementação em Python}
 
@@ -167,7 +571,7 @@ class HardSigmoid(Layer):
         return grad_output * hard_sigmoid_grad, None
 \end{codelisting}
 
-\begin{codelisting}{Classe completa do função de ativação Hard Sigmoid}{gd_class}
+\begin{codelisting}{Classe completa do função de ativação Hard Tanh}{gd_class}
 from layers.base import Layer
 import numpy as np
 
