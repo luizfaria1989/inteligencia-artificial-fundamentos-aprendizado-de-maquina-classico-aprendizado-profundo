@@ -610,5 +610,63 @@ Em que:
 
 \section{O Método de Newton: Indo Além do Gradiente}
 
+O método do gradiente se enquadra no tipo de \textbf{método de primeira ordem}, pois faz o uso de apenas derivadas de primeira ordem na sua implementação. Existem métodos que vão além das derivadas de primeira ordem buscando soluções que fazem uso de \textbf{derivadas de segunda ordem}. Um desses métodos é o \textbf{método de Newton}.
+
+Essa técnica foi inicialmente proposta por Isaac Newton nos trabalhos “\textit{De analysi per aequationes numero terminorum infinitas}” em 1669 e “\textit{De metodis fluxionum et serierum infinitarum}” escrito em 1671. Entretanto, mais tarde Joseph Raphson apresentou uma versão aprimorada em seu livro “\textit{Aequationum Universalis}” em 1690. Devido às contribuições de ambos os matemáticos, essa técnica também é conhecida como método de Newton-Raphson.
+
+\subsection{Conceitos iniciais: Matrizes Jacobianas e Hessianas}
+
+Como dito anteriormente, o método de Newton faz uso de derivadas de segunda ordem em sua fórmula. Nisso, surgem dois conceitos que devem ser explicados para entendermos melhor esse método: as matrizes jacobianas e hessianas.
+
+Chamamos de \textbf{matriz jacobiana} a matriz que contém todos as derivadas parciais de uma função de $n$ variáveis $f(x, y, ..., n)$. Com base nas derivadas de primeira ordem, podemos ter uma melhor noção de como a função cresce ou decresce em intervalos do eixo.
+
+    \begin{equation}
+        \large J_f(x,y,...,n) =
+        \begin{bmatrix}
+        \frac{\partial F_1}{\partial x} & \frac{\partial F_1}{\partial y} & \cdots & \frac{\partial F_1}{\partial n} \\
+        \frac{\partial F_2}{\partial x} & \frac{\partial F_2}{\partial y} & \cdots & \frac{\partial F_2}{\partial n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \frac{\partial F_m}{\partial x} & \frac{\partial F_m}{\partial y} & \cdots & \frac{\partial F_m}{\partial n}
+        \end{bmatrix}
+    \end{equation}
+
+Já a \textbf{matriz hessiana} é uma matriz que contém todas as derivadas de segunda ordem da função $f(x, y, ..., n)$. Essas derivadas nos dão informações sobre a curvatura a função.
+
+    \begin{equation}
+        \large H_f(x,y,...,n) =
+        \begin{bmatrix}
+        \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x\partial y} & \cdots & \frac{\partial^2 f}{\partial x \partial n} \\
+        \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \cdots & \frac{\partial^2 f}{\partial y \partial n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f}{\partial n \partial x} & \frac{\partial^2 f}{\partial n \partial y} & \cdots & \frac{\partial^2 f}{\partial n^2}
+        \end{bmatrix}
+    \end{equation}
+
+Assim, essas matrizes, por nos mostrarem como a função varia, podem ser muito úteis para nos auxiliar a encontrar pontos mínimos, máximos e de sela da função e assim otimizá-la.
+
+Com isso, podemos entender o método de newton.
+
+\subsection{O Método}
+
+O método de Newton é baseado na expansão de uma função $f(x)$ em uma \textbf{série de Taylor de segunda ordem} em torno de um ponto $x(0)$. Com essa aproximação, podemos encontrar de forma mais rápida pontos críticos da função.
+
+    \begin{equation}
+         f(\mathbf{x}) \approx f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0) + \frac{1}{2} (\mathbf{x} - \mathbf{x}_0)^T H_f(\mathbf{x}_0) (\mathbf{x} - \mathbf{x}_0)
+    \end{equation}
+
+    \begin{equation}
+         x' = x - H_f(x)^{-1} \nabla f(x)
+    \end{equation}
+
+Quando estamos trabalhando com uma função que pode ser aproximada por uma função quadrática no ponto analisado, o método de Newton pode nos retornar o resultado de forma mais rápida que o método do gradiente. Contudo, se isso não for o caso, ele levará mais iterações para encontrar um ponto crítico e assim convergir.
+
+Por mais que possa ser mais rápido que o método do gradiente em algumas situações, o método de Newton não é perfeito. Se estivermos próximo tanto de ponto de sela quanto de um ponto de mínimo, o método de Newton pode fornecer direções equivocadas e levar para o ponto de sela ao invés do ponto de mínimo. Assim, a não será encontrado um valor ideal para otimizar aquela função de custo.
+
+Além disso, pelo fato do método de Newton envolver o cálculo das derivadas de segunda ordem da função de custo, pois, diferente do método do gradiente que calcula somente as derivadas de primeira ordem, no método de Newton-Raphson são calculadas também as derivadas parciais de segunda ordem para a matriz hessiana.
+
+ Esse custo de poder de processamento será proporcional a quantidade de variáveis que a função de custo recebe, se $f$ for uma função de várias variáveis, pode ser inviável o uso do método de newton devido à maior quantidade de cálculos envolvidos.
+
+Portanto ao criar uma rede neural devemos escolher com sabedoria qual método de otimização devemos usar. O método do gradiente pode ser eficiente para minimizar uma função de custo de uma rede neural, mas em casos que essa convergência seja lenta, o método de Newton-Raphson pode ser uma melhor alternativa.
+
 \subsection{Implementação em Python}
 
