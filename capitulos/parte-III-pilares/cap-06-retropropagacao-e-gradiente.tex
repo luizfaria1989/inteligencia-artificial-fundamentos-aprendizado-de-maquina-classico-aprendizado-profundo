@@ -43,7 +43,7 @@ Na matemática, existe um método semelhante a este, que busca com base em uma b
 A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \textit{Deep Learning}, \textcite{DeepLearningBook} explicam essa ferramenta através da equação \ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
 
 \begin{equacaodestaque}{Método do Gradiente Descendente}
-    x' = x - \epsilon \nabla f(x)
+    x = x_0 - \epsilon \nabla f(x)
     \label{eq:metodo-do-gradiente}
 \end{equacaodestaque}
 
@@ -358,9 +358,72 @@ Agora é possível voltar para a expressão inicial, obtendo então a expressão
 
 Assim, é possível concluir que o gradiente do erro em relação a um peso específico de um neurônio é dado pelo gradiente do erro da saída do neurônio multiplicado pela derivada da função de ativação em relação a sua entrada e, por fim, multiplicado pela entrada do neurônio.
 
-\subsection{Utilizando o Gradiente para Atualizar os Pesos e Vieses}
+O próximo passo não está no artigo original, ele envolve entender como o erro varia em relação a um viés de um neurônio específico, ou seja, é preciso calcular a expressão $\partial E / \partial b_j$. Note que mais uma vez o viés $b_j$ não aparece diretamente na equação do erro, ele está dentro da equação do neurônio, assim, novamente é preciso aplicar a regra da cadeia para encontrar essa derivada, assim, a expressão inicial é dada por:
+
+\[
+    \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \cdot \frac{\partial x_j}{\partial b_j}
+\]
+
+A primeira expressão, $\partial E / \partial x_j$, já foi calculada na equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso focar apenas na segunda parte da expressão, $\partial x_j / \partial b_j$, que avalia como a saída do neurônio $x_j$ varia em relação ao viés $b_j$. Com base, nisso, é possível chegar na expressão:
+
+\[
+    \frac{\partial E}{\partial b_j} = \frac{\partial}{\partial b_j} \left[ \left( \sum_k y_k \cdot w{jk} \right) + b_j \right]
+\]
+
+Note que os termos que não possuem o viés, como a parte que faz a soma da multiplicação das entradas pelos pesos, $\sum_l y_k \cdot w_{jk}$, são constantes em relação ao viés, portanto, a sua derivada será igual a zero, de tal forma que é possível simplificar a expressão para:
+
+\[
+        \frac{\partial E}{\partial b_j} = \frac{\partial}{\partial b_j} \left[ b_j \right]
+\]
+
+Com base nessa expressão, é possível concluir que a derivada da saída do neurônio em relação ao viés é igual a 1. Assim, voltando para a expressão inicial, temos que o gradiente do erro em relação ao viés de um neurônio específico é dado pelo gradiente do erro da entrada entrada total desse neurônio, ou seja:
+
+\begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Viés de um Neurônio}
+    \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \cdot 1 = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
+    \label{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}
+\end{equacaodestaque}
+
+\subsection{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}
+
+Já que é possível calcular o gradiente do erro em relação a um peso específico de um neurônio, e também em relação a um viés específico de um neurônio, o próximo passo proposto pelos autores é utilizar o método do gradiente como uma forma de atualizar os pesos (e também os vieses no nosso caso) da rede neural, de forma a minimizar o valor do erro com pequenas atualizações em cada um desses parâmetros \parencite{BackpropagationArticle}.
+
+Note que o método do gradiente, explicado na seção anterior diz que para atualizar um parâmetros, é preciso pegar o valor atual do parâmetro, e subtrair dele o valor do gradiente multiplicado pelo tamanho do passo (ou taxa de aprendizado). dessa forma, a regra de atualização para um peso específico é dada pela equação \ref{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}
 
 
+\begin{equacaodestaque}{Regra de Atualização de um Peso Através do Método do Gradiente}
+    w_{t+1} = w_{t} - \epsilon \frac{\partial E}{\partial w}
+    \label{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}
+\end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $w_{t+1}$ representa o valor do peso atualizado após o incremento do método do gradiente;
+    \item $w_t$ representa o valor inicial do peso na iteração $t$;
+    \item $\epsilon$ representa o tamanho do passo / taxa de aprendizado;
+    \item $\partial E / \partial w$ representa o gradiente do erro em relação ao peso.
+\end{itemize}
+
+Analogamente, a regra de atualização de um viés pelo método do gradiente é dada pela equação \ref{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}
+
+\begin{equacaodestaque}{Regra de Atualização de um Viés Através do Método do Gradiente}
+    b_{j, t+1} = b_{j, t} - \epsilon \frac{\partial E}{\partial b_j}
+    \label{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}
+\end{equacaodestaque}
+
+Neste caso, $b_{j, t+1}$ representa o valor final de um viés $j$ após o incremento do método e $b_{j, t}$ o valor inicial do viés $j$.
+
+Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa de neurônios, você não irá lidar com um neurônio específico, e sim como uma conjunto inteiro deles. Dessa forma, eles estrão distribuidos de forma vetorizada, que que terá um vetor de viéses, uma matriz de pesos e um vetor de neurônios. Assim, as expressões {eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} e \ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}, resumem a as regras de atualização de pesos e vieses, respectivamente, para casos em que estiver lidando com um conjunto de vetores ao invés de somente um dado.
+
+\begin{equacaodestaque}{Regra de Atualização do Vetor de Pesos Através do Método do Gradiente}
+    \mathbf{w}_{t+1} = \mathbf{w}_t - \epsilon \nabla_{\mathbf{w}} E
+    \label{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Regra de Atualização do Vetor de Vieses Através do Método do Gradiente}
+    \mathbf{b}_{t+1} = \mathbf{b}_t - \epsilon \nabla_{\mathbf{b}} E
+    \label{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}
+\end{equacaodestaque}
 
 % ===================================================================
 % Otimizadores Baseados em Gradiente
