@@ -259,6 +259,20 @@
       \range{pages}{4}
     \endentry
   \enddatalist
+  \missing{AlexNet}
+  \missing{Bordes}
+  \missing{Djork}
+  \missing{Goodfellow2016}
+  \missing{He2015}
+  \missing{Householder1941}
+  \missing{Mass2013}
+  \missing{Nair2010}
+  \missing{SELU}
+  \missing{XuRReLU}
+  \missing{douglasDyingRelu}
+  \missing{dyingReLU}
+  \missing{explodingGradient}
+  \missing{gelu}
 \endrefsection
 \endinput
 

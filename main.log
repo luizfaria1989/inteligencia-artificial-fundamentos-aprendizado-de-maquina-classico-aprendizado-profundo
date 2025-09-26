@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  26 SEP 2025 13:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  26 SEP 2025 15:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1499,7 +1499,106 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (./main.bbl)
+ (./main.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                AlexNet
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Bordes
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Djork
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Goodfellow2016
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                He2015
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Householder1941
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Mass2013
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Nair2010
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                SELU
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                XuRReLU
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                douglasDyingRelu
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                dyingReLU
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                explodingGradient
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                gelu
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 41.
 Package biblatex Info: Reference segment=0 on input line 41.
 
@@ -1616,220 +1715,447 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 [3]
 
 [4]
+Overfull \hbox (2.03697pt too wide) detected at line 106
+ \T1/cmss/bx/n/12 100
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 107
+ \T1/cmss/bx/n/12 101
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 109
+ \T1/cmss/bx/n/12 103
+ []
+
+
 Underfull \vbox (badness 2564) has occurred while \output is active []
 
 
 
 [5]
-
-[6]
-Overfull \hbox (2.03697pt too wide) detected at line 178
- \T1/cmss/bx/n/12 101
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 180
+Overfull \hbox (2.03697pt too wide) detected at line 110
  \T1/cmss/bx/n/12 103
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 182
- \T1/cmss/bx/n/12 105
+Overfull \hbox (2.03697pt too wide) detected at line 112
+ \T1/cmss/bx/n/12 107
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 184
- \T1/cmss/bx/n/12 108
+Overfull \hbox (2.03697pt too wide) detected at line 113
+ \T1/cmss/bx/n/12 107
  []
 
 
-Underfull \vbox (badness 1394) has occurred while \output is active []
+Overfull \hbox (2.03697pt too wide) detected at line 114
+ \T1/cmss/bx/n/12 107
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 115
+ \T1/cmss/bx/n/12 107
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 116
+ \T1/cmss/bx/n/12 107
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 118
+ \T1/cmss/bx/n/12 109
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 119
+ \T1/cmss/bx/n/12 109
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 120
+ \T1/cmss/bx/n/12 109
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 121
+ \T1/cmss/bx/n/12 109
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 123
+ \T1/cmss/bx/n/12 111
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 124
+ \T1/cmss/bx/n/12 111
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 125
+ \T1/cmss/bx/n/12 111
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 128
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 129
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 130
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 134
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 136
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 138
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 140
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 142
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 144
+ \T1/cmss/bx/n/12 115
+ []
+
+
+
+[6]
+Overfull \hbox (2.03697pt too wide) detected at line 146
+ \T1/cmss/bx/n/12 115
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 148
+ \T1/cmss/bx/n/12 117
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 149
+ \T1/cmss/bx/n/12 117
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 150
+ \T1/cmss/bx/n/12 117
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 152
+ \T1/cmss/bx/n/12 117
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 154
+ \T1/cmss/bx/n/12 117
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 157
+ \T1/cmss/bx/n/12 119
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 158
+ \T1/cmss/bx/n/12 119
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 160
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 161
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 163
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 164
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 165
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 166
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 167
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 171
+ \T1/cmss/bx/n/12 125
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 172
+ \T1/cmss/bx/n/12 125
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 173
+ \T1/cmss/bx/n/12 125
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 174
+ \T1/cmss/bx/n/12 125
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 175
+ \T1/cmss/bx/n/12 125
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 176
+ \T1/cmss/bx/n/12 125
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 179
+ \T1/cmss/bx/n/12 129
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 181
+ \T1/cmss/bx/n/12 131
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 183
+ \T1/cmss/bx/n/12 133
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [7]
 Overfull \hbox (2.03697pt too wide) detected at line 185
- \T1/cmss/bx/n/12 108
+ \T1/cmss/bx/n/12 136
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 186
- \T1/cmss/bx/n/12 108
+ \T1/cmss/bx/n/12 136
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 188
- \T1/cmss/bx/n/12 110
+Overfull \hbox (2.03697pt too wide) detected at line 187
+ \T1/cmss/bx/n/12 136
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 195
- \T1/cmss/bx/n/12 114
+Overfull \hbox (2.03697pt too wide) detected at line 189
+ \T1/cmss/bx/n/12 138
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 197
- \T1/cmss/bx/n/12 115
+Overfull \hbox (2.03697pt too wide) detected at line 196
+ \T1/cmss/bx/n/12 142
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 198
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 143
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 199
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 143
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 200
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 143
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 201
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 143
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 210
- \T1/cmss/bx/n/12 117
+Overfull \hbox (2.03697pt too wide) detected at line 202
+ \T1/cmss/bx/n/12 143
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 212
- \T1/cmss/bx/n/12 119
+Overfull \hbox (2.03697pt too wide) detected at line 211
+ \T1/cmss/bx/n/12 145
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 213
- \T1/cmss/bx/n/12 119
+ \T1/cmss/bx/n/12 147
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 214
- \T1/cmss/bx/n/12 119
+ \T1/cmss/bx/n/12 147
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 216
- \T1/cmss/bx/n/12 119
+Overfull \hbox (2.03697pt too wide) detected at line 215
+ \T1/cmss/bx/n/12 147
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 218
- \T1/cmss/bx/n/12 119
+Overfull \hbox (2.03697pt too wide) detected at line 217
+ \T1/cmss/bx/n/12 147
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 219
- \T1/cmss/bx/n/12 119
+ \T1/cmss/bx/n/12 147
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 224
- \T1/cmss/bx/n/12 121
+Overfull \hbox (2.03697pt too wide) detected at line 220
+ \T1/cmss/bx/n/12 147
  []
-
-
-Underfull \vbox (badness 2343) has occurred while \output is active []
 
 
 
 [8]
 Overfull \hbox (2.03697pt too wide) detected at line 225
- \T1/cmss/bx/n/12 121
+ \T1/cmss/bx/n/12 149
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 226
- \T1/cmss/bx/n/12 121
+ \T1/cmss/bx/n/12 149
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 227
- \T1/cmss/bx/n/12 121
+ \T1/cmss/bx/n/12 149
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 230
- \T1/cmss/bx/n/12 121
+Overfull \hbox (2.03697pt too wide) detected at line 228
+ \T1/cmss/bx/n/12 149
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 231
- \T1/cmss/bx/n/12 121
+ \T1/cmss/bx/n/12 149
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 232
- \T1/cmss/bx/n/12 121
+ \T1/cmss/bx/n/12 149
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 234
- \T1/cmss/bx/n/12 123
+Overfull \hbox (2.03697pt too wide) detected at line 233
+ \T1/cmss/bx/n/12 149
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 235
- \T1/cmss/bx/n/12 123
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 236
- \T1/cmss/bx/n/12 123
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 237
- \T1/cmss/bx/n/12 123
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 238
- \T1/cmss/bx/n/12 123
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 239
- \T1/cmss/bx/n/12 123
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 240
- \T1/cmss/bx/n/12 123
+ \T1/cmss/bx/n/12 151
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 244
- \T1/cmss/bx/n/12 123
+Overfull \hbox (2.03697pt too wide) detected at line 241
+ \T1/cmss/bx/n/12 151
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 246
- \T1/cmss/bx/n/12 125
+Overfull \hbox (2.03697pt too wide) detected at line 245
+ \T1/cmss/bx/n/12 151
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 248
- \T1/cmss/bx/n/12 127
+Overfull \hbox (2.03697pt too wide) detected at line 247
+ \T1/cmss/bx/n/12 153
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 250
- \T1/cmss/bx/n/12 129
+Overfull \hbox (2.03697pt too wide) detected at line 249
+ \T1/cmss/bx/n/12 155
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 252
- \T1/cmss/bx/n/12 131
+Overfull \hbox (2.03697pt too wide) detected at line 251
+ \T1/cmss/bx/n/12 157
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 256
- \T1/cmss/bx/n/12 135
+Overfull \hbox (2.03697pt too wide) detected at line 253
+ \T1/cmss/bx/n/12 159
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 257
+ \T1/cmss/bx/n/12 163
  []
 
 )
@@ -1931,7 +2257,7 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
 [28]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=658, 903.375pt x 250.9375pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=660, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 65.
@@ -2287,38 +2613,180 @@ Overfull \hbox (13.14594pt too wide) in paragraph at lines 716--717
 
  (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-\openout6 = `main.listing'.
-
-(./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
 [67
 
 
 
 
+]
 
+LaTeX Warning: Citation 'Householder1941' on page 68 undefined on input line 37.
+
+
+LaTeX Warning: Citation 'Householder1941' on page 68 undefined on input line 44.
+
+
+LaTeX Warning: Citation 'Householder1941' on page 68 undefined on input line 44.
+
+
+
+[68]
+
+LaTeX Warning: Citation 'Nair2010' on page 69 undefined on input line 57.
+
+
+LaTeX Warning: Citation 'Bordes' on page 69 undefined on input line 59.
+
+
+LaTeX Warning: Citation 'Bordes' on page 69 undefined on input line 59.
+
+
+LaTeX Warning: Citation 'Bordes' on page 69 undefined on input line 62.
+
+
+LaTeX Warning: Citation 'Bordes' on page 69 undefined on input line 63.
+
+
+
+[69]
+
+LaTeX Warning: Citation 'Bordes' on page 70 undefined on input line 64.
+
+
+LaTeX Warning: Citation 'Bordes' on page 70 undefined on input line 65.
+
+
+LaTeX Warning: Citation 'AlexNet' on page 70 undefined on input line 68.
+
+
+LaTeX Warning: Citation 'AlexNet' on page 70 undefined on input line 68.
+
+
+LaTeX Warning: Reference `fig: AlexNetArquietura' on page 70 undefined on input line 68.
+
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 95.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 95.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 95.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 95.
+
+
+[70]
+
+LaTeX Warning: Reference `fig: GraficoReLU' on page 71 undefined on input line 100.
+
+
+
+[71
+pdfTeX warning (ext4): destination with the same identifier (name{table.8.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.126 
+      ]
+
+LaTeX Warning: Reference `eq:DerivadaReLU' on page 72 undefined on input line 129.
+
+
+
+[72
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.18}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.90 
-     ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+l.138 A
+       lém de termos a sua derivada em equação, podemos fazer também o s...]
+
+LaTeX Warning: Reference `eq:DerivadaReLU' on page 73 undefined on input line 138.
+
+
+LaTeX Warning: Citation 'Goodfellow2016' on page 73 undefined on input line 165.
+
+\openout6 = `main.listing'.
+
+(./main.listing)
+Underfull \vbox (badness 3302) has occurred while \output is active []
 
 
 
-[68
+[73
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.19}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.101 
+l.186 
       ]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+[74]
+
+LaTeX Warning: Citation 'Mass2013' on page 75 undefined on input line 201.
+
+
+LaTeX Warning: Citation 'Mass2013' on page 75 undefined on input line 201.
+
+
+LaTeX Warning: Citation 'Mass2013' on page 75 undefined on input line 203.
+
+
+LaTeX Warning: Reference `Tab:lrelu_desempenho_apa' on page 75 undefined on input line 205.
+
+
+
+[75]
+Overfull \hbox (23.99776pt too wide) in paragraph at lines 211--233
+ [][] 
+ []
+
+
+
+[76
+pdfTeX warning (ext4): destination with the same identifier (name{table.8.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.241 
+      ]
+
+LaTeX Warning: Reference `eq:EquacaoLeakyReLU' on page 77 undefined on input line 244.
+
+
+LaTeX Warning: Citation 'Mass2013' on page 77 undefined on input line 244.
+
+
+LaTeX Warning: Reference `eq:EquacaoLeakyReLU' on page 77 undefined on input line 251.
+
+
+LaTeX Warning: Reference `fig:GraficoLeakyReLU' on page 77 undefined on input line 251.
+
+
+Underfull \vbox (badness 2435) has occurred while \output is active []
+
+
+
+[77]
+
+LaTeX Warning: Reference `eq:DerivadaLeakyReLU' on page 78 undefined on input line 272.
+
+
+LaTeX Warning: Reference `fig:GraficoLeakyReLUDerivada' on page 78 undefined on input line 279.
+
+
+
+[78
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.20}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.280 
+      ]
+
+LaTeX Warning: Citation 'Mass2013' on page 79 undefined on input line 304.
+
+
+LaTeX Warning: Citation 'Mass2013' on page 79 undefined on input line 304.
+
+
+Overfull \hbox (2.91927pt too wide) in paragraph at lines 304--305
+[]\T1/ppl/m/n/12 Voltando para \T1/ppl/m/it/12 Rec-fier Non-li-ne-a-ri-tes Im-prove Neu-ral Networks Acus-tic Mo-dels\T1/ppl/m/n/12 , []
+ []
 
 \openout6 = `main.listing'.
 
@@ -2327,132 +2795,489 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[69
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.20}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.170 
-      ]
-
-[70
+[79
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.21}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.196 \end{figure}
-                  ]
+l.329 
+      ]
+
+LaTeX Warning: Citation 'He2015' on page 80 undefined on input line 334.
+
+
+
+[80]
+
+LaTeX Warning: Citation 'He2015' on page 81 undefined on input line 336.
+
+
+LaTeX Warning: Citation 'He2015' on page 81 undefined on input line 336.
+
+
+LaTeX Warning: Reference `tab:arquitetura_prelu' on page 81 undefined on input line 336.
+
+
+LaTeX Warning: Citation 'He2015' on page 81 undefined on input line 338.
+
+
+LaTeX Warning: Reference `tab:prelu_desempenho1' on page 81 undefined on input line 338.
+
+
+LaTeX Warning: Reference `tab:arquitetura_prelu' on page 81 undefined on input line 340.
+
+
+Underfull \vbox (badness 1264) has occurred while \output is active []
+
+
+
+[81]
+
+LaTeX Warning: Reference `eq:EquacaoPReLU' on page 82 undefined on input line 342.
+
+
+LaTeX Warning: Citation 'He2015' on page 82 undefined on input line 342.
+
+
+LaTeX Warning: Citation 'He2015' on page 82 undefined on input line 342.
+
+
+LaTeX Warning: Reference `eq:EquacaoPReLU' on page 82 undefined on input line 350.
+
+
+LaTeX Warning: Reference `eq:EquacaoPReLU' on page 82 undefined on input line 352.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
+LaTeX Warning: Reference `eq:DerivadaPReLU' on page 82 undefined on input line 374.
 
-[71
+
+
+[82]
+
+LaTeX Warning: Reference `fig:GraficoPReLUDerivada' on page 83 undefined on input line 381.
+
+
+LaTeX Warning: Citation 'He2015' on page 83 undefined on input line 381.
+
+
+LaTeX Warning: Citation 'He2015' on page 83 undefined on input line 407.
+
+
+
+[83
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.22}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.261 
+l.408 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.23}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.261 
+l.408 
       ]
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 297.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 297.
+
+LaTeX Warning: Citation 'XuRReLU' on page 84 undefined on input line 415.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Citation 'XuRReLU' on page 84 undefined on input line 417.
+
+
+LaTeX Warning: Reference `tab:nin_arquitetura' on page 84 undefined on input line 417.
+
+
+LaTeX Warning: Reference `tab:ativacoes_cifar10' on page 84 undefined on input line 417.
+
+
+LaTeX Warning: Reference `tab:erro_ativacoes_cifar100' on page 84 undefined on input line 417.
 
 
 
-[72
+[84]
+
+LaTeX Warning: Reference `tab:ativacoes_cifar10' on page 85 undefined on input line 419.
+
+
+LaTeX Warning: Reference `tab:erro_ativacoes_cifar100' on page 85 undefined on input line 421.
+
+
+LaTeX Warning: Reference `eq:EquacaoRReLU' on page 85 undefined on input line 423.
+
+
+LaTeX Warning: Reference `eq:EquacaoRReLU2' on page 85 undefined on input line 430.
+
+
+LaTeX Warning: Citation 'XuRReLU' on page 85 undefined on input line 430.
+
+
+LaTeX Warning: Reference `fig:GraficoRReLU' on page 85 undefined on input line 432.
+
+
+Underfull \vbox (badness 1028) has occurred while \output is active []
+
+
+
+[85]
+
+LaTeX Warning: Reference `eq:DerivadaRReLU' on page 86 undefined on input line 457.
+
+
+LaTeX Warning: Reference `fig:GraficoRReLUDerivada' on page 86 undefined on input line 466.
+
+
+
+[86
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.24}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.336 
-      
+l.467 
+      ]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 503.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 503.
+
+
+LaTeX Warning: Citation 'XuRReLU' on page 87 undefined on input line 508.
+
+
+LaTeX Warning: Citation 'XuRReLU' on page 87 undefined on input line 508.
+
+
+Overfull \hbox (19.03511pt too wide) in paragraph at lines 508--509
+[]\T1/ppl/m/n/12 Ainda em \T1/ppl/m/it/12 Em-pi-ri-cal Eva-lu-a-tion of Rec-ti-fied Ac-ti-va-ti-ons in Con-vo-lu-ti-o-nal Network []
+ []
+
+
+LaTeX Warning: Reference `lst:codigo-rrelu' on page 87 undefined on input line 510.
+
+
+
+[87
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.25}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.336 
+l.517 
       ]
+
+LaTeX Warning: Citation 'Djork' on page 88 undefined on input line 522.
+
+
+LaTeX Warning: Citation 'Djork' on page 88 undefined on input line 522.
+
+
+LaTeX Warning: Reference `tab:elu_cifar_comparativo' on page 88 undefined on input line 524.
+
+
+LaTeX Warning: Citation 'Djork' on page 88 undefined on input line 524.
+
+
+
+[88]
+
+LaTeX Warning: Reference `EquacaoELU' on page 89 undefined on input line 528.
+
+
+LaTeX Warning: Reference `fig:GraficoELU' on page 89 undefined on input line 535.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \vbox (badness 6542) has occurred while \output is active []
+LaTeX Warning: Reference `eq:DerivadaELU' on page 89 undefined on input line 557.
+
+
+Underfull \vbox (badness 2435) has occurred while \output is active []
 
 
 
-[73
+[89]
+
+LaTeX Warning: Reference `eq:EquacaoELU' on page 90 undefined on input line 559.
+
+
+LaTeX Warning: Reference `eq:DerivadaELU' on page 90 undefined on input line 559.
+
+
+LaTeX Warning: Reference `fig:GraficoELUDerivada' on page 90 undefined on input line 566.
+
+
+LaTeX Warning: Citation 'Djork' on page 90 undefined on input line 591.
+
+
+
+[90
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.26}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.392 
+l.592 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.27}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.392 
+l.592 
       ]
+
+LaTeX Warning: Citation 'SELU' on page 91 undefined on input line 597.
+
+
+LaTeX Warning: Citation 'SELU' on page 91 undefined on input line 599.
+
+
+LaTeX Warning: Reference `tab:comparativo-selu' on page 91 undefined on input line 599.
+
+
+
+[91]
+
+LaTeX Warning: Reference `eq:EquacaoSELU' on page 92 undefined on input line 605.
+
+
+LaTeX Warning: Citation 'SELU' on page 92 undefined on input line 605.
+
+
+LaTeX Warning: Reference `fig:GraficoSELU' on page 92 undefined on input line 612.
+
+
+Underfull \vbox (badness 1533) has occurred while \output is active []
+
+
+
+[92]
+
+LaTeX Warning: Reference `eq:EquacaoSELU' on page 93 undefined on input line 637.
+
+
+LaTeX Warning: Reference `eq:DerivadaSELU' on page 93 undefined on input line 637.
+
+
+LaTeX Warning: Reference `fig:GraficoSELUDerivada' on page 93 undefined on input line 644.
+
+
+
+[93
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.28}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.647 
+      ]
+
+LaTeX Warning: Citation 'SELU' on page 94 undefined on input line 670.
+
+
+LaTeX Warning: Citation 'Nair2010' on page 94 undefined on input line 674.
+
+
+
+[94
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.29}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.685 
+      ]
+
+LaTeX Warning: Citation 'Nair2010' on page 95 undefined on input line 692.
+
+
+LaTeX Warning: Citation 'Nair2010' on page 95 undefined on input line 692.
+
+
+LaTeX Warning: Reference `tab:nrelu_norb_comparativo' on page 95 undefined on input line 692.
+
+
+LaTeX Warning: Reference `tab:nrelu_norb_comparativo' on page 95 undefined on input line 720.
+
+
+
+[95]
+
+LaTeX Warning: Citation 'Nair2010' on page 96 undefined on input line 728.
+
+
+Underfull \vbox (badness 1005) has occurred while \output is active []
+
+
+
+[96
+pdfTeX warning (ext4): destination with the same identifier (name{table.8.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.729 
+      ]
+
+LaTeX Warning: Citation 'Goodfellow2016' on page 97 undefined on input line 738.
+
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 745.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)
+
+LaTeX Warning: Citation 'Goodfellow2016' on page 97 undefined on input line 745.
+
+
+LaTeX Warning: Reference `fig:GraficoNReLU' on page 97 undefined on input line 788.
+
+
+LaTeX Warning: Citation 'Nair2010' on page 97 undefined on input line 788.
+
+
+Underfull \vbox (badness 3029) has occurred while \output is active []
+
+
+
+[97]
+
+LaTeX Warning: Reference `fig:GraficoNReLU' on page 98 undefined on input line 798.
+
+
+LaTeX Warning: Citation 'Nair2010' on page 98 undefined on input line 798.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
+LaTeX Warning: Citation 'Nair2010' on page 98 undefined on input line 822.
 
-[74
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.28}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.454 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.29}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.454 
-      ])
 
-[75
+LaTeX Warning: Reference `eq: DerivadaNReLU' on page 98 undefined on input line 822.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[98
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.30}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.94 ...os/parte-III-pilares/cap-08-retificadoras}
-                                                  
+l.831 
+      ]
+
+LaTeX Warning: Reference `fig:GraficoNReLUDerivada' on page 99 undefined on input line 832.
+
+
+LaTeX Warning: Citation 'Nair2010' on page 99 undefined on input line 855.
+
+
+LaTeX Warning: Citation 'Nair2010' on page 99 undefined on input line 855.
+
+
+
+[99
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8.31}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.94 ...os/parte-III-pilares/cap-08-retificadoras}
-                                                  ]
+l.860 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.32}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.860 
+      ]
+
+[100]
+
+LaTeX Warning: Citation 'explodingGradient' on page 101 undefined on input line 912.
+
+
+LaTeX Warning: Citation 'dyingReLU' on page 101 undefined on input line 918.
+
+
+
+[101]
+
+LaTeX Warning: Citation 'douglasDyingRelu' on page 102 undefined on input line 927.
+
+
+LaTeX Warning: Citation 'douglasDyingRelu' on page 102 undefined on input line 929.
+
+)
+
+[102]
 \openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
 
  (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
-[76
+LaTeX Warning: Citation 'gelu' on page 103 undefined on input line 10.
+
+
+LaTeX Warning: Reference `fig:log-loss-gelu' on page 103 undefined on input line 12.
+
+
+LaTeX Warning: Reference `fig:accuracy-gelu' on page 103 undefined on input line 12.
+
+
+LaTeX Warning: Citation 'gelu' on page 103 undefined on input line 12.
+
+
+LaTeX Warning: Citation 'gelu' on page 103 undefined on input line 12.
+
+
+LaTeX Warning: Reference `fig:log-loss-gelu' on page 103 undefined on input line 14.
+
+
+LaTeX Warning: Reference `fig:accuracy-gelu' on page 103 undefined on input line 16.
+
+
+LaTeX Warning: Reference `fig:accuracy-gelu' on page 103 undefined on input line 16.
+
+
+
+[103
 
 
 
 
-])
+]
 
-[77]
+LaTeX Warning: Reference `fig:gelu-cifar-10' on page 104 undefined on input line 18.
+
+
+LaTeX Warning: Citation 'gelu' on page 104 undefined on input line 18.
+
+
+LaTeX Warning: Citation 'gelu' on page 104 undefined on input line 27.
+
+
+
+[104]
+
+[105
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9.33}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.80 
+     ]
+
+LaTeX Warning: Citation 'gelu' on page 106 undefined on input line 107.
+
+
+LaTeX Warning: Citation 'gelu' on page 106 undefined on input line 107.
+
+)
+
+[106
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9.34}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.95 ...pitulos/parte-III-pilares/cap-09-modernas}
+                                                  ]
 \openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
 
- (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
+ (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex)
 
-[78
-
-
+[107
 
 
-])
 
-[79]
+
+]
 \openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
 
  (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
 
-[80
+[108
 
 
 
@@ -2464,34 +3289,34 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
 )
 
-[81]
+[109]
 \openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
 
  (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 
-[82
+[110
 
 
 
 
 ])
 
-[83]
+[111]
 
-[84
+[112
 
 
 
 ]
 
-[85]
+[113]
 
-[86]
+[114]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
 
-[87
+[115
 
 
 ]
@@ -2499,77 +3324,77 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
  (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
 
-[88
+[116
 
 
 
 
 ])
 
-[89]
+[117]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
-[90
+[118
 
 
 
 
 ])
 
-[91]
+[119]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
-[92
+[120
 
 
 
 
 ])
 
-[93]
+[121]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
-[94
+[122
 
 
 
 
 ])
 
-[95]
+[123]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
 
-[96
+[124
 
 
 
 
 ])
 
-[97]
+[125]
 
-[98
+[126
 
 
 
 ]
 
-[99]
+[127]
 
-[100]
+[128]
 \openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
 
-[101
+[129
 
 
 ]
@@ -2577,31 +3402,31 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
  (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
 
-[102
+[130
 
 
 
 
 ])
 
-[103]
+[131]
 \openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
 
-[104
+[132
 
 
 
 
 ])
 
-[105]
+[133]
 \openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
-[106
+[134
 
 
 
@@ -2618,12 +3443,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[107]
+[135]
 Overfull \vbox (1272.7535pt too high) has occurred while \output is active []
 
 
 
-[108]
+[136]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -2631,12 +3456,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[109]
+[137]
 Overfull \vbox (493.3008pt too high) has occurred while \output is active []
 
 
 
-[110]
+[138]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -2644,12 +3469,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[111]
+[139]
 Overfull \vbox (256.19066pt too high) has occurred while \output is active []
 
 
 
-[112]
+[140]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -2660,122 +3485,122 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[113])
+[141])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[114]
+[142]
 
-[115]
+[143]
 \openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-23-resnets.tex
 
-[116
+[144
 
 
 
 
 ])
 
-[117]
+[145]
 \openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
-[118
+[146
 
 
 
 
 ])
 
-[119]
+[147]
 \openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
-[120
+[148
 
 
 
 
 ])
 
-[121]
+[149]
 \openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
-[122
+[150
 
 
 
 
 ])
 
-[123]
+[151]
 \openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-27-gans.tex
 
-[124
+[152
 
 
 
 
 ])
 
-[125]
+[153]
 \openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-28-moe.tex
 
-[126
+[154
 
 
 
 
 ])
 
-[127]
+[155]
 \openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
-[128
+[156
 
 
 
 
 ])
 
-[129]
+[157]
 \openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
 
-[130
+[158
 
 
 
 
 ])
 
-[131]
+[159]
 
-[132
+[160
 
 
 
 ]
 
-[133]
+[161]
 
-[134]
+[162]
 
-[135
+[163
 
 ]
 \tf@toc=\write7
@@ -2798,18 +3623,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 57160 strings out of 467888
- 1304178 string characters out of 5434061
- 4188296 words of memory out of 5000000
- 83823 multiletter control sequences out of 15000+600000
- 687078 words of font info for 173 fonts, out of 8000000 for 9000
+ 57411 strings out of 467888
+ 1308690 string characters out of 5434061
+ 4191446 words of memory out of 5000000
+ 84015 multiletter control sequences out of 15000+600000
+ 693300 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,107p,1247b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (137 pages, 749846 bytes).
+ 99i,19n,107p,1297b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (165 pages, 866201 bytes).
 PDF statistics:
- 2611 PDF objects out of 2984 (max. 8388607)
- 2369 compressed objects within 24 object streams
- 813 named destinations out of 1000 (max. 500000)
- 1970 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2812 PDF objects out of 2984 (max. 8388607)
+ 2538 compressed objects within 26 object streams
+ 868 named destinations out of 1000 (max. 500000)
+ 1978 words of extra memory for PDF output out of 10000 (max. 10000000)
 
