@@ -427,7 +427,78 @@ Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa
 
 \subsection{Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}
 
+Por fim, com base no que foi explicado até agora, é possível entender melhor como o gradiente passa de uma acamada para a outra durante a retropropagação, para isso será analisada um rede com quatro camadas densas, sendo elas:
 
+\begin{itemize}
+    \item \textbf{Camada 1 (Entrada):}: Ela possui neurônios com o indice $i$;
+    \item \textbf{Camada 2 (Oculta 1):}: Ela possui neurônios com o indice $j$;
+    \item \textbf{Camada 3 (Oculta 3):}: Ela possui neurônios com o indice $k$;
+    \item \textbf{Camada 4 (Oculta 3):}: Ela possui neurônios com o indice $l$;
+\end{itemize}
+
+O objetivo é calcular o gradiente de um peso da primeira camada de pesos, $w_{ji}$, ou seja, é um peso que conecta um neurônio da camada $i$ com um neurônio da camada $j$. Assim, o primeiro passo é utilizar a fórmula \ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}, que calcula o gradiente do erro em relação a um peso quaquer.
+
+\[
+    \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot y_i
+\]
+
+Para encontrar esse gradiente, é preciso desenvolver a expressão $\partial E / \partial x_j$, que representa o gradiente do erro da entrada de um neurônio $j$ da primeira camada oculta. Para isso, é possível utilizar como base a equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, obtendo então:
+
+\[
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
+\]
+
+Nessa expressão, $\sigma'(x_j)$ representa a função de ativação, já o termo $\partial E / \partial y_j$ representa o gradiente que está vindo ca camada de cima, o qual é dado por:
+
+\[
+    \frac{\partial E}{\partial x_j} = \sum_k \frac{\partial E}{\partial x_k} \cdot w_{kj}
+\]
+
+Juntando os dois termos:
+
+\[
+    \frac{\partial E}{\partial x_j} = \left( \sum_k \frac{\partial E}{\partial x_k} \cdot w_{kj} \right) \sigma'(x_j)
+\]
+
+Agora, é preciso calcular o termo $\partial E / \partial x_j$, de forma que será possível trazer o gradiente da camada de saída $l$, assim temos:
+
+\[
+    \frac{\partial E}{\partial x_k} = \left( \sum_k \frac{\partial E}{\partial x_l} \cdot w_{lk} \right) \cdot \sigma'(x_k)
+\]
+
+Em que $\partial E / \partial x_l$ representa o primeiro gradiente, ele é calculado na camada de saída.
+
+Por último, é preciso combinar essas expressões, encontrando como resultado a expressão:
+
+\[
+    \frac{\partial E}{\partial w_{ij}} = \left( \sum_k \left[ \left( \sum_l \frac{\partial E}{\partial x_l} \cdot w_{lk} \right) \sigma'(x_k) \right] \cdot w_{kj} \right) \sigma(x_j) \cdot y_i
+\]
+
+Com base nessa expressão, é possível concluir que o gradiente de uma camada inicial é proporcional a uma cadeia de multiplicações dos pesos e das derivadas das funções de ativação das camadas posteriores, de forma que é possível simplificar isso para:
+
+\[
+    \frac{\partial E}{\partial w_{\text{primeira camada}}} \propto (\text{gradiente da saída}) \cdot (w_{\text{camada 3}} \cdot \sigma'_{\text{camada 3}}) \cdot (w_{\text{camada 2}} \cdot \sigma'_{\text{camada 2}})
+\]
+
+Generalizando essa expressão, é possível concluir que o gradiente para uma camada é dado ela equação \ref{eq:gradiente-para-n-camadas}.
+
+\begin{equacaodestaque}{Gradiente para N Camadas}
+    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma(x^{(L)})
+    \label{eq:gradiente-para-n-camadas}
+\end{equacaodestaque}
+
+Em que: 
+
+\begin{itemize}
+    \item $L$: Representa o índice de uma camada, podendo ser um valor entre $1$ (indicando que é uma camada de entrada) ou $n$ (indicando que é uma camada de saída);
+    \item $\textbf{W}^{(L)}$: Representa a matriz dde pesos que conecta a camada $L - 1$ à camada $L$;
+    \item $b^{(L)}$: Representa o vetor de viés da camada $L$;
+    \item $x^{(L)}$: Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
+    \item $y^{(L)}$: Representa o vetor de saídas da camada $L$
+    \item $\delta^{(L)}$: Representa o vetor do gradienye na camada $L$;
+    \item $\sigma(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
+    \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
+\end{itemize}
 
 % ===================================================================
 % Otimizadores Baseados em Gradiente
