@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  26 SEP 2025 12:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  26 SEP 2025 13:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1350,6 +1350,9 @@ LaTeX Warning: Label `lst:gd_class' multiply defined.
 LaTeX Warning: Label `fig: GraphTanh' multiply defined.
 
 
+LaTeX Warning: Label `fig: GraphTanh' multiply defined.
+
+
 LaTeX Warning: Label `lst:gd_class' multiply defined.
 
 
@@ -1613,17 +1616,30 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 [3]
 
 [4]
+Underfull \vbox (badness 2564) has occurred while \output is active []
+
+
 
 [5]
 
 [6]
-Overfull \hbox (2.03697pt too wide) detected at line 183
+Overfull \hbox (2.03697pt too wide) detected at line 178
  \T1/cmss/bx/n/12 101
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 185
- \T1/cmss/bx/n/12 104
+Overfull \hbox (2.03697pt too wide) detected at line 180
+ \T1/cmss/bx/n/12 103
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 182
+ \T1/cmss/bx/n/12 105
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 184
+ \T1/cmss/bx/n/12 108
  []
 
 
@@ -1632,88 +1648,88 @@ Underfull \vbox (badness 1394) has occurred while \output is active []
 
 
 [7]
+Overfull \hbox (2.03697pt too wide) detected at line 185
+ \T1/cmss/bx/n/12 108
+ []
+
+
 Overfull \hbox (2.03697pt too wide) detected at line 186
- \T1/cmss/bx/n/12 104
+ \T1/cmss/bx/n/12 108
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 187
- \T1/cmss/bx/n/12 104
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 189
- \T1/cmss/bx/n/12 106
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 196
+Overfull \hbox (2.03697pt too wide) detected at line 188
  \T1/cmss/bx/n/12 110
  []
 
 
+Overfull \hbox (2.03697pt too wide) detected at line 195
+ \T1/cmss/bx/n/12 114
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 197
+ \T1/cmss/bx/n/12 115
+ []
+
+
 Overfull \hbox (2.03697pt too wide) detected at line 198
- \T1/cmss/bx/n/12 111
+ \T1/cmss/bx/n/12 115
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 199
- \T1/cmss/bx/n/12 111
+ \T1/cmss/bx/n/12 115
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 200
- \T1/cmss/bx/n/12 111
+ \T1/cmss/bx/n/12 115
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 201
- \T1/cmss/bx/n/12 111
+ \T1/cmss/bx/n/12 115
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 202
- \T1/cmss/bx/n/12 111
+Overfull \hbox (2.03697pt too wide) detected at line 210
+ \T1/cmss/bx/n/12 117
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 211
- \T1/cmss/bx/n/12 113
+Overfull \hbox (2.03697pt too wide) detected at line 212
+ \T1/cmss/bx/n/12 119
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 213
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 119
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 214
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 119
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 215
- \T1/cmss/bx/n/12 115
+Overfull \hbox (2.03697pt too wide) detected at line 216
+ \T1/cmss/bx/n/12 119
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 217
- \T1/cmss/bx/n/12 115
+Overfull \hbox (2.03697pt too wide) detected at line 218
+ \T1/cmss/bx/n/12 119
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 219
- \T1/cmss/bx/n/12 115
+ \T1/cmss/bx/n/12 119
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 220
- \T1/cmss/bx/n/12 115
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 225
- \T1/cmss/bx/n/12 117
+Overfull \hbox (2.03697pt too wide) detected at line 224
+ \T1/cmss/bx/n/12 121
  []
 
 
@@ -1722,98 +1738,98 @@ Underfull \vbox (badness 2343) has occurred while \output is active []
 
 
 [8]
-Overfull \hbox (2.03697pt too wide) detected at line 226
- \T1/cmss/bx/n/12 117
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 227
- \T1/cmss/bx/n/12 117
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 228
- \T1/cmss/bx/n/12 117
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 231
- \T1/cmss/bx/n/12 117
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 232
- \T1/cmss/bx/n/12 117
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 233
- \T1/cmss/bx/n/12 117
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 235
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 236
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 237
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 238
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 239
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 240
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 241
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 245
- \T1/cmss/bx/n/12 119
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 247
+Overfull \hbox (2.03697pt too wide) detected at line 225
  \T1/cmss/bx/n/12 121
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 249
+Overfull \hbox (2.03697pt too wide) detected at line 226
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 227
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 230
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 231
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 232
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 234
  \T1/cmss/bx/n/12 123
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 251
+Overfull \hbox (2.03697pt too wide) detected at line 235
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 236
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 237
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 238
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 239
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 240
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 244
+ \T1/cmss/bx/n/12 123
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 246
  \T1/cmss/bx/n/12 125
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 253
+Overfull \hbox (2.03697pt too wide) detected at line 248
  \T1/cmss/bx/n/12 127
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 257
+Overfull \hbox (2.03697pt too wide) detected at line 250
+ \T1/cmss/bx/n/12 129
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 252
  \T1/cmss/bx/n/12 131
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 256
+ \T1/cmss/bx/n/12 135
  []
 
 )
@@ -1915,7 +1931,7 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
 [28]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=660, 903.375pt x 250.9375pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=658, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 65.
@@ -2057,100 +2073,119 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.7.6}) h
                                                   \__shipout_drop_firstpage_...
 l.218 
       ]
-\openout6 = `main.listing'.
 
- (./main.listing)
-
-[51]
-
-LaTeX Warning: Reference `eq: EquacaoTanh' on page 52 undefined on input line 260.
+LaTeX Warning: Reference `eq: FormulaSigmoide' on page 51 undefined on input line 245.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[51
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.7}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.246 
+      ]
+
+LaTeX Warning: Reference `eq: DerivadaSigmoide' on page 52 undefined on input line 251.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `eq: DerivadaSigmoideVariacao' on page 52 undefined on input line 277.
+
+
+LaTeX Warning: Reference `eq: DerivadaSigmoideVariacao' on page 52 undefined on input line 279.
+
+
+
+[52
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.280 
+      ]
+
+LaTeX Warning: Reference `lst:codigo-sigmoide' on page 53 undefined on input line 283.
 
 \openout6 = `main.listing'.
 
 (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[53]
+
+LaTeX Warning: Reference `eq: EquacaoTanh' on page 54 undefined on input line 312.
 
 
-
-[52]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-
-[53
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.7}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.331 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.8}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.331 
-      ]
-
-LaTeX Warning: Reference `fig:GraphSoftsign' on page 54 undefined on input line 336.
+LaTeX Warning: Reference `eq: DerivadaTanh' on page 54 undefined on input line 338.
 
 
-LaTeX Warning: Reference `eq:EquacaoSoftsign' on page 54 undefined on input line 338.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eq: DerivadaTanhVariacao' on page 54 undefined on input line 359.
+
+
+Underfull \vbox (badness 4981) has occurred while \output is active []
 
 
 
 [54]
 
-LaTeX Warning: Reference `fig:GraphSoftsign' on page 55 undefined on input line 340.
-
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eq: EquacaoTanh' on page 55 undefined on input line 389.
+
+
+LaTeX Warning: Reference `eq: DerivadaTanh' on page 55 undefined on input line 389.
+
+
+LaTeX Warning: Reference `lst:codigo-tanh' on page 55 undefined on input line 389.
 
 \openout6 = `main.listing'.
 
 (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [55
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.412 
-      ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[56
+l.410 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.419 
+l.410 
       ]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+[56
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.11}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.414 
+      ]
+
+LaTeX Warning: Reference `fig:GraphSoftsign' on page 57 undefined on input line 415.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `eq:EquacaoSoftsign' on page 57 undefined on input line 417.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Reference `fig:GraphSoftsign' on page 57 undefined on input line 419.
+
+
+LaTeX Warning: Reference `eq:DerivadaSoftsign' on page 57 undefined on input line 446.
 
 
 
 [57
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.11}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.12}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.516 
+l.447 
       ]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `lst:codigo-softsign' on page 58 undefined on input line 478.
 
 \openout6 = `main.listing'.
 
@@ -2160,25 +2195,74 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [58
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.12}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.573 
-      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.13}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.573 
+l.497 
       ]
+
+LaTeX Warning: Reference `eq: EquacaoHardSigmoid' on page 59 undefined on input line 502.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[59
+[59]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eq: EquacaoHardTanh' on page 60 undefined on input line 573.
+
+
+Underfull \vbox (badness 4569) has occurred while \output is active []
+
+
+
+[60
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.573 
+l.579 
+      ]
+
+LaTeX Warning: Reference `eq: DerivadaHardTanh' on page 61 undefined on input line 607.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[61
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.15}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.613 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.16}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.613 
+      ]
+
+LaTeX Warning: Reference `eq: EquacaoHardSigmoid' on page 62 undefined on input line 644.
+
+
+LaTeX Warning: Reference `eq: DerivadaHardSigmoid' on page 62 undefined on input line 644.
+
+\openout6 = `main.listing'.
+
+(./main.listing)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[62
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.17}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.672 
       ]
 \openout6 = `main.listing'.
 
@@ -2187,19 +2271,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[60])
+[63]
 
-[61]
+[64]
+Overfull \hbox (13.14594pt too wide) in paragraph at lines 716--717
+[]\T1/ppl/m/n/12 Em \T1/ppl/b/n/12 "Re-gu-la-ri-za-tion and Re-pa-ra-me-tri-za-tion Avoid Va-nishing Gra-di-ents in Sigmoid-
+ []
+
+
+
+[65])
+
+[66]
 \openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
 
  (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
-
-[62
-
-
-
-
-]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2210,8 +2296,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[63
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.15}) has been already used, duplicate ignored
+[67
+
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.18}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.90 
@@ -2220,8 +2311,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[64
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.16}) has been already used, duplicate ignored
+[68
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.19}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.101 
@@ -2236,15 +2327,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[65
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.17}) has been already used, duplicate ignored
+[69
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.20}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.170 
       ]
 
-[66
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.18}) has been already used, duplicate ignored
+[70
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.21}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.196 \end{figure}
@@ -2254,13 +2345,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[67
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.19}) has been already used, duplicate ignored
+[71
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.22}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.261 
       
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.20}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.23}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.261 
@@ -2275,13 +2366,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[68
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.21}) has been already used, duplicate ignored
+[72
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.24}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.336 
       
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.22}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.25}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.336 
@@ -2294,13 +2385,13 @@ Underfull \vbox (badness 6542) has occurred while \output is active []
 
 
 
-[69
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.23}) has been already used, duplicate ignored
+[73
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.26}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.392 
       
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.24}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.27}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.392 
@@ -2310,25 +2401,25 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[70
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.25}) has been already used, duplicate ignored
+[74
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.28}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.454 
       
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.26}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.29}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.454 
       ])
 
-[71
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.27}) has been already used, duplicate ignored
+[75
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.30}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.94 ...os/parte-III-pilares/cap-08-retificadoras}
                                                   
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8.28}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8.31}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.94 ...os/parte-III-pilares/cap-08-retificadoras}
@@ -2337,31 +2428,31 @@ l.94 ...os/parte-III-pilares/cap-08-retificadoras}
 
  (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
-[72
+[76
 
 
 
 
 ])
 
-[73]
+[77]
 \openout2 = `capitulos/parte-III-pilares/cap-10-perda-binaria.aux'.
 
  (./capitulos/parte-III-pilares/cap-10-perda-binaria.tex
 
-[74
+[78
 
 
 
 
 ])
 
-[75]
+[79]
 \openout2 = `capitulos/parte-III-pilares/cap-11-perda-multi.aux'.
 
  (./capitulos/parte-III-pilares/cap-11-perda-multi.tex
 
-[76
+[80
 
 
 
@@ -2373,64 +2464,40 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
 )
 
-[77]
+[81]
 \openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
 
  (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 
-[78
+[82
 
 
 
 
 ])
 
-[79]
+[83]
 
-[80
+[84
 
 
 
 ]
 
-[81]
+[85]
 
-[82]
+[86]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
 
-[83
+[87
 
 
 ]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
-
-[84
-
-
-
-
-])
-
-[85]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
-
-[86
-
-
-
-
-])
-
-[87]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [88
 
@@ -2440,9 +2507,9 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [89]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
+ (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [90
 
@@ -2452,9 +2519,9 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [91]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+ (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [92
 
@@ -2464,21 +2531,45 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 ])
 
 [93]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
 [94
 
 
 
-]
+
+])
 
 [95]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
 
-[96]
+ (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+
+[96
+
+
+
+
+])
+
+[97]
+
+[98
+
+
+
+]
+
+[99]
+
+[100]
 \openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
 
-[97
+[101
 
 
 ]
@@ -2486,31 +2577,31 @@ Overfull \hbox (14.20323pt too wide) in paragraph at lines 12--12
 
  (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
 
-[98
+[102
 
 
 
 
 ])
 
-[99]
+[103]
 \openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
 
-[100
+[104
 
 
 
 
 ])
 
-[101]
+[105]
 \openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
-[102
+[106
 
 
 
@@ -2527,34 +2618,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[103]
-Overfull \vbox (1272.7535pt too high) has occurred while \output is active []
-
-
-
-[104]
-\openout6 = `main.listing'.
-
- (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[105]
-Overfull \vbox (493.3008pt too high) has occurred while \output is active []
-
-
-
-[106]
-\openout6 = `main.listing'.
-
- (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
 [107]
-Overfull \vbox (256.19066pt too high) has occurred while \output is active []
+Overfull \vbox (1272.7535pt too high) has occurred while \output is active []
 
 
 
@@ -2562,6 +2627,16 @@ Overfull \vbox (256.19066pt too high) has occurred while \output is active []
 \openout6 = `main.listing'.
 
  (./main.listing)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[109]
+Overfull \vbox (493.3008pt too high) has occurred while \output is active []
+
+
+
+[110]
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -2569,41 +2644,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[109])
+[111]
+Overfull \vbox (256.19066pt too high) has occurred while \output is active []
+
+
+
+[112]
+\openout6 = `main.listing'.
+
+ (./main.listing)
+\openout6 = `main.listing'.
+
+ (./main.listing)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[110]
+[113])
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[111]
+
+
+[114]
+
+[115]
 \openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-23-resnets.tex
-
-[112
-
-
-
-
-])
-
-[113]
-\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
-
-[114
-
-
-
-
-])
-
-[115]
-\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [116
 
@@ -2613,9 +2680,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [117]
-\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
+ (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
 [118
 
@@ -2625,9 +2692,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [119]
-\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-27-gans.tex
+ (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [120
 
@@ -2637,9 +2704,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [121]
-\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-28-moe.tex
+ (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
 [122
 
@@ -2649,9 +2716,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [123]
-\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
+ (./capitulos/parte-V-deep-learning/cap-27-gans.tex
 
 [124
 
@@ -2661,9 +2728,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [125]
-\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+ (./capitulos/parte-V-deep-learning/cap-28-moe.tex
 
 [126
 
@@ -2673,18 +2740,42 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [127]
+\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
 [128
 
 
 
-]
+
+])
 
 [129]
+\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
 
-[130]
+ (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
 
-[131
+[130
+
+
+
+
+])
+
+[131]
+
+[132
+
+
+
+]
+
+[133]
+
+[134]
+
+[135
 
 ]
 \tf@toc=\write7
@@ -2707,18 +2798,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 57118 strings out of 467888
- 1303380 string characters out of 5434061
- 4188087 words of memory out of 5000000
- 83787 multiletter control sequences out of 15000+600000
+ 57160 strings out of 467888
+ 1304178 string characters out of 5434061
+ 4188296 words of memory out of 5000000
+ 83823 multiletter control sequences out of 15000+600000
  687078 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,107p,1247b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (133 pages, 731107 bytes).
+Output written on main.pdf (137 pages, 749846 bytes).
 PDF statistics:
- 2592 PDF objects out of 2984 (max. 8388607)
- 2354 compressed objects within 24 object streams
- 807 named destinations out of 1000 (max. 500000)
- 1978 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2611 PDF objects out of 2984 (max. 8388607)
+ 2369 compressed objects within 24 object streams
+ 813 named destinations out of 1000 (max. 500000)
+ 1970 words of extra memory for PDF output out of 10000 (max. 10000000)
 
