@@ -208,7 +208,7 @@ Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadore
 A primeira função, representada na equação xx, explica como um neurônio de uma camada densa irá funcionar quando recebe determinadas entradas.
 
 \begin{equacaodestaque}{Equação do Neurônio}
-    x_j = (\sum{j} y_i + w_{ji}) + b_j
+    x_j = (\sum_i y_i \cdot w_{ji}) + b_j
     \label{eq:neuronio-camada-densa}
 \end{equacaodestaque}
 
@@ -221,12 +221,12 @@ Sendo que:
     \item $b_j$: representa o viés do neurônio $j$.
 \end{itemize}
 
-Caso você leitor decida olhar o artigo original, verá que os autores utilizaram notações diferentes na fórmula do neurônio, eles utilizam algo na forma $x_i = \sum_j y_i + w_{ji}$, sem o viés, mas na prática, eles adicionam o viés como um peso extra que terá valor fixo igual a 1, na prática, ele pode ser tratado com um peso normal, por isso a notação mais simplificada \parencite{BackpropagationArticle}.
+Caso você leitor decida olhar o artigo original, verá que os autores utilizaram notações diferentes na fórmula do neurônio, eles utilizam algo na forma $x_i = \sum_i y_i \cdot w_{ji}$, sem o viés, mas na prática, eles adicionam o viés como um peso extra que terá valor fixo igual a 1, na prática, ele pode ser tratado com um peso normal, por isso a notação mais simplificada \parencite{BackpropagationArticle}.
 
 A segunda fórmula diz respeito a função de ativação que será utilizada, neste caso, \textcite{BackpropagationArticle} utilizam a sigmoide logísitca, representada na fórmula xx, mas eles explicam que essa função pode variar conforme o problema, porém recomendam ter uma derivada limitada além de ser não linear, para que o modelo possa aprender de forma mais efciente.
 
 \begin{equacaodestaque}{Sigmoide Logística}
-    y_j = \sigma(x_j) = \frac{1}{1 + e^{x_j}}
+    y_j = \sigma(x_j) = \frac{1}{1 + e^{-x_j}}
     \label{eq:sigmoide}
 \end{equacaodestaque}
 
@@ -250,13 +250,13 @@ Em que:
 Considerando essas equações, \textcite{BackpropagationArticle} explicam que o objetivo é reduzir o valor do erro $E$, para isso, eles aplicam o método do gradiente para encontrar o ponto de mínimo da função MSE. Para isso, o primeiro passo é diferenciar o valor da função de erro em relação a cada um dos pesos da rede neural, assim, deve-se calcular $\partial E / \partial y_k$ para um caso específico $k$, e depois generalizar a situação. Assim, é possível encontrar uma expressão da forma:
 
 \[
-    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_c \sum_k (y_{k, c} - d_{j, c}^2)\right]
+    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_c \sum_k (y_{k, c} - d_{j, c})^2\right]
 \]
 
 O primeiro passo é suprimir a soma sobre os casos $c$, pois, consideramos apenas de um caso específico $k$, então a expressão se simplifica para:
 
 \[
-    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_k (y_{k, c} - d_{j, c}^2)\right]
+    \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_k (y_{k, c} - d_{j, c})^2\right]
 \]
 
 O próximo passo é abrir a soma, para isso, será considerado que existem $n$ neurônios na camada, assim, a expressão fica:
@@ -265,7 +265,7 @@ O próximo passo é abrir a soma, para isso, será considerado que existem $n$ n
     \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \left( (y_1 - d_1)^2 + (y_2 - d_2)^2 + \cdots (y_k + d_k)^2 + \cdots + (y_n + d_n)^2 \right) \right]
 \]
 
-Note que todos os termos que não possuem o índice $k$, como a parte $(y_1 - d_1)^2$, serão valores constantes, e que estrão fora do obejtivo de calcular a derivada para o neurônio $k$, como eles são constantes, a sua derivada será igual a zero. Com base nisso, é possível obter uma versão ainda mais simplificada, sendo ela:
+Note que todos os termos que não possuem o índice $k$, como a parte $(y_1 - d_1)^2$, serão valores constantes, e que estarão fora do obejtivo de calcular a derivada para o neurônio $k$, como eles são constantes, a sua derivada será igual a zero. Com base nisso, é possível obter uma versão ainda mais simplificada, sendo ela:
 
 \[
     \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} (y_k + d_k)^2 \right]
@@ -280,7 +280,7 @@ Agora, o último passo é aplicar a regra da cadeia na expressão que sobrou par
 Voltando para o índice $j$ da notação inicial, é possível concluir que o gradiente do erro (para a função MSE) em relação a uma saída específica de um neurônio é dado pela diferença da saída da unidade pela resultado desejado, ou seja
 
 \[
-    \frac{\partial E}{\partial y_j} = y_j - d_j 
+    \frac{\partial E}{\partial y_j} = (y_j - d_j) 
 \]
 
 O próximo passo proposto pelos autores, consiste em calcular o gradiente do erro em relação a entrada do neurônio $j$, para entender como o erro total muda em relação a uma variação na entrada do neurônio. Para isso, é preciso encontrar então a expressão $\partial E / \partial x_j$ \parencite{BackpropagationArticle}.
@@ -288,7 +288,7 @@ O próximo passo proposto pelos autores, consiste em calcular o gradiente do err
 Assim, a primeira etepa é aplicar a regra da cadeia, pois, como a entrada do neurônio $x_j$ não aparece diretamente na equação do erro, é preciso aplicar a regra da cadeia, derivando o erro em relação a saída do neurônio $y_j$ e multiplicando esse resultado pela derivada da saída do neurônio em relação a sua entrada, assim, a expressão inicial é:
 
 \[
-    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_i}{\partial x_j}
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial x_j}
 \]
 
 Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é resultamente o primeiro que foi calculado e desenvolvido na expressão \ref{eq:gradiente-do-erro-em-relacao-a-saida-de-um-neuronio}, com isso, é possível substituir esse termo na expressão por $y_j - d_j$. A segunda informação, é de que o termo $\partial y_i / \partial x_j$ é justamente a derivada da função de ativação em relação a sua entrada, ou seja, $\sigma'(x_j)$, assim, a derivada da sigmoide será dada por:
@@ -300,7 +300,7 @@ Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é resu
 Sendo assim, a expressão final fica:
 
 \[
-    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} (1 - y_i)
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot y_j \cdot (1 - y_j)
 \]
 
 Note que é possível generalizar essa expressão, dessa forma o gradiente do erro da entrada de um neurônio é o gradiente do erro da saída do neurônio multiplicado pela derivada da função de ativação $\sigma'$ em relação a sua entrada $x_j$.
@@ -352,7 +352,7 @@ Como $y_i$ é uma constante em relação a $w_ij$ a derivada final será dada po
 Agora é possível voltar para a expressão inicial, obtendo então a expressão final para o gradiente do erro em relação a um peso específico da rede neural, sendo ela:
 
 \begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Peso de um Neurônio}
-    \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot y_i = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
+    \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot y_i = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
     \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
 \end{equacaodestaque}
 
@@ -413,7 +413,7 @@ Analogamente, a regra de atualização de um viés pelo método do gradiente é 
 
 Neste caso, $b_{j, t+1}$ representa o valor final de um viés $j$ após o incremento do método e $b_{j, t}$ o valor inicial do viés $j$.
 
-Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa de neurônios, você não irá lidar com um neurônio específico, e sim como uma conjunto inteiro deles. Dessa forma, eles estrão distribuidos de forma vetorizada, que que terá um vetor de viéses, uma matriz de pesos e um vetor de neurônios. Assim, as expressões {eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} e \ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}, resumem a as regras de atualização de pesos e vieses, respectivamente, para casos em que estiver lidando com um conjunto de vetores ao invés de somente um dado.
+Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa de neurônios, você não irá lidar com um neurônio específico, e sim como uma conjunto inteiro deles. Dessa forma, eles estrão distribuidos de forma vetorizada, que que terá um vetor de viéses, uma matriz de pesos e um vetor de neurônios. Assim, as expressões {eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} e \ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}, resumem as regras de atualização de pesos e vieses, respectivamente, para casos em que estiver lidando com um conjunto de vetores ao invés de somente um dado.
 
 \begin{equacaodestaque}{Regra de Atualização do Vetor de Pesos Através do Método do Gradiente}
     \mathbf{w}_{t+1} = \mathbf{w}_t - \epsilon \nabla_{\mathbf{w}} E
@@ -483,7 +483,7 @@ Com base nessa expressão, é possível concluir que o gradiente de uma camada i
 Generalizando essa expressão, é possível concluir que o gradiente para uma camada é dado ela equação \ref{eq:gradiente-para-n-camadas}.
 
 \begin{equacaodestaque}{Gradiente para N Camadas}
-    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma(x^{(L)})
+    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma'(x^{(L)})
     \label{eq:gradiente-para-n-camadas}
 \end{equacaodestaque}
 
@@ -496,9 +496,13 @@ Em que:
     \item $x^{(L)}$: Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
     \item $y^{(L)}$: Representa o vetor de saídas da camada $L$
     \item $\delta^{(L)}$: Representa o vetor do gradienye na camada $L$;
-    \item $\sigma(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
+    \item $\sigma'(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
     \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
 \end{itemize}
+
+Assim, é possível entender como o gradiente irá se propagar ao longo de uma rede neural. Esse ponto é um dos mais importantes, pois é possível considerar que ele terá uma grande relação com as funções de ativação que são utilizadas. Essa é uma relação complicada, pois, enquanto um determinado tipo de função possa causar um tipo de problema no cálculo do gradiente, e por isso não deve ser uma opção viável para ser escolhida para resolver um problema, optar por outra família de função também pode acarretar outro tipo de problema com o gradiente.
+
+Para isso, o capítulo \ref{cap:ativacao-sigmoidais} foca em entender as pricipais funções sigmoidais, como a sigmoide e a tangente hiperbólica, e como essas possuem uma forte relação com o problema do desaparecimento de gradientes. Em seguida, o capítulo \ref{cap:ativacao-retificadoras} busca introduzir as funções retificadoras, como a ReLU, e como elas podem ser uma alternativa para contornar esse problema. Contudo, isso não as torna perfeitas, elas ainda são suceptíveis à outro tipo de problema: a explosão de gradientes; e, no caso da ReLU: o problema dos neurônios agonizantes.
 
 % ===================================================================
 % Otimizadores Baseados em Gradiente
@@ -506,11 +510,13 @@ Em que:
 
 \section{Otimizadores Baseados em Gradiente}
 
-\subsection{Método do Gradiente Estocástico}
+Como \textcite{BackpropagationArticle} explicam logo ao terminar a dedução do cálculo da atualização dos pesos utilizando o método do gradiente, esse processo pode ser bastante lento quando comparado com métodos que fazem uso de derivadas de segunda ordem, que certamente são mais caras para serem implementadas no computador. Assim, os autores recomendam uma variação do método do gradiente que faz uso de momentum com intuito de acelerar a convergência a um custo computacional menor que o de implementar derivadas de segunda ordem \parencite{BackpropagationArticle}.
+
+\subsection{Método do Gradiente com Momentum}
 
 \subsubsection{Implementação em Python}
 
-\subsection{Método do Gradiente com Momentum}
+\subsection{Método do Gradiente Estocástico}
 
 \subsubsection{Implementação em Python}
 

@@ -56,23 +56,23 @@
 \contentsline {subsection}{\numberline {6.2.1}Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{37}{subsection.6.2.1}%
 \contentsline {subsection}{\numberline {6.2.2}Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}{39}{subsection.6.2.2}%
 \contentsline {section}{\numberline {6.3}Otimizadores Baseados em Gradiente}{41}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Método do Gradiente Estocástico}{41}{subsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.1.1}Implementação em Python}{41}{subsubsection.6.3.1.1}%
-\contentsline {subsection}{\numberline {6.3.2}Método do Gradiente com Momentum}{41}{subsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.2.1}Implementação em Python}{41}{subsubsection.6.3.2.1}%
-\contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente}{41}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Nesterov}{41}{subsection.6.4.1}%
-\contentsline {subsubsection}{\numberline {6.4.1.1}Implementação em Python}{41}{subsubsection.6.4.1.1}%
-\contentsline {subsection}{\numberline {6.4.2}AdaGrad}{41}{subsection.6.4.2}%
-\contentsline {subsubsection}{\numberline {6.4.2.1}Implementação em Python}{41}{subsubsection.6.4.2.1}%
-\contentsline {subsection}{\numberline {6.4.3}RMSProp}{41}{subsection.6.4.3}%
-\contentsline {subsubsection}{\numberline {6.4.3.1}Implementação em Python}{41}{subsubsection.6.4.3.1}%
-\contentsline {subsection}{\numberline {6.4.4}Adam}{41}{subsection.6.4.4}%
-\contentsline {subsubsection}{\numberline {6.4.4.1}Implementação em Python}{41}{subsubsection.6.4.4.1}%
-\contentsline {subsection}{\numberline {6.4.5}Nadam}{41}{subsection.6.4.5}%
-\contentsline {subsubsection}{\numberline {6.4.5.1}Implementação em Python}{41}{subsubsection.6.4.5.1}%
-\contentsline {section}{\numberline {6.5}O Método de Newton: Indo Além do Gradiente}{41}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Implementação em Python}{41}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.3.1}Método do Gradiente com Momentum}{42}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}Implementação em Python}{42}{subsubsection.6.3.1.1}%
+\contentsline {subsection}{\numberline {6.3.2}Método do Gradiente Estocástico}{42}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}Implementação em Python}{42}{subsubsection.6.3.2.1}%
+\contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente}{42}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Nesterov}{42}{subsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.1}Implementação em Python}{42}{subsubsection.6.4.1.1}%
+\contentsline {subsection}{\numberline {6.4.2}AdaGrad}{42}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}Implementação em Python}{42}{subsubsection.6.4.2.1}%
+\contentsline {subsection}{\numberline {6.4.3}RMSProp}{42}{subsection.6.4.3}%
+\contentsline {subsubsection}{\numberline {6.4.3.1}Implementação em Python}{42}{subsubsection.6.4.3.1}%
+\contentsline {subsection}{\numberline {6.4.4}Adam}{42}{subsection.6.4.4}%
+\contentsline {subsubsection}{\numberline {6.4.4.1}Implementação em Python}{42}{subsubsection.6.4.4.1}%
+\contentsline {subsection}{\numberline {6.4.5}Nadam}{42}{subsection.6.4.5}%
+\contentsline {subsubsection}{\numberline {6.4.5.1}Implementação em Python}{42}{subsubsection.6.4.5.1}%
+\contentsline {section}{\numberline {6.5}O Método de Newton: Indo Além do Gradiente}{42}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Implementação em Python}{42}{subsection.6.5.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{43}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal}{43}{section.7.1}%
