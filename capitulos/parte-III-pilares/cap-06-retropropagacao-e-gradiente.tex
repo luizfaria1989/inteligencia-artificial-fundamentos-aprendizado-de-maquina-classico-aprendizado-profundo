@@ -514,7 +514,69 @@ Como \textcite{BackpropagationArticle} explicam logo ao terminar a dedução do 
 
 \subsection{Método do Gradiente com Momentum}
 
+Uma boa analogia para entender como o método do gradiente com momentum funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganahando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida a esse cenário.
+
+Da mesma forma que o método do gradiente não surgiu originalmente no contexto do aprendizado de máquina, a sua variante com momentum não foi diferente. Um os artigos que trabalha com esse conceito de utilizar o momentum para acelerar a velocidade do método do gradiente e com isso obter uma convergência mais rápida é o \textit{Some methods of speeding up the convergence of iteration methods}, do pesquisador \textcite{polyak1964}, nele o autor busca criar métodos iterativos mais rápidos para resolver equações funcionais. Para isso, ele introduz um método de "dois passos", que consiste na junção do método do gradiente com um segundo termo que dá inércia ao método, por último, ele justifica que esse método trás de fato uma convergência mais veloz quando comparado com métodos como o do gradiente.
+
+Contudo, assim como a grande maioria dos conceitos matemáticos, essa ideia demorou a ser implementada para o aprendizado de máquina, e com o surgimento da retropropagação, como demonstrado por \parencite{BackpropagationArticle}, em seu artigo, o método do gradiente com momentum se tornou uma excelente opção para garantir uma convergência mais rápida. Esse método é representado pela equação \ref{eq:metodo-do-gradiente-com-momentum-de-polyak}
+
+\begin{equacaodestaque}{Método do Gradiente com Momentum de Polyak}
+        x_{n+1} = x_n - \epsilon \nabla f(x_n) + \beta(x_n - x_{n-1})
+    \label{eq:metodo-do-gradiente-com-momentum-de-polyak}
+\end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_{n+1}$: Representa as coordenadas do ponto após a iteração do método;
+    \item $x_n$: Representa as coordenadas do ponto na iteração $n$;
+    \item $\epsilon$: Representa a taxa de aprendizado / tamanho do passo
+    \item $\beta$: Representa a "inércia", controlando a influência do passo anterior no passo atual;
+    \item $x_{n-1}$: Representa as coordenadas do ponto na iteração anterior.
+\end{itemize}
+
+Para calcular $\beta$, \textcite{polyak1964} determina que será utilizada a expressão:
+
+\[
+    \beta = \left( \frac{\sqrt{M} - \sqrt{m}}{\sqrt{M} + \sqrt{m}} \right)^2
+\]
+
+Em que $M$ representa o maior valor da matriz hessiana $m$ é o menor valor no ponto de mínimo da função. Isso significa que esses valores não são conhecidos de antemão. Contudo o maior problema da fórmula proposta por Polyak é que ela exige muitos cálculos, imagine ter que calcular a matriz hessiana de uma função de perda para uma rede que possui milhares ou até milhões de parâmetros, isso é muita coisa e também muito demorado. Assim, no artigo da retropropagação, \textcite{BackpropagationArticle}, apresentam uma fórmula diferente, com intuito dimunuir a quantidade de cálculos a serem feitas, mas mantendo a principal caracterísitca do método do gradiente com momentum: a inércia; ela é dada pela equação \ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
+
+\begin{equacaodestaque}{Método do Gradiente com Momentum Usado na Retropropagação}
+        \Delta w (t) = \epsilon \nabla f(x) + \alpha \Delta w(t-1)
+    \label{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
+\end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $\Delta w(t)$: Representa a variação nos pesos;
+    \item $\epsilon$: Representa a taxa de aprendizado;
+    \item $\nabla f(x)$: Representa o gradiente;
+    \item $\alpha$: Representa um fator de decaimento exponencial entre 0 e 1 que determina a contribuição do gradiente passado para o gradiente futuro.
+\end{itemize}
+
 \subsubsection{Implementação em Python}
+
+\begin{algorithm}[H]
+\caption{O Método do Gradiente com Momentum (versão de Rumelhart et al.)}
+\label{alg:momentum_rumelhart}
+\begin{algorithmic}[1]
+\Require Taxa de aprendizado global $\epsilon$
+\Require Coeficiente de momentum $\alpha$
+\Require Parâmetros iniciais $\boldsymbol{\theta}$
+
+\State Inicialize a atualização anterior: $\Delta\boldsymbol{\theta} \gets \mathbf{0}$
+\State Inicialize os parâmetros $\boldsymbol{\theta}$
+
+\While{critério de parada não for atingido}
+    \State Calcule o gradiente $\mathbf{g} \gets \nabla_{\boldsymbol{\theta}} L(\boldsymbol{\theta})$
+    \State Calcule a atualização atual: $\Delta\boldsymbol{\theta} \gets -\epsilon \mathbf{g} + \alpha \Delta\boldsymbol{\theta}$
+    \State Aplique a atualização: $\boldsymbol{\theta} \gets \boldsymbol{\theta} + \Delta\boldsymbol{\theta}$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Método do Gradiente Estocástico}
 
