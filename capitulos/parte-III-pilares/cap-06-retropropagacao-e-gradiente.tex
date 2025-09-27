@@ -5,6 +5,11 @@
 \chapter{O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente}
 \label{cap:retropropagacao-gradiente}
 
+\begin{flushright}
+\textit{A filosofia de vida do gradiente descendente: 'Para lá é para baixo? É. Então eu vou para lá.'} \\
+--- A Sabedoria do Algoritmo
+\end{flushright}
+
 % ===================================================================
 % Resumo do capítulo
 % ===================================================================
@@ -578,29 +583,182 @@ Em que:
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Método do Gradiente em Mini-Batch}
+
 \subsection{Método do Gradiente Estocástico}
+
+\begin{equacaodestaque}{Método do Gradiente Estocástico}
+        \theta_{\text{novo}} = \theta_{\text{antigo}} - n \nabla J(\theta; x^{(i); y^{(i)}}
+    \label{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
+\end{equacaodestaque}
+
+\subsubsection{Implementação em Python}
+
+\subsection{Gradiente Acelerado de Nesterov}
+
+\begin{equacaodestaque}{Gradiente Acelerado de Nesterov}
+    \begin{aligned}
+        y_k     &= x_k + \beta(x_k - x_{k-1})   && \text{1. Calcula uma predição futura (lookahead) } y_k, \\
+                &                               && \text{   dando um passo na direção do momento anterior.} \\[1em]
+        x_{k+1} &= y_k - \epsilon \nabla f(y_k) && \text{2. Calcula o gradiente em } y_k \text{ (na predição)} \\
+                &                               && \text{   e atualiza os pesos } x_k \text{ a partir de } y_k.
+    \end{aligned}
+    \label{eq:gradiente-acelerado-de-nesterov}
+\end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_k$: Representa o ponto de "lookahead";
+    \item $x_k$: Representa os parâmetros na iteração $k$;
+    \item $x_{k-1}$: Representa os parâmetros na iteração $k-1$;
+    \item $\beta$: Representa
+    \item $x_{k+1}$: Representa os parâmetros na iteração $k+1$;
+    \item $epislon$: Representa a taxa de aprendizado;
+    \item $\nabla f(y_k)$: Representa o vetor gradiente calculado no ponto de "lookahead"
+\end{itemize}
 
 \subsubsection{Implementação em Python}
 
 \section{Otimizadores Modernos Baseados em Gradiente}
 
-\subsection{Nesterov}
-
-\subsubsection{Implementação em Python}
-
 \subsection{AdaGrad}
+
+\begin{equacaodestaque}{AdaGrad}
+    \begin{aligned}
+        G_t          &= G_{t-1} + g_t \odot g_t && \text{1. Acumula a soma dos quadrados dos gradientes }(g_t) \\
+                     &                           && \text{   na matriz } G_t \text{ a cada passo.} \\[1em]
+        \theta_{t+1} &= \theta_t - \frac{n}{\sqrt{G_t + \epsilon}} \odot g_t && \text{2. Atualiza os parâmetros }(\theta). \text{ A taxa de aprendizado } (n) \\
+                     &                           && \text{   é adaptada para cada parâmetro, sendo dividida} \\
+                     &                           && \text{   pela raiz da soma acumulada } G_t.
+    \end{aligned}
+    \label{eq:adagrad}
+\end{equacaodestaque}
+
 
 \subsubsection{Implementação em Python}
 
 \subsection{RMSProp}
 
+\begin{equacaodestaque}{RMSProp}
+    \begin{aligned}
+        E[g^2]_t     &= \gamma E[g^2]_{t-1} + (1 - \gamma)(g_t \odot g_t) && \text{1. Calcula a média móvel dos quadrados dos} \\
+                     &                                                   && \text{   gradientes. O fator } \gamma \text{ (decaimento) dá mais} \\
+                     &                                                   && \text{   peso aos gradientes mais recentes.} \\[1em]
+        \theta_{t+1} &= \theta_t - \frac{n}{\sqrt{E[g^2]_t + \epsilon}} \odot g_t && \text{2. Atualiza os parâmetros. A taxa de aprendizado é} \\
+                     &                                                            && \text{   dividida pela raiz da média móvel, evitando que} \\
+                     &                                                            && \text{   a atualização se torne pequena demais com o tempo.}
+    \end{aligned}
+    \label{eq:RMSProp}
+\end{equacaodestaque}
+
 \subsubsection{Implementação em Python}
 
-\subsection{Adam}
+\subsection{Adaptive Moment Estimation (Adam)}
+
+\begin{equacaodestaque}{Adaptive Moment Estimation (Adam)}
+    \begin{aligned}
+        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Atualiza o momento de 1ª ordem (média móvel dos gradientes).} \\[1em]
+        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2)(g_t \odot g_t) && \text{2. Atualiza o momento de 2ª ordem (média móvel dos} \\
+                     &                                                   && \text{   quadrados dos gradientes), como no RMSProp.} \\[1.5em]
+        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem, que é} \\
+                     &                               && \text{   inicializado em zero e precisa de aquecimento.} \\[1em]
+        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
+        \theta_{t+1} &= \theta_t - n \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} && \text{5. Atualiza os parâmetros combinando o momento corrigido} \\
+                     &                                                            && \text{   com a taxa de aprendizado adaptativa corrigida.}
+    \end{aligned}
+    \label{eq:Adam}
+\end{equacaodestaque}
 
 \subsubsection{Implementação em Python}
 
-\subsection{Nadam}
+\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+
+\begin{equacaodestaque}{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+    \begin{aligned}
+        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1) g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
+        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2) (g_t \odot g_t) && \text{2. Calcula o momento de 2ª ordem.} \\[1.5em]
+        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
+        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
+        \theta_{t+1} &= \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \left( \beta_1 \hat{m}_t + \frac{(1 - \beta_1) g_t}{1 - \beta_1^t} \right) && \text{5. Atualiza os parâmetros. A regra de atualização} \\
+                     &                                                            && \text{   incorpora o momento Nesterov, usando uma} \\
+                     &                                                            && \text{   estimativa do gradiente "lookahead".}
+    \end{aligned}
+    \label{eq:Nadam}
+\end{equacaodestaque}
+
+\subsubsection{Implementação em Python}
+
+\subsection{Adam With Decoupled Weight Decay (AdamW)}
+
+\begin{equacaodestaque}{Adam With Decoupled Weight Decay (AdamW)}
+    \begin{aligned}
+        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Atualiza o momento de 1ª ordem.} \\[1em]
+        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2)(g_t \odot g_t) && \text{2. Atualiza o momento de 2ª ordem.} \\[1.5em]
+        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
+        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
+        \theta_{t+1} &= \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} - \eta \lambda \theta_t && \text{5. Atualiza os pesos com o passo do Adam e aplica} \\
+                     &                                                            && \text{   o decaimento de peso }(\lambda)\text{ de forma desacoplada.}
+    \end{aligned}
+    \label{eq:adamw}
+\end{equacaodestaque}
+
+\subsubsection{Implementação em Python}
+
+\subsection{RAdam}
+
+\begin{equacaodestaque}{RAdam}
+    \begin{aligned}
+        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
+        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2)(g_t \odot g_t) && \text{2. Calcula o momento de 2ª ordem.} \\[1.5em]
+        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1.5em]
+        \rho_t       &= \rho_\infty - \frac{2t\beta_2^t}{1-\beta_2^t} && \text{4. Calcula o comprimento aproximado da média móvel.} \\[1.5em]
+        \theta_{t+1} &= 
+            \begin{cases}
+                \theta_t - \eta_t \hat{m}_t & \text{se } \rho_t \le 4 \\
+                \theta_t - \eta_t \frac{r_t \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} & \text{se } \rho_t > 4
+            \end{cases}
+                     && \text{5. Atualiza os pesos. Usa apenas o momento se a} \\
+                     &   && \text{   variância for instável }(\rho_t \le 4)\text{, senão usa a} \\
+                     &   && \text{   taxa adaptativa retificada com o termo } r_t.
+    \end{aligned}
+    \label{eq:RAdam-comentado}
+\end{equacaodestaque}
+
+\subsubsection{Implementação em Python}
+
+\subsection{AdaBelief}
+
+\begin{equacaodestaque}{AdaBelief}
+    \begin{aligned}
+        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
+        s_t          &= \beta_2 s_{t-1} + (1 - \beta_2)(g_t - m_t)^2 && \text{2. Calcula o momento de 2ª ordem} \\
+                     &                                                   && \text{   baseado na diferença entre o gradiente atual e a} \\
+                     &                                                   && \text{   média móvel (a "crença" na direção).} \\[1.5em]
+        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
+        \hat{s}_t    &= \frac{s_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
+        \theta_{t+1} &= \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{s}_t} + \epsilon} && \text{5. Atualiza os pesos. Dá passos grandes quando o} \\
+                     &                                                            && \text{   gradiente é previsível e pequenos quando não é.}
+    \end{aligned}
+    \label{eq:AdaBelief}
+\end{equacaodestaque}
+
+\subsubsection{Implementação em Python}
+
+\subsection{Evolved Sign Momentum (Lion)}
+
+\begin{equacaodestaque}{Lion}
+    \begin{aligned}
+        c_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Interpola o momento anterior e o gradiente atual} \\
+                     &                                       && \text{   para obter a direção da atualização.} \\[1.5em]
+        \theta_{t+1} &= \theta_t - \eta \cdot \text{sign}(c_t) && \text{2. Atualiza os pesos usando apenas} \\
+                     &                                           && \text{   o SINAL (sign) da direção, não a magnitude.} \\
+                     &                                           && \text{   Cada peso se move exatamente por } \eta \text{ ou } -\eta. \\[1.5em]
+        m_t          &= \beta_2 m_{t-1} + (1 - \beta_2)g_t && \text{3. Atualiza o estado do momento para o próximo passo,} \\
+                     &                                       && \text{   usando um } \beta_2 \text{ diferente.}
+    \end{aligned}
+    \label{eq:Lion-comentado}
+\end{equacaodestaque}
 
 \subsubsection{Implementação em Python}
 
