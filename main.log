@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  27 SEP 2025 16:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  27 SEP 2025 18:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1721,28 +1721,38 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 [4]
 
 [5]
-Overfull \hbox (2.03697pt too wide) detected at line 115
+Overfull \hbox (2.03697pt too wide) detected at line 113
  \T1/cmss/bx/n/12 101
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 119
+Overfull \hbox (2.03697pt too wide) detected at line 117
  \T1/cmss/bx/n/12 114
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 120
+Overfull \hbox (2.03697pt too wide) detected at line 118
  \T1/cmss/bx/n/12 115
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 122
+Overfull \hbox (2.03697pt too wide) detected at line 120
+ \T1/cmss/bx/n/12 117
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 121
  \T1/cmss/bx/n/12 117
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 123
- \T1/cmss/bx/n/12 117
+ \T1/cmss/bx/n/12 121
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 124
+ \T1/cmss/bx/n/12 121
  []
 
 
@@ -1761,13 +1771,13 @@ Overfull \hbox (2.03697pt too wide) detected at line 127
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 128
- \T1/cmss/bx/n/12 121
+Overfull \hbox (2.03697pt too wide) detected at line 129
+ \T1/cmss/bx/n/12 123
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 129
- \T1/cmss/bx/n/12 121
+Overfull \hbox (2.03697pt too wide) detected at line 130
+ \T1/cmss/bx/n/12 123
  []
 
 
@@ -1781,13 +1791,13 @@ Overfull \hbox (2.03697pt too wide) detected at line 132
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 133
- \T1/cmss/bx/n/12 123
+Overfull \hbox (2.03697pt too wide) detected at line 134
+ \T1/cmss/bx/n/12 125
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 134
- \T1/cmss/bx/n/12 123
+Overfull \hbox (2.03697pt too wide) detected at line 135
+ \T1/cmss/bx/n/12 125
  []
 
 
@@ -1796,13 +1806,13 @@ Overfull \hbox (2.03697pt too wide) detected at line 136
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 137
- \T1/cmss/bx/n/12 125
+Overfull \hbox (2.03697pt too wide) detected at line 139
+ \T1/cmss/bx/n/12 129
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 138
- \T1/cmss/bx/n/12 125
+Overfull \hbox (2.03697pt too wide) detected at line 140
+ \T1/cmss/bx/n/12 129
  []
 
 
@@ -1811,18 +1821,13 @@ Overfull \hbox (2.03697pt too wide) detected at line 141
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 142
- \T1/cmss/bx/n/12 129
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 143
- \T1/cmss/bx/n/12 129
- []
-
-
 
 [6]
+Overfull \hbox (2.03697pt too wide) detected at line 145
+ \T1/cmss/bx/n/12 129
+ []
+
+
 Overfull \hbox (2.03697pt too wide) detected at line 147
  \T1/cmss/bx/n/12 129
  []
@@ -1854,16 +1859,16 @@ Overfull \hbox (2.03697pt too wide) detected at line 157
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 159
- \T1/cmss/bx/n/12 129
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 161
  \T1/cmss/bx/n/12 131
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 162
+Overfull \hbox (2.03697pt too wide) detected at line 160
+ \T1/cmss/bx/n/12 131
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 161
  \T1/cmss/bx/n/12 131
  []
 
@@ -1878,28 +1883,33 @@ Overfull \hbox (2.03697pt too wide) detected at line 165
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 167
- \T1/cmss/bx/n/12 131
+Overfull \hbox (2.03697pt too wide) detected at line 168
+ \T1/cmss/bx/n/12 133
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 170
+Overfull \hbox (2.03697pt too wide) detected at line 169
  \T1/cmss/bx/n/12 133
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 171
- \T1/cmss/bx/n/12 133
+ \T1/cmss/bx/n/12 135
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 173
+Overfull \hbox (2.03697pt too wide) detected at line 172
  \T1/cmss/bx/n/12 135
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 174
- \T1/cmss/bx/n/12 135
+ \T1/cmss/bx/n/12 137
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 175
+ \T1/cmss/bx/n/12 137
  []
 
 
@@ -1918,13 +1928,13 @@ Overfull \hbox (2.03697pt too wide) detected at line 178
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 179
- \T1/cmss/bx/n/12 137
+Overfull \hbox (2.03697pt too wide) detected at line 182
+ \T1/cmss/bx/n/12 139
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 180
- \T1/cmss/bx/n/12 137
+Overfull \hbox (2.03697pt too wide) detected at line 183
+ \T1/cmss/bx/n/12 139
  []
 
 
@@ -1950,28 +1960,28 @@ Overfull \hbox (2.03697pt too wide) detected at line 187
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 188
- \T1/cmss/bx/n/12 139
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 189
- \T1/cmss/bx/n/12 139
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 192
+Overfull \hbox (2.03697pt too wide) detected at line 190
  \T1/cmss/bx/n/12 143
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 194
+Overfull \hbox (2.03697pt too wide) detected at line 192
  \T1/cmss/bx/n/12 145
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 196
+Overfull \hbox (2.03697pt too wide) detected at line 194
  \T1/cmss/bx/n/12 147
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 196
+ \T1/cmss/bx/n/12 150
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 197
+ \T1/cmss/bx/n/12 150
  []
 
 
@@ -1980,23 +1990,23 @@ Overfull \hbox (2.03697pt too wide) detected at line 198
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 199
- \T1/cmss/bx/n/12 150
- []
-
-
 Overfull \hbox (2.03697pt too wide) detected at line 200
- \T1/cmss/bx/n/12 150
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 202
  \T1/cmss/bx/n/12 152
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 209
+Overfull \hbox (2.03697pt too wide) detected at line 207
  \T1/cmss/bx/n/12 156
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 209
+ \T1/cmss/bx/n/12 157
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 210
+ \T1/cmss/bx/n/12 157
  []
 
 
@@ -2015,29 +2025,24 @@ Overfull \hbox (2.03697pt too wide) detected at line 213
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 214
- \T1/cmss/bx/n/12 157
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 215
- \T1/cmss/bx/n/12 157
+Overfull \hbox (2.03697pt too wide) detected at line 222
+ \T1/cmss/bx/n/12 159
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 224
- \T1/cmss/bx/n/12 159
+ \T1/cmss/bx/n/12 161
  []
 
 
 
 [8]
-Overfull \hbox (2.03697pt too wide) detected at line 226
+Overfull \hbox (2.03697pt too wide) detected at line 225
  \T1/cmss/bx/n/12 161
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 227
+Overfull \hbox (2.03697pt too wide) detected at line 226
  \T1/cmss/bx/n/12 161
  []
 
@@ -2052,13 +2057,18 @@ Overfull \hbox (2.03697pt too wide) detected at line 230
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 232
+Overfull \hbox (2.03697pt too wide) detected at line 231
  \T1/cmss/bx/n/12 161
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 233
- \T1/cmss/bx/n/12 161
+Overfull \hbox (2.03697pt too wide) detected at line 236
+ \T1/cmss/bx/n/12 163
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 237
+ \T1/cmss/bx/n/12 163
  []
 
 
@@ -2072,12 +2082,12 @@ Overfull \hbox (2.03697pt too wide) detected at line 239
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 240
+Overfull \hbox (2.03697pt too wide) detected at line 242
  \T1/cmss/bx/n/12 163
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 241
+Overfull \hbox (2.03697pt too wide) detected at line 243
  \T1/cmss/bx/n/12 163
  []
 
@@ -2087,13 +2097,13 @@ Overfull \hbox (2.03697pt too wide) detected at line 244
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 245
- \T1/cmss/bx/n/12 163
+Overfull \hbox (2.03697pt too wide) detected at line 246
+ \T1/cmss/bx/n/12 165
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 246
- \T1/cmss/bx/n/12 163
+Overfull \hbox (2.03697pt too wide) detected at line 247
+ \T1/cmss/bx/n/12 165
  []
 
 
@@ -2122,33 +2132,28 @@ Overfull \hbox (2.03697pt too wide) detected at line 252
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 253
- \T1/cmss/bx/n/12 165
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 254
+Overfull \hbox (2.03697pt too wide) detected at line 256
  \T1/cmss/bx/n/12 165
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 258
- \T1/cmss/bx/n/12 165
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 260
  \T1/cmss/bx/n/12 167
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 262
+Overfull \hbox (2.03697pt too wide) detected at line 260
  \T1/cmss/bx/n/12 169
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 264
+Overfull \hbox (2.03697pt too wide) detected at line 262
  \T1/cmss/bx/n/12 171
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 264
+ \T1/cmss/bx/n/12 173
  []
 
 
@@ -2157,12 +2162,7 @@ Underfull \vbox (badness 4699) has occurred while \output is active []
 
 
 [9]
-Overfull \hbox (2.03697pt too wide) detected at line 266
- \T1/cmss/bx/n/12 173
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 270
+Overfull \hbox (2.03697pt too wide) detected at line 268
  \T1/cmss/bx/n/12 177
  []
 
@@ -2268,7 +2268,7 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
 [29]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=692, 903.375pt x 250.9375pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=688, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 78.
@@ -2362,22 +2362,24 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [48]
 
 [49]
-Overfull \hbox (114.3336pt too wide) detected at line 783
+Overfull \hbox (114.3336pt too wide) detected at line 785
 [][][][][]
  []
 
 
-Overfull \hbox (70.43144pt too wide) detected at line 800
-[][][][][]
+Overfull \hbox (8.45563pt too wide) in paragraph at lines 791--792
+\T1/ppl/m/n/12 Com o Na-dam, ou Nesterov-accelerated Adap-tive Mo-ment Es-ti-ma-tion, ocor-reu a mesma
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [50]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (70.43144pt too wide) detected at line 832
+[][][][][]
+ []
+
+
+Underfull \vbox (badness 3838) has occurred while \output is active []
 
 
 
@@ -2387,12 +2389,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [52]
-Overfull \hbox (31.71446pt too wide) detected at line 891
+Overfull \hbox (31.71446pt too wide) detected at line 901
 [][][][][]
  []
 
 
-Overfull \hbox (57.97002pt too wide) detected at line 913
+Overfull \hbox (57.97002pt too wide) detected at line 923
 [][][][][]
  []
 
@@ -2402,7 +2404,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [53]
-Overfull \hbox (33.16286pt too wide) detected at line 931
+Overfull \hbox (33.16286pt too wide) detected at line 941
 [][][][][]
  []
 
@@ -2412,47 +2414,42 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [54]
-Overfull \hbox (26.97385pt too wide) detected at line 948
-[][][][][]
- []
-
-
-Underfull \vbox (badness 2189) has occurred while \output is active []
-
-
 
 [55]
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 992.
+LaTeX Font Warning: Command \large invalid in math mode on input line 962.
 
-
-
-[56]
-LaTeX Font Info:    Calculating math sizes for size <> on input line 999.
+LaTeX Font Info:    Calculating math sizes for size <> on input line 969.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 1.042pt on input line 999.
+(Font)              scaled to size 1.042pt on input line 969.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 999.
+(Font)              scaled to size 0.79192pt on input line 969.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 999.
+(Font)              scaled to size 0.6252pt on input line 969.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 1.042pt on input line 999.
+(Font)              scaled to size 1.042pt on input line 969.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 999.
+(Font)              scaled to size 0.79192pt on input line 969.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 999.
+(Font)              scaled to size 0.6252pt on input line 969.
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 974.
 
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 1004.
 
+[56])
 
-
-[57])
-
-[58]
+[57]
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
+
+[58
+
+
+
+
+]
 \l__witharrows_x_dim=\dimen372
 \l__witharrows_initial_int=\count576
 \l__witharrows_final_int=\count577
@@ -2472,11 +2469,6 @@ LaTeX Font Warning: Command \large invalid in math mode on input line 1004.
 
 
 [59
-
-
-
-
-
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
@@ -3741,17 +3733,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  57604 strings out of 467888
- 1311497 string characters out of 5434061
- 4193173 words of memory out of 5000000
- 84143 multiletter control sequences out of 15000+600000
+ 1311602 string characters out of 5434061
+ 4193965 words of memory out of 5000000
+ 84146 multiletter control sequences out of 15000+600000
  708896 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,107p,1297b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (179 pages, 917298 bytes).
+Output written on main.pdf (179 pages, 918004 bytes).
 PDF statistics:
- 2998 PDF objects out of 3580 (max. 8388607)
- 2708 compressed objects within 28 object streams
- 917 named destinations out of 1000 (max. 500000)
- 2082 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2997 PDF objects out of 3580 (max. 8388607)
+ 2707 compressed objects within 28 object streams
+ 914 named destinations out of 1000 (max. 500000)
+ 2066 words of extra memory for PDF output out of 10000 (max. 10000000)
 

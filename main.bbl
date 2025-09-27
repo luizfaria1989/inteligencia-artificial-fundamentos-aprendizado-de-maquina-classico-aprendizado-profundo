@@ -80,6 +80,39 @@
       \field{pages}{303\bibrangedash 314}
       \range{pages}{12}
     \endentry
+    \entry{NadamMethod}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d1d28f03da75cca98fac1800aec56dbb}{%
+           family={Dozat},
+           familyi={D\bibinitperiod},
+           given={Timothy},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{fullhash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{fullhashraw}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{bibnamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorbibnamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authornamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorfullhash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorfullhashraw}{d1d28f03da75cca98fac1800aec56dbb}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ICLR 2016 Workshop Track}
+      \field{title}{Incorporating Nesterov Momentum into Adam}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
+      \endverb
+    \endentry
     \entry{AdaGradMethod}{article}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=b8fbef1897da5bf46822ced31bc865c6}{%

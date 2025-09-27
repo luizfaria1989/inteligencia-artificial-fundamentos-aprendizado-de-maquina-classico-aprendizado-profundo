@@ -768,6 +768,8 @@ No segundo experimento, os cientistas foram capazes de descobrir que mesmo em re
 
 Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três camadas, a primeira com filtros de dimenões 5x5, seguida de uma camada de max pooling de dimensões 3x3 com stride 2 que se liga a uma camada totalmente conectada de 1000 unidades ocultas que faz uso da função de ativação ReLU. Com base nas análises, os autores concluíram que tanto o Adam quando o AdaGrad fazem um progresso rápido no custo inicial do treino, em seguida, o Adam e o SGD convergem consideravelmente mais rápido que o AdaGrad \parencite{AdamMethod}.
 
+Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o desenvolvimento do otimizador Adam, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
+
 \begin{equacaodestaque}{Adaptive Moment Estimation (Adam)}
     \begin{aligned}
         m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Atualiza o momento de 1ª ordem (média móvel dos gradientes).} \\[1em]
@@ -786,21 +788,14 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
 
 \subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
 
-\begin{equacaodestaque}{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
-    \begin{aligned}
-        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1) g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
-        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2) (g_t \odot g_t) && \text{2. Calcula o momento de 2ª ordem.} \\[1.5em]
-        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
-        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
-        \theta_{t+1} &= \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \left( \beta_1 \hat{m}_t + \frac{(1 - \beta_1) g_t}{1 - \beta_1^t} \right) && \text{5. Atualiza os parâmetros. A regra de atualização} \\
-                     &                                                            && \text{   incorpora o momento Nesterov, usando uma} \\
-                     &                                                            && \text{   estimativa do gradiente "lookahead".}
-    \end{aligned}
-    \label{eq:Nadam}
-\end{equacaodestaque}
+Com o Nadam, ou Nesterov-accelerated Adaptive Moment Estimation, ocorreu a mesma ideia de incremento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidem modificar o componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (NAG). Ao fazer essa mudança, os autores conseguiram comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
+
+Para a criação do método são necessários um conjunto de hiperparâmetros, sendo o primeiro deles alpha, uo, v e e. Em seguida são inicializados com zero os vetores de momento de primeira e segunda ordem. Com base nesses dados é iniciado o loop de iterações do método, o qual só irá terminar quando $\theta_t$ convergir. O primeiro passo é o cálculo do gradiente no momento $t-1$, os quais são armazenados em $g_t$, com base em $g_t$ é possível calcular a estimativa enviesada do primeiro momento, e utilizando $g_t^2$, calculá-se a entimativa enviesada do segundo momento. A principal diferença está no próximo passo da iteração, ele consiste em usar o momento de nesterov para atualizar o viés da estimativa do segundo momento, e por fim é possível atualizar os parâmetros $\theta_t$ do modelo que está sendo treinado.
+
+O pseudocódigo que representa o algoritmo Nadam está representado em \ref{alg:nadam}
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-\caption{Estimação de Momento Adaptativa com Aceleração de Nesterov (Nadam)}
+\caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
 \label{alg:nadam}
 \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
 
@@ -820,6 +815,21 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
 \State \Return $\theta_t$
 \end{algorithmic}
 \end{algorithm}
+
+Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \textcite{NadamMethod} foi capaz de criar um autoencoder convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do dataset MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Com base nessa rede criada, em sua pesquisa, o autor foi possível concluir que o Nadam, dentre os algoritmos analisados, foi o que conseguiu de forma mais rápida minizar a função de perda (neste caso foi utilizada a MSE), além de alcançar menos de 0.010 na perda calculada para a validação dos dados.
+
+\begin{equacaodestaque}{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+    \begin{aligned}
+        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1) g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
+        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2) (g_t \odot g_t) && \text{2. Calcula o momento de 2ª ordem.} \\[1.5em]
+        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
+        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
+        \theta_{t+1} &= \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \left( \beta_1 \hat{m}_t + \frac{(1 - \beta_1) g_t}{1 - \beta_1^t} \right) && \text{5. Atualiza os parâmetros. A regra de atualização} \\
+                     &                                                            && \text{   incorpora o momento Nesterov, usando uma} \\
+                     &                                                            && \text{   estimativa do gradiente "lookahead".}
+    \end{aligned}
+    \label{eq:Nadam}
+\end{equacaodestaque}
 
 \subsubsection{Implementação em Python}
 
@@ -929,46 +939,6 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
     \end{aligned}
     \label{eq:AdaBelief}
 \end{equacaodestaque}
-
-\subsubsection{Implementação em Python}
-
-\subsection{Evolved Sign Momentum (Lion)}
-
-\begin{equacaodestaque}{Lion}
-    \begin{aligned}
-        c_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Interpola o momento anterior e o gradiente atual} \\
-                     &                                       && \text{   para obter a direção da atualização.} \\[1.5em]
-        \theta_{t+1} &= \theta_t - \eta \cdot \text{sign}(c_t) && \text{2. Atualiza os pesos usando apenas} \\
-                     &                                           && \text{   o SINAL (sign) da direção, não a magnitude.} \\
-                     &                                           && \text{   Cada peso se move exatamente por } \eta \text{ ou } -\eta. \\[1.5em]
-        m_t          &= \beta_2 m_{t-1} + (1 - \beta_2)g_t && \text{3. Atualiza o estado do momento para o próximo passo,} \\
-                     &                                       && \text{   usando um } \beta_2 \text{ diferente.}
-    \end{aligned}
-    \label{eq:Lion-comentado}
-\end{equacaodestaque}
-
-\begin{algorithm}[H]
-    \caption{Otimizador Lion (nosso)}
-    \label{alg:lion}
-    \begin{algorithmic}[1]
-
-    \State \textbf{Dado:} $\beta_1, \beta_2, \lambda, \eta, f$
-    \State \textbf{Inicialize:} $\theta_0, m_0 \leftarrow 0$
-
-    \While{$\theta_t$ não convergir}
-        \State $g_t \leftarrow \nabla_\theta f(\theta_{t-1})$ \Comment{Obter gradientes da função de perda $f$}
-        \State
-        \State \textit{// Atualizar parâmetros do modelo}
-        \State $c_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1) g_t$ \Comment{Interpolar momento e gradiente para a direção da atualização}
-        \State $\theta_t \leftarrow \theta_{t-1} - \eta \cdot (\text{sign}(c_t) + \lambda \theta_{t-1})$ \Comment{Atualizar pesos usando o sinal e o decaimento de peso}
-        \State
-        \State \textit{// Atualizar EMA (Média Móvel Exponencial) de $g_t$}
-        \State $m_t \leftarrow \beta_2 m_{t-1} + (1 - \beta_2) g_t$ \Comment{Atualizar o estado do momento para o próximo passo}
-    \EndWhile
-
-    \State \Return $\theta_t$
-    \end{algorithmic}
-\end{algorithm}
 
 \subsubsection{Implementação em Python}
 
