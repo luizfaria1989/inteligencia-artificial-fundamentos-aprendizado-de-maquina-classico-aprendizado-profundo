@@ -69,23 +69,23 @@
 \contentsline {subsection}{\numberline {6.4.2}RMSProp}{47}{subsection.6.4.2}%
 \contentsline {subsubsection}{\numberline {6.4.2.1}Implementação em Python}{48}{subsubsection.6.4.2.1}%
 \contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{48}{subsection.6.4.3}%
-\contentsline {subsubsection}{\numberline {6.4.3.1}Implementação em Python}{50}{subsubsection.6.4.3.1}%
-\contentsline {subsection}{\numberline {6.4.4}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{50}{subsection.6.4.4}%
-\contentsline {subsubsection}{\numberline {6.4.4.1}Implementação em Python}{51}{subsubsection.6.4.4.1}%
-\contentsline {subsection}{\numberline {6.4.5}AdaMax}{51}{subsection.6.4.5}%
-\contentsline {subsection}{\numberline {6.4.6}Implementação em Python}{52}{subsection.6.4.6}%
-\contentsline {subsection}{\numberline {6.4.7}Adam With Decoupled Weight Decay (AdamW)}{52}{subsection.6.4.7}%
-\contentsline {subsubsection}{\numberline {6.4.7.1}Implementação em Python}{53}{subsubsection.6.4.7.1}%
-\contentsline {subsection}{\numberline {6.4.8}RAdam}{53}{subsection.6.4.8}%
-\contentsline {subsubsection}{\numberline {6.4.8.1}Implementação em Python}{54}{subsubsection.6.4.8.1}%
-\contentsline {subsection}{\numberline {6.4.9}AdaBelief}{54}{subsection.6.4.9}%
-\contentsline {subsubsection}{\numberline {6.4.9.1}Implementação em Python}{54}{subsubsection.6.4.9.1}%
-\contentsline {subsection}{\numberline {6.4.10}Evolved Sign Momentum (Lion)}{54}{subsection.6.4.10}%
-\contentsline {subsubsection}{\numberline {6.4.10.1}Implementação em Python}{55}{subsubsection.6.4.10.1}%
-\contentsline {section}{\numberline {6.5}O Método de Newton: Indo Além do Gradiente}{55}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{55}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}O Método}{56}{subsection.6.5.2}%
-\contentsline {subsection}{\numberline {6.5.3}Implementação em Python}{57}{subsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.4.3.1}Implementação em Python}{51}{subsubsection.6.4.3.1}%
+\contentsline {subsection}{\numberline {6.4.4}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{51}{subsection.6.4.4}%
+\contentsline {subsubsection}{\numberline {6.4.4.1}Implementação em Python}{52}{subsubsection.6.4.4.1}%
+\contentsline {subsection}{\numberline {6.4.5}AdaMax}{52}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.6}Implementação em Python}{53}{subsection.6.4.6}%
+\contentsline {subsection}{\numberline {6.4.7}Adam With Decoupled Weight Decay (AdamW)}{53}{subsection.6.4.7}%
+\contentsline {subsubsection}{\numberline {6.4.7.1}Implementação em Python}{54}{subsubsection.6.4.7.1}%
+\contentsline {subsection}{\numberline {6.4.8}RAdam}{54}{subsection.6.4.8}%
+\contentsline {subsubsection}{\numberline {6.4.8.1}Implementação em Python}{55}{subsubsection.6.4.8.1}%
+\contentsline {subsection}{\numberline {6.4.9}AdaBelief}{55}{subsection.6.4.9}%
+\contentsline {subsubsection}{\numberline {6.4.9.1}Implementação em Python}{55}{subsubsection.6.4.9.1}%
+\contentsline {subsection}{\numberline {6.4.10}Evolved Sign Momentum (Lion)}{55}{subsection.6.4.10}%
+\contentsline {subsubsection}{\numberline {6.4.10.1}Implementação em Python}{56}{subsubsection.6.4.10.1}%
+\contentsline {section}{\numberline {6.5}O Método de Newton: Indo Além do Gradiente}{56}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{56}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}O Método}{57}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}Implementação em Python}{58}{subsection.6.5.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{59}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal}{59}{section.7.1}%
