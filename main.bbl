@@ -80,6 +80,55 @@
       \field{pages}{303\bibrangedash 314}
       \range{pages}{12}
     \endentry
+    \entry{AdaGradMethod}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b8fbef1897da5bf46822ced31bc865c6}{%
+           family={Duchi},
+           familyi={D\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0b3d32703edd2b7248e8e8f33c5893db}{%
+           family={Hazan},
+           familyi={H\bibinitperiod},
+           given={Elad},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=300d4990e626d975e0c28630444f63c3}{%
+           family={Singer},
+           familyi={S\bibinitperiod},
+           given={Yoram},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{fullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{fullhashraw}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{bibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorbibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authornamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorfullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorfullhashraw}{21039f1d6e97f13dbd40c187a8131cf0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{61}
+      \field{title}{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2121\bibrangedash 2159}
+      \range{pages}{39}
+      \verb{urlraw}
+      \verb http://jmlr.org/papers/v12/duchi11a.html
+      \endverb
+      \verb{url}
+      \verb http://jmlr.org/papers/v12/duchi11a.html
+      \endverb
+    \endentry
     \entry{DeepLearningBook}{book}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=5d2585c11210cf1d4512e6e0a03ec315}{%
@@ -120,6 +169,49 @@
       \field{labeltitlesource}{title}
       \field{title}{Deep Learning}
       \field{year}{2016}
+    \endentry
+    \entry{AdamMethod}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b6fbd171848aad4edf3925543f1f1522}{%
+           family={Kingma},
+           familyi={K\bibinitperiod},
+           given={Diederik\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8aa66e8231cc2fdbe67aa4f18ca970c6}{%
+           family={Ba},
+           familyi={B\bibinitperiod},
+           given={Jimmy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhashraw}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{bibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorbibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authornamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhashraw}{a09df9f123146b8e2c7f1134c9496932}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Adam: A Method for Stochastic Optimization}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1412.6980
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1412.6980
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1412.6980
+      \endverb
     \endentry
     \entry{Leshno1993}{article}{}{}
       \name{author}{4}{}{%

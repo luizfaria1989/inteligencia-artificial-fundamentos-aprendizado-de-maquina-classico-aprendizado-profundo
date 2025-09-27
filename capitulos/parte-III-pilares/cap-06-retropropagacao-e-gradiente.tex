@@ -10,6 +10,14 @@
 --- A Sabedoria do Algoritmo
 \end{flushright}
 
+Cada rede neural é composta de diferentes partes, uma rede feedforward é composta de camadas densas, que por sua vez são compostas por um conjunto de neurônios. Uma rede convolucional, possui camadas de achatamento, camadas de pooling e camadas convolucionais, que possuem kernels muitas vezes inteligêntes que aprendem conforme o o treino a reconhecer diferentes padrões em imagens. Já uma rede recorrente, possui camadas com neurônios recorrentes, que buscam reconhecer padrões em diferentes tipos de séries, a fim de que seja por exemplo, possível prever qual será o valor de ação de uma marca x no dia 27 de setembro de 2025.
+
+O que não falta em uma rede neural são parâmetros, eles estão por todos os lados. Agora imagine que você está encarregado de criar uma rede convolucional para reconhecer imagens de cães e gatos e precisa de forma manual ajustar todos, o pesos das camadas densas junto com o seus vieses, além de ter que atualizar os valores de um kernel presente na primeira camada convolucional.
+
+Certamente isso é impossível de ser feito, uma rede como essa pode ter milhares e até milhões de parâmetros. Por isso, uma das formas de contornar esse problema, e, deixar para que o computador faça as suas atualiações é a retropropagação. Ela caminha junto com o método do gradiente para que todas essas atualições sejam feitas de forma automática, e com uma maior garantia que ela será eficáz, uma vez que estará se baseando em como o erro do modelo que está sendo treinado é medido.
+
+Esse capítulo se inicia explicando o conceito do método do gradiente, e como ele foi o ponto de partida para que a os pesquisadores pudessem criar a retropropagação. Contudo, essa otimização com o tempo passou a ser demorada, e assim, novos métodos surgiram, como o gradiente descendente com momento. Conforme o poder compuaticional foi aumento, outros métodos mais modernos também surgiram, apresentando conceitos novos, como múltiplas taxas de aprendizado, como o AdaGrad, de forma que características menos frequêntes possuíssem uma taxa de aprendado maior, indicando que o modelo que estava sendo criado seria mais sensível à essas propriedades, e com isso, ele pudesse "tomar nota" quando uma informação assim aparecesse.
+
 % ===================================================================
 % Resumo do capítulo
 % ===================================================================
@@ -622,9 +630,54 @@ Em que:
 
 \section{Otimizadores Modernos Baseados em Gradiente}
 
-\subsection{AdaGrad}
+Conforme os anos foram passando, foram surgindo novos algoritmos de otimização baseados na ideia da descida do gradiente. A partir dos anos 2010, otimizadores como o AdaGrad foram ganhando popularidade na comunidade, principalmente por apresentar uma diferença notavável quando comparados com os algoritmos clássicos: a utilização de diferentes parâmetros de representado a taxa de aprendizado, de forma que ela pudesse ser adptável para cada um dos conjuntos de características que estavam sendo analisadas.
 
-\begin{equacaodestaque}{AdaGrad}
+Essa seção busca justamente explorar esses otimizadores, explicando suas fórmulas e algortítmos, suas vantagens quando comparados com os métodos tradicionais. Além disso, é possível ver uma evolução graduau em como cada algoritmo sucessor busca complementar pequenos erros os métodos anteriores possuíam.
+
+\subsection{Adadptive Gradient Algorithm (AdaGrad)}
+
+Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, o Adadptive Gradient Algorithm (AdaGrad), \textcite{AdaGradMethod} o descrevem metafóricamente como uma adpatação dos métodos iterativos baseados em gradiente, que nos permite encontrar agulhas em palheiros em forma de características muito preditivas, mas raramente vistas.
+
+O que os autores se referem ao ato de "encontrar agulhas em palheiros", está ligado diretamente na forma como o AdaGrad atua para melhorar o desempenho de um modelo tanto para reconhecer caracteríticas que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim caracterítiscas muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
+
+Dessa forma, o modelo que está sendo treinado conseque garantir melhores métricas durante o seu aprendizado, pois estará aprendendo sobre aquilo que aparece muito nos dados de treino, mas, quando aparecer algo diferente e menos comum, ele irá "prestar mais atenção" devido à maior taxa de aprendizado nessas características.
+
+O AdaGrad veio como uma forma de aplicar técnicas de aprendizado-teórico para problemas online e aprendizado estocástico, focando concretamente no métodos de (sub)gradiente, de forma que a representação desse algoritmo pode ser vista no bloco de algoritmo \ref{alg:adagrad}.
+
+\begin{algorithm}[H]
+    \caption{AdaGrad}
+    \label{alg:adagrad}
+    \begin{algorithmic}[1]
+
+    \State \textbf{ENTRADA:} $\eta > 0, \delta \ge 0$
+    \State \textbf{VARIÁVEIS:} $s \in \mathbb{R}^d, H \in \mathbb{R}^{d \times d}, g_{1:t,i} \in \mathbb{R}^t$ para $i \in \{1,\dots,d\}$
+    \State \textbf{INICIALIZE:} $x_1 = 0, g_{1:0} = []$
+
+    \For{$t = 1$ até $T$}
+        \State Incorre na perda $f_t(x_t)$
+        \State Recebe o subgradiente $g_t \in \partial f_t(x_t)$ de $f_t$ em $x_t$
+        \State \textbf{ATUALIZE} $g_{1:t} = [g_{1:t-1} g_t], \quad s_{t,i} = \|g_{1:t,i}\|_2$
+        \State \textbf{DEFINA} $H_t = \delta I + \text{diag}(s_t), \quad \Psi_t(x) = \frac{1}{2}\langle x, H_t x \rangle$
+    \EndFor
+
+    \State
+    \State \textbf{Atualização de Subgradiente Primal-Dual (3):}
+    \State $x_{t+1} = \underset{x \in X}{\text{argmin}} \left\{ \eta \left\langle \frac{1}{t} \sum_{\tau=1}^t g_\tau, x \right\rangle + \eta \phi(x) + \frac{1}{t} \Psi_t(x) \right\}$
+
+    \State
+    \State \textbf{Atualização Composta de Mirror Descent (4):}
+    \State $x_{t+1} = \underset{x \in X}{\text{argmin}} \left\{ \eta \langle g_t, x \rangle + \eta \phi(x) + B_{\Psi_t}(x, x_t) \right\}$
+
+    \end{algorithmic}
+\end{algorithm}
+
+Note que essa definição foge do contexto de aprendizado de máquina, de forma que ela pode ser simplificada em várias partes a fim de criar uma fórmula mais resumida. No algoritmo, a linha $s_{t_,i} = [g_{1:t,i}]_2$ calcula a norma L2, ou seja, o comprimento do vetor, de todos os gradientes passados para um único parâmetro i. Dessa forma, a matriz $H_t$ armazena esses valores em sua diagonal. Quando está sendo calculada a norma L2 ao quadrado, como neste caso, é o mesmo que somar os quadrados de cada componente, assim, sua representação pode ser simplificada para $G_t = G_{t-1} + g_t \odot g_t$, que é uma maneira simplificada de calcular a soma dos quadrados dos gradientes passados. Neste caso, o termo $G_t$ é uma adpatação da matriz $H_t$, só que ao invés de simbolizar uma matriz que armazena a norma dos gradientes, isso é feito por em forma de um vetor.
+
+Ainda é possível fazer uma segunda simplificação no algoritmo, agora na linha que calcula $x_{t+1} = armmin{}$, pois o que essa linha representa é uma forma matemática de descrever "encontre o próximo ponto $x_{t+1}$ que minimiza uma combinação d gradiente e da distância em relação ao ponto atual". Como em redes neurais, não existem restrições tão complexas, a solução para esse problema se resume a dar um passo na direção do gradiente, com o tamanho do passo dividio pelo acumulador de gradientes.
+
+Após essas duas simplificações para o cenário de aprendizado de máquina, é possível chegar em uma fórmula semelhante a equação \ref{eq:adagrad-simplificado}
+
+\begin{equacaodestaque}{Adadptive Gradient Algorithm (AdaGrad) Simplificado para Redes Neurais}
     \begin{aligned}
         G_t          &= G_{t-1} + g_t \odot g_t && \text{1. Acumula a soma dos quadrados dos gradientes }(g_t) \\
                      &                           && \text{   na matriz } G_t \text{ a cada passo.} \\[1em]
@@ -632,8 +685,21 @@ Em que:
                      &                           && \text{   é adaptada para cada parâmetro, sendo dividida} \\
                      &                           && \text{   pela raiz da soma acumulada } G_t.
     \end{aligned}
-    \label{eq:adagrad}
+    \label{eq:adagrad-simplificado}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $G_t$: Representa o vetor da soma dos quadrados dos gradientes na iteração $t$;
+    \item $G_{t-1}$: Representa o vetor da soma dos quadrados dos gradientes na iteração $t-1$;
+    \item $g_t$: Representa o vetor gradiente calculado na iteração $t$;
+    \item $\theta_{t+1}$: Representa o vetor de parâmetros na iteração $t+1$;
+    \item $\theta_t$: Representa o vetor de parâmetros na iteração $t$;
+    \item $n$: Representa a taxa de aprendizado adpatada para cada parâmetro;
+    \item $\epsilon$: Representa a taxa de aprendizado geral;
+    \item $\odot$: Representa o produto de Hadamard.
+\end{itemize}
 
 
 \subsubsection{Implementação em Python}
@@ -655,6 +721,48 @@ Em que:
 \subsubsection{Implementação em Python}
 
 \subsection{Adaptive Moment Estimation (Adam)}
+
+Uma evolução natural dos algortitmos de otimização AdaGrad e RMSProp é o Adam ou Adaptive Moment Estimation. Esse algortimo foi apresentado pelos pesquisadores \textcite{AdamMethod}, no artigo \textit{Adam: A Method for Stochastic Optimization}, ele veio para ser um método de otimização estocástica que requere apenas gradientes de primeira ordem com poucos requisitos de memória.
+
+Para isso, o Adam computa taxas de aprendizado individuais para diferentes parâmetros para estimações do priemiro e segundo momento do gradiente, de forma que ele é capaz de combinar as vantagens do AdaGrad, que trabalha bem com gradientes esparsos, e o RMSProp, que trabalha bem on-line e em configurações não-estacionárias \parencite{AdamMethod}.
+
+O Adam recebe como entradas uma taxa de aprendizado ($\alpha$), decebe dois valores $\beta_1$ e $\beta_2$ que representam as taxas de decaimento esponencial para as estimativas de momento em um conjunto de intervalos $[0, 1)$. Além disso, assim como todo método de otimização ele também recebe em sua entrada uma função de perda $f(\theta)$ bem como os parâmetros iniciais $\theta_0$.
+
+O primeiro passo do método consiste em inicializar os vetores de primeiro ($m_0$) e segundo ($v_0$) momento bem como o passo do tempo $t$, para isso, ele coloca como zero os seus valores iniciais. Em seguida, é iniciado o loop de iterações do método, que só irá parar quando $\theta_t$ convergir. Nesse loop, primeiramente é feito um incremento no valor do passo de tempo, depois é calculado o valor do gradiente no tempo $t$, o qual é armazenado em $g_t$. Com base nessa nova variável é atualizado uma estimativa enviesada no primeiro momento, armazenada em $m_t$, em seguida, é feita uma segunda estimativa também enviesada só que agora no segundo momento. Essas estimativas são então corridas pelo método que com base nelas é feito a atualização dos parâmetros e assim uma iteração termina. Caso o método convirja ele irá retornar como resultado os parâmetros $\theta_t$.
+
+Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{Adam, nosso algoritmo proposto para otimização estocástica}
+    \label{alg:adam}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\alpha$
+    \Require Taxas de decaimento exponencial para as estimativas de momento $\beta_1, \beta_2 \in [0, 1)$
+    \Require Função objetivo estocástica com parâmetros $\theta$, $f(\theta)$
+    \Require Vetor de parâmetros inicial $\theta_0$
+
+    \State $m_0 \leftarrow 0$ \Comment{Inicializar vetor de 1º momento (média)}
+    \State $v_0 \leftarrow 0$ \Comment{Inicializar vetor de 2º momento (variância não centrada)}
+    \State $t \leftarrow 0$ \Comment{Inicializar passo de tempo}
+
+    \While{não convergir}
+        \State $t \leftarrow t + 1$
+        \State $g_t \leftarrow \nabla_\theta f_t(\theta_{t-1})$ \Comment{Obter gradientes em relação ao objetivo no passo $t$}
+        \State $m_t \leftarrow \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t$ \Comment{Atualizar estimativa viciada do primeiro momento}
+        \State $v_t \leftarrow \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2$ \Comment{Atualizar estimativa viciada do segundo momento}
+        \State $\hat{m}_t \leftarrow m_t / (1 - \beta_1^t)$ \Comment{Calcular estimativa corrigida do primeiro momento}
+        \State $\hat{v}_t \leftarrow v_t / (1 - \beta_2^t)$ \Comment{Calcular estimativa corrigida do segundo momento}
+        \State $\theta_t \leftarrow \theta_{t-1} - \alpha \cdot \hat{m}_t / (\sqrt{\hat{v}_t} + \epsilon)$ \Comment{Atualizar parâmetros}
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
+
+Para testar esse novo algoritmo, os pesquisadores \ref{alg:adam} propraram uma série de experimentos, sendo alguns deles envolvendo uma regressão logística, uma rede neural multi-camadas e uma rede convolucional.
+
+No primeiro deles, eles avaliam esse método utilizado uma regularização L2 criando uma regressão logística para analisar o dataset de dígitos manuscritos MNIST \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelereado (accelerated SGD), com o otimizador de Nesterov e também como o AdaGrad; de forma que eles foram capazes de concluir que o Adam possui uma convergência similar ao SGD e Nesterov, equanto o AdaGrad apresenta uma convergência mais demorada e com um maior custo de treino.
 
 \begin{equacaodestaque}{Adaptive Moment Estimation (Adam)}
     \begin{aligned}
@@ -687,13 +795,84 @@ Em que:
     \label{eq:Nadam}
 \end{equacaodestaque}
 
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+\caption{Estimação de Momento Adaptativa com Aceleração de Nesterov (Nadam)}
+\label{alg:nadam}
+\begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+\Require Hiperparâmetros: $\alpha_0, \dots, \alpha_T; \mu_0, \dots, \mu_T; \nu; \epsilon$
+
+\State $m_0, n_0 \leftarrow 0$ \Comment{Inicializar vetores de primeiro e segundo momento}
+
+\While{não convergir}
+    \State $g_t \leftarrow \nabla_{\theta_{t-1}} f_t(\theta_{t-1})$ \Comment{Obter gradientes}
+    \State $m_t \leftarrow \mu_t m_{t-1} + (1 - \mu_t) g_t$ \Comment{Atualizar estimativa viciada do primeiro momento (média)}
+    \State $n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_t^2$ \Comment{Atualizar estimativa viciada do segundo momento (variância)}
+    \State $\hat{m}_t \leftarrow (\mu_{t+1} m_t / (1 - \prod_{i=1}^{t+1} \mu_i)) + ((1 - \mu_t) g_t / (1 - \prod_{i=1}^t \mu_i))$ \Comment{Corrigir o viés e aplicar o momento Nesterov}
+    \State $\hat{n}_t \leftarrow \nu n_t / (1 - \nu^t)$ \Comment{Corrigir o viés da estimativa do segundo momento}
+    \State $\theta_t \leftarrow \theta_{t-1} - \frac{\alpha_t}{\sqrt{\hat{n}_t} + \epsilon} \hat{m}_t$ \Comment{Atualizar parâmetros}
+\EndWhile
+
+\State \Return $\theta_t$
+\end{algorithmic}
+\end{algorithm}
+
 \subsubsection{Implementação em Python}
 
-\section{AdaMax}
+\subsection{AdaMax}
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{AdaMax, uma variante do Adam baseada na norma infinita}
+    \label{alg:adamax}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\alpha$
+    \Require Taxas de decaimento exponencial $\beta_1, \beta_2 \in [0, 1)$
+    \Require Função objetivo estocástica com parâmetros $\theta$, $f(\theta)$
+    \Require Vetor de parâmetros inicial $\theta_0$
+
+    \State $m_0 \leftarrow 0$ \Comment{Inicializar vetor de 1º momento}
+    \State $u_0 \leftarrow 0$ \Comment{Inicializar a norma infinita exponencialmente ponderada}
+    \State $t \leftarrow 0$ \Comment{Inicializar passo de tempo}
+
+    \While{não convergir}
+        \State $t \leftarrow t + 1$
+        \State $g_t \leftarrow \nabla_\theta f_t(\theta_{t-1})$ \Comment{Obter gradientes em relação ao objetivo no passo $t$}
+        \State $m_t \leftarrow \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t$ \Comment{Atualizar estimativa viciada do primeiro momento}
+        \State $u_t \leftarrow \max(\beta_2 \cdot u_{t-1}, |g_t|)$ \Comment{Atualizar a norma infinita exponencialmente ponderada}
+        \State $\theta_t \leftarrow \theta_{t-1} - (\alpha / (1 - \beta_1^t)) \cdot m_t / u_t$ \Comment{Atualizar parâmetros}
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
 
 \subsection{Implementação em Python}
 
 \subsection{Adam With Decoupled Weight Decay (AdamW)}
+
+\begin{algorithm}[H]
+    \caption{Adam com Decaimento de Peso Desacoplado (AdamW)}
+    \label{alg:adamw}
+    \begin{algorithmic}[1]
+
+    \State \textbf{Dado:} $\alpha=0.001, \beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}, \lambda \in \mathbb{R}$
+    \State \textbf{Inicialize:} passo de tempo $t \leftarrow 0$, vetor de parâmetros $\theta_0 \in \mathbb{R}^n$, vetor de 1º momento $m_0 \leftarrow 0$, vetor de 2º momento $v_0 \leftarrow 0$, multiplicador de agendamento $\eta_0 \in \mathbb{R}$
+
+    \Repeat
+        \State $t \leftarrow t + 1$
+        \State $\nabla f_t(\theta_{t-1}) \leftarrow \text{SelecionarLote}(\theta_{t-1})$ \Comment{Seleciona o lote e retorna o gradiente}
+        \State $g_t \leftarrow \nabla f_t(\theta_{t-1})$ \Comment{O gradiente NÃO inclui o termo de decaimento de peso}
+        \State $m_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1) g_t$ \Comment{Atualizar 1º momento (operações element-wise)}
+        \State $v_t \leftarrow \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$ \Comment{Atualizar 2º momento}
+        \State $\hat{m}_t \leftarrow m_t / (1 - \beta_1^t)$ \Comment{Corrigir viés do 1º momento}
+        \State $\hat{v}_t \leftarrow v_t / (1 - \beta_2^t)$ \Comment{Corrigir viés do 2º momento}
+        \State $\eta_t \leftarrow \text{DefinirMultiplicadorDeAgendamento}(t)$ \Comment{Pode ser fixo, decair, ou para reinícios abruptos}
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta_t \left( \frac{\alpha \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} \right) - \eta_t \lambda \theta_{t-1}$ \Comment{Atualização desacoplada do decaimento de peso}
+    \Until{critério de parada for atingido}
+    \State \Return parâmetros otimizados $\theta_T$
+    \end{algorithmic}
+\end{algorithm}
 
 \begin{equacaodestaque}{Adam With Decoupled Weight Decay (AdamW)}
     \begin{aligned}
@@ -763,6 +942,29 @@ Em que:
     \end{aligned}
     \label{eq:Lion-comentado}
 \end{equacaodestaque}
+
+\begin{algorithm}[H]
+    \caption{Otimizador Lion (nosso)}
+    \label{alg:lion}
+    \begin{algorithmic}[1]
+
+    \State \textbf{Dado:} $\beta_1, \beta_2, \lambda, \eta, f$
+    \State \textbf{Inicialize:} $\theta_0, m_0 \leftarrow 0$
+
+    \While{$\theta_t$ não convergir}
+        \State $g_t \leftarrow \nabla_\theta f(\theta_{t-1})$ \Comment{Obter gradientes da função de perda $f$}
+        \State
+        \State \textit{// Atualizar parâmetros do modelo}
+        \State $c_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1) g_t$ \Comment{Interpolar momento e gradiente para a direção da atualização}
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \cdot (\text{sign}(c_t) + \lambda \theta_{t-1})$ \Comment{Atualizar pesos usando o sinal e o decaimento de peso}
+        \State
+        \State \textit{// Atualizar EMA (Média Móvel Exponencial) de $g_t$}
+        \State $m_t \leftarrow \beta_2 m_{t-1} + (1 - \beta_2) g_t$ \Comment{Atualizar o estado do momento para o próximo passo}
+    \EndWhile
+
+    \State \Return $\theta_t$
+    \end{algorithmic}
+\end{algorithm}
 
 \subsubsection{Implementação em Python}
 
