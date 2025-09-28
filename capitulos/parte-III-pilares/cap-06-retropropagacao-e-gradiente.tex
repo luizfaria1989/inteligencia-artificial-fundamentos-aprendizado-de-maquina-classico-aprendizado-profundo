@@ -6,9 +6,13 @@
 \label{cap:retropropagacao-gradiente}
 
 \begin{flushright}
-\textit{A filosofia de vida do gradiente descendente: 'Para lá é para baixo? É. Então eu vou para lá.'} \\
+\textit{A filosofia de vida do gradiente descendente: 'Pra lá é pra baixo? É. Então eu vou pra lá.'} \\
 --- A Sabedoria do Algoritmo
 \end{flushright}
+
+% ===================================================================
+% Resumo do capítulo
+% ===================================================================
 
 Cada rede neural é composta de diferentes partes, uma rede feedforward é composta de camadas densas, que por sua vez são compostas por um conjunto de neurônios. Uma rede convolucional, possui camadas de achatamento, camadas de pooling e camadas convolucionais, que possuem kernels muitas vezes inteligêntes que aprendem conforme o o treino a reconhecer diferentes padrões em imagens. Já uma rede recorrente, possui camadas com neurônios recorrentes, que buscam reconhecer padrões em diferentes tipos de séries, a fim de que seja por exemplo, possível prever qual será o valor de ação de uma marca x no dia 27 de setembro de 2025.
 
@@ -19,14 +23,10 @@ Certamente isso é impossível de ser feito, uma rede como essa pode ter milhare
 Esse capítulo se inicia explicando o conceito do método do gradiente, e como ele foi o ponto de partida para que a os pesquisadores pudessem criar a retropropagação. Contudo, essa otimização com o tempo passou a ser demorada, e assim, novos métodos surgiram, como o gradiente descendente com momento. Conforme o poder compuaticional foi aumento, outros métodos mais modernos também surgiram, apresentando conceitos novos, como múltiplas taxas de aprendizado, como o AdaGrad, de forma que características menos frequêntes possuíssem uma taxa de aprendado maior, indicando que o modelo que estava sendo criado seria mais sensível à essas propriedades, e com isso, ele pudesse "tomar nota" quando uma informação assim aparecesse.
 
 % ===================================================================
-% Resumo do capítulo
-% ===================================================================
-
-% ===================================================================
 % Método do Gradiente Descendente
 % ===================================================================
 
-\section{O Método do Gradiente Descendente}
+\section{O Método do Gradiente Descendente: A Inspiração de Todos}
 
 O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em portguês) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
@@ -521,7 +521,7 @@ Para isso, o capítulo \ref{cap:ativacao-sigmoidais} foca em entender as pricipa
 % Otimizadores Baseados em Gradiente
 % ===================================================================
 
-\section{Otimizadores Baseados em Gradiente}
+\section{Otimizadores Baseados em Gradiente: Melhorando o Gradiente Descendente}
 
 Como \textcite{BackpropagationArticle} explicam logo ao terminar a dedução do cálculo da atualização dos pesos utilizando o método do gradiente, esse processo pode ser bastante lento quando comparado com métodos que fazem uso de derivadas de segunda ordem, que certamente são mais caras para serem implementadas no computador. Assim, os autores recomendam uma variação do método do gradiente que faz uso de momentum com intuito de acelerar a convergência a um custo computacional menor que o de implementar derivadas de segunda ordem \parencite{BackpropagationArticle}.
 
@@ -628,7 +628,7 @@ Em que:
 
 \subsubsection{Implementação em Python}
 
-\section{Otimizadores Modernos Baseados em Gradiente}
+\section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Apredendizado Adaptativas}
 
 Conforme os anos foram passando, foram surgindo novos algoritmos de otimização baseados na ideia da descida do gradiente. A partir dos anos 2010, otimizadores como o AdaGrad foram ganhando popularidade na comunidade, principalmente por apresentar uma diferença notavável quando comparados com os algoritmos clássicos: a utilização de diferentes parâmetros de representado a taxa de aprendizado, de forma que ela pudesse ser adptável para cada um dos conjuntos de características que estavam sendo analisadas.
 
@@ -786,54 +786,9 @@ Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o dese
 
 \subsubsection{Implementação em Python}
 
-\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
-
-Com o Nadam, ou Nesterov-accelerated Adaptive Moment Estimation, ocorreu a mesma ideia de incremento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidem modificar o componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (NAG). Ao fazer essa mudança, os autores conseguiram comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
-
-Para a criação do método são necessários um conjunto de hiperparâmetros, sendo o primeiro deles alpha, uo, v e e. Em seguida são inicializados com zero os vetores de momento de primeira e segunda ordem. Com base nesses dados é iniciado o loop de iterações do método, o qual só irá terminar quando $\theta_t$ convergir. O primeiro passo é o cálculo do gradiente no momento $t-1$, os quais são armazenados em $g_t$, com base em $g_t$ é possível calcular a estimativa enviesada do primeiro momento, e utilizando $g_t^2$, calculá-se a entimativa enviesada do segundo momento. A principal diferença está no próximo passo da iteração, ele consiste em usar o momento de nesterov para atualizar o viés da estimativa do segundo momento, e por fim é possível atualizar os parâmetros $\theta_t$ do modelo que está sendo treinado.
-
-O pseudocódigo que representa o algoritmo Nadam está representado em \ref{alg:nadam}
-
-\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-\caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
-\label{alg:nadam}
-\begin{algorithmic}[1] % O [1] habilita a numeração das linhas
-
-\Require Hiperparâmetros: $\alpha_0, \dots, \alpha_T; \mu_0, \dots, \mu_T; \nu; \epsilon$
-
-\State $m_0, n_0 \leftarrow 0$ \Comment{Inicializar vetores de primeiro e segundo momento}
-
-\While{não convergir}
-    \State $g_t \leftarrow \nabla_{\theta_{t-1}} f_t(\theta_{t-1})$ \Comment{Obter gradientes}
-    \State $m_t \leftarrow \mu_t m_{t-1} + (1 - \mu_t) g_t$ \Comment{Atualizar estimativa viciada do primeiro momento (média)}
-    \State $n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_t^2$ \Comment{Atualizar estimativa viciada do segundo momento (variância)}
-    \State $\hat{m}_t \leftarrow (\mu_{t+1} m_t / (1 - \prod_{i=1}^{t+1} \mu_i)) + ((1 - \mu_t) g_t / (1 - \prod_{i=1}^t \mu_i))$ \Comment{Corrigir o viés e aplicar o momento Nesterov}
-    \State $\hat{n}_t \leftarrow \nu n_t / (1 - \nu^t)$ \Comment{Corrigir o viés da estimativa do segundo momento}
-    \State $\theta_t \leftarrow \theta_{t-1} - \frac{\alpha_t}{\sqrt{\hat{n}_t} + \epsilon} \hat{m}_t$ \Comment{Atualizar parâmetros}
-\EndWhile
-
-\State \Return $\theta_t$
-\end{algorithmic}
-\end{algorithm}
-
-Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \textcite{NadamMethod} foi capaz de criar um autoencoder convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do dataset MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Com base nessa rede criada, em sua pesquisa, o autor foi possível concluir que o Nadam, dentre os algoritmos analisados, foi o que conseguiu de forma mais rápida minizar a função de perda (neste caso foi utilizada a MSE), além de alcançar menos de 0.010 na perda calculada para a validação dos dados.
-
-\begin{equacaodestaque}{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
-    \begin{aligned}
-        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1) g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
-        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2) (g_t \odot g_t) && \text{2. Calcula o momento de 2ª ordem.} \\[1.5em]
-        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
-        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
-        \theta_{t+1} &= \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \left( \beta_1 \hat{m}_t + \frac{(1 - \beta_1) g_t}{1 - \beta_1^t} \right) && \text{5. Atualiza os parâmetros. A regra de atualização} \\
-                     &                                                            && \text{   incorpora o momento Nesterov, usando uma} \\
-                     &                                                            && \text{   estimativa do gradiente "lookahead".}
-    \end{aligned}
-    \label{eq:Nadam}
-\end{equacaodestaque}
-
-\subsubsection{Implementação em Python}
-
 \subsection{AdaMax}
+
+Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textcite{AdamMethod}, além de apresentarem o Adam como um novo otimizador, eles também apresentam uma variante dele, o AdaMax, que ao invés de utilizar a norma $L^2$ para calcular o segundo momentom, utilizam a norma $L^p$, em que $p \to \infty$, provando ser um algoritmo surpreendemente simples e estável. Dessa forma, os autores foram possíveis chegar no algortimo listado no pseudocódigo \ref{alg:adamax}.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{AdaMax, uma variante do Adam baseada na norma infinita}
@@ -863,7 +818,45 @@ Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \text
 
 \subsection{Implementação em Python}
 
+\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+
+Com o Nadam, ou Nesterov-accelerated Adaptive Moment Estimation, ocorreu a mesma ideia de incremento presente nos outros métodos de otimização vistos até o momento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidem modificar o componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (NAG). Ao fazer essa mudança, os autores conseguiram comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
+
+Para a criação do método são necessários um conjunto de hiperparâmetros, sendo o primeiro deles alpha, uo, v e e. Em seguida são inicializados com zero os vetores de momento de primeira e segunda ordem. Com base nesses dados é iniciado o loop de iterações do método, o qual só irá terminar quando $\theta_t$ convergir. O primeiro passo é o cálculo do gradiente no momento $t-1$, os quais são armazenados em $g_t$, com base em $g_t$ é possível calcular a estimativa enviesada do primeiro momento, e utilizando $g_t^2$, calculá-se a entimativa enviesada do segundo momento. A principal diferença está no próximo passo da iteração, ele consiste em usar o momento de nesterov para atualizar o viés da estimativa do segundo momento, e por fim é possível atualizar os parâmetros $\theta_t$ do modelo que está sendo treinado.
+
+O pseudocódigo que representa o algoritmo Nadam está representado em \ref{alg:nadam}
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+\caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+\label{alg:nadam}
+\begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+\Require Hiperparâmetros: $\alpha_0, \dots, \alpha_T; \mu_0, \dots, \mu_T; \nu; \epsilon$
+
+\State $m_0, n_0 \leftarrow 0$ \Comment{Inicializar vetores de primeiro e segundo momento}
+
+\While{não convergir}
+    \State $g_t \leftarrow \nabla_{\theta_{t-1}} f_t(\theta_{t-1})$ \Comment{Obter gradientes}
+    \State $m_t \leftarrow \mu_t m_{t-1} + (1 - \mu_t) g_t$ \Comment{Atualizar estimativa viciada do primeiro momento (média)}
+    \State $n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_t^2$ \Comment{Atualizar estimativa viciada do segundo momento (variância)}
+    \State $\hat{m}_t \leftarrow (\mu_{t+1} m_t / (1 - \prod_{i=1}^{t+1} \mu_i)) + ((1 - \mu_t) g_t / (1 - \prod_{i=1}^t \mu_i))$ \Comment{Corrigir o viés e aplicar o momento Nesterov}
+    \State $\hat{n}_t \leftarrow \nu n_t / (1 - \nu^t)$ \Comment{Corrigir o viés da estimativa do segundo momento}
+    \State $\theta_t \leftarrow \theta_{t-1} - \frac{\alpha_t}{\sqrt{\hat{n}_t} + \epsilon} \hat{m}_t$ \Comment{Atualizar parâmetros}
+\EndWhile
+
+\State \Return $\theta_t$
+\end{algorithmic}
+\end{algorithm}
+
+Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \textcite{NadamMethod} foi capaz de criar um autoencoder convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do dataset MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Com base nessa rede criada, em sua pesquisa, o autor foi possível concluir que o Nadam, dentre os algoritmos analisados, foi o que conseguiu de forma mais rápida minizar a função de perda (neste caso foi utilizada a MSE), além de alcançar menos de 0.010 na perda calculada para a validação dos dados.
+
+\subsubsection{Implementação em Python}
+
 \subsection{Adam With Decoupled Weight Decay (AdamW)}
+
+Uma outra variante do Adam tradicional é o AdamW. Essa variante foi apresentada no trabalho \textit{Decoupled Weight Decay Regularization} dos pesquisadores \textcite{AdamWMethod}, em que eles propuseram uma forma diferente de corrigir como a relgularização $L^2$, era feita no método original. Para isso, o AdamW desacopla o decaimento do peso da atualização principal do do gradiente, e o aplica como um passo separado e final na atualização dos parâmetros \parencite{AdamWMethod}.
+
+Esse algoritmo pode ser visto no psudeocódigo apresentado no bloco \ref{alg:adamw}.
 
 \begin{algorithm}[H]
     \caption{Adam com Decaimento de Peso Desacoplado (AdamW)}
@@ -888,59 +881,52 @@ Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \text
     \end{algorithmic}
 \end{algorithm}
 
-\begin{equacaodestaque}{Adam With Decoupled Weight Decay (AdamW)}
-    \begin{aligned}
-        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Atualiza o momento de 1ª ordem.} \\[1em]
-        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2)(g_t \odot g_t) && \text{2. Atualiza o momento de 2ª ordem.} \\[1.5em]
-        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
-        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
-        \theta_{t+1} &= \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} - \eta \lambda \theta_t && \text{5. Atualiza os pesos com o passo do Adam e aplica} \\
-                     &                                                            && \text{   o decaimento de peso }(\lambda)\text{ de forma desacoplada.}
-    \end{aligned}
-    \label{eq:adamw}
-\end{equacaodestaque}
+Para comprovar a performace do novo otimizador criado os autores decidem utilizar uma série de experimentos, de forma que foi possível comprovar que o Adam trás uma melhor generalização quando comparado com o Adam tradicional, de forma que foi possível encontrar um Top-5 Erro de Teste no ImageNet32x32 menor utilizando essa nova variante do Adam.
 
 \subsubsection{Implementação em Python}
 
-\subsection{RAdam}
+\subsection{Rectified Adam (RAdam)}
 
-\begin{equacaodestaque}{RAdam}
-    \begin{aligned}
-        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
-        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2)(g_t \odot g_t) && \text{2. Calcula o momento de 2ª ordem.} \\[1.5em]
-        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1.5em]
-        \rho_t       &= \rho_\infty - \frac{2t\beta_2^t}{1-\beta_2^t} && \text{4. Calcula o comprimento aproximado da média móvel.} \\[1.5em]
-        \theta_{t+1} &= 
-            \begin{cases}
-                \theta_t - \eta_t \hat{m}_t & \text{se } \rho_t \le 4 \\
-                \theta_t - \eta_t \frac{r_t \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} & \text{se } \rho_t > 4
-            \end{cases}
-                     && \text{5. Atualiza os pesos. Usa apenas o momento se a} \\
-                     &   && \text{   variância for instável }(\rho_t \le 4)\text{, senão usa a} \\
-                     &   && \text{   taxa adaptativa retificada com o termo } r_t.
-    \end{aligned}
-    \label{eq:RAdam-comentado}
-\end{equacaodestaque}
+Uma outra variante do Adam que també busca melhorar o otimizador original é o Rectified Adam ou RAdam. Ele surgiu no trabalho \textit{On the Variance of the Adaptive Learning Rate and Beyond} dos autores \textcite{RAdamMethod} como uma atualização do Adam que buscava corrigir um problema identificado com a taxa de aprendizado adaptativa do otimizador: a sua variância é grande problemática nos primeiros estágios; de forma que eles propusaram o RAdam, uma variante que introduz um termo para retificar a variância da taxa de aprendizado adpativa.
+
+Dessa forma, os pesquisadores chegaram a desenvolver o algoritmo que está listado no bloco de pseudocódigo \ref{elg:radam}
+
+\begin{algorithm}[H]
+\caption{Adam Retificado (RAdam)}
+\label{alg:radam}
+\begin{algorithmic}[1]
+
+\State \textbf{Entrada:} $\{\alpha_t\}_{t=1}^T$: tamanho do passo, $\{\beta_1, \beta_2\}$: taxas de decaimento, $\theta_0$: parâmetro inicial, $f_t(\theta)$: função objetivo estocástica.
+\State \textbf{Saída:} $\theta_T$: parâmetros resultantes.
+
+\State $m_0, v_0 \leftarrow 0$ \Comment{Inicializar 1º e 2º momentos móveis}
+\State $\rho_{\infty} \leftarrow 2 / (1 - \beta_2) - 1$ \Comment{Calcular o comprimento máximo da Média Móvel Simples (SMA) aproximada}
+
+\For{$t = 1$ \textbf{to} $T$}
+    \State $g_t \leftarrow \nabla_\theta f_t(\theta_{t-1})$ \Comment{Calcular gradientes no passo de tempo t}
+    \State $v_t \leftarrow \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$ \Comment{Atualizar 2º momento móvel exponencial}
+    \State $m_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1) g_t$ \Comment{Atualizar 1º momento móvel exponencial}
+    \State $\hat{m}_t \leftarrow m_t / (1 - \beta_1^t)$ \Comment{Calcular média móvel com correção de viés}
+    \State $\rho_t \leftarrow \rho_{\infty} - 2t \beta_2^t / (1 - \beta_2^t)$ \Comment{Calcular o comprimento da SMA aproximada}
+    
+    \If{a variância for tratável, i.e., $\rho_t > 4$}
+        \State $l_t \leftarrow \sqrt{(1 - \beta_2^t)} / \sqrt{v_t}$ \Comment{Calcular a taxa de aprendizado adaptativa}
+        \State $r_t \leftarrow \sqrt{\frac{(\rho_t - 4)(\rho_t - 2)\rho_{\infty}}{(\rho_{\infty} - 4)(\rho_{\infty} - 2)\rho_t}}$ \Comment{Calcular o termo de retificação da variância}
+        \State $\theta_t \leftarrow \theta_{t-1} - \alpha_t r_t \hat{m}_t l_t$ \Comment{Atualizar parâmetros com momentum adaptativo}
+    \Else
+        \State $\theta_t \leftarrow \theta_{t-1} - \alpha_t \hat{m}_t$ \Comment{Atualizar parâmetros com momentum não-adaptado}
+    \EndIf
+\EndFor
+
+\State \Return $\theta_T$
+\end{algorithmic}
+\end{algorithm}
+
+Para avaliar o RAdam foi utilizado uma série de benchmarks: One Billieon Word (para modelagem linguística), CIFAR-10 e ImageNet (para classificação de imagens) e IWSLT’14 De-En/EN-DE e WMT’16 EN-De  (para neural machine translation). Comparando com o Adam tradicional, as performaces de modelagem de lingaugem e de classificacao de imagens mostram que o RAdam supera o Adam nos três datasets, contudo, um ponto a ser destcado por \textcite{RAdamMethod} é que o termo retificador faz com que a performance do RAdam seja masi lenta que o Adam nas primeiras épocas, permitindo que uma convergência mais rápida do RAdam deois disso. Assim, como os próprios autores apresentam, reduzir a variância da taxa de aprendizado adpativativa nos estágios iniciais, faz com que a covergência seja mais rápida além de garantir uma melhor performance \parencite{RAdamMethod}.
 
 \subsubsection{Implementação em Python}
 
-\subsection{AdaBelief}
-
-\begin{equacaodestaque}{AdaBelief}
-    \begin{aligned}
-        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Calcula o momento de 1ª ordem.} \\[1em]
-        s_t          &= \beta_2 s_{t-1} + (1 - \beta_2)(g_t - m_t)^2 && \text{2. Calcula o momento de 2ª ordem} \\
-                     &                                                   && \text{   baseado na diferença entre o gradiente atual e a} \\
-                     &                                                   && \text{   média móvel (a "crença" na direção).} \\[1.5em]
-        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem.} \\[1em]
-        \hat{s}_t    &= \frac{s_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
-        \theta_{t+1} &= \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{s}_t} + \epsilon} && \text{5. Atualiza os pesos. Dá passos grandes quando o} \\
-                     &                                                            && \text{   gradiente é previsível e pequenos quando não é.}
-    \end{aligned}
-    \label{eq:AdaBelief}
-\end{equacaodestaque}
-
-\subsubsection{Implementação em Python}
+\section{Comparativo de Desempenho: Otimizadores}
 
 % ===================================================================
 % Método de Newton
