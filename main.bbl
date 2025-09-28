@@ -457,6 +457,46 @@
       \field{pages}{1\bibrangedash 17}
       \range{pages}{17}
     \endentry
+    \entry{StochasticGradientDescentMethod}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=163566b92b332258782e61e3d217a2bb}{%
+           family={Robbins},
+           familyi={R\bibinitperiod},
+           given={Herbert},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95751f7f614bc2af42f1a078b3e2ba61}{%
+           family={Monro},
+           familyi={M\bibinitperiod},
+           given={Sutton},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhashraw}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{bibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorbibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authornamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhashraw}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{number}{3}
+      \field{title}{A Stochastic Approximation Method}
+      \field{volume}{22}
+      \field{year}{1951}
+      \field{pages}{400\bibrangedash 407}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1214/aoms/1177729586
+      \endverb
+    \endentry
     \entry{BackpropagationArticle}{article}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=55cd5380bb5b15032a6d5a2015f56e3f}{%
@@ -498,6 +538,45 @@
       \field{year}{1986}
       \field{pages}{533\bibrangedash 536}
       \range{pages}{4}
+    \endentry
+    \entry{Adeline}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b169a98a97af63e6129eb6a4fb83bc49}{%
+           family={Widrow},
+           familyi={W\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=072fd7a7462d54c592b1425f7534e847}{%
+           family={Hoff},
+           familyi={H\bibinitperiod},
+           given={Marcian\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IRE}%
+      }
+      \strng{namehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{fullhash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{fullhashraw}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{bibnamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorbibnamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authornamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorfullhash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorfullhashraw}{904fec68a079b63be5f638f1fc2900d3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{1960 IRE WESCON Convention Record}
+      \field{part}{4}
+      \field{title}{Adaptive Switching Circuits}
+      \field{year}{1960}
+      \field{pages}{96\bibrangedash 104}
+      \range{pages}{9}
     \endentry
   \enddatalist
   \missing{AlexNet}

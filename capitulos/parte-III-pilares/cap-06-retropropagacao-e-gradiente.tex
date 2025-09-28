@@ -16,15 +16,13 @@
 
 Cada rede neural é composta de diferentes partes, uma rede feedforward é composta de camadas densas, que por sua vez são compostas por um conjunto de neurônios. Uma rede convolucional, possui camadas de achatamento, camadas de pooling e camadas convolucionais, que possuem kernels muitas vezes inteligêntes que aprendem conforme o o treino a reconhecer diferentes padrões em imagens. Já uma rede recorrente, possui camadas com neurônios recorrentes, que buscam reconhecer padrões em diferentes tipos de séries, a fim de que seja por exemplo, possível prever qual será o valor de ação de uma marca x no dia 27 de setembro de 2025.
 
-O que não falta em uma rede neural são parâmetros, eles estão por todos os lados. Agora imagine que você está encarregado de criar uma rede convolucional para reconhecer imagens de cães e gatos e precisa de forma manual ajustar todos, o pesos das camadas densas junto com o seus vieses, além de ter que atualizar os valores de um kernel presente na primeira camada convolucional.
+O que não falta em uma rede neural são parâmetros, eles estão por todos os lados. Agora imagine que você está encarregado de criar uma rede convolucional para reconhecer imagens de cães e gatos e precisa de forma manual ajustar todos, o pesos das camadas densas junto com o seus vieses, além de ter que atualizar os valores os kernels presentes nas camadas convolucionais.
 
-Certamente isso é impossível de ser feito, uma rede como essa pode ter milhares e até milhões de parâmetros. Por isso, uma das formas de contornar esse problema, e, deixar para que o computador faça as suas atualiações é a retropropagação. Ela caminha junto com o método do gradiente para que todas essas atualições sejam feitas de forma automática, e com uma maior garantia que ela será eficáz, uma vez que estará se baseando em como o erro do modelo que está sendo treinado é medido.
+Certamente isso é impossível de ser feito, uma rede como essa pode ter milhares e até milhões de parâmetros. Por isso, uma das formas de contornar esse problema, e, deixar para que o computador faça as suas atualizações é a retropropagação. Ela caminha junto com o método do gradiente para que todas essas atualizações sejam feitas de forma automática, e com uma maior garantia que ela será eficáz, uma vez que estará se baseando em como o erro do modelo que está sendo treinado é medido.
 
-Esse captítulo se inicia introduzindo primeiro o método do gradiente, o qual serve de inspiração até hoje para diversos algoritmos de otimização. Em seguida, é dedicada uma seção explicando a retropropagação, e como ela aliada ao método do gradiente permite que resolver o problema de otimizar milhares de parâmetros de uma rede neural, para isso é explicado as suas fórmulas, e como elas atuam para minizar como o erro é propagado pela rede. 
+Esse captítulo se inicia introduzindo primeiro o método do gradiente, o qual serve de inspiração até hoje para diversos algoritmos de otimização. Em seguida, é dedicada uma seção explicando a retropropagação, e como ela aliada ao método do gradiente permite que resolver o problema de otimizar milhares de parâmetros de uma rede neural, para isso são explicadas as suas fórmulas, e como elas atuam para minimizar como o erro é propagado pela rede. 
 
-Conhecendo esses dois tótpicos, é possível conhecer métodos mais elaborados de otimização, que buscam assim como o método do gradiente encontrar o ponto de mínimo local de uma função, mas, de forma mais rápida, gastantando menos iterações, sendo um desses exemplos o método do gradiente com momento. Com novos métodos criados e apresentados para a comunidade científica, não demorou muito para que os antigos se tornassem obsoletos e novas formas de otimização fossem criadas, assim, a próxima seção explica alguns dos métodos de otimização modernos, começando pelo AdaGrad, o qual faz uso de taxas de aprendizado adpativas para garantir um melhor aprendizado da rede que está sendo criada, ele serve de inspiração para a grande maioria dos métodos dessa seção, que buscam fazer pequenos incrementos em seu funcionamento.
-
-Conhecendo os principais métodos de otimização, é possível fazer um comparativo em como eles funcionam, mostrando o seu desempenho, analisando sua acurácia, sua velocidade para reduzir a perda de um modelo bem como o seu tempo gasto por iteração como forma de descobrir o seu custo computacional.
+Conhecendo esses dois tópicos, é possível conhecer métodos mais elaborados de otimização, que buscam assim como o método do gradiente encontrar o ponto de mínimo local de uma função, mas, de forma mais rápida, gastantando menos iterações, sendo um desses exemplos o método do gradiente com momento. Com novos métodos criados e apresentados para a comunidade científica, não demorou muito para que os antigos se tornassem obsoletos e novas formas de otimização fossem criadas, assim, a próxima seção explica alguns dos métodos de otimização modernos, começando pelo AdaGrad, o qual faz uso de taxas de aprendizado adpativas para garantir um melhor aprendizado da rede que está sendo criada, ele serve de inspiração para a grande maioria dos métodos dessa seção, que buscam fazer pequenos incrementos em seu funcionamento.
 
 % ===================================================================
 % Método do Gradiente Descendente
@@ -32,17 +30,17 @@ Conhecendo os principais métodos de otimização, é possível fazer um compara
 
 \section{O Método do Gradiente Descendente: A Inspiração de Todos}
 
-O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em portguês) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
+O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em português) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
 Nesse texto, o autor apresenta uma forma de minimizar uma função de múltiplas variáveis ($u=f(x,y,z)$) que não assume valores negativos, para fazer isso, ele faz uso do cálculo de derivadas parciais dessa função de cada um dos seus componentes ($D_x u, D_y u, D_z u$), em seguida, ele realiza um passo de atualização, de forma que os os valores de cada uma das variáveis sejam ligeiramente incrementados por valores ($\alpha, \beta, \gamma$) \parencite{CauchyMetodoDoGradiente}. Um ponto importante destacado por \textcite{CauchyMetodoDoGradiente} é de que esses incrementos devem ser proporcionais ao negativo das suas respectivas derivadas parciais, ele descreve que esse processo de calcular as derivadas e fazer pequenos incrementos deve ser feito de forma iterativa, assim, calculá-se as derivadas, faz-se os incrementos, e o passo é repetido até convergir para o valor mínimo de $u$.
 
-Esse trabalho explica bem como aplicar o método do gradiente para se calcular mínimos de funções, mas para facilitar o entendimento do leitor, em seguida está um exemplo ilutrativo explicando o funcionamento dessa ferramenta.
+Esse trabalho explica bem como aplicar o método do gradiente para se calcular mínimos de funções, mas para facilitar o entendimento do leitor, em seguida está um exemplo ilutrativo ilustrando o funcionamento dessa ferramenta.
 
 \subsection{Exemplo Ilustrativo: Cadeia de Montanhas}
 
 Imagine que você adora aventuras, e por isso, decidiu fazer uma trilha em uma floresta que fica em uma cadeia de montanhas que podem ser escaladas. Então, você teve a incrivel ideia de ir para o menor ponto dessa cadeia de montanhas, pois, no guia que você estava seguindo, falava que lá havia um lago com uma água cristalina, perfeito para tirar fotos.
 
-Para chegar até esse lago, você conta com uma bússula um tanto quanto diferente, ao invés dela apontar para o norte como uma bússola comum, ela aponta para a direção da subida mais íngreme daquele local. Ora, isso parece desnecessário para o que você precisa, você quer ir para o lugar com menor altitude, não o maior. Mas pensando um pouco, você chegou a conclusão que se ir para a direção contrária a da bússola, você certamente irá chegar no lago.
+Para chegar até esse lago, você conta com uma bússola um tanto quanto diferente, ao invés dela apontar para o norte como uma bússola comum, ela aponta para a direção da subida mais íngreme daquele local. Ora, isso parece desnecessário para o que você precisa, você quer ir para o lugar com menor altitude, não o maior. Mas pensando um pouco, você chegou a conclusão que se ir para a direção contrária a da bússola, você certamente irá chegar no lago.
 
 Com isso em mente, você criou um plano de como irá chegar a esse lago, ele é método que segue dois passos diferentes, sendo eles:
 
@@ -55,9 +53,9 @@ Você chegou na conclusão que se seguir essa estratégia repetidas vezes, em al
 
 Na matemática, existe um método semelhante a este, que busca com base em uma bússola (chamada de vetor gradiente), encontrar um ponto de mínimo de um determinado lugar (neste caso, uma função composta por múltiplas variáveis). Esse é o método do gradiente, ele é ponto central desse capítulo, pois, ele (e suas variações) junto com o algortimo da retroprogação são algumas das principais ferramentas que colaboram para que os modelos de aprendizado de máquina possam aprender com os seus erros e com isso se tornarem melhores a cada iteração.
 
-\subsection{O Método em Si}
+A bússola e o lago servem como uma analogia para entender como o método do gradiente funciona, mas ele também possui uma definição matemática, a qual pode ser analisada na seção seguinte.
 
-A bússola e o lago servem como uma analogia para entender como o método do gradiente funciona, mas ele também possui uma definição matemática, a qual pode ser vista nesta seção.
+\subsection{O Método em Si}
 
 A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \textit{Deep Learning}, \textcite{DeepLearningBook} explicam essa ferramenta através da equação \ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
 
@@ -69,15 +67,15 @@ A vantagem do método do gradiente é que ele é uma ferramenta matemática, e p
 Em que:
 
 \begin{itemize}
-    \item $x'$: representa as coordenadas do próximo ponto;
-    \item $x$: representa as coordernadas do ponto atual;
+    \item $x$: representa as coordenadas do próximo ponto;
+    \item $x_0$: representa as coordernadas do ponto atual;
     \item $\epsilon$: representa o tamanho do passo, também chamado de taxa de aprendizado;
-    \item $\nabla f(x)$: representa o vetor gradiente calculado na posição do ponto atual ($x$) para função que se deseja otimizar.
+    \item $\nabla f(x_0)$: representa o vetor gradiente calculado na posição do ponto atual ($x_0$) para função que se deseja otimizar.
 \end{itemize}
 
 Note que assim como no método proposto por Cauchy, é pego como base o inverso do vetor gradiente. Isso ocorre pois o vetor gradiente é um vetor especial que tem como principal propriedade apontar para a direção de maior crescimento de uma função no ponto que está sendo calculada. Mas no método, o objetivo não é encontrar o ponto que irá gerar os maiores valores da função, e sim o contrário. Por isso, é tomado inverso do vetor gradiente, que, dessa forma, estará então apontando para a direção de menor crescimento de uma função.
 
-Um ponto a ser destacado nesse metodo é na hora de escolher uma taxa de aprendizado para ser utilizada no método. Uma taxa de aprendizado muito pequena signifca que o passo que o modelo irá dar de um ponto para outro será menor, e com isso implica que ele levará mais passos para encontrar um ponto de mínimo. É como se você fosse comparar a quantidade de passos que você gasta para andar do seu quarto até a sua cozinha com a quantidade de passos dados por uma formiga até lá, ambos vão chegar no local, mas a formiga certamente irá demorar bem mais. Considerando isso, surge então a hipótese de que quanto maior for o passo, mais rápido será a convergência, mas isso também não funciona muito bem, pois um passo muito largo pode ultrapassar o ponto de mínimo indo parar em outro canto da função, e ficará tentando chegar até o mínimo mas não irá conseguir pois caminha uma distância muito grande de uma só vez. Essas duas situações, em que o passo é pequeno demais e que o passo e grande demais, são ilustradas na figura \ref{fig:comparativo-tamanho-do-passo}.
+Um ponto a ser destacado nesse metodo é na hora de escolher uma taxa de aprendizado para ser utilizada no método. Uma taxa de aprendizado muito pequena signifca que o passo que o modelo irá dar de um ponto para outro será menor, e com isso implica que ele levará mais passos para encontrar um ponto de mínimo (essa situação pode ser vista na ilustração da esquerda da figura \ref{fig:comparativo-tamanho-do-passo}). É como se você fosse comparar a quantidade de passos que você gasta para andar do seu quarto até a sua cozinha com a quantidade de passos dados por uma formiga até lá, ambos vão chegar no local, mas a formiga certamente irá demorar bem mais. Considerando isso, surge então a hipótese de que quanto maior for o passo, mais rápido será a convergência, mas isso também não funciona muito bem, pois um passo muito largo pode ultrapassar o ponto de mínimo indo parar em outro canto da função, e ficará tentando chegar até o mínimo mas não irá conseguir pois caminha uma distância muito grande de uma só vez, de forma que é possível ver isso acontecendo na ilustração da direita da figura \ref{fig:comparativo-tamanho-do-passo}.
 
 \begin{figure}[h!]
     \centering
@@ -88,9 +86,7 @@ Um ponto a ser destacado nesse metodo é na hora de escolher uma taxa de aprendi
 
 Na prática, escolher o valor da taxa de aprendizado é uma tarefa que irá depender de modelo em modelo, também irá variar com os diferentes métodos de otimização além da topologia da rede neural que está sendo construída. É sempre recomendado então experimentar diferentes tamanhos de passo, de forma que seja encontrado um que melhor se ajusta ao cenário que está sendo trabalhado.
 
-Outro ponto que deve-se atentar é com relação as funções que estão sendo analisas ao utilizar o método do gradiente mas também qualquer otimizador que seja baseado nele. Se tivermos uma função convexa, em que seu formato lembra um funil, será bem mais fácil para o modelo encontrar o ponto de mínimo global daquela função. Mas se tivermos uma função não convexa, cheia de ondas e com muitos pontos de mínimos locais e pontos de sela, a convergência do modelo será pior, pois existe a chance de que ele fique preso em um ponto de mínimo local ou em um ponto de sela. Isso afeta diretamente o desempenho da rede neural que estará sendo criada, fazendo com que ela tenha métricas piores. O problema é que muitas das vezes a função $f(x)$ que estaremos interessados para calcular o desemepenho do modelo será não convexa, dificultando o seu aprendizado.
-
-Na figura \ref{fig:funcao-convexa-nao-convexa} é possível ver o gráfico de duas funções diferentes, a primeira sendo uma função convexa e a segunda uma função não convexa.
+Outro ponto que deve-se atentar é com relação as funções que estão sendo analisadas ao utilizar o método do gradiente mas também qualquer otimizador que seja baseado nele. Se tivermos uma função convexa (como a representada na ilustração da esquerda da figura \ref{fig:funcao-convexa-nao-convexa}), em que seu formato lembra um funil, será bem mais fácil para o modelo encontrar o ponto de mínimo global daquela função. Mas se tivermos uma função não convexa (como a representada na ilustração da direita da figura \ref{fig:funcao-convexa-nao-convexa}), cheia de ondas e com muitos pontos de mínimos locais e pontos de sela, a convergência do modelo será pior, pois existe a chance de que ele fique preso em um ponto de mínimo local ou em um ponto de sela. Isso irá afetar diretamente o desempenho da rede neural que estará sendo criada, fazendo com que ela tenha métricas piores. O problema é que muitas das vezes a função $f(x)$ que estaremos interessados para calcular o desemepenho do modelo será não convexa, dificultando o seu aprendizado.
 
 \begin{figure}[h!]
 \centering
@@ -222,9 +218,9 @@ Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de r
 A \textbf{retropropagação} é uma ferramenta que veio para permitir que redes que fazem o uso de unidades de neurônios possam aprender, para isso, o procedimento ajusta repetidamente os pesos das conexões da rede para minimizar a diferença entre o valor atual da saída do vetor da rede neural com o valor real desejado \parencite{BackpropagationArticle}.
 \end{definicaomoderna}
 
-Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{Learning Representations by Back-Propagating Errors}, e será explicada nesse capítulo de forma detalhada. Para issom \textcite{BackpropagationArticle} comecam introduzindo três diferentes funções que serão utilizadas ao longo do texto para deduzir o os conceitos da retropropagação do gradiente, sendo elas: a equação do neurônio, a função de ativação sigmoide e a função de custo do erro quadrático médio.
+Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{Learning Representations by Back-Propagating Errors}, e será explicada nessa seção de forma detalhada. Para isso \textcite{BackpropagationArticle} comecam introduzindo três diferentes funções que serão utilizadas ao longo do texto para deduzir o os conceitos da retropropagação do gradiente, sendo elas: a equação do neurônio, a função de ativação sigmoide e a função de custo do erro quadrático médio.
 
-A primeira função, representada na equação xx, explica como um neurônio de uma camada densa irá funcionar quando recebe determinadas entradas.
+A primeira função, representada na equação \ref{eq:neuronio-camada-densa}, explica como um neurônio de uma camada densa irá funcionar quando recebe determinadas entradas.
 
 \begin{equacaodestaque}{Equação do Neurônio}
     x_j = (\sum_i y_i \cdot w_{ji}) + b_j
@@ -242,7 +238,7 @@ Sendo que:
 
 Caso você leitor decida olhar o artigo original, verá que os autores utilizaram notações diferentes na fórmula do neurônio, eles utilizam algo na forma $x_i = \sum_i y_i \cdot w_{ji}$, sem o viés, mas na prática, eles adicionam o viés como um peso extra que terá valor fixo igual a 1, na prática, ele pode ser tratado com um peso normal, por isso a notação mais simplificada \parencite{BackpropagationArticle}.
 
-A segunda fórmula diz respeito a função de ativação que será utilizada, neste caso, \textcite{BackpropagationArticle} utilizam a sigmoide logísitca, representada na fórmula xx, mas eles explicam que essa função pode variar conforme o problema, porém recomendam ter uma derivada limitada além de ser não linear, para que o modelo possa aprender de forma mais efciente.
+A segunda fórmula diz respeito a função de ativação que será utilizada, neste caso, \textcite{BackpropagationArticle} utilizam a sigmoide logísitca, representada na fórmula \ref{eq:sigmoide}, mas eles explicam que essa função pode variar conforme o problema, porém recomendam ter uma derivada limitada além de ser não linear, para que o modelo possa aprender de forma mais efciente.
 
 \begin{equacaodestaque}{Sigmoide Logística}
     y_j = \sigma(x_j) = \frac{1}{1 + e^{-x_j}}
@@ -251,7 +247,7 @@ A segunda fórmula diz respeito a função de ativação que será utilizada, ne
 
 Assim, a sigmoide é a função que irá transformar a saída do neurônio $x_j$ em uma saída $y_j$ que vai ser passada para o neurônio da camada seguinte. Além das duas notações da equação do neurônio, existe uma terceira, que já imbute a função de ativação na equação do neurônio, nesse livro, utilizaremos uma implementação de camadas, em que elas não possuem a função embutida, assim, caso decida que a saída da camada densa deva passar por uma função de ativação, ela deverá ser passada como uma camada separada, sendo algo da forma: camada densa, seguida de camada de ativação.
 
-Por fim, a última equação que os autores discutem para entender a retropropagação é a da função de custo, ou também chamada de erro. No texto, \textcite{BackpropagationArticle} utilizam a função do erro quadrático médio (MSE), a qual calcula o erro entre a saída atual do modelo e o valor real desejado, depois ela eleva ao quadrado esse valor, e por último, divide por dois. Ela é dada pela equação:
+Por fim, a última equação que os autores discutem para entender a retropropagação é a da função de custo, ou também chamada de erro. No texto, \textcite{BackpropagationArticle} utilizam a função do erro quadrático médio (MSE), a qual calcula o erro entre a saída atual do modelo e o valor real desejado, depois ela eleva ao quadrado esse valor, e por último, divide por dois. Ela é dada pela equação \ref{eq:mse}.
 
 \begin{equacaodestaque}{Erro Quadrático Médio (MSE)}
     E = \frac{1}{2} \sum_{c} \sum_{j} (y_{j, c} - d_{j, c})^2 
@@ -266,7 +262,7 @@ Em que:
     \item $d_{j, c}$: representa o valor desejado para o neurônio $j$ para o caso $c$
 \end{itemize}
 
-Considerando essas equações, \textcite{BackpropagationArticle} explicam que o objetivo é reduzir o valor do erro $E$, para isso, eles aplicam o método do gradiente para encontrar o ponto de mínimo da função MSE. Para isso, o primeiro passo é diferenciar o valor da função de erro em relação a cada um dos pesos da rede neural, assim, deve-se calcular $\partial E / \partial y_k$ para um caso específico $k$, e depois generalizar a situação. Assim, é possível encontrar uma expressão da forma:
+Considerando essas equações, \textcite{BackpropagationArticle} explicam que o objetivo é reduzir o valor do erro $E$, para isso, eles aplicam o método do gradiente para encontrar o ponto de mínimo da função MSE. De forma que o primeiro passo é diferenciar o valor da função de erro em relação a cada um dos pesos da rede neural, assim, deve-se calcular $\partial E / \partial y_k$ para um caso específico $k$, e depois generalizar a situação. Com isso, é possível encontrar uma expressão da forma:
 
 \[
     \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \sum_c \sum_k (y_{k, c} - d_{j, c})^2\right]
@@ -284,7 +280,7 @@ O próximo passo é abrir a soma, para isso, será considerado que existem $n$ n
     \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} \left( (y_1 - d_1)^2 + (y_2 - d_2)^2 + \cdots (y_k + d_k)^2 + \cdots + (y_n + d_n)^2 \right) \right]
 \]
 
-Note que todos os termos que não possuem o índice $k$, como a parte $(y_1 - d_1)^2$, serão valores constantes, e que estarão fora do obejtivo de calcular a derivada para o neurônio $k$, como eles são constantes, a sua derivada será igual a zero. Com base nisso, é possível obter uma versão ainda mais simplificada, sendo ela:
+Note que todos os termos que não possuem o índice $k$, como a parte $(y_1 - d_1)^2$, serão valores constantes, e portanto, a sua derivada será igual a zero. Com base nisso, é possível obter uma versão ainda mais simplificada, sendo ela:
 
 \[
     \frac{\partial E}{\partial y_k} = \frac{\partial}{\partial y_k} \left[ \frac{1}{2} (y_k + d_k)^2 \right]
@@ -304,13 +300,13 @@ Voltando para o índice $j$ da notação inicial, é possível concluir que o gr
 
 O próximo passo proposto pelos autores, consiste em calcular o gradiente do erro em relação a entrada do neurônio $j$, para entender como o erro total muda em relação a uma variação na entrada do neurônio. Para isso, é preciso encontrar então a expressão $\partial E / \partial x_j$ \parencite{BackpropagationArticle}.
 
-Assim, a primeira etepa é aplicar a regra da cadeia, pois, como a entrada do neurônio $x_j$ não aparece diretamente na equação do erro, é preciso aplicar a regra da cadeia, derivando o erro em relação a saída do neurônio $y_j$ e multiplicando esse resultado pela derivada da saída do neurônio em relação a sua entrada, assim, a expressão inicial é:
+Assim, a primeira etepa é aplicar a regra da cadeia, pois, como a entrada do neurônio $x_j$ não aparece diretamente na equação do erro. então, utilizando essa técnica, é possível derivar o erro em relação a saída do neurônio $y_j$ e multiplicá-lo pela derivada da saída do neurônio em relação a sua entrada. Com base nisso, a expressão inicial é:
 
 \[
     \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial x_j}
 \]
 
-Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é resultamente o primeiro que foi calculado e desenvolvido na expressão \ref{eq:gradiente-do-erro-em-relacao-a-saida-de-um-neuronio}, com isso, é possível substituir esse termo na expressão por $y_j - d_j$. A segunda informação, é de que o termo $\partial y_i / \partial x_j$ é justamente a derivada da função de ativação em relação a sua entrada, ou seja, $\sigma'(x_j)$, assim, a derivada da sigmoide será dada por:
+Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é resultamente o primeiro, $\partial E / \partial y_j$ que foi calculado e desenvolvido na expressão na primeira parte dessa demonstração, de forma que é possível substituir esse termo na expressão por $y_j - d_j$. A segunda informação, é de que o termo $\partial y_i / \partial x_j$ é justamente a derivada da função de ativação em relação a sua entrada, ou seja, $\sigma'(x_j)$, assim, a derivada da sigmoide será dada por:
 
 \[
     \frac{d y_i}{d x_j} = y_j (1 - y_j)
@@ -329,15 +325,23 @@ Note que é possível generalizar essa expressão, dessa forma o gradiente do er
     \label{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}
 \end{equacaodestaque}
 
-em que $\sigma'(x_j)$ representa a derivada de uma função de ativação qualquer, neste caso representa a sigmoide logística. Mas pode ser outra função, como a tangente hiperbólica ou a ReLU. Um ponto importante a ser destacado, é que como a retropropagação trabalha com o método do gradiente, as derivadas são parte essencial do algoritmo, utilizar funções de ativação que possuem derivadas complexas, ou que não podem ser derivadas em grande parte do seu domínio, acabam por difultar o algortimo. Caso a função possua uma derivada complexa, o cálculo do gradiente irá demorar mais, pois levará uma quantidade maior de operações para computar o valor da derivada.
+Em que:
 
-O próximo passo vai mais além ainda, agora, como \textcite{BackpropagationArticle} explicam, o seu objetivo é entender como o gradiente muda em relação a um peso $w_ij$ específico da rede neural, para isso, é preciso calcular a expressão $\partial E / \partial w_{ij}$, note mais uma vez que o peso $w_{ij}$ não aparece diretamente na equação do erro, assim, é necessário mais uma vez aplicar a regra da cadeia para calcular essa derivada. Assim, a expressão inicial é:
+\begin{itemize}
+    \item $\partial E / \partial x_j$: Representa como o erro varia em relação à uma entrada $x_j$ de um neurônio $j$;
+    \item $\partial E / \partial y_j$: Representa como o erro varia em relação à uma saída de uma função de ativação que recebe a saída do neurônio $j$;
+    \item $\sigma'(x_j)$: Representa a derivada da função de ativação calculada para os valores de $x_j$.
+\end{itemize}
+
+Note que $\sigma'(x_j)$ representa a derivada de uma função de ativação qualquer, neste caso representa a sigmoide logística. Mas pode ser outra função, como a tangente hiperbólica ou a ReLU. Um ponto importante a ser destacado, é que como a retropropagação trabalha com o método do gradiente, as derivadas são parte essencial do algoritmo, utilizar funções de ativação que possuem derivadas complexas, ou que não podem ser derivadas em grande parte do seu domínio, acabam por dificultar o algortimo. Caso a função possua uma derivada complexa, o cálculo do gradiente irá demorar mais, pois levará uma quantidade maior de operações para computar o valor da derivada.
+
+O próximo passo vai mais além ainda, agora, como \textcite{BackpropagationArticle} explicam, o seu objetivo é entender como o gradiente muda em relação a um peso $w_ij$ específico da rede neural, para isso, é preciso calcular a expressão $\partial E / \partial w_{ij}$, note mais uma vez que o peso $w_{ij}$ não aparece diretamente na equação do erro, de forma que é necessário mais uma vez aplicar a regra da cadeia para calcular essa derivada. Assim, a expressão inicial é:
 
 \[
     \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot \frac{\partial x_j}{\partial w_{ij}}
 \]
 
-Note que o primeiro termo da expressão é justamente o que foi calculado na equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso calcular apenas o segundo termo, $\partial x_i / \partial w_{ij}$, ou seja, a derivada do neurônio em relação a um peso específico. Assim, tem-se a expressão incial:
+Note que o primeiro termo da expressão é justamente o que foi calculado na equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, portanto, é preciso calcular apenas o segundo termo, $\partial x_i / \partial w_{ij}$, ou seja, a derivada da entrada do do neurônio em relação a um peso específico. Obtendo então a expressão incial:
 
 \[
     \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[ \left( \sum_i y_i \cdot w_{ji} \right) + b_j\right]
@@ -349,7 +353,7 @@ Note que o viés, dado por $b_j$ é uma constante, e por isso, não depende do p
     \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[\sum_i y_i \cdot w_{ji}\right]
 \]
 
-Em seguida, é possível abrir a soma, assim, temos a expressão:
+Em seguida, é possível abrir a soma, encontrando os termos:
 
 \[
     \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[ (y_1 \cdot w_{j1}) + (y_2 \cdot w_{j2}) + \cdots (y_i \cdot w_{ji}) + \cdots (y_n \cdot w_{jn})\right]
@@ -362,28 +366,38 @@ Note que para qualquer termo que o índice não é $w_{ji}$ a derivada será igu
     \frac{\partial x_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} \left[  y_i \cdot w_{ji} \right]
 \]
 
-Como $y_i$ é uma constante em relação a $w_ij$ a derivada final será dada por:
+Como $y_i$ é uma constante em relação a $w_{ij}$ a derivada final será dada por:
 
 \[
-    \frac{\partial x_j}{partial w_{ij}} = y_i
+    \frac{\partial x_j}{\partial w_{ij}} = y_i
 \]
 
-Agora é possível voltar para a expressão inicial, obtendo então a expressão final para o gradiente do erro em relação a um peso específico da rede neural, sendo ela:
+Agora é possível voltar para a expressão inicial, obtendo então a expressão final para o gradiente do erro em relação a um peso específico da rede neural, sendo ela dada então pelas expressões \ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
 
 \begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Peso de um Neurônio}
-    \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot y_i = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
+    \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial x_j} \cdot y_i \quad \text{ou} \quad \frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
     \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
 \end{equacaodestaque}
 
+Em que: 
+
+\begin{itemize}
+    \item $\partial E / \partial w_{ij}$: Representa como o erro varia em relação à variação de um peso $w_{ij}$, responsável por conectar os neurônios das camadas $i$ e $j$;
+    \item $\partial E / \partial x_j$: Representa como o erro varia em relação à uma entrada do de um neurônio $j$;
+    \item $y_i$: Representa a saída da função de ativação de um neurônio da camada $i$;
+    \item $\partial E / \partial y_j$: Representa como o erro varia em relação à saída de uma função de ativação de um neurônio $j$;
+    \item $\sigma'(x_j)$: Representa a derivada da função de ativação calculada para os valores do neurônio $x_j$.
+\end{itemize}
+
 Assim, é possível concluir que o gradiente do erro em relação a um peso específico de um neurônio é dado pelo gradiente do erro da saída do neurônio multiplicado pela derivada da função de ativação em relação a sua entrada e, por fim, multiplicado pela entrada do neurônio.
 
-O próximo passo não está no artigo original, ele envolve entender como o erro varia em relação a um viés de um neurônio específico, ou seja, é preciso calcular a expressão $\partial E / \partial b_j$. Note que mais uma vez o viés $b_j$ não aparece diretamente na equação do erro, ele está dentro da equação do neurônio, assim, novamente é preciso aplicar a regra da cadeia para encontrar essa derivada, assim, a expressão inicial é dada por:
+O próximo passo não está no artigo original, ele envolve entender como o erro varia em relação a um viés de um neurônio específico, ou seja, é preciso calcular a expressão $\partial E / \partial b_j$. Note que mais uma vez o viés $b_j$ não aparece diretamente na equação do erro, ele está dentro da equação do neurônio, assim, novamente é preciso aplicar a regra da cadeia para encontrar essa derivada. Com isso, a expressão inicial é dada por:
 
 \[
     \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \cdot \frac{\partial x_j}{\partial b_j}
 \]
 
-A primeira expressão, $\partial E / \partial x_j$, já foi calculada na equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso focar apenas na segunda parte da expressão, $\partial x_j / \partial b_j$, que avalia como a saída do neurônio $x_j$ varia em relação ao viés $b_j$. Com base, nisso, é possível chegar na expressão:
+A primeira expressão, $\partial E / \partial x_j$, já foi calculada na equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso focar apenas na segunda parte da expressão, $\partial x_j / \partial b_j$, que é responsável por avaliar como a saída do neurônio $x_j$ varia em relação ao viés $b_j$. Com base, nisso, é possível chegar na expressão:
 
 \[
     \frac{\partial E}{\partial b_j} = \frac{\partial}{\partial b_j} \left[ \left( \sum_k y_k \cdot w{jk} \right) + b_j \right]
@@ -395,12 +409,21 @@ Note que os termos que não possuem o viés, como a parte que faz a soma da mult
         \frac{\partial E}{\partial b_j} = \frac{\partial}{\partial b_j} \left[ b_j \right]
 \]
 
-Com base nessa expressão, é possível concluir que a derivada da saída do neurônio em relação ao viés é igual a 1. Assim, voltando para a expressão inicial, temos que o gradiente do erro em relação ao viés de um neurônio específico é dado pelo gradiente do erro da entrada entrada total desse neurônio, ou seja:
+Com base nessa expressão, é possível concluir que a derivada da saída do neurônio em relação ao viés é igual a 1. Assim, voltando para a expressão inicial, temos que o gradiente do erro em relação ao viés de um neurônio específico é dado pelo gradiente do erro da entrada entrada total desse neurônio, ou seja, a equação \ref{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}.
 
 \begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Viés de um Neurônio}
-    \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \cdot 1 = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
+    \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \quad \text{ou} \quad \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
     \label{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $\partial E / \partial b_j$: Representa como o erro varia em relação ao viés $j$;
+    \item $\partial E / \partial x_j$: Representa como erro varia em relação à entrada $x_j$ do neurônio $j$;
+    \item $\partial E / \partial y_j$: Representa como erro varia em relação à saída da função de ativação que recebe as saídas do neurônio $j$;
+    \item $\sigma'(x_j)$: Representa a derivada da função de ativação calculada para os valores de $x_j$.
+\end{itemize}
 
 \subsection{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}
 
@@ -430,7 +453,12 @@ Analogamente, a regra de atualização de um viés pelo método do gradiente é 
     \label{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
 
-Neste caso, $b_{j, t+1}$ representa o valor final de um viés $j$ após o incremento do método e $b_{j, t}$ o valor inicial do viés $j$.
+\begin{itemize}
+    \item $b_{j, t+1}$ representa o viés $b_j$ atualizado após o incremento do gradiente;
+    \item $b_{j, t}$ representa o valor inicial do viés $b_j$ na iteração $t$;
+    \item $\epsilon$ representa o tamanho do passo / taxa de aprendizado;
+    \item $\partial E / \partial b_j$ representa o gradiente do erro em relação ao viés.
+\end{itemize}
 
 Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa de neurônios, você não irá lidar com um neurônio específico, e sim como uma conjunto inteiro deles. Dessa forma, eles estrão distribuidos de forma vetorizada, que que terá um vetor de viéses, uma matriz de pesos e um vetor de neurônios. Assim, as expressões {eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} e \ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}, resumem as regras de atualização de pesos e vieses, respectivamente, para casos em que estiver lidando com um conjunto de vetores ao invés de somente um dado.
 
@@ -439,10 +467,28 @@ Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa
     \label{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
 
+Em que: 
+
+\begin{itemize}
+    \item $w_{t+1}$: Representa a matriz de pesos atualizada após o incremento do método;
+    \item $w_{t}$: Representa a matriz de pesos no instânte atual $t$;
+    \item $\epsilon$: Representa a taxa de aprendizado;
+    \item $\nabla_w E$: Representa o vetor gradiente do erro calculado em relação aos pesos.
+\end{itemize}
+
 \begin{equacaodestaque}{Regra de Atualização do Vetor de Vieses Através do Método do Gradiente}
     \mathbf{b}_{t+1} = \mathbf{b}_t - \epsilon \nabla_{\mathbf{b}} E
     \label{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
+
+Em que: 
+
+\begin{itemize}
+    \item $b_{t+1}$: Representa o vetor de vieses atualizado após o incremento do método;
+    \item $w_{t}$: Representa o vetor de vieses no instânte atual $t$;
+    \item $\epsilon$: Representa a taxa de aprendizado;
+    \item $\nabla_w E$: Representa o vetor gradiente do erro calculado em relação aos vieses.
+\end{itemize}
 
 \subsection{Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}
 
@@ -467,7 +513,7 @@ Para encontrar esse gradiente, é preciso desenvolver a expressão $\partial E /
     \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
 \]
 
-Nessa expressão, $\sigma'(x_j)$ representa a função de ativação, já o termo $\partial E / \partial y_j$ representa o gradiente que está vindo ca camada de cima, o qual é dado por:
+Nessa expressão, $\sigma'(x_j)$ representa a função de ativação, já o termo $\partial E / \partial y_j$ representa o gradiente que está vindo da camada de cima, a camada $j$, o qual será dado por:
 
 \[
     \frac{\partial E}{\partial x_j} = \sum_k \frac{\partial E}{\partial x_k} \cdot w_{kj}
@@ -479,7 +525,7 @@ Juntando os dois termos:
     \frac{\partial E}{\partial x_j} = \left( \sum_k \frac{\partial E}{\partial x_k} \cdot w_{kj} \right) \sigma'(x_j)
 \]
 
-Agora, é preciso calcular o termo $\partial E / \partial x_j$, de forma que será possível trazer o gradiente da camada de saída $l$, assim temos:
+Agora, é preciso calcular o termo $\partial E / \partial x_k$, de forma que será possível trazer o gradiente da camada de saída $l$, assim temos:
 
 \[
     \frac{\partial E}{\partial x_k} = \left( \sum_k \frac{\partial E}{\partial x_l} \cdot w_{lk} \right) \cdot \sigma'(x_k)
@@ -519,7 +565,7 @@ Em que:
     \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
 \end{itemize}
 
-Assim, é possível entender como o gradiente irá se propagar ao longo de uma rede neural. Esse ponto é um dos mais importantes, pois é possível considerar que ele terá uma grande relação com as funções de ativação que são utilizadas. Essa é uma relação complicada, pois, enquanto um determinado tipo de função possa causar um tipo de problema no cálculo do gradiente, e por isso não deve ser uma opção viável para ser escolhida para resolver um problema, optar por outra família de função também pode acarretar outro tipo de problema com o gradiente.
+Assim, é possível entender como o gradiente irá se propagar ao longo de uma rede neural. Esse ponto é um dos mais importantes, pois é possível considerar que ele terá uma grande relação com as funções de ativação que são utilizadas. Essa é uma relação complicada, pois, enquanto um determinado tipo de função pode causar um tipo de problema no cálculo do gradiente, e por isso não deve ser uma opção viável para ser escolhida para resolver um problema, optar por outra família de função também pode acarretar outros tipos de problemas com o gradiente.
 
 Para isso, o capítulo \ref{cap:ativacao-sigmoidais} foca em entender as pricipais funções sigmoidais, como a sigmoide e a tangente hiperbólica, e como essas possuem uma forte relação com o problema do desaparecimento de gradientes. Em seguida, o capítulo \ref{cap:ativacao-retificadoras} busca introduzir as funções retificadoras, como a ReLU, e como elas podem ser uma alternativa para contornar esse problema. Contudo, isso não as torna perfeitas, elas ainda são suceptíveis à outro tipo de problema: a explosão de gradientes; e, no caso da ReLU: o problema dos neurônios agonizantes.
 
@@ -560,7 +606,7 @@ Para calcular $\beta$, \textcite{polyak1964} determina que será utilizada a exp
     \beta = \left( \frac{\sqrt{M} - \sqrt{m}}{\sqrt{M} + \sqrt{m}} \right)^2
 \]
 
-Em que $M$ representa o maior valor da matriz hessiana $m$ é o menor valor no ponto de mínimo da função. Isso significa que esses valores não são conhecidos de antemão. Contudo o maior problema da fórmula proposta por Polyak é que ela exige muitos cálculos, imagine ter que calcular a matriz hessiana de uma função de perda para uma rede que possui milhares ou até milhões de parâmetros, isso é muita coisa e também muito demorado. Assim, no artigo da retropropagação, \textcite{BackpropagationArticle}, apresentam uma fórmula diferente, com intuito dimunuir a quantidade de cálculos a serem feitas, mas mantendo a principal caracterísitca do método do gradiente com momentum: a inércia; ela é dada pela equação \ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
+Em que $M$ representa o maior valor da matriz hessiana $m$ é o menor valor no ponto de mínimo da função. Isso significa que esses valores não são conhecidos de antemão. Entretanto o maior problema da fórmula proposta por Polyak é que ela exige muitos cálculos, imagine ter que calcular a matriz hessiana de uma função de perda para uma rede que possui milhares ou até milhões de parâmetros, isso é muita coisa e também muito demorado. Assim, no artigo da retropropagação, \textcite{BackpropagationArticle}, apresentam uma fórmula diferente, com intuito dimunuir a quantidade de cálculos a serem feitas, mas mantendo a principal caracterísitca do método do gradiente com momentum: a inércia; ela é dada pela equação \ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
 
 \begin{equacaodestaque}{Método do Gradiente com Momentum Usado na Retropropagação}
         \Delta w (t) = \epsilon \nabla f(x) + \alpha \Delta w(t-1)
@@ -600,6 +646,10 @@ Em que:
 \subsection{Método do Gradiente em Mini-Batch}
 
 \subsection{Método do Gradiente Estocástico}
+
+Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o método do gradiente estocástico também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
+
+Contudo, apenas nos anos 60 métodos que se baseiam no cálculo de funções de erro com ruido passaram a aparecer no cenário de aprendizado de máquina, como foi o caso dos pesquisadores \textcite{Adeline} com ADALINE (Adaptive Linear Neuron). Nele, os autores buscam otimizar os valores dos pesos dos neurônios de uma rede em que ao calcular o erro do modelo, este era afetado por ruído \parencite{Adeline}
 
 \begin{equacaodestaque}{Método do Gradiente Estocástico}
         \theta_{\text{novo}} = \theta_{\text{antigo}} - n \nabla J(\theta; x^{(i); y^{(i)}}
