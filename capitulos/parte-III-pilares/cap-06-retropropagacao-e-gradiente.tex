@@ -20,7 +20,11 @@ O que não falta em uma rede neural são parâmetros, eles estão por todos os l
 
 Certamente isso é impossível de ser feito, uma rede como essa pode ter milhares e até milhões de parâmetros. Por isso, uma das formas de contornar esse problema, e, deixar para que o computador faça as suas atualiações é a retropropagação. Ela caminha junto com o método do gradiente para que todas essas atualições sejam feitas de forma automática, e com uma maior garantia que ela será eficáz, uma vez que estará se baseando em como o erro do modelo que está sendo treinado é medido.
 
-Esse capítulo se inicia explicando o conceito do método do gradiente, e como ele foi o ponto de partida para que a os pesquisadores pudessem criar a retropropagação. Contudo, essa otimização com o tempo passou a ser demorada, e assim, novos métodos surgiram, como o gradiente descendente com momento. Conforme o poder compuaticional foi aumento, outros métodos mais modernos também surgiram, apresentando conceitos novos, como múltiplas taxas de aprendizado, como o AdaGrad, de forma que características menos frequêntes possuíssem uma taxa de aprendado maior, indicando que o modelo que estava sendo criado seria mais sensível à essas propriedades, e com isso, ele pudesse "tomar nota" quando uma informação assim aparecesse.
+Esse captítulo se inicia introduzindo primeiro o método do gradiente, o qual serve de inspiração até hoje para diversos algoritmos de otimização. Em seguida, é dedicada uma seção explicando a retropropagação, e como ela aliada ao método do gradiente permite que resolver o problema de otimizar milhares de parâmetros de uma rede neural, para isso é explicado as suas fórmulas, e como elas atuam para minizar como o erro é propagado pela rede. 
+
+Conhecendo esses dois tótpicos, é possível conhecer métodos mais elaborados de otimização, que buscam assim como o método do gradiente encontrar o ponto de mínimo local de uma função, mas, de forma mais rápida, gastantando menos iterações, sendo um desses exemplos o método do gradiente com momento. Com novos métodos criados e apresentados para a comunidade científica, não demorou muito para que os antigos se tornassem obsoletos e novas formas de otimização fossem criadas, assim, a próxima seção explica alguns dos métodos de otimização modernos, começando pelo AdaGrad, o qual faz uso de taxas de aprendizado adpativas para garantir um melhor aprendizado da rede que está sendo criada, ele serve de inspiração para a grande maioria dos métodos dessa seção, que buscam fazer pequenos incrementos em seu funcionamento.
+
+Conhecendo os principais métodos de otimização, é possível fazer um comparativo em como eles funcionam, mostrando o seu desempenho, analisando sua acurácia, sua velocidade para reduzir a perda de um modelo bem como o seu tempo gasto por iteração como forma de descobrir o seu custo computacional.
 
 % ===================================================================
 % Método do Gradiente Descendente
@@ -38,13 +42,13 @@ Esse trabalho explica bem como aplicar o método do gradiente para se calcular m
 
 Imagine que você adora aventuras, e por isso, decidiu fazer uma trilha em uma floresta que fica em uma cadeia de montanhas que podem ser escaladas. Então, você teve a incrivel ideia de ir para o menor ponto dessa cadeia de montanhas, pois, no guia que você estava seguindo, falava que lá havia um lago com uma água cristalina, perfeito para tirar fotos.
 
-Para chegar até esse lago, você conta com uma bússula um tanto quanto diferente, ao invés dela apontar para o norte como uma bússola comum, ela aponta para a direção do lugar com menor altitude de uma região. Isso é perfeito para o que você precisa, pois ela irá apontar justamente para o lago de você quer ir.
+Para chegar até esse lago, você conta com uma bússula um tanto quanto diferente, ao invés dela apontar para o norte como uma bússola comum, ela aponta para a direção da subida mais íngreme daquele local. Ora, isso parece desnecessário para o que você precisa, você quer ir para o lugar com menor altitude, não o maior. Mas pensando um pouco, você chegou a conclusão que se ir para a direção contrária a da bússola, você certamente irá chegar no lago.
 
 Com isso em mente, você criou um plano de como irá chegar a esse lago, ele é método que segue dois passos diferentes, sendo eles:
 
 \begin{enumerate}
     \item Olha na bússola qual a direção ela está apontando;
-    \item Anda um metro na direção apontada pela bússola.
+    \item Anda um metro na direção contrária apontada pela bússola.
 \end{enumerate}
 
 Você chegou na conclusão que se seguir essa estratégia repetidas vezes, em algum momento, você inevitavelmente irá chegar no lago que está querendo tirar as suas fotos.
@@ -52,6 +56,8 @@ Você chegou na conclusão que se seguir essa estratégia repetidas vezes, em al
 Na matemática, existe um método semelhante a este, que busca com base em uma bússola (chamada de vetor gradiente), encontrar um ponto de mínimo de um determinado lugar (neste caso, uma função composta por múltiplas variáveis). Esse é o método do gradiente, ele é ponto central desse capítulo, pois, ele (e suas variações) junto com o algortimo da retroprogação são algumas das principais ferramentas que colaboram para que os modelos de aprendizado de máquina possam aprender com os seus erros e com isso se tornarem melhores a cada iteração.
 
 \subsection{O Método em Si}
+
+A bússola e o lago servem como uma analogia para entender como o método do gradiente funciona, mas ele também possui uma definição matemática, a qual pode ser vista nesta seção.
 
 A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \textit{Deep Learning}, \textcite{DeepLearningBook} explicam essa ferramenta através da equação \ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
 

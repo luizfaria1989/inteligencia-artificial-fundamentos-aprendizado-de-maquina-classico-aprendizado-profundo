@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  28 SEP 2025 09:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  28 SEP 2025 10:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2255,9 +2255,6 @@ Package babel Info: 'brazil' activates 'portuges' shorthands.
 \openout2 = `capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.aux'.
 
  (./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [27
 
@@ -2265,46 +2262,55 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 
 [28]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 66.
+
+[29]
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 72.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-
-[29]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=688, 903.375pt x 250.9375pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=686, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 78.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 84.
 (pdftex.def)             Requested size: 455.24411pt x 126.46014pt.
 
 
-[30
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.87 N
-      a figura \ref{fig:funcao-convexa-nao-convexa} √© poss√≠vel ver o gr√°f... <./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 162.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Overfull \hbox (12.08035pt too wide) in paragraph at lines 178--179
-\T1/ppl/m/n/12 ra-menta, re-ce-bendo como pa-r‚-me-tros de en-trada a taxa de apren-di-zado (\T1/cmtt/m/n/12 learning_rate\T1/ppl/m/n/12 ),
- []
+
+
+[30]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 168.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [31
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.183 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.181 
-      ]
+l.183 
+       <./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>]
+Overfull \hbox (12.08035pt too wide) in paragraph at lines 184--185
+\T1/ppl/m/n/12 ra-menta, re-ce-bendo como pa-r‚-me-tros de en-trada a taxa de apren-di-zado (\T1/cmtt/m/n/12 learning_rate\T1/ppl/m/n/12 ),
+ []
+
 \g__tcobox_out_iow=\write6
 \openout6 = `main.listing'.
 
- (./main.listing
+(./main.listing
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1.
 )
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [32]
 
@@ -2312,11 +2318,11 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 
 [34]
 
-LaTeX Warning: Reference `eq:gradiente-do-erro-em-relacao-a-saida-de-um-neuronio' on page 35 undefined on input line 307.
-
-
-
 [35]
+
+LaTeX Warning: Reference `eq:gradiente-do-erro-em-relacao-a-saida-de-um-neuronio' on page 36 undefined on input line 313.
+
+
 
 [36]
 
@@ -2329,114 +2335,109 @@ LaTeX Warning: Reference `eq:gradiente-do-erro-em-relacao-a-saida-de-um-neuronio
 [40]
 
 [41]
+
+[42]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-[42]
 
 [43]
 
 [44]
 
 [45]
-LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 653.
+
+[46]
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 659.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 )
-Overfull \hbox (21.6395pt too wide) detected at line 689
-[][][][][]
- []
-
-
-
-[46]
-Overfull \hbox (64.00237pt too wide) detected at line 719
+Overfull \hbox (21.6395pt too wide) detected at line 695
 [][][][][]
  []
 
 
 
 [47]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[48]
-
-[49]
-Overfull \hbox (114.3336pt too wide) detected at line 785
+Overfull \hbox (64.00237pt too wide) detected at line 725
 [][][][][]
  []
 
 
 
+[48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[49]
+
 [50]
-Overfull \hbox (8.45563pt too wide) in paragraph at lines 823--824
-\T1/ppl/m/n/12 Com o Na-dam, ou Nesterov-accelerated Adap-tive Mo-ment Es-ti-ma-tion, ocor-reu a mesma
+Overfull \hbox (114.3336pt too wide) detected at line 791
+[][][][][]
  []
 
 
 
 [51]
-Underfull \vbox (badness 2269) has occurred while \output is active []
+Overfull \hbox (8.45563pt too wide) in paragraph at lines 829--830
+\T1/ppl/m/n/12 Com o Na-dam, ou Nesterov-accelerated Adap-tive Mo-ment Es-ti-ma-tion, ocor-reu a mesma
+ []
 
 
 
 [52]
-
-LaTeX Warning: Reference `elg:radam' on page 53 undefined on input line 892.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2269) has occurred while \output is active []
 
 
 
 [53]
+
+LaTeX Warning: Reference `elg:radam' on page 54 undefined on input line 898.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [54]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 948.
 
-LaTeX Font Info:    Calculating math sizes for size <> on input line 955.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 1.042pt on input line 955.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 955.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 955.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 1.042pt on input line 955.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 955.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 955.
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 960.
+[55]
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 954.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 961.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 1.042pt on input line 961.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 0.79192pt on input line 961.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 0.6252pt on input line 961.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 1.042pt on input line 961.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 0.79192pt on input line 961.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 0.6252pt on input line 961.
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 966.
 
 
 Underfull \vbox (badness 6978) has occurred while \output is active []
 
 
 
-[55]
+[56]
 
-[56])
+[57])
 
-[57]
+[58]
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
-
-[58
-
-
-
-
-]
 \l__witharrows_x_dim=\dimen372
 \l__witharrows_initial_int=\count576
 \l__witharrows_final_int=\count577
@@ -2456,6 +2457,11 @@ Underfull \vbox (badness 6978) has occurred while \output is active []
 
 
 [59
+
+
+
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
@@ -3723,13 +3729,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  57618 strings out of 467888
  1311954 string characters out of 5434061
- 4197641 words of memory out of 5000000
+ 4198536 words of memory out of 5000000
  84161 multiletter control sequences out of 15000+600000
  708896 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,107p,1297b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (180 pages, 919389 bytes).
+Output written on main.pdf (180 pages, 919002 bytes).
 PDF statistics:
  3018 PDF objects out of 3580 (max. 8388607)
  2727 compressed objects within 28 object streams
