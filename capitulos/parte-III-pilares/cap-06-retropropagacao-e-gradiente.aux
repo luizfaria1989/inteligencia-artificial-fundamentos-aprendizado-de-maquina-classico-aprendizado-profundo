@@ -1,32 +1,283 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
 \@writefile{toc}{\setlength  {\cftchapterindent }{0em} \setlength  {\cftchapternumwidth }{\cftlastnumwidth }}
-\@writefile{toc}{\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase    []{O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente}}{21}{chapter.6}\protected@file@percent }
-\newlabel{cap:retropropagacao-gradiente}{{6}{21}{\texorpdfstring {\MakeTextUppercase {\tempf@rtoc }}{\tempf@rtoc }}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}O Método do Gradiente Descendente: A Inspiração de Todos}{22}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Exemplo Ilustrativo: Cadeia de Montanhas}{22}{subsection.6.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}O Método em Si}{23}{subsection.6.1.2}\protected@file@percent }
-\newlabel{eq:metodo-do-gradiente}{{6.1}{23}{O Método em Si}{equation.6.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Comparativo do tamanho de passos em uma função polinomial.}}{24}{figure.6.1}\protected@file@percent }
-\newlabel{fig:comparativo-tamanho-do-passo}{{1}{24}{Comparativo do tamanho de passos em uma função polinomial}{figure.6.1}{}}
-\newlabel{fig:funcao-convexa}{{6.1.2}{25}{O Método em Si}{figure.6.1}{}}
-\newlabel{fig-funcao-nao-convexa}{{6.1.2}{25}{O Método em Si}{figure.6.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparação entre funções 3D convexas e não-convexas.}}{25}{figure.6.2}\protected@file@percent }
-\newlabel{fig:funcao-convexa-nao-convexa}{{2}{25}{Comparação entre funções 3D convexas e não-convexas}{figure.6.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Implementação em Python}{25}{subsection.6.1.3}\protected@file@percent }
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces O Método do Gradiente (Descida do Gradiente)}}{25}{algorithm.1}\protected@file@percent }
-\newlabel{alg:gradient_descent}{{1}{25}{Implementação em Python}{algorithm.1}{}}
-\newlabel{lst:gd_class}{{6.1.3}{27}{Implementação em Python}{algorithm.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}A Retropropagação: Aprendendo com os Erros}{27}{section.6.2}\protected@file@percent }
-\newlabel{eq:neuronio-camada-densa}{{6.2}{28}{A Retropropagação: Aprendendo com os Erros}{equation.6.2}{}}
-\newlabel{eq:sigmoide}{{6.3}{28}{A Retropropagação: Aprendendo com os Erros}{equation.6.3}{}}
-\newlabel{eq:mse}{{6.4}{29}{A Retropropagação: Aprendendo com os Erros}{equation.6.4}{}}
-\newlabel{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}{{6.5}{31}{A Retropropagação: Aprendendo com os Erros}{equation.6.5}{}}
-\newlabel{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}{{6.6}{32}{A Retropropagação: Aprendendo com os Erros}{equation.6.6}{}}
-\newlabel{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}{{6.7}{33}{A Retropropagação: Aprendendo com os Erros}{equation.6.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{34}{subsection.6.2.1}\protected@file@percent }
-\newlabel{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}{{6.8}{34}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.8}{}}
-\newlabel{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}{{6.9}{34}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.9}{}}
-\newlabel{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente}{{6.10}{35}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.10}{}}
-\newlabel{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}{{6.11}{35}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Entendendo Como o Gradiente É Propagado ao Longo de Muitas
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase    []{O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente}}{27}{chapter.6}\protected@file@percent }
+\newlabel{cap:retropropagacao-gradiente}{{6}{27}{\texorpdfstring {\MakeTextUppercase {\tempf@rtoc }}{\tempf@rtoc }}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}O Método do Gradiente Descendente: A Inspiração de Todos}{28}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Exemplo Ilustrativo: Cadeia de Montanhas}{28}{subsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}O Método em Si}{29}{subsection.6.1.2}\protected@file@percent }
+\newlabel{eq:metodo-do-gradiente}{{6.1}{29}{O Método em Si}{equation.6.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Comparativo do tamanho de passos em uma função polinomial.}}{30}{figure.6.1}\protected@file@percent }
+\newlabel{fig:comparativo-tamanho-do-passo}{{1}{30}{Comparativo do tamanho de passos em uma função polinomial}{figure.6.1}{}}
+\newlabel{fig:funcao-convexa}{{6.1.2}{31}{O Método em Si}{figure.6.1}{}}
+\newlabel{fig-funcao-nao-convexa}{{6.1.2}{31}{O Método em Si}{figure.6.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparação entre funções 3D convexas e não-convexas.}}{31}{figure.6.2}\protected@file@percent }
+\newlabel{fig:funcao-convexa-nao-convexa}{{2}{31}{Comparação entre funções 3D convexas e não-convexas}{figure.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Implementação em Python}{31}{subsection.6.1.3}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces O Método do Gradiente (Descida do Gradiente)}}{31}{algorithm.1}\protected@file@percent }
+\newlabel{alg:gradient_descent}{{1}{31}{Implementação em Python}{algorithm.1}{}}
+\newlabel{lst:gd_class}{{6.1.3}{33}{Implementação em Python}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}A Retropropagação: Aprendendo com os Erros}{33}{section.6.2}\protected@file@percent }
+\newlabel{eq:neuronio-camada-densa}{{6.2}{34}{A Retropropagação: Aprendendo com os Erros}{equation.6.2}{}}
+\newlabel{eq:sigmoide}{{6.3}{34}{A Retropropagação: Aprendendo com os Erros}{equation.6.3}{}}
+\newlabel{eq:mse}{{6.4}{35}{A Retropropagação: Aprendendo com os Erros}{equation.6.4}{}}
+\newlabel{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}{{6.5}{37}{A Retropropagação: Aprendendo com os Erros}{equation.6.5}{}}
+\newlabel{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}{{6.6}{38}{A Retropropagação: Aprendendo com os Erros}{equation.6.6}{}}
+\newlabel{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}{{6.7}{40}{A Retropropagação: Aprendendo com os Erros}{equation.6.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{40}{subsection.6.2.1}\protected@file@percent }
+\newlabel{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}{{6.8}{40}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.8}{}}
+\newlabel{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}{{6.9}{41}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.9}{}}
+\newlabel{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente}{{6.10}{41}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.10}{}}
+\newlabel{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}{{6.11}{41}{Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{equation.6.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}{42}{subsection.6.2.2}\protected@file@percent }
+\newlabel{eq:gradiente-para-n-camadas}{{6.12}{43}{Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}{equation.6.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Otimizadores Baseados em Gradiente: Melhorando o Gradiente Descendente}{44}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Método do Gradiente com Momentum}{44}{subsection.6.3.1}\protected@file@percent }
+\newlabel{eq:metodo-do-gradiente-com-momentum-de-polyak}{{6.13}{45}{Método do Gradiente com Momentum}{equation.6.13}{}}
+\newlabel{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}{{6.14}{46}{Método do Gradiente com Momentum}{equation.6.14}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1.1}Implementação em Python}{46}{subsubsection.6.3.1.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces O Método do Gradiente com Momentum (versão de Rumelhart et al.)}}{46}{algorithm.2}\protected@file@percent }
+\newlabel{alg:momentum_rumelhart}{{2}{46}{Implementação em Python}{algorithm.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Método do Gradiente em Mini-Batch}{46}{subsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Método do Gradiente Estocástico (SGD)}{46}{subsection.6.3.3}\protected@file@percent }
+\newlabel{eq:metodo-do-gradiente-estocastico}{{6.15}{47}{Método do Gradiente Estocástico (SGD)}{equation.6.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.3.1}Implementação em Python}{47}{subsubsection.6.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Gradiente Acelerado de Nesterov (NAG)}{47}{subsection.6.3.4}\protected@file@percent }
+\newlabel{eq:gradiente-acelerado-de-nesterov}{{6.16}{48}{Gradiente Acelerado de Nesterov (NAG)}{equation.6.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.4.1}Implementação em Python}{48}{subsubsection.6.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Apredendizado Adaptativas}{48}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Adadptive Gradient Algorithm (AdaGrad)}{49}{subsection.6.4.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces AdaGrad}}{50}{algorithm.3}\protected@file@percent }
+\newlabel{alg:adagrad}{{3}{50}{Adadptive Gradient Algorithm (AdaGrad)}{algorithm.3}{}}
+\newlabel{eq:adagrad-simplificado}{{6.17}{51}{Adadptive Gradient Algorithm (AdaGrad)}{equation.6.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.1.1}Implementação em Python}{51}{subsubsection.6.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}RMSProp}{51}{subsection.6.4.2}\protected@file@percent }
+\newlabel{eq:RMSProp}{{6.18}{51}{RMSProp}{equation.6.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.2.1}Implementação em Python}{52}{subsubsection.6.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{52}{subsection.6.4.3}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Adam}}{53}{algorithm.4}\protected@file@percent }
+\newlabel{alg:adam}{{4}{53}{Adaptive Moment Estimation (Adam)}{algorithm.4}{}}
+\newlabel{eq:Adam}{{6.19}{54}{Adaptive Moment Estimation (Adam)}{equation.6.19}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.3.1}Implementação em Python}{54}{subsubsection.6.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}AdaMax}{54}{subsection.6.4.4}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces AdaMax, uma variante do Adam baseada na norma infinita}}{55}{algorithm.5}\protected@file@percent }
+\newlabel{alg:adamax}{{5}{55}{AdaMax}{algorithm.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.5}Implementação em Python}{55}{subsection.6.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.6}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{55}{subsection.6.4.6}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Nesterov-accelerated Adaptive Moment Estimation (Nadam)}}{56}{algorithm.6}\protected@file@percent }
+\newlabel{alg:nadam}{{6}{56}{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{algorithm.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.6.1}Implementação em Python}{56}{subsubsection.6.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.7}Adam With Decoupled Weight Decay (AdamW)}{56}{subsection.6.4.7}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces Adam com Decaimento de Peso Desacoplado (AdamW)}}{57}{algorithm.7}\protected@file@percent }
+\newlabel{alg:adamw}{{7}{57}{Adam With Decoupled Weight Decay (AdamW)}{algorithm.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.7.1}Implementação em Python}{57}{subsubsection.6.4.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.8}Rectified Adam (RAdam)}{57}{subsection.6.4.8}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces Adam Retificado (RAdam)}}{58}{algorithm.8}\protected@file@percent }
+\newlabel{alg:radam}{{8}{58}{Rectified Adam (RAdam)}{algorithm.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.8.1}Implementação em Python}{59}{subsubsection.6.4.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{59}{section.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{59}{section.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{59}{subsection.6.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.2}O Método}{60}{subsection.6.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.3}Implementação em Python}{61}{subsection.6.6.3}\protected@file@percent }
+\@setckpt{capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente}{
+\setcounter{page}{62}
+\setcounter{equation}{23}
+\setcounter{enumi}{2}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{@memmarkcntra}{0}
+\setcounter{storedpagenumber}{1}
+\setcounter{book}{0}
+\setcounter{part}{3}
+\setcounter{chapter}{6}
+\setcounter{section}{6}
+\setcounter{subsection}{3}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{@ppsavesec}{0}
+\setcounter{@ppsaveapp}{0}
+\setcounter{vslineno}{0}
+\setcounter{poemline}{0}
+\setcounter{modulo@vs}{0}
+\setcounter{memfvsline}{0}
+\setcounter{verse}{0}
+\setcounter{chrsinstr}{0}
+\setcounter{poem}{0}
+\setcounter{newflo@tctr}{4}
+\setcounter{@contsubnum}{0}
+\setcounter{section@level}{0}
+\setcounter{maxsecnumdepth}{4}
+\setcounter{sidefootnote}{0}
+\setcounter{pagenote}{0}
+\setcounter{pagenoteshadow}{0}
+\setcounter{memfbvline}{0}
+\setcounter{bvlinectr}{0}
+\setcounter{cp@cntr}{0}
+\setcounter{ism@mctr}{0}
+\setcounter{xsm@mctr}{0}
+\setcounter{csm@mctr}{0}
+\setcounter{ksm@mctr}{0}
+\setcounter{xksm@mctr}{0}
+\setcounter{cksm@mctr}{0}
+\setcounter{msm@mctr}{0}
+\setcounter{xmsm@mctr}{0}
+\setcounter{cmsm@mctr}{0}
+\setcounter{bsm@mctr}{0}
+\setcounter{workm@mctr}{0}
+\setcounter{sheetsequence}{64}
+\setcounter{lastsheet}{184}
+\setcounter{lastpage}{182}
+\setcounter{figure}{2}
+\setcounter{lofdepth}{1}
+\setcounter{table}{0}
+\setcounter{lotdepth}{1}
+\setcounter{Item}{2}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{0}
+\setcounter{memhycontfloat}{0}
+\setcounter{mem@Hpagenote}{0}
+\setcounter{abntex@bookmarkcounter}{1}
+\setcounter{alineasi}{0}
+\setcounter{alineasii}{0}
+\setcounter{subalineasi}{0}
+\setcounter{incisosi}{0}
+\setcounter{parentequation}{0}
+\setcounter{lstnumber}{19}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{72}
+\setcounter{maxnames}{3}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{0}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{0}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{blx@maxsection}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{1}
+\setcounter{textcitetotal}{1}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{3000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{6000}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{tcbbreakpart}{1}
+\setcounter{tcblayer}{0}
+\setcounter{tcolorbox@number}{40}
+\setcounter{tcbrastercolumn}{1}
+\setcounter{tcbrasterrow}{1}
+\setcounter{tcbrasternum}{1}
+\setcounter{tcbraster}{0}
+\setcounter{tcblisting}{1}
+\setcounter{float@type}{32}
+\setcounter{algorithm}{8}
+\setcounter{ALG@line}{19}
+\setcounter{ALG@rem}{0}
+\setcounter{ALG@nested}{0}
+\setcounter{ALG@Lnr}{2}
+\setcounter{ALG@blocknr}{10}
+\setcounter{ALG@storecount}{0}
+\setcounter{ALG@tmpcounter}{0}
+\setcounter{lstlisting}{0}
+}

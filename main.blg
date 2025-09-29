@@ -1,0 +1,43 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'main.blg'
+[39] biber-darwin:340> INFO - === Mon Sep 29, 2025, 16:45:49
+[48] Biber.pm:420> INFO - Reading 'main.bcf'
+[104] Biber.pm:994> INFO - Found 28 citekeys in bib section 0
+[113] Biber.pm:4463> INFO - Processing section 0
+[119] Biber.pm:4654> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[120] bibtex.pm:1713> INFO - LaTeX decoding ...
+[128] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[195] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[195] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[195] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'pt-BR'
+[195] Biber.pm:4289> INFO - No sort tailoring available for locale 'pt-BR'
+[207] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[211] bbl.pm:779> INFO - Output to main.bbl
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 9, warning: 37 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 19, warning: 37 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 29, warning: 61 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 40, warning: 75 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 55, warning: 49 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 67, warning: 45 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 78, warning: 48 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 90, warning: 46 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 99, warning: 46 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 110, warning: 46 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 121, warning: 50 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 134, warning: 59 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_OhvQ/499af1e6906591d6961f19d66c065a09_3230.utf8, line 145, warning: 76 characters of junk seen at toplevel
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'Householder1941' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'Nair2010' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'Bordes' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'AlexNet' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'Goodfellow2016' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'Mass2013' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'He2015' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'XuRReLU' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'Djork' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'SELU' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'explodingGradient' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'dyingReLU' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'douglasDyingRelu' (section 0)
+[212] Biber.pm:131> WARN - I didn't find a database entry for 'gelu' (section 0)
+[212] Biber.pm:133> INFO - WARNINGS: 27

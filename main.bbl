@@ -1,0 +1,634 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{CauchyMetodoDoGradiente}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8495b42141aa0537d3c126985f420e06}{%
+           family={Cauchy},
+           familyi={C\bibinitperiod},
+           given={Augustin-Louis},
+           giveni={A\bibinithyphendelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8495b42141aa0537d3c126985f420e06}
+      \strng{fullhash}{8495b42141aa0537d3c126985f420e06}
+      \strng{fullhashraw}{8495b42141aa0537d3c126985f420e06}
+      \strng{bibnamehash}{8495b42141aa0537d3c126985f420e06}
+      \strng{authorbibnamehash}{8495b42141aa0537d3c126985f420e06}
+      \strng{authornamehash}{8495b42141aa0537d3c126985f420e06}
+      \strng{authorfullhash}{8495b42141aa0537d3c126985f420e06}
+      \strng{authorfullhashraw}{8495b42141aa0537d3c126985f420e06}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Comptes Rendus Hebdomadaires des Séances de l'Académie des Sciences}
+      \field{title}{Méthode générale pour la résolution des systèmes d'équations simultanées}
+      \field{volume}{25}
+      \field{year}{1847}
+      \field{pages}{536\bibrangedash 538}
+      \range{pages}{3}
+    \endentry
+    \entry{Cybenko1989}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5f82e084564c9fa2622446ae39f882ed}{%
+           family={Cybenko},
+           familyi={C\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{fullhash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{fullhashraw}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{bibnamehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authorbibnamehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authornamehash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authorfullhash}{5f82e084564c9fa2622446ae39f882ed}
+      \strng{authorfullhashraw}{5f82e084564c9fa2622446ae39f882ed}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics of Control, Signals, and Systems}
+      \field{number}{4}
+      \field{title}{Approximation by Superpositions of a Sigmoidal Function}
+      \field{volume}{2}
+      \field{year}{1989}
+      \field{pages}{303\bibrangedash 314}
+      \range{pages}{12}
+    \endentry
+    \entry{NadamMethod}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d1d28f03da75cca98fac1800aec56dbb}{%
+           family={Dozat},
+           familyi={D\bibinitperiod},
+           given={Timothy},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{fullhash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{fullhashraw}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{bibnamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorbibnamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authornamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorfullhash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorfullhashraw}{d1d28f03da75cca98fac1800aec56dbb}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ICLR 2016 Workshop Track}
+      \field{title}{Incorporating Nesterov Momentum into Adam}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
+      \endverb
+    \endentry
+    \entry{AdaGradMethod}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b8fbef1897da5bf46822ced31bc865c6}{%
+           family={Duchi},
+           familyi={D\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0b3d32703edd2b7248e8e8f33c5893db}{%
+           family={Hazan},
+           familyi={H\bibinitperiod},
+           given={Elad},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=300d4990e626d975e0c28630444f63c3}{%
+           family={Singer},
+           familyi={S\bibinitperiod},
+           given={Yoram},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{fullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{fullhashraw}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{bibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorbibnamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authornamehash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorfullhash}{21039f1d6e97f13dbd40c187a8131cf0}
+      \strng{authorfullhashraw}{21039f1d6e97f13dbd40c187a8131cf0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{61}
+      \field{title}{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2121\bibrangedash 2159}
+      \range{pages}{39}
+      \verb{urlraw}
+      \verb http://jmlr.org/papers/v12/duchi11a.html
+      \endverb
+      \verb{url}
+      \verb http://jmlr.org/papers/v12/duchi11a.html
+      \endverb
+    \endentry
+    \entry{DeepLearningBook}{book}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=5d2585c11210cf1d4512e6e0a03ec315}{%
+           family={Goodfellow},
+           familyi={G\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Yoshua},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ccec1ccd2e1aa86960eb2e872c6b7020}{%
+           family={Courville},
+           familyi={C\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{fullhash}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{fullhashraw}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{bibnamehash}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{authorbibnamehash}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{authornamehash}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{authorfullhash}{3ae53fe582e8a815b118d26947eaa326}
+      \strng{authorfullhashraw}{3ae53fe582e8a815b118d26947eaa326}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Deep Learning}
+      \field{year}{2016}
+    \endentry
+    \entry{AdamMethod}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b6fbd171848aad4edf3925543f1f1522}{%
+           family={Kingma},
+           familyi={K\bibinitperiod},
+           given={Diederik\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8aa66e8231cc2fdbe67aa4f18ca970c6}{%
+           family={Ba},
+           familyi={B\bibinitperiod},
+           given={Jimmy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhashraw}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{bibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorbibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authornamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhashraw}{a09df9f123146b8e2c7f1134c9496932}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Adam: A Method for Stochastic Optimization}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1412.6980
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1412.6980
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1412.6980
+      \endverb
+    \endentry
+    \entry{Leshno1993}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=049edb158a50c71989347ee731860f1b}{%
+           family={Leshno},
+           familyi={L\bibinitperiod},
+           given={Moshe},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3b29d2b577a15a7eca17145f08c72027}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Vladimir\bibnamedelima Ya.},
+           giveni={V\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dd74c7fbb9c42c0ffe2c20ef9666f59b}{%
+           family={Pinkus},
+           familyi={P\bibinitperiod},
+           given={Allan},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=826c6510225a8fe3d36e12e39fd5ebc8}{%
+           family={Schocken},
+           familyi={S\bibinitperiod},
+           given={Shimon},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{fullhash}{7bcf76dd33587b28a5127137c3fc0601}
+      \strng{fullhashraw}{7bcf76dd33587b28a5127137c3fc0601}
+      \strng{bibnamehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{authorbibnamehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{authornamehash}{45dea761ed196a0f553957374c80d0a7}
+      \strng{authorfullhash}{7bcf76dd33587b28a5127137c3fc0601}
+      \strng{authorfullhashraw}{7bcf76dd33587b28a5127137c3fc0601}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Several researchers characterized the activation function under which multilayer feedforward networks can act as universal approximators. We show that most of all the characterizations that were reported thus far in the literature are special cases of the following general result: A standard multilayer feedforward network with a locally bounded piecewise continuous activation function can approximate any continuous function to any degree of accuracy if and only if the network's activation function is not a polynomial. We also emphasize the important role of the threshold, asserting that without it the last theorem does not hold.}
+      \field{issn}{0893-6080}
+      \field{journaltitle}{Neural Networks}
+      \field{number}{6}
+      \field{title}{Multilayer feedforward networks with a nonpolynomial activation function can approximate any function}
+      \field{volume}{6}
+      \field{year}{1993}
+      \field{pages}{861\bibrangedash 867}
+      \range{pages}{7}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0893-6080(05)80131-5
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0893608005801315
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0893608005801315
+      \endverb
+      \keyw{Multilayer feedforward networks,Activation functions,Role of threshold,Universal approximation capabilities,(μ) approximation}
+    \endentry
+    \entry{RAdamMethod}{misc}{}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=30c27aab84eec430831ee1a526cc7724}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Liyuan},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a5643fa1ae8fe0824b15f38d5bd6a580}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Haoming},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c53e3e860dbeebd073b0651c1f711567}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Pengcheng},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05d71a9c5e7ac79222e01a55af0ccb93}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Weizhu},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b881686cdf68b52745dbcb6374b8008b}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Xiaodong},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=159bca5607e3797666654a2e3022978a}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Jianfeng},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7cacfe272c4d395c979d6aecd2f5ec9c}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Jiawei},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{fullhash}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \strng{fullhashraw}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \strng{bibnamehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{authorbibnamehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{authornamehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{authorfullhash}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \strng{authorfullhashraw}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{On the Variance of the Adaptive Learning Rate and Beyond}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 1908.03265
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1908.03265
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1908.03265
+      \endverb
+    \endentry
+    \entry{AdamWMethod}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1241b8181104f1917578d4c7f9b323b6}{%
+           family={Loshchilov},
+           familyi={L\bibinitperiod},
+           given={Ilya},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=528d4af87fd2ecf5fb8a22db913ce088}{%
+           family={Hutter},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{fullhash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{fullhashraw}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{bibnamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorbibnamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authornamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorfullhash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorfullhashraw}{b308ccb07134a06ec3735828ac4f15e2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Decoupled Weight Decay Regularization}
+      \field{year}{2019}
+      \verb{eprint}
+      \verb 1711.05101
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1711.05101
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1711.05101
+      \endverb
+    \endentry
+    \entry{NAGMethod}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8a41b35fe7b3d1725cb95bd7eec40b01}{%
+           family={Nesterov},
+           familyi={N\bibinitperiod},
+           given={Yurii},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{fullhash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{fullhashraw}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{bibnamehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authorbibnamehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authornamehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authorfullhash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authorfullhashraw}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the USSR Academy of Sciences}
+      \field{title}{A method for solving the convex programming problem with convergence rate $O(1/k^2)$}
+      \field{volume}{269}
+      \field{year}{1983}
+      \field{pages}{543\bibrangedash 547}
+      \range{pages}{5}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:145918791
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:145918791
+      \endverb
+    \endentry
+    \entry{polyak1964}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=83cb78217e5046c7c8c8da6fc9d263df}{%
+           family={Polyak},
+           familyi={P\bibinitperiod},
+           given={Boris\bibnamedelima T.},
+           giveni={B\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{fullhash}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{fullhashraw}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{bibnamehash}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{authorbibnamehash}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{authornamehash}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{authorfullhash}{83cb78217e5046c7c8c8da6fc9d263df}
+      \strng{authorfullhashraw}{83cb78217e5046c7c8c8da6fc9d263df}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{USSR Computational Mathematics and Mathematical Physics}
+      \field{number}{5}
+      \field{title}{Some methods of speeding up the convergence of iteration methods}
+      \field{volume}{4}
+      \field{year}{1964}
+      \field{pages}{1\bibrangedash 17}
+      \range{pages}{17}
+    \endentry
+    \entry{StochasticGradientDescentMethod}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=163566b92b332258782e61e3d217a2bb}{%
+           family={Robbins},
+           familyi={R\bibinitperiod},
+           given={Herbert},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95751f7f614bc2af42f1a078b3e2ba61}{%
+           family={Monro},
+           familyi={M\bibinitperiod},
+           given={Sutton},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhashraw}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{bibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorbibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authornamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhashraw}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{number}{3}
+      \field{title}{A Stochastic Approximation Method}
+      \field{volume}{22}
+      \field{year}{1951}
+      \field{pages}{400\bibrangedash 407}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1214/aoms/1177729586
+      \endverb
+    \endentry
+    \entry{BackpropagationArticle}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=55cd5380bb5b15032a6d5a2015f56e3f}{%
+           family={Rumelhart},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=813bd95fe553e6079cd53a567b238287}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E.},
+           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6cbc29ad7fd57ffdb9ed4728418fd988}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Ronald\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{fullhash}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{fullhashraw}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{bibnamehash}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{authorbibnamehash}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{authornamehash}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{authorfullhash}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \strng{authorfullhashraw}{fd75cea68d6982b503a0cd84f7cc7b51}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{title}{Learning Representations by Back-Propagating Errors}
+      \field{volume}{323}
+      \field{year}{1986}
+      \field{pages}{533\bibrangedash 536}
+      \range{pages}{4}
+    \endentry
+    \entry{Adeline}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b169a98a97af63e6129eb6a4fb83bc49}{%
+           family={Widrow},
+           familyi={W\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=072fd7a7462d54c592b1425f7534e847}{%
+           family={Hoff},
+           familyi={H\bibinitperiod},
+           given={Marcian\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IRE}%
+      }
+      \strng{namehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{fullhash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{fullhashraw}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{bibnamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorbibnamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authornamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorfullhash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorfullhashraw}{904fec68a079b63be5f638f1fc2900d3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{1960 IRE WESCON Convention Record}
+      \field{part}{4}
+      \field{title}{Adaptive Switching Circuits}
+      \field{year}{1960}
+      \field{pages}{96\bibrangedash 104}
+      \range{pages}{9}
+    \endentry
+  \enddatalist
+  \missing{AlexNet}
+  \missing{Bordes}
+  \missing{Djork}
+  \missing{Goodfellow2016}
+  \missing{He2015}
+  \missing{Householder1941}
+  \missing{Mass2013}
+  \missing{Nair2010}
+  \missing{SELU}
+  \missing{XuRReLU}
+  \missing{douglasDyingRelu}
+  \missing{dyingReLU}
+  \missing{explodingGradient}
+  \missing{gelu}
+\endrefsection
+\endinput
+

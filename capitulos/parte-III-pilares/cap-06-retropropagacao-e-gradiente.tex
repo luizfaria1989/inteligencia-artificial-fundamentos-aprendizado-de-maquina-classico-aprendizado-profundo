@@ -697,17 +697,6 @@ Em que:
     \item $\nabla f(y_k)$: Representa o vetor gradiente calculado no ponto de "lookahead"
 \end{itemize}
 
-\begin{algorithm}[H]
-    \caption{Gradiente Acelerado de Nesterov (NAG)}
-    \label{alg:nesterov-accelerated-gradient}
-    \begin{algorithmic}[1]
-
-        \State $\textbf{g_t} \leftarrow f(\theta_{t-1} - \eta \mu m_{t-1})$
-        \State $m_t \leftarrow \mu m_{t-1} + g_t$
-        \State $\theta_t \leftarrow \theta_{t-1} - \eta m_t$
-
-    \end{algorithmic}
-\end{algorithm}
 
 \subsubsection{Implementação em Python}
 
@@ -756,17 +745,6 @@ O AdaGrad veio como uma forma de aplicar técnicas de aprendizado-teórico para 
     \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[H]
-    \caption{AdaGrad}
-    \label{alg:adagrad1}
-    \begin{algorithmic}[1]
-
-        \State $\textbf{g_t} \leftarrow \nabla_{\theta_{t - 1}} f(\theta_{t-1})$
-        \State $\textbf{n_t} \leftarrow \textbf{n_{t-1}} + \textbf{g_t}^2$
-        \State $\theta_t \leftarrow \theta_{t-1} - \eta \frac{g_t}{\sqrt{n_t} + \epsilon}$
-
-    \end{algorithmic}
-\end{algorithm}
 
 Note que essa definição foge do contexto de aprendizado de máquina, de forma que ela pode ser simplificada em várias partes a fim de criar uma fórmula mais resumida. No algoritmo, a linha $s_{t_,i} = [g_{1:t,i}]_2$ calcula a norma L2, ou seja, o comprimento do vetor, de todos os gradientes passados para um único parâmetro i. Dessa forma, a matriz $H_t$ armazena esses valores em sua diagonal. Quando está sendo calculada a norma L2 ao quadrado, como neste caso, é o mesmo que somar os quadrados de cada componente, assim, sua representação pode ser simplificada para $G_t = G_{t-1} + g_t \odot g_t$, que é uma maneira simplificada de calcular a soma dos quadrados dos gradientes passados. Neste caso, o termo $G_t$ é uma adpatação da matriz $H_t$, só que ao invés de simbolizar uma matriz que armazena a norma dos gradientes, isso é feito por em forma de um vetor.
 
@@ -815,17 +793,6 @@ Em que:
     \label{eq:RMSProp}
 \end{equacaodestaque}
 
-\begin{algorithm}[H]
-    \caption{RMSProp}
-    \label{alg:rmsprop}
-    \begin{algorithmic}[1]
-
-        \State $\textbf{g_t} \leftarrow \nabla_{\theta_{t - 1}} f(\theta_{t-1})$
-        \State $\textbf{n_t} \leftarrow \nu n_{t-1} + (1 - \nu)\textbf{g_t}^2$
-        \State $\theta_t \leftarrow \theta_{t-1} - \eta \frac{g_t}{\sqrt{n_t} + \epsilon}$
-
-    \end{algorithmic}
-\end{algorithm}
 
 \subsubsection{Implementação em Python}
 

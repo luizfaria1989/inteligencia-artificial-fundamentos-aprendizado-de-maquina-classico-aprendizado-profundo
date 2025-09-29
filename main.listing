@@ -1,18 +1,18 @@
-class GradientDescent:
+import numpy as np
+from layers.base import Layer
 
-    def __init__(self, function, function_prime, initial_point, learning_rate=0.001, epochs=100, tolerance=1e-6):
-        self.f = function
-        self.fp = function_prime
-        self.ip = initial_point
-        self.lr = learning_rate
-        self.ep = epochs
-        self.tol = tolerance
-        self.path = []
+class Flatten(Layer):
+    def __init__(self):
+        super().__init__()
+        self.input_shape = None
 
-    def update_step(self):
-        for i in range(self.ep):
-            self.path.append(self.ip)
-            grad = self.fp(self.ip)
-            if abs(grad) < self.tol: break
-            self.ip = self.ip + self.lr * (-grad)
-        return self.ip, self.path
+    def forward(self, input_data):
+        self.input_shape = input_data.shape
+
+        flatten_output = input_data.reshape(input_data.shape[0], -1)
+
+        return flatten_output
+
+    def backward(self, output_gradient):
+        input_gradient = output_gradient.reshape(self.input_shape)
+        return input_gradient, None
