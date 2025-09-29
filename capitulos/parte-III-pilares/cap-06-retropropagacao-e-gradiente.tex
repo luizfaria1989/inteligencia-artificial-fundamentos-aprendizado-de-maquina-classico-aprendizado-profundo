@@ -645,20 +645,35 @@ Em que:
 
 \subsection{Método do Gradiente em Mini-Batch}
 
-\subsection{Método do Gradiente Estocástico}
+\subsection{Método do Gradiente Estocástico (SGD)}
 
 Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o método do gradiente estocástico também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
 
 Contudo, apenas nos anos 60 métodos que se baseiam no cálculo de funções de erro com ruido passaram a aparecer no cenário de aprendizado de máquina, como foi o caso dos pesquisadores \textcite{Adeline} com ADALINE (Adaptive Linear Neuron). Nele, os autores buscam otimizar os valores dos pesos dos neurônios de uma rede em que ao calcular o erro do modelo, este era afetado por ruído \parencite{Adeline}
 
+Conforme o tempo foi passando, o SGD provou ser uma excelente alternativa para encontrar pontos de mínimo em uma função de perda quando comparado com o método do gradiente tradicional. Dessa forma, ele continua sendo um dos otimizadores que ainda é empregado até hoje na construção de redes neurais. A sua fórmula pode ser vista na expressão \ref{eq:metodo-do-gradiente-estocastico}.
+
 \begin{equacaodestaque}{Método do Gradiente Estocástico}
-        \theta_{\text{novo}} = \theta_{\text{antigo}} - n \nabla J(\theta; x^{(i); y^{(i)}}
-    \label{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
+        \theta_{\text{novo}} = \theta_{\text{antigo}} - n \nabla J(\theta; x^{(i); y^{(i)}})
+    \label{eq:metodo-do-gradiente-estocastico}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $\theta{\text{novo}}$: representa os parâmetros do modelo já atualizados;
+    \item $\theta_{\text{antigo}}$: representa os parâmetros do modelo na iteração atual;
+    \item $n$: representa a taxa de aprendizado;
+    \item $J(\theta; x^{(i); y^{(i)}})$: representa o vetor gradiente.
+\end{itemize}
 
 \subsubsection{Implementação em Python}
 
-\subsection{Gradiente Acelerado de Nesterov}
+\subsection{Gradiente Acelerado de Nesterov (NAG)}
+
+Uma outra variante do método do gradiente é o gradiente acelerado de Nesterov (NAG). Ele foi introduzido pela primeira vez no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionamente mais barata de resolver problemas de programação convexa. 
+
+No texto, o autor trás a adição de um novo conceito para encontrar os pontos de mínimos, é o chamado ponto de \textit{lookahead}, o qual serve de base para os cálculos do gradiente \parencite{NAGMethod}. Assim esse método como apresentado na equação \ref{eq:gradiente-acelerado-de-nesterov}, possui dois passos principais, o primeiro consiste no cálculo da predição fura (o ponto de \textit{lookahead}) dando um passo na direção do momento anterior, e em seguida é calculado o gradiente no ponto de predição de forma a atualizar os pesos com base nesse novo ponto.
 
 \begin{equacaodestaque}{Gradiente Acelerado de Nesterov}
     \begin{aligned}
@@ -682,19 +697,33 @@ Em que:
     \item $\nabla f(y_k)$: Representa o vetor gradiente calculado no ponto de "lookahead"
 \end{itemize}
 
+\begin{algorithm}[H]
+    \caption{Gradiente Acelerado de Nesterov (NAG)}
+    \label{alg:nesterov-accelerated-gradient}
+    \begin{algorithmic}[1]
+
+        \State $\textbf{g_t} \leftarrow f(\theta_{t-1} - \eta \mu m_{t-1})$
+        \State $m_t \leftarrow \mu m_{t-1} + g_t$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta m_t$
+
+    \end{algorithmic}
+\end{algorithm}
+
 \subsubsection{Implementação em Python}
 
 \section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Apredendizado Adaptativas}
 
-Conforme os anos foram passando, foram surgindo novos algoritmos de otimização baseados na ideia da descida do gradiente. A partir dos anos 2010, otimizadores como o AdaGrad foram ganhando popularidade na comunidade, principalmente por apresentar uma diferença notavável quando comparados com os algoritmos clássicos: a utilização de diferentes parâmetros de representado a taxa de aprendizado, de forma que ela pudesse ser adptável para cada um dos conjuntos de características que estavam sendo analisadas.
+Conforme os anos foram passando, foram surgindo novos otimizadores, também inspirados em métodos mais clássicos, como o SGD e as variantes com momento. Mas, a partir dos anos 2010, uma nova família de otimizadores, que se originou a partir do AdaGrad, surgiu. Esses otimizadores tinham a mesma proposta dos outros baseados em gradiente, utilizá-lo como uma bússsola para encontrar os pontos de mínimo, mas ao mesmo tempo apresentavam uma diferença notável quando comparados com os otimizadores clássicos: o uso de diferentes taxas de aprendizado.
 
-Essa seção busca justamente explorar esses otimizadores, explicando suas fórmulas e algortítmos, suas vantagens quando comparados com os métodos tradicionais. Além disso, é possível ver uma evolução graduau em como cada algoritmo sucessor busca complementar pequenos erros os métodos anteriores possuíam.
+Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com esses algoritmos apresentassem um desempenho maior. Pois, para caracterísitcas que apareciam menos dos datasets era possível atribuir taxas de aprendizados mais altas, como uma forma do modelo prestar mais atenção nessas caracterísitcas. Ao mesmo tempo que atribuir taxas de aprendizado menores para características mais comuns, permitia uma melhor convergência.
+
+Essa seção busca justamente explorar essa nova família de otimizadores, para isso, diferente dos otimizadores anteriores nos quais eram explicadas as suas fórmulas, neste caso isso não será possível, por se tratarem de algoritmos mais complexos, eles serão explicados utilizando pseudocódigo. Ao avançar, será possível ver uma evolução gradual nesses otimizadores, de forma que o mais novo se inspira nas vantagens do anterior mas, ainda sim busca corrigir falhas que fiacaram para trás.
 
 \subsection{Adadptive Gradient Algorithm (AdaGrad)}
 
-Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, o Adadptive Gradient Algorithm (AdaGrad), \textcite{AdaGradMethod} o descrevem metafóricamente como uma adpatação dos métodos iterativos baseados em gradiente, que nos permite encontrar agulhas em palheiros em forma de características muito preditivas, mas raramente vistas.
+Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, o Adadptive Gradient Algorithm (AdaGrad), \textcite{AdaGradMethod} o descrevem metafóricamente como uma adpatação dos métodos iterativos baseados em gradiente, que nos permite encontrar "agulhas em palheiros" em forma de características muito preditivas, mas raramente vistas.
 
-O que os autores se referem ao ato de "encontrar agulhas em palheiros", está ligado diretamente na forma como o AdaGrad atua para melhorar o desempenho de um modelo tanto para reconhecer caracteríticas que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim caracterítiscas muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
+O que os autores se referem ao ato de encontrar "agulhas em palheiros", está ligado diretamente na forma como o AdaGrad atua para melhorar o desempenho de um modelo tanto para reconhecer caracteríticas que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim caracterítiscas muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
 
 Dessa forma, o modelo que está sendo treinado conseque garantir melhores métricas durante o seu aprendizado, pois estará aprendendo sobre aquilo que aparece muito nos dados de treino, mas, quando aparecer algo diferente e menos comum, ele irá "prestar mais atenção" devido à maior taxa de aprendizado nessas características.
 
@@ -723,6 +752,18 @@ O AdaGrad veio como uma forma de aplicar técnicas de aprendizado-teórico para 
     \State
     \State \textbf{Atualização Composta de Mirror Descent (4):}
     \State $x_{t+1} = \underset{x \in X}{\text{argmin}} \left\{ \eta \langle g_t, x \rangle + \eta \phi(x) + B_{\Psi_t}(x, x_t) \right\}$
+
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \caption{AdaGrad}
+    \label{alg:adagrad1}
+    \begin{algorithmic}[1]
+
+        \State $\textbf{g_t} \leftarrow \nabla_{\theta_{t - 1}} f(\theta_{t-1})$
+        \State $\textbf{n_t} \leftarrow \textbf{n_{t-1}} + \textbf{g_t}^2$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \frac{g_t}{\sqrt{n_t} + \epsilon}$
 
     \end{algorithmic}
 \end{algorithm}
@@ -774,6 +815,18 @@ Em que:
     \label{eq:RMSProp}
 \end{equacaodestaque}
 
+\begin{algorithm}[H]
+    \caption{RMSProp}
+    \label{alg:rmsprop}
+    \begin{algorithmic}[1]
+
+        \State $\textbf{g_t} \leftarrow \nabla_{\theta_{t - 1}} f(\theta_{t-1})$
+        \State $\textbf{n_t} \leftarrow \nu n_{t-1} + (1 - \nu)\textbf{g_t}^2$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \frac{g_t}{\sqrt{n_t} + \epsilon}$
+
+    \end{algorithmic}
+\end{algorithm}
+
 \subsubsection{Implementação em Python}
 
 \subsection{Adaptive Moment Estimation (Adam)}
@@ -789,7 +842,7 @@ O primeiro passo do método consiste em inicializar os vetores de primeiro ($m_0
 Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-    \caption{Adam, nosso algoritmo proposto para otimização estocástica}
+    \caption{Adam}
     \label{alg:adam}
     \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
 

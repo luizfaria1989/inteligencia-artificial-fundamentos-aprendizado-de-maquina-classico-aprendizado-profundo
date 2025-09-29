@@ -80,6 +80,39 @@
       \field{pages}{303\bibrangedash 314}
       \range{pages}{12}
     \endentry
+    \entry{NadamMethod}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d1d28f03da75cca98fac1800aec56dbb}{%
+           family={Dozat},
+           familyi={D\bibinitperiod},
+           given={Timothy},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{fullhash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{fullhashraw}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{bibnamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorbibnamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authornamehash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorfullhash}{d1d28f03da75cca98fac1800aec56dbb}
+      \strng{authorfullhashraw}{d1d28f03da75cca98fac1800aec56dbb}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ICLR 2016 Workshop Track}
+      \field{title}{Incorporating Nesterov Momentum into Adam}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
+      \endverb
+      \verb{url}
+      \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
+      \endverb
+    \endentry
     \entry{AdaGradMethod}{article}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=b8fbef1897da5bf46822ced31bc865c6}{%
@@ -274,6 +307,158 @@
       \endverb
       \keyw{Multilayer feedforward networks,Activation functions,Role of threshold,Universal approximation capabilities,(μ) approximation}
     \endentry
+    \entry{RAdamMethod}{misc}{}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=30c27aab84eec430831ee1a526cc7724}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Liyuan},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a5643fa1ae8fe0824b15f38d5bd6a580}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Haoming},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c53e3e860dbeebd073b0651c1f711567}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Pengcheng},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05d71a9c5e7ac79222e01a55af0ccb93}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Weizhu},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b881686cdf68b52745dbcb6374b8008b}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Xiaodong},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=159bca5607e3797666654a2e3022978a}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Jianfeng},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7cacfe272c4d395c979d6aecd2f5ec9c}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Jiawei},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{fullhash}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \strng{fullhashraw}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \strng{bibnamehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{authorbibnamehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{authornamehash}{5ce89055a03f9ccf6b68d153d47afbc8}
+      \strng{authorfullhash}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \strng{authorfullhashraw}{1c5146bfc188a9e3b713ed41cd9a476f}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{On the Variance of the Adaptive Learning Rate and Beyond}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 1908.03265
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1908.03265
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1908.03265
+      \endverb
+    \endentry
+    \entry{AdamWMethod}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1241b8181104f1917578d4c7f9b323b6}{%
+           family={Loshchilov},
+           familyi={L\bibinitperiod},
+           given={Ilya},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=528d4af87fd2ecf5fb8a22db913ce088}{%
+           family={Hutter},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{fullhash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{fullhashraw}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{bibnamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorbibnamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authornamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorfullhash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorfullhashraw}{b308ccb07134a06ec3735828ac4f15e2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Decoupled Weight Decay Regularization}
+      \field{year}{2019}
+      \verb{eprint}
+      \verb 1711.05101
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1711.05101
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1711.05101
+      \endverb
+    \endentry
+    \entry{NAGMethod}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8a41b35fe7b3d1725cb95bd7eec40b01}{%
+           family={Nesterov},
+           familyi={N\bibinitperiod},
+           given={Yurii},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{fullhash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{fullhashraw}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{bibnamehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authorbibnamehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authornamehash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authorfullhash}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \strng{authorfullhashraw}{8a41b35fe7b3d1725cb95bd7eec40b01}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the USSR Academy of Sciences}
+      \field{title}{A method for solving the convex programming problem with convergence rate $O(1/k^2)$}
+      \field{volume}{269}
+      \field{year}{1983}
+      \field{pages}{543\bibrangedash 547}
+      \range{pages}{5}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:145918791
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:145918791
+      \endverb
+    \endentry
     \entry{polyak1964}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=83cb78217e5046c7c8c8da6fc9d263df}{%
@@ -307,6 +492,46 @@
       \field{year}{1964}
       \field{pages}{1\bibrangedash 17}
       \range{pages}{17}
+    \endentry
+    \entry{StochasticGradientDescentMethod}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=163566b92b332258782e61e3d217a2bb}{%
+           family={Robbins},
+           familyi={R\bibinitperiod},
+           given={Herbert},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95751f7f614bc2af42f1a078b3e2ba61}{%
+           family={Monro},
+           familyi={M\bibinitperiod},
+           given={Sutton},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhashraw}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{bibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorbibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authornamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhashraw}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{number}{3}
+      \field{title}{A Stochastic Approximation Method}
+      \field{volume}{22}
+      \field{year}{1951}
+      \field{pages}{400\bibrangedash 407}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1214/aoms/1177729586
+      \endverb
     \endentry
     \entry{BackpropagationArticle}{article}{}{}
       \name{author}{3}{}{%
@@ -349,6 +574,45 @@
       \field{year}{1986}
       \field{pages}{533\bibrangedash 536}
       \range{pages}{4}
+    \endentry
+    \entry{Adeline}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b169a98a97af63e6129eb6a4fb83bc49}{%
+           family={Widrow},
+           familyi={W\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=072fd7a7462d54c592b1425f7534e847}{%
+           family={Hoff},
+           familyi={H\bibinitperiod},
+           given={Marcian\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IRE}%
+      }
+      \strng{namehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{fullhash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{fullhashraw}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{bibnamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorbibnamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authornamehash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorfullhash}{904fec68a079b63be5f638f1fc2900d3}
+      \strng{authorfullhashraw}{904fec68a079b63be5f638f1fc2900d3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{1960 IRE WESCON Convention Record}
+      \field{part}{4}
+      \field{title}{Adaptive Switching Circuits}
+      \field{year}{1960}
+      \field{pages}{96\bibrangedash 104}
+      \range{pages}{9}
     \endentry
   \enddatalist
   \missing{AlexNet}
