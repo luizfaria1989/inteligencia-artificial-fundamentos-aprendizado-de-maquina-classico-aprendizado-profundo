@@ -577,6 +577,8 @@ Para isso, o capítulo \ref{cap:ativacao-sigmoidais} foca em entender as pricipa
 
 Como \textcite{BackpropagationArticle} explicam logo ao terminar a dedução do cálculo da atualização dos pesos utilizando o método do gradiente, esse processo pode ser bastante lento quando comparado com métodos que fazem uso de derivadas de segunda ordem, que certamente são mais caras para serem implementadas no computador. Assim, os autores recomendam uma variação do método do gradiente que faz uso de momentum com intuito de acelerar a convergência a um custo computacional menor que o de implementar derivadas de segunda ordem \parencite{BackpropagationArticle}.
 
+Além disso, foram surgindo também outras variantes do método do gradiente, como a sua versão estocástica, trazendo uma natureza aleatória para as iterações do método, bem como o gradiente em mini-batch, que permite separar os parâmetros do modelo em lotes, podendo ser treinados de forma incremental. Uma outra variante é o gradiente acelerado de Nesterov, ele se diferencia dos outros otimizadores por adicionar o conceito de "lookahead", servindo de inspiração para uma variante do Adam, o NAdam.
+
 \subsection{Método do Gradiente com Momentum}
 
 Uma boa analogia para entender como o método do gradiente com momentum funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganahando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida a esse cenário.
@@ -645,6 +647,10 @@ Em que:
 
 \subsection{Método do Gradiente em Mini-Batch}
 
+No fim da explicação sobre os cálculos da matriz de pesos e do vetor de vieses, foi vista uma equação simplificada que busca calcular os novos parâmetros de uma iteração de forma única. Mas isso apresenta um problema, ele exige que todos esses parâmetros estejam armazenados na memória principal do computador, de forma que caso sejam muitos parâmetros de uma rede, isso acabe se tornando uma alternativa inviável. 
+
+Para isso, existe o método do gradiente em mini-batch (mini-lotes), que divide todos esses parâmetros em pequenos lotes de tamanhos variáveis, assim, ao invés de calcular um parâmetro por vez como no gradiente descendete tradicional, ou todos os parâmetros de uma vez, é possível fazer essas atualizações de forma iterativa e incremental. Com isso, caso tenha uma quantidade de memória maior no seu computador, você pode optar por criar batches maiores, o que pode ajudar no tempo de treino do modelo.
+
 \textbf{Implementação em Python}
 
 \subsection{Método do Gradiente Estocástico (SGD)}
@@ -653,7 +659,7 @@ Assim como o método do gradiente que faz uso do momento para acelerar a converg
 
 Contudo, apenas nos anos 60 métodos que se baseiam no cálculo de funções de erro com ruido passaram a aparecer no cenário de aprendizado de máquina, como foi o caso dos pesquisadores \textcite{Adeline} com ADALINE (Adaptive Linear Neuron). Nele, os autores buscam otimizar os valores dos pesos dos neurônios de uma rede em que ao calcular o erro do modelo, este era afetado por ruído \parencite{Adeline}
 
-Conforme o tempo foi passando, o SGD provou ser uma excelente alternativa para encontrar pontos de mínimo em uma função de perda quando comparado com o método do gradiente tradicional. Dessa forma, ele continua sendo um dos otimizadores que ainda é empregado até hoje na construção de redes neurais. A sua fórmula pode ser vista na expressão \ref{eq:metodo-do-gradiente-estocastico}.
+Conforme o tempo foi passando, o SGD provou ser uma excelente alternativa para encontrar pontos de mínimo em uma função de perda quando comparado com o método do gradiente tradicional. Isso se dá ao fato da sua natureza estocástica, que o permite "saltar" por pontos de mínimos locais e também por pontos de sela, contudo, ele pode não garantir uma convergência tão boa quando comparado ao método tradicional, podendo chegar muito próximo do ponto de mínimo, mas escapando dele, devido a suas prioriedades aleatórias.
 
 \begin{equacaodestaque}{Método do Gradiente Estocástico}
         \theta_{\text{novo}} = \theta_{\text{antigo}} - n \nabla J(\theta; x^{(i); y^{(i)}})

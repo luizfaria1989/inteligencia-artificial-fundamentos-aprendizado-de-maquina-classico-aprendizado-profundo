@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  30 SEP 2025 13:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  30 SEP 2025 14:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2325,9 +2325,6 @@ Underfull \vbox (badness 1502) has occurred while \output is active []
 [42]
 
 [43]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [44]
 
@@ -2338,19 +2335,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [47]
 
 [48]
-LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 749.
+
+[49]
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 755.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[49]
 
 [50]
 
-LaTeX Warning: Reference `eq:adagrad-simplificado' on page 51 undefined on input line 797.
+LaTeX Warning: Reference `eq:adagrad-simplificado' on page 51 undefined on input line 803.
 
 
 
@@ -2364,43 +2358,49 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [53]
 
 [54]
-Overfull \hbox (8.45563pt too wide) in paragraph at lines 951--952
+Overfull \hbox (8.45563pt too wide) in paragraph at lines 957--958
 \T1/ppl/m/n/12 Com o Na-dam, ou Nesterov-accelerated Adap-tive Mo-ment Es-ti-ma-tion, ocor-reu a mesma
  []
 
 
 
 [55]
+Underfull \vbox (badness 3396) has occurred while \output is active []
+
+
 
 [56]
 
-LaTeX Warning: Reference `elg:radam' on page 57 undefined on input line 1020.
+LaTeX Warning: Reference `elg:radam' on page 57 undefined on input line 1026.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [57]
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 1076.
-
-LaTeX Font Info:    Calculating math sizes for size <> on input line 1083.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 1.042pt on input line 1083.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 1083.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 1083.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 1.042pt on input line 1083.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 1083.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 1083.
-
-LaTeX Font Warning: Command \large invalid in math mode on input line 1088.
-
-
-
 [58]
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 1082.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 1089.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 1.042pt on input line 1089.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 0.79192pt on input line 1089.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 0.6252pt on input line 1089.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 1.042pt on input line 1089.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 0.79192pt on input line 1089.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 0.6252pt on input line 1089.
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 1094.
+
+
 
 [59])
 
@@ -3688,15 +3688,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 57604 strings out of 467888
- 1312149 string characters out of 5434061
- 4200700 words of memory out of 5000000
- 84158 multiletter control sequences out of 15000+600000
+ 57605 strings out of 467888
+ 1312165 string characters out of 5434061
+ 4201704 words of memory out of 5000000
+ 84159 multiletter control sequences out of 15000+600000
  708270 words of font info for 244 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,107p,1327b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (182 pages, 926236 bytes).
+Output written on main.pdf (182 pages, 926619 bytes).
 PDF statistics:
  2968 PDF objects out of 2984 (max. 8388607)
  2676 compressed objects within 27 object streams
