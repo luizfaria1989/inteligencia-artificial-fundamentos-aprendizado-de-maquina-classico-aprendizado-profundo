@@ -278,7 +278,7 @@ Notamos que sua derivada é contínua em todos os pontos e que ela atinge um pon
 
 Ao analisarmos a derivada da sigmoide na expressão \ref{eq: DerivadaSigmoideVariacao} vemos que ela possui uma derivada bem elegante e atrativa para as os cientistas da computação da época, pois pelo fato dela poder ser escrita em termos de sua própria função, isso permite que vários cálculos possam ser reaproveitados. Isso é algo interessante para a criação de uma rede neural no milênio passado pois, devemos lembrar que os computadores da época não possuíam uma poder computacional tão alto como os da atualidade. Assim, qualquer calculo que pudesse ser reaproveitado e até mesmo simplificado, já era de muita ajuda para os cientistas além de poupar grande tempo de processamento.
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 Com base nesses dados, podemos escrever a sua implementação em código. Para isso, devemos apenas seguir a fórmula da sigmoide logística e sua derivada. Temos então o bloco de código \ref{lst:codigo-sigmoide}.
 
@@ -382,7 +382,7 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
     \label{fig: GraphTanh}
 \end{figure}
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 Agora que sabemos como a tangente hiperbólica se comporta, além de conhecermos as suas fórmulas, podemos implementar a sua função em Python, utilizando o numpy para auxiliar nos cálculos.
 
@@ -473,7 +473,7 @@ Podemos ver também no gráfico da derivada da softsign que o valor de sua deriv
     \label{fig:GraphSoftsignDerivative}
 \end{figure}
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 Assim, podemos implementar o bloco de código \ref{lst:codigo-softsign} representa a função softsign para ser utilizada uma rede neural.
 
@@ -639,7 +639,7 @@ Utilizamos o mesmo procedimento da hard sigmoid para obter a derivada da hard ta
     \label{fig: GraphDerivadaHardTanh}
 \end{figure}
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 Para implementar a hard sigmoid em python, apenas devemos seguir as expressões \ref{eq: EquacaoHardSigmoid} e \ref{eq: DerivadaHardSigmoid} e obtemos o seu código. Note que por mais que ele seja maior que o da sigmoide, ele apresenta operações bem mais simples e "baratas" quando comparado com a sua versão soft.
 

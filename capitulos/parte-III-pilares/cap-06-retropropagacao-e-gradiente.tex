@@ -158,7 +158,7 @@ Outro ponto que deve-se atentar é com relação as funções que estão sendo a
 \label{fig:funcao-convexa-nao-convexa}
 \end{figure}
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \begin{algorithm}[H]
 \caption{O Método do Gradiente (Descida do Gradiente)}
@@ -622,7 +622,7 @@ Em que:
     \item $\alpha$: Representa um fator de decaimento exponencial entre 0 e 1 que determina a contribuição do gradiente passado para o gradiente futuro.
 \end{itemize}
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \begin{algorithm}[H]
 \caption{O Método do Gradiente com Momentum (versão de Rumelhart et al.)}
@@ -644,6 +644,8 @@ Em que:
 \end{algorithm}
 
 \subsection{Método do Gradiente em Mini-Batch}
+
+\textbf{Implementação em Python}
 
 \subsection{Método do Gradiente Estocástico (SGD)}
 
@@ -667,7 +669,7 @@ Em que:
     \item $J(\theta; x^{(i); y^{(i)}})$: representa o vetor gradiente.
 \end{itemize}
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{Gradiente Acelerado de Nesterov (NAG)}
 
@@ -698,7 +700,27 @@ Em que:
 \end{itemize}
 
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{Gradiente Acelerado de Nesterov}
+    \label{alg:gradiente-acelerado-de-nesterov}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\eta$
+    \Require Coeficiente de momento $\mu$
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+
+    \While{não convergir}
+        \State $\textbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t -1} - \eta \mu \textbf{m}_{t-1})$
+        \State $\textbf{m}_t \leftarrow \mu \textbf{m}_{t-1} + \textbf{g}_t$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \textbf{m}_t$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
 
 \section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Apredendizado Adaptativas}
 
@@ -745,6 +767,28 @@ O AdaGrad veio como uma forma de aplicar técnicas de aprendizado-teórico para 
     \end{algorithmic}
 \end{algorithm}
 
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{AdaGrad Simples}
+    \label{alg:adagrad-simples}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\eta$
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+    \Require Parâmetro de estabilidade $\epsilon$
+
+    \State $\mathbf{n}_0 \leftarrow 0$ \Comment{Inicializar o vetor acumulador}
+
+    \While{não convergir}
+        \State $\textbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1})$
+        \State $\textbf{n}_t \leftarrow \textbf{n}_{t-1} + \mathbf{g}_t \odot \mathbf{g}_t$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \frac{\textbf{g}_t}{\sqrt{\textbf{n}_t} + \epsilon}$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
+
 
 Note que essa definição foge do contexto de aprendizado de máquina, de forma que ela pode ser simplificada em várias partes a fim de criar uma fórmula mais resumida. No algoritmo, a linha $s_{t_,i} = [g_{1:t,i}]_2$ calcula a norma L2, ou seja, o comprimento do vetor, de todos os gradientes passados para um único parâmetro i. Dessa forma, a matriz $H_t$ armazena esses valores em sua diagonal. Quando está sendo calculada a norma L2 ao quadrado, como neste caso, é o mesmo que somar os quadrados de cada componente, assim, sua representação pode ser simplificada para $G_t = G_{t-1} + g_t \odot g_t$, que é uma maneira simplificada de calcular a soma dos quadrados dos gradientes passados. Neste caso, o termo $G_t$ é uma adpatação da matriz $H_t$, só que ao invés de simbolizar uma matriz que armazena a norma dos gradientes, isso é feito por em forma de um vetor.
 
@@ -752,49 +796,36 @@ Ainda é possível fazer uma segunda simplificação no algoritmo, agora na linh
 
 Após essas duas simplificações para o cenário de aprendizado de máquina, é possível chegar em uma fórmula semelhante a equação \ref{eq:adagrad-simplificado}
 
-\begin{equacaodestaque}{Adadptive Gradient Algorithm (AdaGrad) Simplificado para Redes Neurais}
-    \begin{aligned}
-        G_t          &= G_{t-1} + g_t \odot g_t && \text{1. Acumula a soma dos quadrados dos gradientes }(g_t) \\
-                     &                           && \text{   na matriz } G_t \text{ a cada passo.} \\[1em]
-        \theta_{t+1} &= \theta_t - \frac{n}{\sqrt{G_t + \epsilon}} \odot g_t && \text{2. Atualiza os parâmetros }(\theta). \text{ A taxa de aprendizado } (n) \\
-                     &                           && \text{   é adaptada para cada parâmetro, sendo dividida} \\
-                     &                           && \text{   pela raiz da soma acumulada } G_t.
-    \end{aligned}
-    \label{eq:adagrad-simplificado}
-\end{equacaodestaque}
 
-Em que:
-
-\begin{itemize}
-    \item $G_t$: Representa o vetor da soma dos quadrados dos gradientes na iteração $t$;
-    \item $G_{t-1}$: Representa o vetor da soma dos quadrados dos gradientes na iteração $t-1$;
-    \item $g_t$: Representa o vetor gradiente calculado na iteração $t$;
-    \item $\theta_{t+1}$: Representa o vetor de parâmetros na iteração $t+1$;
-    \item $\theta_t$: Representa o vetor de parâmetros na iteração $t$;
-    \item $n$: Representa a taxa de aprendizado adpatada para cada parâmetro;
-    \item $\epsilon$: Representa a taxa de aprendizado geral;
-    \item $\odot$: Representa o produto de Hadamard.
-\end{itemize}
-
-
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{RMSProp}
 
-\begin{equacaodestaque}{RMSProp}
-    \begin{aligned}
-        E[g^2]_t     &= \gamma E[g^2]_{t-1} + (1 - \gamma)(g_t \odot g_t) && \text{1. Calcula a média móvel dos quadrados dos} \\
-                     &                                                   && \text{   gradientes. O fator } \gamma \text{ (decaimento) dá mais} \\
-                     &                                                   && \text{   peso aos gradientes mais recentes.} \\[1em]
-        \theta_{t+1} &= \theta_t - \frac{n}{\sqrt{E[g^2]_t + \epsilon}} \odot g_t && \text{2. Atualiza os parâmetros. A taxa de aprendizado é} \\
-                     &                                                            && \text{   dividida pela raiz da média móvel, evitando que} \\
-                     &                                                            && \text{   a atualização se torne pequena demais com o tempo.}
-    \end{aligned}
-    \label{eq:RMSProp}
-\end{equacaodestaque}
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{RMSProp}
+    \label{alg:rmsprop}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\eta$
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+    \Require Parâmetro de estabilidade $\epsilon$
+    \Require Taxa de decaimento $\nu$
+
+    \State $\mathbf{n}_0 \leftarrow 0$ \Comment{Inicializar o vetor acumulador}
+
+    \While{não convergir}
+        \State $\textbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1})$
+        \State $\textbf{n}_t \leftarrow \nu \textbf{n}_{t-1} + (1 - \nu) (\mathbf{g}_t \odot \mathbf{g}_t)$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \frac{\textbf{g}_t}{\sqrt{\textbf{n}_t} + \epsilon}$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
 
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{Adaptive Moment Estimation (Adam)}
 
@@ -836,6 +867,41 @@ Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
     \end{algorithmic}
 \end{algorithm}
 
+\begin{algorithm}[H]
+    \caption{Adam (Adaptive Moment Estimation)}
+    \label{alg:adam-corrigido}
+    \begin{algorithmic}[1]
+
+    \Require Taxa de aprendizado $\alpha$ (ex: 0.001)
+    \Require Coeficientes de decaimento $\beta_1, \beta_2$ (ex: 0.9, 0.999)
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+    \Require Parâmetro de estabilidade $\epsilon$ (ex: 1e-7)
+
+    \State $\mathbf{m}_0 \leftarrow 0$ \Comment{Inicializar vetor de 1º momento (média)}
+    \State $\mathbf{v}_0 \leftarrow 0$ \Comment{Inicializar vetor de 2º momento (variância)}
+    \State $t \leftarrow 0$ \Comment{Inicializar passo de tempo}
+
+    \While{não convergir}
+        \State $t \leftarrow t + 1$
+        \State $\mathbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1})$
+        
+        % Atualiza estimativas dos momentos
+        \State $\mathbf{m}_t \leftarrow \beta_1 \mathbf{m}_{t-1} + (1 - \beta_1) \mathbf{g}_t$
+        \State $\mathbf{v}_t \leftarrow \beta_2 \mathbf{v}_{t-1} + (1 - \beta_2) (\mathbf{g}_t \odot \mathbf{g}_t)$
+        
+        % Calcula a correção de viés (bias correction)
+        \State $\mathbf{\hat{m}}_t \leftarrow \frac{\mathbf{m}_t}{1 - \beta_1^t}$
+        \State $\mathbf{\hat{v}}_t \leftarrow \frac{\mathbf{v}_t}{1 - \beta_2^t}$
+        
+        % Atualiza os parâmetros
+        \State $\theta_t \leftarrow \theta_{t-1} - \alpha \frac{\mathbf{\hat{m}}_t}{\sqrt{\mathbf{\hat{v}}_t} + \epsilon}$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
+
 Para testar esse novo algoritmo, os pesquisadores \ref{alg:adam} propraram uma série de experimentos, sendo alguns deles envolvendo uma regressão logística, uma rede neural multi-camadas e uma rede convolucional.
 
 No primeiro deles, eles avaliam esse método utilizado uma regularização L2 criando uma regressão logística para analisar o dataset de dígitos manuscritos MNIST \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelereado (accelerated SGD), com o otimizador de Nesterov e também como o AdaGrad; de forma que eles foram capazes de concluir que o Adam possui uma convergência similar ao SGD e Nesterov, equanto o AdaGrad apresenta uma convergência mais demorada e com um maior custo de treino.
@@ -846,21 +912,7 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
 
 Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o desenvolvimento do otimizador Adam, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
-\begin{equacaodestaque}{Adaptive Moment Estimation (Adam)}
-    \begin{aligned}
-        m_t          &= \beta_1 m_{t-1} + (1 - \beta_1)g_t && \text{1. Atualiza o momento de 1ª ordem (média móvel dos gradientes).} \\[1em]
-        v_t          &= \beta_2 v_{t-1} + (1 - \beta_2)(g_t \odot g_t) && \text{2. Atualiza o momento de 2ª ordem (média móvel dos} \\
-                     &                                                   && \text{   quadrados dos gradientes), como no RMSProp.} \\[1.5em]
-        \hat{m}_t    &= \frac{m_t}{1 - \beta_1^t} && \text{3. Corrige o viés do momento de 1ª ordem, que é} \\
-                     &                               && \text{   inicializado em zero e precisa de aquecimento.} \\[1em]
-        \hat{v}_t    &= \frac{v_t}{1 - \beta_2^t} && \text{4. Corrige o viés do momento de 2ª ordem.} \\[1.5em]
-        \theta_{t+1} &= \theta_t - n \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} && \text{5. Atualiza os parâmetros combinando o momento corrigido} \\
-                     &                                                            && \text{   com a taxa de aprendizado adaptativa corrigida.}
-    \end{aligned}
-    \label{eq:Adam}
-\end{equacaodestaque}
-
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{AdaMax}
 
@@ -892,7 +944,7 @@ Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textci
     \end{algorithmic}
 \end{algorithm}
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
 
@@ -926,7 +978,7 @@ O pseudocódigo que representa o algoritmo Nadam está representado em \ref{alg:
 
 Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \textcite{NadamMethod} foi capaz de criar um autoencoder convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do dataset MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Com base nessa rede criada, em sua pesquisa, o autor foi possível concluir que o Nadam, dentre os algoritmos analisados, foi o que conseguiu de forma mais rápida minizar a função de perda (neste caso foi utilizada a MSE), além de alcançar menos de 0.010 na perda calculada para a validação dos dados.
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{Adam With Decoupled Weight Decay (AdamW)}
 
@@ -959,7 +1011,7 @@ Esse algoritmo pode ser visto no psudeocódigo apresentado no bloco \ref{alg:ada
 
 Para comprovar a performace do novo otimizador criado os autores decidem utilizar uma série de experimentos, de forma que foi possível comprovar que o Adam trás uma melhor generalização quando comparado com o Adam tradicional, de forma que foi possível encontrar um Top-5 Erro de Teste no ImageNet32x32 menor utilizando essa nova variante do Adam.
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \subsection{Rectified Adam (RAdam)}
 
@@ -1000,7 +1052,7 @@ Dessa forma, os pesquisadores chegaram a desenvolver o algoritmo que está lista
 
 Para avaliar o RAdam foi utilizado uma série de benchmarks: One Billieon Word (para modelagem linguística), CIFAR-10 e ImageNet (para classificação de imagens) e IWSLT’14 De-En/EN-DE e WMT’16 EN-De  (para neural machine translation). Comparando com o Adam tradicional, as performaces de modelagem de lingaugem e de classificacao de imagens mostram que o RAdam supera o Adam nos três datasets, contudo, um ponto a ser destcado por \textcite{RAdamMethod} é que o termo retificador faz com que a performance do RAdam seja masi lenta que o Adam nas primeiras épocas, permitindo que uma convergência mais rápida do RAdam deois disso. Assim, como os próprios autores apresentam, reduzir a variância da taxa de aprendizado adpativativa nos estágios iniciais, faz com que a covergência seja mais rápida além de garantir uma melhor performance \parencite{RAdamMethod}.
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \section{Comparativo de Desempenho: Otimizadores}
 
@@ -1068,5 +1120,5 @@ Além disso, pelo fato do método de Newton envolver o cálculo das derivadas de
 
 Portanto ao criar uma rede neural devemos escolher com sabedoria qual método de otimização devemos usar. O método do gradiente pode ser eficiente para minimizar uma função de custo de uma rede neural, mas em casos que essa convergência seja lenta, o método de Newton-Raphson pode ser uma melhor alternativa.
 
-\subsection{Implementação em Python}
+\textbf{Implementação em Python}
 

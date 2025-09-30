@@ -164,6 +164,8 @@ Agora que sabemos qual é o comportamento da ReLU, quais são suas fórmulas e q
 
 Assim, conhecemos a ReLU, uma função que é considerada padrão para a maioria das redes neurais \textit{feedforward} \parencite{Goodfellow2016}. Vimos que ela veio para ser uma alternativa para as funções sigmoides, sendo mais simples e resolvendo o problema do gradiente em fuga, contudo, a ReLU também apresenta problemas, como o do neurônios agonizantes a o explosão de gradientes, uma versão diferente do problema do gradiente em fuga. Dito isso, eles serão explicados em seguida para entendermos também as desvantagens de se utilizar essa função em uma rede neural.
 
+\textbf{Implementação em Python}
+
 \begin{codelisting}{Classe completa do função de ativação Rectified Linear Unit}{gd_class}
 import numpy as np
 from layers.base import Layer
@@ -305,7 +307,7 @@ Voltando para \textit{Recfier Nonlinearites Improve Neural Networks Acustic Mode
 
 A Leaky ReLU já é uma evolução quando comparamos com a ReLU tradicional, mas, podemos ir além e encontrar funções ainda mais complexas que também buscam assim como a LReLU resolver o problema do neurônios agonizantes com um vazamento de gradiente nos casos negativos, uma dessas funções é a PReLU, a qual veremos em seguida.
 
-\subsubsection{Implementação em Python}
+\textbf{Implementação em Python}
 
 \begin{codelisting}{Classe completa do função de ativação Leaky ReLU}{gd_class}
 import numpy as np
@@ -408,6 +410,8 @@ Um feito importante que deve ser destacado sobre a PReLU, que inclusive é o nom
 
 Assim, é nítido destacar que não somente a PReLU, mas as funções retificadoras de forma geral, foram capazes de trazer melhorias significativas para os modelos de aprendizado profundo quando comparadas com as funções sigmoides, as quais foram o padrão da indústria por muitos anos. De fato, a resolução do problema do gradiente em fuga, possibilitou a criação de redes neurais ainda mais profundas, e com isso, sendo capazes de extrair mais informações e consequente melhores métricas, sendo capazes até de superar a capacidade humanas em algumas tarefas como nós vimos no texto.
 
+\textbf{Implementação em Python}
+
 \subsection{Randomized Leaky ReLU}
 
 Anteriormente, na Parametric ReLU, nós tínhamos uma padrão aprendível que era atualizado ao longo da retropropagação da rede, nós o comparamos com o caso do vendedor de pipoca ficando mais experiente para as vendas. No caso da RReLU temos um vendedor um tanto quanto instável, ele se baseia na sorte/aleatoriedade para definir qual será o punhado de pipoca que cada pessoa irá receber ao comprar com um valor abaixo do limiar de venda. Para isso, não existe mais um padrão, algo como o horário ou a quantidade de pessoas na praça para fazer aumentar o diminuir a quantidade de pipoca que tera em um punhado. Essa estratégia parece caótica, mas pode ser interessante caso voce queira instigar as vendas e deixa-las divertidas, você pode comprar um punhado de pipoca, mas nao ira saber quanto irá receber, é uma grande aposta.
@@ -509,6 +513,8 @@ Ainda em \textit{Empirical Evaluation of Rectified Activations in Convolutional 
 
 Considerando as fórmulas da RReLU, podemos construir o seu bloco de código \ref{lst:codigo-rrelu} que é capaz de implementar uma classe em python para atuar como a função Randomized Leaky ReLU.
 
+\textbf{Implementação em Python}
+
 \section{Em Busca da Suavidade: As Variantes Não Lineares}
 
 Seguindo adiante, agora veremos um novo conjunto de variantes da ReLU tradicional, elas incluem funções que apresentam gráficos com curvas mais suaves, como é o caso da ELU, que faz uso de funções exponenciais para a sua composição e com isso consegue não só resolver o problema do neurônios agonizantes, mas também sendo uma função contínua em na origem e portanto derivável em todo o seu domínio.
@@ -592,6 +598,8 @@ Por fim, cabe destacar algumas afirmações realizadas pelos autores ainda em \t
 
 Mesmo apresentando um grande salto, quando comparada com a ReLU tradicional, a ELU também pode ser modificada para atender outros casos. Para isso, ela também tem variações, sendo uma delas a SELU, a qual adiciona a ELU um termo $\lambda$ para garantir uma autonormalização da rede que está sendo criada. Nós veremos essa função em seguida.
 
+\textbf{Implementação em Python}
+
 \subsection{Scaled Exponential Linear Unit (SELU)}
 
 A próxima função que iremos conhecer é uma variante da ELU, a Scaled Exponential Linear Unit, ou SELU. Ela se distingue da ELU tradicional pelo fato de que ela é capaz de implemtar propriedades auto-normalizadoras em uma rede que faz uso dessa função, como explicam os autores no aritofo de sua introdução \textit{Self-Normalizing Neural Networks} \parencite{SELU}.
@@ -668,6 +676,8 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
 \end{figure}
 
 Voltando para o seu texto de introdução, os autores destacam propriedades importantes dessa nova função de atiavção criada, como o fato de que de que elas possbilitam a criação de redes neurais mais profundas além de serem capazes de aplicar fortes esquemas de regularização \parencite{SELU}. Por favorecer a criação de RNAs mais profundas, como consequência, a SELU se torna uma excelente alternativa para ser utilizada em problemas complexos, que possuem muitas características e por essa razação necessitam de que mais camadas sejam construídas a fim de garantir um melhor processamento e aprendizado dos dados e com base nisso, alcançar métricas maiores, como uma maior acurácia indicando uma gerenalização maior e também uma perda menor, indicando que o gradiente conseguiu uma convergência melhor.
+
+\textbf{Implementação em Python}
 
 \subsection{Noisy ReLU}
 
@@ -853,6 +863,8 @@ Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReL
 \end{figure}
 
 Ainda em \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} citam que uma das propriedades interessantes da NReLU é a intensity equivarience (), a qual é bem útil para o reconhecimento de objetos. No texto, os autores destacam que um dos principais objetivos ao contruir um sistema que faça o reconhecimento de objetos, é garantir que a saída seja invariante às propriedades da sua entrada, como localização, escala, iluminação e orientação, e a NReLU é uma das fubções que quando adicionada em uma rede neural, garante que isso possa ser atingido \parencite{Nair2010}.
+
+\textbf{Implementação em Python}
 
 \section{O Problema dos Gradientes Explosivos}
 
