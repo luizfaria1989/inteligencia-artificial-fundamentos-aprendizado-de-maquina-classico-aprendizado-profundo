@@ -764,7 +764,7 @@ O AdaGrad recebe como entradas uma taxa de aprendizado $\eta$, o vetor de parâm
 Com isso feito, é então iniciado o loop do AdaGrad, o qual irá terminar somente quando o modelo convergir. Primeiro, é calculado o vetor gradiente $\textbf{g}_t$ da função de custo $f$ em relação aos parâmetros atuais da rede, como ele é um vetor gradiente, cabe destacar que ele estará apontando para a direção de maior crescimento da mesma função de custo. Em seguida, é calculado o termo $t$ do vetor acumulador $\mathbf{n}_0$, para isso é somado o valor da interação anterior $\textbf{n}_{t-1}$ ao quadrado elemento a elemento do gradiente atual $\textbf{g}_t$. Por fim, o último passo do loop do AdaGrad consiste em atualizar os parâmetros do vetor $\theta_t$, para isso é subtraído do parâmetros da iteração anterior $\theta_{t-1}$ a taxa de aprendizado $\eta$ multiplicada pela divisão do vetor acumulador pela raiz quadrada do acumulador $\textbf{n}_t$.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-    \caption{AdaGrad Simples}
+    \caption{AdaGrad}
     \label{alg:adagrad}
     \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
 
