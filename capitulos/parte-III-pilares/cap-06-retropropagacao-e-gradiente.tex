@@ -690,9 +690,11 @@ Uma boa vantagem do GD mini-batch está no fato que esses batches podem ter tama
 
 \subsection{Gradiente Acelerado de Nesterov (NAG)}
 
-Uma outra variante do método do gradiente é o gradiente acelerado de Nesterov (NAG). Ele foi introduzido pela primeira vez no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionamente mais barata de resolver problemas de programação convexa. 
+Uma outra variante do método do gradiente é o gradiente acelerado de Nesterov (NAG). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionamente mais barata de resolver problemas de programação convexa. 
 
-No texto, o autor trás a adição de um novo conceito para encontrar os pontos de mínimos, é o chamado ponto de \textit{lookahead}, o qual serve de base para os cálculos do gradiente \parencite{NAGMethod}. Assim esse método como apresentado na equação \ref{eq:gradiente-acelerado-de-nesterov}, possui dois passos principais, o primeiro consiste no cálculo da predição fura (o ponto de \textit{lookahead}) dando um passo na direção do momento anterior, e em seguida é calculado o gradiente no ponto de predição de forma a atualizar os pesos com base nesse novo ponto.
+No texto, o autor trás a adição de um novo conceito para encontrar os pontos de mínimos, o chamado ponto de \textit{lookahead} (olhar para frente em português), o qual serve de base para os cálculos do gradiente \parencite{NAGMethod}. Assim o NAG possui dois passos: o primeiro consistete no cálculo da predição futura (no ponto de lookahead), dando um passo na direção do momento anterior, em seguida, com base nesse novo ponto calculado, é possível encontrar o valor do gradiente e com isso, atualizar os parâmetros da rede neural.
+
+A sua expressão é mostrada na equação \ref{eq:gradiente-acelerado-de-nesterov}.
 
 \begin{equacaodestaque}{Gradiente Acelerado de Nesterov}
     \begin{aligned}
@@ -710,11 +712,13 @@ Em que:
     \item $y_k$: Representa o ponto de "lookahead";
     \item $x_k$: Representa os parâmetros na iteração $k$;
     \item $x_{k-1}$: Representa os parâmetros na iteração $k-1$;
-    \item $\beta$: Representa
+    \item $\beta$: Representa o coeficiente de inércia ou momento;
     \item $x_{k+1}$: Representa os parâmetros na iteração $k+1$;
     \item $epislon$: Representa a taxa de aprendizado;
-    \item $\nabla f(y_k)$: Representa o vetor gradiente calculado no ponto de "lookahead"
+    \item $\nabla f(y_k)$: Representa o vetor gradiente calculado no ponto de "\textit{lookahead}"
 \end{itemize}
+
+Note, que o NAG é também uma variante do método do gradiente que faz uso do momento ou inércia para atualizar os parâmetros do modelo que está sendo treinado. Essa ideia de utilizar o momento como facilitador, permitindo encontrar pontos de mínimo de forma mais rápida, é utilizada até hoje em alguns otimizadores, o NAdam, uma variante do otimizador Adam, busca justamente implementar conceitos do gradiente acelerado de Nesterov no Adam e com isso conseguir alcançar convergências mais rápidas.
 
 
 \textbf{Implementação em Python}
@@ -739,13 +743,11 @@ Em que:
     \end{algorithmic}
 \end{algorithm}
 
-\section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Apredendizado Adaptativas}
+\section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}
 
 Conforme os anos foram passando, foram surgindo novos otimizadores, também inspirados em métodos mais clássicos, como o SGD e as variantes com momento. Mas, a partir dos anos 2010, uma nova família de otimizadores, que se originou a partir do AdaGrad, surgiu. Esses otimizadores tinham a mesma proposta dos outros baseados em gradiente, utilizá-lo como uma bússsola para encontrar os pontos de mínimo, mas ao mesmo tempo apresentavam uma diferença notável quando comparados com os otimizadores clássicos: o uso de diferentes taxas de aprendizado.
 
 Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com esses algoritmos apresentassem um desempenho maior. Pois, para caracterísitcas que apareciam menos dos datasets era possível atribuir taxas de aprendizados mais altas, como uma forma do modelo prestar mais atenção nessas caracterísitcas. Ao mesmo tempo que atribuir taxas de aprendizado menores para características mais comuns, permitia uma melhor convergência.
-
-Essa seção busca justamente explorar essa nova família de otimizadores, para isso, diferente dos otimizadores anteriores nos quais eram explicadas as suas fórmulas, neste caso isso não será possível, por se tratarem de algoritmos mais complexos, eles serão explicados utilizando pseudocódigo. Ao avançar, será possível ver uma evolução gradual nesses otimizadores, de forma que o mais novo se inspira nas vantagens do anterior mas, ainda sim busca corrigir falhas que fiacaram para trás.
 
 \subsection{Adadptive Gradient Algorithm (AdaGrad)}
 
@@ -757,36 +759,13 @@ Dessa forma, o modelo que está sendo treinado conseque garantir melhores métri
 
 O AdaGrad veio como uma forma de aplicar técnicas de aprendizado-teórico para problemas online e aprendizado estocástico, focando concretamente no métodos de (sub)gradiente, de forma que a representação desse algoritmo pode ser vista no bloco de algoritmo \ref{alg:adagrad}.
 
-\begin{algorithm}[H]
-    \caption{AdaGrad}
-    \label{alg:adagrad}
-    \begin{algorithmic}[1]
+O AdaGrad recebe como entradas uma taxa de aprendizado $\eta$, o vetor de parâmetros a serem atualizados $\theta_0$, a função a ser otimizada $f(\theta)$, e um parâmetros de estabilidade $\epsilon$, o qual é adicionado no denominador para evitar que divisões por zero ocorram. O primeiro passo feito pelo AdaGrad é iniciar um vetor acumulador $\mathbf{n}_0$ que terá a mesma dimensão dos parâmetros $\theta_0$ e será responsável por armazenar a soma dos quadrados dos gradientes passados para cada parâmetro.
 
-    \State \textbf{ENTRADA:} $\eta > 0, \delta \ge 0$
-    \State \textbf{VARIÁVEIS:} $s \in \mathbb{R}^d, H \in \mathbb{R}^{d \times d}, g_{1:t,i} \in \mathbb{R}^t$ para $i \in \{1,\dots,d\}$
-    \State \textbf{INICIALIZE:} $x_1 = 0, g_{1:0} = []$
-
-    \For{$t = 1$ até $T$}
-        \State Incorre na perda $f_t(x_t)$
-        \State Recebe o subgradiente $g_t \in \partial f_t(x_t)$ de $f_t$ em $x_t$
-        \State \textbf{ATUALIZE} $g_{1:t} = [g_{1:t-1} g_t], \quad s_{t,i} = \|g_{1:t,i}\|_2$
-        \State \textbf{DEFINA} $H_t = \delta I + \text{diag}(s_t), \quad \Psi_t(x) = \frac{1}{2}\langle x, H_t x \rangle$
-    \EndFor
-
-    \State
-    \State \textbf{Atualização de Subgradiente Primal-Dual (3):}
-    \State $x_{t+1} = \underset{x \in X}{\text{argmin}} \left\{ \eta \left\langle \frac{1}{t} \sum_{\tau=1}^t g_\tau, x \right\rangle + \eta \phi(x) + \frac{1}{t} \Psi_t(x) \right\}$
-
-    \State
-    \State \textbf{Atualização Composta de Mirror Descent (4):}
-    \State $x_{t+1} = \underset{x \in X}{\text{argmin}} \left\{ \eta \langle g_t, x \rangle + \eta \phi(x) + B_{\Psi_t}(x, x_t) \right\}$
-
-    \end{algorithmic}
-\end{algorithm}
+Com isso feito, é então iniciado o loop do AdaGrad, o qual irá terminar somente quando o modelo convergir. Primeiro, é calculado o vetor gradiente $\textbf{g}_t$ da função de custo $f$ em relação aos parâmetros atuais da rede, como ele é um vetor gradiente, cabe destacar que ele estará apontando para a direção de maior crescimento da mesma função de custo. Em seguida, é calculado o termo $t$ do vetor acumulador $\mathbf{n}_0$, para isso é somado o valor da interação anterior $\textbf{n}_{t-1}$ ao quadrado elemento a elemento do gradiente atual $\textbf{g}_t$. Por fim, o último passo do loop do AdaGrad consiste em atualizar os parâmetros do vetor $\theta_t$, para isso é subtraído do parâmetros da iteração anterior $\theta_{t-1}$ a taxa de aprendizado $\eta$ multiplicada pela divisão do vetor acumulador pela raiz quadrada do acumulador $\textbf{n}_t$.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{AdaGrad Simples}
-    \label{alg:adagrad-simples}
+    \label{alg:adagrad}
     \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
 
     \Require Taxa de aprendizado $\eta$
@@ -806,13 +785,7 @@ O AdaGrad veio como uma forma de aplicar técnicas de aprendizado-teórico para 
     \end{algorithmic}
 \end{algorithm}
 
-
-Note que essa definição foge do contexto de aprendizado de máquina, de forma que ela pode ser simplificada em várias partes a fim de criar uma fórmula mais resumida. No algoritmo, a linha $s_{t_,i} = [g_{1:t,i}]_2$ calcula a norma L2, ou seja, o comprimento do vetor, de todos os gradientes passados para um único parâmetro i. Dessa forma, a matriz $H_t$ armazena esses valores em sua diagonal. Quando está sendo calculada a norma L2 ao quadrado, como neste caso, é o mesmo que somar os quadrados de cada componente, assim, sua representação pode ser simplificada para $G_t = G_{t-1} + g_t \odot g_t$, que é uma maneira simplificada de calcular a soma dos quadrados dos gradientes passados. Neste caso, o termo $G_t$ é uma adpatação da matriz $H_t$, só que ao invés de simbolizar uma matriz que armazena a norma dos gradientes, isso é feito por em forma de um vetor.
-
-Ainda é possível fazer uma segunda simplificação no algoritmo, agora na linha que calcula $x_{t+1} = armmin{}$, pois o que essa linha representa é uma forma matemática de descrever "encontre o próximo ponto $x_{t+1}$ que minimiza uma combinação d gradiente e da distância em relação ao ponto atual". Como em redes neurais, não existem restrições tão complexas, a solução para esse problema se resume a dar um passo na direção do gradiente, com o tamanho do passo dividio pelo acumulador de gradientes.
-
-Após essas duas simplificações para o cenário de aprendizado de máquina, é possível chegar em uma fórmula semelhante a equação \ref{eq:adagrad-simplificado}
-
+Note que $\eta$ quando está sendo utilizada para atualizar os parâmetros do modelo, passa a ser divida de elemento a elemento, isso faz com que elementos com um gradiente muito alto, recebam uma taxa de aprendizado baixa, enquando elementos menos comuns, e consequentemente com o gradiente menor, recebam uma taxa de aprendizado mais alta. 
 
 \textbf{Implementação em Python}
 
