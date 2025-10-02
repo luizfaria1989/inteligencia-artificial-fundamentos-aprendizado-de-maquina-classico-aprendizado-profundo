@@ -787,6 +787,14 @@ Com isso feito, é então iniciado o loop do AdaGrad, o qual irá terminar somen
 
 Note que $\eta$ quando está sendo utilizada para atualizar os parâmetros do modelo, passa a ser divida de elemento a elemento, isso faz com que elementos com um gradiente muito alto, recebam uma taxa de aprendizado baixa, enquando elementos menos comuns, e consequentemente com o gradiente menor, recebam uma taxa de aprendizado mais alta. 
 
+Para comprovar a eficácia do novo algoritmo desenvolvido, \textcite{AdaGradMethod} utilizam uma série de datasets a fim de entender melhor em quais cenários, a aplicação do AdaGrad pode ser valiosa, para isso, os autores utilizam os datasets: ImageNet (para classificação de imagens), MNIST (para classificação de dígitos manuscritos), o UCI repository (para censo de income data), e Reuters RCV1 (para classificação de textos).
+
+Para a classificação de textos utilizando o Reuters RCV1, foram comparados o AdaGrad-RDA (), o RDA (), o FB (), o AdaGrad-FB (), o PA () e o ARROW (); de forma que são analisadas as taxas de erro de cada um desses modelos após o treino, bem como a proporção não-nula, responsável por indicar a quantidade de parâmetros do modelo que são diferentes de zero no final do treinamento, sendo uma medida para avaliar a esparsidade do modelo (quanto menor o número, maior a esparsidade, e potencialmente mais simples é o modelo) \parencite{AdaGradMethod}. Analisando os resultados apresentados por \textcite{AdaGradMethod} é possível ver uma superioridade dos algoritmos AdaGrad perante aos outros otimizadores avaliados, além disso, nota-se que o AdaGrad-RDA produz modelos mais esparsos quando comparado com a variante AdaGrad-FB.
+
+Já para o ImageNet, foram escolhidos apenas 4 algoritmos: o AdaGrad-RDA, o AROW, o PA e o RDA, e para avaliar esses otimizadores, foi utilizada como métricas a precisão média (Avg. Prec.), P@K (precisão em k, indicando a porcentagem das vezes em que a resposta correta esteve entre as k primeiras previsões), e também a proporção não-nula \parencite{}{AdaGradMethod}. Com base nas análises feitas por \textcite{AdaGradMethod}, é possível tirar duas conclusões, a primeira delas é que o AdaGrad é o melhor modelo em precisão média além de atingir uma maior esparsidade, contudo o AROW ainda é uma melhor alternativa para as precisões em k, o que indica que ele é capaz de atingir as respostas corretas nas primeiras previsões.
+
+O último comparativo que será visto é com relação ao MNIST, nele, \textcite{AdaGradMethod} escolheram cinco algoritmos: o PA, o Ada RDA, o RDA, o Ada RDA l1/l2 e o RDA l1/l2, sendo analisada a quantidade de erros pela quantidade de exemplos vistos. Nessa análise, os algoritmos que performaram melhor foram o PA seguido do Ada RDA, apresentando um comportamento parecido, enquanto isso, nota-se que utilizar as normalizações l1/l2 não trouxeram muitas vantagens para os algoritmos \parencite{AdaGradMethod}.
+
 \textbf{Implementação em Python}
 
 \subsection{RMSProp}
@@ -813,17 +821,6 @@ Note que $\eta$ quando está sendo utilizada para atualizar os parâmetros do mo
     \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
     \end{algorithmic}
 \end{algorithm}
-
-Para comprovar a eficácia do novo algoritmo desenvolvido, \textcite{AdaGradMethod} utilizam uma série de datasets a fim de entender melhor em quais cenários, a aplicação do AdaGrad pode ser valiosa, para isso, os autores utilizam os datasets: ImageNet (para classificação de imagens), MNIST (para classificação de dígitos manuscritos), o UCI repository (para censo de income data), e Reuters RCV1 (para classificação de textos).
-
-Para a classificação de textos utilizando o Reuters RCV1, foram comparados o AdaGrad-RDA (), o RDA (), o FB (), o AdaGrad-FB (), o PA () e o ARROW (); de forma que são analisadas as taxas de erro de cada um desses modelos após o treino, bem como a proporção não-nula, responsável por indicar a quantidade de parâmetros do modelo que são diferentes de zero no final do treinamento, sendo uma medida para avaliar a esparsidade do modelo (quanto menor o número, maior a esparsidade, e potencialmente mais simples é o modelo) \parencite{AdaGradMethod}. Analisando os resultados apresentados por \textcite{AdaGradMethod} é possível ver uma superioridade dos algoritmos AdaGrad perante aos outros otimizadores avaliados, além disso, nota-se que o AdaGrad-RDA produz modelos mais esparsos quando comparado com a variante AdaGrad-FB.
-
-Já para o ImageNet, foram escolhidos apenas 4 algoritmos: o AdaGrad-RDA, o AROW, o PA e o RDA, e para avaliar esses otimizadores, foi utilizada como métricas a precisão média (Avg. Prec.), P@K (precisão em k, indicando a porcentagem das vezes em que a resposta correta esteve entre as k primeiras previsões), e também a proporção não-nula \parencite{}{AdaGradMethod}. Com base nas análises feitas por \textcite{AdaGradMethod}, é possível tirar duas conclusões, a primeira delas é que o AdaGrad é o melhor modelo em precisão média além de atingir uma maior esparsidade, contudo o AROW ainda é uma melhor alternativa para as precisões em k, o que indica que ele é capaz de atingir as respostas corretas nas primeiras previsões.
-
-O último comparativo que será visto é com relação ao MNIST, nele, \textcite{AdaGradMethod} escolheram cinco algoritmos: o PA, o Ada RDA, o RDA, o Ada RDA l1/l2 e o RDA l1/l2, sendo analisada a quantidade de erros pela quantidade de exemplos vistos. Nessa análise, os algoritmos que performaram melhor foram o PA seguido do Ada RDA, apresentando um comportamento parecido, enquanto isso, nota-se que utilizar as normalizações l1/l2 não trouxeram muitas vantagens para os algoritmos \parencite{AdaGradMethod}.
-
-
-
 
 \textbf{Implementação em Python}
 

@@ -61,7 +61,7 @@
 \contentsline {subsection}{\numberline {6.3.4}Gradiente Acelerado de Nesterov (NAG)}{48}{subsection.6.3.4}%
 \contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}{49}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Adadptive Gradient Algorithm (AdaGrad)}{50}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}RMSProp}{51}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.2}RMSProp}{52}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{52}{subsection.6.4.3}%
 \contentsline {subsection}{\numberline {6.4.4}AdaMax}{55}{subsection.6.4.4}%
 \contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{56}{subsection.6.4.5}%
