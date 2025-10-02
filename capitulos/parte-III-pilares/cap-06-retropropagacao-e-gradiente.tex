@@ -791,13 +791,68 @@ Para comprovar a eficácia do novo algoritmo desenvolvido, \textcite{AdaGradMeth
 
 Para a classificação de textos utilizando o Reuters RCV1, foram comparados o AdaGrad-RDA (), o RDA (), o FB (), o AdaGrad-FB (), o PA () e o ARROW (); de forma que são analisadas as taxas de erro de cada um desses modelos após o treino, bem como a proporção não-nula, responsável por indicar a quantidade de parâmetros do modelo que são diferentes de zero no final do treinamento, sendo uma medida para avaliar a esparsidade do modelo (quanto menor o número, maior a esparsidade, e potencialmente mais simples é o modelo) \parencite{AdaGradMethod}. Analisando os resultados apresentados por \textcite{AdaGradMethod} é possível ver uma superioridade dos algoritmos AdaGrad perante aos outros otimizadores avaliados, além disso, nota-se que o AdaGrad-RDA produz modelos mais esparsos quando comparado com a variante AdaGrad-FB.
 
-Já para o ImageNet, foram escolhidos apenas 4 algoritmos: o AdaGrad-RDA, o AROW, o PA e o RDA, e para avaliar esses otimizadores, foi utilizada como métricas a precisão média (Avg. Prec.), P@K (precisão em k, indicando a porcentagem das vezes em que a resposta correta esteve entre as k primeiras previsões), e também a proporção não-nula \parencite{}{AdaGradMethod}. Com base nas análises feitas por \textcite{AdaGradMethod}, é possível tirar duas conclusões, a primeira delas é que o AdaGrad é o melhor modelo em precisão média além de atingir uma maior esparsidade, contudo o AROW ainda é uma melhor alternativa para as precisões em k, o que indica que ele é capaz de atingir as respostas corretas nas primeiras previsões.
+A tabela com as taxas de erro no conjunto de testes para o dataset Reuters RCV1, apresentando as métricas encontradas pelos autores pode ser vista na tabela \ref{tab:resultados-rcv1-adagrad}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Taxas de erro no conjunto de teste e proporção de não-nulos (entre parênteses) no dataset Reuters RCV1}
+    \label{tab:resultados-rcv1-adagrad}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+         & RDA & FB & ADAGRAD-RDA & ADAGRAD-FB & PA & AROW \\
+        \midrule
+        ECAT & .051 (.099) & .058 (.194) & \textbf{.044 (.086)} & \textbf{.044} (.238) & .059 & .049 \\
+        CCAT & .064 (.123) & .111 (.226) & \textbf{.053 (.105)} & \textbf{.053} (.276) & .107 & .061 \\
+        GCAT & .046 (.092) & .056 (.183) & \textbf{.040 (.080)} & \textbf{.040} (.225) & .066 & .044 \\
+        MCAT & .037 (.074) & .056 (.146) & .035 (\textbf{.063}) & \textbf{.034} (.176) & .053 & .039 \\
+        \bottomrule
+    \end{tabular}
+    \fonte{Adaptado de \parencite{AdaGradMethod}.}
+\end{table}
+
+Já para o ImageNet, foram escolhidos apenas 4 algoritmos: o AdaGrad-RDA, o AROW, o PA e o RDA, e para avaliar esses otimizadores, foi utilizada como métricas a precisão média (Avg. Prec.), P@K (precisão em k, indicando a porcentagem das vezes em que a resposta correta esteve entre as k primeiras previsões), e também a proporção não-nula \parencite{AdaGradMethod}. Com base nas análises feitas por \textcite{AdaGradMethod}, é possível tirar duas conclusões, a primeira delas é que o AdaGrad é o melhor modelo em precisão média além de atingir uma maior esparsidade, contudo o AROW ainda é uma melhor alternativa para as precisões em k, o que indica que ele é capaz de atingir as respostas corretas nas primeiras previsões.
+
+Para comparar a precisão dos modelos utilizando o dataset ImageNet você pode analisar a tabela \ref{resultados-imagenet-adagrad}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Precisão no conjunto de teste para o ImageNet}
+    \label{tab:resultados-imagenet-adagrad}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        Alg. & Avg. Prec. & P@1 & P@3 & P@5 & P@10 & Prop. nonzero \\
+        \midrule
+        ADAGRAD RDA & \textbf{0.6022} & 0.8502 & 0.8307 & 0.8130 & 0.7811 & \textbf{0.7267} \\
+        AROW & 0.5813 & \textbf{0.8597} & \textbf{0.8369} & \textbf{0.8165} & \textbf{0.7816} & 1.0000 \\
+        PA & 0.5581 & 0.8455 & 0.8184 & 0.7957 & 0.7576 & 1.0000 \\
+        RDA & 0.5042 & 0.7496 & 0.7185 & 0.6950 & 0.6545 & 0.8996 \\
+        \bottomrule
+    \end{tabular}
+    \fonte{Adaptado de \parencite{AdaGradMethod}.}
+\end{table}
 
 O último comparativo que será visto é com relação ao MNIST, nele, \textcite{AdaGradMethod} escolheram cinco algoritmos: o PA, o Ada RDA, o RDA, o Ada RDA l1/l2 e o RDA l1/l2, sendo analisada a quantidade de erros pela quantidade de exemplos vistos. Nessa análise, os algoritmos que performaram melhor foram o PA seguido do Ada RDA, apresentando um comportamento parecido, enquanto isso, nota-se que utilizar as normalizações l1/l2 não trouxeram muitas vantagens para os algoritmos \parencite{AdaGradMethod}.
+
+As curvas de aprendizado dos diferentes modelos treinados pelos autores podem ser vistas na figura \ref{fig:curvas-de-aprendizado-adagrad-mnist}, note que o Ada RNA apresenta uma performance muito parecida com o PA, apresentando pouco mais de 5.000 erros ao ser treinado com todo o dataset.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png}
+    \caption{Curvas de aprendizado no dataset MNIST.}
+    \label{fig:curvas-de-aprendizado-adagrad-mnist}
+\end{figure}
+
+O AdaGrad simbolizou não somente um avanço para os algoritmos de otimização, como também introduziu o conceito de diferentes taxas de aprendizado, permitindo com que um modelo possa aprender bem tanto características muito frequentes como características mais incomuns. Dessa forma, um novo periódo de otimizadores surgiu, seguindo os conceitos do AdaGrad mas buscando incrementar o seu algoritmo a fim de corrigir falhas que ficaram para trás. Ao longo dessa seção, serão vistos mais otimizadores que atuam de forma parecida ao AdaGrad, adicinando melhorias para o seu desempenho.
 
 \textbf{Implementação em Python}
 
 \subsection{RMSProp}
+
+Para inicilizar o RMSProp é preciso de cinco parâmetros: a taxa de aprendizado $\eta$, o vetor de parâmetros iniciais $\theta_0$, a função de perda a ser otimizada $f(\theta)$, o parâmetro de estabilidade $\epsilon$, para evitar divisões por zero, e também a taxa de decaimento $\nu$, a qual irá controlar a média móvel dos gradientes. Antes de iniciar o loop do RMSProp é feita a inicialização do vetor acumulador com zeros, ele irá atuar como um acumulador para a média móvel do quadrados dos gradientes.
+
+O primeiro passo ao se iniciar o loop do RMSProp é calcular $\textbf{g}_t$, para isso ele irá receber o vetor gradiente da função de custo calculado para os parâmetros da iteração anterior $\theta_{t-1}$, em seguida é atualizado o vetor acumulador da forma que $\textbf{n}_t$ será dado pela multiplicação da taxa de decaimento $\nu$ pelo valor do vetor acumulador na iteração anterior, esse resultado é então somado ao quadrado produto a produto do gradiente $\textbf{g}_t$ multiplicado por $(1 - \nu)$.
+
+O último passo do RSMProp consistem em atualizar os parâmetros de $\theta_0$ para isso é subtraído dos parâmetros anteriores $\theta_{t-1}$ a multiplicação da taxa de aprendizado pelo vetor gradiente $\textbf{g}_t$ que é dividido pela raíz do vetor acumulador de parâmetros. Assim, esse loop se repete até atingir o número máximo de épocas escolhido na hora da implementação, ou no caso do pseudocódigo \ref{alg:rmsprop}, ele irá repetir até o modelo convergir, ou seja, quando a norma do vetor gradiente for zero.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{RMSProp}
@@ -830,46 +885,24 @@ Uma evolução natural dos algortitmos de otimização AdaGrad e RMSProp é o Ad
 
 Para isso, o Adam computa taxas de aprendizado individuais para diferentes parâmetros para estimações do priemiro e segundo momento do gradiente, de forma que ele é capaz de combinar as vantagens do AdaGrad, que trabalha bem com gradientes esparsos, e o RMSProp, que trabalha bem on-line e em configurações não-estacionárias \parencite{AdamMethod}.
 
-O Adam recebe como entradas uma taxa de aprendizado ($\alpha$), decebe dois valores $\beta_1$ e $\beta_2$ que representam as taxas de decaimento esponencial para as estimativas de momento em um conjunto de intervalos $[0, 1)$. Além disso, assim como todo método de otimização ele também recebe em sua entrada uma função de perda $f(\theta)$ bem como os parâmetros iniciais $\theta_0$.
+O Adam recebe como parâmetros uma taxa de aprendizado $\eta$, os coeficientes de decaimento exponencial $\beta_1$ e $\beta_2$ para as estimativas do momento em um conjunto de intervalos $[0, 1)$. Além disso, recebe também o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda $f(\theta)$ para qual será encontrado o ponto de mínimo, e também o parâmetro de estabilidade $\epsilon$ para evitar divisões por zero.
 
-O primeiro passo do método consiste em inicializar os vetores de primeiro ($m_0$) e segundo ($v_0$) momento bem como o passo do tempo $t$, para isso, ele coloca como zero os seus valores iniciais. Em seguida, é iniciado o loop de iterações do método, que só irá parar quando $\theta_t$ convergir. Nesse loop, primeiramente é feito um incremento no valor do passo de tempo, depois é calculado o valor do gradiente no tempo $t$, o qual é armazenado em $g_t$. Com base nessa nova variável é atualizado uma estimativa enviesada no primeiro momento, armazenada em $m_t$, em seguida, é feita uma segunda estimativa também enviesada só que agora no segundo momento. Essas estimativas são então corridas pelo método que com base nelas é feito a atualização dos parâmetros e assim uma iteração termina. Caso o método convirja ele irá retornar como resultado os parâmetros $\theta_t$.
+Com todos esses parâmetros, o primeiro passo consistem em inicializar os vetores de primeiro $\mathbf{m}_0$ e segundo $\mathbf{v}_0$ momento bem como o passo do tempo $t$, para isso, os vetores são zerados e o tempo $t$ também. Feito isso, o loop do Adam se inicia, terminando apenas quando o modelo convergir. Primeiro, é incrementado o tempo, e em seguida calcula-se o gradiente $\mathbf{g}_t$ que irá receber o gradiente da função de perda $f(\theta)$ em relação aos parâmetros da iteração anterior.
+
+A próxima etapa do Adam consiste em atualizar as estimativas des momentos, o primeiro momento $\mathbf{m}_t$ recebe o coeficiente de decaimento $\beta_1$ multiplicado pelo vetor do primeiro momento na iteração anterior, que é então somado a multiplicação de $(1 - \beta_1)$ pelo vetor gradiente $\mathbf{g}_t$. O segundo momento é calculado de forma semelhante, com a diferença de que são utilizados o vetor do segundo momento para fazer as incrementações e o uso do coeficiente $\beta_2$, além disso, na segunda parte da soma é feito o produto termo o termo dos vetores gradientes.
+
+Seguindo adiante, deve-se calcular a correção do viés, para isso $\mathbf{\hat{m}}_t$ irá calcular a divisão do vetor do primeiro momento por $(1 - \beta_1)$, enquanto $\mathbf{\hat{v}}_t$ irá calcular a divisão do vetor do primeiro momento por $(1 - \beta_2)$.
+
+Por fim, é feita a incrementação dos parâmetros de $\theta_0$ de forma semelhante ao AdaGrad, eles serão dados pela diferença do vetor de parâmetros na iteração anterior pela multiplicação da taxa de aprendizado $\eta$ com a divisão dos vetores do primeiro e segundo momento.
 
 Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
-
-\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-    \caption{Adam}
-    \label{alg:adam}
-    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
-
-    \Require Taxa de aprendizado $\alpha$
-    \Require Taxas de decaimento exponencial para as estimativas de momento $\beta_1, \beta_2 \in [0, 1)$
-    \Require Função objetivo estocástica com parâmetros $\theta$, $f(\theta)$
-    \Require Vetor de parâmetros inicial $\theta_0$
-
-    \State $m_0 \leftarrow 0$ \Comment{Inicializar vetor de 1º momento (média)}
-    \State $v_0 \leftarrow 0$ \Comment{Inicializar vetor de 2º momento (variância não centrada)}
-    \State $t \leftarrow 0$ \Comment{Inicializar passo de tempo}
-
-    \While{não convergir}
-        \State $t \leftarrow t + 1$
-        \State $g_t \leftarrow \nabla_\theta f_t(\theta_{t-1})$ \Comment{Obter gradientes em relação ao objetivo no passo $t$}
-        \State $m_t \leftarrow \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t$ \Comment{Atualizar estimativa viciada do primeiro momento}
-        \State $v_t \leftarrow \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2$ \Comment{Atualizar estimativa viciada do segundo momento}
-        \State $\hat{m}_t \leftarrow m_t / (1 - \beta_1^t)$ \Comment{Calcular estimativa corrigida do primeiro momento}
-        \State $\hat{v}_t \leftarrow v_t / (1 - \beta_2^t)$ \Comment{Calcular estimativa corrigida do segundo momento}
-        \State $\theta_t \leftarrow \theta_{t-1} - \alpha \cdot \hat{m}_t / (\sqrt{\hat{v}_t} + \epsilon)$ \Comment{Atualizar parâmetros}
-    \EndWhile
-
-    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
-    \end{algorithmic}
-\end{algorithm}
 
 \begin{algorithm}[H]
     \caption{Adam (Adaptive Moment Estimation)}
     \label{alg:adam-corrigido}
     \begin{algorithmic}[1]
 
-    \Require Taxa de aprendizado $\alpha$ (ex: 0.001)
+    \Require Taxa de aprendizado $\eta$ (ex: 0.001)
     \Require Coeficientes de decaimento $\beta_1, \beta_2$ (ex: 0.9, 0.999)
     \Require Vetor de parâmetros inicial $\theta_0$
     \Require Função a ser otimizada $f(\theta)$
@@ -892,7 +925,7 @@ Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
         \State $\mathbf{\hat{v}}_t \leftarrow \frac{\mathbf{v}_t}{1 - \beta_2^t}$
         
         % Atualiza os parâmetros
-        \State $\theta_t \leftarrow \theta_{t-1} - \alpha \frac{\mathbf{\hat{m}}_t}{\sqrt{\mathbf{\hat{v}}_t} + \epsilon}$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta  \frac{\mathbf{\hat{m}}_t}{\sqrt{\mathbf{\hat{v}}_t} + \epsilon}$
     \EndWhile
 
     \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
@@ -901,11 +934,32 @@ Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
 
 Para testar esse novo algoritmo, os pesquisadores \ref{alg:adam} propraram uma série de experimentos, sendo alguns deles envolvendo uma regressão logística, uma rede neural multi-camadas e uma rede convolucional.
 
-No primeiro deles, eles avaliam esse método utilizado uma regularização L2 criando uma regressão logística para analisar o dataset de dígitos manuscritos MNIST \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelereado (accelerated SGD), com o otimizador de Nesterov e também como o AdaGrad; de forma que eles foram capazes de concluir que o Adam possui uma convergência similar ao SGD e Nesterov, equanto o AdaGrad apresenta uma convergência mais demorada e com um maior custo de treino.
+No primeiro deles, eles avaliam esse método utilizado uma regularização L2 criando uma regressão logística para analisar o dataset de dígitos manuscritos MNIST \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelereado (accelerated SGD), com o otimizador de Nesterov e também como o AdaGrad; de forma que eles foram capazes de concluir que o Adam possui uma convergência similar ao SGD e Nesterov, equanto o AdaGrad apresenta uma convergência mais demorada e com um maior custo de treino. Esse compartivo pode ser visto na figura \ref{fig:comparativo-adam-mnist}.
 
-No segundo experimento, os cientistas foram capazes de descobrir que mesmo em redes neurais multi-camadas (as quais são modelos com funções objetivas não-convexas), mesmo a análise de convergência feita não se aplicando a problemas não-convexos, o Adam foi capaz de performar melhor que outros métodos \parencite{AdamMethod}. Para o teste então, \textcite{AdamMethod} criaram uma rede neural com duas camadas totalmente conectadas com 1000 unidades de neuônio utilizando a função de atiavção reLU com mini-batch de tamanho 128, com base nos testes, eles foram capazes de perceber que o Adam consegui ser de 5 a 10 vezes mais rápido por iteração que o método SFO (sum-of-functions), o qual é um método quasi-Newton que trabalha também com dados em mini-batches.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png}
+    \caption{Curvas de aprendizado no dataset MNIST.}
+    \label{fig:comparativo-adam-mnist}
+\end{figure}
 
-Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três camadas, a primeira com filtros de dimenões 5x5, seguida de uma camada de max pooling de dimensões 3x3 com stride 2 que se liga a uma camada totalmente conectada de 1000 unidades ocultas que faz uso da função de ativação ReLU. Com base nas análises, os autores concluíram que tanto o Adam quando o AdaGrad fazem um progresso rápido no custo inicial do treino, em seguida, o Adam e o SGD convergem consideravelmente mais rápido que o AdaGrad \parencite{AdamMethod}.
+No segundo experimento, os cientistas foram capazes de descobrir que mesmo em redes neurais multi-camadas (as quais são modelos com funções objetivas não-convexas), mesmo a análise de convergência feita não se aplicando a problemas não-convexos, o Adam foi capaz de performar melhor que outros métodos \parencite{AdamMethod}. Para o teste então, \textcite{AdamMethod} criaram uma rede neural com duas camadas totalmente conectadas com 1000 unidades de neuônio utilizando a função de atiavção reLU com mini-batch de tamanho 128, com base nos testes, eles foram capazes de perceber que o Adam consegui ser de 5 a 10 vezes mais rápido por iteração que o método SFO (sum-of-functions), o qual é um método quasi-Newton que trabalha também com dados em mini-batches. O comportamento desses diferentes otimizadores para uma rede neural multicamadas está retratado nos gráficos da figura \ref{fig:comparativo-adam-multilayer}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\linewidth]{../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png}
+    \caption{Training of multilayer neural networks on MNIST images. (a) Neural networks using dropout stochastic regularization. (b) Neural networks with deterministic cost function. We compare with the sum-of-functions (SFO) optimizer.}
+    \label{fig:comparativo-adam-multilayer}
+\end{figure}
+
+Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três camadas, a primeira com filtros de dimenões 5x5, seguida de uma camada de max pooling de dimensões 3x3 com stride 2 que se liga a uma camada totalmente conectada de 1000 unidades ocultas que faz uso da função de ativação ReLU. Com base nas análises, os autores concluíram que tanto o Adam quando o AdaGrad fazem um progresso rápido no custo inicial do treino, em seguida, o Adam e o SGD convergem consideravelmente mais rápido que o AdaGrad \parencite{AdamMethod}. É possível ver como o Adam e os outros otimizadores performam nessa tarefa na figura \ref{fig:comparativo-adam-convnet}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\linewidth]{../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png}
+    \caption{Convolutional neural networks training cost. (left) Training cost for the first three epochs. (right) Training cost over 45 epochs}
+    \label{fig:comparativo-adam-convnet}
+\end{figure}
 
 Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o desenvolvimento do otimizador Adam, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
