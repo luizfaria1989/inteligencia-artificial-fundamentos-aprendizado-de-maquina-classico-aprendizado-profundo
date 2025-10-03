@@ -66,10 +66,10 @@
 \contentsline {subsection}{\numberline {6.4.4}AdaMax}{58}{subsection.6.4.4}%
 \contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{59}{subsection.6.4.5}%
 \contentsline {subsection}{\numberline {6.4.6}Adam With Decoupled Weight Decay (AdamW)}{61}{subsection.6.4.6}%
-\contentsline {subsection}{\numberline {6.4.7}Rectified Adam (RAdam)}{62}{subsection.6.4.7}%
-\contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{63}{section.6.5}%
-\contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{63}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{64}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.4.7}Outros Otimizadores}{64}{subsection.6.4.7}%
+\contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{64}{section.6.5}%
+\contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{64}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{65}{subsection.6.6.1}%
 \contentsline {subsection}{\numberline {6.6.2}O Método}{65}{subsection.6.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{67}{chapter.7}%

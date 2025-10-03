@@ -1069,73 +1069,78 @@ Uma outra variante do Adam tradicional é o AdamW. Essa variante foi apresentada
 
 Esse algoritmo pode ser visto no psudeocódigo apresentado no bloco \ref{alg:adamw}.
 
+o AdamW recebe como entradas a taxa de aprendizado $\alpha$, os coeficientes de decaimento $\beta_1$ e $\beta_2$, o fato de dacimento de peso $\lambda$, o vetor contendo os parâmetros iniciais do modelo $\theta_0$, a função de perda a ser otimizada $f(\theta)$ e o parâmetro de estabilidade $\epsilon$. Semelhante ao Adam, o AdamW começa inicializando os vetores de primeiro $\mathbf{m}_0$ e segundo $\mathbf{v}_0$ momento bem como o passo de tempo $t$.
+
+Feito isso, é iniciado o loop do AdamW que irá terminar quando o modelo convergir. Ele começa da mesma forma que os outros otimizadores vistos até agora, incrementa o passo de tempo $t$, e calcula o vetor gradiente da função de perda no passo anterior e o adiciona em $\mathbf{g}_t$. Seguindo adiante são feitas as estimativas dos momentos de forma semelhante ao Adam, primeiro calcula-se o primeiro momento $\mathbf{m}_t$ que irá receber a multiplicação do coeficiente de dacimento $\beta_1$ com o momento anterior $\mathbf{m}_{t-1}$ somado a multiplicação do vetor gradiente $\mathbf{g}_t$ com $(1 - \beta_1)$. De forma semelhante é possível calcular o segundo momento $\mathbf{v}_t$ o qual será dado pela multiplicação do coeficiente de dacimento $\beta_2$ com o momento anterior $\mathbf{v}_{t-1}$ soamado ao produto termo da termo do vetor gradiente $\mathbf{g}_t$ com $(1 - \beta_2)$.
+
+O próximo passo do AdamW é a correção do viés. Começando com $\mathbf{\hat{m}_t}$ que irá receber a divisão do vetor de momentos $\mathbf{m}_t$ com $(1 - \beta_1^t)$. Já $\mathbf{\hat{v}}_t$ é calculado de forma semelhante, ele irá receber a divisão do vetor de segundo momento $\mathbf{v}_t$ com $(1 - \beta_2^t)$.
+
+A diferença do AdamW está nessa próxima parte, o cálculo dos parâmetros $\theta$ para a próxima iteração. Para isso, eles serão dados pela diferença dos parâmetros na iteração anterior $\theta_{t-1}$ com a multiplicação da taxa de aprendizado $\alpha$ com a divisão do vetor do primeiro momento já corrigido pela raiz do vetor de segundo momento também já corrigido, isso é então somado ao produto do fator de dacaimento de peso $\lambda$ pelos parâmetros da iteração enterior $\theta_{t-1}$.
+
 \begin{algorithm}[H]
     \caption{Adam com Decaimento de Peso Desacoplado (AdamW)}
     \label{alg:adamw}
     \begin{algorithmic}[1]
 
-    \State \textbf{Dado:} $\alpha=0.001, \beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}, \lambda \in \mathbb{R}$
-    \State \textbf{Inicialize:} passo de tempo $t \leftarrow 0$, vetor de parâmetros $\theta_0 \in \mathbb{R}^n$, vetor de 1º momento $m_0 \leftarrow 0$, vetor de 2º momento $v_0 \leftarrow 0$, multiplicador de agendamento $\eta_0 \in \mathbb{R}$
+    \Require Taxa de aprendizado $\alpha$ (ex: 0.001)
+    \Require Coeficientes de decaimento $\beta_1, \beta_2$ (ex: 0.9, 0.999)
+    \Require Fator de decaimento de peso $\lambda$ (ex: 0.01)
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+    \Require Parâmetro de estabilidade $\epsilon$ (ex: 1e-8)
 
-    \Repeat
+    \State $\mathbf{m}_0 \leftarrow 0$ \Comment{Inicializar vetor de 1º momento (média)}
+    \State $\mathbf{v}_0 \leftarrow 0$ \Comment{Inicializar vetor de 2º momento (variância)}
+    \State $t \leftarrow 0$ \Comment{Inicializar passo de tempo}
+
+    \While{não convergir}
         \State $t \leftarrow t + 1$
-        \State $\nabla f_t(\theta_{t-1}) \leftarrow \text{SelecionarLote}(\theta_{t-1})$ \Comment{Seleciona o lote e retorna o gradiente}
-        \State $g_t \leftarrow \nabla f_t(\theta_{t-1})$ \Comment{O gradiente NÃO inclui o termo de decaimento de peso}
-        \State $m_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1) g_t$ \Comment{Atualizar 1º momento (operações element-wise)}
-        \State $v_t \leftarrow \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$ \Comment{Atualizar 2º momento}
-        \State $\hat{m}_t \leftarrow m_t / (1 - \beta_1^t)$ \Comment{Corrigir viés do 1º momento}
-        \State $\hat{v}_t \leftarrow v_t / (1 - \beta_2^t)$ \Comment{Corrigir viés do 2º momento}
-        \State $\eta_t \leftarrow \text{DefinirMultiplicadorDeAgendamento}(t)$ \Comment{Pode ser fixo, decair, ou para reinícios abruptos}
-        \State $\theta_t \leftarrow \theta_{t-1} - \eta_t \left( \frac{\alpha \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} \right) - \eta_t \lambda \theta_{t-1}$ \Comment{Atualização desacoplada do decaimento de peso}
-    \Until{critério de parada for atingido}
-    \State \Return parâmetros otimizados $\theta_T$
+        \State $\mathbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1})$ \Comment{O gradiente NÃO inclui o termo de decaimento}
+        
+        % Atualiza estimativas dos momentos (como no Adam)
+        \State $\mathbf{m}_t \leftarrow \beta_1 \mathbf{m}_{t-1} + (1 - \beta_1) \mathbf{g}_t$
+        \State $\mathbf{v}_t \leftarrow \beta_2 \mathbf{v}_{t-1} + (1 - \beta_2) (\mathbf{g}_t \odot \mathbf{g}_t)$
+        
+        % Calcula a correção de viés (bias correction)
+        \State $\mathbf{\hat{m}}_t \leftarrow \frac{\mathbf{m}_t}{1 - \beta_1^t}$
+        \State $\mathbf{\hat{v}}_t \leftarrow \frac{\mathbf{v}_t}{1 - \beta_2^t}$
+        
+        % Atualiza os parâmetros com decaimento de peso desacoplado
+        \State $\theta_t \leftarrow \theta_{t-1} - \alpha \left( \frac{\mathbf{\hat{m}}_t}{\sqrt{\mathbf{\hat{v}}_t} + \epsilon} + \lambda \theta_{t-1} \right)$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
     \end{algorithmic}
 \end{algorithm}
 
-Para comprovar a performace do novo otimizador criado os autores decidem utilizar uma série de experimentos, de forma que foi possível comprovar que o Adam trás uma melhor generalização quando comparado com o Adam tradicional, de forma que foi possível encontrar um Top-5 Erro de Teste no ImageNet32x32 menor utilizando essa nova variante do Adam.
+Para compravar a eficácia do desacoplamento de peso, \textcite{AdamWMethod} decidem availiar o Adam com reguralização L2 com a nova variante AdamW utilizando uma 26 2x64d ResNet no CIFAR-1o medida depois de 100 épocas, além disso, os autores avaliam também o SGD e sua variante com peso desacoplado, o SGDW, de forma que os resultados podem ser vistos na figura \ref{comparativo-adamw-cifar-10}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png}
+    \caption{e Top-1 test error of a 26 2x64d ResNet on CIFAR-10 measured after 100 epochs. The proposed SGDW and AdamW (right column) have a more separable hyperparameter space.}
+    \label{fig:comparativo-adamw-cifar-10}
+\end{figure}
+
+Nessas figuras, o eixo vertical representa a taxa de aprendizado, enquando o eixo horizontal representa a forca de regulariação ou do decaimento do peso. Enquanto isso, as cores indicam o desempenho do momedo, azul e ciano representam um bom desempenho, com baixo erro, enquanto vermelho representa um desemepho pior, com erro mais alto.
+
+Note que ambas as variantes do gradiente estocástico apresentam partes azuis, no SGD (a esquerda), a área de de bom desempenho é pequena, além de formar uma faixa diagonal estreita, o que indica que a taxa de aprendizado ideal e a força de reguralização são altamentes dependentes uma da outra. Isso significa que se você escoler um valor da taxa de aprendizado fora dessa faixa, utilizar um modelo com o SGD seria difícil para otimizar.
+
+Por outro lado, no SGDW a área azul é muito maior além de ser mais vertical, indicando que existe uma ampla variante de taxas de aprendizado que você pode escolher e ainda sim conseguir um modelo bem otimizado. De forma que a escola de um bom decaimento de peso e de uma taxa de aprendizado são mais independentes, e com isso o modelo pode ser mais fácil de otimizar.
+
+Quando comparamos agora as duas variantes do Adam vemos um cenário diferente. Note que o resultado do Adam é bem ruim, o gráfico é quase todo vermelho, o que mostra que o Adam com a reguralização L2 falha em convergir para melhores pontos de mínimo para a maioria das taxas de aprendizado apresentadas.
+
+Agora se analisamos o AdamW o resultado é bem mais positivo. Assim como o SGDW existe uma linha vertical em azul no AdamW, o que nos mostra que podemos escolher uma quantidade grande de taxas de aprendizado que permitam ao modelo uma boa convergência, além é claro dela ser mais independente com relação do decaimento de peso.
+
+Assim, utilizar o AdamW pode ser uma excelente alternativa caso queira tentar taxas de aprendizado diferentes e ainda sim obter uma boa convergência do modelo. Por exemplo, se quiser você pode escolher uma taxa de aprendizado mais alta, permitindo com que o modelo dê passos mais largos e assim consiga convergir de forma mais rápida. Mas você ainda tem a oportunidade de utilizar taxas de aprendizado menores e provavelmente irá encontrar um ponto de mínimo.
 
 \textbf{Implementação em Python}
 
-\subsection{Rectified Adam (RAdam)}
+\subsection{Outros Otimizadores}
+
+\textbf{Rectified Adam (RAdam)}
 
 Uma outra variante do Adam que també busca melhorar o otimizador original é o Rectified Adam ou RAdam. Ele surgiu no trabalho \textit{On the Variance of the Adaptive Learning Rate and Beyond} dos autores \textcite{RAdamMethod} como uma atualização do Adam que buscava corrigir um problema identificado com a taxa de aprendizado adaptativa do otimizador: a sua variância é grande problemática nos primeiros estágios; de forma que eles propusaram o RAdam, uma variante que introduz um termo para retificar a variância da taxa de aprendizado adpativa.
-
-Dessa forma, os pesquisadores chegaram a desenvolver o algoritmo que está listado no bloco de pseudocódigo \ref{elg:radam}
-
-\begin{algorithm}[H]
-\caption{Adam Retificado (RAdam)}
-\label{alg:radam}
-\begin{algorithmic}[1]
-
-\State \textbf{Entrada:} $\{\alpha_t\}_{t=1}^T$: tamanho do passo, $\{\beta_1, \beta_2\}$: taxas de decaimento, $\theta_0$: parâmetro inicial, $f_t(\theta)$: função objetivo estocástica.
-\State \textbf{Saída:} $\theta_T$: parâmetros resultantes.
-
-\State $m_0, v_0 \leftarrow 0$ \Comment{Inicializar 1º e 2º momentos móveis}
-\State $\rho_{\infty} \leftarrow 2 / (1 - \beta_2) - 1$ \Comment{Calcular o comprimento máximo da Média Móvel Simples (SMA) aproximada}
-
-\For{$t = 1$ \textbf{to} $T$}
-    \State $g_t \leftarrow \nabla_\theta f_t(\theta_{t-1})$ \Comment{Calcular gradientes no passo de tempo t}
-    \State $v_t \leftarrow \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$ \Comment{Atualizar 2º momento móvel exponencial}
-    \State $m_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1) g_t$ \Comment{Atualizar 1º momento móvel exponencial}
-    \State $\hat{m}_t \leftarrow m_t / (1 - \beta_1^t)$ \Comment{Calcular média móvel com correção de viés}
-    \State $\rho_t \leftarrow \rho_{\infty} - 2t \beta_2^t / (1 - \beta_2^t)$ \Comment{Calcular o comprimento da SMA aproximada}
-    
-    \If{a variância for tratável, i.e., $\rho_t > 4$}
-        \State $l_t \leftarrow \sqrt{(1 - \beta_2^t)} / \sqrt{v_t}$ \Comment{Calcular a taxa de aprendizado adaptativa}
-        \State $r_t \leftarrow \sqrt{\frac{(\rho_t - 4)(\rho_t - 2)\rho_{\infty}}{(\rho_{\infty} - 4)(\rho_{\infty} - 2)\rho_t}}$ \Comment{Calcular o termo de retificação da variância}
-        \State $\theta_t \leftarrow \theta_{t-1} - \alpha_t r_t \hat{m}_t l_t$ \Comment{Atualizar parâmetros com momentum adaptativo}
-    \Else
-        \State $\theta_t \leftarrow \theta_{t-1} - \alpha_t \hat{m}_t$ \Comment{Atualizar parâmetros com momentum não-adaptado}
-    \EndIf
-\EndFor
-
-\State \Return $\theta_T$
-\end{algorithmic}
-\end{algorithm}
-
-Para avaliar o RAdam foi utilizado uma série de benchmarks: One Billieon Word (para modelagem linguística), CIFAR-10 e ImageNet (para classificação de imagens) e IWSLT’14 De-En/EN-DE e WMT’16 EN-De  (para neural machine translation). Comparando com o Adam tradicional, as performaces de modelagem de lingaugem e de classificacao de imagens mostram que o RAdam supera o Adam nos três datasets, contudo, um ponto a ser destcado por \textcite{RAdamMethod} é que o termo retificador faz com que a performance do RAdam seja masi lenta que o Adam nas primeiras épocas, permitindo que uma convergência mais rápida do RAdam deois disso. Assim, como os próprios autores apresentam, reduzir a variância da taxa de aprendizado adpativativa nos estágios iniciais, faz com que a covergência seja mais rápida além de garantir uma melhor performance \parencite{RAdamMethod}.
-
-\textbf{Implementação em Python}
 
 \section{Comparativo de Desempenho: Otimizadores}
 
