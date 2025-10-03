@@ -809,6 +809,10 @@ INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.pn
 INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png
 INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png
 INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png
+INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png
+INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png
+INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png
+INPUT ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd

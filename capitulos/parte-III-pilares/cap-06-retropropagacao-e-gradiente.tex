@@ -967,7 +967,11 @@ Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o dese
 
 \subsection{AdaMax}
 
-Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textcite{AdamMethod}, além de apresentarem o Adam como um novo otimizador, eles também apresentam uma variante dele, o AdaMax, que ao invés de utilizar a norma $L^2$ para calcular o segundo momentom, utilizam a norma $L^p$, em que $p \to \infty$, provando ser um algoritmo surpreendemente simples e estável. Dessa forma, os autores foram possíveis chegar no algortimo listado no pseudocódigo \ref{alg:adamax}.
+Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textcite{AdamMethod}, além de apresentarem o Adam como um novo otimizador, eles também apresentam uma variante dele, o AdaMax, que ao invés de utilizar a norma $L^2$ para calcular o segundo momentom, utilizam a norma $L^p$, em que $p \to \infty$, provando ser um algoritmo surpreendemente simples e estável. Dessa forma, os autores foram  chegram no algortimo listado no pseudocódigo \ref{alg:adamax}.
+
+Note que o AdaMax recebe como parâmetros de entrada os mesmos parâmetros do Adam tradicional, com a diferença sendo na inicilização do vetores, que agora, ao invés de inicilizar o vetor do segundo momento, é inicilizadada a norma infinita $u_0$. No loop do AdaMax, é possível ver um funcionamento semelhante ao do Adam, ele começa incrementando o passo de tempo $t$ e e calculando o vetor de gradientes $g_t$ para aquela iteração, que é então utilizado para atualizar o vetor do primeiro momento $m_0$.
+
+A diferença do AdaMax está na próxima etapa, em que é atualizada a norma infinita utilizando como base $\max(\beta_2 \cdot u_{t-1}, |g_t|)$. Com base em todos esses parâmetros o AdaMax atualiza o vetor de parâmetros $\theta$. Essas iterações são repetidas ate o modelo convergir para um ponto de mínimo.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{AdaMax, uma variante do Adam baseada na norma infinita}
@@ -999,35 +1003,63 @@ Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textci
 
 \subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
 
-Com o Nadam, ou Nesterov-accelerated Adaptive Moment Estimation, ocorreu a mesma ideia de incremento presente nos outros métodos de otimização vistos até o momento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidem modificar o componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (NAG). Ao fazer essa mudança, os autores conseguiram comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
-
-Para a criação do método são necessários um conjunto de hiperparâmetros, sendo o primeiro deles alpha, uo, v e e. Em seguida são inicializados com zero os vetores de momento de primeira e segunda ordem. Com base nesses dados é iniciado o loop de iterações do método, o qual só irá terminar quando $\theta_t$ convergir. O primeiro passo é o cálculo do gradiente no momento $t-1$, os quais são armazenados em $g_t$, com base em $g_t$ é possível calcular a estimativa enviesada do primeiro momento, e utilizando $g_t^2$, calculá-se a entimativa enviesada do segundo momento. A principal diferença está no próximo passo da iteração, ele consiste em usar o momento de nesterov para atualizar o viés da estimativa do segundo momento, e por fim é possível atualizar os parâmetros $\theta_t$ do modelo que está sendo treinado.
+Com o Nadam, ou Nesterov-accelerated Adaptive Moment Estimation, ocorreu a mesma ideia de incremento presente nos outros métodos de otimização vistos até o momento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidiu apresentar no trabaho \textit{Incorporating Nesterov Momentum Into Adam}, uma modificação do componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (NAG). Ao fazer essa mudança, o autor conseguiu comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
 
 O pseudocódigo que representa o algoritmo Nadam está representado em \ref{alg:nadam}
 
-\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-\caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
-\label{alg:nadam}
-\begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+O Nadam recebe como parâmetros de entrada uma taxa de aprendizado $\alpha$, os coeficientes de decaimento $\mu$ e $\nu$, o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda que será utilizada para otimizar o modelo $f(\theta)$ e o parâmetro de estabilidade $\epsilon$ para evitar que divisões por zero ocorram. Em seguida, são inicilizados os os vetores do primeiro $\mathbf{m}_0$ e segundo $\mathbf{v}_0$ momento junto com o passo de tempo $t$.
 
-\Require Hiperparâmetros: $\alpha_0, \dots, \alpha_T; \mu_0, \dots, \mu_T; \nu; \epsilon$
+Com tudo isso feito, é possível começar o loop do Nadam que irá terminar quando o modelo convergir. O primeiro passo é incrementar o passo de tempo $t$ bem como calcular o vetor gradiente $\mathbf{g}_t$ que irá receber os resultados do vetor gradiente da função de perda calculados para os parâmetros da interação anterior $\theta_{t-1}$. Em seguida, calcula-se as estimativas dos momentos $\mathbf{m}_t$ que irá receber a multiplicação do coeficiente de dacaimento $\mu$ multiplicado pela estimativa do momento $\mathbf{m}_t$ na iteração anterior somado a multiplicação do vetor gradiente $\mathbf{g}_t$ com $(1 - \mu)$. De forma pareciada, é calculada da estimativa do segundo momento $\mathbf{v}_t$ que será dada pela multiplicação do coeficiente de dacaimento $\nu$ com a sua versão na iteração anterior $\mathbf{v}_{t-1}$ somada ao produto termo a termo do vetor gradiente $\mathbf{g}_t$ que é então multiplicado por $(1 - \nu)$.
 
-\State $m_0, n_0 \leftarrow 0$ \Comment{Inicializar vetores de primeiro e segundo momento}
+O próximo passo do NAdam consiste em corrigir o viés, é nessa parte que ele aplica o momento de Nesterov. O viés do primeiro momento $\mathbf{\hat{m}}_t$ recece o produto do coeficiente de dacaimento $\mu$ multiplicado com a estimativa do primeiro momento $\mathbf{h}_t$ que é dividida por $(1 - \mu^t)$ e então somada por $(1 - \mu)$ multiplicada pelo vetor gradiente $\mathbf{g}_t$ dividido por $(1 - \mu^t)$. Também é corrigido o viés do segundo momento $\mathbf{\hat{v}}_t$ que recebe a divisão do coeficiente de dacaimento $\nu$ multiplicado pelo vetor do segundo momento com $1 - \nu^t$. A partir desses vetores, é feita por último a atualização do vetor de parâmetros $\theta$.
 
-\While{não convergir}
-    \State $g_t \leftarrow \nabla_{\theta_{t-1}} f_t(\theta_{t-1})$ \Comment{Obter gradientes}
-    \State $m_t \leftarrow \mu_t m_{t-1} + (1 - \mu_t) g_t$ \Comment{Atualizar estimativa viciada do primeiro momento (média)}
-    \State $n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_t^2$ \Comment{Atualizar estimativa viciada do segundo momento (variância)}
-    \State $\hat{m}_t \leftarrow (\mu_{t+1} m_t / (1 - \prod_{i=1}^{t+1} \mu_i)) + ((1 - \mu_t) g_t / (1 - \prod_{i=1}^t \mu_i))$ \Comment{Corrigir o viés e aplicar o momento Nesterov}
-    \State $\hat{n}_t \leftarrow \nu n_t / (1 - \nu^t)$ \Comment{Corrigir o viés da estimativa do segundo momento}
-    \State $\theta_t \leftarrow \theta_{t-1} - \frac{\alpha_t}{\sqrt{\hat{n}_t} + \epsilon} \hat{m}_t$ \Comment{Atualizar parâmetros}
-\EndWhile
+\begin{algorithm}[H]
+    \caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+    \label{alg:nadam-estilizado}
+    \begin{algorithmic}[1]
 
-\State \Return $\theta_t$
-\end{algorithmic}
+    \Require Taxa de aprendizado $\alpha$ (pode ser agendada, ex: $\alpha_t$)
+    \Require Coeficientes de decaimento $\mu, \nu$ (ex: 0.9, 0.999)
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+    \Require Parâmetro de estabilidade $\epsilon$ (ex: 1e-7)
+
+    \State $\mathbf{m}_0 \leftarrow 0$ \Comment{Inicializar vetor de 1º momento (média)}
+    \State $\mathbf{v}_0 \leftarrow 0$ \Comment{Inicializar vetor de 2º momento (variância)}
+    \State $t \leftarrow 0$ \Comment{Inicializar passo de tempo}
+
+    \While{não convergir}
+        \State $t \leftarrow t + 1$
+        \State $\mathbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f_t(\theta_{t-1})$
+        
+        % Atualiza estimativas dos momentos
+        \State $\mathbf{m}_t \leftarrow \mu \mathbf{m}_{t-1} + (1 - \mu) \mathbf{g}_t$
+        \State $\mathbf{v}_t \leftarrow \nu \mathbf{v}_{t-1} + (1 - \nu) (\mathbf{g}_t \odot \mathbf{g}_t)$
+        
+        % Corrige o viés e aplica o momento Nesterov
+        \State $\mathbf{\hat{m}}_t \leftarrow (\mu \mathbf{m}_t / (1 - \mu^t)) + ((1 - \mu) \mathbf{g}_t / (1 - \mu^t))$
+        
+        % Corrige o viés do segundo momento
+        \State $\mathbf{\hat{v}}_t \leftarrow \frac{\nu \mathbf{v}_t}{1 - \nu^t}$
+        
+        % Atualiza os parâmetros
+        \State $\theta_t \leftarrow \theta_{t-1} - \alpha \frac{\mathbf{\hat{m}}_t}{\sqrt{\mathbf{\hat{v}}_t} + \epsilon}$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
 \end{algorithm}
 
-Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \textcite{NadamMethod} foi capaz de criar um autoencoder convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do dataset MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Com base nessa rede criada, em sua pesquisa, o autor foi possível concluir que o Nadam, dentre os algoritmos analisados, foi o que conseguiu de forma mais rápida minizar a função de perda (neste caso foi utilizada a MSE), além de alcançar menos de 0.010 na perda calculada para a validação dos dados.
+Utilizando os otimizadores SGD, Momentum, Nesterov, RMSProp, Adam e Nadam, \textcite{NadamMethod} foi capaz de criar um autoencoder convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do dataset MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Assim, os resultados da pesquisa do autor podem ser vistos nos gráficos da figura \ref{fig:comparativo-nadam-mnist}, note que comparando com o clássico gradiente estocástico, o NAdam consegue uma vantagem de cerca de 0.010 de diferença na taxa de erro utilizando a MSE para calcular o erro. Não somente isso, mas ele é o modelo que apresenta uma convergência mais acelerada quando comparado com os outros, perceba que que o decaimento da taxa de erro do NAdam é consideravelmente maior nas primeiras épocas, enquanto a partir das 10 épocas ele já começa a se estabilizar.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png}
+    \caption{Training and validation loss of different optimizers on the MNIST dataset}
+    \label{fig:comparativo-nadam-mnist}
+\end{figure}
+ 
+Comparando com o Adam tradicional, a principal diferença do NAdam com esse outro otimizador está justamente relacionada ao decaimento do erro, que é consideravalemente maior, enquanto o NAdam já estava se estabilizando com cerca de 10 épocas, o Adam parece demorar mais. De fato como apresentado por \textcite{NadamMethod}, o NAdam é capaz de acelerar as taxas de convergência do modelo que está sendo treinado.
 
 \textbf{Implementação em Python}
 
