@@ -631,6 +631,27 @@ Em que:
 
 \textbf{Implementação em Python}
 
+\begin{codelisting}{Classe completa do otimizador GradientDescentWithMomentum}{gd_class}
+from optimizers.base import Optimizer
+import numpy as np
+
+class GradientDescentWithMomentum(Optimizer):
+    def __init__(self, momentum=0.9, learning_rate=0.001):
+        super().__init__(learning_rate)
+        self.momentum = momentum
+        self.velocity = None
+
+    def step(self, params, grads):
+        if self.velocity is None:
+            self.velocity = [[np.zeros_like(p) for p in group] for group in params]
+
+        for i in range(len(params)):
+            self.velocity[i][0] = self.momentum * self.velocity[i][0] - self.lr * grads[i][0]
+            params[i][0] += self.velocity[i][0]
+            self.velocity[i][1] = self.momentum * self.velocity[i][1] - self.lr * grads[i][1]
+            params[i][1] += self.velocity[i][1]
+\end{codelisting}
+
 \begin{algorithm}[H]
 \caption{O Método do Gradiente com Momentum (versão de Rumelhart et al.)}
 \label{alg:momentum_rumelhart}
@@ -650,7 +671,7 @@ Em que:
 \end{algorithmic}
 \end{algorithm}
 
-\textbf{Implementação em Python}
+
 
 \subsection{Método do Gradiente Estocástico (SGD)}
 
@@ -800,6 +821,29 @@ Note, que o NAG é também uma variante do método do gradiente que faz uso do m
     \end{algorithmic}
 \end{algorithm}
 
+\begin{codelisting}{Classe completa do otimizador NesterovAcceleratedGradient}{gd_class}
+from optimizers.base import Optimizer
+import numpy as np
+
+class NesterovAcceleratedGradient(Optimizer):
+    def __init__(self, momentum=0.9, learning_rate=0.001):
+        super().__init__(learning_rate)
+        self.momentum = momentum
+        self.velocity = None
+
+    def step(self, params, grads):
+        if self.velocity is None:
+            self.velocity = [[np.zeros_like(p) for p in group] for group in params]
+
+        # Iterate over each parameter group (one per Dense layer)
+        for i in range(len(params)):
+            self.velocity[i][0] = self.momentum * self.velocity[i][0] - self.lr * grads[i][0]
+            params[i][0] += self.momentum * self.velocity[i][0] - self.lr * grads[i][0]
+
+            self.velocity[i][1] = self.momentum * self.velocity[i][1] - self.lr * grads[i][1]
+            params[i][1] += self.momentum * self.velocity[i][1] - self.lr * grads[i][1]
+\end{codelisting}
+
 \section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}
 
 Conforme os anos foram passando, foram surgindo novos otimizadores, também inspirados em métodos mais clássicos, como o SGD e as variantes com momento. Mas, a partir dos anos 2010, uma nova família de otimizadores, que se originou a partir do AdaGrad, surgiu. Esses otimizadores tinham a mesma proposta dos outros baseados em gradiente, utilizá-lo como uma bússsola para encontrar os pontos de mínimo, mas ao mesmo tempo apresentavam uma diferença notável quando comparados com os otimizadores clássicos: o uso de diferentes taxas de aprendizado.
@@ -922,6 +966,28 @@ O AdaGrad simbolizou não somente um avanço para os algoritmos de otimização,
 
 \textbf{Implementação em Python}
 
+\begin{codelisting}{Classe completa do otimizador AdaGrad}{gd_class}
+import numpy as np
+from optimizers.base import Optimizer
+
+class AdaGrad(Optimizer):
+    def __init__(self, learning_rate=0.01, epsilon=1e-7):
+        super().__init__(learning_rate)
+        self.epsilon = epsilon
+        self.accumulator = None
+
+    def step(self, params, grads):
+        if self.accumulator is None:
+            self.accumulator = [[np.zeros_like(p) for p in group] for group in params]
+
+        for i in range(len(params)):
+            self.accumulator[i][0] += grads[i][0] ** 2
+            params[i][0] -= self.lr * grads[i][0] / (np.sqrt(self.accumulator[i][0]) + self.epsilon)
+
+            self.accumulator[i][1] += grads[i][1] ** 2
+            params[i][1] -= self.lr * grads[i][1] / (np.sqrt(self.accumulator[i][1]) + self.epsilon)
+\end{codelisting}
+
 \subsection{RMSProp}
 
 Diferente dos outros métodos de otimização que surgiram em artigos, o RMSProp tem uma concepação diferente, sendo apresentado por Geoffrey Hinton nas suas notas de aula do curso \textit{Neural Networks for Machine Learning} como um método que semelhante ao AdaGrad, dividia o gradiente \parencite{RMSPropMethod}. Para isso, o RMSProp combina a ideia de somente usar o sinal do gradiente com a ideia de adptar o tamanho do passo separadamente para diferentes pesos, de forma que para funcionar em mini-batches é mantido uma média móvel do quadrado do gradiente para cada peso \parencite{RMSPropMethod}.
@@ -956,6 +1022,32 @@ O último passo do RSMProp consistem em atualizar os parâmetros de $\theta_0$ p
 \end{algorithm}
 
 \textbf{Implementação em Python}
+
+\begin{codelisting}{Classe completa do otimizador RMSProp}{gd_class}
+import numpy as np
+from optimizers.base import Optimizer
+
+class RMSProp(Optimizer):
+    def __init__(self, learning_rate=0.001, decay_rate=0.9, epsilon=1e-7):
+        super().__init__(learning_rate)
+        self.decay_rate = decay_rate
+        self.epsilon = epsilon
+        self.accumulator = None
+
+    def step(self, params, grads):
+        if self.accumulator is None:
+            self.accumulator = [[np.zeros_like(p) for p in group] for group in params]
+
+        # Iterate over parameters for each layer
+        for i in range(len(params)):
+            self.accumulator[i][0] = self.decay_rate * self.accumulator[i][0] + \
+                                     (1 - self.decay_rate) * grads[i][0] ** 2
+            params[i][0] -= self.lr * grads[i][0] / (np.sqrt(self.accumulator[i][0]) + self.epsilon)
+
+            self.accumulator[i][1] = self.decay_rate * self.accumulator[i][1] + \
+                                     (1 - self.decay_rate) * grads[i][1] ** 2
+            params[i][1] -= self.lr * grads[i][1] / (np.sqrt(self.accumulator[i][1]) + self.epsilon)
+\end{codelisting}
 
 \subsection{Adaptive Moment Estimation (Adam)}
 
@@ -1057,6 +1149,46 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
 Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o desenvolvimento do otimizador Adam, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
 \textbf{Implementação em Python}
+
+\begin{codelisting}{Classe completa do otimizador Adam}{gd_class}
+import numpy as np
+from optimizers.base import Optimizer
+
+
+class Adam(Optimizer):
+    def __init__(self, learning_rate=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7):
+        self.beta_1 = beta_1
+        self.beta_2 = beta_2
+        self.epsilon = epsilon
+        self.m = None  # First moment vector (like Momentum's velocity)
+        self.v = None  # Second moment vector (like RMSProp's accumulator)
+        self.t = 0  # Timestep counter, starts at 0
+
+    def step(self, params, grads):
+        self.t += 1
+
+        if self.m is None:
+            self.m = [[np.zeros_like(p) for p in group] for group in params]
+        if self.v is None:
+            self.v = [[np.zeros_like(p) for p in group] for group in params]
+
+        for i in range(len(params)):
+            self.m[i][0] = self.beta_1 * self.m[i][0] + (1 - self.beta_1) * grads[i][0]
+            self.v[i][0] = self.beta_2 * self.v[i][0] + (1 - self.beta_2) * (grads[i][0] ** 2)
+
+            m_hat = self.m[i][0] / (1 - self.beta_1 ** self.t)
+            v_hat = self.v[i][0] / (1 - self.beta_2 ** self.t)
+
+            params[i][0] -= self.lr * m_hat / (np.sqrt(v_hat) + self.epsilon)
+
+            self.m[i][1] = self.beta_1 * self.m[i][1] + (1 - self.beta_1) * grads[i][1]
+            self.v[i][1] = self.beta_2 * self.v[i][1] + (1 - self.beta_2) * (grads[i][1] ** 2)
+
+            m_hat_b = self.m[i][1] / (1 - self.beta_1 ** self.t)
+            v_hat_b = self.v[i][1] / (1 - self.beta_2 ** self.t)
+
+            params[i][1] -= self.lr * m_hat_b / (np.sqrt(v_hat_b) + self.epsilon)
+\end{codelisting}
 
 \subsection{AdaMax}
 
@@ -1244,6 +1376,8 @@ Assim, utilizar o AdamW pode ser uma excelente alternativa caso queira tentar ta
 \textbf{Rectified Adam (RAdam)}
 
 Uma outra variante do Adam que també busca melhorar o otimizador original é o Rectified Adam ou RAdam. Ele surgiu no trabalho \textit{On the Variance of the Adaptive Learning Rate and Beyond} dos autores \textcite{RAdamMethod} como uma atualização do Adam que buscava corrigir um problema identificado com a taxa de aprendizado adaptativa do otimizador: a sua variância é grande problemática nos primeiros estágios; de forma que eles propusaram o RAdam, uma variante que introduz um termo para retificar a variância da taxa de aprendizado adpativa.
+
+\textbf{Lion}
 
 \section{Comparativo de Desempenho: Otimizadores}
 
