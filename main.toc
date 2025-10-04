@@ -64,24 +64,23 @@
 \contentsline {subsection}{\numberline {6.4.2}RMSProp}{56}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{58}{subsection.6.4.3}%
 \contentsline {subsection}{\numberline {6.4.4}AdaMax}{63}{subsection.6.4.4}%
-\contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{64}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{63}{subsection.6.4.5}%
 \contentsline {subsection}{\numberline {6.4.6}Adam With Decoupled Weight Decay (AdamW)}{66}{subsection.6.4.6}%
 \contentsline {subsection}{\numberline {6.4.7}Outros Otimizadores}{69}{subsection.6.4.7}%
 \contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{69}{section.6.5}%
 \contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{69}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{70}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}O Método}{71}{subsection.6.6.2}%
+\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{69}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}O Método}{70}{subsection.6.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{73}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal}{73}{section.7.1}%
+\contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal: Introduzindo a Não-Linearidade}{73}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Exemplo Ilustrativo: Empurrando para extremos}{75}{section.7.2}%
-\contentsline {section}{\numberline {7.3}A Sigmoide Logística}{76}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Contexto Histórico: Popularização da Sigmoide em Redes Neurais}{76}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Tangente Hiperbólica}{81}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Softsign: Uma Sigmoidal Mais Barata}{84}{section.7.6}%
-\contentsline {section}{\numberline {7.7}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{87}{section.7.7}%
-\contentsline {section}{\numberline {7.8}O Desaparecimento de Gradientes}{92}{section.7.8}%
-\contentsline {section}{\numberline {7.9}Comparativo de Desempenho das Sigmoidais}{94}{section.7.9}%
+\contentsline {section}{\numberline {7.3}A Sigmoide Logística: Ótima para Classificações Binárias}{76}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Tangente Hiperbólica: A Pioneira nas Redes Convolucionais}{81}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Softsign: Uma Sigmoidal Mais Barata}{84}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{86}{section.7.6}%
+\contentsline {section}{\numberline {7.7}O Desaparecimento de Gradientes}{91}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Comparativo de Desempenho das Sigmoidais}{94}{section.7.8}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {8}\MakeTextUppercase []{Funções de Ativação Retificadoras}}{95}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Exemplo Ilustrativo: Vendendo Pipoca}{95}{section.8.1}%
@@ -245,9 +244,13 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {30}\MakeTextUppercase []{Redes Neurais de Grafos (GNNs)}}{187}{chapter.30}%
 \contentsline {part}{\partnumberline {VI}\MakeTextUppercase []{Apêndices}}{189}{part.6}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Tabela das Funções de Ativação}}{191}{appendix.A}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{191}{section*.11}%
+\contentsline {chapter}{Referências}{195}{section*.58}%
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 

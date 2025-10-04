@@ -1,0 +1,195 @@
+\chapter{Tabela das Funções de Ativação}
+
+\begin{longtable}{@{} l p{0.25\linewidth} p{0.3\linewidth} p{0.3\linewidth} @{}}
+    
+    % --- TÍTULO (CAPTION) ---
+    \caption{Comparativo das famílias de funções de ativação, suas propriedades, vantagens e desvantagens.}
+    \label{tab:funcoes_comparativo_completo} \\
+
+    % --- CABEÇALHO DA PRIMEIRA PÁGINA ---
+    \toprule
+    \textbf{Função} & \textbf{Equação e Derivada} & \textbf{Vantagens} & \textbf{Desvantagens} \\
+    \midrule
+    \endfirsthead
+
+    % --- CABEÇALHO DAS PÁGINAS SEGUINTES ---
+    \multicolumn{4}{l}{\small\textbf{Tabela \thetable{} – Continuação}} \\
+    \toprule
+    \textbf{Função} & \textbf{Equação e Derivada} & \textbf{Vantagens} & \textbf{Desvantagens} \\
+    \midrule
+    \endhead
+
+    % --- RODAPÉ DE CONTINUAÇÃO ---
+    \multicolumn{4}{r}{\small\textit{(Continua na próxima página)}} \\
+    \endfoot
+
+    % --- RODAPÉ FINAL (NA ÚLTIMA PÁGINA) ---
+    \bottomrule
+    \multicolumn{4}{l}{\parbox{\linewidth}{\small\textit{Fonte: O autor (2025).}}} \\
+    \endlastfoot
+
+    % --- CONTEÚDO DA TABELA (UNIFICADO) ---
+
+    % --- Família Sigmoidal ---
+    \textbf{Sigmoide} & 
+    $\displaystyle \frac{1}{1 + e^{-z_i}}$ \newline\vspace{0.2cm}
+    $\displaystyle \sigma(z_i)(1 - \sigma(z_i))$ 
+    & 
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Saída no intervalo (0, 1), interpretável como probabilidade.
+        \item Função suave e diferenciável.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Não é centrada em zero.
+        \item Sofre com o desvanecimento do gradiente.
+    \end{itemize}
+    \\ \addlinespace
+    
+    \textbf{Tangente hip.} & 
+    $\displaystyle \frac{e^{z_i} - e^{-z_i}}{e^{z_i} + e^{-z_i}}$ \newline\vspace{0.2cm}
+    $\displaystyle 1 - \tanh^2(z_i)$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Centrada em zero, acelera a convergência.
+        \item Gradiente mais forte que a sigmoide.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Ainda sofre com o desvanecimento do gradiente.
+    \end{itemize}
+    \\ \addlinespace
+    
+    \textbf{Softsign} &
+    $\displaystyle \frac{z_i}{1 + |z_i|}$ \newline\vspace{0.2cm}
+    $\displaystyle \frac{1}{(1 + |z_i|)^2}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Computacionalmente eficiente.
+        \item Satura mais lentamente que a Tanh.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Derivada não pode ser expressa em termos da própria função.
+    \end{itemize}
+    \\ \addlinespace
+
+    \textbf{Hard Sigmoid} &
+    $\displaystyle \begin{cases} 0 & \text{se } z_i < -3 \\ z_i/6 + 0.5 & \text{se } -3 \le z_i \le 3 \\ 1 & \text{se } z_i > 3 \end{cases}$ \newline\vspace{0.2cm}
+    $\displaystyle \begin{cases} 0 & \text{se } z_i < -3 \\ 1/6 & \text{se } -3 < z_i < 3 \\ 0 & \text{se } z_i > 3 \end{cases}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Extremamente rápida e eficiente.
+        \item Ideal para hardware com poucos recursos.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Não é suave; pode "matar" gradientes.
+        \item É uma aproximação.
+    \end{itemize}
+    \\ \addlinespace
+    
+    \textbf{Hard Tanh} &
+    $\displaystyle \begin{cases} -1 & \text{se } z_i < -1 \\ z_i & \text{se } -1 \le z_i \le 1 \\ 1 & \text{se } z_i > 1 \end{cases}$ \newline\vspace{0.2cm}
+    $\displaystyle \begin{cases} 0 & \text{se } z_i < -1 \\ 1 & \text{se } -1 < z_i < 1 \\ 0 & \text{se } z_i > 1 \end{cases}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Extremamente rápida e centrada em zero.
+        \item Ótima para hardware de baixo consumo.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Não é suave; derivada nula em grande parte do domínio.
+    \end{itemize}
+    \\ \addlinespace
+
+    % --- Família Retificadora ---
+    \textbf{ReLU} & 
+    $ \begin{cases}z_i, & \text{se } z_i > 0 \\0, & \text{se } z_i \leq 0\end{cases} $ \newline\vspace{0.2cm}
+    $ \begin{cases}1, & \text{se } z_i > 0 \\0, & \text{se } z_i < 0 \\ \nexists & \text{se } z_i = 0\end{cases}$ 
+    & 
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Computacionalmente eficiente.
+        \item Evita o desvanecimento do gradiente.
+        \item Promove esparsidade na rede.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Não é centrada em zero.
+        \item Pode "morrer" (Dying ReLU).
+        \item Pode sofrer com a explosão de gradientes.
+    \end{itemize}
+    \\ \addlinespace
+
+    \textbf{LReLU} & 
+    $ \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha \cdot z_i, & \text{se } z_i < 0\end{cases} $ \newline\vspace{0.2cm}
+    $\begin{cases}1, & \text{se } z_i > 0 \\ \alpha, & \text{se } z_i < 0 \\ \nexists, & \text{se } z_i = 0\end{cases}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Resolve o problema da "Dying ReLU".
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item O valor de $\alpha$ não é aprendido.
+        \item Resultados podem ser inconsistentes.
+    \end{itemize}
+    \\ \addlinespace
+
+    \textbf{PReLU} &
+    $ \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha_i \cdot z_i, & \text{se } z_i < 0\end{cases} $ \newline\vspace{0.2cm}
+    $\begin{cases}1, & \text{se } z_i > 0 \\ \alpha_i, & \text{se } z_i < 0 \\ \nexists, & \text{se } z_i = 0\end{cases}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Variação da LReLU onde $\alpha$ é um parâmetro aprendido.
+        \item Pode melhorar a performance.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Risco de sobreajuste (overfitting) se os dados forem poucos.
+    \end{itemize}
+    \\ \addlinespace
+
+    \textbf{ELU} &
+    $\begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha (e^{z_i} - 1) , & \text{se } z_i < 0\end{cases}$ \newline\vspace{0.2cm}
+    $ \begin{cases}1, & \text{se } z_i > 0 \\ \alpha e^{z_i}, & \text{se } z_i < 0 \end{cases}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Saídas com média próxima de zero.
+        \item Mais robusta a ruído que LReLU/PReLU.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Computacionalmente mais custosa (exponencial).
+    \end{itemize}
+    \\ \addlinespace
+
+    \textbf{SELU} &
+    $\lambda \begin{cases}z_i, & \text{se } z_i > 0 \\ \alpha (e^{z_i} - 1) , & \text{se } z_i \le 0\end{cases}$ \newline\vspace{0.2cm}
+    $ \lambda \begin{cases}1, & \text{se } z_i > 0 \\ \alpha e^{z_i}, & \text{se } z_i \le 0\end{cases}$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Propriedades de autonormalização.
+        \item Evita gradientes explosivos/desvanecentes em redes muito profundas.
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Requer inicialização de pesos específica (LeCun normal).
+        \item Computacionalmente mais custosa.
+    \end{itemize}
+    \\ \addlinespace
+
+    \textbf{GELU} &
+    $z_i \cdot \Phi(z_i)$ \newline\vspace{0.2cm}
+    $ \Phi(z_i) + z_i\phi(z_i)$
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Suave e diferenciável em todos os pontos.
+        \item Performance estado da arte em Transformers (BERT, GPT).
+    \end{itemize}
+    &
+    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+        \item Computacionalmente mais custosa que ReLU.
+    \end{itemize}
+    \\
+    
+\end{longtable}

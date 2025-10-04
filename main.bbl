@@ -162,6 +162,76 @@
       \verb http://jmlr.org/papers/v12/duchi11a.html
       \endverb
     \endentry
+    \entry{ElmanNetwork}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d5a20a1ebd7891ecfcfd79254de20395}{%
+           family={Elman},
+           familyi={E\bibinitperiod},
+           given={Jeffrey\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{fullhash}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{fullhashraw}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{bibnamehash}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{authorbibnamehash}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{authornamehash}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{authorfullhash}{d5a20a1ebd7891ecfcfd79254de20395}
+      \strng{authorfullhashraw}{d5a20a1ebd7891ecfcfd79254de20395}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cognitive Science}
+      \field{number}{2}
+      \field{title}{Finding structure in time}
+      \field{volume}{14}
+      \field{year}{1990}
+      \field{pages}{179\bibrangedash 211}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1207/s15516709cog1402_1
+      \endverb
+    \endentry
+    \entry{Softsign1998}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ef5649cc28f736881561b4f6ea53c12a}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={The},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1f735deb416bf3175f139e2b09d50cee}{%
+           family={Elliott},
+           familyi={E\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{fullhash}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{fullhashraw}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{bibnamehash}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{authorbibnamehash}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{authornamehash}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{authorfullhash}{fc48376e346039c6d5d36eeccfcd0d34}
+      \strng{authorfullhashraw}{fc48376e346039c6d5d36eeccfcd0d34}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{A better Activation Function for Artificial Neural Networks}
+      \field{year}{1998}
+    \endentry
     \entry{MaosAObra}{book}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=e54e6c9ce5d233c7046a00f7b3faa6c0}{%
@@ -273,6 +343,155 @@
       \endverb
       \verb{url}
       \verb https://arxiv.org/abs/1412.6980
+      \endverb
+    \endentry
+    \entry{TanhLambert}{incollection}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=641a8fa302ecc66ef774c466255c411e}{%
+           family={Lambert},
+           familyi={L\bibinitperiod},
+           given={J.\bibnamedelimi H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=bd96cf873a305c12e7187d6c35ff8c3b}{%
+           family={Berggren},
+           familyi={B\bibinitperiod},
+           given={Lennart},
+           giveni={L\bibinitperiod}}}%
+        {{hash=55a718488fd513ab72b005964e3e21f5}{%
+           family={Borwein},
+           familyi={B\bibinitperiod},
+           given={Jonathan\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=821552e027e8ab82143b8fd4dbfa90f4}{%
+           family={Borwein},
+           familyi={B\bibinitperiod},
+           given={Peter\bibnamedelima B.},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{641a8fa302ecc66ef774c466255c411e}
+      \strng{fullhash}{641a8fa302ecc66ef774c466255c411e}
+      \strng{fullhashraw}{641a8fa302ecc66ef774c466255c411e}
+      \strng{bibnamehash}{641a8fa302ecc66ef774c466255c411e}
+      \strng{authorbibnamehash}{641a8fa302ecc66ef774c466255c411e}
+      \strng{authornamehash}{641a8fa302ecc66ef774c466255c411e}
+      \strng{authorfullhash}{641a8fa302ecc66ef774c466255c411e}
+      \strng{authorfullhashraw}{641a8fa302ecc66ef774c466255c411e}
+      \strng{editorbibnamehash}{20e1bdcff88a52895d7fd9103b94bc8c}
+      \strng{editornamehash}{20e1bdcff88a52895d7fd9103b94bc8c}
+      \strng{editorfullhash}{20e1bdcff88a52895d7fd9103b94bc8c}
+      \strng{editorfullhashraw}{20e1bdcff88a52895d7fd9103b94bc8c}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Pi: A Source Book}
+      \field{note}{Original work published in 1768}
+      \field{title}{Mémoire sur quelques propriétés remarquables des quantités transcendantes circulaires et logarithmiques}
+      \field{year}{2004}
+      \field{pages}{129\bibrangedash 140}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1007/978-1-4757-4217-6_18
+      \endverb
+    \endentry
+    \entry{LecunLeNet1998}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ac762f2592005edf6bad58f566967c6c}{%
+           family={Bottou},
+           familyi={B\bibinitperiod},
+           given={Léon},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Yoshua},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=844e183692f08a63f99285330fcf90cc}{%
+           family={Haffner},
+           familyi={H\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9e4c6012409dc8dd9b2aa198a2059804}
+      \strng{fullhash}{c397b2e6efe8e5c6ca906410fc9e0ff9}
+      \strng{fullhashraw}{c397b2e6efe8e5c6ca906410fc9e0ff9}
+      \strng{bibnamehash}{9e4c6012409dc8dd9b2aa198a2059804}
+      \strng{authorbibnamehash}{9e4c6012409dc8dd9b2aa198a2059804}
+      \strng{authornamehash}{9e4c6012409dc8dd9b2aa198a2059804}
+      \strng{authorfullhash}{c397b2e6efe8e5c6ca906410fc9e0ff9}
+      \strng{authorfullhashraw}{c397b2e6efe8e5c6ca906410fc9e0ff9}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE}
+      \field{number}{11}
+      \field{title}{Gradient-based learning applied to document recognition}
+      \field{volume}{86}
+      \field{year}{1998}
+      \field{pages}{2278\bibrangedash 2324}
+      \range{pages}{47}
+      \verb{doi}
+      \verb 10.1109/5.726791
+      \endverb
+    \endentry
+    \entry{ActivationFunctionsLederer}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c45f4a5d7a4dc8d0be4b3b63990aea9e}{%
+           family={Lederer},
+           familyi={L\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{fullhash}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{fullhashraw}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{bibnamehash}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{authorbibnamehash}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{authornamehash}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{authorfullhash}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \strng{authorfullhashraw}{c45f4a5d7a4dc8d0be4b3b63990aea9e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Activation Functions in Artificial Neural Networks: A Systematic Overview}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 2101.09957
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2101.09957
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2101.09957
       \endverb
     \endentry
     \entry{Leshno1993}{article}{}{}
@@ -562,6 +781,40 @@
       \verb 10.1214/aoms/1177729586
       \endverb
     \endentry
+    \entry{PerceptronRosenblatt}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1750cd87a34d44119e7a4aab9b8012c6}{%
+           family={Rosenblatt},
+           familyi={R\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{fullhash}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{fullhashraw}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{bibnamehash}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{authorbibnamehash}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{authornamehash}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{authorfullhash}{1750cd87a34d44119e7a4aab9b8012c6}
+      \strng{authorfullhashraw}{1750cd87a34d44119e7a4aab9b8012c6}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychological Review}
+      \field{number}{6}
+      \field{title}{The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain}
+      \field{volume}{65}
+      \field{year}{1958}
+      \field{pages}{386\bibrangedash 408}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1037/h0042519
+      \endverb
+    \endentry
     \entry{BackpropagationArticle}{article}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=55cd5380bb5b15032a6d5a2015f56e3f}{%
@@ -643,6 +896,39 @@
       \verb https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
       \endverb
     \endentry
+    \entry{SigmoidVerhulst1845}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2ff982459682880f420bcd6c6cb3225b}{%
+           family={Verhulst},
+           familyi={V\bibinitperiod},
+           given={P.\bibnamedelimi F.},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {L'Académie Royale}%
+      }
+      \strng{namehash}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{fullhash}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{fullhashraw}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{bibnamehash}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{authorbibnamehash}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{authornamehash}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{authorfullhash}{2ff982459682880f420bcd6c6cb3225b}
+      \strng{authorfullhashraw}{2ff982459682880f420bcd6c6cb3225b}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nouveaux Mémoires de l'Académie Royale des Sciences et Belles-Lettres de Bruxelles}
+      \field{title}{Recherches mathématiques sur la loi d'accroissement de la population}
+      \field{volume}{18}
+      \field{year}{1845}
+      \field{pages}{1\bibrangedash 42}
+      \range{pages}{42}
+    \endentry
     \entry{Adeline}{inproceedings}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=b169a98a97af63e6129eb6a4fb83bc49}{%
@@ -681,6 +967,49 @@
       \field{year}{1960}
       \field{pages}{96\bibrangedash 104}
       \range{pages}{9}
+    \endentry
+    \entry{SigmoidWilsonCowan}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1752c104557bcd72f737f416c649674d}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Hugh\bibnamedelima R.},
+           giveni={H\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f17564c872ebb69b37e6689ae644c70e}{%
+           family={Cowan},
+           familyi={C\bibinitperiod},
+           given={Jack\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Biophysical Society}%
+      }
+      \strng{namehash}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{fullhash}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{fullhashraw}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{bibnamehash}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{authorbibnamehash}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{authornamehash}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{authorfullhash}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \strng{authorfullhashraw}{3247bf00e4fb5b5b847192fdc604fc3c}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biophysical Journal}
+      \field{number}{1}
+      \field{title}{Excitatory and inhibitory interactions in localized populations of model neurons}
+      \field{volume}{12}
+      \field{year}{1972}
+      \field{pages}{1\bibrangedash 24}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1016/S0006-3495(72)86068-5
+      \endverb
     \endentry
   \enddatalist
   \missing{AlexNet}

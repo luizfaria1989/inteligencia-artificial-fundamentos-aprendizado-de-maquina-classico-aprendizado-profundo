@@ -162,6 +162,35 @@
       \verb http://jmlr.org/papers/v12/duchi11a.html
       \endverb
     \endentry
+    \entry{MaosAObra}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e54e6c9ce5d233c7046a00f7b3faa6c0}{%
+           family={Géron},
+           familyi={G\bibinitperiod},
+           given={Aurélien},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Alta Books}%
+      }
+      \strng{namehash}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{fullhash}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{fullhashraw}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{bibnamehash}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{authorbibnamehash}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{authornamehash}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{authorfullhash}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \strng{authorfullhashraw}{e54e6c9ce5d233c7046a00f7b3faa6c0}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mãos à Obra: Aprendizado de Máquina com Scikit-Learn e TensorFlow}
+      \field{year}{2019}
+    \endentry
     \entry{DeepLearningBook}{book}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=5d2585c11210cf1d4512e6e0a03ec315}{%
@@ -574,6 +603,45 @@
       \field{year}{1986}
       \field{pages}{533\bibrangedash 536}
       \range{pages}{4}
+    \endentry
+    \entry{RMSPropMethod}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4b0706fb6d9bde8b2af7eb6c09d43846}{%
+           family={Tieleman},
+           familyi={T\bibinitperiod},
+           given={Tijmen},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9a8750ccdb2a4cf14d2655face1ce016}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoffrey},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{fullhash}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{fullhashraw}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{bibnamehash}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{authorbibnamehash}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{authornamehash}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{authorfullhash}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \strng{authorfullhashraw}{d5791ac93dcae4cf16cf47808a2ce33d}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{COURSERA: Neural Networks for Machine Learning}
+      \field{title}{Lecture 6.5---RMSProp: Divide the gradient by a running average of its recent magnitude}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
+      \endverb
     \endentry
     \entry{Adeline}{inproceedings}{}{}
       \name{author}{2}{}{%
