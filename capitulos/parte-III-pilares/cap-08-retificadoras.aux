@@ -5,15 +5,14 @@
 \newlabel{cap:ativacao-retificadoras}{{8}{95}{\texorpdfstring {\MakeTextUppercase {\tempf@rtoc }}{\tempf@rtoc }}{chapter.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {8.1}Exemplo Ilustrativo: Vendendo Pipoca}{95}{section.8.1}\protected@file@percent }
 \newlabel{eq: VendaPipoca}{{8.1}{95}{Exemplo Ilustrativo: Vendendo Pipoca}{equation.8.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Rectified Linear Unit e Revolução Retificadora}{96}{section.8.2}\protected@file@percent }
-\newlabel{eq: EquacaoFibraNervosa}{{8.2}{96}{Rectified Linear Unit e Revolução Retificadora}{equation.8.2}{}}
-\newlabel{eq: EquacaoReLU}{{8.3}{96}{Rectified Linear Unit e Revolução Retificadora}{equation.8.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Rectified Linear Unit (ReLU): A Revolução Retificadora}{96}{section.8.2}\protected@file@percent }
+\newlabel{eq:fibra-nervosa-householder}{{8.2}{96}{Rectified Linear Unit (ReLU): A Revolução Retificadora}{equation.8.2}{}}
+\newlabel{eq:relu}{{8.3}{96}{Rectified Linear Unit (ReLU): A Revolução Retificadora}{equation.8.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparação das Taxas de Erro no AlexNet}}{99}{table.caption.33}\protected@file@percent }
-\newlabel{tab:alexnet_apa}{{3}{99}{Comparação das Taxas de Erro no AlexNet}{table.caption.33}{}}
-\newlabel{eq:relu}{{8.4}{99}{Rectified Linear Unit e Revolução Retificadora}{equation.8.4}{}}
+\newlabel{tab:desempenho-alexnet}{{3}{99}{Comparação das Taxas de Erro no AlexNet}{table.caption.33}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Gráfico da função ReLU.}}{100}{figure.caption.34}\protected@file@percent }
 \newlabel{fig:relu}{{24}{100}{Gráfico da função ReLU}{figure.caption.34}{}}
-\newlabel{eq:relu-derivada}{{8.5}{100}{Rectified Linear Unit e Revolução Retificadora}{equation.8.5}{}}
+\newlabel{eq:relu-derivada}{{8.4}{100}{Rectified Linear Unit (ReLU): A Revolução Retificadora}{equation.8.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Gráfico da Derivada da Função ReLU}}{101}{figure.caption.35}\protected@file@percent }
 \newlabel{fig:relu-derivada}{{25}{101}{Gráfico da Derivada da Função ReLU}{figure.caption.35}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Implementação em Python}{101}{subsection.8.2.1}\protected@file@percent }
@@ -21,67 +20,79 @@
 \@writefile{toc}{\contentsline {section}{\numberline {8.3}Dying ReLUs Problem}{102}{section.8.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {8.4}Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}{102}{section.8.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Leaky ReLU (LReLU)}{103}{subsection.8.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparativo de Desempenho de Redes Neurais para Reconhecimento de Fala}}{104}{table.caption.36}\protected@file@percent }
-\newlabel{tab:lrelu_desempenho_apa}{{4}{104}{Comparativo de Desempenho de Redes Neurais para Reconhecimento de Fala}{table.caption.36}{}}
-\newlabel{eq:leaky-relu}{{8.6}{105}{Leaky ReLU (LReLU)}{equation.8.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}}{106}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:leaky-relu}{{26}{106}{Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}{figure.caption.37}{}}
-\newlabel{eq:leaky-relu-derivada}{{8.7}{106}{Leaky ReLU (LReLU)}{equation.8.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}}{107}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:leaky-relu-derivada}{{27}{107}{Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}{figure.caption.38}{}}
-\newlabel{lst:gd_class}{{8.4.1}{108}{Leaky ReLU (LReLU)}{figure.caption.38}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Parametric ReLU}{108}{subsection.8.4.2}\protected@file@percent }
-\newlabel{eq:prelu}{{8.8}{110}{Parametric ReLU}{equation.8.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Gráfico da Função Parametric ReLU (PReLU) com $\alpha =0.2$}}{111}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:prelu}{{28}{111}{Gráfico da Função Parametric ReLU (PReLU) com $\alpha =0.2$}{figure.caption.39}{}}
-\newlabel{eq:prelu-derivada}{{8.9}{111}{Parametric ReLU}{equation.8.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha =0.2$)}}{111}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:prelu-derivada}{{29}{111}{Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha =0.2$)}{figure.caption.40}{}}
+\newlabel{eq:leaky-relu}{{8.5}{104}{Leaky ReLU (LReLU)}{equation.8.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}}{104}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:leaky-relu}{{26}{104}{Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}{figure.caption.36}{}}
+\newlabel{eq:leaky-relu-derivada}{{8.6}{105}{Leaky ReLU (LReLU)}{equation.8.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}}{105}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:leaky-relu-derivada}{{27}{105}{Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}{figure.caption.37}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparativo de Desempenho de Redes Neurais para Reconhecimento de Fala}}{106}{table.caption.38}\protected@file@percent }
+\newlabel{tab:leaky-relu-desempenho}{{4}{106}{Comparativo de Desempenho de Redes Neurais para Reconhecimento de Fala}{table.caption.38}{}}
+\newlabel{lst:gd_class}{{8.4.1}{108}{Leaky ReLU (LReLU)}{table.caption.38}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Parametric ReLU (PReLU)}{108}{subsection.8.4.2}\protected@file@percent }
+\newlabel{eq:prelu}{{8.7}{109}{Parametric ReLU (PReLU)}{equation.8.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Gráfico da Função Parametric ReLU (PReLU) com $\alpha =0.2$}}{110}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:prelu}{{28}{110}{Gráfico da Função Parametric ReLU (PReLU) com $\alpha =0.2$}{figure.caption.39}{}}
+\newlabel{eq:prelu-derivada}{{8.8}{110}{Parametric ReLU (PReLU)}{equation.8.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha =0.2$)}}{110}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:prelu-derivada}{{29}{110}{Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha =0.2$)}{figure.caption.40}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Randomized Leaky ReLU}{112}{subsection.8.4.3}\protected@file@percent }
-\newlabel{eq:rrelu}{{8.10}{113}{Randomized Leaky ReLU}{equation.8.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}}{114}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:rrelu}{{30}{114}{Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}{figure.caption.41}{}}
-\newlabel{eq:rrelu-derivada}{{8.11}{114}{Randomized Leaky ReLU}{equation.8.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}}{115}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:rrelu-derivada}{{31}{115}{Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}{figure.caption.42}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Em Busca da Suavidade: As Variantes Não Lineares}{115}{section.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit (ELU)}{116}{subsection.8.5.1}\protected@file@percent }
-\newlabel{eq:elu}{{8.12}{117}{Exponential Linear Unit (ELU)}{equation.8.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Gráfico da Função Exponential Linear Unit (ELU) com $\alpha =1$}}{118}{figure.caption.43}\protected@file@percent }
-\newlabel{fig:elu}{{32}{118}{Gráfico da Função Exponential Linear Unit (ELU) com $\alpha =1$}{figure.caption.43}{}}
-\newlabel{eq:elu-derivada}{{8.13}{118}{Exponential Linear Unit (ELU)}{equation.8.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha =1$}}{118}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:elu-derivada}{{33}{118}{Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha =1$}{figure.caption.44}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit (SELU)}{119}{subsection.8.5.2}\protected@file@percent }
-\newlabel{eq:selu}{{8.14}{120}{Scaled Exponential Linear Unit (SELU)}{equation.8.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}}{121}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:selu}{{34}{121}{Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}{figure.caption.45}{}}
-\newlabel{eq:selu-derivada}{{8.15}{121}{Scaled Exponential Linear Unit (SELU)}{equation.8.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}}{122}{figure.caption.46}\protected@file@percent }
-\newlabel{fig:selu-derivada}{{35}{122}{Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}{figure.caption.46}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU}{122}{subsection.8.5.3}\protected@file@percent }
-\newlabel{eq: equacao-binary}{{8.16}{123}{Noisy ReLU}{equation.8.16}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Taxa de Erro de Classificadores no Dataset NORB Jittered-Cluttered}}{124}{table.caption.47}\protected@file@percent }
-\newlabel{tab:norb_error_rate}{{5}{124}{Taxa de Erro de Classificadores no Dataset NORB Jittered-Cluttered}{table.caption.47}{}}
-\newlabel{eq: EquacaoNReLU}{{8.17}{125}{Noisy ReLU}{equation.8.17}{}}
-\newlabel{eq: DistribuicaoGaussiana}{{8.18}{125}{Noisy ReLU}{equation.8.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$).}}{126}{figure.caption.48}\protected@file@percent }
-\newlabel{fig:GraficoDistNormalPadrao}{{36}{126}{Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$)}{figure.caption.48}{}}
-\newlabel{eq:nrelu}{{8.19}{126}{Noisy ReLU}{equation.8.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Gráfico da Função Noisy ReLU (NReLU)}}{127}{figure.caption.49}\protected@file@percent }
-\newlabel{fig:nrelu}{{37}{127}{Gráfico da Função Noisy ReLU (NReLU)}{figure.caption.49}{}}
-\newlabel{eq:nrelu-derivada}{{8.20}{127}{Noisy ReLU}{equation.8.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Gráfico da função Backward Pass da Noisy ReLU}}{127}{figure.caption.50}\protected@file@percent }
-\newlabel{fig:nrelu-derivada}{{38}{127}{Gráfico da função Backward Pass da Noisy ReLU}{figure.caption.50}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{128}{section.8.6}\protected@file@percent }
-\newlabel{eq: ErroRetropropagado}{{8.21}{128}{O Problema dos Gradientes Explosivos}{equation.8.21}{}}
-\newlabel{eq: ErroRetropropagadoK}{{8.22}{128}{O Problema dos Gradientes Explosivos}{equation.8.22}{}}
-\newlabel{eq: GradienteRetropropagado}{{8.23}{129}{O Problema dos Gradientes Explosivos}{equation.8.23}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.7}Comparativo de Desempenho das Funções Retificadoras}{129}{section.8.7}\protected@file@percent }
-\newlabel{eq: EquacaoNeuronio2}{{8.24}{130}{Comparativo de Desempenho das Funções Retificadoras}{equation.8.24}{}}
+\newlabel{eq:rrelu}{{8.9}{113}{Randomized Leaky ReLU}{equation.8.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}}{113}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:rrelu}{{30}{113}{Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}{figure.caption.41}{}}
+\newlabel{eq:rrelu-derivada}{{8.10}{114}{Randomized Leaky ReLU}{equation.8.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}}{114}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:rrelu-derivada}{{31}{114}{Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}{figure.caption.42}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Estrutura da Rede "Network in Network" (NIN) para CIFAR-10/100}}{115}{table.caption.43}\protected@file@percent }
+\newlabel{tab:nin_arquitetura}{{5}{115}{Estrutura da Rede "Network in Network" (NIN) para CIFAR-10/100}{table.caption.43}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Taxa de Erro de Diferentes Funções de Ativação na Rede NIN para o CIFAR-10}}{116}{table.caption.44}\protected@file@percent }
+\newlabel{tab:ativacoes_cifar10}{{6}{116}{Taxa de Erro de Diferentes Funções de Ativação na Rede NIN para o CIFAR-10}{table.caption.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Taxa de Erro de Funções de Ativação na Rede NIN para o CIFAR-100}}{116}{table.caption.45}\protected@file@percent }
+\newlabel{tab:erro_ativacoes_cifar100}{{7}{116}{Taxa de Erro de Funções de Ativação na Rede NIN para o CIFAR-100}{table.caption.45}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Em Busca da Suavidade: As Variantes Não Lineares}{117}{section.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit (ELU)}{117}{subsection.8.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Comparativo da Taxa de Erro de Redes Neurais nos Datasets CIFAR}}{118}{table.caption.46}\protected@file@percent }
+\newlabel{tab:elu_cifar_comparativo}{{8}{118}{Comparativo da Taxa de Erro de Redes Neurais nos Datasets CIFAR}{table.caption.46}{}}
+\newlabel{eq:elu}{{8.11}{119}{Exponential Linear Unit (ELU)}{equation.8.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Gráfico da Função Exponential Linear Unit (ELU) com $\alpha =1$}}{119}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:elu}{{32}{119}{Gráfico da Função Exponential Linear Unit (ELU) com $\alpha =1$}{figure.caption.47}{}}
+\newlabel{eq:elu-derivada}{{8.12}{120}{Exponential Linear Unit (ELU)}{equation.8.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha =1$}}{120}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:elu-derivada}{{33}{120}{Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha =1$}{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit (SELU)}{121}{subsection.8.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Comparativo do Rank Médio entre SNNs e Outras Arquiteturas de Redes Neurais}}{121}{table.caption.49}\protected@file@percent }
+\newlabel{tab:comparativo-selu}{{9}{121}{Comparativo do Rank Médio entre SNNs e Outras Arquiteturas de Redes Neurais}{table.caption.49}{}}
+\newlabel{eq:selu}{{8.13}{122}{Scaled Exponential Linear Unit (SELU)}{equation.8.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}}{123}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:selu}{{34}{123}{Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}{figure.caption.50}{}}
+\newlabel{eq:selu-derivada}{{8.14}{123}{Scaled Exponential Linear Unit (SELU)}{equation.8.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}}{124}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:selu-derivada}{{35}{124}{Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU}{124}{subsection.8.5.3}\protected@file@percent }
+\newlabel{eq: equacao-binary}{{8.15}{125}{Noisy ReLU}{equation.8.15}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Taxa de Erro de Classificadores no Dataset NORB Jittered-Cluttered}}{126}{table.caption.52}\protected@file@percent }
+\newlabel{tab:norb_error_rate}{{10}{126}{Taxa de Erro de Classificadores no Dataset NORB Jittered-Cluttered}{table.caption.52}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Taxas de Erro de Classificadores no Dataset Jittered-Cluttered NORB}}{127}{table.caption.53}\protected@file@percent }
+\newlabel{tab:nrelu_norb_comparativo}{{11}{127}{Taxas de Erro de Classificadores no Dataset Jittered-Cluttered NORB}{table.caption.53}{}}
+\newlabel{eq: EquacaoNReLU}{{8.16}{127}{Noisy ReLU}{equation.8.16}{}}
+\newlabel{eq: DistribuicaoGaussiana}{{8.17}{127}{Noisy ReLU}{equation.8.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$).}}{128}{figure.caption.54}\protected@file@percent }
+\newlabel{fig:GraficoDistNormalPadrao}{{36}{128}{Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$)}{figure.caption.54}{}}
+\newlabel{eq:nrelu}{{8.18}{128}{Noisy ReLU}{equation.8.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Gráfico da Função Noisy ReLU (NReLU)}}{129}{figure.caption.55}\protected@file@percent }
+\newlabel{fig:nrelu}{{37}{129}{Gráfico da Função Noisy ReLU (NReLU)}{figure.caption.55}{}}
+\newlabel{eq:nrelu-derivada}{{8.19}{129}{Noisy ReLU}{equation.8.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Gráfico da função Backward Pass da Noisy ReLU}}{130}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:nrelu-derivada}{{38}{130}{Gráfico da função Backward Pass da Noisy ReLU}{figure.caption.56}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{130}{section.8.6}\protected@file@percent }
+\newlabel{eq: ErroRetropropagado}{{8.20}{131}{O Problema dos Gradientes Explosivos}{equation.8.20}{}}
+\newlabel{eq: ErroRetropropagadoK}{{8.21}{131}{O Problema dos Gradientes Explosivos}{equation.8.21}{}}
+\newlabel{eq: GradienteRetropropagado}{{8.22}{131}{O Problema dos Gradientes Explosivos}{equation.8.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.7}Comparativo de Desempenho das Funções Retificadoras}{132}{section.8.7}\protected@file@percent }
+\newlabel{eq: EquacaoNeuronio2}{{8.23}{132}{Comparativo de Desempenho das Funções Retificadoras}{equation.8.23}{}}
 \@setckpt{capitulos/parte-III-pilares/cap-08-retificadoras}{
-\setcounter{page}{131}
-\setcounter{equation}{24}
+\setcounter{page}{134}
+\setcounter{equation}{23}
 \setcounter{enumi}{5}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -128,12 +139,12 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{133}
-\setcounter{lastsheet}{199}
-\setcounter{lastpage}{197}
+\setcounter{sheetsequence}{136}
+\setcounter{lastsheet}{204}
+\setcounter{lastpage}{202}
 \setcounter{figure}{38}
 \setcounter{lofdepth}{1}
-\setcounter{table}{5}
+\setcounter{table}{11}
 \setcounter{lotdepth}{1}
 \setcounter{Item}{7}
 \setcounter{Hfootnote}{0}
@@ -156,7 +167,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{137}
+\setcounter{instcount}{204}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -250,8 +261,8 @@
 \setcounter{savedoriglanguage}{0}
 \setcounter{pageref}{0}
 \setcounter{savedpageref}{0}
-\setcounter{textcitecount}{0}
-\setcounter{textcitetotal}{0}
+\setcounter{textcitecount}{1}
+\setcounter{textcitetotal}{1}
 \setcounter{textcitemaxnames}{0}
 \setcounter{biburlbigbreakpenalty}{100}
 \setcounter{biburlbreakpenalty}{200}
