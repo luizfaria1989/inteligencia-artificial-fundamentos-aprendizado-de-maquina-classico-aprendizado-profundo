@@ -798,6 +798,44 @@ Em que:
 
 Note, que o NAG é também uma variante do método do gradiente que faz uso do momento ou inércia para atualizar os parâmetros do modelo que está sendo treinado. Essa ideia de utilizar o momento como facilitador, permitindo encontrar pontos de mínimo de forma mais rápida, é utilizada até hoje em alguns otimizadores, o NAdam, uma variante do otimizador Adam, busca justamente implementar conceitos do gradiente acelerado de Nesterov no Adam e com isso conseguir alcançar convergências mais rápidas.
 
+\begin{tikzpicture}[
+    >={Stealth[length=2.5mm, width=2mm]},
+    point/.style={circle, fill=black, inner sep=1.3pt},
+    font=\small
+]
+    % --- Fundo: Curvas de Nível ---
+    \draw[gray!30] (0,0) ellipse (4.5 and 3);
+    \draw[gray!50] (0,0) ellipse (3.5 and 2.2);
+    \draw[gray!70] (0,0) ellipse (2.5 and 1.5);
+    \node[font=\scriptsize] at (0,0) {Mínimo Global};
+
+    % --- Coordenadas dos Pontos ---
+    % Posição inicial na iteração t
+    \coordinate (theta_t) at (-3.5, 2.0);
+    % Ponto de "lookahead" (estimativa futura baseada no momento)
+    \coordinate (lookahead) at (-1.0, 0.9);
+    % Posição final na iteração t+1
+    \coordinate (theta_t_plus_1) at (0.2, -0.3);
+
+    % --- Vetores e Descrições ---
+    % 1. Vetor do momento (passo de lookahead)
+    \draw[->, blue, very thick] (theta_t) -- (lookahead)
+        node[midway, above, sloped] {1. Passo do momento (lookahead)};
+
+    % 2. Vetor do gradiente (calculado no ponto de lookahead)
+    \draw[->, red, very thick] (lookahead) -- (theta_t_plus_1)
+        node[midway, below, sloped] {2. Correção com o gradiente};
+
+    % 3. Vetor da atualização final (para clareza)
+    \draw[->, black, thick, dashed] (theta_t) -- (theta_t_plus_1)
+        node[pos=0.6, below left, black] {Atualização resultante};
+
+    % --- Nós dos Pontos ---
+    \node[point, label={[label distance=-1mm]above:$\theta_t$}] at (theta_t) {};
+    \node[point, label={[label distance=1mm]right:$\theta_{lookahead}$}] at (lookahead) {};
+    \node[point, label={[label distance=-1mm]below:$\theta_{t+1}$}] at (theta_t_plus_1) {};
+
+\end{tikzpicture}
 
 \textbf{Implementação em Python}
 

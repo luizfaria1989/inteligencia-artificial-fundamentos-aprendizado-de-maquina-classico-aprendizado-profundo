@@ -161,6 +161,49 @@
       \field{pages}{303\bibrangedash 314}
       \range{pages}{12}
     \endentry
+    \entry{DyingReluDouglas}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ea207ec158988978351250aa267c8f03}{%
+           family={Douglas},
+           familyi={D\bibinitperiod},
+           given={Scott\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d7eacdc3f4ae91986822a51dbd77e1b4}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jiutian},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{fullhash}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{fullhashraw}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{bibnamehash}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{authorbibnamehash}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{authornamehash}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{authorfullhash}{fb1a99135ae766ac4408bec7f98ee90d}
+      \strng{authorfullhashraw}{fb1a99135ae766ac4408bec7f98ee90d}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Why ReLU Units Sometimes Die: Analysis of Single-Unit Error Backpropagation in Neural Networks}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1812.05981
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1812.05981
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1812.05981
+      \endverb
+    \endentry
     \entry{NadamMethod}{inproceedings}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=d1d28f03da75cca98fac1800aec56dbb}{%
@@ -1418,8 +1461,52 @@
       \field{title}{Deep Sparse Rectifier Neural Networks}
       \field{year}{2011}
     \endentry
+    \entry{XuRReLU}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=743dd6cdaa6639320289d219d351d7b7}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Bing},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7b94afca49a5fad9a08434bbb6abf1ce}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Naiyan},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=48461ccdf50ba5a54e29a354aa734c0b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Tianqi},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c4a02f87e51fc72ab3f841de1a3982a7}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Mu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{070ef871c1684789344f844eea89b4e5}
+      \strng{fullhash}{bae11344e4dd597130a8235917d040c9}
+      \strng{fullhashraw}{bae11344e4dd597130a8235917d040c9}
+      \strng{bibnamehash}{070ef871c1684789344f844eea89b4e5}
+      \strng{authorbibnamehash}{070ef871c1684789344f844eea89b4e5}
+      \strng{authornamehash}{070ef871c1684789344f844eea89b4e5}
+      \strng{authorfullhash}{bae11344e4dd597130a8235917d040c9}
+      \strng{authorfullhashraw}{bae11344e4dd597130a8235917d040c9}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1505.00853}
+      \field{title}{Empirical Evaluation of Rectified Activations in Convolutional Network}
+      \field{year}{2015}
+    \endentry
   \enddatalist
-  \missing{XuRReLU}
   \missing{douglasDyingRelu}
   \missing{dyingReLU}
   \missing{explodingGradient}
