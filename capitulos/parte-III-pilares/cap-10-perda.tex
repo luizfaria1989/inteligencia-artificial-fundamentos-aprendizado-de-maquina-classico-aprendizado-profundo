@@ -1,0 +1,104 @@
+% ===================================================================
+% Arquivo: capitulos/parte-III-pilares/cap-10-perda-binaria.tex
+% ===================================================================
+
+\chapter{Funções de Perda}
+\label{cap:perda-binaria}
+
+\section{A Intuição da Perda: Medindo o Erro do Modelo}
+
+\section{Funções de Perda Para Regressão}
+
+\subsection{Erro Quadrático Médio (Mean Squared Error - MSE)}
+
+
+\begin{equacaodestaque}{Erro Quadrático Médio (MSE)}
+    L_{\text{MSE}} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+    \label{eq:mse}
+\end{equacaodestaque}
+
+
+\subsection{Erro Absoluto Médio (Mean Absolute Error - MAE)}
+
+
+\begin{equacaodestaque}{Erro Absoluto Médio (MAE)}
+    L_{\text{MAE}} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+    \label{eq:mae}
+\end{equacaodestaque}
+
+
+\subsection{Huber Loss: O Melhor de Dois Mundos}
+
+
+\begin{equacaodestaque}{Huber Loss}
+    L_{\delta}(y, \hat{y}) = 
+    \begin{cases} 
+      \frac{1}{2}(y - \hat{y})^2 & \text{para } |y - \hat{y}| \le \delta \\
+      \delta (|y - \hat{y}| - \frac{1}{2}\delta) & \text{caso contrário}
+    \end{cases}
+    \label{eq:huber-loss}
+\end{equacaodestaque}
+
+\section{Funções de Perda para Classificação Binária}
+
+\subsection{Entropia Cruzada Binária (Binary Cross-Entropy): A função de perda padrão}
+
+\begin{equacaodestaque}{Entropia Cruzada Binária}
+    L(y, \hat{y}) = -[y \log(\hat{y}) + (1 - y) \log(1 - \hat{y})]
+    \label{eq:binary-cross-entropy}
+\end{equacaodestaque}
+
+\subsection{Perda Hinge (Hinge Loss)}
+
+\begin{equacaodestaque}{Hinge Loss}
+    L(y, f(x)) = \max(0, 1 - y \cdot f(x))
+    \label{eq:hinge-loss}
+\end{equacaodestaque}
+
+\section{Funções de Perda para Classificação Multilabel}
+
+\subsection{Entropia Cruzada Categórica (Categorical Cross-Entropy)} 
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica}
+    L(y, \hat{y}) = - \sum_{c=1}^{C} y_c \log(\hat{y}_c)
+    \label{eq:categorical-cross-entropy}
+\end{equacaodestaque}
+
+\subsection{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa}
+    L_i = - \log(\hat{y}_{i, y_i})
+    \label{eq:sparse-categorical-cross-entropy}
+\end{equacaodestaque}
+
+\section{Funções de Perda Avançadas}
+
+\subsection{Perda para Classificação Multirrótulo (Multilabel)}
+
+\begin{equacaodestaque}{Perda para Classificação Multirrótulo}
+    \mathcal{L}_{\text{multilabel}} = - \frac{1}{C} \sum_{c=1}^{C} \left[ y_c \log(\hat{y}_c) + (1 - y_c) \log(1 - \hat{y}_c) \right]
+    \label{eq:multilabel-loss}
+\end{equacaodestaque}
+
+\subsection{Perdas para Ranking e Aprendizado de Métricas}
+
+\subsubsection{Triplet Loss (Perda Tripla)}
+
+\begin{equacaodestaque}{Triplet Loss}
+    \mathcal{L}(a, p, n) = \max \left( \| f(a) - f(p) \|^2 - \| f(a) - f(n) \|^2 + \alpha, 0 \right)
+    \label{eq:triplet-loss}
+\end{equacaodestaque}
+
+\subsubsection{Contrastive Loss (Perda Contrastiva)}
+
+\begin{equacaodestaque}{Perda Composta (Conceitual)}
+    \mathcal{L}_{\text{total}} = \lambda_{\text{reg}} \mathcal{L}_{\text{regressão}} + \mathcal{L}_{\text{classificação}}
+    \label{eq:composite-loss}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Função de Valor de uma GAN (Minimax)}
+    \min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}(x)}[\log D(x)] + \mathbb{E}_{z \sim p_{z}(z)}[\log(1 - D(G(z)))]
+    \label{eq:gan-loss}
+\end{equacaodestaque}
+
+
