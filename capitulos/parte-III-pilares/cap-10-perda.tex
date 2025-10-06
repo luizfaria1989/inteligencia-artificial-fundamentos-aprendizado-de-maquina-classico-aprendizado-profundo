@@ -47,6 +47,11 @@
     \end{axis}
 \end{tikzpicture}
 
+\begin{equacaodestaque}{Derivada do MSE}
+    \frac{\partial L_{\text{MSE}}}{\partial \hat{y}_i} = \frac{2}{N}(\hat{y}_i - y_i)
+    \label{eq:mse-derivada}
+\end{equacaodestaque}
+
 
 \subsection{Erro Absoluto Médio (Mean Absolute Error - MAE)}
 
@@ -85,6 +90,16 @@
         \addlegendentry{$L = |\text{erro}|$}
     \end{axis}
 \end{tikzpicture}
+
+\begin{equacaodestaque}{Derivada do MAE}
+    \frac{\partial L_{\text{MAE}}}{\partial \hat{y}_i} = \frac{1}{N} \cdot \text{sgn}(\hat{y}_i - y_i) = 
+    \begin{cases} 
+      +\frac{1}{N} & \text{se } \hat{y}_i > y_i \\
+      -\frac{1}{N} & \text{se } \hat{y}_i < y_i \\
+      0 & \text{se } \hat{y}_i = y_i
+    \end{cases}
+    \label{eq:mae-derivada}
+\end{equacaodestaque}
 
 
 \subsection{Huber Loss: O Melhor de Dois Mundos}
@@ -138,6 +153,15 @@
     \end{axis}
 \end{tikzpicture}
 
+\begin{equacaodestaque}{Derivada da Huber Loss}
+    \frac{\partial L_{\delta}}{\partial \hat{y}} = 
+    \begin{cases} 
+      \hat{y} - y & \text{para } |\hat{y} - y| \le \delta \\
+      \delta \cdot \text{sgn}(\hat{y} - y) & \text{caso contrário}
+    \end{cases}
+    \label{eq:huber-loss-derivada}
+\end{equacaodestaque}
+
 \section{Funções de Perda para Classificação Binária}
 
 \subsection{Entropia Cruzada Binária (Binary Cross-Entropy): A função de perda padrão}
@@ -184,6 +208,11 @@
         
     \end{axis}
 \end{tikzpicture}
+
+\begin{equacaodestaque}{Derivada da Entropia Cruzada Binária}
+    \frac{\partial L}{\partial \hat{y}} = \frac{\hat{y} - y}{\hat{y}(1 - \hat{y})}
+    \label{eq:binary-cross-entropy-derivada}
+\end{equacaodestaque}
 
 \subsection{Perda Hinge (Hinge Loss)}
 
@@ -236,6 +265,15 @@
     \end{axis}
 \end{tikzpicture}
 
+\begin{equacaodestaque}{Derivada da Hinge Loss}
+    \frac{\partial L}{\partial f(x)} = 
+    \begin{cases} 
+      -y & \text{se } y \cdot f(x) < 1 \\
+      0 & \text{se } y \cdot f(x) \ge 1
+    \end{cases}
+    \label{eq:hinge-loss-derivada}
+\end{equacaodestaque}
+
 \section{Funções de Perda para Classificação Multilabel}
 
 \subsection{Entropia Cruzada Categórica (Categorical Cross-Entropy)} 
@@ -275,11 +313,21 @@
     \end{axis}
 \end{tikzpicture}
 
+\begin{equacaodestaque}{Derivada da Entropia Cruzada Categórica}
+    \frac{\partial L}{\partial z_i} = \hat{y}_i - y_i
+    \label{eq:category-cross-entropy-derivada}
+\end{equacaodestaque}
+
 \subsection{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}
 
 \begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa}
     L_i = - \log(\hat{y}_{i, y_i})
     \label{eq:sparse-categorical-cross-entropy}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Derivada da Entropia Cruzada Categórica Esparsa}
+    \frac{\partial L_i}{\partial z_{i,k}} = \hat{y}_{i,k} - y_{i,k}
+    \label{eq:sparse-categorical-cross-entropy-derivada}
 \end{equacaodestaque}
 
 \section{Funções de Perda Avançadas}
@@ -336,6 +384,11 @@
 
 \end{tikzpicture}
 
+\begin{equacaodestaque}{Derivada da Perda Multirrótulo}
+    \frac{\partial \mathcal{L}_{\text{multilabel}}}{\partial z_c} = \frac{1}{C}(\hat{y}_c - y_c)
+    \label{eq:multilabel-loss-derivada}
+\end{equacaodestaque}
+
 \subsection{Perdas para Ranking e Aprendizado de Métricas}
 
 \subsubsection{Triplet Loss (Perda Tripla)}
@@ -388,7 +441,6 @@
         
     \end{axis}
 \end{tikzpicture}
-
 
 \subsubsection{Contrastive Loss (Perda Contrastiva)}
 
