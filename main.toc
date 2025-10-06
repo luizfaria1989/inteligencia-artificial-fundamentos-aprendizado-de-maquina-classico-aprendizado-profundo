@@ -57,20 +57,20 @@
 \contentsline {section}{\numberline {6.3}Otimizadores Baseados em Gradiente: Melhorando o Gradiente Descendente}{43}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}Método do Gradiente com Momento}{44}{subsection.6.3.1}%
 \contentsline {subsection}{\numberline {6.3.2}Método do Gradiente Estocástico (SGD)}{47}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Método do Gradiente em Mini-Batch}{48}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.3}Método do Gradiente em Mini-Batch}{49}{subsection.6.3.3}%
 \contentsline {subsection}{\numberline {6.3.4}Gradiente Acelerado de Nesterov (NAG)}{49}{subsection.6.3.4}%
 \contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}{52}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Adadptive Gradient Algorithm (AdaGrad)}{52}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}RMSProp}{56}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{58}{subsection.6.4.3}%
-\contentsline {subsection}{\numberline {6.4.4}AdaMax}{63}{subsection.6.4.4}%
-\contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{63}{subsection.6.4.5}%
-\contentsline {subsection}{\numberline {6.4.6}Adam With Decoupled Weight Decay (AdamW)}{66}{subsection.6.4.6}%
-\contentsline {subsection}{\numberline {6.4.7}Outros Otimizadores}{69}{subsection.6.4.7}%
-\contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{69}{section.6.5}%
-\contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{69}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{69}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}O Método}{70}{subsection.6.6.2}%
+\contentsline {subsection}{\numberline {6.4.1}Adadptive Gradient Algorithm (AdaGrad)}{53}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}RMSProp}{57}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{59}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}AdaMax}{64}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{64}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.6}Adam With Decoupled Weight Decay (AdamW)}{67}{subsection.6.4.6}%
+\contentsline {subsection}{\numberline {6.4.7}Outros Otimizadores}{70}{subsection.6.4.7}%
+\contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{70}{section.6.5}%
+\contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{70}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{70}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}O Método}{71}{subsection.6.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{73}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal: Introduzindo a Não-Linearidade}{73}{section.7.1}%
@@ -86,9 +86,9 @@
 \contentsline {section}{\numberline {8.1}Exemplo Ilustrativo: Vendendo Pipoca}{95}{section.8.1}%
 \contentsline {section}{\numberline {8.2}Rectified Linear Unit (ReLU): A Revolução Retificadora}{96}{section.8.2}%
 \contentsline {subsection}{\numberline {8.2.1}Implementação em Python}{101}{subsection.8.2.1}%
-\contentsline {section}{\numberline {8.3}Dying ReLUs Problem}{102}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Corrigindo o Problema do neurônios agonizantes: As Variantes com Vazamento}{103}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}{104}{section.8.5}%
+\contentsline {section}{\numberline {8.3}ReLUs Agonizantes}{102}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Corrigindo o Problema do ReLUs agonizantes: As Variantes com Vazamento}{103}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}{103}{section.8.5}%
 \contentsline {subsection}{\numberline {8.5.1}Leaky ReLU (LReLU)}{104}{subsection.8.5.1}%
 \contentsline {subsection}{\numberline {8.5.2}Parametric ReLU (PReLU)}{109}{subsection.8.5.2}%
 \contentsline {subsection}{\numberline {8.5.3}Randomized Leaky ReLU}{114}{subsection.8.5.3}%
@@ -259,7 +259,7 @@
 \contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Tabela das Funções de Ativação}}{205}{appendix.A}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{209}{section*.79}%
+\contentsline {chapter}{Referências}{209}{section*.80}%
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 

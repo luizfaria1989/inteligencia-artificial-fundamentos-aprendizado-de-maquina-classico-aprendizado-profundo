@@ -701,29 +701,33 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
 
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}[font=\small] % Define uma fonte menor para a figura
+    \begin{tikzpicture}[font=\small]
         \begin{axis}[
             title={Comparativo de Trajetórias de Otimização},
             xlabel={Parâmetro $\theta_1$},
             ylabel={Parâmetro $\theta_2$},
-            view={0}{90}, % Visão de cima (2D)
+            % --- ADICIONE ESTAS LINHAS PARA DEFINIR O TAMANHO DO GRÁFICO ---
+            xmin=-5.5, xmax=5.5,
+            ymin=-5.5, ymax=5.5,
+            % --- FIM DAS LINHAS ADICIONADAS ---
+            view={0}{90},
             enlargelimits=false,
-            axis lines=none, % Esconde os eixos para um visual mais limpo
+            axis lines=none,
             width=12cm,
             height=10cm,
-            clip=false % Permite que os labels fiquem fora da área do gráfico
+            clip=false
         ]
 
+        % --- MUDANÇA PRINCIPAL AQUI ---
         % 1. Plot das curvas de nível (função de custo)
-        \addplot3[
-            contour gnuplot={
-                levels={0.5, 2, 5, 10, 18, 30},
-                labels=false
-            },
-            thick,
-            - % Linhas sólidas
-        ] {1.5*x^2 + y^2 + 0.5*x*y}; % Uma função de custo elíptica
-
+        % O bloco \addplot3 foi removido e substituído pelas elipses manuais abaixo.
+        % Usamos (axis cs:0,0) para centralizar as elipses no gráfico.
+        % Os raios foram ajustados para conterem todo o desenho.
+        \draw[gray!30] (axis cs:0,0) ellipse (5 and 4.8);
+        \draw[gray!50] (axis cs:0,0) ellipse (4 and 3.5);
+        \draw[gray!70] (axis cs:0,0) ellipse (3 and 2.2);
+        \draw[gray!85] (axis cs:0,0) ellipse (2 and 1.2);
+        
         % 2. Ponto de Mínimo Global
         \node[circle, fill=cyan, inner sep=1.5pt, label={[label distance=-0.2cm]270:Mínimo Global}] at (axis cs:0,0) {};
 
@@ -739,8 +743,8 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
         \draw[-{Stealth[length=2mm]}, blue, thick, line cap=round,
             decorate, decoration={
                 random steps,
-                segment length=6pt, % Comprimento de cada "passo" aleatório
-                amplitude=3pt      % Amplitude do "zigue-zague"
+                segment length=6pt,
+                amplitude=3pt
             }
         ] (axis cs:-3.5, 4.5) -- (axis cs:-2.8, 3) -- (axis cs:-3.2, 2) -- (axis cs:-2, 2.5) -- (axis cs:-1.5, 1.2) -- (axis cs:-1.8, 0.5) -- (axis cs:-0.7, 1) -- (axis cs:-0.4, 0.2) -- (axis cs:0.4, 0.6) -- (axis cs:-0.1, 0.1);
 
@@ -756,6 +760,8 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
 
 \textbf{Implementação em Python}
 
+A implementação do gradiente estocástico consiste em utilizar como base a classe que representa o método do gradiente padrão, contudo, ao invés de receber como entrada todos os parâmetros do modelo para fazer as atualizações, essa função irá receber somente um parâmetro por vez, acelerando as atualizações mas também gerando caminhos mais aleatórios. Dessa forma, não será visto um bloco de código para esse método de otimização.
+
 \subsection{Método do Gradiente em Mini-Batch}
 
 Entendendo como funciona o SGD, o próximo passo é conhecer o método do gradiente em Mini-Batch, que busca ser uma alternativa entre o gradiente estocástico e o gradiente em batch. Como explica \textcite{MaosAObra}, o GD mini-batch calcula os gradientes para pequenos conjuntos aleatórios, chamados mini-batches, que fazem parte do conjunto total de parâmetros.
@@ -765,6 +771,8 @@ Por utilizar mais parâmetros de uma vez para calcular o gradiente, o gradiente 
 Uma boa vantagem do GD mini-batch está no fato que esses batches podem ter tamanhos escolhidos pelo programador, de forma que caso a máquina que esteja usando possua uma quantidade maior de memória ram, você pode utilizar batches maiores, ajudando na convergência do modelo para melhores pontos de mínimo.
 
 \textbf{Implementação em Python}
+
+Semelhante ao método do gradiente estocástico que recebe um parâmetro por vez para ser atualizado e por isso, sua implementação consiste em utilizar o método do gradiente padrão porém passando um parâmetro, o gradiente em mini-batch segue a mesma ideia. Porém neste caso ele receberia como entradas um \textit{batch} de parâmetros por vez.
 
 \subsection{Gradiente Acelerado de Nesterov (NAG)}
 
@@ -776,10 +784,8 @@ A sua expressão é mostrada na equação \ref{eq:gradiente-acelerado-de-nestero
 
 \begin{equacaodestaque}{Gradiente Acelerado de Nesterov (NAG)}
     \begin{aligned}
-        \theta_{\text{lookahead}} &= \theta_t + \beta(\theta_t - \theta_{t-1})   && \text{1. Estima-se uma posição futura (\textit{lookahead}),} \\
-                &                               && \text{   avançando na direção do momento anterior.} \\[1em]
-        \theta_{t+1} &= \theta_{\text{lookahead}} - \eta \nabla_{\theta} J(\theta_{\text{lookahead}}) && \text{2. O gradiente é calculado nessa posição futura} \\
-                &                               && \text{   e a atualização dos parâmetros é feita a partir dela.}
+        \theta_{\text{lookahead}} &= \theta_t + \beta(\theta_t - \theta_{t-1}) \\
+        \theta_{t+1} &= \theta_{\text{lookahead}} - \eta \nabla_{\theta} J(\theta_{\text{lookahead}}) 
     \end{aligned}
     \label{eq:gradiente-acelerado-de-nesterov}
 \end{equacaodestaque}
@@ -798,46 +804,49 @@ Em que:
 
 Note, que o NAG é também uma variante do método do gradiente que faz uso do momento ou inércia para atualizar os parâmetros do modelo que está sendo treinado. Essa ideia de utilizar o momento como facilitador, permitindo encontrar pontos de mínimo de forma mais rápida, é utilizada até hoje em alguns otimizadores, o NAdam, uma variante do otimizador Adam, busca justamente implementar conceitos do gradiente acelerado de Nesterov no Adam e com isso conseguir alcançar convergências mais rápidas.
 
-\begin{tikzpicture}[
-    >={Stealth[length=2.5mm, width=2mm]},
-    point/.style={circle, fill=black, inner sep=1.3pt},
-    font=\small
-]
-    % --- Fundo: Curvas de Nível ---
-    \draw[gray!30] (0,0) ellipse (4.5 and 3);
-    \draw[gray!50] (0,0) ellipse (3.5 and 2.2);
-    \draw[gray!70] (0,0) ellipse (2.5 and 1.5);
-    \node[font=\scriptsize] at (0,0) {Mínimo Global};
+Para melhor entender o funcionamento do ponto de \textit{lookahead} do NAG, é possível visualizar a figura \ref{fig:funcionamento-nag}. Perceba que primeiro o modelo dá um passo em direção ao \textit{lookahead} utilizando o momento, em seguida, é feita a correção da direção utilizando como base o vetor gradiente. Dessa forma, o gradiente acelerado de nesterov, ao utilizar o momento, consegue acelerar a convergência e com isso encontrar pontos de mínimo mais rapidamente.
 
-    % --- Coordenadas dos Pontos ---
-    % Posição inicial na iteração t
-    \coordinate (theta_t) at (-3.5, 2.0);
-    % Ponto de "lookahead" (estimativa futura baseada no momento)
-    \coordinate (lookahead) at (-1.0, 0.9);
-    % Posição final na iteração t+1
-    \coordinate (theta_t_plus_1) at (0.2, -0.3);
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        >={Stealth[length=2.5mm, width=2mm]},
+        point/.style={circle, fill=black, inner sep=1.3pt},
+        font=\small
+    ]
+        % --- Fundo: Curvas de Nível ---
+        \draw[gray!30] (0,0) ellipse (4.5 and 3);
+        \draw[gray!50] (0,0) ellipse (3.5 and 2.2);
+        \draw[gray!70] (0,0) ellipse (2.5 and 1.5);
 
-    % --- Vetores e Descrições ---
-    % 1. Vetor do momento (passo de lookahead)
-    \draw[->, blue, very thick] (theta_t) -- (lookahead)
-        node[midway, above, sloped] {1. Passo do momento (lookahead)};
+        % --- Coordenadas dos Pontos ---
+        \coordinate (theta_t) at (-3.5, 2.0);
+        \coordinate (lookahead) at (-1.0, 0.9);
+        \coordinate (theta_t_plus_1) at (0.2, -0.3);
 
-    % 2. Vetor do gradiente (calculado no ponto de lookahead)
-    \draw[->, red, very thick] (lookahead) -- (theta_t_plus_1)
-        node[midway, below, sloped] {2. Correção com o gradiente};
+        % --- Vetores e Descrições ---
+        % 1. Vetor do momento (passo de lookahead)
+        \draw[->, blue, very thick] (theta_t) -- (lookahead);
 
-    % 3. Vetor da atualização final (para clareza)
-    \draw[->, black, thick, dashed] (theta_t) -- (theta_t_plus_1)
-        node[pos=0.6, below left, black] {Atualização resultante};
+        % 2. Vetor do gradiente (calculado no ponto de lookahead)
+        \draw[->, red, very thick] (lookahead) -- (theta_t_plus_1);
 
-    % --- Nós dos Pontos ---
-    \node[point, label={[label distance=-1mm]above:$\theta_t$}] at (theta_t) {};
-    \node[point, label={[label distance=1mm]right:$\theta_{lookahead}$}] at (lookahead) {};
-    \node[point, label={[label distance=-1mm]below:$\theta_{t+1}$}] at (theta_t_plus_1) {};
+        % 3. Vetor da atualização final (para clareza)
+        \draw[->, black, thick, dashed] (theta_t) -- (theta_t_plus_1);
 
-\end{tikzpicture}
+        % --- Nós dos Pontos ---
+        % (Não adicionei os nós de texto dos vetores para manter o código igual ao seu)
+        \node[point, label={[label distance=-1mm]above:$\theta_t$}] at (theta_t) {};
+        \node[point, label={[label distance=1mm]right:$\theta_{lookahead}$}] at (lookahead) {};
+        \node[point, label={[label distance=-1mm]below:$\theta_{t+1}$}] at (theta_t_plus_1) {};
+
+    \end{tikzpicture}
+    \caption{Representação visual do funcionamento do gradiente acelerado de Nesterov. Em azul está representado o primeiro passo em direção ao ponto de \textit{lookahead} utilizando o momento. Em vermelho está o segundo passo, com a atualização utilizando o vetor gradiente para corrigir a direção.}
+    \label{fig:funcionamento-nag}
+\end{figure}
 
 \textbf{Implementação em Python}
+
+Antes de implementar o NAG usando python, é possível desenvolver o seu algortimo utilizando pseudocódigo e suas fórmulas da equação \ref{eq:gradiente-acelerado-de-nesterov}. Assim, tem-se o bloco \ref{alg:gradiente-acelerado-de-nesterov}.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{Gradiente Acelerado de Nesterov}
@@ -858,6 +867,8 @@ Note, que o NAG é também uma variante do método do gradiente que faz uso do m
     \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
     \end{algorithmic}
 \end{algorithm}
+
+Tendo o algoritmo do gradiente acelerado de Nesterov desenvolvido, é possível utilizá-lo como base para construir a sua classe em python.
 
 \begin{codelisting}{Classe completa do otimizador NesterovAcceleratedGradient}{gd_class}
 from optimizers.base import Optimizer

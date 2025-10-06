@@ -2621,7 +2621,7 @@
     <bcf:citekey order="155" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="156" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="157" intorder="1">DyingReluDouglas</bcf:citekey>
-    <bcf:citekey order="158" intorder="1">LeakyReLUArticle</bcf:citekey>
+    <bcf:citekey order="158" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="159" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="160" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="161" intorder="1">LeakyReLUArticle</bcf:citekey>
@@ -2629,7 +2629,7 @@
     <bcf:citekey order="163" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="164" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="165" intorder="1">LeakyReLUArticle</bcf:citekey>
-    <bcf:citekey order="166" intorder="1">PReLUArticle</bcf:citekey>
+    <bcf:citekey order="166" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="167" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="168" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="169" intorder="1">PReLUArticle</bcf:citekey>
@@ -2643,7 +2643,7 @@
     <bcf:citekey order="177" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="178" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="179" intorder="1">PReLUArticle</bcf:citekey>
-    <bcf:citekey order="180" intorder="1">XuRReLU</bcf:citekey>
+    <bcf:citekey order="180" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="181" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="182" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="183" intorder="1">XuRReLU</bcf:citekey>
@@ -2651,26 +2651,26 @@
     <bcf:citekey order="185" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="186" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="187" intorder="1">XuRReLU</bcf:citekey>
-    <bcf:citekey order="188" intorder="1">ELUArticle</bcf:citekey>
+    <bcf:citekey order="188" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="189" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="190" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="191" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="192" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="193" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="194" intorder="1">ELUArticle</bcf:citekey>
-    <bcf:citekey order="195" intorder="1">SELUArticle</bcf:citekey>
+    <bcf:citekey order="195" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="196" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="197" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="198" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="199" intorder="1">SELUArticle</bcf:citekey>
-    <bcf:citekey order="200" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="200" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="201" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="202" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="203" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="204" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="204" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="205" intorder="1">DeepLearningBook</bcf:citekey>
     <bcf:citekey order="206" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="207" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="207" intorder="1">DeepLearningBook</bcf:citekey>
     <bcf:citekey order="208" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="209" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="210" intorder="1">Nair2010</bcf:citekey>
@@ -2679,10 +2679,10 @@
     <bcf:citekey order="213" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="214" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="215" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="216" intorder="1">explodingGradient</bcf:citekey>
-    <bcf:citekey order="217" intorder="1">DouglasDouglas</bcf:citekey>
-    <bcf:citekey order="218" intorder="1">DyingReluDouglas</bcf:citekey>
-    <bcf:citekey order="219" intorder="1">DyingReluDouglas</bcf:citekey>
+    <bcf:citekey order="216" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="217" intorder="1">explodingGradient</bcf:citekey>
+    <bcf:citekey order="218" intorder="1">GELUArticle</bcf:citekey>
+    <bcf:citekey order="219" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="220" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="221" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="222" intorder="1">GELUArticle</bcf:citekey>
@@ -2691,8 +2691,6 @@
     <bcf:citekey order="225" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="226" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="227" intorder="1">GELUArticle</bcf:citekey>
-    <bcf:citekey order="228" intorder="1">GELUArticle</bcf:citekey>
-    <bcf:citekey order="229" intorder="1">GELUArticle</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
