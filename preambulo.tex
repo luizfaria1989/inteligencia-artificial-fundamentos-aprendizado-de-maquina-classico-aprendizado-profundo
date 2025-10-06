@@ -59,8 +59,11 @@
     backend=biber,     % Ferramenta que processa a bibliografia (mais moderna que bibtex)
     style=abnt,        % Estilo de citação e referência da ABNT
     ittitles,          % Títulos de artigos, livros, etc., em itálico
-    backref=true       % Nas referências, mostra em quais páginas a citação aparece
+    backref=true,      % Nas referências, mostra em quais páginas a citação aparece
 ]{biblatex}
+
+\renewcommand*{\mkbibnamefamily}[1]{\MakeUppercase{#1}}
+\renewcommand*{\mkbibnamelast}[1]{\MakeUppercase{#1}}
 
 % Aponta para o arquivo que contém seu banco de dados de referências.
 \addbibresource{bibliografia.bib}
