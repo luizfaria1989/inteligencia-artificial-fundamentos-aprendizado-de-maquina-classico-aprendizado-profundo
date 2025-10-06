@@ -107,21 +107,22 @@ A definição da ReLU pode ser interpretada como uma pergunta, ao receber um nú
 Além de sua fórmula, é possível plotar o seu gráfico, que está presente na figura \ref{fig:relu}, ele é bem mais simples quando comparado com a sigmoide, por exemplo, sendo apenas a junção de duas retas, uma delas uma função constante que irá retornar sempre zero e a outra a função identidade. Essa simplicidade da ReLU é algo muito atrativo para os desenvolvedores, pois, ao utilizá-la ao invés de uma função mais complexa como a sigmoide ou a tangente hiperbólica, estamos diminuindo a complexidade da rede neural, se essa rede se torna mais simples, a tendência é de que ela possua um custo de poder de processamento menor permitindo que um volume maior de dados seja processado em menos tempo e com isso seu tempo de treinamento seja menor. Note que, antes da ReLU surgir, muitos das funções de ativação faziam uso de exponenciais, a ReLU não só resolvia o problema do desaparecimento do gradiente mas também era muito mais barata.
 
 \begin{figure}{h!}
-        \centering
-        \caption{Gráfico da função ReLU.}
-        \begin{tikzpicture}
-            \begin{axis}[
-                xlabel={$z_i$},
-                ylabel={$\text{ReLU}(z_i)$},
-                xmin=-2.3, xmax=2.3,
-                ymin=-0.8, ymax=2.3,
-                axis lines=middle,
-                grid=major,
-            ]
-            \addplot[blue, thick, domain=-2:2] {max(0, x)};
-            \end{axis}
-        \end{tikzpicture}
-        \label{fig:relu}
+    \centering
+    \caption{Gráfico da função ReLU.}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={$z_i$},
+            ylabel={$\text{ReLU}(z_i)$},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.8, ymax=2.3,
+            axis lines=middle,
+            grid=major,
+        ]
+        \addplot[blue, thick, domain=-2:2] {max(0, x)};
+        \end{axis}
+    \end{tikzpicture}
+    \label{fig:relu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Como estamos trabalhando com redes neurais, uma das maiores vantagens dessas redes é o fato delas “aprenderem” com base na retropropagação do gradiente nas camadas da rede. Assim, ao calcular o gradiente para fazer a retropropagação do erro e ajustar os pesos e vieses das camadas, é necessário ter em mente também a derivada daquela função de ativação que que será aplicada em uma camada de neurônios da rede, dado que ela entrará no \textit{backward pass} do modelo.
@@ -158,6 +159,7 @@ Além de termos a sua derivada em equação, é possível fazer também o seu gr
         \end{axis}
     \end{tikzpicture}
     \label{fig:relu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Assim, com toda essa simplicidade e versatilidade, a ReLU se tornou uma função que é considerada padrão para a maioria das redes neurais \textit{feedforward} \parencite{DeepLearningBook}. Contudo, ela também apresenta problemas assim como as sigmoidais, esses problemas serão explicados mais à frente.
@@ -248,6 +250,7 @@ Já para a sua representação gráfica, o seu gráfico está presente na figura
         \end{axis}
     \end{tikzpicture}
     \label{fig:leaky-relu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Sabendo de sua expressão e seu gráfico, é possível agora calcular sua derivada, para isso, deve-se derivar as duas condicionais que estão na função da Leaky ReLU. Assim, quando a entrada dessa função for maior que zero, essa função será $x$ que derivada é 1, já quando a entrada for menor que zero, a função será $\alpha x$, que quando derivada tem como resultado a própria constante $\alpha$. Contudo, como dito anteriormente, a derivada da Leaky ReLU não existe quando a entrada é exatamente zero, mas na prática, quando estamos trabalhando com a sua definição na retropropagação, podemos definir um valor para a derivada nesse ponto, assim como fizemos com a ReLU tradicional. Com isso em mente, temos a equação \ref{eq:leaky-relu-derivada} que representa a derivada da Leaky ReLU, note que para a sua derivada nós não temos uma expressão reduzida quando comparada com a expressão original.
@@ -280,6 +283,7 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
         \end{axis}
     \end{tikzpicture}
     \label{fig:leaky-relu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Voltando para \textit{Recfier Nonlinearites Improve Neural Networks Acustic Models}, \textcite{LeakyReLUArticle} explicam sobre outras propriedades da LReLu, como o fato dela sacrificar a esparsidade de zero duros (\textit{hard-zero sparsity}) para ter um gradiente que é potencialmente mais robusto durante a otimização da rede neural.
@@ -385,6 +389,7 @@ Com base em sua equação, tem-se o gráfico da PReLU na figura \ref{fig:prelu},
         \end{axis}
     \end{tikzpicture}
     \label{fig:prelu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Conhecendo a sua fórmula e como ela se comporta, podemos também derivar a PReLU, para isso, derivamos cada uma das expressões dos condicionais de forma separada, assim como foi feito com a Leaky ReLU e a ReLU anteriormente. Como a fórmula da PReLu é igual a LReLU, podemos apenas nos lembrar dela e citar a expressão \ref{eq:prelu-derivada} como sua derivada. Note que, essa derivada também não existe quando a entrada é exatamente zero, mas assim como na Leaky ReLU, "corrigimos" isso dizendo que ela será igual a $\alpha$ nesse ponto, para que o gradiente continue fluindo durante o \textit{backward pass}. Vale lembrar, que essa reta em $\alpha$ irá variar conforme a rede neural aprende as características e se ajusta ao problema que está tentando resolver.
@@ -418,6 +423,7 @@ Sabendo a fórmula da derivada da PReLU, é possível plotar o seu gráfico, o q
         \end{axis}
     \end{tikzpicture}
     \label{fig:prelu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Ainda em \textit{Delving Deep into Rectifiers: Surpassing Human Level Performance on Image Net Classification}, os autores realizam testes comparando a ReLU tradicional com a PReLU utilizando como base o dataset de 1000 classes do ImageNet 2012, o qual contêm cerca de 1.2 milhões de imagens de treino, 50.000 imagens de validação e 100.000 imagens de teste sem rótulos publicados \parencite{PReLUArticle}. Para isso, \textcite{PReLUArticle} criaram três modelos diferentes (A, B e C), baseados na arquitetura VGG-16 mas com variações entre si como diferentes números de camadas convolucionais e consequentemente complexidades distintas para cada algoritmo. Esses modelos podem ser vistos na tabela \ref{tab:arquitetura-prelu}. 
@@ -564,6 +570,7 @@ O gráfico da RReLU está presente na figura \ref{fig:rrelu}. Na representação
         \end{axis}
     \end{tikzpicture}
     \label{fig:rrelu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Conhecendo como a RReLU se comporta, é possível também calcular a sua derivada, a qual será de extrema utilidade durante a retropropagação, fazendo que os pesos e vieses do modelo sejam ajustados e com base nisso ele consiga aprender melhor o problema que está sendo analisado. Como a RReLU utiliza a mesma fórmula que funções como a Leaky ReLU e a PReLU, nós podemos apenas repetir a expressão de sua derivada novamente, a qual será dada pela equação \ref{eq:rrelu-derivada}. Note que mesmo compartilhando a mesma fórmula, o termo $\alpha$ possui significado distintos em cada uma dessas funções, neste caso, ele é um valor aleatório dado pela distribuição $U(l, u)$.
@@ -615,6 +622,7 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
         \end{axis}
     \end{tikzpicture}
     \label{fig:rrelu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Ainda no artigo, \textcite{XuRReLU} investigam a performance de diferentes funções retificadoras em uma rede neural convolucional, cuja arquitetura pode ser vista na tabela \ref{tab:nin_arquitetura}, para a classificação de imagens, os autores analisaram a ReLU tradicional, a Leaky ReLU, a Parametric ReLU e a Randomized Leaky ReLU. Para fazer a análise dos modelos, foram escolhidos os datasets CIFAR-10 e CIFAR-100, e o desempenho dessas funções nos respectivos datasets pode ser visto nas tabelas \ref{tab:ativacoes_cifar10} e \ref{tab:erro_ativacoes_cifar100}.
@@ -774,6 +782,7 @@ Conhecendo como é a fórmula da ELU, é possível também plotar o seu gráfico
         \end{axis}
     \end{tikzpicture}
     \label{fig:elu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Agora que a sua fórmula e seu gráfico são conhecidos, cabe também calcular a sua derivada, a qual será útil na retropropagação do modelo. Para isso, seguimos a mesma estratégia vista até agora, derivamos a função em cada um dos casos, gerando assim a sua derivada. Nos cenários em que a entrada é positiva, a derivada será sempre 1, pois quando derivamos a expressão $x$, ela nos irá retornar 1. Já quando temos o cenário negativo, teremos como resultado da derivação da expressão $alpha \cdot (e^{z_i} - 1)$ o termo $alpha \cdot e^{z_i}$. Um ponto a ser destacado é de que a ELU é contínua na origem, assim, não temos que nos preocupar em escolher um valor da derivada quando o seu valor de entrada for zero. Assim, temos como resultado final a expressão \ref{eq:elu-derivada}
@@ -806,6 +815,7 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
         \end{axis}
     \end{tikzpicture}
     \label{fig:elu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Um dos testes realizados pelos autores para analisar o desempenho na ELU, foi na criação de uma CNN com 18 camadas convolucionais para fazer a classifição dos datasets CIFAR-10 e CIFAR-100, para isso, outras técnicas foram utilizas em conjunto como o decaimento do peso L2 e reduções das taxas de aprendizado \parencite{ELUArticle}.
@@ -886,6 +896,7 @@ Pelo fato da SELU ter um comportamento que também retorna valores para a saída
         \end{axis}
     \end{tikzpicture}
     \label{fig:selu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Considerando agora que sabemos como é a equação da SELU e qual é o seu comportamento no gráfico, podemos também calcular a sua derivada para ser utilizada na retroproapagação do gradiente, para isso, deve-se derivar a expressão \ref{eq:selu}, considerando os dois cenários, em que a sua entrada será positiva e quando sua entrada for negativa ou zero. Um ponto que nos ajuda bastante ao calcular a derivada da SELU está no fato dela ser composta pela função ELU multiplicada por uma constante, se utilizarmos regras de derivação para esse cenário, precisaremos apenas derivar a ELU e depois adicionar a constante $\lambda$ multiplicando-a. Como nós já calculamos a derivada da ELU, podemos ver então a derivada da Scaled Exponential Linear Unit na equação \ref{eq:selu-derivada}.
@@ -919,6 +930,7 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
         \end{axis}
     \end{tikzpicture}
     \label{fig:selu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 No texto, \textcite{SELUArticle}, comparam as redes neurais criadas por eles, as quais são chamadas de Self-Normalizing Neural Networks (SNN), com outras redes feedforward, como MSRAinit (uma FNN que não possui técnicas de normalização, com funções de ativação ReLU, e que faz uso do Microsoft weight initialization), a BatchNorm (uma FNN com normalização em lote), a LayerNorm (uma FNN com normalização nas camadas), a WightNorm (uma FNN com normalização nos pesos), a Highway e também com redes residuais ResNet. Para comparar essas redes, os autores escolhem 121 datasets do UCI, em que são apresentadas áreas de aplicação diversas como física e biologia, nesses dadatasets o seus tamanhos podem variar de 10 até 130.000 pontos de dados com o número de features variando de 4 a 250, na tabela \ref{tab:comparativo-selu}, é possível ver o ranking médio entre as SNNs e as outras diferentes arquiteturas em 75 tarefas de classificação.
@@ -1039,6 +1051,7 @@ A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsá
         \end{axis}
     \end{tikzpicture}
     \label{fig:GraficoDistNormalPadrao}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o sey gráfico, o qual é dado pela figura \ref{fig:GraficoNReLU}. Vemos que ela compartilha a suavidade das funções ELU e SELU, apresentando uma curva para os casos em que a entrada é negativa, o que é bom, pois ela permite um vazamento de gradiente, evitando assim o Dying ReLU problem. Já para os cenários que a entrada é positiva ela assume o comportamento de uma função identidade, lembrando bastante as outras variantes da ReLU. Contudo, como os autores destacam no texto, ela não é capaz de resolver o problema da descontinuidade em zero, para isso, em sua derivada que é utilizada na retropropagação, os casos em que sua entrada é zero irão retornar zero como saída \parencite{Nair2010}.
@@ -1073,6 +1086,7 @@ Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o se
         \end{axis}
     \end{tikzpicture}
     \label{fig:nrelu}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Quando vamos calcular a sua derivada, encontramos um problema que não havia aparecido nas outras funções. O termo de ruído $\mathcal{N}$ é um termo não determísitico, o que significa que mesmo que tivéssemos a mesma entrada para a função Noisy ReLU duas ou mais vezes, não poderíamos afirmar com certeza de que essas saídas seriam iguais. Para resolver esses problemas, os autores consideram para a NReLU que sua função para o backward pass será irá retornar zero quando o valor de entrada for negativo ou nulo, e irá retornar um, quando o valor de entrada for positivo \parencite{Nair2010}. Então a expressão que representa a NReLU para a retroproagação é dada pela equação \ref{eq: nrelu-derivada}, note que ela é a mesma expressão da derivada da ReLU tradicional.
@@ -1106,6 +1120,7 @@ Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReL
         \end{axis}
     \end{tikzpicture}
     \label{fig:nrelu-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 No trabalho \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} exploram o desempenho da NReLU e ReLU utilizando o dataset NORB, que é um dataset para o reconhecimento de objetos 3D sintéticos que contém cinco classes: humanos, animais, carros, aviões e caminhões. No texto, os autores utilizam a versão Jittered-Cluttered NORB, uma variante que tem imagens estereoscópicas em tons de cinza com fundo desorganizado e um objeto central que é aleatoriamente instável em posição, tamanho, intensidade de pixels \parencite{Nair2010}. O desempenho dessas funções nesse dataset pode ser visto pelas tabelas \ref{tab:norb_error_rate} e \ref{tab:nrelu_norb_comparativo}.

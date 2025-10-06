@@ -63,6 +63,7 @@ Pense que temos os pontos dispostos no gráfico da figura \ref{fig: pontos_addpl
     \end{tikzpicture}
     \caption{Conjunto de pontos dispostos no plano cartesiano.}
     \label{fig: pontos_addplot}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Existe uma técnica que permite que nos façamos isso, ela se chama \textbf{regressão linear} (a qual é um dos tópicos discutidos no capítulo \ref{cap:regressao}), e com base nela, é possível dado um conjunto de pontos em um plano, traçar uma reta que se aproxime igualmente de cada um desses pontos. Existem diferentes técnicas de regressão linear, neste caso aplicaremos a dos mínimos quadrados e encontramos a expressão:
@@ -104,6 +105,7 @@ Com base nessa função que encontramos, podemos desenhá-la junto ao gráfico d
     \end{tikzpicture}
     \caption{Conjunto de pontos dispostos no plano cartesiano.}
     \label{fig: regressao-linear}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Existem diversas aproximações além da regressão linear, se quisermos, podemos tentar aproximar esses pontos utilizando uma função quadrática, cúbica ou até mesmo exponencial.
@@ -188,7 +190,6 @@ Cabe destacar também que, as sigmodais nao foram as primeiras funções de ativ
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função Degrau de Heaviside},
             xlabel={$x$},
             ylabel={$H(x)$},
             xmin=-8.5, xmax=8.5,
@@ -209,8 +210,9 @@ Cabe destacar também que, as sigmodais nao foram as primeiras funções de ativ
         \addplot[only marks, mark=*, mark size=1.5pt, blue] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função degrau de Heaviside.}
+    \caption{Gráfico da função degrau unitário (\textit{heaviside}).}
     \label{fig:degrau-unitario}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Quando a comparamos a degrau unitário com a sigmoide, notamos uma diferença crucial, a sigmoide é uma função contínua em todos os pontos, podemos dizer que para desenhar seu gráfico não precisamos tirar o lápis do papel nenhuma vez, algo que não ocorre com a heavside. Além disso, a derivada da heavside é zero em quase todos os seus pontos, por esse motivo, ela impossibilitava a retropropagação do erro, uma vez que quando fossemos calcular o gradiente para uma parte de um modelo que usasse essa função, ele provavelmente seria zero.
@@ -228,7 +230,6 @@ Como vemos na figura \ref{fig:sigmoide}, o gráfico da sigmoide possui o formato
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função Sigmoide Logística},
             xlabel={$z_i$},
             ylabel={$\sigma(z_i)$},
             xmin=-8.5, xmax=8.5,
@@ -239,8 +240,9 @@ Como vemos na figura \ref{fig:sigmoide}, o gráfico da sigmoide possui o formato
         \addplot[blue, thick, domain=-8:8, samples=100] {1/(1+exp(-x))};
     \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função sigmoide logística.}
+    \caption{Gráfico da função de ativação sigmoide logística.}
     \label{fig:sigmoide}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Um ponto a ser destacado nas funções de ativação, e que começou a ser visto no capítulo anterior (cap \ref{cap:retropropagacao-gradiente}), é que se estamos construindo um modelo que aprende por meio da retropropagação, nós estamos também interessados em entender como essas funções de ativação se comportam em suas derivadas, pois ela é um dos componentes básicos para se calcular o gradiente retropropagado.
@@ -274,8 +276,9 @@ Tendo a sua derivada, podemos também plotar o seu gráfico para ver o seu compo
         \addplot[red, thick, domain=-8:8, samples=100] {exp(-x)/((1+exp(-x))^2)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da sigmoide.}
+    \caption{Gráfico da derivada da função de ativação sigmoide logística.}
     \label{fig:sigmoide-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 \textbf{Implementação em Python}
@@ -320,7 +323,6 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função Tangente Hiperbólica},
             xlabel={$z_i$},
             ylabel={$\tanh(z_i)$},
             xmin=-5, xmax=5,
@@ -331,8 +333,9 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
         \addplot[blue, thick, domain=-5:5, samples=100] {tanh(x)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da tangente hiperbólica.}
+    \caption{Gráfico da função de ativação tangente hiperbólica (tanh).}
     \label{fig:tanh}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Se temos as suas expressões, podemos com base nelas calcular também as suas derivadas, assim, temos que a derivada da tangente hiperbólica é dada pela equação \ref{eq:tanh-derivada}.
@@ -368,8 +371,9 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
         \addplot[red, thick, domain=-5:5, samples=100] {1-(tanh(x))^2};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da tangente hiperbólica.}
+    \caption{Gráfico da derivada da função de ativação tangente hiperbólica (tanh).}
     \label{fig: GraphTanh}
+    \fonte{O autor (2025).}
 \end{figure}
 
 \textbf{Implementação em Python}
@@ -409,7 +413,6 @@ Como podemos ver no seu gráfico \ref{fig:softsign}, ela possui o formato em "S"
     % Gráfico da função Softsign usando PGFPlots
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função Softsign},
             xlabel={$z_i$},
             ylabel={$\text{softsign}(z_i)$},
             xmin=-15, xmax=15,
@@ -421,8 +424,9 @@ Como podemos ver no seu gráfico \ref{fig:softsign}, ela possui o formato em "S"
         \addplot[blue, thick, domain=-10:10, samples=101] {x / (1 + abs(x))};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função Softsign.}
+    \caption{Gráfico da função de ativação Softsign.}
     \label{fig:softsing}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Contudo, a principal diferença dela com as outras sigmodais está na sua fórmula, como pode ser visto na equação \ref{eq:softsign} é que ela não utiliza nenhum exponencial para compor sua função. Isso faz com que ela seja uma função mais "barata" em termos de poder computacional para ser implementada em redes neurais. Assim, podemos obter resultados parecidos porem utilizando cálculos menos complexos e com isso teremos redes mais rápidas de serem treinadas. Um comparativo com as funções sigmodais desse texto e como elas reagem poderá ser visto em uma seção futura.
@@ -446,7 +450,6 @@ Podemos ver também no gráfico da derivada da softsign, apresentado na figura \
     % Gráfico da derivada da função Softsign
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Softsign},
             xlabel={$z_i$},
             ylabel={$\text{softsign}'(z_i)$},
             xmin=-10, xmax=10,
@@ -458,8 +461,9 @@ Podemos ver também no gráfico da derivada da softsign, apresentado na figura \
         \addplot[red, thick, domain=-10:10, samples=101] {1/((1+abs(x))^2)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função Softsign.}
+    \caption{Gráfico da derivada da função de ativação Softsign.}
     \label{fig:softsign-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 \textbf{Implementação em Python}
@@ -520,8 +524,9 @@ Além disso, o seu gráfico está representado na figura \ref{fig:hard-sigmoid},
         };
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função hard sigmoid.}
+    \caption{Gráfico da função de ativação hard sigmoid.}
     \label{fig:hard-sigmoid}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Com relação a sua derivada, para obtê-lá, é possível derivar todas as três expressões construindo a expressão da sua derivada. Note que ela também não é suave quando comparada com a derivada da sigmoide tradicional. Dessa forma, a derivada da hard sigmoid é expressa pela equação \ref{eq:hard-sigmoid-derivada}
@@ -537,7 +542,6 @@ Tendo a sua derivada, é possível também plotar o seu gráfico, o qual está n
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Hard Sigmoid},
             xlabel={$z_i$},
             ylabel={$\text{hard sigmoid}'(z_i)$},
             xmin=-5, xmax=5,
@@ -557,8 +561,9 @@ Tendo a sua derivada, é possível também plotar o seu gráfico, o qual está n
         \draw[dashed, blue] (axis cs:3, 0) -- (axis cs:3, 1/6);
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da Hard Sigmoid.}
+    \caption{Gráfico da derivada da função de ativação Hard Sigmoid.}
     \label{fig:hard-sigmoid-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Também existe a função hard tanh, que tem a mesma proposta da hard sigmoid, porém busca imitar a tangente hiperbólica. Ela também é composta de uma condicional com três funções, duas constantes e a função identidade, como pode ser visto na equação \ref{eq: hard-tanh}.
@@ -574,7 +579,6 @@ Com relação ao seu gráfico, ele está representado na figura \ref{fig:hard-ta
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função Hard Tanh},
             xlabel={$z_i$},
             ylabel={$\text{hard tanh}(z_i)$},
             xmin=-5, xmax=5,
@@ -593,8 +597,9 @@ Com relação ao seu gráfico, ele está representado na figura \ref{fig:hard-ta
         };
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função Hard Tanh. Fonte: PyTorch.}
+    \caption{Gráfico da função de ativação Hard Tanh. Fonte: PyTorch.}
     \label{fig:hard-tanh}
+    \fonte{O autor (2025).}
 \end{figure}
 
 Utilizamos o mesmo procedimento da hard sigmoid para obter a derivada da hard tanh, derivamos as três expressões e encontramos então a equação \ref{eq:hard-tanh-derivada}, ao lado, temos a figura \ref{fig:hard-tanh-derivada}, que representa o gráfico da derivada da hard tanh.
@@ -608,7 +613,6 @@ Utilizamos o mesmo procedimento da hard sigmoid para obter a derivada da hard ta
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Hard Tanh},
             xlabel={$z_i$},
             ylabel={$\text{hard tanh}'(z_i)$},
             xmin=-5, xmax=5,
@@ -628,8 +632,9 @@ Utilizamos o mesmo procedimento da hard sigmoid para obter a derivada da hard ta
         \draw[dashed, blue] (axis cs:1, 0) -- (axis cs:1, 1);
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da Hard Tanh.}
+    \caption{Gráfico da derivada da função de ativação Hard Tanh.}
     \label{fig:hard-tanh-derivada}
+    \fonte{O autor (2025).}
 \end{figure}
 
 \textbf{Implementação em Python}

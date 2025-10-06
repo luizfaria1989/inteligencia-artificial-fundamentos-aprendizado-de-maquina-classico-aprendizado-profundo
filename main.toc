@@ -64,12 +64,12 @@
 \contentsline {subsection}{\numberline {6.4.2}RMSProp}{57}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{59}{subsection.6.4.3}%
 \contentsline {subsection}{\numberline {6.4.4}AdaMax}{64}{subsection.6.4.4}%
-\contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{64}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{65}{subsection.6.4.5}%
 \contentsline {subsection}{\numberline {6.4.6}Adam With Decoupled Weight Decay (AdamW)}{67}{subsection.6.4.6}%
 \contentsline {subsection}{\numberline {6.4.7}Outros Otimizadores}{70}{subsection.6.4.7}%
 \contentsline {section}{\numberline {6.5}Comparativo de Desempenho: Otimizadores}{70}{section.6.5}%
 \contentsline {section}{\numberline {6.6}O Método de Newton: Indo Além do Gradiente}{70}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{70}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.1}Conceitos iniciais: Matrizes Jacobianas e Hessianas}{71}{subsection.6.6.1}%
 \contentsline {subsection}{\numberline {6.6.2}O Método}{71}{subsection.6.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{73}{chapter.7}%
@@ -92,7 +92,7 @@
 \contentsline {subsection}{\numberline {8.5.1}Leaky ReLU (LReLU)}{104}{subsection.8.5.1}%
 \contentsline {subsection}{\numberline {8.5.2}Parametric ReLU (PReLU)}{109}{subsection.8.5.2}%
 \contentsline {subsection}{\numberline {8.5.3}Randomized Leaky ReLU}{114}{subsection.8.5.3}%
-\contentsline {section}{\numberline {8.6}Em Busca da Suavidade: As Variantes Não Lineares}{118}{section.8.6}%
+\contentsline {section}{\numberline {8.6}Em Busca da Suavidade: As Variantes Não Lineares}{119}{section.8.6}%
 \contentsline {subsection}{\numberline {8.6.1}Exponential Linear Unit (ELU)}{120}{subsection.8.6.1}%
 \contentsline {subsection}{\numberline {8.6.2}Scaled Exponential Linear Unit (SELU)}{123}{subsection.8.6.2}%
 \contentsline {subsection}{\numberline {8.6.3}Noisy ReLU}{127}{subsection.8.6.3}%
