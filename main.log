@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  5 OCT 2025 19:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  6 OCT 2025 11:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1581,14 +1581,7 @@ Package biblatex Info: ... file 'main.bbl' found.
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
-(biblatex)                douglasDyingRelu
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                dyingReLU
+(biblatex)                DouglasDouglas
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
@@ -1764,12 +1757,12 @@ Overfull \hbox (2.03697pt too wide) detected at line 103
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 104
- \T1/cmss/bx/n/12 140
+ \T1/cmss/bx/n/12 141
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 105
- \T1/cmss/bx/n/12 141
+ \T1/cmss/bx/n/12 142
  []
 
 
@@ -2747,10 +2740,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [101]
 
-LaTeX Warning: Citation 'dyingReLU' on page 102 undefined on input line 193.
-
-
-
 [102]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2938,13 +2927,7 @@ LaTeX Warning: Citation 'explodingGradient' on page 134 undefined on input line 
 
 [134]
 
-LaTeX Warning: Citation 'dyingReLU' on page 135 undefined on input line 1248.
-
-
-LaTeX Warning: Citation 'douglasDyingRelu' on page 135 undefined on input line 1257.
-
-
-LaTeX Warning: Citation 'douglasDyingRelu' on page 135 undefined on input line 1259.
+LaTeX Warning: Citation 'DouglasDouglas' on page 135 undefined on input line 1248.
 
 )
 
@@ -2981,29 +2964,42 @@ LaTeX Warning: Reference `fig:accuracy-gelu' on page 137 undefined on input line
 LaTeX Warning: Reference `fig:gelu-cifar-10' on page 138 undefined on input line 18.
 
 
+LaTeX Warning: Reference `eq:EquacaoGELUAprox' on page 138 undefined on input line 27.
+
+
+LaTeX Warning: Reference `eq:EquacaoGELUAprox2' on page 138 undefined on input line 27.
+
+
 
 [138]
 
 [139]
 
-[140])
+LaTeX Warning: Reference `fig:GraficoGELUDerivada' on page 140 undefined on input line 79.
 
-[141]
+
+
+[140]
+Underfull \vbox (badness 1383) has occurred while \output is active []
+
+
+
+[141])
+
+[142]
 \openout2 = `capitulos/parte-III-pilares/cap-10-perda.aux'.
 
  (./capitulos/parte-III-pilares/cap-10-perda.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[142
+
+
+[143
 
 
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[143]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3566,18 +3562,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 60958 strings out of 467888
- 1383529 string characters out of 5434061
- 4267835 words of memory out of 5000000
- 87223 multiletter control sequences out of 15000+600000
+ 60982 strings out of 467888
+ 1383906 string characters out of 5434061
+ 4267819 words of memory out of 5000000
+ 87247 multiletter control sequences out of 15000+600000
  713825 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,107p,1327b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (212 pages, 1831122 bytes).
+Output written on main.pdf (212 pages, 1834741 bytes).
 PDF statistics:
- 3755 PDF objects out of 4296 (max. 8388607)
- 3410 compressed objects within 35 object streams
+ 3760 PDF objects out of 4296 (max. 8388607)
+ 3415 compressed objects within 35 object streams
  1136 named destinations out of 1200 (max. 500000)
  2048 words of extra memory for PDF output out of 10000 (max. 10000000)
 

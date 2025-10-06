@@ -2618,7 +2618,7 @@
     <bcf:citekey order="152" intorder="1">AlexNet</bcf:citekey>
     <bcf:citekey order="153" intorder="1">AlexNet</bcf:citekey>
     <bcf:citekey order="154" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="155" intorder="1">dyingReLU</bcf:citekey>
+    <bcf:citekey order="155" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="156" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="157" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="158" intorder="1">LeakyReLUArticle</bcf:citekey>
@@ -2680,9 +2680,9 @@
     <bcf:citekey order="214" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="215" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="216" intorder="1">explodingGradient</bcf:citekey>
-    <bcf:citekey order="217" intorder="1">dyingReLU</bcf:citekey>
-    <bcf:citekey order="218" intorder="1">douglasDyingRelu</bcf:citekey>
-    <bcf:citekey order="219" intorder="1">douglasDyingRelu</bcf:citekey>
+    <bcf:citekey order="217" intorder="1">DouglasDouglas</bcf:citekey>
+    <bcf:citekey order="218" intorder="1">DyingReluDouglas</bcf:citekey>
+    <bcf:citekey order="219" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="220" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="221" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="222" intorder="1">GELUArticle</bcf:citekey>

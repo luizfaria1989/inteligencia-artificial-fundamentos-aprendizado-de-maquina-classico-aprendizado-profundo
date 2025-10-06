@@ -190,7 +190,7 @@ class ReLU(Layer):
 
 \section{Dying ReLUs Problem}
 
-Além do problema do explosão de gradientes que pode ocorrer ao utilizar a ReLU em uma rede neural, essa função também sofre de outro problema crônico: o do neurônios agonizantes (ou \textit{Dying ReLU Problem} em inglês). Esse problema pode ser definido como uma variação do problema do gradiente em fuga, em que uma parte dos neurônios da rede morrem e passam a retornar somente zero independente de sua entrada \parencite{dyingReLU}.
+Além do problema do explosão de gradientes que pode ocorrer ao utilizar a ReLU em uma rede neural, essa função também sofre de outro problema crônico: o do neurônios agonizantes (ou \textit{Dying ReLU Problem} em inglês). Esse problema pode ser definido como uma variação do problema do gradiente em fuga, em que uma parte dos neurônios da rede morrem e passam a retornar somente zero independente de sua entrada \parencite{DyingReluDouglas}.
 
 Para entendermos melhor devemos nos lembrar da estrutura básica de uma camada densa de neurônios de uma rede neural, de forma que ela pode ser vista na equação \ref{eq: EquacaoNeuronio2}, em que $W$ representa um vetor de pesos para os neurônios dessa camada, $X$ é o vetor de elementos de entrada e $b$ é o viés.
 
@@ -1245,7 +1245,7 @@ Assim, mesmo a ReLU corrigindo o problema do desaparecimento do gradiente, ela a
 
 \section{Comparativo de Desempenho das Funções Retificadoras}
 
-Além do problema do explosão de gradientes que pode ocorrer ao utilizar a ReLU em uma rede neural, essa função também sofre de outro problema crônico: o do neurônios agonizantes (ou \textit{Dying ReLU Problem} em inglês). Esse problema pode ser definido como uma variação do problema do desaparecimento do gradiente, em que uma parte dos neurônios da rede morrem e passam a retornar somente zero independente de sua entrada \parencite{dyingReLU}.
+Além do problema do explosão de gradientes que pode ocorrer ao utilizar a ReLU em uma rede neural, essa função também sofre de outro problema crônico: o do neurônios agonizantes (ou \textit{Dying ReLU Problem} em inglês). Esse problema pode ser definido como uma variação do problema do desaparecimento do gradiente, em que uma parte dos neurônios da rede morrem e passam a retornar somente zero independente de sua entrada \parencite{DouglasDouglas}.
 
 Para entendermos melhor devemos nos lembrar da estrutura básica de uma camada densa de neurônios de uma rede neural, de forma que ela pode ser vista na equação \ref{eq: EquacaoNeuronio2}, em que $W$ representa um vetor de pesos para os neurônios dessa camada, $X$ é o vetor de elementos de entrada e $b$ é o viés.
 
@@ -1254,8 +1254,8 @@ Para entendermos melhor devemos nos lembrar da estrutura básica de uma camada d
     \label{eq: EquacaoNeuronio2}
 \end{equation}
 
-Se estivemos utilizando a ReLU como função de ativação dessa camada, essa variável $y$ irá passar para uma função $\max(0, y)$, podem existir conjuntos de dados que quando passados por essa camada, a condição mais comum de ocorrer será a de $y < 0$ para os diferentes padrões de treinamento, isso tem efeito no \textit{backward pass}, em que vamos utilizar a derivada da ReLU, que também será zero para casos em que $y < 0$, e nós sabemos que com a derivada dessa função nós calculamos o gradiente que irá calcular o como o peso da rede irá mudar de uma época para outra, se essa saída for zero, quando ela for multiplicada ao calcular o gradiente ele também será zero, e consequentemente os pesos e vieses da rede neural não serão atualizados, se eles não são atualizados, o neurônio não aprende, tendo então o problema do neurônios agonizantes \parencite{douglasDyingRelu}.
+Se estivemos utilizando a ReLU como função de ativação dessa camada, essa variável $y$ irá passar para uma função $\max(0, y)$, podem existir conjuntos de dados que quando passados por essa camada, a condição mais comum de ocorrer será a de $y < 0$ para os diferentes padrões de treinamento, isso tem efeito no \textit{backward pass}, em que vamos utilizar a derivada da ReLU, que também será zero para casos em que $y < 0$, e nós sabemos que com a derivada dessa função nós calculamos o gradiente que irá calcular o como o peso da rede irá mudar de uma época para outra, se essa saída for zero, quando ela for multiplicada ao calcular o gradiente ele também será zero, e consequentemente os pesos e vieses da rede neural não serão atualizados, se eles não são atualizados, o neurônio não aprende, tendo então o problema do neurônios agonizantes \parencite{DyingReluDouglas}.
 
-Essa condição de vários neurônios morrendo causada pela ReLU acabou por gerar um novo conjunto de funções, as quais possuem propriedades comuns da ReLU, como a não linearidade e a simplicidade nos cálculos mas que buscam resolver ou amenizar esse problema em uma rede neural. Uma das funções que busca resolver esse problema é a Leaky ReLU \parencite{douglasDyingRelu}.
+Essa condição de vários neurônios morrendo causada pela ReLU acabou por gerar um novo conjunto de funções, as quais possuem propriedades comuns da ReLU, como a não linearidade e a simplicidade nos cálculos mas que buscam resolver ou amenizar esse problema em uma rede neural. Uma das funções que busca resolver esse problema é a Leaky ReLU \parencite{DyingReluDouglas}.
 
 Agora que conhecemos a ReLU, vimos como ela surgiu e se popularizou, além de suas propriedades e problemas, podemos conhecer as suas variações, as quais buscam corrigir alguns problemas que a função original possui mas mesmo assim mantendo as sua essência como inspiração para a criação de uma função melhor. Primeiro, conheceremos as variações com vazamentos, começando pela Leaky ReLU ou LReLU.

@@ -1507,8 +1507,7 @@
       \field{year}{2015}
     \endentry
   \enddatalist
-  \missing{douglasDyingRelu}
-  \missing{dyingReLU}
+  \missing{DouglasDouglas}
   \missing{explodingGradient}
 \endrefsection
 \endinput

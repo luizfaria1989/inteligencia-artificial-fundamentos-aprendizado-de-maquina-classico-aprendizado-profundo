@@ -101,9 +101,9 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {9}\MakeTextUppercase []{Funções de Ativação Modernas e Outras Funções de Ativação}}{137}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Gaussian Error Linear Unit (GELU)}{137}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Swish}{140}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Funções Para Camadas de Saída}{141}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Softmax}{141}{subsection.9.3.1}%
+\contentsline {section}{\numberline {9.2}Swish}{141}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Funções Para Camadas de Saída}{142}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Softmax}{142}{subsection.9.3.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {10}\MakeTextUppercase []{Funções de Perda}}{143}{chapter.10}%
 \contentsline {section}{\numberline {10.1}A Intuição da Perda: Medindo o Erro do Modelo}{143}{section.10.1}%

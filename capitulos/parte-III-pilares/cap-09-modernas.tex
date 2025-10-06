@@ -17,28 +17,28 @@ Já na figura \ref{fig:accuracy-gelu}, podemos ver como a acurácia dos modelos 
 
 Além disso, como dito anteriormente, os autores também fazem testes comparando a GELU com outras funções de ativação utilizando também o dataset CIFAR-10, o qual vem sendo discutido em seções anteriores deste texto, assim, temos a figura \ref{fig:gelu-cifar-10}, que nos mostra esse comparativo com a taxa de erro \parencite{GELUArticle}. Com base nessa análise, nós podemos concluir que a GELU é a melhor alternativa dentre essas três funções para a rede que foi criada, apresentando a menor taxa de erro, tanto no conjunto de dados de treino quanto no conjunto de dados de teste. Uma observação interessante a ser feita com base neste gráfico é de que esses modelos foram treinados por 200 épocas no total, e como a GELU é uma função bem mais complexa que a ReLU, o tempo de treino do modelo que fez uso dessa função foi provavelmente bem maior, algo que pode ser levado em consideração caso seja necessário criar uma rede que seja treinada mais rapidamente mas que ainda sim tenha uma taxa de erro baixa.
 
-Conhecendo um pouco como a GELU atua em uma rede neural, podemos agora conhecer ela por meio da sua fórmula, a qual é dada pela expressão \ref{eq:EquacaoGELU}, a qual é um tanto diferente das outras expressões que vimos até agora. Note que nós não temos dessa vez uma expressão condicional como na ReLU e suas outras variantes, temos uma expressão única, que pode ser reescrita utilizando outras expressões diferentes. Mais a esquerda, temos o termo $\Phi(z_i)$ que representa o standard Gaussian cumalative distribution function, já na expressão mais a direita, temos o uso da função erro, uma função bem comum de ser utilizada quando estamos trabalhando com conceitos probabilísticos.
+Conhecendo um pouco como a GELU atua em uma rede neural, podemos agora conhecer ela por meio da sua fórmula, a qual é dada pela expressão \ref{eq:gelu}, a qual é um tanto diferente das outras expressões que vimos até agora. Note que nós não temos dessa vez uma expressão condicional como na ReLU e suas outras variantes, temos uma expressão única, que pode ser reescrita utilizando outras expressões diferentes. Mais a esquerda, temos o termo $\Phi(z_i)$ que representa o standard Gaussian cumalative distribution function, já na expressão mais a direita, temos o uso da função erro, uma função bem comum de ser utilizada quando estamos trabalhando com conceitos probabilísticos.
 
-\begin{equation}
+\begin{equacaodestaque}{Gaussian Error Linear Unit}
     \text{GELU}(z_i) = z_i P(X \leqslant z_i) = z_i \Phi (z_i) = z_i \frac{1}{2} \left[ 1 + \text{erf} (z_i/ \sqrt{2}) \right]
-    \label{eq:EquacaoGELU}
-\end{equation}
+    \label{eq:gelu}
+\end{equacaodestaque}
 
 Por apresentar cálculos mais complexos em sua composição, como o uso da função erro para encontrar o satrd gaussian cumative distribution function os autores também apresentam aproximações para a GELU, elas são dadas pelas equações \ref{eq:EquacaoGELUAprox} e \ref{eq:EquacaoGELUAprox2} \parencite{GELUArticle}. Essas aproximações facilitam não somente os cálculos mas também na hora de implementar essa função em Python, garantindo algoritmos mais curtos e fáceis de serem implementados.
 
-Na expressão \ref{eq:EquacaoGELUAprox} vemos que ela pode ser aproximada utilizando a função tangente como um dos componentes usados, já na expressão \ref{eq:EquacaoGELUAprox2}, os autores utilizam como base a Sigmoid Linear Unit (SiLU), a qual é dada pela fórmula $SiLU = x\sigma(x)$ para criar uma expressão que seja capaz de aproximar como a GELU se comporta mas trazer uma maior velocidade de processamento por apresentar cálculos mais simples em sua composição.
+Na expressão \ref{eq:gelu-aproximacoes} vemos que ela pode ser aproximada utilizando a função tangente como um dos componentes usados, já na expressão \ref{eq:gelu-aproximacoes-sigmoide}, os autores utilizam como base a Sigmoid Linear Unit (SiLU), a qual é dada pela fórmula $SiLU = x\sigma(x)$ para criar uma expressão que seja capaz de aproximar como a GELU se comporta mas trazer uma maior velocidade de processamento por apresentar cálculos mais simples em sua composição.
+    
+\begin{equacaodestaque}{Gaussian Error Linear Unit Aproximações}
+    \text{GELU}(x) \approx 0.5x \left(1 + \tanh\left[\sqrt{\frac{2}{\pi}} \left(x + 0.044715x^3\right)\right]\right) \\
+    \label{eq:gelu-aproximacoes}
+\end{equacaodestaque}
 
-\begin{equation}
-    \text{GELU}(x) \approx 0.5x \left(1 + \tanh\left[\sqrt{\frac{2}{\pi}} \left(x + 0.044715x^3\right)\right]\right)
-    \label{eq:EquacaoGELUAprox}
-\end{equation}
-
-\begin{equation}
+\begin{equacaodestaque}{Gaussian Error Linear Unit Aproximação com Sigmoide}
     \text{GELU}(x) = x \sigma(1.702x)
-    \label{eq:EquacaoGELUAprox2}
-\end{equation}
+    \label{eq:gelu-aproximacoes-sigmoide}
+\end{equacaodestaque}
 
-Se sabemos a sua fórmula, podemos também plotar o seu gráfico, para isso temos a figura \ref{fig:GraficoGELU}, esse gráfico é uma aproximação, tendo como base a expressão \ref{eq:EquacaoGELUAprox}. Note que ela é uma função assimétrica, que possui o comportamento quase que de uma função identidade para os casos em que a sua entrada é maior que zero, além disso, podemos ver que ela retorna valores não nulos quando a entrada é negativa, mas apenas até um certo ponto, depois ela assume o comportamento de um função constante. O fato dela retornar valores quando alguns valores da entrada são negativos pode acabar contribuindo para que essa função diminua o problema do neurônios agonizantes, além disso, por ser uma variante da ReLU, ela também é capaz de resolver o problema do gradiente em fuga.
+Se sabemos a sua fórmula, podemos também plotar o seu gráfico, para isso temos a figura \ref{fig:gelu}, esse gráfico é uma aproximação, tendo como base a expressão \ref{eq:gelu-aproximacoes}. Note que ela é uma função assimétrica, que possui o comportamento quase que de uma função identidade para os casos em que a sua entrada é maior que zero, além disso, podemos ver que ela retorna valores não nulos quando a entrada é negativa, mas apenas até um certo ponto, depois ela assume o comportamento de um função constante. O fato dela retornar valores quando alguns valores da entrada são negativos pode acabar contribuindo para que essa função diminua o problema do neurônios agonizantes, além disso, por ser uma variante da ReLU, ela também é capaz de resolver o problema do gradiente em fuga.
 
 \begin{figure}[htbp]
     \centering
@@ -61,20 +61,20 @@ Se sabemos a sua fórmula, podemos também plotar o seu gráfico, para isso temo
         
         \end{axis}
     \end{tikzpicture}
-    \label{fig:GraficoGELU}
+    \label{fig:gelu}
 \end{figure}
 
-Considerando as suas expressões e como a GELU se comporta, podemos também calcular a sua derivada para ser utilizada na retropropagação do modelo. Para isso, temos a expressão \ref{eq:DerivadaGELU}, a qual pode ser expandida em uma equação mais completa, resultando então na fórmula da expressão \ref{eq:DerivadaGELUCompleta}.
+Considerando as suas expressões e como a GELU se comporta, podemos também calcular a sua derivada para ser utilizada na retropropagação do modelo. Para isso, temos a expressão \ref{eq:gelu-derivada}, a qual pode ser expandida em uma equação mais completa, resultando então na fórmula da expressão \ref{eq:gelu-derivada-completa}.
 
-\begin{equation}
+\begin{equacaodestaque}{Derivada Gaussian Error Linear Unit}
     \frac{d}{dz_i} [\text{GELU}](z_i) = \Phi(z_i) + z_i\phi(z_i)
-    \label{eq:DerivadaGELU}
-\end{equation}
+    \label{eq:gelu-derivada}
+\end{equacaodestaque}
 
-\begin{equation}
+\begin{equacaodestaque}{Derivada Completa Gaussian Error Linear Unit}
     \frac{d}{dx} [\text{GELU}](z_i) = \Phi(z_i) + \frac{z_i}{\sqrt{2\pi}} e^{-\frac{z_i^2}{2}}
-    \label{eq:DerivadaGELUCompleta}
-\end{equation}
+    \label{eq:gelu-derivada-completa}
+\end{equacaodestaque}
 
 Para plotarmos o gráfico de sua derivada podemos fazer uma aproximação utilizando $\phi(x) ~= 1/(1+exp(-1.702*x))$, com base nela, encontramos como resultado a figura \ref{fig:GraficoGELUDerivada}. Note que ele também é diferente dos gráficos que estávamos vendo até agora, ele é contínuo em todo o seu domínio, diferente das funções mais simples, com a ReLU e a Leaky ReLU, além de possuir um carater saturante, assim, para valores acima de três o ele irá retornar valores próximos de um, indicando que o não irá colaborar para que o problema do gradiente em fuga ocorra como no caso das funções sigmodais. Além disso, para valores abaixo de -3 a derivada da GELU retorna valores próximos de zero, algo que tem em comum com a ReLU e algumas de suas variantes.
 
@@ -101,17 +101,17 @@ Para plotarmos o gráfico de sua derivada podemos fazer uma aproximação utiliz
         
         \end{axis}
     \end{tikzpicture}
-    \label{fig:GraficoGELUDerivada}
+    \label{fig:gelu-derivada}
 \end{figure}
 
-Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discutem outras informações úteis da Gaussian Error Linear Unit para serem considerados ao construir uma rede neural com essa função de ativação, o primeiro deles é de que é recomendado o uso de um otimizador com momentum quando estiver treinando uma rede com a GELU \parencite{GELUArticle}. Em segundo lugar, \textcite{GELUArticle}, destacam que é importante utilizar uma aproximação próxima da distribuição acumulativa da distribuição gaussiana, entretanto, funções como a sigmoide, são uma aproximação acumulativa da distribuição normal, contudo, a SiLU mesmo performando pior que a GELU, ainda sim, é capaz de performar melhor que outras retificadoras como a ELU e a ReLU nos testes realizados pelos autores, assim, faz necessário o uso de novas aproximações, como as vistas nas expressões \ref{eq:EquacaoGELUAprox} e \ref{eq:EquacaoGELUAprox2}.
+Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discutem outras informações úteis da Gaussian Error Linear Unit para serem considerados ao construir uma rede neural com essa função de ativação, o primeiro deles é de que é recomendado o uso de um otimizador com momentum quando estiver treinando uma rede com a GELU \parencite{GELUArticle}. Em segundo lugar, \textcite{GELUArticle}, destacam que é importante utilizar uma aproximação próxima da distribuição acumulativa da distribuição gaussiana, entretanto, funções como a sigmoide, são uma aproximação acumulativa da distribuição normal, contudo, a SiLU mesmo performando pior que a GELU, ainda sim, é capaz de performar melhor que outras retificadoras como a ELU e a ReLU nos testes realizados pelos autores, assim, faz necessário o uso de novas aproximações, como as vistas nas expressões \ref{eq:gelu-aproximacoes} e \ref{eq:gelu-aproximacoes-sigmoide}.
 
 \section{Swish}
 
-\begin{equation}
+\begin{equacaodestaque}{Swish}
     \text{Swish}(z_i) = z_i \cdot \sigma(z_i) = z_i \frac{1}{1 + e^{-z_i}}
-    \label{eq:EquacaoSwish}
-\end{equation}
+    \label{eq:swish}
+\end{equacaodestaque}
 
 \begin{figure}[htbp]
     \centering
@@ -134,13 +134,13 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
         
         \end{axis}
     \end{tikzpicture}
-    \label{fig:GraficoSwish}
+    \label{fig:swish}
 \end{figure}
 
-\begin{equation}
+\begin{equacaodestaque}{Derivada Swish}
     \frac{d}{dz_i} [\text{Swish}](z_i) = \text{Swish}(z_i) + \sigma(z_i)(1 - \text{Swish}(z_i))
-    \label{eq:DerivadaSwish}
-\end{equation}
+    \label{eq:swish-derivada}
+\end{equacaodestaque}
 
 \begin{figure}[htbp]
     \centering
@@ -165,25 +165,26 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
         
         \end{axis}
     \end{tikzpicture}
-    \label{fig:GraficoSwishDerivada}
+    \label{fig:swish-derivada}
 \end{figure}
 
 \section{Funções Para Camadas de Saída}
 
 \subsection{Softmax}
 
-\begin{equation}
+\begin{equacaodestaque}{Softmax}
     \text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
-    \label{eq:EquacaoSoftmax}
-\end{equation}
+    \label{eq:softmax}
+\end{equacaodestaque}
 
-\begin{equation}
+\begin{equacaodestaque}{Derivada Softmax}
     \frac{\partial \text{Softmax}(z_i)}{\partial z_j} = 
     \begin{cases} 
       \text{Softmax}(z_i)(1 - \text{Softmax}(z_i)) & \text{se } i = j \\
       - \text{Softmax}(z_i)\text{Softmax}(z_j) & \text{se } i \neq j
     \end{cases}
-    \label{eq:DerivadaSoftmax}
-\end{equation}
+    \label{eq:softmax-derivada}
+\end{equacaodestaque}
+
 
 
