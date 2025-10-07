@@ -108,7 +108,6 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
 
 \begin{figure}{h!}
     \centering
-    \caption{Gráfico da função ReLU.}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -121,6 +120,7 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
         \addplot[blue, thick, domain=-2:2] {max(0, x)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Rectified Linear Unit (ReLU).}
     \label{fig:relu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -142,7 +142,6 @@ Além de termos a sua derivada em equação, é possível fazer também o seu gr
 
 \begin{figure}[h!] % Use [htbp] para dar flexibilidade ao LaTeX
     \centering % Centraliza o gráfico na página
-    \caption{Gráfico da Derivada da Função ReLU}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -158,6 +157,7 @@ Além de termos a sua derivada em equação, é possível fazer também o seu gr
         \addplot[red, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
+        \caption{Gráfico da derivada da função de ativação Rectified Linear Unit (ReLU).}
     \label{fig:relu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -235,7 +235,6 @@ Já para a sua representação gráfica, o seu gráfico está presente na figura
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -249,6 +248,7 @@ Já para a sua representação gráfica, o seu gráfico está presente na figura
         \addplot[blue, thick, domain=-2:2] {x > 0 ? x : 0.1*x};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Leaky ReLU (LReLU) com $\alpha = 0.1$.}
     \label{fig:leaky-relu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -264,7 +264,6 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Derivada da Função Leaky ReLU (LReLU) com $\alpha = 0.1$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -282,6 +281,7 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
         \addplot[red, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da derivada da função de ativação Leaky ReLU (LReLU) com $\alpha = 0.1$.}
     \label{fig:leaky-relu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -373,7 +373,6 @@ Com base em sua equação, tem-se o gráfico da PReLU na figura \ref{fig:prelu},
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Função Parametric ReLU (PReLU) com $\alpha=0.2$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -388,6 +387,7 @@ Com base em sua equação, tem-se o gráfico da PReLU na figura \ref{fig:prelu},
         \addplot[blue, thick, domain=-2:2] {x >= 0 ? x : \alphaVal*x};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Parametric ReLU (PReLU) com $\alpha=0.2$.}
     \label{fig:prelu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -403,7 +403,6 @@ Sabendo a fórmula da derivada da PReLU, é possível plotar o seu gráfico, o q
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Derivada da Função Parametric ReLU (PReLU) com ($\alpha=0.2$)}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -422,6 +421,7 @@ Sabendo a fórmula da derivada da PReLU, é possível plotar o seu gráfico, o q
         \addplot[red, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da derivada da função de ativação Parametric ReLU (PReLU) com $\alpha=0.2$.}
     \label{fig:prelu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -551,7 +551,6 @@ O gráfico da RReLU está presente na figura \ref{fig:rrelu}. Na representação
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Função Randomized Leaky ReLU (RReLU) com Diferentes Inclinações Aleatórias para a Parte Negativa}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -569,6 +568,7 @@ O gráfico da RReLU está presente na figura \ref{fig:rrelu}. Na representação
         \addplot[red, dashed, domain=-2.3:0, samples=2] {0.4*x};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Randomized Leaky ReLU (RReLU) com diferentes inclinações aleatórias para a parte negativa.}
     \label{fig:rrelu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -586,7 +586,6 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Derivada da Função Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -621,6 +620,7 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
         
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da derivada da função de ativação Randomized Leaky ReLU (RReLU) com $l=0.1, u=0.3$.}
     \label{fig:rrelu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -766,7 +766,6 @@ Conhecendo como é a fórmula da ELU, é possível também plotar o seu gráfico
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Função Exponential Linear Unit (ELU) com $\alpha=1$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -781,6 +780,7 @@ Conhecendo como é a fórmula da ELU, é possível também plotar o seu gráfico
         \addplot[blue, thick, domain=-2:2] {x >= 0 ? x : \alphaVal*(exp(x) - 1)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Exponential Linear Unit (ELU) com $\alpha=1$.}
     \label{fig:elu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -796,7 +796,6 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Derivada da Função Exponential Linear Unit (ELU) com $\alpha=1$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -814,6 +813,7 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
         
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da derivada da função de ativação Exponential Linear Unit (ELU) com $\alpha=1$.}
     \label{fig:elu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -879,7 +879,6 @@ Pelo fato da SELU ter um comportamento que também retorna valores para a saída
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -895,6 +894,7 @@ Pelo fato da SELU ter um comportamento que também retorna valores para a saída
         \addplot[blue, thick, domain=-2:2, samples=100] {x > 0 ? \lambdaVal*x : \lambdaVal*\alphaVal*(exp(x) - 1)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$.}
     \label{fig:selu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -912,7 +912,6 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Derivada da Função Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -929,6 +928,7 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
         \addplot[red, thick, domain=-2:2, samples=100] {x > 0 ? \lambdaVal*1 : \lambdaVal*\alphaVal*exp(x)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da derivada da função de ativação Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$.}
     \label{fig:selu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1016,7 +1016,6 @@ A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsá
 
 \begin{figure}[htbp]
     \centering
-    \caption{Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$).}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$x$},
@@ -1050,6 +1049,7 @@ A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsá
         
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$).}
     \label{fig:GraficoDistNormalPadrao}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1068,7 +1068,6 @@ Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o se
 
 \begin{figure}[h!]
     \centering
-    \caption{Gráfico da Função Noisy ReLU (NReLU)}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -1085,6 +1084,7 @@ Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o se
         \draw[dashed, gray] (axis cs:-1, -2.3) -- (axis cs:-1, 2.3);
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função de ativação Noisy ReLU (NReLU).}
     \label{fig:nrelu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1103,7 +1103,6 @@ Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReL
 
 \begin{figure}[htbp] % Use [htbp] para dar flexibilidade ao LaTeX
     \centering % Centraliza o gráfico na página
-    \caption{Gráfico da função Backward Pass da Noisy ReLU}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={$z_i$},
@@ -1119,6 +1118,7 @@ Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReL
         \addplot[red, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
+    \caption{Gráfico da função \textit{Backward Pass} da função de ativação Noisy ReLU.}
     \label{fig:nrelu-derivada}
     \fonte{O autor (2025).}
 \end{figure}

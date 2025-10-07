@@ -67,11 +67,19 @@ A vantagem do método do gradiente é que ele é uma ferramenta matemática, e p
 Em que:
 
 \begin{itemize}
-    \item $\theta_{t+1}$: representa as coordenadas do próximo ponto;
-    \item $\theta_t$: representa as coordernadas do ponto atual;
-    \item $\eta$: representa o tamanho do passo, também chamado de taxa de aprendizado;
-    \item $\nabla f(\theta_t)$: representa o vetor gradiente calculado na posição do ponto atual ($x_0$) para função que se deseja otimizar.
+    \item $\theta_t$: representa as coordenadas do ponto atual.
+          \nomenclature[A@thetat]{$\theta_t$}{Vetor de parâmetros na iteração $t$ (ponto atual)}
+
+    \item $\theta_{t+1}$: representa as coordenadas do próximo ponto.
+          \nomenclature[A@thetat+1]{$\theta_{t+1}$}{Vetor de parâmetros na iteração $t+1$ (próximo ponto)}
+
+    \item $\eta$: representa o tamanho do passo, também chamado de taxa de aprendizado.
+          \nomenclature[A@eta]{$\eta$}{Taxa de aprendizado (ou tamanho do passo)}
+
+    \item $\nabla f(\theta_t)$: representa o vetor gradiente da função $f$ calculado no ponto atual.
+          \nomenclature[A@nabla]{$\nabla f(\theta_t)$}{Vetor gradiente da função $f$ em relação a $\theta_t$}
 \end{itemize}
+
 
 Note que assim como no método proposto por Cauchy, é pego como base o inverso do vetor gradiente. Isso ocorre pois o vetor gradiente é um vetor especial que tem como principal propriedade apontar para a direção de maior crescimento de uma função no ponto que está sendo calculada. Mas no método, o objetivo não é encontrar o ponto que irá gerar os maiores valores da função, e sim o contrário. Por isso, é tomado inverso do vetor gradiente, que, dessa forma, estará então apontando para a direção de menor crescimento de uma função.
 

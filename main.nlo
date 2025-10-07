@@ -1,0 +1,4 @@
+\nomenclatureentry{A@thetat$\theta_t$@[{$\theta_t$}]\begingroup Vetor de parâmetros na iteração $t$ (ponto atual)\nomeqref {6.1}|nompageref}{29}
+\nomenclatureentry{A@thetat+1$\theta_{t+1}$@[{$\theta_{t+1}$}]\begingroup Vetor de parâmetros na iteração $t+1$ (próximo ponto)\nomeqref {6.1}|nompageref}{29}
+\nomenclatureentry{A@eta$\eta$@[{$\eta$}]\begingroup Taxa de aprendizado (ou tamanho do passo)\nomeqref {6.1}|nompageref}{30}
+\nomenclatureentry{A@nabla$\nabla f(\theta_t)$@[{$\nabla f(\theta_t)$}]\begingroup Vetor gradiente da função $f$ em relação a $\theta_t$\nomeqref {6.1}|nompageref}{30}

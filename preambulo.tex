@@ -242,6 +242,13 @@
 \numberwithin{table}{chapter}
 \numberwithin{equation}{chapter}
 
+\usepackage{nomencl}
+\usepackage{etoolbox} % Para customizações avançadas
+
+% --- Comandos Customizados para Funções ---
+\newcommand{\fativ}[1]{\ensuremath{\mathcal{A}_{#1}}}
+\newcommand{\fperd}[1]{\ensuremath{\mathcal{L}_{#1}}}
+
 % ===================================================================
 % FIM DO PREÂMBULO
 % ===================================================================

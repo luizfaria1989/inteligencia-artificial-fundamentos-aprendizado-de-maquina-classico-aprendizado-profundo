@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  6 OCT 2025 20:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  7 OCT 2025 12:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1382,13 +1382,45 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen381
 \c@nlinenum=\count574
 \TeXr@lab=\toks58
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/nomencl/nomencl.sty
+Package: nomencl 2021/11/10 v5.6 Nomenclature package
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks59
+\XKV@tempa@toks=\toks60
+)
+\XKV@depth=\count575
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2025/06/04 v3.45 KOMA-Script package (handling toc-files)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2025/06/04 v3.45 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2025/06/04 v3.45 KOMA-Script package (file load hooks)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2025/06/04 v3.45 KOMA-Script package (using LaTeX hooks)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2025/06/04 v3.45 KOMA-Script package (logo)
+)))
+Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line 370.
+)
+\scr@dte@tocline@numberwidth=\skip291
+\scr@dte@tocline@numbox=\box97
+)
+Package tocbasic Info: setting babel extension for `nlo' on input line 187.
+Package tocbasic Info: setting babel extension for `nls' on input line 188.
+\nomlabelwidth=\dimen382
+\nom@tempdim=\dimen383
+\nomitemsep=\skip292
 ))
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count575
-\@quotereset=\count576
+\@quotelevel=\count576
+\@quotereset=\count577
 
 Package biblatex Warning: Attempt to redefine deprecated '\mkbibnamelast'.
 (biblatex)                Please use '\mkbibnamefamily' instead.
@@ -1489,28 +1521,29 @@ LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 Package hyperref Info: Link coloring OFF on input line 41.
-\myptabbox=\box97
-\myptabboxwidth=\skip291
+\myptabbox=\box98
+\myptabboxwidth=\skip293
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count577
-\scratchdimen=\dimen382
-\scratchbox=\box98
-\nofMPsegments=\count578
-\nofMParguments=\count579
-\everyMPshowfont=\toks59
-\MPscratchCnt=\count580
-\MPscratchDim=\dimen383
-\MPnumerator=\count581
-\makeMPintoPDFobject=\count582
-\everyMPtoPDFconversion=\toks60
+\scratchcounter=\count578
+\scratchdimen=\dimen384
+\scratchbox=\box99
+\nofMPsegments=\count579
+\nofMParguments=\count580
+\everyMPshowfont=\toks61
+\MPscratchCnt=\count581
+\MPscratchDim=\dimen385
+\MPnumerator=\count582
+\makeMPintoPDFobject=\count583
+\everyMPtoPDFconversion=\toks62
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count583
+\c@lstlisting=\count584
+Package tocbasic Info: setting babel extension for `lol' on input line 41.
 Package biblatex Info: Trying to load language 'brazil' -> 'brazil-abnt'...
 Package biblatex Info: ... file 'brazil-abnt.lbx' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex-abnt/brazil-abnt.lbx
@@ -1757,7 +1790,7 @@ Overfull \hbox (2.03697pt too wide) detected at line 104
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 105
- \T1/cmss/bx/n/12 142
+ \T1/cmss/bx/n/12 141
  []
 
 
@@ -2182,7 +2215,7 @@ Overfull \hbox (2.03697pt too wide) detected at line 262
 )
 
 Package babel Info: 'brazil' activates 'portuges' shorthands.
-(babel)             Reported  on input line 73.
+(babel)             Reported  on input line 72.
 [10]
 
 [11
@@ -2281,14 +2314,14 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=678, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 82.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 90.
 (pdftex.def)             Requested size: 455.24411pt x 126.46014pt.
 
 
 [30 <./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 166.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 174.
 
-Overfull \hbox (26.56415pt too wide) in paragraph at lines 182--183
+Overfull \hbox (26.56415pt too wide) in paragraph at lines 190--191
 \T1/ppl/m/n/12 fer-ra-menta, re-ce-bendo como pa-râ-me-tros de en-trada a taxa de apren-di-zado (\T1/cmtt/m/n/12 learning_rate\T1/ppl/m/n/12 ),
  []
 
@@ -2348,13 +2381,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [49]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 841.
+(Font)              scaled to size 11.40997pt on input line 849.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 841.
+(Font)              scaled to size 6.25204pt on input line 849.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 841.
+(Font)              scaled to size 11.40997pt on input line 849.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 841.
+(Font)              scaled to size 6.25204pt on input line 849.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -2374,7 +2407,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [52]
 
 [53]
-Overfull \hbox (22.75677pt too wide) in paragraph at lines 946--947
+Overfull \hbox (22.75677pt too wide) in paragraph at lines 954--955
 []\T1/ppl/m/n/12 Para a clas-si-fi-ca-ção de tex-tos uti-li-zando o Reu-ters RCV1, fo-ram com-pa-ra-dos o AdaGrad-
  []
 
@@ -2382,10 +2415,10 @@ Overfull \hbox (22.75677pt too wide) in paragraph at lines 946--947
 
 [54]
 
-LaTeX Warning: Reference `tab:resultados-rcv1-adagrad' on page 55 undefined on input line 948.
+LaTeX Warning: Reference `tab:resultados-rcv1-adagrad' on page 55 undefined on input line 956.
 
 
-Overfull \hbox (6.33347pt too wide) in paragraph at lines 953--972
+Overfull \hbox (6.33347pt too wide) in paragraph at lines 961--980
  [] 
  []
 
@@ -2395,7 +2428,7 @@ Overfull \hbox (6.33347pt too wide) in paragraph at lines 953--972
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png, id=1010, 568.1225pt x 419.5675pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png  used on input line 1008.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png  used on input line 1016.
 (pdftex.def)             Requested size: 295.90588pt x 218.54126pt.
 \openout6 = `main.listing'.
 
@@ -2428,7 +2461,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png, id=1102, 340.27126pt x 327.2225pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png  used on input line 1164.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png  used on input line 1172.
 (pdftex.def)             Requested size: 295.90588pt x 284.57143pt.
 
 
@@ -2437,7 +2470,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png, id=1110, 821.0675pt x 532.99126pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png  used on input line 1178.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png  used on input line 1186.
 (pdftex.def)             Requested size: 386.96027pt x 251.18907pt.
 
 
@@ -2448,7 +2481,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png, id=1123, 945.5325pt x 462.72874pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png  used on input line 1192.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png  used on input line 1200.
 (pdftex.def)             Requested size: 386.96027pt x 189.37404pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2471,12 +2504,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [64 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>]
-Overfull \hbox (8.45563pt too wide) in paragraph at lines 1284--1285
+Overfull \hbox (8.45563pt too wide) in paragraph at lines 1292--1293
 \T1/ppl/m/n/12 Com o Na-dam, ou Nesterov-accelerated Adap-tive Mo-ment Es-ti-ma-tion, ocor-reu a mesma
  []
 
 
-LaTeX Warning: Reference `alg:nadam' on page 65 undefined on input line 1286.
+LaTeX Warning: Reference `alg:nadam' on page 65 undefined on input line 1294.
 
 
 
@@ -2484,7 +2517,7 @@ LaTeX Warning: Reference `alg:nadam' on page 65 undefined on input line 1286.
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png, id=1199, 1133.23375pt x 400.49625pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png  used on input line 1335.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png  used on input line 1343.
 (pdftex.def)             Requested size: 455.24411pt x 160.8862pt.
 
 
@@ -2492,12 +2525,12 @@ Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparat
 
 [67 <./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>]
 
-LaTeX Warning: Reference `comparativo-adamw-cifar-10' on page 68 undefined on input line 1399.
+LaTeX Warning: Reference `comparativo-adamw-cifar-10' on page 68 undefined on input line 1407.
 
 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png, id=1224, 1050.92625pt x 774.895pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png  used on input line 1403.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png  used on input line 1411.
 (pdftex.def)             Requested size: 455.24411pt x 335.66956pt.
 
 
@@ -2507,23 +2540,23 @@ Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparat
 
 [70]
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 1454.
+LaTeX Font Warning: Command \large invalid in math mode on input line 1462.
 
-LaTeX Font Info:    Calculating math sizes for size <> on input line 1461.
+LaTeX Font Info:    Calculating math sizes for size <> on input line 1469.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 1.042pt on input line 1461.
+(Font)              scaled to size 1.042pt on input line 1469.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 1461.
+(Font)              scaled to size 0.79192pt on input line 1469.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 1461.
+(Font)              scaled to size 0.6252pt on input line 1469.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 1.042pt on input line 1461.
+(Font)              scaled to size 1.042pt on input line 1469.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 1461.
+(Font)              scaled to size 0.79192pt on input line 1469.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 1461.
+(Font)              scaled to size 0.6252pt on input line 1469.
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 1466.
+LaTeX Font Warning: Command \large invalid in math mode on input line 1474.
 
 
 
@@ -2537,22 +2570,22 @@ Overfull \hbox (41.9395pt too wide) in paragraph at lines 21--21
 []\T1/cmss/m/n/17.28 Teoremas da Apro-xi-ma-ção Uni-ver-sal: In-tro-du-zindo a Não-Linearidade 
  []
 
-\l__witharrows_x_dim=\dimen384
-\l__witharrows_initial_int=\count584
-\l__witharrows_final_int=\count585
-\l__witharrows_arrow_int=\count586
-\l__witharrows_pos_of_arrow_int=\count587
-\l__witharrows_jump_int=\count588
-\l__witharrows_env_box=\box99
-\l__witharrows_first_arrow_of_group_int=\count589
-\l__witharrows_first_line_of_group_int=\count590
-\l__witharrows_last_line_of_group_int=\count591
-\l__witharrows_first_arrow_int=\count592
-\l__witharrows_last_arrow_int=\count593
-\g__witharrows_x_initial_dim=\dimen385
-\g__witharrows_x_final_dim=\dimen386
-\g__witharrows_y_initial_dim=\dimen387
-\g__witharrows_y_final_dim=\dimen388
+\l__witharrows_x_dim=\dimen386
+\l__witharrows_initial_int=\count585
+\l__witharrows_final_int=\count586
+\l__witharrows_arrow_int=\count587
+\l__witharrows_pos_of_arrow_int=\count588
+\l__witharrows_jump_int=\count589
+\l__witharrows_env_box=\box100
+\l__witharrows_first_arrow_of_group_int=\count590
+\l__witharrows_first_line_of_group_int=\count591
+\l__witharrows_last_line_of_group_int=\count592
+\l__witharrows_first_arrow_int=\count593
+\l__witharrows_last_arrow_int=\count594
+\g__witharrows_x_initial_dim=\dimen387
+\g__witharrows_x_final_dim=\dimen388
+\g__witharrows_y_initial_dim=\dimen389
+\g__witharrows_y_final_dim=\dimen390
 
 
 [73
@@ -2763,9 +2796,6 @@ Underfull \hbox (badness 1616) in paragraph at lines 510--510
  []
 
 
-Underfull \vbox (badness 4205) has occurred while \output is active []
-
-
 
 [113]
 
@@ -2773,9 +2803,9 @@ Underfull \vbox (badness 4205) has occurred while \output is active []
 
 [115]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 622.
+(Font)              scaled to size 5.21004pt on input line 621.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 622.
+(Font)              scaled to size 5.21004pt on input line 621.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -2804,16 +2834,13 @@ Underfull \hbox (badness 1400) in paragraph at lines 733--735
  []
 
 
-Underfull \vbox (badness 4217) has occurred while \output is active []
-
-
 
 [117]
 
 LaTeX Warning: Reference `lst:codigo-rrelu' on page 118 undefined on input line 744.
 
 
-Underfull \vbox (badness 4981) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -2828,9 +2855,6 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 [121]
-Underfull \vbox (badness 2158) has occurred while \output is active []
-
-
 
 [122]
 
@@ -2861,14 +2885,17 @@ LaTeX Warning: Reference `fig:GraficoNReLU' on page 128 undefined on input line 
 
 [128]
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eq: nrelu-derivada' on page 129 undefined on input line 1092.
+
+
+
 [129]
 
-LaTeX Warning: Reference `eq: nrelu-derivada' on page 130 undefined on input line 1092.
-
-
-
 [130]
-Underfull \vbox (badness 2158) has occurred while \output is active []
+Underfull \vbox (badness 2486) has occurred while \output is active []
 
 
 
@@ -2928,14 +2955,11 @@ LaTeX Warning: Reference `eq:EquacaoGELUAprox2' on page 138 undefined on input l
 
 [139]
 
-LaTeX Warning: Reference `fig:GraficoGELUDerivada' on page 140 undefined on input line 79.
+LaTeX Warning: Reference `fig:GraficoGELUDerivada' on page 140 undefined on input line 80.
 
 
 
 [140]
-Underfull \vbox (badness 1383) has occurred while \output is active []
-
-
 
 [141])
 
@@ -3522,15 +3546,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 61007 strings out of 467888
- 1384338 string characters out of 5434061
- 4268386 words of memory out of 5000000
- 87265 multiletter control sequences out of 15000+600000
+ 62111 strings out of 467888
+ 1406738 string characters out of 5434061
+ 4332918 words of memory out of 5000000
+ 88339 multiletter control sequences out of 15000+600000
  713480 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,107p,1327b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,19n,117p,1327b,4449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (214 pages, 1839358 bytes).
+Output written on main.pdf (214 pages, 1840114 bytes).
 PDF statistics:
  3782 PDF objects out of 4296 (max. 8388607)
  3435 compressed objects within 35 object streams
