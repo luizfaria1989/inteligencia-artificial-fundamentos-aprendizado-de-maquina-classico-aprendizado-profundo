@@ -1,0 +1,51 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'main.blg'
+[33] biber-darwin:340> INFO - === Tue Oct  7, 2025, 13:12:32
+[41] Biber.pm:420> INFO - Reading 'main.bcf'
+[97] Biber.pm:994> INFO - Found 36 citekeys in bib section 0
+[105] Biber.pm:4463> INFO - Processing section 0
+[109] Biber.pm:4654> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[111] bibtex.pm:1713> INFO - LaTeX decoding ...
+[126] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[244] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[244] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[244] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'pt-BR'
+[244] Biber.pm:4289> INFO - No sort tailoring available for locale 'pt-BR'
+[263] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[271] bbl.pm:779> INFO - Output to main.bbl
+[271] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 16, warning: 37 characters of junk seen at toplevel
+[271] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 26, warning: 37 characters of junk seen at toplevel
+[271] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 36, warning: 62 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 47, warning: 75 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 62, warning: 49 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 74, warning: 45 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 85, warning: 48 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 97, warning: 46 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 106, warning: 46 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 117, warning: 46 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 128, warning: 50 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 141, warning: 59 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 152, warning: 76 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 163, warning: 31 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 172, warning: 46 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 183, warning: 71 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 196, warning: 70 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 209, warning: 30 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 221, warning: 59 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 232, warning: 42 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 246, warning: 30 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 258, warning: 59 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 267, warning: 58 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 277, warning: 63 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 288, warning: 68 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 299, warning: 46 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 310, warning: 46 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 321, warning: 34 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 329, warning: 59 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 339, warning: 107 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 350, warning: 50 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 363, warning: 27 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 371, warning: 39 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - BibTeX subsystem: /var/folders/yz/tryj78zs3ydbmb7z1clsms980000gn/T/biber_tmp_8AP4/499af1e6906591d6961f19d66c065a09_25193.utf8, line 381, warning: 54 characters of junk seen at toplevel
+[272] Biber.pm:131> WARN - I didn't find a database entry for 'explodingGradient' (section 0)
+[272] Biber.pm:133> INFO - WARNINGS: 35
