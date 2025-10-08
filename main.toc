@@ -53,15 +53,15 @@
 \contentsline {subsection}{\numberline {6.1.2}O Método em Si}{29}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}A Retropropagação: Aprendendo com os Erros}{31}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Utilizando o Gradiente Descendente para Atualizar os Pesos e Vieses}{38}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}{40}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.2}Entendendo Como o Gradiente É Propagado ao Longo de Muitas Camadas}{39}{subsection.6.2.2}%
 \contentsline {section}{\numberline {6.3}Otimizadores Baseados em Gradiente: Melhorando o Gradiente Descendente}{42}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}Método do Gradiente com Momento}{43}{subsection.6.3.1}%
 \contentsline {subsection}{\numberline {6.3.2}Método do Gradiente Estocástico (SGD)}{44}{subsection.6.3.2}%
 \contentsline {subsection}{\numberline {6.3.3}Método do Gradiente em Mini-Batch}{46}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}Gradiente Acelerado de Nesterov (NAG)}{47}{subsection.6.3.4}%
-\contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}{49}{section.6.4}%
+\contentsline {subsection}{\numberline {6.3.4}Gradiente Acelerado de Nesterov (NAG)}{46}{subsection.6.3.4}%
+\contentsline {section}{\numberline {6.4}Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}{48}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Adadptive Gradient Algorithm (AdaGrad)}{49}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}RMSProp}{53}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.2}RMSProp}{52}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Adaptive Moment Estimation (Adam)}{54}{subsection.6.4.3}%
 \contentsline {subsection}{\numberline {6.4.4}AdaMax}{57}{subsection.6.4.4}%
 \contentsline {subsection}{\numberline {6.4.5}Nesterov-accelerated Adaptive Moment Estimation (Nadam)}{58}{subsection.6.4.5}%
