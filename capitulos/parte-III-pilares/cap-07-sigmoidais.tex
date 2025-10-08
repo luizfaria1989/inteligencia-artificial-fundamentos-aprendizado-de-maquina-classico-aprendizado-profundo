@@ -281,29 +281,6 @@ Tendo a sua derivada, podemos também plotar o seu gráfico para ver o seu compo
     \fonte{O autor (2025).}
 \end{figure}
 
-\textbf{Implementação em Python}
-
-Com base nesses dados, podemos escrever a sua implementação em código. Para isso, devemos apenas seguir a fórmula da sigmoide logística e sua derivada. Temos então o bloco de código \ref{lst:sigmoide}.
-
-\begin{codelisting}{Classe completa do função de ativação Sigmoid}{sigmoide}
-import numpy as np
-
-class Sigmoid(Layer):
-    def __init__(self):
-        super().__init__()
-        self.input = None
-        self.sigmoid = None
-
-    def forward(self, input_data):
-        self.input = input_data
-        self.sigmoid_output = 1/ (1 + np.exp(-input_data))
-        return self.sigmoid_output
-
-    def backward(self, grad_output):
-        sigmoid_grad = self.sigmoid_output * (1 - self.sigmoid_output)
-        return grad_output * sigmoid_grad, None
-\end{codelisting}
-
 \section{Tangente Hiperbólica: A Pioneira nas Redes Convolucionais}
 
 Assim como a função sigmoide, a tangente hiperbólica não possui suas origens voltadas para o uso em redes neurais. Neste caso, um dos matemáticos que ficou reconhecido por criar a notação das funções hiperbólicas, seno, cosseno e tangente, foi o suíço Johann Heinrich Lambert no trabalho de 1769 \textit{Mémoire sur quelques propriétés remarquables des quantités transcendantes circulaires et logarithmiques} (Memória sobre algumas propriedades notáveis de grandezas transcendentais circulares e logarítmicas), em que provou que muitas das identidades trigonométricas possuíam suas equivalentes hiperbólicas \parencite{TanhLambert}.
@@ -376,32 +353,6 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
     \fonte{O autor (2025).}
 \end{figure}
 
-\textbf{Implementação em Python}
-
-Agora que sabemos como a tangente hiperbólica se comporta, além de conhecermos as suas fórmulas, podemos implementar a sua função em Python, utilizando o numpy para auxiliar nos cálculos.
-
-Para isso, devemos implementar as expressões \ref{eq: EquacaoTanh} e \ref{eq: DerivadaTanh}, obtendo o bloco de código \ref{lst:codigo-tanh}.
-
-\begin{codelisting}{Classe completa do função de ativação Tangente Hiperbólica}{gd_class}
-import numpy as np
-from layers.base import Layer  # Assuming your base class is here
-
-class Tanh(Layer):
-    def __init__(self):
-        super().__init__()
-        self.input = None
-        self.tanh_output = None
-
-    def forward(self, input_data):
-        self.input = input_data
-        self.tanh_output = np.tanh(self.input)
-        return self.tanh_output
-
-    def backward(self, grad_output):
-        tanh_grad = 1 - self.tanh_output**2
-        return grad_output * tanh_grad, None
-\end{codelisting}
-
 \section{Softsign: Uma Sigmoidal Mais Barata}
 
 A próxima função sigmoidal a ser analisada é a softsign, diferente da tangente hiperbólica e da sigmoide que tiveram suas origens em outros campos diferentes da ciência da computação, a softsign foi criada com o intuito de ser trabalhada em uma rede neural. Ela foi introduzida no artigo \textit{A Better Activation Function for Artificial Neural Networks} de 1993, do cientista D.L. Elliott, no texto ele propõem a softsign como uma alternativa para as funções sigmodais tradicionais \parencite{Softsign1998}.
@@ -465,28 +416,6 @@ Podemos ver também no gráfico da derivada da softsign, apresentado na figura \
     \label{fig:softsign-derivada}
     \fonte{O autor (2025).}
 \end{figure}
-
-\textbf{Implementação em Python}
-
-Assim, podemos implementar o bloco de código \ref{lst:codigo-softsign} representa a função softsign para ser utilizada uma rede neural.
-
-\begin{codelisting}{Classe completa do função de ativação Softsign}{gd_class}
-from layers.base import Layer
-import numpy as np
-
-class Softsign(Layer):
-    def __init__(self):
-        super().__init__()
-        self.input = None
-
-    def forward(self, input_data):
-        self.input = input_data
-        return self.input / (1 + np.abs(self.input))
-
-    def backward(self, grad_output):
-        grad =  (1 / (1 + np.abs(self.input))**2)
-        return grad_output * softsign_grad, None
-\end{codelisting}
 
 \section{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}
 
@@ -640,54 +569,6 @@ Utilizamos o mesmo procedimento da hard sigmoid para obter a derivada da hard ta
 \textbf{Implementação em Python}
 
 Para implementar a hard sigmoid em python, apenas devemos seguir as expressões \ref{eq: EquacaoHardSigmoid} e \ref{eq: DerivadaHardSigmoid} e obtemos o seu código. Note que por mais que ele seja maior que o da sigmoide, ele apresenta operações bem mais simples e "baratas" quando comparado com a sua versão soft.
-
-\begin{codelisting}{Classe completa do função de ativação Hard Sigmoid}{gd_class}
-from layers.base import Layer
-import numpy as np
-
-class HardSigmoid(Layer):
-
-    def __init__(self):
-        super().__init__()
-        self.input = None
-
-    def forward(self, input_data):
-        self.input = input_data
-
-        output = self.input / 6 + 0.5
-        output = np.clip(output, 0, 1)  # A more concise way to handle the bounds
-
-        return output
-
-    def backward(self, grad_output):
-        hard_sigmoid_grad = np.full_like(self.input, 1 / 6)
-
-        hard_sigmoid_grad[self.input < -3] = 0
-        hard_sigmoid_grad[self.input > 3] = 0
-
-        return grad_output * hard_sigmoid_grad, None
-\end{codelisting}
-
-\begin{codelisting}{Classe completa do função de ativação Hard Tanh}{gd_class}
-from layers.base import Layer
-import numpy as np
-
-
-class HardTanh(Layer):
-    def __init__(self):
-        super().__init__()
-        self.input = None
-
-    def forward(self, input_data):
-        self.input = input_data
-        return np.clip(self.input, -1, 1)
-
-    def backward(self, grad_output):
-
-        hard_tanh_grad = np.where((self.input > -1) & (self.input < 1), 1, 0)
-
-        return grad_output * hard_tanh_grad, None
-\end{codelisting}
 
 \section{O Desaparecimento de Gradientes}
 

@@ -1125,6 +1125,55 @@
       \verb https://api.semanticscholar.org/CorpusID:145918791
       \endverb
     \endentry
+    \entry{ExplodingGradient}{misc}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1589bd0c45c0e747b87fd2e39530e833}{%
+           family={Philipp},
+           familyi={P\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d458d5f9b64652055bd81d57e4777b22}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Dawn},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=30ea103c14476461152f8ac59df347f3}{%
+           family={Carbonell},
+           familyi={C\bibinitperiod},
+           given={Jaime\bibnamedelima G.},
+           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{fullhash}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{fullhashraw}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{bibnamehash}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{authorbibnamehash}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{authornamehash}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{authorfullhash}{9b134b4574ca4afc45831671ca9d451c}
+      \strng{authorfullhashraw}{9b134b4574ca4afc45831671ca9d451c}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{The exploding gradient problem demystified - definition, prevalence, impact, origin, tradeoffs, and solutions}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1712.05577
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1712.05577
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1712.05577
+      \endverb
+    \endentry
     \entry{polyak1964}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=83cb78217e5046c7c8c8da6fc9d263df}{%
@@ -1507,7 +1556,6 @@
       \field{year}{2015}
     \endentry
   \enddatalist
-  \missing{explodingGradient}
 \endrefsection
 \endinput
 

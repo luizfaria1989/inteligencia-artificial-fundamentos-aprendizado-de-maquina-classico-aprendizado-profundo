@@ -46,9 +46,9 @@ Como foi visto anteriormente no capítulo \ref{cap:ativacao-sigmoidais}, as fun�
     \label{eq:fibra-nervosa-householder}
 \end{equation}
 
-Essa equação nos mostra quando uma fibra nervosa irá disparar, para isso, devemos olhar o limiar da fibra $h_{ij}$ e o estímulo total $\eta_i$, com base nesses valores e no que a fórmula apresenta, uma fibra irá disparar quando o estímulo total for maior que o seu limiar, quando isso não ocorrer, ela não irá disparar \parencite{Householder1941}. Além disso, \textcite{Householder1941} explica também sobre o termo $a_{ij}$, a saída dessa função, segundo o autor ele é utilizado para representar o parâmetro de atividade, sendo um valor diferente de zero, podendo ser positivo (quando a fibra possui ação excitatória), ou negativo (apresentando caráter inibitório).
+Essa equação mostra quando uma fibra nervosa irá disparar, para isso, deve-se olhar o limiar da fibra $h_{ij}$ e o estímulo total $\eta_i$, com base nesses valores e no que a fórmula apresenta, uma fibra irá disparar quando o estímulo total for maior que o seu limiar, quando isso não ocorrer, ela não irá disparar \parencite{Householder1941}. Além disso, \textcite{Householder1941} explica também sobre o termo $a_{ij}$, a saída dessa função, segundo o autor ele é utilizado para representar o parâmetro de atividade, sendo um valor diferente de zero, podendo ser positivo (quando a fibra possui ação excitatória), ou negativo (apresentando caráter inibitório).
 
-Essa equação criada por Householder, nos lembra bastante a expressão da função ReLU, a qual é denotada pelas fórmulas \ref{eq:relu}.
+Essa equação criada por Householder, lembra bastante a expressão da função ReLU, a qual é denotada pelas fórmulas \ref{eq:relu}.
 
 \begin{equacaodestaque}{Rectified Linear Unit (ReLU)}
     \text{ReLU}(z_i) = \begin{cases}z_i, & \text{se } z_i > 0 \\0, & \text{se } z_i \leq 0\end{cases} \text{ou} \text{ReLU}(z_i) = \max(0, z_i)
@@ -61,7 +61,7 @@ Dessa forma, antes de conhecer de fato a ReLU e suas propriedades, é preciso en
 
 Nesse cenário, artigos como \textit{Rectified Linear Units Improve Restricted Boltzmann Machines} foram essenciais para popularizar a ReLU como uma função de ativação interessante para se utilizar em redes neurais. No trabalho, \textcite{Nair2010} foram responsáveis por demonstrar propriedades úteis das funções retificadoras, como a capacidade da NReLU de auxiliar em reconhecimentos de objetos por possuir equivariância de intensidade(\textit{intensity equivarience}), o que significa que se a intensidade da entrada de uma função for alterada por um determinado fator a intensidade de sua saída será alterada pelo mesmo fator. Essa propriedade se torna bastante útil em casos que queremos preservar informações, como ao comparar imagens, garantindo melhor precisão por exemplo em situações de baixa luz quando comparados com cenários em que possuem muita luz nas imagens.
 
-Além disso, no texto \textit{Deep Sparse Rectifier Neural Networks} dos autores \textcite{Glorot}, o uso de unidades retificadoras não lineares são propostos como alternativas para a tangente hiperbólica e sigmoide em redes neurais profundas, mas também os pesquisadores são capazes de demonstrar que as unidades retificadoras se aproximam melhor do comportamento de neurônios biológicos. Um ponto chave desse texto é que os autores destacam características importantes que a esparsidade traz para uma rede neural possibilitada pelo uso de funções retificadoras \parencite{Glorot}. Entre elas estão:
+Além disso, no trabalho \textit{Deep Sparse Rectifier Neural Networks} dos autores \textcite{Glorot}, o uso de unidades retificadoras não lineares são propostos como alternativas para a tangente hiperbólica e sigmoide em redes neurais profundas, mas também os pesquisadores são capazes de demonstrar que as unidades retificadoras se aproximam melhor do comportamento de neurônios biológicos. Um ponto chave desse texto é que os autores destacam características importantes que a esparsidade traz para uma rede neural possibilitada pelo uso de funções retificadoras \parencite{Glorot}. Entre elas estão:
 
 \begin{itemize}
     \item \textbf{Desembaraçamento de Informações:} Um dos principais objetivos dos algoritmos de aprendizado profundo é desembaraçar os fatores que explicam as variações nos dados, assim, existem diferentes tipos de representações, uma representação densa é altamente emaranhada porque quase qualquer mudança na entrada modifica a maior parte as entradas no vetor de representação, contudo, se tivermos uma representação esparsa e robusta a pequenas mudanças na entrada, o conjunto de características diferentes de zero é quase sempre aproximadamente conservado por pequenas mudanças na entrada \parencite{Glorot};
@@ -70,9 +70,9 @@ Além disso, no texto \textit{Deep Sparse Rectifier Neural Networks} dos autores
     \item \textbf{Distribuídas, mas esparsas}. Representações densamente distribuídas são as representações mais ricas, sendo potencialmente exponencialmente mais eficientes do que as puramente locais, além disso a eficiência das representações esparsas ainda é exponencialmente maior, com a potência do expoente sendo o número de características diferentes de zero, elas podem representar uma boa compensação em relação aos critérios acima \parencite{Glorot}.
 \end{itemize}
 
-Por fim, um último trabalho que colaborou para a popularização da ReLU foi a \textit{AlexNet}, de \textcite{AlexNet}, essa rede neural convolucional (CNN) foi capaz ganhar o Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC) sendo treinada para classificar 1.2 milhões de imagens de alta resolução e classificá-las em 1000 diferentes classes. Para isso, essa rede convolucional foi construída utilizando 8 camadas com pesos, sendo as primeiras 5 camadas convolucionais, enquanto as três últimas são camadas totalmente conectadas, a última camada de neurônios faz uso da função de ativação \textit{softmax} para fazer a distribuição em 1000 diferentes classes, por último mas não menos importante, a \textit{AlexNet} fez uso da ReLU em sua arquitetura \parencite{AlexNet}.
+Por fim, um último trabalho que colaborou para a popularização da ReLU foi a \textit{AlexNet}, de \textcite{AlexNet}, essa rede neural convolucional (CNN) foi capaz ganhar o Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC) sendo treinada para classificar 1.2 milhões de imagens de alta resolução e classificá-las em 1000 diferentes classes. Para isso, essa CNN foi construída utilizando 8 camadas com pesos, sendo as primeiras 5 camadas convolucionais, enquanto as três últimas são camadas totalmente conectadas, a última camada de neurônios faz uso da função de ativação \textit{softmax} para fazer a distribuição em 1000 diferentes classes, por último mas não menos importante, a \textit{AlexNet} fez uso da ReLU em sua arquitetura \parencite{AlexNet}.
 
-Assim, como pode ser visto na tabela \ref{tab:desempenho-alexnet}, a \textit{AlexNet} foi capaz de alcançar uma taxa de erro de 15.3\% na fase de testes, note com base na variação de camadas convolucionais, que essa é uma rede que se beneficia da sua profundidade, algo que provavelmente só foi capaz de ocorrer devido ao uso da ReLU como função de ativação, por não gerar o problema do desaparecimento de gradientes como nas sigmoides. Além disso, a rede SIFT + FVs (\textit{Scale-Invariant Feature Transform + Fisher Vectors}) é mostrada na tabela como base de comparativo, perceba que a AlexNet foi capaz de diminuir com mais de 10\% dos erros que essa rede gerava.
+Assim, como pode ser visto na tabela \ref{tab:desempenho-alexnet}, a \textit{AlexNet} foi capaz de alcançar uma taxa de erro de 15.3\% na fase de testes, note com base na variação de camadas convolucionais, que essa é uma rede que se beneficia da sua profundidade, algo que provavelmente só foi capaz de ocorrer devido ao uso da ReLU como função de ativação, por não gerar o problema do desaparecimento de gradientes como nas sigmoidais. Além disso, a rede SIFT + FVs (\textit{Scale-Invariant Feature Transform + Fisher Vectors}) é mostrada na tabela como base de comparativo, perceba que a AlexNet foi capaz de diminuir com mais de 10\% dos erros que essa rede gerava.
 
 Além disso, o modelo SIFT + FVs (\textit{Scale-Invariant Feature Transform + Fisher Vectors},) o qual é apresentado como base de comparação, apresenta uma taxa de erro de 26.2\%, um aumento de 10 pontos percentuais quando comparado com o melhor modelo da AlexNet de 15.3\%.
 
@@ -125,9 +125,9 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
     \fonte{O autor (2025).}
 \end{figure}
 
-Como estamos trabalhando com redes neurais, uma das maiores vantagens dessas redes é o fato delas “aprenderem” com base na retropropagação do gradiente nas camadas da rede. Assim, ao calcular o gradiente para fazer a retropropagação do erro e ajustar os pesos e vieses das camadas, é necessário ter em mente também a derivada daquela função de ativação que que será aplicada em uma camada de neurônios da rede, dado que ela entrará no \textit{backward pass} do modelo.
+ao trabalhar com redes neurais, uma das maiores vantagens destas é o fato de “aprenderem” com base na retropropagação do gradiente nas camadas da rede. Assim, ao calcular o gradiente para fazer a retropropagação do erro e ajustar os pesos e vieses das camadas, é necessário ter em mente também a derivada daquela função de ativação que que será aplicada em uma camada de neurônios da rede, dado que ela entrará no \textit{backward pass} do modelo.
 
-Para achar a derivada da ReLU, você pode simplesmente derivar as duas condicionais dela, assim, quando $x$ for maior que zero, a saída será 1, já quando $x$ for menor que zero, a saída será zero. Mas você vai encontrar um problema nisso, a derivada dessa função não existe quando $x$ é 0, pois o limite lateral à esquerda dessa função é zero, enquanto o limite lateral a direita dela é um. Isso passa a ser um problema quando queremos calcular o valor de saída justamente quando aquele valor de entrada é zero. Na prática, esse problema é fácil de resolver quando estamos trabalhando com o código dessa função, basta escolhermos qual será o resultado da ReLU quando esse valor de entrada for zero. Podemos dizer que ele será 1 ou zero, isso irá depender somente da nossa implementação da derivada da ReLU. Note que, essa descontinuidade da ReLU, se torna um problema quando estamos trabalhando com sua derivada.
+Para achar a derivada da ReLU, você pode simplesmente derivar as duas condicionais dela, assim, quando $x$ for maior que zero, a saída será 1, já quando $x$ for menor que zero, a saída será zero. Mas você vai encontrar um problema nisso, a derivada dessa função não existe quando $x$ é 0, pois o limite lateral à esquerda dessa função é zero, enquanto o limite lateral a direita dela é um. Isso passa a ser um problema quando queremos calcular o valor de saída justamente quando aquele valor de entrada é zero. Na prática, esse problema é fácil de resolver, ao desenvolver o código dessa função, escolher qual será o resultado da ReLU quando esse valor de entrada for zero. Podemos dizer que ele será um ou zero, isso irá depender somente da nossa implementação da derivada da ReLU. Note que, essa descontinuidade da ReLU, se torna um problema quando estamos trabalhando com sua derivada.
 
 Assim, a derivada da ReLU é dada pela expressão \ref{eq:relu-derivada}.
 
@@ -138,7 +138,7 @@ Assim, a derivada da ReLU é dada pela expressão \ref{eq:relu-derivada}.
 
 Esse detalhe da descontinuidade da ReLU no ponto zero foi algo que acabou mudando em funções futuras, que buscam corrigir erros da ReLU e melhorá-la,assim, com o passar do tempo foram surgindo outras alternativas que também trabalhassem com os atributos da ReLU, mas que fossem contínuas em toda a reta, permitindo a sua derivação também em todos os pontos. Uma dessas funções a ELU, ela será explicada mais em frente.
 
-Além de termos a sua derivada em equação, é possível fazer também o seu gráfico na figura \ref{eq:relu-derivada}, note que ele é ainda mais simples que a própria função de ativação, são só duas retas constantes que irão retornar zero quando o número for menor que zero, ou irão retornar 1 quando a entrada for um número maior que zero.
+Além da sua representação em forma de equação, é possível fazer também o seu gráfico na figura \ref{eq:relu-derivada}, note que ele é ainda mais simples que a própria função de ativação, são só duas retas constantes que irão retornar zero quando o número for menor que zero, ou irão retornar 1 quando a entrada for um número maior que zero.
 
 \begin{figure}[h!] % Use [htbp] para dar flexibilidade ao LaTeX
     \centering % Centraliza o gráfico na página
@@ -164,32 +164,6 @@ Além de termos a sua derivada em equação, é possível fazer também o seu gr
 
 Assim, com toda essa simplicidade e versatilidade, a ReLU se tornou uma função que é considerada padrão para a maioria das redes neurais \textit{feedforward} \parencite{DeepLearningBook}. Contudo, ela também apresenta problemas assim como as sigmoidais, esses problemas serão explicados mais à frente.
 
-\subsection{Implementação em Python}
-
-Sabendo qual é o comportamento da ReLU, quais são suas fórmulas e quais são seus gráficos, é possível trabalhar em uma implementação dessa função utilizando Python. Para fazer isso, criamos uma classe com duas funções: a \texttt{forward} e a \texttt{backward}. A função \texttt{forward} é responsável por implementar a ReLU, já a \texttt{backward} implementa a sua derivada. Para criar a \texttt{forward}, podemos utilizar uma função já pronta da biblioteca numpy, a \texttt{maximum}, essa função é responsável por comparar dois valores e escolher o maior deles. Neste caso, um dos valores será sempre zero, enquanto o outro será a entrada da função. Já a \texttt{backward}, irá receber o gradiente retropropagado, e irá aplicar na fórmula da derivada da ReLU, comparando se aquele valor é negativo e retornando zero, caso for, ou um caso seja positivo.
-
-\textbf{Implementação em Python}
-
-\begin{codelisting}{Classe completa do função de ativação Rectified Linear Unit}{gd_class}
-import numpy as np
-from layers.base import Layer
-
-class ReLU(Layer):
-    def __init__(self):
-        super().__init__()
-        self.input = None
-
-    def forward(self, input_data):
-        self.input = input_data
-        return np.maximum(0, self.input)
-
-    def backward(self, grad_output):
-        relu_grad = (self.input > 0)
-
-        # Apply the chain rule
-        return grad_output * relu_grad, None
-\end{codelisting}
-
 \section{ReLUs Agonizantes}
 
 Mesmo apresentando tantas propriedades úteis, como o fato de impedir o problema do desaparecimento de gradientes além de ser uma função computacionalmente barata, a ReLU não é perfeita. Ela é responsável por causar um problema conhecido como ReLUs agonizantes (\textit{Dying ReLUs problem}), que será explicado nessa seção. Para isso, é preciso lembrar primeiro da equação da camada densa:
@@ -206,7 +180,7 @@ Essa condição de vários neurônios morrendo causada pela ReLU acabou por gera
 
 Diferente da ReLU tradicional que retorna zero para os casos em que sua entrada é negativa e por isso na sua derivada irá também retornar zero nestes casos, as variantes com vazamento atuam de outra forma, elas retornam um valor muito pequeno como 0.1, multiplicado pela entrada da função quando ela é negativa. Por isso, a sua derivada será algo também 0.1 (ou valores muito pequenos), isso permite um "vazamento" do gradiente em cenários nos quais a entrada do neurônio será negativa.
 
-Nós vimos, que a causa do neurônios agonizantes era justamente isso: muitas situações em que a entrada era negativa, que gerava um gradiente nulo e consequentemente impedia os neurônios de terem seus pesos e vieses ajustados, e futuramente morrendo, retornando zero independente de qual fosse a sua entrada.
+Como foi visto, que a causa do ReLUs agonizantes era justamente isso: muitas situações em que a entrada era negativa, que gerava um gradiente nulo e consequentemente impedia os neurônios de terem seus pesos e vieses ajustados, e futuramente morrendo, retornando zero independente de qual fosse a sua entrada.
 
 Assim, essas variantes, como a Leaky ReLU e a PReLU buscam tentar corrigir um amenizar esse problema da ReLU mas mantendo algumas de suas principais propriedades, como a não linearidade, a capacidade de ser escrita compondo duas retas permitindo a criação de uma função simples e rápida de ser computada em uma rede neural.
 
@@ -222,16 +196,16 @@ Assim, essas variantes, como a Leaky ReLU e a PReLU buscam tentar corrigir um am
 
 Seguindo adiante, é possível analisar agora a Leaky ReLU, ela é uma variante da ReLU que foi criada com intuito de corrigir o problema do neurônios agonizantes. Assim como a ReLU, que foi explicada com a analogia do vendedor de pipoca, podemos extender essa explicação para essa nova função, antes o limiar para comprar um pacote de pipoca era de R\$ 5,00, quem tivesse menos que isso não comprava nada. Mas agora, para garantir que todos possam comprar pipoca, você como vendedor definiu que quando uma pessoa tiver menos que R\$ 5,00 ela também será capaz de comprar pipoca, só que neste caso ela comprará um punhado de pipoca que será proporcional ao dinheiro que ela tem multiplicado por uma constante $\alpha$. Assim, uma pessoa com um valor próximo de R\$ 5,00 pode sair com um punhado de pipoca quase igual ao do pacote original se essa constante $\alpha$ for um valor muito proximo de um. Com isso, você como vendedor consegue obter lucro com uma nova clientela além de não perder clientes por não possuírem o valor total do pacote de pipoca. A Leaky ReLU traz uma proposta parecida para resolver com o problema do neurônios agonizantes.
 
-Ela foi apresentada no artigo \textit{Recfier Nonlinearites Improve Neural Networks Acustic Models}, em que os autores exploram o uso de redes retificadoras profundas como modelos acústicos para a tarefa de reconhecimento de fala conversacional \textit{switchboard} \parencite{LeakyReLUArticle}. Além disso, a sua principal diferença, como explicam \textcite{LeakyReLUArticle}, está no fato dela permitir que um pequeno gradiente diferente de zero flua quando a unidade está saturada e não ativa. Esse gradiente diferente de zero que flui quando a unidade está saturada e não ativa são os seus compradores de pipoca que não possuem o valor total mas são capazes de comprar um punhado dela, neste caso a unidade estará não ativa pois o valor de entrada é negativo mas irá retornar um valor diferente de zero, algo que não acontecia na ReLU.
+Essa função de ativação foi apresentada no artigo \textit{Recfier Nonlinearites Improve Neural Networks Acustic Models}, em que os autores exploram o uso de redes retificadoras profundas como modelos acústicos para a tarefa de reconhecimento de fala conversacional \textit{switchboard} \parencite{LeakyReLUArticle}. Além disso, a sua principal diferença, como explicam \textcite{LeakyReLUArticle}, está no fato dela permitir que um pequeno gradiente diferente de zero flua quando a unidade está saturada e não ativa. Esse gradiente diferente de zero que flui quando a unidade está saturada e não ativa são os seus compradores de pipoca que não possuem o valor total mas são capazes de comprar um punhado dela, neste caso a unidade estará não ativa pois o valor de entrada é negativo mas irá retornar um valor diferente de zero, algo que não acontecia na ReLU.
 
-Continuando, podemos discutir a expressão matemática da Leaky ReLU, a qual é dada pela equação \ref{eq:leaky-relu}, que é bem parecida com a ReLU, porém, ela também irá retornar valores negativos quando a sua entrada for um valor negativo, diferente da ReLU, que iria retornar como saída zero. A constante $\alpha$, no texto original é dada por 0.1 fazendo com que os valores negativos sejam pequenos mas ainda sim, diferentes de zero quando passam pela entrada \parencite{LeakyReLUArticle}. Cabe destacar que, essa constante $\alpha$ pode ser ajustada para diferentes cenários, podendo ser valores diferentes de 0.1 como foram propostos no texto original, é possível ver isso acontecendo em comparativos ao longo desse texto, em que diferentes autores optam por valores diferentes de $\alpha$ para melhor ajustar ao problema que está sendo analisado.
+Também é possível discutir a expressão matemática da Leaky ReLU, a qual é dada pela equação \ref{eq:leaky-relu}, que é bem parecida com a ReLU, porém, ela também irá retornar valores negativos quando a sua entrada for um valor negativo, diferente da ReLU, que iria retornar como saída zero. A constante $\alpha$, no texto original é dada por 0.1 fazendo com que os valores negativos sejam pequenos mas ainda sim, diferentes de zero quando passam pela entrada \parencite{LeakyReLUArticle}. Cabe destacar que, essa constante $\alpha$ pode ser ajustada para diferentes cenários, podendo ser valores diferentes de 0.1 como foram propostos no texto original, é possível ver isso acontecendo em comparativos ao longo desse capítulo, em que diferentes autores optam por valores diferentes de $\alpha$ para melhor ajustar ao problema que está sendo analisado.
 
 \begin{equacaodestaque}{Leaky ReLU (LReLU)}
     \text{LReLU}(z_i) = \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha \cdot z_i, & \text{se } z_i < 0\end{cases} \text{ou} \text{LReLU}(z_i) = \max(0, \alpha z_i)
     \label{eq:leaky-relu}
 \end{equacaodestaque}
 
-Já para a sua representação gráfica, o seu gráfico está presente na figura \ref{fig:leaky-relu}, analisando ele, perceba que a Leaky ReLU possui características muito semelhantes com a ReLU, como o fato dela assumir o comportamento de uma função identidade para para valores positivos em sua entrada, mas, quando analisamos seus valores negativos vemos uma diferença, agora eles são dados por um gráfico de uma função do primeiro grau, diferente da ReLU que era uma função constante em zero. Além disso, a LReLU, também é uma função assimétrica e não linear, bem como apresenta um ponto de descontinuidade em zero, pois ao traçarmos os seus limites laterais, eles apresentam valores diferentes, por isso ela não pode ser derivada nesse ponto, assim como a ReLU que vimos anteriormente.
+Já para a sua representação gráfica, ela está presente na figura \ref{fig:leaky-relu}. Perceba que a Leaky ReLU possui características muito semelhantes com a ReLU, como o fato dela assumir o comportamento de uma função identidade para para valores positivos em sua entrada, mas, quando é analisado os seus valores negativos é possível ver uma diferença, agora eles são dados por um gráfico de uma função do primeiro grau, diferente da ReLU que era uma função constante em zero. Além disso, a LReLU, também é uma função assimétrica e não linear, bem como apresenta um ponto de descontinuidade em zero, pois ao traçar os seus limites laterais, eles apresentam valores diferentes, por isso ela não pode ser derivada nesse ponto, assim como a ReLU vista anteriormente.
 
 \begin{figure}[h!]
     \centering
@@ -253,14 +227,14 @@ Já para a sua representação gráfica, o seu gráfico está presente na figura
     \fonte{O autor (2025).}
 \end{figure}
 
-Sabendo de sua expressão e seu gráfico, é possível agora calcular sua derivada, para isso, deve-se derivar as duas condicionais que estão na função da Leaky ReLU. Assim, quando a entrada dessa função for maior que zero, essa função será $x$ que derivada é 1, já quando a entrada for menor que zero, a função será $\alpha x$, que quando derivada tem como resultado a própria constante $\alpha$. Contudo, como dito anteriormente, a derivada da Leaky ReLU não existe quando a entrada é exatamente zero, mas na prática, quando estamos trabalhando com a sua definição na retropropagação, podemos definir um valor para a derivada nesse ponto, assim como fizemos com a ReLU tradicional. Com isso em mente, temos a equação \ref{eq:leaky-relu-derivada} que representa a derivada da Leaky ReLU, note que para a sua derivada nós não temos uma expressão reduzida quando comparada com a expressão original.
+Sabendo de sua expressão e seu gráfico, é possível agora calcular sua derivada, para isso, deve-se derivar as duas condicionais que estão na função da Leaky ReLU. Assim, quando a entrada dessa função for maior que zero, essa função será $x$ que derivada é 1, já quando a entrada for menor que zero, a função será $\alpha x$, que quando derivada tem como resultado a própria constante $\alpha$. Contudo, como dito anteriormente, a derivada da Leaky ReLU não existe quando a entrada é exatamente zero, mas na prática, ao trabalhar com a sua definição na retropropagação, é possível definir um valor para a derivada nesse ponto, assim como foi feito com a ReLU tradicional. Com isso em mente, tem-se então a equação \ref{eq:leaky-relu-derivada}, a qual representa a derivada da Leaky ReLU.
 
 \begin{equacaodestaque}{Derivada Leaky ReLU (LReLU)}
     \frac{d}{dz_i} [LReLU](z_i) = \begin{cases}1, & \text{se } z_i > 0 \\ \alpha, & \text{se } z_i \leqslant  0 \end{cases}
     \label{eq:leaky-relu-derivada}
 \end{equacaodestaque}
 
-Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qual é dado pela figura \ref{fig:leaky-relu-derivada}. Ele também é parecido com o gráfico da ReLU que vimos anteriormente, sendo composto por duas retas constantes, para valores positivos ele retorna 1 (assim como a ReLU), e para valores negativos ou nulos ele irá sempre retornar a constante $\alpha$, diferente da ReLU, que iria retornar zero, indicando que neste caso o neurônio não está passando nenhuma informação na na retropropagação do gradiente. Por esse motivo que e a Leaky ReLU tem esse nome, pois leaky em inglês significa "vazamento", e neste caso, como a derivada dela é diferente de zero, mesmo quando a entrada for negativa, ela irá passar informações durante a retropropagação, isso permite que o neurônio não morra, como acontecia em algumas redes que faziam uso da ReLU tradicional, e por esse motivo continue aprendendo pelo fato do gradiente continuar fluindo pela rede e consequentemente atualizando os pesos e vieses dos neurônios.
+Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qual é dado pela figura \ref{fig:leaky-relu-derivada}. Ele também é parecido com o gráfico da ReLU visto anteriormente, sendo composto por duas retas constantes, para valores positivos ele retorna 1 (assim como a ReLU), e para valores negativos ou nulos ele irá sempre retornar a constante $\alpha$, diferente da ReLU, que iria retornar zero, indicando que neste caso o neurônio não está passando nenhuma informação na na retropropagação do gradiente. Por esse motivo que e a Leaky ReLU tem esse nome, pois leaky em inglês significa "vazamento", e neste caso, como a derivada dela é diferente de zero, mesmo quando a entrada for negativa, ela irá passar informações durante a retropropagação, isso permite que o neurônio não morra, como acontecia em algumas redes que faziam uso da ReLU tradicional, e por esse motivo continue aprendendo pelo fato do gradiente continuar fluindo pela rede e consequentemente atualizando os pesos e vieses dos neurônios.
 
 \begin{figure}[h!]
     \centering
@@ -286,11 +260,9 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
     \fonte{O autor (2025).}
 \end{figure}
 
-Voltando para \textit{Recfier Nonlinearites Improve Neural Networks Acustic Models}, \textcite{LeakyReLUArticle} explicam sobre outras propriedades da LReLu, como o fato dela sacrificar a esparsidade de zero duros (\textit{hard-zero sparsity}) para ter um gradiente que é potencialmente mais robusto durante a otimização da rede neural.
+Em testes de desempenho realizados por \textcite{LeakyReLUArticle} em seu trabalho, eles foram capazes de analisar como uma rede neural que faz uso dessa função pode performar quando comparada com a ReLU tradicional e também com redes que fazem uso da Tangente hiperbólica, esse comparativo pode ser visto na tabela \ref{tab:leaky-relu-desempenho}. Note que as redes neurais que fizeram uso da Leaky ReLU como função de ativação obtiveram melhores resultandos quando comparadas com as redes que utilizaram a ReLU tradicional ou mesmo a Tangente Hiperbólica, veja que a rede que foi construída com 3 camadas utilizando a LReLU foi capaz de obter a menor taxa de erro de palavra (WER) no conjunto SWBD, com 17.8\%, esse resultado 0.3 pontos percentuais menor quando comparado com uma mesma rede de três camadas que utilizou a ReLU tradicional.
 
-Em testes de desempenho realizados por \textcite{LeakyReLUArticle}, eles foram capazes de analisar como uma rede neural que faz uso dessa função pode performar quando comparada com a ReLU tradicional e também com redes que fazem uso da Tangente hiperbólica, esse comparativo pode ser visto na tabela \ref{tab:leaky-relu-desempenho}. Note que as redes neurais que fizeram uso da Leaky ReLU como função de ativação obtiveram melhores resultandos quando comparadas com as redes que utilizaram a ReLU tradicional ou mesmo a Tangente Hiperbólica, vemos que a rede que foi construída com 3 camadas utilizando a LReLU foi capaz de obter a taxa de erro de palavra (WER) mais baixa no conjunto SWBD, com 17.8\%, esse resultado 0.3 pontos percentuais menor quando comparado com uma mesma rede de três camadas que utilizou a ReLU tradicional.
-
-Além disso, ainda na \ref{tab:leaky-relu-desempenho}, nas redes compostas por três camadas, a rede que fez uso da LReLU também foi melhor que suas outras concorrentes que fizeram uso da ReLU e da tanh, sendo capaz de ter a menor taxa de erro de palavra no conjunto de avaliação (EV), com 24.3\%, uma diferença de 0.1 pontos percentuais quando comparada com a ReLU de 24.4\%, já quando essa rede é comparada com a tangente hiperbólica, a diferença é ainda maior, sendo de 2.1 pontos percentuais, indicando que a LReLU trás resultados melhores quando comparada com essas duas funções de ativação.
+Além disso, ainda na tabela \ref{tab:leaky-relu-desempenho}, nas redes compostas por três camadas, a rede que fez uso da LReLU também foi melhor que suas outras concorrentes que fizeram uso da ReLU e da tanh, sendo capaz de ter a menor taxa de erro de palavra no conjunto de avaliação (EV), com 24.3\%, uma diferença de 0.1 pontos percentuais quando comparada com a ReLU de 24.4\%, já quando essa rede é comparada com a tangente hiperbólica, a diferença é ainda maior, sendo de 2.1 pontos percentuais, indicando que a LReLU traz resultados melhores quando comparada com essas duas funções de ativação.
 
 \begin{table}[ht]
     \centering
@@ -328,33 +300,11 @@ Além disso, ainda na \ref{tab:leaky-relu-desempenho}, nas redes compostas por t
     \end{threeparttable}
 \end{table}
 
-Agora comparando as redes que fazem uso de quatro camadas, cabe destacar os resultados da entropia cruzada no conjunto de desenvolvimento (Dev CrossEnt), que é uma métrica responsável por medir a diferença entre duas distribuições de probabilidade, neste cenário: a distrubição de probabilidade prevista pelo modelo e a distribuição de probabilidade real, com base nesses dois valores, a entropia cruzada consegue medir o quão bem o modelo de rede neural criado pelos pesquisadores está prevendo a transcrição correta da fala durante a fase de treinamento e ajuste, para isso, é utilizado o conjunto de dados de desenvolvimento (Dev Set). Tendo isso em mente, o modelo de quatro camadas que fez uso da Leaky ReLU em sua arquitetura obteve o melhor resultado dos seus outros dois concorrentes, para isso, sendo assim, ele teve como resultado uma entropia cruzada de 1.78, 0.01 menor que o modelo que fez uso da ReLU tradicional (que obteve 1.79) e 0.2 menor que o modelo que fez uso da tangente hiperbólica (que obteve 1.98).
+Agora comparando as redes que fazem uso de quatro camadas, cabe destacar os resultados da entropia cruzada no conjunto de desenvolvimento (Dev CrossEnt), que é uma métrica responsável por medir a diferença entre duas distribuições de probabilidade, neste cenário: a distrubição de probabilidade prevista pelo modelo e a distribuição de probabilidade real, com base nesses dois valores, a entropia cruzada consegue medir o quão bem o modelo de rede neural criado pelos pesquisadores está prevendo a transcrição correta da fala durante a fase de treinamento e ajuste, para isso, é utilizado o conjunto de dados de desenvolvimento (Dev Set). Tendo isso em mente, o modelo de quatro camadas que fez uso da Leaky ReLU em sua arquitetura obteve o melhor resultado dos seus outros dois concorrentes, sendo assim, ele teve como resultado uma entropia cruzada de 1.78, 0.01 menor que o modelo que fez uso da ReLU tradicional (que obteve 1.79) e 0.2 menor que o modelo que fez uso da tangente hiperbólica (que obteve 1.98).
 
-Ainda no grupo de redes que possuem quatro camadas, podemos ver um empate quando analisamos a acurácia no conjunto de desenvolvimento (Dev Acc), que é uma métrica responsável por medir a proporção das previsões corretas feitas pelo modelo quando comparadas com o total de previsões feitas. Assim, quando vemos a tabela \ref{tab:leaky-relu-desempenho}, as redes que fizeram uso tanto da ReLU quanto da Leaky ReLU obtiveram a mesma acurácia de 53.9\%, já quando comparamos com a tangente hiperbólica, vemos uma diferença de 4.1 pontos percentuais, indicando as funções retificadoras acabam sendo mais precisas para essa análise. Não somente elas são mais precisas, mas quando comparamos com a Leaky ReLU, vemos outros ganhos também, como menores taxas de erro de palavra (WER) tanto no conjunto Switchboard (SWBD) quanto no conjunto de avaliação (EV).
+Ainda no grupo de redes que possuem quatro camadas, é possível ver um empate ao analisar a acurácia no conjunto de desenvolvimento (Dev Acc), que é uma métrica responsável por medir a proporção das previsões corretas feitas pelo modelo quando comparadas com o total de previsões feitas. Assim, perceba que na tabela \ref{tab:leaky-relu-desempenho}, as redes que fizeram uso tanto da ReLU quanto da Leaky ReLU obtiveram a mesma acurácia de 53.9\%, já quando comparadas com a tangente hiperbólica, é possível ver uma diferença de 4.1 pontos percentuais, indicando as funções retificadoras acabam sendo mais precisas para essa análise. Não somente elas são mais precisas, mas quando comparadas com a Leaky ReLU, nota-se outros ganhos também, como menores taxas de erro de palavra (WER) tanto no conjunto Switchboard (SWBD) quanto no conjunto de avaliação (EV).
 
 Assim, a Leaky ReLU já é uma evolução quando comparamos com a ReLU tradicional, mas, podemos ir além e encontrar funções ainda mais complexas que também buscam assim como a LReLU resolver o problema do neurônios agonizantes com um vazamento de gradiente nos casos negativos, uma dessas funções é a PReLU, a qual veremos em seguida.
-
-\textbf{Implementação em Python}
-
-\begin{codelisting}{Classe completa do função de ativação Leaky ReLU}{gd_class}
-import numpy as np
-from layers.base import Layer
-
-
-class LeakyReLU(Layer):
-    def __init__(self, alpha=0.01):
-        super().__init__()
-        self.input = None
-        self.alpha = alpha
-
-    def forward(self, input_data):
-        self.input = input_data
-        return np.maximum(self.input * self.alpha, self.input)
-
-    def backward(self, grad_output):
-        leaky_relu_grad = np.where(self.input > 0, 1, self.alpha)
-        return grad_output * leaky_relu_grad, None
-\end{codelisting}
 
 \subsection{Parametric ReLU (PReLU)}
 
@@ -523,8 +473,6 @@ Quando comparamos o modelo C, que faz uso da PReLU e possui mais camadas convolu
 Um feito importante que deve ser destacado sobre a PReLU, que inclusive é o nome do artigo que foi responsável por introduzir essa função para a comunidade científica, é de que durante a pesquisa do texto \textit{Delving Deep into Rectifiers: Surpassing Human Level Performance on Image Net Classification}, \textcite{PReLUArticle} foram capazes de criar uma rede neural capaz de superar a capacidade humana de reconhecer diferentes conjuntos de imagens no ImagneNet Classification, isso ocorreu porque a um humano ao analisar o ImageNet apresenta uma taxa de erro Top-5 de 5.1\% e em um dos testes realizados pelos autores, uma rede neural alcançou uma taxa de erro Top-5 de 4.94\%, superando assim a capacidade humana de reconhecimento de imagens. 
 
 Assim, é nítido destacar que não somente a PReLU, mas as funções retificadoras de forma geral, foram capazes de trazer melhorias significativas para os modelos de aprendizado profundo quando comparadas com as funções sigmoides, as quais foram o padrão da indústria por muitos anos. De fato, a resolução do problema do desaparecimento do gradiente, possibilitou a criação de redes neurais ainda mais profundas, e com isso, sendo capazes de extrair mais informações e consequente melhores métricas, sendo capazes até de superar a capacidade humanas em algumas tarefas como nós vimos no texto.
-
-\textbf{Implementação em Python}
 
 \subsection{Randomized Leaky ReLU}
 
@@ -739,10 +687,6 @@ Já ao analisarmos a tabela \ref{tab:rrelu-cifar-100}, que nos mostra a taxa de 
 
 Ainda em \textit{Empirical Evaluation of Rectified Activations in Convolutional Network} \textcite{XuRReLU} explicam que a RReLU é uma função que ajuda a combater o sobreajuste (overfitting) do modelo, mas ainda devem ser feitos mais testes para descobrir como a aleatoriedade afeta os processos de treino e teste \parencite{XuRReLU}. Essa característica de ajudar a combater o sobreajuste é uma vantagem que a RReLU possui, permitindo com que modelos maiores e mais profundos possam ser criados e mesmo assim obtenham resultados significativos. Provavelmente, um dos motivos dela possuir essa função está no fato de que ela introduz uma maior aleatoriedade para o modelo, ajudando a impedir que ele decore os padrões, como em imagens dos conjuntos CIFAR-10 e CIFAR-100.
 
-\textbf{Implementação em Python}
-
-Considerando as fórmulas da RReLU, podemos construir o seu bloco de código \ref{lst:codigo-rrelu} que é capaz de implementar uma classe em python para atuar como a função Randomized Leaky ReLU.
-
 \section{Em Busca da Suavidade: As Variantes Não Lineares}
 
 Seguindo adiante, agora será visto um novo conjunto de variantes da ReLU tradicional, elas incluem funções que apresentam gráficos com curvas mais suaves, como é o caso da ELU, que faz uso de funções exponenciais para a sua composição e com isso consegue não só resolver o problema do neurônios agonizantes, mas também sendo uma função contínua na origem e portanto derivável em todo o seu domínio.
@@ -854,28 +798,26 @@ Com base nessa CNN e seus experimentos, é possível ver os resultados na tabela
     \end{threeparttable}
 \end{table}
 
-Isso nos indica que a ELU é uma excelente opção para problemas de classificação, especialmente se tivermos um grande número de classes a ser analisados. Contudo, uma rede neural convolucional que apresenta 18 camadas de convolução pode ser um tanto quanto custosa para ser processada por um computador, assim, faz se necessário o uso de unidades de GPUs para o processamento de uma rede como essa, para que mesmo sendo pesada para ser processada, os resultados possam sair um pouco mais rápidos.
+Isso indica que a ELU é uma excelente opção para problemas de classificação, especialmente se há um grande número de classes a ser analisadas. Contudo, uma rede neural convolucional que apresenta 18 camadas de convolução pode ser um tanto quanto custosa para ser processada por um computador, assim, faz se necessário o uso de unidades de GPUs para o processamento de uma rede como essa, para que mesmo sendo pesada para ser processada, os resultados possam sair um pouco mais rápidos.
 
 Por fim, cabe destacar algumas afirmações realizadas pelos autores ainda em \textit{Fast and Accurate Deep Networks Leaning By Exponential Linear Units (ELUs)}, segundo \textcite{ELUArticle}, quando comparamos a ELU com funções como a ReLU tradicional e Leaky ReLU, nós podemos notar um melhor e mais rápido aprendizado, além de que a Exponetial Linear Unit é capaz de garantir uma melhor generalização quando passa a ser utilizada em redes com mais de cinco camadas. Outro ponto destacado pelos autores, está no fato da ELU garantir noise rebust deactivation states, algo que mesmo com a Leaky ReLU e Parametric ReLU possuindo valores negativos, não são capazes de garantir ao serem utilizadas para construir uma rede neura \parencite{ELUArticle}.
 
 Mesmo apresentando um grande salto, quando comparada com a ReLU tradicional, a ELU também pode ser modificada para atender outros casos. Para isso, ela também tem variações, sendo uma delas a SELU, a qual adiciona a ELU um termo $\lambda$ para garantir uma autonormalização da rede que está sendo criada. Nós veremos essa função em seguida.
 
-\textbf{Implementação em Python}
-
 \subsection{Scaled Exponential Linear Unit (SELU)}
 
 A próxima função é uma variante da ELU, a Scaled Exponential Linear Unit, ou SELU. Ela se distingue da ELU tradicional pelo fato de que ela é capaz de implemtar propriedades auto-normalizadoras em uma rede que faz uso dessa função, como explicam os autores no artigo de sua introdução \textit{Self-Normalizing Neural Networks} \parencite{SELUArticle}.
 
- Os autores apresentam a fórmula \ref{eq:selu} para calcular essa função, em que o termo $\lambda$ é uma constante que será maior que 1 \parencite{SELUArticle}. Note que essa fórmula é bem parecida com a da Exponential Linear Unit, a única diferença é que ela estará sendo multiplicada pela constante $\lambda$, assim pode-se escrever também que $\text{SELU}(z_i) = \lambda \text{ELU}(z_i)$.
+Os autores apresentam a fórmula \ref{eq:selu} para calcular essa função, em que o termo $\lambda$ é uma constante que será maior que 1 \parencite{SELUArticle}. Note que essa fórmula é bem parecida com a da Exponential Linear Unit, a única diferença é que ela estará sendo multiplicada pela constante $\lambda$, assim pode-se escrever também que $\text{SELU}(z_i) = \lambda \text{ELU}(z_i)$.
 
 \begin{equacaodestaque}{Scaled Exponential Linear Unit (ELU)}
     \text{SELU}(z_i) = \lambda \begin{cases}z_i, & \text{se } z_i > 0 \\ \alpha \cdot (e^{z_i} - 1), & \text{se } z_i \le 0\end{cases}
     \label{eq:selu}
 \end{equacaodestaque}
 
-Com relação ao seu gráfico, ele está presente na figura \ref{fig:selu}, neste caso, estamos considerando que as constantes $\alpha$ e $\lambda$ são dados por 1.7 e 1.05 respectivamente. Podemos notar que é um gráfico que lembra bastante a Leaky ReLU, mas que neste caso, quando a função recebe valores negativos, ela não estará mais assumindo o comportamento de uma reta, e sim o de uma curva exponencial, já para os cenários em que a entrada é postiva os resultados serão próximos os de uma função identidade, mas com uma reta um pouco mais inclinada. 
+Com relação ao seu gráfico, ele está presente na figura \ref{fig:selu}, neste caso, está sendo considerado que as constantes $\alpha$ e $\lambda$ são dadas por 1.7 e 1.05 respectivamente. Note que é um gráfico que lembra bastante a Leaky ReLU, mas que neste caso, quando a função recebe valores negativos, ela não estará mais assumindo o comportamento de uma reta, e sim o de uma curva exponencial, já para os cenários em que a entrada é postiva os resultados serão próximos os de uma função identidade, mas com uma reta um pouco mais inclinada. 
 
-Pelo fato da SELU ter um comportamento que também retorna valores para a saída quando a sua entrada é negativa, ela consegue combater o problema dos Dying ReLUs, causado pela ReLU, além de que também não é uma função saturante, como a sigmoide, o que também ajuda a resolver o problema da fuga dos gradientes. Mas, por não ser uma função saturante, e pelo fato de que sua saída vai para valores infinitos conforme os valores de sua entrada aumentam, ela está sujeita ao problema da explosão de gradientes.
+Pelo fato da SELU ter um comportamento que também retorna valores para a saída quando a sua entrada é negativa, ela consegue combater o problema dos ReLUs agonizantes, causado pela ReLU, além de que também não é uma função saturante, como a sigmoide, o que também ajuda a resolver o problema da fuga dos gradientes. Mas, por não ser uma função saturante, e pelo fato de que sua saída vai para valores infinitos conforme os valores de sua entrada aumentam, ela está sujeita ao problema da explosão de gradientes.
 
 \begin{figure}[h!]
     \centering
@@ -899,16 +841,16 @@ Pelo fato da SELU ter um comportamento que também retorna valores para a saída
     \fonte{O autor (2025).}
 \end{figure}
 
-Considerando agora que sabemos como é a equação da SELU e qual é o seu comportamento no gráfico, podemos também calcular a sua derivada para ser utilizada na retroproapagação do gradiente, para isso, deve-se derivar a expressão \ref{eq:selu}, considerando os dois cenários, em que a sua entrada será positiva e quando sua entrada for negativa ou zero. Um ponto que nos ajuda bastante ao calcular a derivada da SELU está no fato dela ser composta pela função ELU multiplicada por uma constante, se utilizarmos regras de derivação para esse cenário, precisaremos apenas derivar a ELU e depois adicionar a constante $\lambda$ multiplicando-a. Como nós já calculamos a derivada da ELU, podemos ver então a derivada da Scaled Exponential Linear Unit na equação \ref{eq:selu-derivada}.
+Considerando agora como é a equação da SELU e qual é o seu comportamento no gráfico, é possível também calcular a sua derivada para ser utilizada na retroproapagação do gradiente, para isso, deve-se derivar a expressão \ref{eq:selu}, considerando os dois cenários, em que a sua entrada será positiva e quando sua entrada for negativa ou zero. Um ponto que ajuda bastante ao calcular a derivada da SELU está no fato dela ser composta pela função ELU multiplicada por uma constante, se utilizarmos regras de derivação para esse cenário, precisaremos apenas derivar a ELU e depois adicionar a constante $\lambda$ multiplicando-a. Como nós já calculamos a derivada da ELU, podemos ver então a derivada da Scaled Exponential Linear Unit na equação \ref{eq:selu-derivada}.
 
-\begin{equacaodestaque}{Derivada Scaled Exponential Linear Unit (ELU)}
+\begin{equacaodestaque}{Derivada Scaled Exponential Linear Unit (SELU)}
     \frac{d}{dz_i} [SELU](z_i) = \lambda \begin{cases}1, & \text{se } z_i > 0 \\ \alpha \cdot e^{z_i}, & \text{se } z_i \le 0\end{cases}
     \label{eq:selu-derivada}
 \end{equacaodestaque}
 
-Sabendo a sua derivada, é possível também plotar o seu gráfico, para isso, ele est na figura \ref{fig:GraficoSELUDerivada}. Note, que o gráfico da derivada da SELU também possui grandes similaridades com a ELU original mas também com as outras retificadoras, pois também pode ser dividido em duas partes principais. A primeira parte, para os casos em que a entrada é negativa segue o comportamento de uma curva exponencial, enquanto a segunda parte é semelhante a uma reta constante com inclinação zero. 
+Sabendo a sua derivada, é possível também plotar o seu gráfico, para isso, ele está na figura \ref{fig:selu-derivada}. Note, que o gráfico da derivada da SELU também possui grandes similaridades com a ELU original mas também com as outras retificadoras, pois também pode ser dividido em duas partes principais. A primeira parte, para os casos em que a entrada é negativa segue o comportamento de uma curva exponencial, enquanto a segunda parte é semelhante a uma reta constante com inclinação zero. 
 
-Um ponto interessante dessa reta da segunda parte é que ela retorna justamente um valor bem próximo de um, assim como nas retificadoras, isso trás como benefício uma menor chance para ocorrer casos de fuga de gradiente, pois ele não estará sendo constantemente sendo multiplicado por valores pequenos e com isso reduzindo o seu valor. Mas, por outro lado, isso também acaba colaborando para que gradientes explosivos possam ocorrer.
+Um ponto interessante dessa reta da segunda parte é que ela retorna justamente um valor bem próximo de um, assim como nas retificadoras, isso trás como benefício uma menor chance para ocorrer casos de desaparecimento do gradiente, pois ele não estará sendo constantemente sendo multiplicado por valores pequenos e com isso reduzindo o seu valor. Mas, por outro lado, isso também acaba colaborando para que gradientes explosivos possam ocorrer.
 
 \begin{figure}[h!]
     \centering
@@ -933,7 +875,7 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
     \fonte{O autor (2025).}
 \end{figure}
 
-No texto, \textcite{SELUArticle}, comparam as redes neurais criadas por eles, as quais são chamadas de Self-Normalizing Neural Networks (SNN), com outras redes feedforward, como MSRAinit (uma FNN que não possui técnicas de normalização, com funções de ativação ReLU, e que faz uso do Microsoft weight initialization), a BatchNorm (uma FNN com normalização em lote), a LayerNorm (uma FNN com normalização nas camadas), a WightNorm (uma FNN com normalização nos pesos), a Highway e também com redes residuais ResNet. Para comparar essas redes, os autores escolhem 121 datasets do UCI, em que são apresentadas áreas de aplicação diversas como física e biologia, nesses dadatasets o seus tamanhos podem variar de 10 até 130.000 pontos de dados com o número de features variando de 4 a 250, na tabela \ref{tab:comparativo-selu}, é possível ver o ranking médio entre as SNNs e as outras diferentes arquiteturas em 75 tarefas de classificação.
+No texto, \textcite{SELUArticle}, comparam as redes neurais criadas por eles, as quais são chamadas de \textit{Self-Normalizing Neural Networks} (SNN), com outras redes \textit{feedforward}, como MSRAinit (uma FNN que não possui técnicas de normalização, com funções de ativação ReLU, e que faz uso do Microsoft weight initialization), a BatchNorm (uma FNN com normalização em lote), a LayerNorm (uma FNN com normalização nas camadas), a WightNorm (uma FNN com normalização nos pesos), a Highway e também com redes residuais ResNet. Para comparar essas redes, os autores escolhem 121 datasets do UCI, em que são apresentadas áreas de aplicação diversas como física e biologia, nesses dadatasets o seus tamanhos podem variar de 10 até 130.000 pontos de dados com o número de features variando de 4 a 250, na tabela \ref{tab:comparativo-selu}, é possível ver o ranking médio entre as SNNs e as outras diferentes arquiteturas em 75 tarefas de classificação.
 
 \begin{table}[ht]
     \centering
@@ -965,17 +907,15 @@ No texto, \textcite{SELUArticle}, comparam as redes neurais criadas por eles, as
     \end{threeparttable}
 \end{table}
 
-Para analisar essa tabela, podemos primeiro olhar o ranking médio de cada uma desses modelos, que é dado pela média de como esses modelos performaram nos diferentes datasets, considerando isso, nós notamos que as redes que fazem uso da SELU em sua composição, as SNNs, são as melhores, por uma diferença de 1.4 pontos quando comparadas com o segundo colocado, isso nos indica que a SELU pode ser uma ótima alternativa quando ainda não se sabe exatamente qual será o conjunto de dados que será trabalhado, se ele será de conceitos como física ou geologia, assim, elas garantem uma maior versatilidade para encarar diversos problemas. Além disso, se olharmos também o seu p-value, que vem de um teste de Wilcoxon pareado para verificar se a diferença em relação ao melhor colocado é signifitiva, vemos que as SNNs continuam se destacando, com o p-value mais alto, indicando que existe uma diferença que não é estatisticamente significativa quando ela é comparada com o modelo SVM, nos mostrando que podemos considerar as SNNs como se tivessem empatadas com o campeão.
+Para analisar essa tabela, podemos primeiro olhar o ranking médio de cada uma desses modelos, que é dado pela média de como esses modelos performaram nos diferentes datasets, considerando isso, note que as redes que fazem uso da SELU em sua composição, as SNNs, são as melhores, por uma diferença de 1.4 pontos quando comparadas com o segundo colocado, isso indica que a SELU pode ser uma ótima alternativa quando ainda não se sabe exatamente qual será o conjunto de dados que será trabalhado, se ele será de conceitos como física ou geologia, assim, elas garantem uma maior versatilidade para encarar diversos problemas. Além disso, ao olhar também o seu p-value, que vem de um teste de Wilcoxon pareado para verificar se a diferença em relação ao melhor colocado é signifitiva, vemos que as SNNs continuam se destacando, com o p-value mais alto, indicando que existe uma diferença que não é estatisticamente significativa quando ela é comparada com o modelo SVM, mostrando que podemos considerar as SNNs como se tivessem empatadas com o campeão.
 
-O interessante dessa comparação é olharmos ela considerando aquelas redes que fazem uso de técnicas de normalização para conseguir uma maior desempenho, como a BatchNorm e a LayerNorm, cada uma delas utiliza uma técnica de normalização diferente de forma a garantir que que problemas como os gradientes explosivos e fuga do gradiente não ocorra com tanta frequência e com isso permitindo um melhor convergência do modelo que está sendo treinado. Se olharmos por essa ótica, podemos chegar a conclusão que criar uma rede neural utilizando a SELU não só ura garantir uma maior versatilidade para a resolução de problemas, como também não teremos que nos preocupar em aplicar técnicas de normalização ao construir essa rede.
+O interessante dessa comparação é analisar ela considerando aquelas redes que fazem uso de técnicas de normalização para conseguir uma maior desempenho, como a BatchNorm e a LayerNorm, cada uma delas utiliza uma técnica de normalização diferente de forma a garantir que que problemas como os gradientes explosivos e desaparacimento do gradiente não ocorra com tanta frequência e com isso permitindo um melhor convergência do modelo que está sendo treinado. Se olharmos por essa ótica, podemos chegar a conclusão que criar uma rede neural utilizando a SELU não só ura garantir uma maior versatilidade para a resolução de problemas, como também não teremos que nos preocupar em aplicar técnicas de normalização ao construir essa rede.
 
 Voltando para o seu texto de introdução, os autores destacam propriedades importantes dessa nova função de atiavção criada, como o fato de que de que elas possbilitam a criação de redes neurais mais profundas além de serem capazes de aplicar fortes esquemas de regularização \parencite{SELUArticle}. Por favorecer a criação de RNAs mais profundas, como consequência, a SELU se torna uma excelente alternativa para ser utilizada em problemas complexos, que possuem muitas características e por essa razação necessitam de que mais camadas sejam construídas a fim de garantir um melhor processamento e aprendizado dos dados e com base nisso, alcançar métricas maiores, como uma maior acurácia indicando uma gerenalização maior e também uma perda menor, indicando que o gradiente conseguiu uma convergência melhor.
 
-\textbf{Implementação em Python}
-
 \subsection{Noisy ReLU}
 
-Seguindo adiante, a última variante da ReLU que iremos ver nessa seção das variantes suaves, é a Noisy ReLU, também conhecida como NReLU. Um dos trabalhos que explora as característica dessa função e como ela pode ser aplicada em uma RNA é o \textit{Rectified Linear Units Improve Restricted Boltzmann Machines} dos autores \textcite{Nair2010}. Nesse texto, os autores comparam o desenpenho dessa função com a função binária, dada pela equação \ref{eq: equacao-binary}, que era a opção mais comum para ser utilizada na construção de máquinas restritas de Boltzmann.
+Seguindo adiante, é possível conhecer a Noisy ReLU, também conhecida como NReLU. Um dos trabalhos que explora as característica dessa função e como ela pode ser aplicada em uma RNA é o \textit{Rectified Linear Units Improve Restricted Boltzmann Machines} dos autores \textcite{Nair2010}. Nesse texto, os autores comparam o desenpenho dessa função com a função binária, dada pela equação \ref{eq: equacao-binary}, que era a opção mais comum para ser utilizada na construção de máquinas restritas de Boltzmann.
 
 \begin{equation}
     f(z_i) = \begin{cases} 
@@ -1003,16 +943,16 @@ No texto, \textcite{Nair2010}, apresentam a NReLU como sendo dada pela equação
     \label{eq:nrelu}
 \end{equation}
 
-Antes de seguir em frente, é útil entende primeiro o que é ruído gaussiano, e para isso, precisamos entender antes a distribuição gaussiana. Segundo \textcite{DeepLearningBook}, a distribuição gaussiana é a distribuição mais utilizada para números reais, ela também é conhecida também por ser chamada de distribuição normal, ela é dada pela equação \ref{eq: DistribuicaoGaussiana}.
+Antes de seguir em frente, é útil entende primeiro o que é ruído gaussiano, e para isso, é preciso entender antes a distribuição gaussiana. Segundo \textcite{DeepLearningBook}, a distribuição gaussiana é a distribuição mais utilizada para números reais, ela também é conhecida por ser chamada de distribuição normal, ela é dada pela equação \ref{eq:distribuicao-gaussiana}.
 
 \begin{equation}
     \mathcal{N}(x; \mu, \sigma^2) = \sqrt{\frac{1}{2\pi\sigma^2}} \exp\left( -\frac{1}{2\sigma^2}(x - \mu)^2 \right)
-    \label{eq: DistribuicaoGaussiana}
+    \label{eq:distribuicao-gaussiana}
 \end{equation}
 
-Nessa equação, os dois parâmetros $\mu \in \mathbb{R}$ e $\sigma (0, \infty)$ controlam como a distribuição normal funciona; o termo $\mu$ é responsável por dar as coordenadas para o pico do centro, que é também a média da distribuição $\mathbb{E}[x] = \mu$, já o desvio padrão é dado por $\sigma$, equanto a variância é denotada por $\sigma^2$ \parencite{DeepLearningBook}. Para chegarmos no ruído gaussiano, precisamos então adicionar como parâmetros da equação da distribução gaussiana (equação \ref{eq: DistribuicaoGaussiana}) os termos que são dados pela equação \ref{eq: EquacaoNReLU}. 
+Nessa equação, os dois parâmetros $\mu \in \mathbb{R}$ e $\sigma (0, \infty)$ controlam como a distribuição normal funciona; o termo $\mu$ é responsável por dar as coordenadas para o pico do centro, que é também a média da distribuição $\mathbb{E}[x] = \mu$, já o desvio padrão é dado por $\sigma$, equanto a variância é denotada por $\sigma^2$ \parencite{DeepLearningBook}. Para chegarmos no ruído gaussiano, precisamos então adicionar como parâmetros da equação da distribução gaussiana (equação \ref{eq: DistribuicaoGaussiana}) os termos que são dados pela equação \ref{eq:nrelu}. 
 
-A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsável por nos dar um gráfico em formato de sino, como é mostrado na figura \ref{fig:GraficoDistNormalPadrao}. Esse gráfico indica quais são os casos que possuem uma maior probabilidade de acontecer, os casos que estão no centro, onde, $p(x)$ possuem uma maior probabilidade de acontecer, já conforme eles se distânciam desse centro essa propabilidade diminui.
+A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsável por nos dar um gráfico em formato de sino, como é mostrado na figura \ref{fig:distribuicao-normal-padrao}. Esse gráfico indica quais são os casos que possuem uma maior probabilidade de acontecer, os casos que estão no centro, onde, $p(x)$ possuem uma maior probabilidade de acontecer, já conforme eles se distânciam desse centro essa propabilidade diminui.
 
 \begin{figure}[htbp]
     \centering
@@ -1050,21 +990,11 @@ A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsá
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$).}
-    \label{fig:GraficoDistNormalPadrao}
+    \label{fig:distribuicao-normal-padrao}
     \fonte{O autor (2025).}
 \end{figure}
 
-Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o sey gráfico, o qual é dado pela figura \ref{fig:GraficoNReLU}. Vemos que ela compartilha a suavidade das funções ELU e SELU, apresentando uma curva para os casos em que a entrada é negativa, o que é bom, pois ela permite um vazamento de gradiente, evitando assim o Dying ReLU problem. Já para os cenários que a entrada é positiva ela assume o comportamento de uma função identidade, lembrando bastante as outras variantes da ReLU. Contudo, como os autores destacam no texto, ela não é capaz de resolver o problema da descontinuidade em zero, para isso, em sua derivada que é utilizada na retropropagação, os casos em que sua entrada é zero irão retornar zero como saída \parencite{Nair2010}.
-
-\begin{equacaodestaque}{Noisy ReLU (NReLU)}
-    \text{NReLU}(z_i) = \begin{cases} 
-    0 & \text{se } z_i \le 0 \\ 
-    z_i + \mathcal{N} (0, \sigma(z_i)) & \text{se } z_i > 0 
-    \end{cases}
-    \label{eq:nrelu}
-\end{equacaodestaque}
-
-Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o sey gráfico, o qual é dado pela figura \ref{fig:nrelu}. Vemos que ela compartilha a suavidade das funções ELU e SELU, apresentando uma curva para os casos em que a entrada é negativa, o que é bom, pois ela permite um vazamento de gradiente, evitando assim o Dying ReLU problem. Já para os cenários que a entrada é positiva ela assume o comportamento de uma função identidade, lembrando bastante as outras variantes da ReLU. Contudo, como os autores destacam no texto, ela não é capaz de resolver o problema da descontinuidade em zero, para isso, em sua derivada que é utilizada na retropropagação, os casos em que sua entrada é zero irão retornar zero como saída \parencite{Nair2010}.
+Entendendo a estrutura e como funciona a Noisy ReLU, é possível plotar o seu gráfico, o qual é dado pela figura \ref{fig:nrelu}. Note que ela compartilha a suavidade das funções ELU e SELU, apresentando uma curva para os casos em que a entrada é negativa, o que é bom, pois ela permite um vazamento de gradiente, evitando assim o o problema do ReLUs agonizantes. Já para os cenários que a entrada é positiva ela assume o comportamento de uma função identidade, lembrando bastante as outras variantes da ReLU. Contudo, como os autores destacam no texto, ela não é capaz de resolver o problema da descontinuidade em zero, para isso, em sua derivada que é utilizada na retropropagação, os casos em que sua entrada é zero irão retornar zero como saída \parencite{Nair2010}.
 
 \begin{figure}[h!]
     \centering
@@ -1089,7 +1019,7 @@ Entendendo a estrutura e como funciona a Noisy ReLU, podemos também plotar o se
     \fonte{O autor (2025).}
 \end{figure}
 
-Quando vamos calcular a sua derivada, encontramos um problema que não havia aparecido nas outras funções. O termo de ruído $\mathcal{N}$ é um termo não determísitico, o que significa que mesmo que tivéssemos a mesma entrada para a função Noisy ReLU duas ou mais vezes, não poderíamos afirmar com certeza de que essas saídas seriam iguais. Para resolver esses problemas, os autores consideram para a NReLU que sua função para o backward pass será irá retornar zero quando o valor de entrada for negativo ou nulo, e irá retornar um, quando o valor de entrada for positivo \parencite{Nair2010}. Então a expressão que representa a NReLU para a retroproagação é dada pela equação \ref{eq: nrelu-derivada}, note que ela é a mesma expressão da derivada da ReLU tradicional.
+Ao calcular a derivada da NReLU você encontrará um problema que não havia aparecido nas outras funções. O termo de ruído $\mathcal{N}$ é um termo não determísitico, o que significa que mesmo que tivéssemos a mesma entrada para a função Noisy ReLU duas ou mais vezes, não poderíamos afirmar com certeza de que essas saídas seriam iguais. Para resolver esses problemas, os autores consideram para a NReLU que sua função para o backward pass será irá retornar zero quando o valor de entrada for negativo ou nulo, e irá retornar um, quando o valor de entrada for positivo \parencite{Nair2010}. Então a expressão que representa a NReLU para a retropropagação é dada pela equação \ref{eq: nrelu-derivada}, note que ela é a mesma expressão da derivada da ReLU tradicional.
 
 \begin{equacaodestaque}{Derivada Noisy ReLU (NReLU)}
     \frac{d}{dz_i}[\text{NReLU}](z_i) = \begin{cases} 
@@ -1099,7 +1029,7 @@ Quando vamos calcular a sua derivada, encontramos um problema que não havia apa
     \label{eq:nrelu-derivada}
 \end{equacaodestaque}
 
-Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReLU, podemos então utilizar como base o gráfico da derivada da ReLU. Para isso, temos então a figura \ref{fig:nrelu-derivada}.
+Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReLU, então é possível utilizar como base o gráfico da derivada da ReLU. Para isso, tem-se então a figura \ref{fig:nrelu-derivada}.
 
 \begin{figure}[htbp] % Use [htbp] para dar flexibilidade ao LaTeX
     \centering % Centraliza o gráfico na página
@@ -1125,7 +1055,7 @@ Se a função da Noisy ReLU no backward pass será a mesma que a derivada da ReL
 
 No trabalho \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} exploram o desempenho da NReLU e ReLU utilizando o dataset NORB, que é um dataset para o reconhecimento de objetos 3D sintéticos que contém cinco classes: humanos, animais, carros, aviões e caminhões. No texto, os autores utilizam a versão Jittered-Cluttered NORB, uma variante que tem imagens estereoscópicas em tons de cinza com fundo desorganizado e um objeto central que é aleatoriamente instável em posição, tamanho, intensidade de pixels \parencite{Nair2010}. O desempenho dessas funções nesse dataset pode ser visto pelas tabelas \ref{tab:norb_error_rate} e \ref{tab:nrelu_norb_comparativo}.
 
-A tabela \ref{tab:norb_error_rate}, nos mostra a taxa de erro dos diferentes modelos no dataset, para isso, são construídos modelos com 4000 unidades ocultas treinados com imagens de dimensões 32x32x2. Podemos notar ao analisar a tabela que é nítido que os modelos que são pré-treinados utilizando máquinas de Boltzmann restritas apresentam um melhor desempenho de forma geral, da mesma forma que a NReLU oferece uma perda menor quando comparada com a função binária em ambos os casos: pré-treinado ou não. 
+A tabela \ref{tab:norb_error_rate}, mostra a taxa de erro dos diferentes modelos no dataset, para isso, são construídos modelos com 4000 unidades ocultas treinados com imagens de dimensões 32x32x2. Note ao analisar a tabela que é nítido que os modelos que são pré-treinados utilizando máquinas de Boltzmann restritas apresentam um melhor desempenho de forma geral, da mesma forma que a NReLU oferece uma perda menor quando comparada com a função binária em ambos os casos: pré-treinado ou não. 
 
 Mas, podemos fazer uma comparação ainda mais interessante, o modelo que faz uso da Noisy ReLU que não foi pré-treinado apresenta um resultado com uma diferença de 0.9 pontos quando comparado com o modelo treinado que faz uso da função binária. Isso é interessante porque nos indica que podemos conseguir um resultado muito melhor utilizando a Noisy ReLU mediante a função binária mesmo quando não tivermos condições de pré-treinar uma rede.
 
@@ -1133,7 +1063,7 @@ Mas, podemos fazer uma comparação ainda mais interessante, o modelo que faz us
     \centering
     \begin{threeparttable}
         \caption{Taxa de Erro de Classificadores no Dataset NORB Jittered-Cluttered}
-        \label{tab:norb_error_rate}
+        \label{tab:norb-error-rate}
         \begin{tabular}{lcc}
             \toprule
             \textbf{Pré-treinado?} & \textbf{NReLU (\%)} & \textbf{Binary (\%)} \\
@@ -1154,17 +1084,17 @@ Mas, podemos fazer uma comparação ainda mais interessante, o modelo que faz us
     \end{threeparttable}
 \end{table}
 
-Seguindo adiante, na tabela \ref{tab:nrelu_norb_comparativo} tembém é possível analisar as taxas de erro dos classicadores, mas, neste caso, eles possuem duas camadas ao invés de somente uma como mostrado da comparação da tabela \ref{tab:norb_error_rate}, assim a primeira camada é composta de 4000 unidades ocultas (assim como no primeiro caso), enquanto a segunda camada possui 2000 unidades ocultas. 
+Seguindo adiante, na tabela \ref{tab:nrelu-norb-comparativo} tembém é possível analisar as taxas de erro dos classicadores, mas, neste caso, eles possuem duas camadas ao invés de somente uma como mostrado da comparação da tabela \ref{tab:norb-error-rate}, assim a primeira camada é composta de 4000 unidades ocultas (assim como no primeiro caso), enquanto a segunda camada possui 2000 unidades ocultas. 
 
-Com base essa tabela nós podemos notar que o desempenho dos modelos que fazem uso da Noisy ReLU melhorou tanto nos casos em que as camadas não foram pré-treinadas, quanto nos casos em que uma ou ambas foram, quando se compara com os resultados da tabela \ref{tab:norb_error_rate}. Um ponto interessante disso é que no caso em que somente uma das camadas foi pré-treinada no modelo que usa a NReLU o seu resultado foi igual ao do primeiro caso onde existia somente uma camada, o que pode nos indicar que talvez não seja vantajoso adicionar mais camadas em uma rede caso não estejamos dispostos a pré-treiná-las. Note também que esse cenário com a unidade binária foi ainda pior, nos mostrando que não temos um grande ganho em adicionar mais camadas em uma rede que faz uso dessa função.
+Com base essa tabela é possível notar que o desempenho dos modelos que fazem uso da Noisy ReLU melhorou tanto nos casos em que as camadas não foram pré-treinadas, quanto nos casos em que uma ou ambas foram, quando se compara com os resultados da tabela \ref{tab:norb-error-rate}. Um ponto interessante disso é que no caso em que somente uma das camadas foi pré-treinada no modelo que usa a NReLU o seu resultado foi igual ao do primeiro caso onde existia somente uma camada, o que pode indicar que talvez não seja vantajoso adicionar mais camadas em uma rede caso não estejamos dispostos a pré-treiná-las. Note também que esse cenário com a unidade binária foi ainda pior, nos mostrando que não existe um grande ganho em adicionar mais camadas em uma rede que faz uso dessa função.
 
-Esse resultado prová-se ainda mais nítido quando vemos o caso em que ambas as camadas foram pré-treinadas, na unidade binária não houve nenhuma diminuição na sua perda, ela inclusive é pior que a do modelo que faz uso de apenas uma camada. Já quando observamos a Noisy ReLU e seus resultados, vemos um cenário bem diferente, os modelos que fazem uso dela apresentam um desempenho melhor quando são adicionadas mais camadas na rede, fazendo com que a perda da rede diminua, indicando que essa função permite a criação de redes mais profundas e com isso, desempenhos melhores possam ser alcançados.
+Esse resultado prová-se ainda mais nítido quando é analisado o caso em que ambas as camadas foram pré-treinadas, na unidade binária não houve nenhuma diminuição na sua perda, ela inclusive é pior que a do modelo que faz uso de apenas uma camada. Já quando é observada a Noisy ReLU e seus resultados, vemos um cenário bem diferente, os modelos que fazem uso dela apresentam um desempenho melhor quando são adicionadas mais camadas na rede, fazendo com que a perda da rede diminua, indicando que essa função permite a criação de redes mais profundas e com isso, desempenhos melhores possam ser alcançados.
 
 \begin{table}[ht]
     \centering
     \begin{threeparttable}
         \caption{Taxas de Erro de Classificadores no Dataset Jittered-Cluttered NORB}
-        \label{tab:nrelu_norb_comparativo}
+        \label{tab:nrelu-norb-comparativo}
         \begin{tabular}{llcc}
             \toprule
             \multicolumn{2}{c}{\textbf{Camadas Pré-treinadas}} & \multicolumn{2}{c}{\textbf{Taxa de Erro de Teste (\%)}} \\
@@ -1192,64 +1122,75 @@ Esse tópico de permitir a criação de redes mais profundas, que aconteceu just
 
 Ainda em \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} citam que uma das propriedades interessantes da NReLU é a intensity equivarience (), a qual é bem útil para o reconhecimento de objetos. No texto, os autores destacam que um dos principais objetivos ao contruir um sistema que faça o reconhecimento de objetos, é garantir que a saída seja invariante às propriedades da sua entrada, como localização, escala, iluminação e orientação, e a NReLU é uma das fubções que quando adicionada em uma rede neural, garante que isso possa ser atingido \parencite{Nair2010}.
 
-\textbf{Implementação em Python}
-
 \section{O Problema dos Gradientes Explosivos}
 
-Anteriormente, nós conhecemos as funções sigmoides, vimos que elas eram comumente utilizadas como as funções de ativação padrão de uma rede neural antes das funções retificadoras. Mas elas possuíam um problema, o do desaparecimento do gradiente. Esse problema acontecia porque essas funções retornavam sempre números muito pequenos em suas derivadas, que consequentemente eram multiplicadas no \textit{backward pass} com o gradiente retropropagado gerando como produto um número pequeno, esse número era então novamente multiplicado por outra constante de baixo valor e por aí vai, como resultado, o gradiente retropropagado que chegava nas primeiras camadas para atualizar os pesos e vieses da rede possuía um valor tão pequeno que muitas vezes não resultava em uma atualização capaz de gerar impacto no aprendizado da rede. Assim, tínhamos o problema do desaparecimento do gradiente.
+Anteriormente, ao conhecer as sigmoidais no capítulo \ref{cap:ativacao-sigmoidais}, foi possível ver que elas eram comumente utilizadas como as funções de ativação padrão de uma rede neural antes das retificadoras. Mas elas possuíam um problema, o do desaparacimento do gradiente. Esse problema acontecia porque essas funções retornavam sempre números muito pequenos em suas derivadas, que consequentemente eram multiplicadas no \textit{backward pass} com o gradiente retropropagado gerando como produto um número pequeno, esse número era então novamente multiplicado por outra constante de baixo valor e por aí vai, como resultado, o gradiente retropropagado que chegava nas primeiras camadas para atualizar os pesos e vieses da rede possuía um valor tão pequeno que muitas vezes não resultava em uma atualização capaz de gerar impacto no aprendizado da rede. Assim, tínhamos o problema do desaparecimento do gradiente.
 
-Já nessa seção nós conhecemos a ReLU, e vimos que ela veio como uma alternativa para as funções sigmoides e que era capaz de corrigir esse problema. Contudo, ela também possui problemas, pelo fato de ser uma função que não é suturante como as sigmoides, isso faz com que ela possa gerar o problema da explosão do gradiente, para entendê-lo primeiro precisamos nos lembrar da fórmula do gradiente retropropagado.
+Já neste capítulo, foram conhecidas as funções retificadoras, e como elas surgiram como uma alternativa para contornar esse problema. Contudo, elas também apresentam problemas, sendo um delos o dos gradientes explosivos, o qual será explicado nessa seção.
+
+Para explicar melhor essa condição será utilizado um exemplo como base.
+
+Como foi visto no capítulo \ref{cap:retropropagacao-gradiente}, o gradiente retropropagado para camadas anteriores de uma rede neural é proporcional a multiplicação da perda, com a derivada da função de ativação no ponto e o valor do resultado da camada anterior de neurônios. 
 
 \[
-        \frac{\partial E}{\partial w_{ik}} = 
-            \left( \sum_j \frac{\partial E}{\partial x_j} \cdot w_{ji} \right)
-        \cdot 
-            \sigma'(z_i)
-        \cdot 
-            a_k^{\text{ant}}
+    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma'(x^{(L)})
 \]
 
-O primeiro termo, o que possui o somatório, é responsável por calcular o erro total que chega para um neurônio $i$ da camada atual, para isso temos a equação \ref{eq: ErroRetropropagado}.
+Em que: 
+
+\begin{itemize}
+    \item $L$: Representa o índice de uma camada, podendo ser um valor entre $1$ (indicando que é uma camada de entrada) ou $n$ (indicando que é uma camada de saída);
+    \item $\textbf{W}^{(L)}$: Representa a matriz dde pesos que conecta a camada $L - 1$ à camada $L$;
+    \item $b^{(L)}$: Representa o vetor de viés da camada $L$;
+    \item $x^{(L)}$: Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
+    \item $y^{(L)}$: Representa o vetor de saídas da camada $L$
+    \item $\delta^{(L)}$: Representa o vetor do gradienye na camada $L$;
+    \item $\sigma'(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
+    \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
+\end{itemize}
+
+Considerando isso, imagine que temos uma rede composta por quatro camadas densas e cada camada tem apenas um neurônio com pesos iguais a 1. Dessa forma, é possível simplificar a fórmula vista para a equação \ref{eq:gradiente-retropropagado-simplificado}.
 
 \begin{equation}
-    \text{Erro}_i = \left( \sum_j \frac{\partial E}{\partial x_j} \cdot w_{ji} \right)
-    \label{eq: ErroRetropropagado}
+        \delta^{(L)} =  \delta^{(L+1)} \times \sigma'(x^{(L)})
+        \label{eq:gradiente-retropropagado-simplificado}
 \end{equation}
 
-$\partial E / \partial x_j$ nos indica o gradiente do erro em relação à saída de um neurônio $j$ que está na camada seguinte da rede. Para nós calcularmos ele, devemos aplicar a regra da cadeia, assim $\partial E / \partial x_j$ será dado pelo cálculo do erro vindo depois da camada $j$, uma camada $k$ por exemplo, assim, o erro será dado pela equação \ref{eq: ErroRetropropagadoK}.
+Considere também que as camadas da rede possuem a seguinte configuração:
 
-\begin{equation}
-    \text{Erro}_j = \left( \sum_k \frac{\partial E}{\partial x_k} \cdot w_{kj} \right)
-    \label{eq: ErroRetropropagadoK}
-\end{equation}
+\begin{itemize}
+    \item ReLU da primeira camada: tem como resultado da derivada $\text{ReLU}(z_i) = 15$
+    \item ReLU da camada densa 2: tem como resultado da derivada $\text{ReLU}(z_i) = 12$
+    \item ReLU da camada densa 3: tem como resultado da derivada $\text{ReLU}(z_i) = 22$
+    \item ReLU da camada de saída: tem como resultado da derivada $\text{ReLU}(z_i) = 25$
+\end{itemize}
 
-Note que temos um padrão nos cálculos dos erros.
+Além disso, você sabe também que o gradiente inicial na camada de saída está sendo de 1. Com isso é possível calcular o gradiente retropropagado para a primeira camada, comecando pela terceira, já que já temos o valor do gradiente para a camada de saída, dessa forma temos que:
 
-\begin{enumerate}
-    \item Para que nós possamos calcular o erro de uma camada $w_ba$ devemos encontrar o $\text{Erro}_b$;
-    \item Para encontrar o $\text{Erro}_b$, precisamos calcular o gradiente da camada seguinte: $\partial E / \partial x_c$
-    \item O gradiente ($\partial E / \partial x_c$) é calculado a partir do $\text{Erro}_c$
-    \item Para calcular o $\text{Erro}_c$, precisamos da camada seguinte e seu gradiente $\partial E / \partial x_d$ que envolve os pesos $w_de$
-    \item E assim por diante até a última camada da rede.
-\end{enumerate}
+\[\begin{WithArrows}
+    \delta^{(3)} & = \delta^{(4)} \times \text{ReLU}'(x^{(3)}) \Arrow{Subtituindo os valores} \\
+    \delta^{(3)} & = 1 \times 22 = 22
+\end{WithArrows}\]
 
-Com base nessa análise podemos encontrar uma expressão que será capaz de nos mostrar qual será o valor do gradiente retropropagado agora considerando as atualizações de pesos que é feita na rede, ela é dada pela equação \ref{eq: GradienteRetropropagado}.
+Seguindo adiante, é possível fazer o mesmo procedimento para encontrar $\delta^{(2)}$ agora já tendo $\delta^{(3)}$, dessa forma:
 
-\begin{equation}
-    \delta^l \propto (W^{l+1})^T \cdot (W^{l+2})^T \cdots (W^L)^T \cdot \delta^L 
-    \label{eq: GradienteRetropropagado}
-\end{equation} 
+\[\begin{WithArrows}
+    \delta^{(2)} & = \delta^{(3)} \times \text{ReLU}'(x^{(2)}) \Arrow{Subtituindo os valores} \\
+    \delta^{(2)} & = 22 \times 12 = 254
+\end{WithArrows}\]
 
-Note que, com base nessa expressão, se um cenário em que sempre houver valores muito grandes nos pesos das camadas da rede, ou ate mesmo muitas camadas, o gradiente que chegará na última camada poderá ter um valor muito alto, podendo atrapalhar o desempenho da rede neural e como ela irá aprender, assim temos um sério problema ao construir uma rede.
+De forma semelhante, é finalmente possível encontrar o gradiente retropropagado para a primeira camada:
 
-Esse tipo de problema, é chamado de problema da explosão do gradiente e ele pode ser definido da seguinte forma:
+\[\begin{WithArrows}
+    \delta^{(1)} & = \delta^{(2)} \times \text{ReLU}'(x^{(1)}) \Arrow{Subtituindo os valores} \\
+    \delta^{(1)} & = 254 \times 15 = 3.810
+\end{WithArrows}\]
 
-\begin{quote}
-    Quando o erro é retropropagado por uma rede neural, ele pode aumentar exponencialmente de camada para camada. Nesses casos, o gradiente em relação aos parâmetros em camadas inferiores pode ser exponencialmente maior do que o gradiente em relação aos parâmetros em
-    camadas superiores. Isso torna a rede difícil de treinar se ela for suficientemente profunda.
-\end{quote}
+Perceba que o gradiente inicial era apenas 1, ele está mais de mil vezes maior, com certeza isso pode ser um grande problema, considerando que é o gradiente que é utilizado como base para atualizar os parâmetros da rede durante o \textit{backward pass}. Esse fenômeno recebe o nome de gradiente explosivo, e pode ser definido como:
 
-\parencite[p.~2]{explodingGradient}
+\begin{definicaomoderna}{\textbf{Definição:}}
+    Quando o erro é retropropagado por uma rede neural, ele pode aumentar exponencialmente de camada para camada. Nesses casos, o gradiente em relação aos parâmetros em camadas inferiores pode ser exponencialmente maior do que o gradiente em relação aos parâmetros em camadas superiores. Isso torna a rede difícil de treinar se ela for suficientemente profunda. Tendo então o problema do gradiente explosivo \parencite{ExplodingGradient}.
+\end{definicaomoderna}
 
 Assim, mesmo a ReLU corrigindo o problema do desaparecimento do gradiente, ela acabou por introduzir uma nova categoria de problemas para uma rede neural. Acontecimentos assim são comuns, muitas vezes queremos concertar algo mas acabamos por atrapalhar outra parte de um projeto de rede neural, por isso, devemos escolher com calma quais funções serão utilizadas além de realizar testes para garantir uma melhor performance do modelo que está sendo criado.
 
