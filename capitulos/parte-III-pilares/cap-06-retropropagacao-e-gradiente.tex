@@ -158,6 +158,8 @@ Outro ponto que deve-se atentar é com relação as funções que estão sendo a
 \fonte{O autor (2025).}
 \end{figure}
 
+Conhecendo o funcionamento do método do gradiente, é possível agora entender a retropropagação, e como ela utiliza esse método para otimizar os pesos das redes neurais garantindo assim um aprendizado eficiente e também a automatização das trocas de parâmetros presentes em uma RNA.
+
 % ===================================================================
 % A Retropropagação
 % ===================================================================
@@ -524,6 +526,8 @@ Além disso, existem outras funções de ativação que possuem o efeito inverso
 
 Para isso, o capítulo \ref{cap:ativacao-sigmoidais} foca em entender as pricipais funções sigmoidais, como a sigmoide e a tangente hiperbólica, e como essas possuem uma forte relação com o problema do desaparecimento de gradientes. Em seguida, o capítulo \ref{cap:ativacao-retificadoras} busca introduzir as funções retificadoras, como a ReLU, e como elas podem ser uma alternativa para contornar esse problema. Contudo, isso não as torna perfeitas, elas ainda são suceptíveis à outro tipo de problema: a explosão de gradientes; e, no caso da ReLU: o problema dos ReLUs agonizantes.
 
+Conhecendo como a retropropagação funciona é possível se aprofundar ainda mais em diferentes otimizadores baseados no gradiente. Os quais possuem a mesma ideia de utilizar o vetor gradiente como uma "bússola" indicando os pontos de mínimo da função, porém neste caso, esses outros métodos buscam acelerar o processo de otimização, garantindo uma quantidade menor de iterações para encontrar o mínimos.
+
 % ===================================================================
 % Otimizadores Baseados em Gradiente
 % ===================================================================
@@ -745,6 +749,8 @@ Para melhor entender o funcionamento do ponto de \textit{lookahead} do NAG, é p
     \label{fig:funcionamento-nag}
     \fonte{O autor (2025).}
 \end{figure}
+
+Visto uma série de otimizadores mais antigos porém muito úteis para a tarefa de encontrar pontos de mínimo, é possível agora discutir os otimizadores mais recentes. Para isso, eles continuam seguindo a mesma ideia, utilizar o vetor gradiente como o parâmetro de indicação para encontrar pontos de mínimo. Porém, fazendo uso de técnicas mais avançadas da matemática e da programação, de forma a garantir não só uma convergência mais rápida, mas também conseguir escapar de pontos de sela e mínimos locais.
 
 \section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}
 
