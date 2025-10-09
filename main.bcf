@@ -2496,21 +2496,21 @@
     <bcf:citekey order="30" intorder="1">polyak1964</bcf:citekey>
     <bcf:citekey order="31" intorder="1">BackpropagationArticle</bcf:citekey>
     <bcf:citekey order="32" intorder="1">BackpropagationArticle</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">StochasticGradientDescentMethod</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">StochasticGradientDescentMethod</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">Adeline</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">Adeline</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">BackpropagationArticle</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">BackpropagationArticle</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">StochasticGradientDescentMethod</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">StochasticGradientDescentMethod</bcf:citekey>
     <bcf:citekey order="37" intorder="1">Adeline</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">MaosAObra</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">MaosAObra</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">Adeline</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">Adeline</bcf:citekey>
     <bcf:citekey order="40" intorder="1">MaosAObra</bcf:citekey>
     <bcf:citekey order="41" intorder="1">MaosAObra</bcf:citekey>
     <bcf:citekey order="42" intorder="1">MaosAObra</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">NAGMethod</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">NAGMethod</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">MaosAObra</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">MaosAObra</bcf:citekey>
     <bcf:citekey order="45" intorder="1">NAGMethod</bcf:citekey>
-    <bcf:citekey order="46" intorder="1">AdaGradMethod</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">AdaGradMethod</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">NAGMethod</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">NAGMethod</bcf:citekey>
     <bcf:citekey order="48" intorder="1">AdaGradMethod</bcf:citekey>
     <bcf:citekey order="49" intorder="1">AdaGradMethod</bcf:citekey>
     <bcf:citekey order="50" intorder="1">AdaGradMethod</bcf:citekey>
@@ -2527,10 +2527,10 @@
     <bcf:citekey order="61" intorder="1">AdaGradMethod</bcf:citekey>
     <bcf:citekey order="62" intorder="1">AdaGradMethod</bcf:citekey>
     <bcf:citekey order="63" intorder="1">AdaGradMethod</bcf:citekey>
-    <bcf:citekey order="64" intorder="1">RMSPropMethod</bcf:citekey>
-    <bcf:citekey order="65" intorder="1">RMSPropMethod</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">AdamMethod</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">AdamMethod</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">AdaGradMethod</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">AdaGradMethod</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">RMSPropMethod</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">RMSPropMethod</bcf:citekey>
     <bcf:citekey order="68" intorder="1">AdamMethod</bcf:citekey>
     <bcf:citekey order="69" intorder="1">AdamMethod</bcf:citekey>
     <bcf:citekey order="70" intorder="1">AdamMethod</bcf:citekey>
@@ -2548,88 +2548,88 @@
     <bcf:citekey order="82" intorder="1">AdamMethod</bcf:citekey>
     <bcf:citekey order="83" intorder="1">AdamMethod</bcf:citekey>
     <bcf:citekey order="84" intorder="1">AdamMethod</bcf:citekey>
-    <bcf:citekey order="85" intorder="1">NadamMethod</bcf:citekey>
-    <bcf:citekey order="86" intorder="1">NadamMethod</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">AdamMethod</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">AdamMethod</bcf:citekey>
     <bcf:citekey order="87" intorder="1">NadamMethod</bcf:citekey>
     <bcf:citekey order="88" intorder="1">NadamMethod</bcf:citekey>
     <bcf:citekey order="89" intorder="1">NadamMethod</bcf:citekey>
     <bcf:citekey order="90" intorder="1">NadamMethod</bcf:citekey>
     <bcf:citekey order="91" intorder="1">NadamMethod</bcf:citekey>
     <bcf:citekey order="92" intorder="1">NadamMethod</bcf:citekey>
-    <bcf:citekey order="93" intorder="1">AdamWMethod</bcf:citekey>
-    <bcf:citekey order="94" intorder="1">AdamWMethod</bcf:citekey>
+    <bcf:citekey order="93" intorder="1">NadamMethod</bcf:citekey>
+    <bcf:citekey order="94" intorder="1">NadamMethod</bcf:citekey>
     <bcf:citekey order="95" intorder="1">AdamWMethod</bcf:citekey>
     <bcf:citekey order="96" intorder="1">AdamWMethod</bcf:citekey>
     <bcf:citekey order="97" intorder="1">AdamWMethod</bcf:citekey>
     <bcf:citekey order="98" intorder="1">AdamWMethod</bcf:citekey>
-    <bcf:citekey order="99" intorder="1">RAdamMethod</bcf:citekey>
-    <bcf:citekey order="100" intorder="1">RAdamMethod</bcf:citekey>
-    <bcf:citekey order="101" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="102" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="103" intorder="1">Cybenko1989</bcf:citekey>
-    <bcf:citekey order="104" intorder="1">Cybenko1989</bcf:citekey>
-    <bcf:citekey order="105" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="106" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="107" intorder="1">Leshno1993</bcf:citekey>
-    <bcf:citekey order="108" intorder="1">Leshno1993</bcf:citekey>
-    <bcf:citekey order="109" intorder="1">SigmoidVerhulst1845</bcf:citekey>
-    <bcf:citekey order="110" intorder="1">SigmoidVerhulst1845</bcf:citekey>
-    <bcf:citekey order="111" intorder="1">BackpropagationArticle</bcf:citekey>
-    <bcf:citekey order="112" intorder="1">BackpropagationArticle</bcf:citekey>
+    <bcf:citekey order="99" intorder="1">AdamWMethod</bcf:citekey>
+    <bcf:citekey order="100" intorder="1">AdamWMethod</bcf:citekey>
+    <bcf:citekey order="101" intorder="1">RAdamMethod</bcf:citekey>
+    <bcf:citekey order="102" intorder="1">RAdamMethod</bcf:citekey>
+    <bcf:citekey order="103" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="104" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="105" intorder="1">Cybenko1989</bcf:citekey>
+    <bcf:citekey order="106" intorder="1">Cybenko1989</bcf:citekey>
+    <bcf:citekey order="107" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="108" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="109" intorder="1">Leshno1993</bcf:citekey>
+    <bcf:citekey order="110" intorder="1">Leshno1993</bcf:citekey>
+    <bcf:citekey order="111" intorder="1">SigmoidVerhulst1845</bcf:citekey>
+    <bcf:citekey order="112" intorder="1">SigmoidVerhulst1845</bcf:citekey>
     <bcf:citekey order="113" intorder="1">BackpropagationArticle</bcf:citekey>
-    <bcf:citekey order="114" intorder="1">SigmoidWilsonCowan</bcf:citekey>
-    <bcf:citekey order="115" intorder="1">SigmoidWilsonCowan</bcf:citekey>
+    <bcf:citekey order="114" intorder="1">BackpropagationArticle</bcf:citekey>
+    <bcf:citekey order="115" intorder="1">BackpropagationArticle</bcf:citekey>
     <bcf:citekey order="116" intorder="1">SigmoidWilsonCowan</bcf:citekey>
     <bcf:citekey order="117" intorder="1">SigmoidWilsonCowan</bcf:citekey>
     <bcf:citekey order="118" intorder="1">SigmoidWilsonCowan</bcf:citekey>
     <bcf:citekey order="119" intorder="1">SigmoidWilsonCowan</bcf:citekey>
     <bcf:citekey order="120" intorder="1">SigmoidWilsonCowan</bcf:citekey>
     <bcf:citekey order="121" intorder="1">SigmoidWilsonCowan</bcf:citekey>
-    <bcf:citekey order="122" intorder="1">ElmanNetwork</bcf:citekey>
-    <bcf:citekey order="123" intorder="1">ElmanNetwork</bcf:citekey>
-    <bcf:citekey order="124" intorder="1">PerceptronRosenblatt</bcf:citekey>
-    <bcf:citekey order="125" intorder="1">PerceptronRosenblatt</bcf:citekey>
-    <bcf:citekey order="126" intorder="1">ActivationFunctionsLederer</bcf:citekey>
-    <bcf:citekey order="127" intorder="1">ActivationFunctionsLederer</bcf:citekey>
+    <bcf:citekey order="122" intorder="1">SigmoidWilsonCowan</bcf:citekey>
+    <bcf:citekey order="123" intorder="1">SigmoidWilsonCowan</bcf:citekey>
+    <bcf:citekey order="124" intorder="1">ElmanNetwork</bcf:citekey>
+    <bcf:citekey order="125" intorder="1">ElmanNetwork</bcf:citekey>
+    <bcf:citekey order="126" intorder="1">PerceptronRosenblatt</bcf:citekey>
+    <bcf:citekey order="127" intorder="1">PerceptronRosenblatt</bcf:citekey>
     <bcf:citekey order="128" intorder="1">ActivationFunctionsLederer</bcf:citekey>
     <bcf:citekey order="129" intorder="1">ActivationFunctionsLederer</bcf:citekey>
-    <bcf:citekey order="130" intorder="1">TanhLambert</bcf:citekey>
-    <bcf:citekey order="131" intorder="1">LecunLeNet1998</bcf:citekey>
-    <bcf:citekey order="132" intorder="1">LecunLeNet1998</bcf:citekey>
+    <bcf:citekey order="130" intorder="1">ActivationFunctionsLederer</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">ActivationFunctionsLederer</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">TanhLambert</bcf:citekey>
     <bcf:citekey order="133" intorder="1">LecunLeNet1998</bcf:citekey>
-    <bcf:citekey order="134" intorder="1">ActivationFunctionsLederer</bcf:citekey>
-    <bcf:citekey order="135" intorder="1">ActivationFunctionsLederer</bcf:citekey>
-    <bcf:citekey order="136" intorder="1">Softsign1998</bcf:citekey>
+    <bcf:citekey order="134" intorder="1">LecunLeNet1998</bcf:citekey>
+    <bcf:citekey order="135" intorder="1">LecunLeNet1998</bcf:citekey>
+    <bcf:citekey order="136" intorder="1">ActivationFunctionsLederer</bcf:citekey>
     <bcf:citekey order="137" intorder="1">ActivationFunctionsLederer</bcf:citekey>
-    <bcf:citekey order="138" intorder="1">Householder1941</bcf:citekey>
-    <bcf:citekey order="139" intorder="1">Householder1941</bcf:citekey>
+    <bcf:citekey order="138" intorder="1">Softsign1998</bcf:citekey>
+    <bcf:citekey order="139" intorder="1">ActivationFunctionsLederer</bcf:citekey>
     <bcf:citekey order="140" intorder="1">Householder1941</bcf:citekey>
     <bcf:citekey order="141" intorder="1">Householder1941</bcf:citekey>
-    <bcf:citekey order="142" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="143" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="144" intorder="1">Glorot</bcf:citekey>
-    <bcf:citekey order="145" intorder="1">Glorot</bcf:citekey>
+    <bcf:citekey order="142" intorder="1">Householder1941</bcf:citekey>
+    <bcf:citekey order="143" intorder="1">Householder1941</bcf:citekey>
+    <bcf:citekey order="144" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="145" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="146" intorder="1">Glorot</bcf:citekey>
     <bcf:citekey order="147" intorder="1">Glorot</bcf:citekey>
     <bcf:citekey order="148" intorder="1">Glorot</bcf:citekey>
     <bcf:citekey order="149" intorder="1">Glorot</bcf:citekey>
     <bcf:citekey order="150" intorder="1">Glorot</bcf:citekey>
-    <bcf:citekey order="151" intorder="1">AlexNet</bcf:citekey>
-    <bcf:citekey order="152" intorder="1">AlexNet</bcf:citekey>
+    <bcf:citekey order="151" intorder="1">Glorot</bcf:citekey>
+    <bcf:citekey order="152" intorder="1">Glorot</bcf:citekey>
     <bcf:citekey order="153" intorder="1">AlexNet</bcf:citekey>
-    <bcf:citekey order="154" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="155" intorder="1">DyingReluDouglas</bcf:citekey>
-    <bcf:citekey order="156" intorder="1">DyingReluDouglas</bcf:citekey>
+    <bcf:citekey order="154" intorder="1">AlexNet</bcf:citekey>
+    <bcf:citekey order="155" intorder="1">AlexNet</bcf:citekey>
+    <bcf:citekey order="156" intorder="1">DeepLearningBook</bcf:citekey>
     <bcf:citekey order="157" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="158" intorder="1">DyingReluDouglas</bcf:citekey>
-    <bcf:citekey order="159" intorder="1">LeakyReLUArticle</bcf:citekey>
-    <bcf:citekey order="160" intorder="1">LeakyReLUArticle</bcf:citekey>
+    <bcf:citekey order="159" intorder="1">DyingReluDouglas</bcf:citekey>
+    <bcf:citekey order="160" intorder="1">DyingReluDouglas</bcf:citekey>
     <bcf:citekey order="161" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="162" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="163" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="164" intorder="1">LeakyReLUArticle</bcf:citekey>
-    <bcf:citekey order="165" intorder="1">PReLUArticle</bcf:citekey>
-    <bcf:citekey order="166" intorder="1">PReLUArticle</bcf:citekey>
+    <bcf:citekey order="165" intorder="1">LeakyReLUArticle</bcf:citekey>
+    <bcf:citekey order="166" intorder="1">LeakyReLUArticle</bcf:citekey>
     <bcf:citekey order="167" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="168" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="169" intorder="1">PReLUArticle</bcf:citekey>
@@ -2642,44 +2642,44 @@
     <bcf:citekey order="176" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="177" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="178" intorder="1">PReLUArticle</bcf:citekey>
-    <bcf:citekey order="179" intorder="1">XuRReLU</bcf:citekey>
-    <bcf:citekey order="180" intorder="1">XuRReLU</bcf:citekey>
+    <bcf:citekey order="179" intorder="1">PReLUArticle</bcf:citekey>
+    <bcf:citekey order="180" intorder="1">PReLUArticle</bcf:citekey>
     <bcf:citekey order="181" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="182" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="183" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="184" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="185" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="186" intorder="1">XuRReLU</bcf:citekey>
-    <bcf:citekey order="187" intorder="1">ELUArticle</bcf:citekey>
-    <bcf:citekey order="188" intorder="1">ELUArticle</bcf:citekey>
+    <bcf:citekey order="187" intorder="1">XuRReLU</bcf:citekey>
+    <bcf:citekey order="188" intorder="1">XuRReLU</bcf:citekey>
     <bcf:citekey order="189" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="190" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="191" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="192" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="193" intorder="1">ELUArticle</bcf:citekey>
-    <bcf:citekey order="194" intorder="1">SELUArticle</bcf:citekey>
-    <bcf:citekey order="195" intorder="1">SELUArticle</bcf:citekey>
+    <bcf:citekey order="194" intorder="1">ELUArticle</bcf:citekey>
+    <bcf:citekey order="195" intorder="1">ELUArticle</bcf:citekey>
     <bcf:citekey order="196" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="197" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="198" intorder="1">SELUArticle</bcf:citekey>
-    <bcf:citekey order="199" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="200" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="199" intorder="1">SELUArticle</bcf:citekey>
+    <bcf:citekey order="200" intorder="1">SELUArticle</bcf:citekey>
     <bcf:citekey order="201" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="202" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="203" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="204" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="203" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="204" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="205" intorder="1">DeepLearningBook</bcf:citekey>
-    <bcf:citekey order="206" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="207" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="206" intorder="1">DeepLearningBook</bcf:citekey>
+    <bcf:citekey order="207" intorder="1">DeepLearningBook</bcf:citekey>
     <bcf:citekey order="208" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="209" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="210" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="211" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="212" intorder="1">Nair2010</bcf:citekey>
     <bcf:citekey order="213" intorder="1">Nair2010</bcf:citekey>
-    <bcf:citekey order="214" intorder="1">ExplodingGradient</bcf:citekey>
-    <bcf:citekey order="215" intorder="1">GELUArticle</bcf:citekey>
-    <bcf:citekey order="216" intorder="1">GELUArticle</bcf:citekey>
+    <bcf:citekey order="214" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="215" intorder="1">Nair2010</bcf:citekey>
+    <bcf:citekey order="216" intorder="1">ExplodingGradient</bcf:citekey>
     <bcf:citekey order="217" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="218" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="219" intorder="1">GELUArticle</bcf:citekey>
@@ -2688,6 +2688,8 @@
     <bcf:citekey order="222" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="223" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="224" intorder="1">GELUArticle</bcf:citekey>
+    <bcf:citekey order="225" intorder="1">GELUArticle</bcf:citekey>
+    <bcf:citekey order="226" intorder="1">GELUArticle</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

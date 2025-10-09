@@ -158,6 +158,26 @@ Outro ponto que deve-se atentar é com relação as funções que estão sendo a
 \fonte{O autor (2025).}
 \end{figure}
 
+Além de ser representado utilizando equações, o método do gradiente pode ser expresso também utilizando pseudocódigo para escrever o Algortimo \ref{alg:metodo-do-gradiente}. Perceba que ele recebe como parâmetros de entrada uma taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_t$ e uma função de perda $f(\theta)$ a ser otimizada.
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{O Método do Gradiente}
+    \label{alg:metodo-do-gradiente}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\eta$
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+
+    \While{não convergir}
+        \State $\textbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1})$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \textbf{g}_t$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
+
 Conhecendo o funcionamento do método do gradiente, é possível agora entender a retropropagação, e como ela utiliza esse método para otimizar os pesos das redes neurais garantindo assim um aprendizado eficiente e também a automatização das trocas de parâmetros presentes em uma RNA.
 
 % ===================================================================
@@ -448,10 +468,10 @@ Em que:
 Por fim, com base no que foi explicado até agora, é possível entender melhor como o gradiente passa de uma acamada para a outra durante a retropropagação, para isso será analisada um rede com quatro camadas densas, sendo elas:
 
 \begin{itemize}
-    \item \textbf{Camada 1 (Entrada):}: Ela possui neurônios com o indice $i$;
-    \item \textbf{Camada 2 (Oculta 1):}: Ela possui neurônios com o indice $j$;
-    \item \textbf{Camada 3 (Oculta 3):}: Ela possui neurônios com o indice $k$;
-    \item \textbf{Camada 4 (Oculta 3):}: Ela possui neurônios com o indice $l$;
+    \item \textbf{Camada 1 (Entrada):} Ela possui neurônios com o indice $i$;
+    \item \textbf{Camada 2 (Oculta 1):} Ela possui neurônios com o indice $j$;
+    \item \textbf{Camada 3 (Oculta 3):} Ela possui neurônios com o indice $k$;
+    \item \textbf{Camada 4 (Oculta 3):} Ela possui neurônios com o indice $l$;
 \end{itemize}
 
 O objetivo é calcular o gradiente de um peso da primeira camada de pesos, $w_{ji}$, ou seja, é um peso que conecta um neurônio da camada $i$ com um neurônio da camada $j$. Assim, o primeiro passo é utilizar a fórmula \ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}, que calcula o gradiente do erro em relação a um peso quaquer.
@@ -582,6 +602,31 @@ Em que:
     \item $\nabla f(x)$: Representa o gradiente;
     \item $\alpha$: Representa um fator de decaimento exponencial entre 0 e 1 que determina a contribuição do gradiente passado para o gradiente futuro.
 \end{itemize}
+
+De forma semelhante ao método do gradiente, o método do gradiente com momento utilizando no artigo da retropropagação também pode ser expresso em forma de pseudocódigo como no Algoritmo \ref{alg:metodo-do-gradiente-com-momento}. Perceba que ele recebe como parâmetros os mesmos do método do gradiente, a taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda $f(\theta)$, mas também recebe o coeficiente de momento $\alpha$. Em seguida, calculá-se o vetor gradiente para o instante $t-1$ e com base nele é feita a atualização do vetor de parâmetros seguindo a Equação \ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}.
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{O Método do Gradiente com Momento (versão de \parencite{BackpropagationArticle})}
+    \label{alg:metodo-do-gradiente-com-momento}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\eta$
+    \Require Coeficiente de momento $\alpha$
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+
+    \State $\Delta \theta \gets 0$ \Comment{Inicializa a atualização anterior}
+
+    \While{não convergir}
+        \State $\textbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1})$
+        \State $\theta_t \leftarrow \theta_{t-1} - \eta \textbf{g}_t + \alpha \Delta \theta$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
+
+Sabendo o método do gradiente como momento, é possível também conhecer outras soluções que buscam fazer uso do vetor gradiente para encontrar os pontos de mínimo, neste caso, na seção seguinte será analisado o método do gradiente estocástico ou \textit{stochastic gradient descent (SGD)}.
 
 \subsection{Método do Gradiente Estocástico (SGD)}
 
@@ -747,6 +792,28 @@ Para melhor entender o funcionamento do ponto de \textit{lookahead} do \textit{N
     \label{fig:funcionamento-nag}
     \fonte{O autor (2025).}
 \end{figure}
+
+Sabendo o funcionamento do \textit{NAG}, também é possível desenvolver o seu pseudocódigo como no Algoritmo \ref{alg:nag}. Ele irá receber como entradas uma taxa de aprendizado $\eta$, o coefiente de momento $\mu$, o vetor contendo os parâmetros inicias $\theta_0$ e a função a ser otimizada $f(\theta)$. Com base nisso, se inicia o loop do gradiente acelerado de Nesterov, que começa calculando o vetor gradiente no ponto de \textit{lookahead}, que é seguido da atualização dos parâmetros $\textbf{m}_t$ os quais são utilizandos para fazer a atualização do vetor de parâmetros $\theta$. Dessa forma, o loop termina após convergir para o ponto de mínimo, ou até atingir um número máximo de iterações.
+
+\begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
+    \caption{Gradiente Acelerado de Nesterov (\textit{NAG})}
+    \label{alg:nag}
+    \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
+
+    \Require Taxa de aprendizado $\eta$
+    \Require Coeficiente de momento $\mu$
+    \Require Vetor de parâmetros inicial $\theta_0$
+    \Require Função a ser otimizada $f(\theta)$
+
+    \While{não convergir}
+        \State $\textbf{g}_t \leftarrow \nabla_{\theta_{t-1}} f(\theta_{t-1} - \eta \mu \textbf{m}_{t-1})$
+        \State $\textbf{m}_t \gets \mu \textbf{m}_{t-1} + \textbf{g}_t$
+        \State $\theta_t \gets \theta_{t-1} - \eta \textbf{m}_t$
+    \EndWhile
+
+    \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
+    \end{algorithmic}
+\end{algorithm}
 
 Visto uma série de otimizadores mais antigos porém muito úteis para a tarefa de encontrar pontos de mínimo, é possível agora discutir os otimizadores mais recentes. Para isso, eles continuam seguindo a mesma ideia, utilizar o vetor gradiente como o parâmetro de indicação para encontrar pontos de mínimo. Porém, fazendo uso de técnicas mais avançadas da matemática e da programação, de forma a garantir não só uma convergência mais rápida, mas também conseguir escapar de pontos de sela e mínimos locais.
 
