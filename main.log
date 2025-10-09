@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  9 OCT 2025 11:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  9 OCT 2025 17:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1414,6 +1414,22 @@ Package tocbasic Info: setting babel extension for `nls' on input line 188.
 \nomlabelwidth=\dimen382
 \nom@tempdim=\dimen383
 \nomitemsep=\skip292
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2023/06/22 v3.6 ragged2e Package
+\CenteringLeftskip=\skip293
+\RaggedLeftLeftskip=\skip294
+\RaggedRightLeftskip=\skip295
+\CenteringRightskip=\skip296
+\RaggedLeftRightskip=\skip297
+\RaggedRightRightskip=\skip298
+\CenteringParfillskip=\skip299
+\RaggedLeftParfillskip=\skip300
+\RaggedRightParfillskip=\skip301
+\JustifyingParfillskip=\skip302
+\CenteringParindent=\skip303
+\RaggedLeftParindent=\skip304
+\RaggedRightParindent=\skip305
+\JustifyingParindent=\skip306
 ))
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
@@ -1477,7 +1493,7 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 Package hyperref Info: Link coloring OFF on input line 42.
 \myptabbox=\box98
-\myptabboxwidth=\skip293
+\myptabboxwidth=\skip307
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count578
@@ -1686,22 +1702,17 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 [3]
 
 [4]
-Overfull \hbox (5.59608pt too wide) in paragraph at lines 76--76
+Overfull \hbox (5.59608pt too wide) in paragraph at lines 78--78
  [][] [][]\T1/cmss/bx/n/12 Teoremas da Apro-xi-ma-ção Uni-ver-sal: In-tro-du-zindo a Não-Linearidade[] []  
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 94
- \T1/cmss/bx/n/12 111
+Overfull \hbox (2.03697pt too wide) detected at line 96
+ \T1/cmss/bx/n/12 113
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 98
- \T1/cmss/bx/n/12 125
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 99
+Overfull \hbox (2.03697pt too wide) detected at line 100
  \T1/cmss/bx/n/12 127
  []
 
@@ -1711,100 +1722,100 @@ Overfull \hbox (2.03697pt too wide) detected at line 101
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 102
- \T1/cmss/bx/n/12 129
- []
-
-
 Overfull \hbox (2.03697pt too wide) detected at line 103
- \T1/cmss/bx/n/12 133
+ \T1/cmss/bx/n/12 131
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 104
- \T1/cmss/bx/n/12 133
+ \T1/cmss/bx/n/12 131
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 105
+ \T1/cmss/bx/n/12 135
  []
 
 
 
 [5]
-Overfull \hbox (2.03697pt too wide) detected at line 107
- \T1/cmss/bx/n/12 135
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 108
+Overfull \hbox (2.03697pt too wide) detected at line 106
  \T1/cmss/bx/n/12 135
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 109
- \T1/cmss/bx/n/12 135
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 113
  \T1/cmss/bx/n/12 137
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 116
+Overfull \hbox (2.03697pt too wide) detected at line 110
+ \T1/cmss/bx/n/12 137
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 111
+ \T1/cmss/bx/n/12 137
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 115
  \T1/cmss/bx/n/12 139
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 119
- \T1/cmss/bx/n/12 140
+Overfull \hbox (2.03697pt too wide) detected at line 118
+ \T1/cmss/bx/n/12 141
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 125
- \T1/cmss/bx/n/12 145
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 126
- \T1/cmss/bx/n/12 145
+Overfull \hbox (2.03697pt too wide) detected at line 121
+ \T1/cmss/bx/n/12 142
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 127
- \T1/cmss/bx/n/12 145
+ \T1/cmss/bx/n/12 147
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 130
- \T1/cmss/bx/n/12 149
+Overfull \hbox (2.03697pt too wide) detected at line 128
+ \T1/cmss/bx/n/12 147
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 131
- \T1/cmss/bx/n/12 149
+Overfull \hbox (2.03697pt too wide) detected at line 129
+ \T1/cmss/bx/n/12 147
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 132
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 136
- \T1/cmss/bx/n/12 149
+Overfull \hbox (2.03697pt too wide) detected at line 133
+ \T1/cmss/bx/n/12 151
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 134
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 138
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 140
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 142
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
@@ -1814,17 +1825,17 @@ Underfull \vbox (badness 1635) has occurred while \output is active []
 
 [6]
 Overfull \hbox (2.03697pt too wide) detected at line 144
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 146
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 148
- \T1/cmss/bx/n/12 149
+ \T1/cmss/bx/n/12 151
  []
 
 
@@ -1833,33 +1844,33 @@ Overfull \hbox (2.03697pt too wide) detected at line 150
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 151
- \T1/cmss/bx/n/12 151
+Overfull \hbox (2.03697pt too wide) detected at line 152
+ \T1/cmss/bx/n/12 153
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 152
- \T1/cmss/bx/n/12 151
+Overfull \hbox (2.03697pt too wide) detected at line 153
+ \T1/cmss/bx/n/12 153
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 154
- \T1/cmss/bx/n/12 151
+ \T1/cmss/bx/n/12 153
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 156
- \T1/cmss/bx/n/12 151
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 159
  \T1/cmss/bx/n/12 153
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 160
+Overfull \hbox (2.03697pt too wide) detected at line 158
  \T1/cmss/bx/n/12 153
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 161
+ \T1/cmss/bx/n/12 155
  []
 
 
@@ -1868,8 +1879,8 @@ Overfull \hbox (2.03697pt too wide) detected at line 162
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 163
- \T1/cmss/bx/n/12 155
+Overfull \hbox (2.03697pt too wide) detected at line 164
+ \T1/cmss/bx/n/12 157
  []
 
 
@@ -1878,64 +1889,67 @@ Overfull \hbox (2.03697pt too wide) detected at line 165
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 166
- \T1/cmss/bx/n/12 157
- []
-
-
 Overfull \hbox (2.03697pt too wide) detected at line 167
- \T1/cmss/bx/n/12 157
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 168
- \T1/cmss/bx/n/12 157
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 169
- \T1/cmss/bx/n/12 157
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 173
  \T1/cmss/bx/n/12 159
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 174
+Overfull \hbox (2.03697pt too wide) detected at line 168
+ \T1/cmss/bx/n/12 159
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 169
+ \T1/cmss/bx/n/12 159
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 170
+ \T1/cmss/bx/n/12 159
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 171
  \T1/cmss/bx/n/12 159
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 175
- \T1/cmss/bx/n/12 159
+ \T1/cmss/bx/n/12 161
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 176
- \T1/cmss/bx/n/12 159
+ \T1/cmss/bx/n/12 161
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 177
- \T1/cmss/bx/n/12 159
+ \T1/cmss/bx/n/12 161
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 178
- \T1/cmss/bx/n/12 159
+ \T1/cmss/bx/n/12 161
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 181
- \T1/cmss/bx/n/12 163
+Overfull \hbox (2.03697pt too wide) detected at line 179
+ \T1/cmss/bx/n/12 161
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 180
+ \T1/cmss/bx/n/12 161
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 183
  \T1/cmss/bx/n/12 165
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -1946,17 +1960,17 @@ Overfull \hbox (2.03697pt too wide) detected at line 185
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 187
- \T1/cmss/bx/n/12 170
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 188
- \T1/cmss/bx/n/12 170
+ \T1/cmss/bx/n/12 169
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 189
- \T1/cmss/bx/n/12 170
+ \T1/cmss/bx/n/12 172
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 190
+ \T1/cmss/bx/n/12 172
  []
 
 
@@ -1965,37 +1979,37 @@ Overfull \hbox (2.03697pt too wide) detected at line 191
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 198
- \T1/cmss/bx/n/12 176
+Overfull \hbox (2.03697pt too wide) detected at line 193
+ \T1/cmss/bx/n/12 174
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 200
- \T1/cmss/bx/n/12 177
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 201
- \T1/cmss/bx/n/12 177
+ \T1/cmss/bx/n/12 178
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 202
- \T1/cmss/bx/n/12 177
+ \T1/cmss/bx/n/12 179
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 203
- \T1/cmss/bx/n/12 177
+ \T1/cmss/bx/n/12 179
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 204
- \T1/cmss/bx/n/12 177
+ \T1/cmss/bx/n/12 179
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 213
+Overfull \hbox (2.03697pt too wide) detected at line 205
+ \T1/cmss/bx/n/12 179
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 206
  \T1/cmss/bx/n/12 179
  []
 
@@ -2005,68 +2019,65 @@ Overfull \hbox (2.03697pt too wide) detected at line 215
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 216
- \T1/cmss/bx/n/12 181
- []
-
-
 Overfull \hbox (2.03697pt too wide) detected at line 217
- \T1/cmss/bx/n/12 181
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 219
- \T1/cmss/bx/n/12 181
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 221
- \T1/cmss/bx/n/12 181
- []
-
-
-Overfull \hbox (2.03697pt too wide) detected at line 222
- \T1/cmss/bx/n/12 181
- []
-
-
-Underfull \vbox (badness 1259) has occurred while \output is active []
-
-
-
-[8]
-Overfull \hbox (2.03697pt too wide) detected at line 227
  \T1/cmss/bx/n/12 183
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 228
+Overfull \hbox (2.03697pt too wide) detected at line 218
+ \T1/cmss/bx/n/12 183
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 219
+ \T1/cmss/bx/n/12 183
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 221
+ \T1/cmss/bx/n/12 183
+ []
+
+
+
+[8]
+Overfull \hbox (2.03697pt too wide) detected at line 223
+ \T1/cmss/bx/n/12 183
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 224
  \T1/cmss/bx/n/12 183
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 229
- \T1/cmss/bx/n/12 183
+ \T1/cmss/bx/n/12 185
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 230
- \T1/cmss/bx/n/12 183
+ \T1/cmss/bx/n/12 185
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 233
- \T1/cmss/bx/n/12 183
+Overfull \hbox (2.03697pt too wide) detected at line 231
+ \T1/cmss/bx/n/12 185
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 234
- \T1/cmss/bx/n/12 183
+Overfull \hbox (2.03697pt too wide) detected at line 232
+ \T1/cmss/bx/n/12 185
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 235
- \T1/cmss/bx/n/12 183
+ \T1/cmss/bx/n/12 185
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 236
+ \T1/cmss/bx/n/12 185
  []
 
 
@@ -2075,38 +2086,38 @@ Overfull \hbox (2.03697pt too wide) detected at line 237
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 238
- \T1/cmss/bx/n/12 185
- []
-
-
 Overfull \hbox (2.03697pt too wide) detected at line 239
- \T1/cmss/bx/n/12 185
+ \T1/cmss/bx/n/12 187
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 240
- \T1/cmss/bx/n/12 185
+ \T1/cmss/bx/n/12 187
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 241
- \T1/cmss/bx/n/12 185
+ \T1/cmss/bx/n/12 187
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 242
- \T1/cmss/bx/n/12 185
+ \T1/cmss/bx/n/12 187
  []
 
 
 Overfull \hbox (2.03697pt too wide) detected at line 243
- \T1/cmss/bx/n/12 185
+ \T1/cmss/bx/n/12 187
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 247
- \T1/cmss/bx/n/12 185
+Overfull \hbox (2.03697pt too wide) detected at line 244
+ \T1/cmss/bx/n/12 187
+ []
+
+
+Overfull \hbox (2.03697pt too wide) detected at line 245
+ \T1/cmss/bx/n/12 187
  []
 
 
@@ -2130,26 +2141,34 @@ Overfull \hbox (2.03697pt too wide) detected at line 255
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 258
- \T1/cmss/bx/n/12 197
+Overfull \hbox (2.03697pt too wide) detected at line 257
+ \T1/cmss/bx/n/12 195
  []
 
 
-Overfull \hbox (2.03697pt too wide) detected at line 261
- \T1/cmss/bx/n/12 201
+Overfull \hbox (2.03697pt too wide) detected at line 260
+ \T1/cmss/bx/n/12 199
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[9]
+Overfull \hbox (2.03697pt too wide) detected at line 263
+ \T1/cmss/bx/n/12 203
  []
 
 )
 
 Package babel Info: 'brazil' activates 'portuges' shorthands.
 (babel)             Reported  on input line 73.
-[9]
+[10]
 
-[10
+[11
 
 ]
-
-[11]
 
 [12]
 \openout2 = `capitulos/parte-I-historia/cap-01-historia-do-computador.aux'.
@@ -2240,7 +2259,7 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
 [29]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=676, 903.375pt x 250.9375pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png, id=680, 903.375pt x 250.9375pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-de-passos.png  used on input line 80.
@@ -2309,34 +2328,78 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [49]
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+[]|\T1/ppl/m/n/12 Gradiente des-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+[]|\T1/ppl/m/n/12 Gradiente des-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+\T1/ppl/m/n/12 cen-dente es-to-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+[]|\T1/ppl/m/n/12 Gradiente des-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+\T1/ppl/m/n/12 cen-dente em
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+\T1/ppl/m/it/12 mini-batch \T1/ppl/m/n/12 (\T1/ppl/m/it/12 GD
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+[]|\T1/ppl/m/n/12 Gradiente des-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--844
+\T1/ppl/m/n/12 cen-dente com
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 844--844
+[]|\T1/ppl/m/n/12 Gradiente ace-le-
+ []
+
+
 
 [50]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [51]
-Overfull \hbox (13.85268pt too wide) in paragraph at lines 866--867
+
+[52]
+Overfull \hbox (13.85268pt too wide) in paragraph at lines 902--903
 []\T1/ppl/m/n/12 Para a clas-si-fi-ca-ção de tex-tos uti-li-zando o \T1/ppl/m/it/12 Reu-ters RCV1\T1/ppl/m/n/12 , fo-ram com-pa-ra-dos o \T1/ppl/m/it/12 AdaGrad-
  []
 
 
-Overfull \hbox (6.33347pt too wide) in paragraph at lines 873--892
+Overfull \hbox (6.33347pt too wide) in paragraph at lines 909--928
  [] 
  []
 
 
-Overfull \hbox (3.54506pt too wide) in paragraph at lines 894--895
+Overfull \hbox (3.54506pt too wide) in paragraph at lines 930--931
 []\T1/ppl/m/n/12 Já para o \T1/ppl/m/it/12 Ima-ge-Net\T1/ppl/m/n/12 , fo-ram es-co-lhi-dos ape-nas 4 al-go-rit-mos: o \T1/ppl/m/it/12 AdaGrad-RDA\T1/ppl/m/n/12 , o \T1/ppl/m/it/12 AROW\T1/ppl/m/n/12 ,
  []
 
 
 
-[52]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png, id=936, 568.1225pt x 419.5675pt>
+[53]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png, id=947, 568.1225pt x 419.5675pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png  used on input line 928.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png  used on input line 964.
 (pdftex.def)             Requested size: 295.90588pt x 218.54126pt.
 
 
@@ -2344,40 +2407,40 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[53]
+[54]
 
-[54 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png>]
+[55 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png>]
 
-[55]
+[56]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[56]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png, id=986, 340.27126pt x 327.2225pt>
+[57]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png, id=994, 340.27126pt x 327.2225pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png  used on input line 1034.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png  used on input line 1070.
 (pdftex.def)             Requested size: 295.90588pt x 284.57143pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png, id=994, 821.0675pt x 532.99126pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png, id=1002, 821.0675pt x 532.99126pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png  used on input line 1048.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png  used on input line 1084.
 (pdftex.def)             Requested size: 386.96027pt x 251.18907pt.
 
 
-[57]
+[58]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png, id=1007, 945.5325pt x 462.72874pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png, id=1015, 945.5325pt x 462.72874pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png  used on input line 1062.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png  used on input line 1098.
 (pdftex.def)             Requested size: 386.96027pt x 189.37404pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2387,23 +2450,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[58 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>]
+[59 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[59 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>]
+[60 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>]
 
-[60 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>]
+[61 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[61]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png, id=1047, 1133.23375pt x 400.49625pt>
+[62]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png, id=1055, 1133.23375pt x 400.49625pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png  used on input line 1161.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png  used on input line 1197.
 (pdftex.def)             Requested size: 455.24411pt x 160.8862pt.
 
 
@@ -2411,13 +2474,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[62]
+[63]
 
-[63 <./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png, id=1072, 1050.92625pt x 774.895pt>
+[64 <./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png, id=1080, 1050.92625pt x 774.895pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>
-Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png  used on input line 1227.
+Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png  used on input line 1263.
 (pdftex.def)             Requested size: 455.24411pt x 335.66956pt.
 
 
@@ -2425,37 +2488,37 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[64]
+[65]
 
-[65 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>]
+[66 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>]
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 1276.
+[67]
 
+LaTeX Font Warning: Command \large invalid in math mode on input line 1349.
 
-
-[66]
-LaTeX Font Info:    Calculating math sizes for size <> on input line 1283.
+LaTeX Font Info:    Calculating math sizes for size <> on input line 1356.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 1.042pt on input line 1283.
+(Font)              scaled to size 1.042pt on input line 1356.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 1283.
+(Font)              scaled to size 0.79192pt on input line 1356.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 1283.
+(Font)              scaled to size 0.6252pt on input line 1356.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 1.042pt on input line 1283.
+(Font)              scaled to size 1.042pt on input line 1356.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.79192pt on input line 1283.
+(Font)              scaled to size 0.79192pt on input line 1356.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 0.6252pt on input line 1283.
+(Font)              scaled to size 0.6252pt on input line 1356.
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 1361.
 
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 1288.
-
-
-
-[67])
 
 [68]
+
+[69])
+
+[70]
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
@@ -2481,28 +2544,28 @@ Overfull \hbox (41.9395pt too wide) in paragraph at lines 21--21
 \g__witharrows_y_final_dim=\dimen390
 
 
-[69
+[71
 
 
 
 
 ]
 
-[70]
-
-[71]
-
 [72]
-
-LaTeX Warning: Reference `eq: EquacaoNeuronio' on page 73 undefined on input line 145.
-
-
 
 [73]
 
 [74]
 
-LaTeX Warning: Reference `eq: FormulaSigmoide' on page 75 undefined on input line 220.
+LaTeX Warning: Reference `eq: EquacaoNeuronio' on page 75 undefined on input line 145.
+
+
+
+[75]
+
+[76]
+
+LaTeX Warning: Reference `eq: FormulaSigmoide' on page 77 undefined on input line 220.
 
 
 Overfull \hbox (2.76532pt too wide) in paragraph at lines 227--228
@@ -2511,33 +2574,12 @@ Overfull \hbox (2.76532pt too wide) in paragraph at lines 227--228
 
 
 
-[75]
+[77]
 Underfull \vbox (badness 7203) has occurred while \output is active []
 
 
 
-[76]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-[77]
-
-LaTeX Warning: Reference `fig:tanh-derivada' on page 78 undefined on input line 332.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
 [78]
-
-LaTeX Warning: Reference `fig:softsign' on page 79 undefined on input line 360.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2545,11 +2587,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [79]
 
+LaTeX Warning: Reference `fig:tanh-derivada' on page 80 undefined on input line 332.
+
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [80]
+
+LaTeX Warning: Reference `fig:softsign' on page 81 undefined on input line 360.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2557,10 +2608,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [81]
 
-LaTeX Warning: Reference `eq: hard-tanh' on page 82 undefined on input line 498.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
@@ -2569,46 +2617,57 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `eq: EquacaoHardSigmoid' on page 83 undefined on input line 571.
-
-
-LaTeX Warning: Reference `eq: DerivadaHardSigmoid' on page 83 undefined on input line 571.
-
-
 
 [83]
 
-[84]
+LaTeX Warning: Reference `eq: hard-tanh' on page 84 undefined on input line 498.
 
-[85])
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
+[84]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eq: EquacaoHardSigmoid' on page 85 undefined on input line 571.
+
+
+LaTeX Warning: Reference `eq: DerivadaHardSigmoid' on page 85 undefined on input line 571.
+
+
+
+[85]
+
 [86]
 
-[87]
+[87])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[88]
+
+[89]
 \openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
 
  (./capitulos/parte-III-pilares/cap-08-retificadoras.tex
 
-[88
+[90
 
 
 
 
 ]
 
-[89]
+[91]
 Overfull \hbox (0.16103pt too wide) in paragraph at lines 51--52
 []\T1/ppl/m/n/12 Essa equa-ção cri-ada por Hou-sehol-der, lem-bra bas-tante a ex-pres-são da fun-ção ReLU,
  []
 
 
-
-[90]
-
-[91]
 
 [92]
 
@@ -2625,21 +2684,25 @@ Overfull \hbox (0.16103pt too wide) in paragraph at lines 51--52
 [98]
 
 [99]
+
+[100]
+
+[101]
 Overfull \hbox (23.99776pt too wide) in paragraph at lines 270--301
  [] 
  []
 
 
 
-[100]
+[102]
 
-[101]
+[103]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[102]
+[104]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2648,7 +2711,7 @@ Underfull \vbox (badness 1603) has occurred while \output is active []
 
 
 
-[103]
+[105]
 Overfull \hbox (97.86371pt too wide) in paragraph at lines 384--436
  [] 
  []
@@ -2660,28 +2723,28 @@ Underfull \hbox (badness 1616) in paragraph at lines 460--460
 
 
 
-[104]
+[106]
 
-[105{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+[107{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Underfull \vbox (badness 3158) has occurred while \output is active []
 
 
 
-[106]
-
-[107]
-
 [108]
+
+[109]
+
+[110]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 569.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 569.
 
 
-LaTeX Warning: Reference `tab:ativacoes_cifar10' on page 109 undefined on input line 576.
+LaTeX Warning: Reference `tab:ativacoes_cifar10' on page 111 undefined on input line 576.
 
 
-LaTeX Warning: Reference `tab:erro_ativacoes_cifar100' on page 109 undefined on input line 576.
+LaTeX Warning: Reference `tab:erro_ativacoes_cifar100' on page 111 undefined on input line 576.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 611--611
@@ -2700,24 +2763,20 @@ Underfull \hbox (badness 1400) in paragraph at lines 681--683
 
 
 
-[109]
+[111]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[110]
-
-[111]
-
 [112]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 
 [113]
 
 [114]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 
 [115]
 
@@ -2726,108 +2785,112 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [117]
 
 [118]
+
+[119]
+
+[120]
 Overfull \hbox (0.19962pt too wide) in paragraph at lines 918--919
 \T1/ppl/m/n/12 Seguindo adi-ante, é pos-sí-vel co-nhe-cer a Noisy ReLU, tam-bém co-nhe-cida como NReLU.
  []
 
 
 
-[119]
+[121]
 LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 953.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 )
 
-LaTeX Warning: Reference `eq: DistribuicaoGaussiana' on page 120 undefined on input line 953.
-
-
-
-[120]
-
-LaTeX Warning: Reference `eq: nrelu-derivada' on page 121 undefined on input line 1022.
-
-
-
-[121]
-
-LaTeX Warning: Reference `tab:norb_error_rate' on page 122 undefined on input line 1056.
-
-
-LaTeX Warning: Reference `tab:nrelu_norb_comparativo' on page 122 undefined on input line 1056.
-
-
-LaTeX Warning: Reference `tab:norb_error_rate' on page 122 undefined on input line 1058.
+LaTeX Warning: Reference `eq: DistribuicaoGaussiana' on page 122 undefined on input line 953.
 
 
 
 [122]
 
+LaTeX Warning: Reference `eq: nrelu-derivada' on page 123 undefined on input line 1022.
+
+
+
 [123]
+
+LaTeX Warning: Reference `tab:norb_error_rate' on page 124 undefined on input line 1056.
+
+
+LaTeX Warning: Reference `tab:nrelu_norb_comparativo' on page 124 undefined on input line 1056.
+
+
+LaTeX Warning: Reference `tab:norb_error_rate' on page 124 undefined on input line 1058.
+
+
 
 [124]
 
 [125]
 
-[126])
+[126]
 
 [127]
+
+[128])
+
+[129]
 \openout2 = `capitulos/parte-III-pilares/cap-09-modernas.aux'.
 
  (./capitulos/parte-III-pilares/cap-09-modernas.tex
 
-[128
+[130
 
 
 
 
 ]
 
-LaTeX Warning: Reference `fig:log-loss-gelu' on page 129 undefined on input line 12.
+LaTeX Warning: Reference `fig:log-loss-gelu' on page 131 undefined on input line 12.
 
 
-LaTeX Warning: Reference `fig:accuracy-gelu' on page 129 undefined on input line 12.
+LaTeX Warning: Reference `fig:accuracy-gelu' on page 131 undefined on input line 12.
 
 
-LaTeX Warning: Reference `fig:log-loss-gelu' on page 129 undefined on input line 14.
+LaTeX Warning: Reference `fig:log-loss-gelu' on page 131 undefined on input line 14.
 
 
-LaTeX Warning: Reference `fig:accuracy-gelu' on page 129 undefined on input line 16.
+LaTeX Warning: Reference `fig:accuracy-gelu' on page 131 undefined on input line 16.
 
 
-LaTeX Warning: Reference `fig:accuracy-gelu' on page 129 undefined on input line 16.
+LaTeX Warning: Reference `fig:accuracy-gelu' on page 131 undefined on input line 16.
 
 
-
-[129]
-
-LaTeX Warning: Reference `fig:gelu-cifar-10' on page 130 undefined on input line 18.
-
-
-LaTeX Warning: Reference `eq:EquacaoGELUAprox' on page 130 undefined on input line 27.
-
-
-LaTeX Warning: Reference `eq:EquacaoGELUAprox2' on page 130 undefined on input line 27.
-
-
-
-[130]
 
 [131]
 
-LaTeX Warning: Reference `fig:GraficoGELUDerivada' on page 132 undefined on input line 80.
+LaTeX Warning: Reference `fig:gelu-cifar-10' on page 132 undefined on input line 18.
+
+
+LaTeX Warning: Reference `eq:EquacaoGELUAprox' on page 132 undefined on input line 27.
+
+
+LaTeX Warning: Reference `eq:EquacaoGELUAprox2' on page 132 undefined on input line 27.
 
 
 
 [132]
 
-[133])
+[133]
+
+LaTeX Warning: Reference `fig:GraficoGELUDerivada' on page 134 undefined on input line 80.
+
+
 
 [134]
+
+[135])
+
+[136]
 \openout2 = `capitulos/parte-III-pilares/cap-10-perda.aux'.
 
  (./capitulos/parte-III-pilares/cap-10-perda.tex
 
-[135
+[137
 
 
 
@@ -2837,83 +2900,71 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[136]
+[138]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[137]
+[139]
 
-[138]
+[140]
 Overfull \hbox (2.44142pt too wide) in paragraph at lines 321--321
 []\T1/cmss/m/n/14.4 Entropia Cru-zada Ca-te-gó-rica Es-parsa (Sparse Ca-te-go-ri-cal Cross-Entropy) 
  []
 
 
 
-[139]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[140]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[141])
+[141]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [142]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[143]
+
+
+[143])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[144]
+
+[145]
 \openout2 = `capitulos/parte-III-pilares/cap-12-metaheuristicas.aux'.
 
  (./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 
-[144
+[146
 
 
 
 
 ])
 
-[145]
+[147]
 
-[146
+[148
 
 
 
 ]
 
-[147]
+[149]
 
-[148]
+[150]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-13-regressao.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-13-regressao.tex)
 
-[149
+[151
 
 
 ]
 \openout2 = `capitulos/parte-IV-ml-classico/cap-14-arvores.aux'.
 
  (./capitulos/parte-IV-ml-classico/cap-14-arvores.tex
-
-[150
-
-
-
-
-])
-
-[151]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
-
- (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [152
 
@@ -2923,9 +2974,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [153]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-15-svm.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
+ (./capitulos/parte-IV-ml-classico/cap-15-svm.tex
 
 [154
 
@@ -2935,9 +2986,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [155]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-16-ensemble.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
+ (./capitulos/parte-IV-ml-classico/cap-16-ensemble.tex
 
 [156
 
@@ -2947,9 +2998,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [157]
-\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
+\openout2 = `capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.aux'.
 
- (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
+ (./capitulos/parte-IV-ml-classico/cap-17-dimensionalidade.tex
 
 [158
 
@@ -2959,39 +3010,39 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [159]
+\openout2 = `capitulos/parte-IV-ml-classico/cap-18-clusterizacao.aux'.
+
+ (./capitulos/parte-IV-ml-classico/cap-18-clusterizacao.tex
 
 [160
-
-
-
-]
-
-[161]
-
-[162]
-\openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
-
-[163
-
-
-]
-\openout2 = `capitulos/parte-V-deep-learning/cap-20-ffns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
-
-[164
 
 
 
 
 ])
 
-[165]
-\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
+[161]
 
- (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
+[162
+
+
+
+]
+
+[163]
+
+[164]
+\openout2 = `capitulos/parte-V-deep-learning/cap-19-mlp.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-19-mlp.tex)
+
+[165
+
+
+]
+\openout2 = `capitulos/parte-V-deep-learning/cap-20-ffns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-20-ffns.tex
 
 [166
 
@@ -3001,11 +3052,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [167]
+\openout2 = `capitulos/parte-V-deep-learning/cap-21-dbns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-21-dbns.tex
+
+[168
+
+
+
+
+])
+
+[169]
 \openout2 = `capitulos/parte-V-deep-learning/cap-22-cnns.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-22-cnns.tex
 
-[168
+[170
 
 
 
@@ -3026,21 +3089,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[169]
-Overfull \vbox (1272.7535pt too high) has occurred while \output is active []
-
-
-
-[170]
-\openout6 = `main.listing'.
-
- (./main.listing)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
 [171]
-Overfull \vbox (493.3008pt too high) has occurred while \output is active []
+Overfull \vbox (1272.7535pt too high) has occurred while \output is active []
 
 
 
@@ -3053,7 +3103,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [173]
-Overfull \vbox (256.19066pt too high) has occurred while \output is active []
+Overfull \vbox (493.3008pt too high) has occurred while \output is active []
 
 
 
@@ -3061,6 +3111,19 @@ Overfull \vbox (256.19066pt too high) has occurred while \output is active []
 \openout6 = `main.listing'.
 
  (./main.listing)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[175]
+Overfull \vbox (256.19066pt too high) has occurred while \output is active []
+
+
+
+[176]
+\openout6 = `main.listing'.
+
+ (./main.listing)
 \openout6 = `main.listing'.
 
  (./main.listing)
@@ -3068,29 +3131,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[175])
+[177])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[176]
+[178]
 
-[177]
+[179]
 \openout2 = `capitulos/parte-V-deep-learning/cap-23-resnets.aux'.
 
  (./capitulos/parte-V-deep-learning/cap-23-resnets.tex
-
-[178
-
-
-
-
-])
-
-[179]
-\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
-
- (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
 [180
 
@@ -3100,9 +3151,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [181]
-\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-24-rnns.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
+ (./capitulos/parte-V-deep-learning/cap-24-rnns.tex
 
 [182
 
@@ -3112,9 +3163,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [183]
-\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-25-regularizacao.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
+ (./capitulos/parte-V-deep-learning/cap-25-regularizacao.tex
 
 [184
 
@@ -3124,9 +3175,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [185]
-\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-26-transformers.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-27-gans.tex
+ (./capitulos/parte-V-deep-learning/cap-26-transformers.tex
 
 [186
 
@@ -3136,9 +3187,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [187]
-\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-27-gans.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-28-moe.tex
+ (./capitulos/parte-V-deep-learning/cap-27-gans.tex
 
 [188
 
@@ -3148,9 +3199,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [189]
-\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-28-moe.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
+ (./capitulos/parte-V-deep-learning/cap-28-moe.tex
 
 [190
 
@@ -3160,9 +3211,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [191]
-\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+\openout2 = `capitulos/parte-V-deep-learning/cap-29-diffusion.aux'.
 
- (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
+ (./capitulos/parte-V-deep-learning/cap-29-diffusion.tex
 
 [192
 
@@ -3172,16 +3223,28 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ])
 
 [193]
+\openout2 = `capitulos/parte-V-deep-learning/cap-30-gnns.aux'.
+
+ (./capitulos/parte-V-deep-learning/cap-30-gnns.tex
 
 [194
 
 
 
-]
+
+])
 
 [195]
 
-[196]
+[196
+
+
+
+]
+
+[197]
+
+[198]
 \openout2 = `capitulos/apendices/tabela-funcoes-de-ativacao.aux'.
 
  (./capitulos/apendices/tabela-funcoes-de-ativacao.tex
@@ -3369,26 +3432,26 @@ Overfull \hbox (45.37958pt too wide) in alignment at lines 29--195
  [] [] [] [] 
  []
 
-[197
+[199
 
 
-] [198])
+] [200])
 
-[199]
+[201]
 
-[200
+[202
 
 
 
 ]
 
-[201]
-
-[202]
-
 [203]
 
 [204]
+
+[205]
+
+[206]
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
@@ -3409,18 +3472,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 61850 strings out of 467888
- 1403690 string characters out of 5434061
- 4334766 words of memory out of 5000000
- 88387 multiletter control sequences out of 15000+600000
+ 61949 strings out of 467888
+ 1405854 string characters out of 5434061
+ 4335768 words of memory out of 5000000
+ 88474 multiletter control sequences out of 15000+600000
  717554 words of font info for 263 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  115i,19n,117p,1328b,4449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (206 pages, 1776931 bytes).
+Output written on main.pdf (208 pages, 1781168 bytes).
 PDF statistics:
- 3410 PDF objects out of 3580 (max. 8388607)
- 3075 compressed objects within 31 object streams
- 858 named destinations out of 1000 (max. 500000)
- 2040 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3434 PDF objects out of 3580 (max. 8388607)
+ 3097 compressed objects within 31 object streams
+ 866 named destinations out of 1000 (max. 500000)
+ 2056 words of extra memory for PDF output out of 10000 (max. 10000000)
 

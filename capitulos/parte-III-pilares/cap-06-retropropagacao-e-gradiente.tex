@@ -28,7 +28,7 @@ Conhecendo esses dois tópicos, é possível aprofundar em métodos mais elabora
 % Método do Gradiente Descendente
 % ===================================================================
 
-\section{O Método do Gradiente Descendente: A Inspiração de Todos}
+\section{O Método do Gradiente Descendente: O Motor da Retropropagação}
 
 O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em português) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
@@ -815,6 +815,42 @@ Sabendo o funcionamento do \textit{NAG}, também é possível desenvolver o seu 
     \end{algorithmic}
 \end{algorithm}
 
+\subsection{Comparativo de Otimizadores Clássicos}
+
+Por fim, é possível compilar as características desses otimizadores vistos na Tabela \ref{tab:comparativo-otimizadores-classicos}. Dessa forma, é destacado a principal característica do otimizador, bem como suas vantagens e desvantagens.
+
+\begin{table}[htbp]
+    \centering
+    \begin{threeparttable}
+        \caption{Comparativo de otimizadores clássicos}
+        \label{tab:comparativo-otimizadores-classicos}
+        % p{3.2cm} define uma largura fixa para a primeira coluna.
+        % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
+        % >{\raggedright\arraybackslash} alinha o texto à esquerda para melhor leitura.
+        \begin{tabularx}{\textwidth}{p{3.2cm} *{3}{>{\raggedright\arraybackslash}X}}
+            \toprule
+            \textbf{Otimizador} & \textbf{Característica principal} & \textbf{Vantagem} & \textbf{Desvantagem} \\
+            \midrule
+            Gradiente descendente (\textit{GD}) & Otimizador clássico que dá origem aos otimizadores baseados em gradiente & Apresenta fácil implementação & Precisa que todo o conjunto de parâmetros esteja na memória para fazer as atualizações e calcular o gradiente. \\
+            \addlinespace
+            Gradiente descendente estocástico (\textit{SGD}) & Calcula o vetor gradiente para apenas um item do conjunto de parâmetros e faz a atualização. & É mais rápido que o \textit{GD} além de conseguir escapar de pontos de sela e mínimos locais. & Apresenta uma trajetória ruidosa \\
+            \addlinespace
+            Gradiente descendente em \textit{mini-batch} (\textit{GD mini-batch}) & Calcula o vetor gradiente para pequenos lotes (\textit{batches}) e faz a atualização. & Possui o parámetro tamanho do lote para ser escolhido também. & \\
+            \addlinespace
+            Gradiente descendente com momento & Faz uso do momento para acelerar a convergência do método. & Consegue encontrar pontos de mínimo mais rapidamente e com menos iterações. & Possui o parâmetro do momento para ser escolhido também \\
+            \addlinespace
+            Gradiente acelerado de Nesterov (\textit{NAG}) & Faz uso de um ponto de \textit{lookahead} para calcular o vetor gradiente e a partir desse fazer a atualização dos parâmetros & Possui uma convergência mais acelerada que o método tradicional & Apresenta um algoritmo mais custoso para ser implementado. \\
+            \bottomrule
+        \end{tabularx}
+        
+        \begin{tablenotes}[para]
+            \small
+            \item[] Fonte: O autor (2025).
+        \end{tablenotes}
+
+    \end{threeparttable}
+\end{table}
+
 Visto uma série de otimizadores mais antigos porém muito úteis para a tarefa de encontrar pontos de mínimo, é possível agora discutir os otimizadores mais recentes. Para isso, eles continuam seguindo a mesma ideia, utilizar o vetor gradiente como o parâmetro de indicação para encontrar pontos de mínimo. Porém, fazendo uso de técnicas mais avançadas da matemática e da programação, de forma a garantir não só uma convergência mais rápida, mas também conseguir escapar de pontos de sela e mínimos locais.
 
 \section{Otimizadores Modernos Baseados em Gradiente: A Era das Taxas de Aprendizado Adaptativas}
@@ -1245,6 +1281,43 @@ Quando comparamos agora as duas variantes do \textit{Adam} vemos um cenário dif
 Agora se analisar o \textit{AdamW} o resultado é bem mais positivo. Assim como o \textit{SGDW} existe uma linha vertical em azul no \textit{AdamW}, o que nos mostra que é possível escolher uma quantidade grande de taxas de aprendizado que permitam ao modelo uma boa convergência, além é claro dela ser mais independente com relação do decaimento de peso.
 
 Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira tentar taxas de aprendizado diferentes e ainda sim obter uma boa convergência do modelo. Por exemplo, se quiser você pode escolher uma taxa de aprendizado mais alta, permitindo com que o modelo dê passos mais largos e assim consiga convergir de forma mais rápida. Mas você ainda tem a oportunidade de utilizar taxas de aprendizado menores e provavelmente irá encontrar um ponto de mínimo.
+
+\subsection{Comparativo dos Otimizadores Modernos}
+
+Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na seção de otimizadores clássicos, é possível fazer uma tabela contendo as suas principais características. Para isso, tem-se então a Tabela \ref{tab:comparativo-otimizadores-modernos}
+
+\begin{table}[htbp]
+    \centering
+    \begin{threeparttable}
+        \caption{Comparativo de otimizadores modernos}
+        \label{tab:comparativo-otimizadores-modernos}
+        % p{3.2cm} define uma largura fixa para a primeira coluna.
+        % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
+        % >{\raggedright\arraybackslash} alinha o texto à esquerda para melhor leitura.
+        \begin{tabularx}{\textwidth}{p{3.2cm} *{1}{>{\raggedright\arraybackslash}X}}
+            \toprule
+            \textbf{Otimizador} & \textbf{Inovação principal} \\
+            \midrule
+            \textit{AdaGrad} & Faz o uso de múltiplas taxas de aprendizado, garantindo que tanto características comuns, quanto incomuns possam ser aprendidas pelo modelo \\
+            \addlinespace
+            \textit{RMSProp} & Utiliza um vetor com a média móvel do quadrado dos gradientes que é multiplicado por uma taxa de decaimento, impedindo que o vetor acumulador só cresça. \\
+            \addlinespace
+            \textit{Adam} & Combina as ideias do \textit{AdaGrad} e \textit{RMSProp} utilizando médias móveis, uma para os gradientes (primeiro momento), e outra para o quadrado dos gradientes (segundo momento). \\
+            \addlinespace
+            \textit{AdaMax} & Uma variante do Adam baseado na norma infinita. Para isso, ao invés de utilizar a média dos quadrados dos gradientes, ele utiliza o máximo entre o gradiente atual e a média anterior. \\
+            \addlinespace
+            \textit{Nadam} & Adiciona as ideias do \textit{NAG} no \textit{Adam}, para isso, ele aplica a ideia de \textit{lookahead} ao cálculo da média móvel dos gradientes (primeiro momento). \\
+            \textit{AdamW} & Desacopla o decaimento de peso da etapa de atualização do gradiente, aplicando-o diretamete aos pesos, dessa forma, ele consegue corrigir a forma como a regularização do decaimento de peso (L2) é aplicado no \textit{Adam}. \\
+            \bottomrule
+        \end{tabularx}
+        
+        \begin{tablenotes}[para]
+            \small
+            \item[] Fonte: O autor (2025).
+        \end{tablenotes}
+
+    \end{threeparttable}
+\end{table}
 
 \subsection{Outros Otimizadores}
 
