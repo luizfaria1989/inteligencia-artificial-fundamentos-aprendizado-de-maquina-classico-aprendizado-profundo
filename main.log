@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  10 OCT 2025 04:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  10 OCT 2025 11:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2514,7 +2514,7 @@ LaTeX Font Warning: Command \large invalid in math mode on input line 1361.
 
 
 ]
-Overfull \hbox (41.9395pt too wide) in paragraph at lines 21--21
+Overfull \hbox (41.9395pt too wide) in paragraph at lines 27--27
 []\T1/cmss/m/n/17.28 Teoremas da Apro-xi-ma-ção Uni-ver-sal: In-tro-du-zindo a Não-Linearidade 
  []
 
@@ -2544,7 +2544,7 @@ Overfull \hbox (41.9395pt too wide) in paragraph at lines 21--21
 
 [74]
 
-LaTeX Warning: Reference `eq: EquacaoNeuronio' on page 75 undefined on input line 145.
+LaTeX Warning: Reference `eq: EquacaoNeuronio' on page 75 undefined on input line 151.
 
 
 
@@ -2552,90 +2552,53 @@ LaTeX Warning: Reference `eq: EquacaoNeuronio' on page 75 undefined on input lin
 
 [76]
 
-LaTeX Warning: Reference `eq: FormulaSigmoide' on page 77 undefined on input line 220.
-
-
-Overfull \hbox (2.76532pt too wide) in paragraph at lines 227--228
-[]\T1/ppl/m/n/12 Como ve-mos na fi-gura []7.5[], o grá-fico da sig-moide pos-sui o for-mato de um "S"deitado.
- []
-
-
-
 [77]
-Underfull \vbox (badness 7203) has occurred while \output is active []
-
-
 
 [78]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
 [79]
-
-LaTeX Warning: Reference `fig:tanh-derivada' on page 80 undefined on input line 332.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [80]
 
-LaTeX Warning: Reference `fig:softsign' on page 81 undefined on input line 360.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
 [81]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 
 [82]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
 [83]
 
-LaTeX Warning: Reference `eq: hard-tanh' on page 84 undefined on input line 498.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
 [84]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Reference `eq: EquacaoHardSigmoid' on page 85 undefined on input line 571.
-
-
-LaTeX Warning: Reference `eq: DerivadaHardSigmoid' on page 85 undefined on input line 571.
-
-
-
 [85]
 
 [86]
 
-[87])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+[87]
 
 [88]
+Underfull \hbox (badness 10000) in paragraph at lines 678--678
+[]|\T1/ppl/m/n/12 Sigmoide lo-gís-
+ []
+
+
+Underfull \hbox (badness 8094) in paragraph at lines 678--678
+[]|\T1/ppl/m/n/12 Tangente hi-per-
+ []
+
+
+Overfull \hbox (53.621pt too wide) in paragraph at lines 678--678
+[]$|  
+ []
+
+
+Overfull \hbox (17.52753pt too wide) in paragraph at lines 678--678
+[]$|  
+ []
+
+)
 
 [89]
 \openout2 = `capitulos/parte-III-pilares/cap-08-retificadoras.aux'.
@@ -3459,18 +3422,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 61949 strings out of 467888
- 1405854 string characters out of 5434061
- 4335671 words of memory out of 5000000
- 88474 multiletter control sequences out of 15000+600000
- 717554 words of font info for 263 fonts, out of 8000000 for 9000
+ 61964 strings out of 467888
+ 1406323 string characters out of 5434061
+ 4337529 words of memory out of 5000000
+ 88484 multiletter control sequences out of 15000+600000
+ 717940 words of font info for 264 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,19n,117p,1328b,4449s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,22n,117p,1328b,4449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (208 pages, 1779973 bytes).
+Output written on main.pdf (208 pages, 1784008 bytes).
 PDF statistics:
- 3432 PDF objects out of 3580 (max. 8388607)
- 3095 compressed objects within 31 object streams
- 866 named destinations out of 1000 (max. 500000)
+ 3454 PDF objects out of 3580 (max. 8388607)
+ 3116 compressed objects within 32 object streams
+ 871 named destinations out of 1000 (max. 500000)
  2056 words of extra memory for PDF output out of 10000 (max. 10000000)
 

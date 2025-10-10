@@ -76,13 +76,13 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase []{Funções de Ativação Sigmoidais}}{71}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Teoremas da Aproximação Universal: Introduzindo a Não-Linearidade}{71}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Exemplo Ilustrativo: Empurrando para extremos}{73}{section.7.2}%
+\contentsline {section}{\numberline {7.2}Exemplo Ilustrativo: Empurrando para extremos}{74}{section.7.2}%
 \contentsline {section}{\numberline {7.3}A Sigmoide Logística: Ótima para Classificações Binárias}{74}{section.7.3}%
 \contentsline {section}{\numberline {7.4}Tangente Hiperbólica: A Pioneira nas Redes Convolucionais}{79}{section.7.4}%
 \contentsline {section}{\numberline {7.5}Softsign: Uma Sigmoidal Mais Barata}{81}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{82}{section.7.6}%
-\contentsline {section}{\numberline {7.7}O Desaparecimento de Gradientes}{85}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Comparativo de Desempenho das Sigmoidais}{89}{section.7.8}%
+\contentsline {section}{\numberline {7.6}Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}{83}{section.7.6}%
+\contentsline {section}{\numberline {7.7}O Desaparecimento de Gradientes}{86}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Comparativo: Funções Sigmoidais}{89}{section.7.8}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {8}\MakeTextUppercase []{Funções de Ativação Retificadoras}}{91}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Exemplo Ilustrativo: Vendendo Pipoca}{91}{section.8.1}%
@@ -260,7 +260,15 @@
 \contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Tabela das Funções de Ativação}}{199}{appendix.A}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{203}{section*.84}%
+\contentsline {chapter}{Referências}{203}{section*.86}%
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
