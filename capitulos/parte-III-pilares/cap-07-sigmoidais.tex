@@ -124,11 +124,45 @@ No livro \textit{Deep Learning}, \textcite{DeepLearningBook} dedicam uma seção
 
 Para entendermos esse teorema, devemos primeiro entender o conceito de mensurabilidade de Borel, segundo \textcite{DeepLearningBook} uma função contínua em um subconjunto fechado e limitado de $\mathcal{R}^N$ é mensurável por Borel. Assim esse tipo de função pode ser aproximada por uma rede neural. Além disso, os autores ressaltam que por mais que o teorema original tenha conseguido provar apenas para as funções que saturam tanto para termos muito negativos ou termos muito positivos, diversos outros autores como \textcite{Leshno1993}, no texto \textit{Multilayer feedforward networks with a nonpolynomial activation function can approximate any function}, foram capazes de provar que o teorema da aproximação universal pode funcionar para outras funções, no caso de Leshno, eles provaram para funções não polinomiais, como a Rectified Linear Unit (ReLU), a qual é o tema central do capítulo \ref{cap:ativacao-retificadoras}.
 
-Basicamente os teoremas da aproximação universal reforçam o uso de funções de ativação para permitir que as redes neurais resolvam os problemas propostos por meio da aproximação de uma função. Isso acontece porque essas funções introduzem a não linearidade para a rede, como nos vimos na equação do neurônio de uma rede neural, uma RNA é composta por diferentes camadas de neurônios que são capazes de pegar valores de entrada, multiplicar por um peso dado e somar com um viés, esse resultado passa então por uma função de ativação.
+Basicamente os teoremas da aproximação universal reforçam o uso de funções de ativação para permitir que as redes neurais resolvam os problemas propostos por meio da aproximação de uma função. Isso acontece porque essas funções introduzem a não-linearidade para a rede, como nos vimos na equação do neurônio de uma rede neural, uma RNA é composta por diferentes camadas de neurônios que são capazes de pegar valores de entrada, multiplicar por um peso dado e somar com um viés, esse resultado passa então por uma função de ativação.
 
 \[ x_j = (\sum_i y_i \cdot w_{ji}) + b_j \]
 
 Se nos tivéssemos uma rede neural em que os neurônios não possuíssem uma função de ativação, ou, fosse uma função linear, mesmo juntando todas essas camadas de neurônios que trazem expressões lineares, a junção disso, ainda seria uma expressão linear. Mas quando introduzimos uma função não linear, como a sigmoide, o teorema da aproximação universal, nos garante que somos capazes de encontrar qualquer função que estivermos procurando, desde que ela seja mensurável de Borel.
+
+\section{Propriedades das Funções de Ativação}
+
+Visto um dos motivos de se utilizar funções de ativação em uma rede neural, cabe agora entender um pouco dessa classe de funções. Em \textit{A Survey on Activation Functions and their relation with Xavier and He Normal Initialization}, \textcite{PropriedadesFuncoesDeAtivacao} discute algumas das propriedades das funções de ativação, dizendo que é esperado que essas funções sejam: não-lineares, diferenciáveis, contínuas, limitadas, centradas em zero. Além disso, o autor discute também que é interessante considerar também o custo computacional dessas funções que estão sendo aplicadas em uma rede neural \parencite{PropriedadesFuncoesDeAtivacao}.
+
+Dessa forma, é possível discutir um pouco de cada uma dessas propriedades em seguida.
+
+\textbf{Não-linearidade}
+
+Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{percetron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
+
+\textbf{Diferenciabilidade}
+
+O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrisicamente ligado em como a retropropagação do erro. Como visto no Capítulo \ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
+
+\textbf{Continuidade}
+
+A continuidade está ligada com a diferencibilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descotinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja "quinas" no desenho da função e que o gráfico pode ser desenhado "sem tirar o lápis do papel". Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
+
+\textbf{Limitada}
+
+Considerar que uma função de ativação seja limitada ao escolher uma função de ativação para construir uma rede neural está ligado com os problemas do gradiente. Neste caso, uma função que não é limitada pode sofrer do problema do gradiente explosivo, o qual é explicado com maiores detalhes no Capítulo \ref{cap:ativacao-retificadoras}. Nesse sentido, o problema do gradiente explosivo o gradiente de uma rede neural começa a crescer de forma acelerada afetando o aprendizado da rede e as atualizações de pesos e vieses.
+
+\textbf{Centrada em zero}
+
+Uma função que não é centrada em zero, que é sempre positiva ou sempre negativa, afeta como a saída ocorre \parencite{PropriedadesFuncoesDeAtivacao}. Como explica \textcite{PropriedadesFuncoesDeAtivacao}, um cenário em que isso acontece, significa que a saída está sendo sempre movida para os valores positivos ou negativos, e como resultado, o vetor de pesos precisa de uma quantidade maior de iterações para ser melhor ajustado. Dessa forma, ao escolher uma função que é centrada em zero, é possível garantir um treinamento com menos iterações mas ainda assim garantir uma boa convergência do modelo que está sendo treinado.
+
+\textbf{Custo computacional}
+
+Cabe considerar também o custo computacional de uma função de ativação. Funções mais simples, como a degrau unitário e a \textit{ReLU}, as quais fazem apenas comparações com o valor da entrada, apresentam um custo computacional bem menor quando comparadas com funções mais complexas, como aquelas que fazem uso de muitos exponenciais em sua fórmula. Com isso, ao utilizar uma função de ativação muito "cara" em termos computacionais, isso acaba por gerar um gargalo no tempo de treino do modelo em desenvolvimento.
+
+Vale destacar também que muitas dessas propriedades não estão presentes em todas as funções de ativação. A sigmoide por exemplo é uma função que não está centrada em zero, possuindo apenas saídas positivas. Já a \textit{ReLU} apresenta um ponto de descontinuidade na origem, mas isso não atrapalha essas funções de ativação de serem utilizadas ao construir uma rede neural. As propriedades servem mais como um guia, destacando vantagens que se pode ter ao utilizar determinada função de ativação.
+
+Considerando isso, é possível finalmente entrar no tópico principal desse capítulo: as funções sigmoidais. Para isso, será explicado antes um exemplo ilustrativo destacando como essas funções atuam ao receberem suas entradas.
 
 \section{Exemplo Ilustrativo: Empurrando para extremos}
 
@@ -253,12 +287,14 @@ O gráfico da sigmoide está presente na Figura \ref{fig:sigmoide}, note que ele
 
 Um ponto a ser destacado nas funções de ativação, e que começou a ser visto no capítulo anterior (Capítulo \ref{cap:retropropagacao-gradiente}), é que se estamos construindo um modelo que aprende por meio da retropropagação, nós estamos também interessados em entender como essas funções de ativação se comportam em suas derivadas, pois ela é um dos componentes básicos para se calcular o gradiente retropropagado.
 
-Assim, ao derivar a sigmoide logística é possível encontrar a Equação \ref{eq:sigmoide-derivada}, mas ela também pode ser expressa de uma forma recurssiva, algo que é muito útil pois ajuda a poupar cálculos a serem feitos. Dessa forma, também tem-se a Equação \ref{eq:sigmoide-derivada-recursiva}
+Assim, ao derivar a sigmoide logística é possível encontrar a Equação \ref{eq:sigmoide-derivada}.
 
 \begin{equacaodestaque}{Derivada da sigmoide logística}
     \frac{d}{dz_i}\sigma(z_i) = \frac{e^{-z_i}}{(1 + e^{-z_i})^2}
     \label{eq:sigmoide-derivada}
 \end{equacaodestaque}
+
+Um ponto a ser destacado é que a sigmoide também pode ser expressa de uma forma recurssiva, algo que é muito útil pois ajuda a poupar cálculos a serem feitos. Dessa forma, também tem-se a Equação \ref{eq:sigmoide-derivada-recursiva}.
 
 \begin{equacaodestaque}{Derivada da sigmoide logística recursivamente}
     \frac{d}{dz_i}\sigma(z_i) = \sigma(z_i)(1 - \sigma(z_i))

@@ -161,6 +161,43 @@
       \field{pages}{303\bibrangedash 314}
       \range{pages}{12}
     \endentry
+    \entry{PropriedadesFuncoesDeAtivacao}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3fe45e652ae19ce206cc15b9ada73334}{%
+           family={Datta},
+           familyi={D\bibinitperiod},
+           given={Leonid},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{fullhash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{fullhashraw}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{bibnamehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authorbibnamehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authornamehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authorfullhash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authorfullhashraw}{3fe45e652ae19ce206cc15b9ada73334}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.NE}
+      \field{eprinttype}{arXiv}
+      \field{title}{A Survey on Activation Functions and their relation with Xavier and He Normal Initialization}
+      \field{year}{2020}
+      \verb{eprint}
+      \verb 2004.06632
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2004.06632
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2004.06632
+      \endverb
+    \endentry
     \entry{DyingReluDouglas}{misc}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=ea207ec158988978351250aa267c8f03}{%
@@ -229,7 +266,11 @@
       \field{labeltitlesource}{title}
       \field{booktitle}{ICLR 2016 Workshop Track}
       \field{title}{Incorporating Nesterov Momentum into Adam}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
       \field{year}{2016}
+      \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://openreview.net/forum?id=OM0DEvNMIxAaI-fG_O1-I
       \endverb
@@ -275,8 +316,12 @@
       \field{journaltitle}{Journal of Machine Learning Research}
       \field{number}{61}
       \field{title}{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
       \field{volume}{12}
       \field{year}{2011}
+      \field{urldateera}{ce}
       \field{pages}{2121\bibrangedash 2159}
       \range{pages}{39}
       \verb{urlraw}
@@ -587,7 +632,11 @@
       \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{Adam: A Method for Stochastic Optimization}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
       \field{year}{2017}
+      \field{urldateera}{ce}
       \verb{eprint}
       \verb 1412.6980
       \endverb
@@ -1000,7 +1049,11 @@
       \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{On the Variance of the Adaptive Learning Rate and Beyond}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
       \field{year}{2021}
+      \field{urldateera}{ce}
       \verb{eprint}
       \verb 1908.03265
       \endverb
@@ -1043,7 +1096,11 @@
       \field{eprintclass}{cs.LG}
       \field{eprinttype}{arXiv}
       \field{title}{Decoupled Weight Decay Regularization}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
       \field{year}{2019}
+      \field{urldateera}{ce}
       \verb{eprint}
       \verb 1711.05101
       \endverb
@@ -1208,6 +1265,76 @@
       \field{pages}{1\bibrangedash 17}
       \range{pages}{17}
     \endentry
+    \entry{PyTorchHardSigmoid}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=95b88f180e9eb5678e0f9ebac2cbe643}{%
+           family={{PyTorch}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{fullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{fullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{bibnamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorbibnamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authornamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorfullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorfullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \field{extraname}{1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Hardsigmoid}
+      \field{urlday}{10}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://pytorch.org/docs/stable/generated/torch.nn.Hardsigmoid.html
+      \endverb
+      \verb{url}
+      \verb https://pytorch.org/docs/stable/generated/torch.nn.Hardsigmoid.html
+      \endverb
+    \endentry
+    \entry{PyTorchHardTanh}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=95b88f180e9eb5678e0f9ebac2cbe643}{%
+           family={{PyTorch}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{fullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{fullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{bibnamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorbibnamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authornamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorfullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorfullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \field{extraname}{2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Hardtanh}
+      \field{urlday}{10}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://pytorch.org/docs/stable/generated/torch.nn.Hardtanh.html
+      \endverb
+      \verb{url}
+      \verb https://pytorch.org/docs/stable/generated/torch.nn.Hardtanh.html
+      \endverb
+    \endentry
     \entry{StochasticGradientDescentMethod}{article}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=163566b92b332258782e61e3d217a2bb}{%
@@ -1355,7 +1482,11 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{COURSERA: Neural Networks for Machine Learning}
       \field{title}{Lecture 6.5---RMSProp: Divide the gradient by a running average of its recent magnitude}
+      \field{urlday}{3}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
       \field{year}{2012}
+      \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf
       \endverb

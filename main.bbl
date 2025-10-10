@@ -161,6 +161,43 @@
       \field{pages}{303\bibrangedash 314}
       \range{pages}{12}
     \endentry
+    \entry{PropriedadesFuncoesDeAtivacao}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3fe45e652ae19ce206cc15b9ada73334}{%
+           family={Datta},
+           familyi={D\bibinitperiod},
+           given={Leonid},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{fullhash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{fullhashraw}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{bibnamehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authorbibnamehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authornamehash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authorfullhash}{3fe45e652ae19ce206cc15b9ada73334}
+      \strng{authorfullhashraw}{3fe45e652ae19ce206cc15b9ada73334}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.NE}
+      \field{eprinttype}{arXiv}
+      \field{title}{A Survey on Activation Functions and their relation with Xavier and He Normal Initialization}
+      \field{year}{2020}
+      \verb{eprint}
+      \verb 2004.06632
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2004.06632
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2004.06632
+      \endverb
+    \endentry
     \entry{DyingReluDouglas}{misc}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=ea207ec158988978351250aa267c8f03}{%
