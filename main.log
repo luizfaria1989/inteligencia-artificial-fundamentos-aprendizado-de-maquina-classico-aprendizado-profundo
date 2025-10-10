@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  9 OCT 2025 17:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.28)  10 OCT 2025 04:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2323,9 +2323,6 @@ LaTeX Font Info:    Font shape `U/msa/m/n' will be
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 11.40997pt on input line 786.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [49]
 Underfull \hbox (badness 10000) in paragraph at lines 844--844
@@ -2403,81 +2400,63 @@ Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparat
 (pdftex.def)             Requested size: 295.90588pt x 218.54126pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[54]
-
-[55 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png>]
-
-[56]
+[54 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adagrad-mnist.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
+[55]
+
+[56]
+
 [57]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png, id=994, 340.27126pt x 327.2225pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png, id=991, 340.27126pt x 327.2225pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png  used on input line 1070.
 (pdftex.def)             Requested size: 295.90588pt x 284.57143pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png, id=1002, 821.0675pt x 532.99126pt>
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png, id=999, 821.0675pt x 532.99126pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png  used on input line 1084.
 (pdftex.def)             Requested size: 386.96027pt x 251.18907pt.
 
 
-[58]
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png, id=1015, 945.5325pt x 462.72874pt>
+
+
+[58 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png, id=1014, 945.5325pt x 462.72874pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png  used on input line 1098.
 (pdftex.def)             Requested size: 386.96027pt x 189.37404pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+
+[59 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[59 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-mnist.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[60 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>]
 
-
-
-[60 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-multilayer.png>]
-
-[61 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adam-convnet.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[62]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png, id=1055, 1133.23375pt x 400.49625pt>
+[61]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png, id=1048, 1133.23375pt x 400.49625pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png  used on input line 1197.
 (pdftex.def)             Requested size: 455.24411pt x 160.8862pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+[62]
 
-
-
-[63]
-
-[64 <./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>]
-<./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png, id=1080, 1050.92625pt x 774.895pt>
+[63 <./imagens/../imagens/retropropagacao-gradiente/comparativo-nadam-mnist.png>]
+<./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png, id=1073, 1050.92625pt x 774.895pt>
 File: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png Graphic file (type png)
 <use ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>
 Package pdftex.def Info: ./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png  used on input line 1263.
@@ -2488,9 +2467,17 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[65]
+[64]
 
-[66 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>]
+[65 <./imagens/../imagens/retropropagacao-gradiente/comparativo-adamw-cifar-10.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[66]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [67]
 
@@ -2514,14 +2501,19 @@ LaTeX Font Warning: Command \large invalid in math mode on input line 1361.
 
 
 
-[68]
+[68])
 
-[69])
-
-[70]
+[69]
 \openout2 = `capitulos/parte-III-pilares/cap-07-sigmoidais.aux'.
 
  (./capitulos/parte-III-pilares/cap-07-sigmoidais.tex
+
+[70
+
+
+
+
+]
 Overfull \hbox (41.9395pt too wide) in paragraph at lines 21--21
 []\T1/cmss/m/n/17.28 Teoremas da Apro-xi-ma-ção Uni-ver-sal: In-tro-du-zindo a Não-Linearidade 
  []
@@ -2544,12 +2536,7 @@ Overfull \hbox (41.9395pt too wide) in paragraph at lines 21--21
 \g__witharrows_y_final_dim=\dimen390
 
 
-[71
-
-
-
-
-]
+[71]
 
 [72]
 
@@ -3474,16 +3461,16 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  61949 strings out of 467888
  1405854 string characters out of 5434061
- 4335768 words of memory out of 5000000
+ 4335671 words of memory out of 5000000
  88474 multiletter control sequences out of 15000+600000
  717554 words of font info for 263 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  115i,19n,117p,1328b,4449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (208 pages, 1781168 bytes).
+Output written on main.pdf (208 pages, 1779973 bytes).
 PDF statistics:
- 3434 PDF objects out of 3580 (max. 8388607)
- 3097 compressed objects within 31 object streams
+ 3432 PDF objects out of 3580 (max. 8388607)
+ 3095 compressed objects within 31 object streams
  866 named destinations out of 1000 (max. 500000)
  2056 words of extra memory for PDF output out of 10000 (max. 10000000)
 
