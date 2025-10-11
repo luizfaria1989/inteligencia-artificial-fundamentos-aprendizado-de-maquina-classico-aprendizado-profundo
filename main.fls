@@ -471,6 +471,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/ragged2e/ragged2e.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/titling/titling.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ppl.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ppl.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ppl.fd
