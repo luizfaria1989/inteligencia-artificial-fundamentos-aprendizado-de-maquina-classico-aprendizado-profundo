@@ -693,6 +693,12 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm1
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr8t.vf
@@ -738,10 +744,6 @@ INPUT ./capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex
 INPUT capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplri8t.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
@@ -749,7 +751,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ppl.fd
@@ -761,7 +762,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7y.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr8c.vf
@@ -1003,6 +1003,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/zplmb7y.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/zplmb7y.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8c.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb8c.vf
 INPUT ./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 INPUT ./capitulos/parte-III-pilares/cap-12-metaheuristicas.tex
 OUTPUT capitulos/parte-III-pilares/cap-12-metaheuristicas.aux

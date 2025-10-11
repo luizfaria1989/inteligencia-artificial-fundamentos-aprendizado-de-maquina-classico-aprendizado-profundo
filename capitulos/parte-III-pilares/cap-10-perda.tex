@@ -5,6 +5,12 @@
 \chapter{Funções de Perda}
 \label{cap:perda-binaria}
 
+Até agora foi visto o funcionamento da retropropagação, e como ela faz uso dos otimizadores, os quais funcionam como um barco, percorrendo a função de perda em busca de pontos de mínimos. Além disso, em seguida foram vistas diversas funções de ativação, começando pelas sigmoidais, depois pelas retificadoras, e por fim uma coletânea de diferentes funções. Contudo, está na hora de entender o outro lado da retropropagação: as funções de perda.
+
+Para isso, esse capítulo busca explicar diversas funções de perda e suas aplicações, começando pelas funções para problemas de regressão, conhecendo as clássicas erro quadrático médio e erro absoluto médio, além da \textit{hubber loss}, uma função que busca unir o melhor dessas duas funções de perda. Seguindo adiante, são introduzidas as funções de perda para classificação binária, como a \textit{BCE}. Visto os problemas de classificação binária, é possível também conhecer os problemas de classifação multi com a \textit{categorical cross entropy}.
+
+Mais adiante, está apresentado não funções, mas esquemas de como a perda pode ser medida para problemas como o de redes adversárias. Mas as perdas não são a única forma de medir como um modelo está performando, para isso, o final do capítulo é dedicado para explicar outros diferentes métodos de medir o desempenho do modelo que está sendo construído.
+
 \section{A Intuição da Perda: Medindo o Erro do Modelo}
 
 \section{Funções de Perda Para Regressão}
@@ -593,5 +599,50 @@
 \section{Outras Métricas de Avaliação}
 
 \subsection{Acurácia}
+
+\begin{equacaodestaque}{Acurácia}
+    \text{Acurácia} = \frac{VP + VN}{VP + VN + FP + FN}
+    \label{eq:acuracia}
+\end{equacaodestaque}
+
+\subsection{Precisão}
+
+\begin{equacaodestaque}{Precisão (Precision)}
+    \text{Precisão} = \frac{VP}{VP + FP}
+    \label{eq:precisao}
+\end{equacaodestaque}
+
+\subsection{Revocação ou Sensibilidade}
+
+\begin{equacaodestaque}{Revocação (Recall) ou Sensibilidade}
+    \text{Revocação} = \frac{VP}{VP + FN}
+    \label{eq:revocacao}
+\end{equacaodestaque}
+
+\subsection{F1-Score}
+
+\begin{equacaodestaque}{F1-Score}
+    \text{F1-Score} = 2 \times \frac{\text{Precisão} \times \text{Revocação}}{\text{Precisão} + \text{Revocação}}
+    \label{eq:f1_score}
+\end{equacaodestaque}
+
+\subsection{Curva ROC e AUC}
+
+\begin{equacaodestaque}{Taxa de Falsos Positivos (FPR)}
+    \text{FPR} = \frac{FP}{FP + VN}
+    \label{eq:fpr}
+\end{equacaodestaque}
+
+\subsection{Métricas Para Regressão ($R^2$)}
+
+\begin{equacaodestaque}{Raiz do Erro Quadrático Médio (RMSE)}
+    L_{\text{RMSE}} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}
+    \label{eq:rmse}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Coeficiente de Determinação (R²)}
+    R^2 = 1 - \frac{\sum_{i=1}^{N}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{N}(y_i - \bar{y})^2}
+    \label{eq:r_quadrado}
+\end{equacaodestaque}
 
 

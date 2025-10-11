@@ -93,7 +93,7 @@
 \contentsline {subsection}{\numberline {8.4.1}Leaky ReLU (LReLU)}{103}{subsection.8.4.1}%
 \contentsline {subsection}{\numberline {8.4.2}Parametric ReLU (PReLU)}{107}{subsection.8.4.2}%
 \contentsline {subsection}{\numberline {8.4.3}Randomized Leaky ReLU (RReLU)}{113}{subsection.8.4.3}%
-\contentsline {section}{\numberline {8.5}Em Busca da Suavidade: As Variantes Não Lineares}{117}{section.8.5}%
+\contentsline {section}{\numberline {8.5}As Variantes Não Lineares: Em Busca da Suavidade}{117}{section.8.5}%
 \contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit (ELU)}{118}{subsection.8.5.1}%
 \contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit (SELU)}{121}{subsection.8.5.2}%
 \contentsline {subsection}{\numberline {8.5.3}Noisy ReLU (NReLU)}{125}{subsection.8.5.3}%
@@ -113,20 +113,25 @@
 \contentsline {subsection}{\numberline {10.2.1}Exemplo Ilustrativo: Jogando Dardos}{141}{subsection.10.2.1}%
 \contentsline {subsection}{\numberline {10.2.2}Erro Quadrático Médio (Mean Squared Error - MSE)}{141}{subsection.10.2.2}%
 \contentsline {subsection}{\numberline {10.2.3}Erro Absoluto Médio (Mean Absolute Error - MAE)}{142}{subsection.10.2.3}%
-\contentsline {subsection}{\numberline {10.2.4}Huber Loss: O Melhor de Dois Mundos}{142}{subsection.10.2.4}%
-\contentsline {section}{\numberline {10.3}Funções de Perda para Classificação Binária}{143}{section.10.3}%
-\contentsline {subsection}{\numberline {10.3.1}Entropia Cruzada Binária (Binary Cross-Entropy): A função de perda padrão}{143}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.2.4}Huber Loss: O Melhor de Dois Mundos}{143}{subsection.10.2.4}%
+\contentsline {section}{\numberline {10.3}Funções de Perda para Classificação Binária}{144}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Entropia Cruzada Binária (Binary Cross-Entropy): A função de perda padrão}{144}{subsection.10.3.1}%
 \contentsline {subsection}{\numberline {10.3.2}Perda Hinge (Hinge Loss)}{144}{subsection.10.3.2}%
 \contentsline {section}{\numberline {10.4}Funções de Perda para Classificação Multilabel}{145}{section.10.4}%
 \contentsline {subsection}{\numberline {10.4.1}Entropia Cruzada Categórica (Categorical Cross-Entropy)}{145}{subsection.10.4.1}%
-\contentsline {subsection}{\numberline {10.4.2}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{145}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.2}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{146}{subsection.10.4.2}%
 \contentsline {section}{\numberline {10.5}Funções de Perda Avançadas}{146}{section.10.5}%
 \contentsline {subsection}{\numberline {10.5.1}Perda para Classificação Multirrótulo (Multilabel)}{146}{subsection.10.5.1}%
 \contentsline {subsection}{\numberline {10.5.2}Perdas para Ranking e Aprendizado de Métricas}{147}{subsection.10.5.2}%
 \contentsline {subsubsection}{\numberline {10.5.2.1}Triplet Loss (Perda Tripla)}{147}{subsubsection.10.5.2.1}%
-\contentsline {subsubsection}{\numberline {10.5.2.2}Contrastive Loss (Perda Contrastiva)}{147}{subsubsection.10.5.2.2}%
+\contentsline {subsubsection}{\numberline {10.5.2.2}Contrastive Loss (Perda Contrastiva)}{148}{subsubsection.10.5.2.2}%
 \contentsline {section}{\numberline {10.6}Outras Métricas de Avaliação}{149}{section.10.6}%
 \contentsline {subsection}{\numberline {10.6.1}Acurácia}{149}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.6.2}Precisão}{149}{subsection.10.6.2}%
+\contentsline {subsection}{\numberline {10.6.3}Revocação ou Sensibilidade}{150}{subsection.10.6.3}%
+\contentsline {subsection}{\numberline {10.6.4}F1-Score}{150}{subsection.10.6.4}%
+\contentsline {subsection}{\numberline {10.6.5}Curva ROC e AUC}{150}{subsection.10.6.5}%
+\contentsline {subsection}{\numberline {10.6.6}Métricas Para Regressão ($R^2$)}{150}{subsection.10.6.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {11}\MakeTextUppercase []{Metaheurísticas: Otimizando Redes Neurais Sem o Gradiente}}{151}{chapter.11}%
 \contentsline {section}{\numberline {11.1}Algoritmos Evolutivos}{151}{section.11.1}%
@@ -264,7 +269,7 @@
 \contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Tabela das Funções de Ativação}}{203}{appendix.A}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{207}{section*.86}%
+\contentsline {chapter}{Referências}{207}{section*.88}%
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
