@@ -1279,8 +1279,10 @@
       \strng{authornamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
       \strng{authorfullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
       \strng{authorfullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \field{extraname}{1}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -1296,6 +1298,41 @@
       \endverb
       \verb{url}
       \verb https://pytorch.org/docs/stable/generated/torch.nn.Hardsigmoid.html
+      \endverb
+    \endentry
+    \entry{PyTorchLeakyReLU}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=95b88f180e9eb5678e0f9ebac2cbe643}{%
+           family={{PyTorch}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{fullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{fullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{bibnamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorbibnamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authornamehash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorfullhash}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \strng{authorfullhashraw}{95b88f180e9eb5678e0f9ebac2cbe643}
+      \field{extraname}{2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LeakyReLU}
+      \field{urlday}{11}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.pytorch.org/docs/stable/generated/torch.nn.LeakyReLU.html
+      \endverb
+      \verb{url}
+      \verb https://docs.pytorch.org/docs/stable/generated/torch.nn.LeakyReLU.html
       \endverb
     \endentry
     \entry{StochasticGradientDescentMethod}{article}{}{}

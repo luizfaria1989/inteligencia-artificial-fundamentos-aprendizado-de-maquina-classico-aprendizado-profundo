@@ -88,18 +88,17 @@
 \contentsline {chapter}{\chapternumberline {8}\MakeTextUppercase []{Funções de Ativação Retificadoras}}{95}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Exemplo Ilustrativo: Vendendo Pipoca}{95}{section.8.1}%
 \contentsline {section}{\numberline {8.2}Rectified Linear Unit (ReLU): A Revolução Retificadora}{96}{section.8.2}%
-\contentsline {section}{\numberline {8.3}ReLUs Agonizantes}{101}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Corrigindo o Problema do ReLUs agonizantes: As Variantes com Vazamento}{102}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Corrigindo o Dying ReLUs Problem: As Variantes com Vazamento}{102}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}Leaky ReLU (LReLU)}{103}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}Parametric ReLU (PReLU)}{107}{subsection.8.5.2}%
-\contentsline {subsection}{\numberline {8.5.3}Randomized Leaky ReLU (RReLU)}{113}{subsection.8.5.3}%
-\contentsline {section}{\numberline {8.6}Em Busca da Suavidade: As Variantes Não Lineares}{117}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Exponential Linear Unit (ELU)}{118}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Scaled Exponential Linear Unit (SELU)}{121}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Noisy ReLU (NReLU)}{125}{subsection.8.6.3}%
-\contentsline {section}{\numberline {8.7}O Problema dos Gradientes Explosivos}{131}{section.8.7}%
-\contentsline {section}{\numberline {8.8}Comparativo de Desempenho das Funções Retificadoras}{133}{section.8.8}%
+\contentsline {section}{\numberline {8.3}O Problema dos ReLUs Agonizantes}{102}{section.8.3}%
+\contentsline {section}{\numberline {8.4}As Variantes com Vazamento: Corrigindo o Problema do ReLUs agonizantes}{102}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Leaky ReLU (LReLU)}{103}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Parametric ReLU (PReLU)}{107}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}Randomized Leaky ReLU (RReLU)}{113}{subsection.8.4.3}%
+\contentsline {section}{\numberline {8.5}Em Busca da Suavidade: As Variantes Não Lineares}{117}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Exponential Linear Unit (ELU)}{118}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Scaled Exponential Linear Unit (SELU)}{121}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}Noisy ReLU (NReLU)}{125}{subsection.8.5.3}%
+\contentsline {section}{\numberline {8.6}O Problema dos Gradientes Explosivos}{130}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Comparativo: Funções Retificadoras}{133}{section.8.7}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {9}\MakeTextUppercase []{Funções de Ativação Modernas e Outras Funções de Ativação}}{135}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Funções Modernas: O Estado-da-Arte das Funções de Ativação}{135}{section.9.1}%
@@ -266,6 +265,10 @@
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \contentsline {chapter}{Referências}{207}{section*.86}%
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
