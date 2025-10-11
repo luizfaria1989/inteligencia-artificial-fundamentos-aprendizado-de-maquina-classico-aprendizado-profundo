@@ -5,7 +5,9 @@
 \chapter{Funções de Ativação Modernas e Outras Funções de Ativação}
 \label{cap:ativacao-modernas-outras}
 
-\section{Gaussian Error Linear Unit (GELU)}
+\section{Funções Modernas: O Estado-da-Arte das Funções de Ativação}
+
+\subsection{Gaussian Error Linear Unit (GELU)}
 
 Agora chegamos na última função que iremos ver neste texto, ela é a Gaussian Error Linear Unit, ou GELU. Ela é uma das mais diferentes quando nós passamos a analisar como é sua fórmula, a qual veremos mais em frente. A GELU foi introduzida no artigo \textit{Gaussian Error Linear Units (GELUs)} dos autores \textcite{GELUArticle}, nele, os pesquisadores apresentam uma nova função de ativação de alta performance para ser utilizada na construção de redes neurais.
 
@@ -108,7 +110,7 @@ Para plotarmos o gráfico de sua derivada podemos fazer uma aproximação utiliz
 
 Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discutem outras informações úteis da Gaussian Error Linear Unit para serem considerados ao construir uma rede neural com essa função de ativação, o primeiro deles é de que é recomendado o uso de um otimizador com momentum quando estiver treinando uma rede com a GELU \parencite{GELUArticle}. Em segundo lugar, \textcite{GELUArticle}, destacam que é importante utilizar uma aproximação próxima da distribuição acumulativa da distribuição gaussiana, entretanto, funções como a sigmoide, são uma aproximação acumulativa da distribuição normal, contudo, a SiLU mesmo performando pior que a GELU, ainda sim, é capaz de performar melhor que outras retificadoras como a ELU e a ReLU nos testes realizados pelos autores, assim, faz necessário o uso de novas aproximações, como as vistas nas expressões \ref{eq:gelu-aproximacoes} e \ref{eq:gelu-aproximacoes-sigmoide}.
 
-\section{Swish}
+\subsection{Swish}
 
 \begin{equacaodestaque}{Swish}
     \text{Swish}(z_i) = z_i \cdot \sigma(z_i) = z_i \frac{1}{1 + e^{-z_i}}

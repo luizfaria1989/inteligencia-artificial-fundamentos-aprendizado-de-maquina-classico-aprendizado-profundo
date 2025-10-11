@@ -2610,9 +2610,9 @@
     <bcf:citekey order="144" intorder="1">Softsign1998</bcf:citekey>
     <bcf:citekey order="145" intorder="1">Softsign1998</bcf:citekey>
     <bcf:citekey order="146" intorder="1">Softsign1998</bcf:citekey>
-    <bcf:citekey order="147" intorder="1">PyTorchHardSigmoid</bcf:citekey>
+    <bcf:citekey order="147" intorder="1">Softsign1998</bcf:citekey>
     <bcf:citekey order="148" intorder="1">PyTorchHardSigmoid</bcf:citekey>
-    <bcf:citekey order="149" intorder="1">PyTorchHardTanh</bcf:citekey>
+    <bcf:citekey order="149" intorder="1">PyTorchHardSigmoid</bcf:citekey>
     <bcf:citekey order="150" intorder="1">ActivationFunctionsLederer</bcf:citekey>
     <bcf:citekey order="151" intorder="1">Householder1941</bcf:citekey>
     <bcf:citekey order="152" intorder="1">Householder1941</bcf:citekey>
