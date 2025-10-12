@@ -22,7 +22,7 @@ Conhecendo como uma rede neural aprende, é possível agora entender outros pont
 
 Esse capítulo se inicia justamente discutindo a importância de introduzir a não-linearidade para uma rede que está sendo criada, como justificativa são citados alguns dos diferentes teoremas da aproximação universal. O restante do captítulo é dedicado as funções sigmoidais, começando pela sigmoide, e como elas surgiram no cenário de aprendizado de máquina como uma forma de replicar o comportamento dos neurônios humanos em redes artificiais. 
 
-Além disso, são discutidas outras funções, como a tangente hiperbólica (tanh) e a \textit{softsign}. Seguindo adiante é explicada uma das principais desvantagens de se utilizar funções sigmoidais em uma rede: o problema do desaparecimento do gradiente. E como ele se tornou um empecilho para a criação de redes neurais mais profundas. No fim do capítulo, está uma tabela resumindo as principais características das funções de foram apresentadas.
+Além disso, são discutidas outras funções, como a tangente hiperbólica (tanh) e a \textit{softsign}. Seguindo adiante, é explicada uma das principais desvantagens de se utilizar funções sigmoidais em uma rede: o problema do desaparecimento do gradiente. E como ele se tornou um empecilho para a criação de redes neurais mais profundas. No fim do capítulo, está uma tabela resumindo as principais características das funções de ativação que foram apresentadas.
 
 \section{Teoremas da Aproximação Universal: Introduzindo a Não-Linearidade}
 
@@ -134,7 +134,7 @@ Se nos tivéssemos uma rede neural em que os neurônios não possuíssem uma fun
 
 Visto um dos motivos de se utilizar funções de ativação em uma rede neural, cabe agora entender um pouco dessa classe de funções. Em \textit{A Survey on Activation Functions and their relation with Xavier and He Normal Initialization}, \textcite{PropriedadesFuncoesDeAtivacao} discute algumas das propriedades das funções de ativação, dizendo que é esperado que essas funções sejam: não-lineares, diferenciáveis, contínuas, limitadas, centradas em zero. Além disso, o autor discute também que é interessante considerar também o custo computacional dessas funções que estão sendo aplicadas em uma rede neural \parencite{PropriedadesFuncoesDeAtivacao}.
 
-Dessa forma, é possível discutir um pouco de cada uma dessas propriedades em seguida.
+Dessa forma, é possível discutir elaborar pouco de cada uma dessas propriedades em seguida.
 
 \textbf{Não-linearidade}
 
@@ -174,13 +174,13 @@ Na matematica, as funções do tipo sigmoide são excelentes para esse tipo de p
 
 \section{A Sigmoide Logística: Ótima para Classificações Binárias}
 
-Por mais que a sigmoide hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textit{Recherches mathématiques sur la loi d'accroissement de la population} (Pesquisas matemáticas sobre a lei de crescimento da população), em que \textcite{SigmoidVerhulst1845} propõem a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em "S" característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
+Por mais que a sigmoide hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textit{Recherches mathématiques sur la loi d'accroissement de la population} (Pesquisas matemáticas sobre a lei de crescimento da população), em que \textcite{SigmoidVerhulst1845} propõe a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em "S" característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
 
 Nos anos 1980, estavam ocorrendo mudanças com as funções que eram utilizadas para construir uma rede neural, um desses motivos foi a introdução da retropropagação pelos pesquisadores Daviel Rumelhart, Geoffrey Hinton e Ronald Williams. A retropropagação era uma técnica que permitia que um modelo aprendesse com base nos seus erros, ajustando automaticamente os seus parâmetros em busca de conseguir uma melhor acurácia \parencite{BackpropagationArticle}. 
 
 Além disso, na pesquisa que introduz a retropropagação, \textit{Learning representations by back-propagating errors} de 1986, os cientistas propõem o uso da função sigmoide logística como uma das candidatas para ser utilizada junto com a retropropagação como uma função de ativação, como justificativa, \textcite{BackpropagationArticle} citam o fato dela ser uma função que é capaz de introduzir a não-linearidade para o modelo, permitindo que ele aprenda padrões mais complexos, e também por possui uma derivada limitada.
 
-Mas esse não foi o único fator que fez com que a sigmoide e sua familia se tornassem funções populares para a época. Pouco antes da criação da retropropagação, na década passada, haviam cientistas estudando o comportamento dos neurônios humanos como inspiração para a criação de redes neurais artificiais. Um exemplo desse caso foi o dos cientistas \textcite{SigmoidWilsonCowan}, em 1972 eles publicaram um artigo intitulado \textit{excitatory and Inhibitory interactions in localized populations of model neurons}, em que buscam estudar como os neurônios respondiam a determinados estímulos.
+Mas esse não foi o único fator que fez com que a sigmoide e sua familia se tornassem funções populares para a época. Pouco antes da criação da retropropagação, na década passada, haviam cientistas estudando o comportamento dos neurônios humanos como inspiração para a criação de redes neurais artificiais. Um exemplo desse caso foi o dos cientistas \textcite{SigmoidWilsonCowan}, no início dos anos 70 eles publicaram um artigo intitulado \textit{excitatory and Inhibitory interactions in localized populations of model neurons}, em que buscam estudar como os neurônios respondiam a determinados estímulos.
 
 No artigo, Hugh e Cowan buscam analisar o comportamento de populações localizadas de neurônios excitatórios (denotados pela função $E(t)$) e inibitórios (representados por $I(t)$) e como as duas interagem entre si, para isso, eles utilizam como variável a proporção de células em uma subpopulação que dispara/reage por unidade de tempo \parencite{SigmoidWilsonCowan}. Para modelar essa atividade, \textcite{SigmoidWilsonCowan} fizeram o uso uma variação da função sigmoide, representada para Equação \ref{eq:neuronio-de-wilson-cowan}, que era capaz de descrever o comportamento dos neurônios a certos estímulos.
 
@@ -222,9 +222,9 @@ Nessa equação, o parâmetro $a$ representa a inclinação, a qual foi ajustada
 
 \textcite{SigmoidWilsonCowan} demonstram que a população de neurônios reage de formas distintas quando sofrem determinados estímulos, os níveis baixos de excitação não conseguem ativar a população, porém, existe uma região de alta sensibilidade, na qual pequenos aumentos no estímulo geram um grande aumento na atividade. Além disso, existe um terceiro nível, o de saturação, em que níveis muito altos de estímulos são capazes de ativar todas as células e a partir disso, a resposta da população atinge o comportamento de uma função constante, indicando que ela saturou \parencite{SigmoidWilsonCowan}. Ao juntar todos esses três níveis, tem-se a famosa curva em "S", caraterística da função sigmoide.
 
-Com isso, ao consideramos esses dois cenários: a criação da retropropagação e busca na natureza para inspiração na criação de redes neurais. A sigmoide, junto com a sua família, se tornaram funções muito populares para a época, estando presentes em varias redes neurais criadas. Um desses exemplos é a rede de Elman, um tipo de rede neural recorrente criada para aprender e representar estruturas em dados sequenciais, \textcite{ElmanNetwork} cita em seu estudo \textit{Finding structure in time} que era ideal o uso de uma função de ativação com valores limitados entre zero e um. Um cenário ideal para o uso da sigmoide logística.
+Com isso, ao consideramos esses dois cenários: a criação da retropropagação e busca na natureza para inspiração na criação de redes neurais. A sigmoide, junto com a sua família, se tornaram funções muito populares para a época, estando presentes em varias redes neurais criadas. Um desses exemplos é a rede de Elman, um tipo de rede neural recorrente criada para aprender e representar estruturas em dados sequenciais, \textcite{ElmanNetwork} cita em seu estudo \textit{Finding structure in time} que era ideal o uso de uma função de ativação com valores limitados entre zero e um. Um cenário perfeito para o uso da sigmoide logística.
 
-Cabe destacar também que, as sigmoidais nao foram as primeiras funções de ativação a serem utilizadas na criação de uma rede neural. Nesse cenário de redes neurais, existem sempre funções que são mais populares, e que com o tempo e o surgimento de novas pesquisas, são deixadas de lado para novamos funções mais interessantes. Uma função que era muito utilizada era a \textit{heavside}, ou degrau unitário em português, ela está representada na Figura \ref{fig:degrau-unitario}. Essa função inclusive esteve presente na produção da rede neural \textit{Perceptron} criada por \textcite{PerceptronRosenblatt} e introduzida para a comunidade científica no artigo \textit{The Perceptron: A probabilistic model for informations storage and organization in the brain} no final dos anos 50.
+Cabe destacar também que, as sigmoidais nao foram as primeiras funções de ativação a serem utilizadas na criação de uma rede neural. Nesse cenário de redes neurais, existem sempre funções que são mais populares, e que com o tempo e o surgimento de novas pesquisas, são deixadas de lado para novas funções mais interessantes. Uma função que era muito utilizada era a \textit{heavside}, ou degrau unitário em português, ela está representada na Figura \ref{fig:degrau-unitario}. Essa função inclusive esteve presente na produção da rede neural \textit{Perceptron} criada por \textcite{PerceptronRosenblatt} e introduzida para a comunidade científica no artigo \textit{The Perceptron: A probabilistic model for informations storage and organization in the brain} no final dos anos 50.
 
 \begin{figure}[h!]
     \centering
@@ -255,12 +255,12 @@ Cabe destacar também que, as sigmoidais nao foram as primeiras funções de ati
     \fonte{O autor (2025).}
 \end{figure}
 
-Ao comparar a degrau unitário com a sigmoide, é possível notar uma diferença crucial, a sigmoide é uma função contínua em todos os pontos, podemos dizer que para desenhar seu gráfico não precisamos tirar o lápis do papel nenhuma vez, algo que não ocorre com a heavside. Além disso, a derivada da heavside é zero em quase todos os seus pontos, por esse motivo, ela impossibilitava a retropropagação do erro, uma vez que quando fossemos calcular o gradiente para uma parte de um modelo que usasse essa função, ele provavelmente seria zero.
+Ao comparar a degrau unitário com a sigmoide, é possível notar uma diferença crucial, a sigmoide é uma função contínua em todos os pontos, podemos dizer que para desenhar seu gráfico não precisamos tirar o lápis do papel nenhuma vez, algo que não ocorre com a \textit{heavside}. Além disso, a derivada da \textit{heavside} é zero em quase todos os seus pontos, por esse motivo, ela impossibilitava a retropropagação do erro, uma vez que quando fossemos calcular o gradiente para uma parte de um modelo que usasse essa função, ele provavelmente seria zero.
 
-A função sigmoide é escrita com uma exponencial, como na fórmula \ref{eq:sigmoide}. Como explica \textcite{ActivationFunctionsLederer}, a sigmoide ela é uma função limitada, diferenciável e monotônica, o que significa que conforme os valores de $x$ aumentam os valores de $f(x)$ também aumentam.
+A função sigmoide é escrita com uma exponencial, como na Equação \ref{eq:sigmoide}. Como explica \textcite{ActivationFunctionsLederer}, a sigmoide ela é uma função limitada, diferenciável e monotônica, o que significa que conforme os valores de $x$ aumentam os valores de $f(x)$ também aumentam.
 
 \begin{equacaodestaque}{Sigmoide Logística}
-    \sigma(z_i) = \frac{1}{1 + e^{-z_i}}
+    \sigma(y_j) = \frac{1}{1 + e^{-y_j}}
     \label{eq:sigmoide}
 \end{equacaodestaque}
 
@@ -270,8 +270,8 @@ O gráfico da sigmoide está presente na Figura \ref{fig:sigmoide}, note que ele
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\sigma(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\sigma(y_j)$},
             xmin=-8.5, xmax=8.5,
             ymin=-0.3, ymax=1.1,
             axis lines=middle,
@@ -289,15 +289,15 @@ Um ponto a ser destacado nas funções de ativação, e que começou a ser visto
 
 Assim, ao derivar a sigmoide logística é possível encontrar a Equação \ref{eq:sigmoide-derivada}.
 
-\begin{equacaodestaque}{Derivada da sigmoide logística}
-    \frac{d}{dz_i}\sigma(z_i) = \frac{e^{-z_i}}{(1 + e^{-z_i})^2}
+\begin{equacaodestaque}{Sigmoide Logística Derivada}
+    \frac{d}{dy_j}[\sigma](y_j) = \frac{e^{-y_j}}{(1 + e^{-y_j})^2}
     \label{eq:sigmoide-derivada}
 \end{equacaodestaque}
 
 Um ponto a ser destacado é que a sigmoide também pode ser expressa de uma forma recurssiva, algo que é muito útil pois ajuda a poupar cálculos a serem feitos. Dessa forma, também tem-se a Equação \ref{eq:sigmoide-derivada-recursiva}.
 
-\begin{equacaodestaque}{Derivada da sigmoide logística recursivamente}
-    \frac{d}{dz_i}\sigma(z_i) = \sigma(z_i)(1 - \sigma(z_i))
+\begin{equacaodestaque}{Sigmoide Logística Derivada Recursivamente}
+    \frac{d}{dy_j}[\sigma](y_j) = \sigma(y_j)(1 - \sigma(y_j))
     \label{eq:sigmoide-derivada-recursiva}
 \end{equacaodestaque}
 
@@ -307,9 +307,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Sigmoide},
-            xlabel={$z_i$},
-            ylabel={$\sigma'(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\sigma'(y_j)$},
             xmin=-8.3, xmax=8.3,
             ymin=-0.05, ymax=0.35,
             axis lines=middle,
@@ -336,7 +335,7 @@ Passado mais de dois séculos, a tangente hiperbólica já estava sendo utilizad
 É possível escrever a tangente hiperbólica utilizando a definição de tangente, que é o quociente a função seno com a função cosseno, só que neste caso usando as funções hiperbólicas. Assim ela é representada pela Equação \ref{eq:tanh}.
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh)}
-    \tanh(z_i) = \frac{\sinh(z_i)}{\cosh(z_i)} = \frac{e^z_i - e^{-z_i}}{e^z_i + e^{-z_i}}
+    \tanh(y_j) = \frac{\sinh(y_j)}{\cosh(y_j)} = \frac{e^y_j - e^{-y_j}}{e^y_j + e^{-y_j}}
     \label{eq:tanh}
 \end{equacaodestaque}
 
@@ -346,8 +345,8 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\tanh(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\tanh(y_j)$},
             xmin=-5, xmax=5,
             ymin=-1.2, ymax=1.2,
             axis lines=middle,
@@ -365,15 +364,15 @@ Como foi visto em seções anteriores, é interessante ao escolher uma função 
 
 De forma análoga a feita na sigmoide logística, vale a pena calcular a derivada da tangente hiperbólica para entender como o gradiente é propagado para as camadas anteriores ao utilizar essa função de ativação. Dessa forma, a sua derivada está representada na Equação \ref{eq:tanh-derivada}.
 
-\begin{equacaodestaque}{Derivada da tangente hiperbólica (tanh)}
-    \frac{d}{dz_i}\tanh(z_i) = \text{sech}^2(z_i)
+\begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada}
+    \frac{d}{dy_j}[\tanh](y_j) = \text{sech}^2(y_j)
     \label{eq:tanh-derivada}
 \end{equacaodestaque}
 
 Assim como a sigmoide logística, a tangente hiperbólica possui uma vantagem, ela pode ser escrita de forma recursiva, o que ajuda a poupar cálculos para a o \textit{backward pass}, pois é possível simplemente armazenar o resultado dessa função que estava calculado no \textit{forward pass} e reutilizá-lo ao calcular a sua derivada. Isso é muito útil pois quanto menos calculos forem feitos, maior é a tendência que o modelo será mais rápido e com isso irá convergir em menos tempo \footnote{Note que tanto a sigmoide quanto a tangente hiperbólica fazem uso de exponenciais em suas fórmulas, essas operações acabam por ser caras (em termos de poder de processamento) quando comparadas com as simples operações de comparação da hard tanh, a qual será vista em seções futuras.}. Dessa forma, tem-se que a derivada da tangente hiperbólica escrita de forma recursiva pode ser expressa pela Equação \ref{eq:tanh-derivada-recursiva}
 
-\begin{equacaodestaque}{Derivada da tangente hiperbólica (tanh) recursivamente}
-    \frac{d}{dz_i}\tanh(z_i) = 1 - \tanh^2(z_i)
+\begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada Recursivamente}
+    \frac{d}{dy_j}[\tanh](y_j) = 1 - \tanh^2(y_j)
     \label{eq:tanh-derivada-recursiva}
 \end{equacaodestaque}
 
@@ -383,9 +382,8 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Tangente Hiperbólica},
-            xlabel={$z_i$},
-            ylabel={$\tanh'(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\tanh'(y_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -410,7 +408,7 @@ A próxima função sigmoidal a ser analisada é a \textit{softsign}, diferente 
 A principal diferença da \textit{softsign} com as outras sigmoidais está na sua fórmula, como pode ser visto na Equação \ref{eq:softsign} é que ela não utiliza nenhum exponencial para compor sua função. Isso faz com que ela seja uma função mais "barata" em termos de custo computacional para ser implementada em redes neurais. Assim, é possível obter resultados parecidos porem utilizando cálculos menos complexos e com isso encontrar redes mais rápidas de serem treinadas.
 
 \begin{equacaodestaque}{\textit{Softsign}}
-    \text{softsign}(z_i) = \frac{z_i}{1 + |z_i|}
+    \text{softsign}(y_j) = \frac{y_j}{1 + |y_j|}
     \label{eq:softsign}
 \end{equacaodestaque}
 
@@ -421,8 +419,8 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
     % Gráfico da função Softsign usando PGFPlots
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\text{softsign}(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\text{softsign}(y_j)$},
             xmin=-15, xmax=15,
             ymin=-1.2, ymax=1.2,
             axis lines=middle,
@@ -439,8 +437,8 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
 
 Com relação a sua diferenciabilidade, a \textit{softsign} pode ser derivada em todos os seus pontos, e sua derivada pode ser vista na Equação \ref{eq:softsign-derivada}. Com base nela, é possível notar uma outra diferença da \textit{softsign} com a tangente hiperbólica e a sigmoide. Diferente das outras duas, a derivada da \textit{softsign} não pode ser expressa em termos da sua própria função. Assim, enquanto nas outras funções é feito um cálculo complexo na função e um simples na derivada, pois é aproveitado o resultado, na \textit{softsign} isso não ocorre.
 
-\begin{equacaodestaque}{Derivada da \textit{softsign}}
-    \frac{d}{dz_i}\text{softsign}(z_i) = \frac{1}{(1 + |z_i|)^2}
+\begin{equacaodestaque}{\textit{Softsign} Derivada}
+    \frac{d}{dy_j}[\text{softsign}](y_j) = \frac{1}{(1 + |y_j|)^2}
     \label{eq:softsign-derivada}
 \end{equacaodestaque}
 
@@ -451,8 +449,8 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
     % Gráfico da derivada da função Softsign
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\text{softsign}'(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\text{softsign}'(y_j)$},
             xmin=-10, xmax=10,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -469,7 +467,7 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
 
 Além disso, essa função também sofre do mesmo problema das outras duas funções de ativação vistas até agora, o problema do desaparecimento do gradiente. Esse é um ponto que é corrigido com uma outra família de funções de ativação, as retificadoras, as quais são tema principal do Capítulo \ref{cap:ativacao-retificadoras}.
 
-Seguindo na proposta de ver funções sigmoidais que são mais "baratas", a próxima seção busca explorar isso com outras duas funções: a \textit{hard sigmoid} e a \textit{hard tanh}. Essas funções buscam imitar o comportamento das sigmoidais porém, escrito em forma de retas, dessa forma, elas sacrificam a suavidade das sigmoidais para garantir um menor custo computacional.
+Seguindo na proposta de ver funções sigmoidais que são mais "baratas", a próxima seção busca explorar isso com outras duas funções: a \textit{hard sigmoid} e a \textit{hard tanh}. Essas funções tem como intuito imitar o comportamento das sigmoidais porém, escrito em forma de retas, dessa forma, elas sacrificam a suavidade das sigmoidais para garantir um menor custo computacional.
 
 \section{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}
 
@@ -477,8 +475,8 @@ Agora será visto duas funções sigmoidais, criadas no contexto de redes neurai
 
 A primeira é a \textit{hard sigmoid}. Como pode ser visto na Equação \ref{eq:hard-sigmoid}, a qual está presente na documentação do \textcite{PyTorchHardSigmoid}, ela pode ser escrita juntando 3 diferentes funções, duas delas sendo funções constantes e uma terceira sendo a função identidade. Note que ela perde a suavidade da função seno, possuindo bicos que a impedem de ser derivada em todos os seus pontos, contudo, seus cálculos são bem mais simples quando comparados com a sigmoide tradicional, não tem nenhuma exponencial para atrasar as respostas da função. Mas note que também existe um crescimento linear quando os valores estão entre -3 e 3.
 
-\begin{equacaodestaque}{Hard Sigmoid}
-        \text{hard sigmoid}(z_i) = \begin{cases} 0 & \text{se } z_i < -3 \\ z_i/6 + 0.5 & \text{se } -3 \le z_i \le 3 \\ 1 & \text{se } z_i > 3 \end{cases}
+\begin{equacaodestaque}{\textit{Hard Sigmoid}}
+        \text{hard sigmoid}(y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ y_j/6 + 0.5 & \text{se } -3 \le y_j \le 3 \\ 1 & \text{se } y_j > 3 \end{cases}
     \label{eq:hard-sigmoid}
 \end{equacaodestaque}
 
@@ -488,8 +486,8 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\text{hard sigmoid}(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\text{hard sigmoid}(y_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -513,8 +511,8 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
 
 Com relação a derivada da \textit{hard sigmoid}, para obtê-lá, deve-se derivar todas as três expressões construindo a sua derivada. Note que os pontos que as retas se tocam no gráfico da Figura \ref{fig:hard-sigmoid} são pontos de descontinuidade, pois quando calculados os limites laterais nesses pontos eles serão diferentes. Isso faz com que essa função não possa ser derivada desses locais. Considerando isso, é possível expressar a derivada da \textit{hard sigmoid} com a Equação \ref{eq:hard-sigmoid-derivada}.
 
-\begin{equacaodestaque}{Derivada da Hard Sigmoid}
-        \frac{d}{dz_i}\text{hard sigmoid}(z_i) = \begin{cases} 0 & \text{se } z_i < -3 \\ 1/6 & \text{se } -3 < z_i < 3 \\ 0 & \text{se } z_i > 3 \end{cases}
+\begin{equacaodestaque}{\textit{Hard Sigmoid} Derivada}
+        \frac{d}{dy_j}[\text{hard sigmoid}](y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ 1/6 & \text{se } -3 < y_j < 3 \\ 0 & \text{se } y_j > 3 \end{cases}
     \label{eq:hard-sigmoid-derivada}
 \end{equacaodestaque}
 
@@ -524,8 +522,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\text{hard sigmoid}'(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\text{hard sigmoid}'(y_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=0.8,
             axis lines=middle,
@@ -550,8 +548,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
 
 Além disso, também existe a função \textit{hard tanh}, que apresenta a mesma proposta da \textit{hard sigmoid}, mas, nesse sentido, busca imitar o comportamento da função de ativação tangente hiperbólica. Para isso, ela segue uma ideia parecida com a da equação da \textit{hard sigmoid}, escrevendo a sua equação em forma de condicionais, mas ajustando os seus valores para corresponder ao funcionamento da tanh. Essa função está expressa na Equação \ref{eq:hard-tanh}.
 
-\begin{equacaodestaque}{Hard Tanh}
-        \text{hard tanh}(z_i) = \begin{cases} -1 & \text{se } z_i < -1 \\ z_i & \text{se } -1 \le z_i \le 1 \\ 1 & \text{se } z_i > 1 \end{cases}
+\begin{equacaodestaque}{\textit{Hard Tanh}}
+        \text{hard tanh}(y_j) = \begin{cases} -1 & \text{se } y_j < -1 \\ y_j & \text{se } -1 \le y_j \le 1 \\ 1 & \text{se } y_j > 1 \end{cases}
     \label{eq:hard-tanh}
 \end{equacaodestaque}
 
@@ -561,8 +559,8 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\text{hard tanh}(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\text{hard tanh}(y_j)$},
             xmin=-5, xmax=5,
             ymin=-1.2, ymax=1.2,
             axis lines=middle,
@@ -588,8 +586,8 @@ Perceba também que o gráfico, bem como sua equação, é bem mais simples que 
 
 Agora é possível também considerar também a derivada da \textit{hard tanh}, a qual é calculada de forma semelhante a da \textit{hard sigmoid}, derivando as três expressões de sua equação separadamente. Feito isso, a derivada da \textit{hard tanh} está expressa na Equação \ref{eq:hard-tanh-derivada}.
 
-\begin{equacaodestaque}{Derivada da Hard Tanh}
-        \frac{d}{dz_i}\text{hard tanh}(z_i) = \begin{cases} 0 & \text{se } z_i < -1 \\ 1 & \text{se } -1 < z_i < 1 \\ 0 & \text{se } z_i > 1 \end{cases}
+\begin{equacaodestaque}{\textit{Hard Tanh} Derivada}
+        \frac{d}{dy_j}[\text{hard tanh}](y_j) = \begin{cases} 0 & \text{se } y_j < -1 \\ 1 & \text{se } -1 < y_j < 1 \\ 0 & \text{se } y_j > 1 \end{cases}
     \label{eq:hard-tanh-derivada}
 \end{equacaodestaque}
 
@@ -599,8 +597,8 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$z_i$},
-            ylabel={$\text{hard tanh}'(z_i)$},
+            xlabel={$y_j$},
+            ylabel={$\text{hard tanh}'(y_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -629,7 +627,7 @@ Conhecendo todas essas diferentes funções de ativação, é possível finalmen
 
 Mesmo possuindo muitas propriedades atrativas para a utilização da familia sigmoidal em redes neurais, como a continuidade em todos os pontos e suavidade, além de que suas derivadas podem ser feitas com as próprias funções (no caso da sigmoide e da tangente hiperbólica), essa familia de funções trouxe um problema para os cientistas da época.
 
-Como foi destacado ao discutir o gráfico das derivadas dessas funções, é possível notar que para valores extremos, seja eles positivos ou negativos, a derivada dessas funções fica bem próxima de zero. Isso significa que quando essas funções recebem como entrada um valor alto no foward pass, na retropropagação, por pegarmos esse valor e calcularmos a derivada da função de ativação naquele ponto, irá retornar um valor baixo.
+Como foi destacado ao discutir o gráfico das derivadas dessas funções, é possível notar que para valores extremos, seja eles positivos ou negativos, a derivada dessas funções fica bem próxima de zero. Isso significa que quando essas funções recebem como entrada um valor alto no \textit{forward pass}, na retropropagação, por pegarmos esse valor e calcularmos a derivada da função de ativação naquele ponto, irá retornar um valor baixo.
 
 Para explicar melhor essa condição será utilizado um problema como base.
 
@@ -662,10 +660,10 @@ Considerando isso, imagine que temos uma rede composta por quatro camadas densas
 Considere também que as camadas da rede possuem a seguinte configuração:
 
 \begin{itemize}
-    \item Sigmoide da primeira camada: tem como resultado da derivada $\sigma'(z_i) = 0.2$
-    \item Sigmoide da camada densa 2: tem como resultado da derivada $\sigma'(z_i) = 0.05$
-    \item Sigmoide da camada densa 3: tem como resultado da derivada $\sigma'(z_i) = 0.1$
-    \item Sigmoide da camada de saída: tem como resultado da derivada $\sigma'(z_i) = 0.08$
+    \item Sigmoide da primeira camada: tem como resultado da derivada $\sigma'(y_j) = 0.2$
+    \item Sigmoide da camada densa 2: tem como resultado da derivada $\sigma'(y_j) = 0.05$
+    \item Sigmoide da camada densa 3: tem como resultado da derivada $\sigma'(y_j) = 0.1$
+    \item Sigmoide da camada de saída: tem como resultado da derivada $\sigma'(y_j) = 0.08$
 \end{itemize}
 
 Além disso, você sabe também que o gradiente inicial na camada de saída está sendo de 1. Com isso é possível calcular o gradiente retropropagado para a primeira camada, comecando pela terceira, já que já temos o valor do gradiente para a camada de saída, dessa forma temos que:
