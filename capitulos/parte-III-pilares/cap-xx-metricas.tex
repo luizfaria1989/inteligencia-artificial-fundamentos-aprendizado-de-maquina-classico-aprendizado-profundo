@@ -1,0 +1,57 @@
+% ===================================================================
+% Arquivo: capitulos/parte-III-pilares/cap-10-perda-binaria.tex
+% ===================================================================
+
+\chapter{Métricas de Avaliação}
+\label{cap:metricas-de-avaliacao}
+
+\section{Métricas de Avaliação}
+
+\subsection{Acurácia}
+
+\begin{equacaodestaque}{Acurácia}
+    \text{Acurácia} = \frac{VP + VN}{VP + VN + FP + FN}
+    \label{eq:acuracia}
+\end{equacaodestaque}
+
+\subsection{Precisão}
+
+\begin{equacaodestaque}{Precisão (Precision)}
+    \text{Precisão} = \frac{VP}{VP + FP}
+    \label{eq:precisao}
+\end{equacaodestaque}
+
+\subsection{Revocação ou Sensibilidade}
+
+\begin{equacaodestaque}{Revocação (Recall) ou Sensibilidade}
+    \text{Revocação} = \frac{VP}{VP + FN}
+    \label{eq:revocacao}
+\end{equacaodestaque}
+
+\subsection{F1-Score}
+
+\begin{equacaodestaque}{F1-Score}
+    \text{F1-Score} = 2 \times \frac{\text{Precisão} \times \text{Revocação}}{\text{Precisão} + \text{Revocação}}
+    \label{eq:f1_score}
+\end{equacaodestaque}
+
+\subsection{Curva ROC e AUC}
+
+\begin{equacaodestaque}{Taxa de Falsos Positivos (FPR)}
+    \text{FPR} = \frac{FP}{FP + VN}
+    \label{eq:fpr}
+\end{equacaodestaque}
+
+\subsection{Métricas Para Regressão ($R^2$)}
+
+\begin{equacaodestaque}{Raiz do Erro Quadrático Médio (RMSE)}
+    L_{\text{RMSE}} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}
+    \label{eq:rmse}
+\end{equacaodestaque}
+
+\begin{equacaodestaque}{Coeficiente de Determinação (R²)}
+    R^2 = 1 - \frac{\sum_{i=1}^{N}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{N}(y_i - \bar{y})^2}
+    \label{eq:r_quadrado}
+\end{equacaodestaque}
+
+
