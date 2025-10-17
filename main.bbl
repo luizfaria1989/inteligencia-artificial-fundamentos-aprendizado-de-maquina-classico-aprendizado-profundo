@@ -401,6 +401,38 @@
       \field{title}{A better Activation Function for Artificial Neural Networks}
       \field{year}{1998}
     \endentry
+    \entry{Gauss1809}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e9c7a9b2a294e91fb10e53e350556634}{%
+           family={Gauss},
+           familyi={G\bibinitperiod},
+           given={Carl\bibnamedelima Friedrich},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Hamburgi}%
+      }
+      \list{publisher}{1}{%
+        {sumtibus F. Perthes et I. H. Besser}%
+      }
+      \strng{namehash}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{fullhash}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{fullhashraw}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{bibnamehash}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{authorbibnamehash}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{authornamehash}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{authorfullhash}{e9c7a9b2a294e91fb10e53e350556634}
+      \strng{authorfullhashraw}{e9c7a9b2a294e91fb10e53e350556634}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Theoria motus corporum coelestium in sectionibus conicis solem ambientium}}
+      \field{year}{1809}
+    \endentry
     \entry{MaosAObra}{book}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=e54e6c9ce5d233c7046a00f7b3faa6c0}{%
@@ -926,6 +958,39 @@
       \verb https://arxiv.org/abs/2101.09957
       \endverb
     \endentry
+    \entry{Legendre1805}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7068d0dcf88dc3f65e3c1ef408fce54b}{%
+           family={Legendre},
+           familyi={L\bibinitperiod},
+           given={Adrien-Marie},
+           giveni={A\bibinithyphendelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Paris}%
+      }
+      \list{publisher}{1}{%
+        {Firmin Didot}%
+      }
+      \strng{namehash}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{fullhash}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{fullhashraw}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{bibnamehash}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{authorbibnamehash}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{authornamehash}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{authorfullhash}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \strng{authorfullhashraw}{7068d0dcf88dc3f65e3c1ef408fce54b}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Contém o apêndice "Sur la Méthode des Moindres Quarrés", que apresenta a primeira publicação do método dos mínimos quadrados.}
+      \field{title}{Nouvelles méthodes pour la détermination des orbites des comètes}
+      \field{year}{1805}
+    \endentry
     \entry{Leshno1993}{article}{}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=049edb158a50c71989347ee731860f1b}{%
@@ -1450,6 +1515,78 @@
       \field{year}{1986}
       \field{pages}{533\bibrangedash 536}
       \range{pages}{4}
+    \endentry
+    \entry{LossesArticle}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=93e141b5d802e4e01a6e89c21fe987f0}{%
+           family={Terven},
+           familyi={T\bibinitperiod},
+           given={Juan},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=43571b1c153b67d6600b1a071cff1dac}{%
+           family={Cordova-Esparza},
+           familyi={C\bibinithyphendelim E\bibinitperiod},
+           given={Diana-Margarita},
+           giveni={D\bibinithyphendelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b6e0367bb1f1adda5538e853e1f7b906}{%
+           family={Romero-González},
+           familyi={R\bibinithyphendelim G\bibinitperiod},
+           given={Julio-Alejandro},
+           giveni={J\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d31c4269d2659bc35bcfa03d93ee584c}{%
+           family={Ramírez-Pedraza},
+           familyi={R\bibinithyphendelim P\bibinitperiod},
+           given={Alfonso},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0832016dfeeef1147f9202a686633dfb}{%
+           family={Chávez-Urbiola},
+           familyi={C\bibinithyphendelim U\bibinitperiod},
+           given={E.\bibnamedelimi A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{d2357a00ef7339c4fa13e33bd2802fa2}
+      \strng{fullhash}{fa630032509b2727f73846e22c7a3ad0}
+      \strng{fullhashraw}{fa630032509b2727f73846e22c7a3ad0}
+      \strng{bibnamehash}{d2357a00ef7339c4fa13e33bd2802fa2}
+      \strng{authorbibnamehash}{d2357a00ef7339c4fa13e33bd2802fa2}
+      \strng{authornamehash}{d2357a00ef7339c4fa13e33bd2802fa2}
+      \strng{authorfullhash}{fa630032509b2727f73846e22c7a3ad0}
+      \strng{authorfullhashraw}{fa630032509b2727f73846e22c7a3ad0}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-7462}
+      \field{journaltitle}{Artificial Intelligence Review}
+      \field{month}{4}
+      \field{number}{7}
+      \field{title}{A comprehensive survey of loss functions and metrics in deep learning}
+      \field{urlday}{11}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{58}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/s10462-025-11198-7
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1007/s10462-025-11198-7
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1007/s10462-025-11198-7
+      \endverb
     \endentry
     \entry{RMSPropMethod}{misc}{}{}
       \name{author}{2}{}{%

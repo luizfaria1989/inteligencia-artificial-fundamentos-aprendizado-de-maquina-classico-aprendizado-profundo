@@ -2701,6 +2701,19 @@
     <bcf:citekey order="235" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="236" intorder="1">GELUArticle</bcf:citekey>
     <bcf:citekey order="237" intorder="1">GELUArticle</bcf:citekey>
+    <bcf:citekey order="238" intorder="1">Legendre1805</bcf:citekey>
+    <bcf:citekey order="239" intorder="1">Legendre1805</bcf:citekey>
+    <bcf:citekey order="240" intorder="1">Gauss1809</bcf:citekey>
+    <bcf:citekey order="241" intorder="1">Gauss1809</bcf:citekey>
+    <bcf:citekey order="242" intorder="1">Gauss1809</bcf:citekey>
+    <bcf:citekey order="243" intorder="1">Gauss1809</bcf:citekey>
+    <bcf:citekey order="244" intorder="1">Gauss1809</bcf:citekey>
+    <bcf:citekey order="245" intorder="1">Gauss1809</bcf:citekey>
+    <bcf:citekey order="246" intorder="1">BackpropagationArticle</bcf:citekey>
+    <bcf:citekey order="247" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="248" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="249" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="250" intorder="1">LossesArticle</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

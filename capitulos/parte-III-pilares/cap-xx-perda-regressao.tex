@@ -15,51 +15,141 @@ Mais adiante, está apresentado não funções, mas esquemas de como a perda pod
 
 \section{Exemplo Ilustrativo: Jogando Dados}
 
+Pense que você está jogando dardos com seus amigos e quer decidir quem está com mais pontos. Mas você não está satisfeito em considerar as marcações que estão no jogo, e decidiu inovar. Para isso, você pegou uma régua e passou a medir a distância que os dardos que você e seus amigos haviam jogado no centro. Quem chegasse mais próximo do centro, ganhava o jogo.
+
+Essa ideia de medir o quão próximo você está do resultado desejado utilizando a disância entre esses dois pontos como parâmetro, é justamente o motivador pela criação das funções de perda para regressão. Para isso, elas utilizam diferentes fórmulas, com todas com o mesmo intuito, medir a distância em que o "chute" dado pelo modelo está do ponto real (desejado).
+
 \section{Funções de Perda para Regressão para Propósitos Gerais}
 
 \subsection{Erro Quadrático Médio (Mean Squared Error - MSE)}
 
+A primeira função de perda a ser vista nesse capítulo é a erro quadrático médio (\textit{mean squared error}) também conhecida com \textit{MSE}. Suas origens são voltadas para o século XIX, com o avanço dos estudos da astronomica, em que os estudiosos buscavam entender o comportamento das estrelas e dos outros planetas. A \textit{MSE} surge naturalmente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas), nele \textcite{Legendre1805} introduz o método conhecido como método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros.
+
+Contudo, o trabalho de Legendre não foi o único resposável por popularizar o método dos mínimos quadrados. Em \textit{Theoria Motus Corporum Coelestium in Sectionibus Conicis Solem Ambientium}, \textcite{Gauss1809}, em uma série de artigos, discute um problema que se inicia com um sistema de equações linerares com mais equações que icognitas derivadas de observações atronômicas que possuem erros, seu objetivo é então encontrar o valor mais provável para essas icôgnitas.
+
+Para isso, Gauss define que o valor mais provável de uma quantidade de medidas de igual precisão é dado pela média aritmética dessas medidas \parencite{Gauss1809}. Com base nisso, \textcite{Gauss1809} se pergunta qual deve ser a lei de probabilidade dos erros para que a média aritmética seja sempre a estimativa mais provável, para resolver esse problema ele utiliza o princípio da máxima-verossimilhança das probabilidades de todos os erros, e com ele, Gauss consegue ser capaz de demonstrar matematicamente que a única função que satisfaz o seu postulado da média aritmética é a própria distribuição Normal.
+
+Sabendo disso, Gauss inverte a lógica: se a probabilidade de um conjunto de erros é máximizada quando a soma dos seus quadrados é minimizada, então o método dos mínimos quadrados é o método que dá a solução mais provável para a suposição de que os erros de medição são normalmente distribuídos \parencite{Gauss1809}. Dessa forma, o matemático foi capaz de adicionar mais embasamento matemático na técnica de Legedre, e com isso aumentando a popularização do \textit{MSE}.
+
+Passado quase 200 anos, o erro quadrático médio se torna uma das principais funções a ser utilizada para calcular o erro dos modelos. Caso você tenha lido o Capítulo \ref{cap:retropropagacao-gradiente}, pode ter notado que ela foi uma das funções, junto com a sigmoide logística e a equação do neurônio, a ser utilizada para deduzir os cálculos das atualizações de pesos para o algoritmo da retropropagação \parencite{BackpropagationArticle}.
+
+Assim, é possível agora apresentar a fórmula do \textit{MSE}, o qual é calculado através da Equação \ref{eq:mse}.
 
 \begin{equacaodestaque}{Erro Quadrático Médio (MSE)}
-    L_{\text{MSE}} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+    \mathbb{L}_{\text{MSE}} = \frac{1}{N} \sum_{j=1}^{N} (y_j - \hat{y}_j)^2
     \label{eq:mse}
 \end{equacaodestaque}
 
-\begin{tikzpicture}
-    \begin{axis}[
-        title={Erro Quadrático Médio (MSE)},
-        xlabel={Erro ($y - \hat{y}$)},
-        ylabel={Perda Calculada},
-        axis lines=middle,          % Eixos centrados em (0,0)
-        grid=major,                 % Adiciona uma grade principal
-        grid style={dashed, gray!40}, % Estilo da grade
-        xmin=-3.5, xmax=3.5,        % Limites do eixo x
-        ymin=-0.5, ymax=9.5,         % Limites do eixo y
-        legend pos=north west,      % Posição da legenda
-        width=12cm,                 % Largura do gráfico
-        height=9cm,                 % Altura do gráfico
-        title style={font=\bfseries},
-        label style={font=\small},
-        tick label style={font=\scriptsize}
-    ]
-        % Adiciona o gráfico da função x^2
-        \addplot[
-            domain=-3:3, 
-            samples=100, 
-            color=blue, 
-            very thick
-        ] {x^2};
-        
-        % Adiciona uma entrada na legenda
-        \addlegendentry{$L = \text{erro}^2$}
-    \end{axis}
-\end{tikzpicture}
+Em que:
 
-\begin{equacaodestaque}{Derivada do MSE}
-    \frac{\partial L_{\text{MSE}}}{\partial \hat{y}_i} = \frac{2}{N}(\hat{y}_i - y_i)
+\begin{itemize}
+    \item $y_j$ representa o valor previsto para a saída;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de predições feitas.
+\end{itemize}
+
+Neste caso, o \textit{MSE} calcula o erro individualmente para cada uma das predições, soma esses valores e em seguida calcula a média.
+
+Tendo a sua equação, é possível também plotar o seu gráfico, para isso, ele pode ser visto na Figura \ref{fig:mse}.
+
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,          % Eixos centrados em (0,0)
+            grid=major,                 % Adiciona uma grade principal
+            grid style={dashed, gray!40}, % Estilo da grade
+            xmin=-3.5, xmax=3.5,        % Limites do eixo x
+            ymin=-0.5, ymax=9.5,         % Limites do eixo y
+            legend pos=north west,      % Posição da legenda
+            width=12cm,                 % Largura do gráfico
+            height=9cm,                 % Altura do gráfico
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função x^2
+            \addplot[
+                domain=-3:3, 
+                samples=100, 
+                color=blue, 
+                very thick
+            ] {x^2};
+            
+            % Adiciona uma entrada na legenda
+            \addlegendentry{$L = \text{erro}^2$}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Função de perda para regressão erro quadrático médio (\textit{MSE}).}
+    \label{fig:mse}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Tendo o seu gráfico e sua equação é possível discutir algumas propriedades interessantes do erro quadrático médio, entre elas vale destacar:
+
+\begin{itemize}
+    \item \textbf{Não-negatividade:} Como é visto no gráfico da Figura \ref{fig:mse}, o \textit{MSE} é uma função que retorna apenas valores positivos, isso se dá devido a diferença das entradas estar sendo calculada e logo em seguida elavada ao quadrado, impendido que valores negativos ocorram na saída.
+    \item \textbf{Sensibilidade para \textit{outliers}}: Como \textcite{LossesArticle} discutem, a função erro quadrático médio possui a tendência de punir em maior força os erros que são originarios de uma distância muito grande. Isso acontece por conta do jeito que é calculada essa função, lembre que ela calcula a distância entre os pontos e depois eleva ela ao quadrado, se essa distância for muito grande, o erro será maior ainda. Como consequência, se existe um conjunto grande de pontos que ficam fora da regressão, os \textit{outliers}, a função de perda irá constamente retornar valores altos. Isso pode atrapalhar o aprendizado, porque será mais difícil otimizar o modelo, mas também pode ser uma vantagem em cenários em que os erros devem ser fortemente penalizados.
+    \item \textbf{Convexa (nas predições):}: Voltando para a Figura \ref{fig:mse} é possível notar que o \textit{MSE} é uma função convexa, o seu gráfico tem a típica forma de um funíl, apresentando um único ponto de mínimo global, isso ajuda na otimização dessa função caso se esteja usando um otimizador baseado no gradiente descendente. Contudo, \textcite{LossesArticle} destacam que em redes neurais profundas essa função pode se tornar não-convexa, devido as transformações não-lineares que são feitas ao construir o modelo.
+    \item \textbf{Baixa intepretabilidade:} Note que a função \textit{MSE} eleva o erro ao quadrado, de forma que ao mostrar a perda não é visto diretamente a distância entre os pontos reais e os pontos preditos pelo modelo. Isso um gera um gargalo pois não é possível de forma instânea saber exatamente quão bem ou mal o modelo está performando. Funções como a \textit{MAE}, em que o erro é calculado como o módulo da distância entre os dois pontos são mais diretas em mostrar a performance do modelo.
+    \item \textbf{Continuidade:} Ainda na Figura \ref{fig:mse} é possível notar que o \textit{MSE} é uma função contínua em todo o seu domínimo, isso é uma vantagem muito boa, pois indica que é possível derivar essa função sem encontrar grandes problemas.
+\end{itemize}
+
+Além disso, cabe também destacar a derivada da função \textit{MSE}, a qual está presente na Equação \ref{eq:mse-derivada}. A derivada de uma função de perda é de extrema utilizada para uma rede neural, pois é a partir dela que é calculado o primeiro vetor gradiente, este, é calculado com base na derivada da função de perda para a saída da rede, e passa então a ser retropropagado por toda a rede no sentido inverso, indo primeiro das últimas camadas para as camadas de entrada.
+
+Note que diferente das funções de ativação em que era calculada a sua derivada ordinária, aqui é calculado as derivadas parciais das funções de perda para cada um dos seus componentes, a saída do modelo $\hat{y}_j$ e a saída esperada $y_j$. Com base nessas duas derivadas, é possível construir o vetor gradiente.
+
+\begin{equacaodestaque}{Erro Quadrático Médio (\textit{MSE}) Derivada}
+    \frac{\partial \mathbb{L}_{\text{MSE}}}{\partial \hat{y}_j} = \frac{2}{N}(\hat{y}_j - y_j)
     \label{eq:mse-derivada}
 \end{equacaodestaque}
 
+Tendo a sua derivada, vale a pena analisar também o seu gráfico, para isso, é possível vê-lo na Figura \ref{fig:mse-derivada}. a 
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Erro ($\hat{y} - y$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-3.5, xmax=3.5,
+            ymin=-6.5, ymax=6.5,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função 2*x
+            \addplot[
+                domain=-3:3, 
+                samples=100, 
+                color=red, 
+                very thick
+            ] {2*x};
+            
+            % Adiciona uma entrada na legenda
+            \addlegendentry{$\frac{\partial L}{\partial \hat{y}} = \frac{2}{N} \cdot \text{erro}$}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da função de perda erro quadrático médio (\textit{MSE}).}
+    \label{fig:mse-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
+É possível perceber pelo gráfico da derivada da função de perda erro quadrático médio que o gradiente da perda é proporcional ao erro. Seguindo essa lógica, se o erro está alto, o gradiente também estará alto, como consequência as atualizações de pesos e vieses, as quais seguem o método do gradiente (visto nas Equações ) serão mais bruscas, dando maiores saltos no gráfico da função de perda. Enquanto em situações que o erro está pequeno em magnitudade, o gradiente também será pequeno e o modelo fará pequenas atualizações nos seus parâmetros, garantindo um ajuste fino.
+
+\begin{equation}
+    \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot y_i \quad \text{ou} \quad \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
+    \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-perda-regressao}
+\end{equation}
+
+Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma outra abordagem para resolver problemas de regressão. Para isso, a próxima seção busca apresentar o erro absoluto médio, que é uma alternativa para o erro quadrático médio que tem como principal diferença o jeito que lida com \textit{outliers}.
 
 \subsection{Erro Absoluto Médio (Mean Absolute Error - MAE)}
 
