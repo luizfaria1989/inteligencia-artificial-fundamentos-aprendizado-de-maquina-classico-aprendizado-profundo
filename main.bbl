@@ -401,6 +401,54 @@
       \field{title}{A better Activation Function for Artificial Neural Networks}
       \field{year}{1998}
     \endentry
+    \entry{GreedyFunctionApproximation}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ce884cc144616c39e723a8fe2eb3c879}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Jerome\bibnamedelima H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{fullhash}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{fullhashraw}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{bibnamehash}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{authorbibnamehash}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{authornamehash}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{authorfullhash}{ce884cc144616c39e723a8fe2eb3c879}
+      \strng{authorfullhashraw}{ce884cc144616c39e723a8fe2eb3c879}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{month}{10}
+      \field{number}{5}
+      \field{title}{{Greedy function approximation: A gradient boosting machine.}}
+      \field{volume}{29}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{pages}{1189\bibrangedash 1232}
+      \range{pages}{44}
+      \verb{doi}
+      \verb 10.1214/aos/1013203451
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1214/aos/1013203451
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1214/aos/1013203451
+      \endverb
+      \keyw{boosting,decision trees,Function estimation,robust nonparametric regression}
+      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'GreedyFunctionApproximation'}
+    \endentry
     \entry{Gauss1809}{book}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=e9c7a9b2a294e91fb10e53e350556634}{%
@@ -631,6 +679,112 @@
       \field{year}{1941}
       \field{pages}{63\bibrangedash 69}
       \range{pages}{7}
+    \endentry
+    \entry{HuberLoss}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2e7489c001c33b64b64d65458065bd5c}{%
+           family={Huber},
+           familyi={H\bibinitperiod},
+           given={Peter\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{fullhash}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{fullhashraw}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{bibnamehash}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{authorbibnamehash}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{authornamehash}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{authorfullhash}{2e7489c001c33b64b64d65458065bd5c}
+      \strng{authorfullhashraw}{2e7489c001c33b64b64d65458065bd5c}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{month}{10}
+      \field{number}{1}
+      \field{title}{{Robust Estimation of a Location Parameter}}
+      \field{volume}{35}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{pages}{73\bibrangedash 101}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1214/aoms/1177703732
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1214/aoms/1177703732
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1214/aoms/1177703732
+      \endverb
+      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'HuberLoss'}
+    \endentry
+    \entry{ImageToImage}{misc}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=cae9f806bc99a5f19fadea538fc2db04}{%
+           family={Isola},
+           familyi={I\bibinitperiod},
+           given={Phillip},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9fbb4b31963f07f34a13b375b4997338}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Jun-Yan},
+           giveni={J\bibinithyphendelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fbb5fac74ecd20c0f90a3884d6a93cdf}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Tinghui},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5a663b27298722834a8cf09bb93d8c94}{%
+           family={Efros},
+           familyi={E\bibinitperiod},
+           given={Alexei\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{dd9b478c7b76d20d978868251cf3ad35}
+      \strng{fullhash}{18664a8c078ce7dff4c499de4e40bf2f}
+      \strng{fullhashraw}{18664a8c078ce7dff4c499de4e40bf2f}
+      \strng{bibnamehash}{dd9b478c7b76d20d978868251cf3ad35}
+      \strng{authorbibnamehash}{dd9b478c7b76d20d978868251cf3ad35}
+      \strng{authornamehash}{dd9b478c7b76d20d978868251cf3ad35}
+      \strng{authorfullhash}{18664a8c078ce7dff4c499de4e40bf2f}
+      \strng{authorfullhashraw}{18664a8c078ce7dff4c499de4e40bf2f}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{month}{10}
+      \field{title}{Image-to-Image Translation with Conditional Adversarial Networks}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{eprint}
+      \verb 1611.07004
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1611.07004
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1611.07004
+      \endverb
+      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'ImageToImage'}
     \endentry
     \entry{AdamMethod}{misc}{}{}
       \name{author}{2}{}{%
@@ -1572,7 +1726,7 @@
       \field{month}{4}
       \field{number}{7}
       \field{title}{A comprehensive survey of loss functions and metrics in deep learning}
-      \field{urlday}{11}
+      \field{urlday}{17}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{volume}{58}

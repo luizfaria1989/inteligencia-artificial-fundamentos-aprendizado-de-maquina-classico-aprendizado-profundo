@@ -153,58 +153,152 @@ Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma out
 
 \subsection{Erro Absoluto Médio (Mean Absolute Error - MAE)}
 
+O erro absoluto médio é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, ela é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
-\begin{equacaodestaque}{Erro Absoluto Médio (MAE)}
-    L_{\text{MAE}} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-Image Translation with Conditional Adversarial Networks} \parencite{ImageToImage}. Nele, \textcite{ImageToImage} argumentam que preferiram trabalhar com a função de perda \textit{L1 distance} (um dos diferentes nomes utilizados para se referir ao \textit{MAE}) devido a essa função gerar imagens menos borradas. É possível ver essa comparação nas imagens da Figura \ref{fig:comparativo-perdas-image-to-image}. Perceba que a perda que apresenta os resultados mais consistentes com a realidade é justamente a \textit{L1 + cGAN}, a qual possuí o \textit{MAE} em sua composição.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{../imagens/perda-regressao/image-to-image-perdas-comparativo.png}
+    
+    \caption[CurvPerdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST]{%
+        \newline
+        \small Fonte: \parencite{ImageToImage}.
+    }
+    \label{fig:comparativo-perdas-image-to-image}
+\end{figure}
+
+Visto esses diferentes cenários em que o erro absoluto médio foi utilizado para resolver problemas de regressão é possível ver agora a sua definição matemática, para isso, o \textit{MAE} está definido na Equação \ref{eq:mae}. Perceba que ele é responsável por calcular a diferença entre os dois pontos, o valor real $\hat{y}_j$ e o valor predito $y_j$, para todos os $N$ casos analisados e a partir disso calcular a média dos resultados.
+
+\begin{equacaodestaque}{Erro Absoluto Médio (\textit{MAE})}
+    \mathbb{L}_{\text{MAE}} = \frac{1}{N} \sum_{j=1}^{N} |y_j - \hat{y}_j|
     \label{eq:mae}
 \end{equacaodestaque}
 
-\begin{tikzpicture}
-    \begin{axis}[
-        title={Função de Perda: Erro Absoluto Médio (MAE)},
-        xlabel={Erro ($y - \hat{y}$)},
-        ylabel={Perda Calculada},
-        axis lines=middle,          % Eixos centrados em (0,0)
-        grid=major,                 % Adiciona uma grade principal
-        grid style={dashed, gray!40}, % Estilo da grade
-        xmin=-4.5, xmax=4.5,        % Limites do eixo x
-        ymin=-0.5, ymax=4.5,         % Limites do eixo y
-        legend pos=north west,      % Posição da legenda
-        width=12cm,                 % Largura do gráfico
-        height=9cm,                 % Altura do gráfico
-        title style={font=\bfseries},
-        label style={font=\small},
-        tick label style={font=\scriptsize}
-    ]
-        % Adiciona o gráfico da função abs(x)
-        \addplot[
-            domain=-4:4, 
-            samples=100, 
-            color=red, 
-            very thick
-        ] {abs(x)};
-        
-        % Adiciona uma entrada na legenda
-        \addlegendentry{$L = |\text{erro}|$}
-    \end{axis}
-\end{tikzpicture}
+Também vale a pena analisar o \textit{MAE} de forma gráfica, para isso ele está representado na Figura \ref{fig:mae}.
 
-\begin{equacaodestaque}{Derivada do MAE}
-    \frac{\partial L_{\text{MAE}}}{\partial \hat{y}_i} = \frac{1}{N} \cdot \text{sgn}(\hat{y}_i - y_i) = 
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,          % Eixos centrados em (0,0)
+            grid=major,                 % Adiciona uma grade principal
+            grid style={dashed, gray!40}, % Estilo da grade
+            xmin=-4.5, xmax=4.5,        % Limites do eixo x
+            ymin=-0.5, ymax=4.5,         % Limites do eixo y
+            legend pos=north west,      % Posição da legenda
+            width=12cm,                 % Largura do gráfico
+            height=9cm,                 % Altura do gráfico
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função abs(x)
+            \addplot[
+                domain=-4:4, 
+                samples=100, 
+                color=red, 
+                very thick
+            ] {abs(x)};
+            
+            % Adiciona uma entrada na legenda
+            \addlegendentry{$L = |\text{erro}|$}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda erro absoluto médio (\textit{MAE}).}
+    \label{fig:mae}
+    \fonte{O autor (2025).}
+\end{figure}
+
+A partir do seu gráfico e de sua equação é possível retirar diferentes informações dessa função de perda, as quais estão discutidas a seguir:
+
+\begin{itemize}
+    \item \textbf{Não-negatividade:} Como é possível ver em seu gráfico da Figura \ref{fig:mae}, o erro absoluto médio compartilha dessa mesma propriedade com o \textit{MSE}, isso significa que sua saída será sempre positiva ou zero, independente do valor de entrada. Isso se dá, devido a propriedade do módulo, que não admite números negativos para sua saída.
+    \item \textbf{Robustez para \textit{outliers}}: Como \textcite{LossesArticle} explicam, o \textit{MAE} não penaliza os \textit{outliers} de forma tão severa como o erro quadrático médio. Isso acontece pois diferente do \textit{MSE}, em que o erro cresce de forma quadrática, no \textit{MAE}, ele cresce de forma linear, significando que diferente do \textit{MSE} que era sensível aos \textit{outliers}, o \textit{MAE} também reage à eles, mas de forma menos severa.
+    \item \textbf{Convexa (nas predições):} Voltando para o seu gráfico, é possível ver que o erro absoluto médio segue a mesma forma de funíl do erro quadrático médio, podendo ser considerado uma função convexa e com um só ponto de mínimo global. Contudo, assim como no \textit{MSE}, \textcite{LossesArticle} advertem que para modelos de apredenziado profundo, o \textit{MAE} pode deixar de ser uma função convexa devido às muitas camadas e funções não-lineares.
+    \item \textbf{Não-derivável em zero:} Esse ponto acontece justamente devido a forma que a função apresenta, ela faz uma especíe de "bico" em zero, além disso, ao calcular os seus limites laterais para verificar a continuidade da função é possível notar que eles apresentam valores diferentes.
+\end{itemize}
+
+Se a função não é derivável em zero, é esperado que ela não seja uma boa alternativa para ser utilizada junto com otimizadores baseados na descida do gradiente, pois, pontos de descontinuidade como esse podem acabar atrapalhando a forma com que o modelo é otimizado. Contudo, \textcite{LossesArticle} argumentam, é possível resolver esse problema utilizado técnicas de subgradiente, sendo possível então escrever a derivada do \textit{MAE} com a Equação \ref{eq:mae-derivada}.
+
+\begin{equacaodestaque}{Erro Absoluto Médio (\textit{MAE}) Derivada}
+    \frac{\partial \mathbb{L}_{\text{MAE}}}{\partial \hat{y}_j} = 
     \begin{cases} 
-      +\frac{1}{N} & \text{se } \hat{y}_i > y_i \\
-      -\frac{1}{N} & \text{se } \hat{y}_i < y_i \\
-      0 & \text{se } \hat{y}_i = y_i
+      -1 & \text{se } \hat{y}_j > y_j \\
+      +1 & \text{se } \hat{y}_j < y_j \\
+      [-1, +1] & \text{se } \hat{y}_j = y_j
     \end{cases}
     \label{eq:mae-derivada}
 \end{equacaodestaque}
 
+Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atrapalha a plotagem do gráfico do \textit{MAE}, o qual está representado na Figura \ref{fig:mae-derivada}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Erro ($\hat{y} - y$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-3.5, xmax=3.5,
+            ymin=-1.5, ymax=1.5,
+            ytick={-1, 0, 1}, % Define os pontos no eixo y
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Parte negativa da derivada (-1)
+            \addplot[
+                domain=-3:0, 
+                samples=100, 
+                color=red, 
+                very thick
+            ] {-1};
+
+            % Parte positiva da derivada (+1)
+            \addplot[
+                domain=0:3, 
+                samples=100, 
+                color=red, 
+                very thick
+            ] {1};
+            
+            % Adiciona círculos abertos para indicar a descontinuidade em x=0
+            \addplot[only marks, mark=o, color=red, mark size=2pt] coordinates {(0,-1) (0,1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da função de perda erro absoluto médio (\textit{MAE}).}
+    \label{fig:mae-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Perceba que a derivada do erro absoluto médio é representado em forma de uma função por partes, neste caso, ela é divida em duas diferentes retas, parecida com a função de ativação degrau unitário. Assim, a derivada do \textit{MAE} é composta por duas retas constantes, a primeira constante em $-1$ e a segunda constante em $1$, apresentando uma descontinuidade em zero.
+
+Visto o erro quadrático médio, que penaliza fortamente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não se preocupe tanto com os \textit{outliers}? Essa é a proposta da perda Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela será vista em seguida.
 
 \subsection{Huber Loss: O Melhor de Dois Mundos}
 
+A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss} define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}.
+
+\begin{equation}
+    p(t) = 
+    \begin{cases}
+        \frac{1}{2} t^2 \text{para} |t| < k \\
+        k |t| - \frac{1}{2} k^2 para t \ge k
+    \end{cases}
+    \label{eq:huber-loss-do-huber}
+\end{equation}
+
+O que Huber estava querendo basicamente era uma função que se comportasse de forma quadrática para os casos em que $|t| < k$ e que se comportasse de forma linear para os casos em que $t \ge k$. Essa função criada pelo pesquisador é a função que está sendo estudada, a perda Huber, a qual pode ser representada, agora com notações voltadas para o cenário de aprendizado de máquina, com a Equação \ref{eq:huber-loss}.
 
 \begin{equacaodestaque}{Huber Loss}
-    L_{\delta}(y, \hat{y}) = 
+    L_{\text{Huber}}(y, \hat{y}) = 
     \begin{cases} 
       \frac{1}{2}(y - \hat{y})^2 & \text{para } |y - \hat{y}| \le \delta \\
       \delta (|y - \hat{y}| - \frac{1}{2}\delta) & \text{caso contrário}
@@ -212,53 +306,145 @@ Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma out
     \label{eq:huber-loss}
 \end{equacaodestaque}
 
-\begin{tikzpicture}
-    \begin{axis}[
-        title={Função de Perda: Huber Loss ($\delta=1$)},
-        xlabel={Erro ($y - \hat{y}$)},
-        ylabel={Perda Calculada},
-        axis lines=middle,          % Eixos centrados em (0,0)
-        grid=major,                 % Adiciona uma grade principal
-        grid style={dashed, gray!40}, % Estilo da grade
-        xmin=-4.5, xmax=4.5,        % Limites do eixo x
-        ymin=-0.5, ymax=4.5,         % Limites do eixo y
-        legend pos=north west,      % Posição da legenda
-        width=12cm,                 % Largura do gráfico
-        height=9cm,                 % Altura do gráfico
-        title style={font=\bfseries},
-        label style={font=\small},
-        tick label style={font=\scriptsize}
-    ]
-        % Define o valor de delta
-        \def\delta{1.0}
+É possível também representar a perda Huber utilizando gráficos, para isso, ela pode ser vista na Figura \ref{fig:huber-loss}. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
 
-        % Adiciona o gráfico da função Huber usando uma expressão condicional
-        % Se |x| <= delta, usa 0.5*x^2. Senão, usa delta*(|x| - 0.5*delta).
-        \addplot[
-            domain=-4:4, 
-            samples=201, % Samples ímpares para incluir o ponto x=0
-            color=orange, 
-            very thick
-        ] { abs(x) <= \delta ? 0.5*x^2 : \delta*(abs(x) - 0.5*\delta) };
-        
-        % Adiciona uma entrada na legenda
-        \addlegendentry{$L_{\delta=1}(\text{erro})$}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Huber Loss ($\delta=1$)},
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,          % Eixos centrados em (0,0)
+            grid=major,                 % Adiciona uma grade principal
+            grid style={dashed, gray!40}, % Estilo da grade
+            xmin=-4.5, xmax=4.5,        % Limites do eixo x
+            ymin=-0.5, ymax=4.5,         % Limites do eixo y
+            legend pos=north west,      % Posição da legenda
+            width=12cm,                 % Largura do gráfico
+            height=9cm,                 % Altura do gráfico
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Define o valor de delta
+            \def\delta{1.0}
 
-        % Opcional: Adiciona linhas para mostrar a transição em delta
-        \draw[dashed, gray] (axis cs:-\delta, 0) -- (axis cs:-\delta, {\delta*(\delta-0.5*\delta)});
-        \draw[dashed, gray] (axis cs:\delta, 0) -- (axis cs:\delta, {\delta*(\delta-0.5*\delta)});
+            % Adiciona o gráfico da função Huber usando uma expressão condicional
+            % Se |x| <= delta, usa 0.5*x^2. Senão, usa delta*(|x| - 0.5*delta).
+            \addplot[
+                domain=-4:4, 
+                samples=201, % Samples ímpares para incluir o ponto x=0
+                color=orange, 
+                very thick
+            ] { abs(x) <= \delta ? 0.5*x^2 : \delta*(abs(x) - 0.5*\delta) };
+            
+            % Adiciona uma entrada na legenda
+            \addlegendentry{$L_{\delta=1}(\text{erro})$}
 
-    \end{axis}
-\end{tikzpicture}
+            % Opcional: Adiciona linhas para mostrar a transição em delta
+            \draw[dashed, gray] (axis cs:-\delta, 0) -- (axis cs:-\delta, {\delta*(\delta-0.5*\delta)});
+            \draw[dashed, gray] (axis cs:\delta, 0) -- (axis cs:\delta, {\delta*(\delta-0.5*\delta)});
 
-\begin{equacaodestaque}{Derivada da Huber Loss}
-    \frac{\partial L_{\delta}}{\partial \hat{y}} = 
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda erro Huber \textit{loss}.}
+    \label{fig:huber-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Conhecido o gráfico e sua equação, é possível agora discutir algumas das propriedades da perda huber, as quais são apresentadas a seguir:
+
+\begin{itemize}
+    \item \textbf{Robustez para \textit{outliers}:} Assim como o \textit{MAE}, a perda Huber não penaliza de forma quadrática os erros como comparado com o erro quadrático médio, dessa forma, os \textit{outliers} não conseguem afetar desticmaente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle}.
+    \item \textbf{Diferenciabilidade em $\delta$:} Um ponto a ser destacado ao se utilizar a perda Huber é que ela apresenta pontos de descontinuidade para o cenário em que $y - \hat{y} = \delta$, contudo a função é contínua em todo o resto, dessa forma, isso não a impede de ser utilizada em conjunto com otimizadores baseados em gradiente \parencite{LossesArticle}.
+\end{itemize}
+
+O gradiente da perda Huber deve ser calculado por partes, como explicam \textcite{LossesArticle}, para isso, é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
+
+\begin{equacaodestaque}{Huber Loss Derivada}
+    \frac{\partial \mathbb{L}_{\delta}}{\partial \hat{y}} = 
     \begin{cases} 
-      \hat{y} - y & \text{para } |\hat{y} - y| \le \delta \\
-      \delta \cdot \text{sgn}(\hat{y} - y) & \text{caso contrário}
+        \hat{y} - y & \text{se } | y - \hat{y} | \le \delta \\
+        \delta \cdot \text{sgn}(\hat{y} - y) & \text{se } | y - \hat{y} | > \delta
     \end{cases}
     \label{eq:huber-loss-derivada}
 \end{equacaodestaque}
+
+Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a escolha de valores para o parâmetro $\delta$. Um valor muito pequeno para $\delta$ faz com que a função se comporte mais como o erro absoluto médio, é possível ver essa situação na Figura \ref{fig:huber-comparacoes-mae}, já ao escolher um valor muito grande para $\delta$ faz com que a perda Huber se assemelhe mais a função erro quadrático médio, essa sitação está na Figura \ref{fig:huber-comparacoes-mse}. \textcite{LossesArticle} explicam que a escolha de valores para $\delta$ pode ser feita de forma empírica, através de validação cruzada (\textit{cross-validation}). Assim, testes são recomendados a fim de escolher o melhor valor para $\delta$ no cenário em que está sendo trabalhado.
+
+\begin{figure}[h!]
+    \centering
+    % Figura da Esquerda (Parecida com MAE)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \def\delta{0.5} % Delta pequeno
+            \begin{axis}[
+                xlabel={Erro ($\hat{y} - y$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,
+                ymin=-0.5, ymax=4.5,
+                legend pos=north west,
+                width=\textwidth,
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title style={font=\bfseries, yshift=-5pt},
+            ]
+                % Função Huber Loss
+                \addplot[
+                    domain=-4:4, 
+                    samples=201, 
+                    color=blue, 
+                    very thick,
+                ] {(abs(x) <= \delta) ? (0.5*x^2) : (\delta*(abs(x) - 0.5*\delta))};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Perda Huber com $\delta = 0.5$.}
+        \label{fig:huber-comparacoes-mae}
+    \end{subfigure}
+    \hfill % Espaço entre as figuras
+    % Figura da Direita (Parecida com MSE)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \def\delta{4.0} % Delta grande
+            \begin{axis}[
+                xlabel={Erro ($\hat{y} - y$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,
+                ymin=-0.5, ymax=8.5,
+                legend pos=north west,
+                width=\textwidth,
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title style={font=\bfseries, yshift=-5pt},
+            ]
+                % Função Huber Loss
+                \addplot[
+                    domain=-4:4, 
+                    samples=201, 
+                    color=red, 
+                    very thick
+                ] {(abs(x) <= \delta) ? (0.5*x^2) : (\delta*(abs(x) - 0.5*\delta))};
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Perda Huber com $\delta = 4.0$.}
+        \label{fig:huber-comparacoes-mse}
+    \end{subfigure}
+    
+    \caption{Comparação da Perda de Huber com diferentes valores de $\delta$.}
+    \label{fig:huber-delta-comparacoes}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é nítido que o grau de complexidade do problema pode aumentar, pois haverá mais um hiperparâmetro para ser otimizado de forma manual. Isso pode não ser ideal para cenários em que já existem muitos hiperparâmetros. Para isso, \textcite{LossesArticle} explicam que essa função é comumumente utilizada em problemas de gressão robusta, como em regressões lineares e em \textit{time series forecasting}, em que \textit{outliers} e ruído podem estar presentes.
 
 \subsection{Perda Log-Cosh}
 
