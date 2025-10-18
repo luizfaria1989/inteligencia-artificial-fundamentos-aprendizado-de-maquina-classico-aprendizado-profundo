@@ -131,10 +131,11 @@
 \contentsline {section}{\numberline {11.1}Exemplo Ilustrativo:}{153}{section.11.1}%
 \contentsline {section}{\numberline {11.2}Funções de Perda para Classificação Binária}{153}{section.11.2}%
 \contentsline {subsection}{\numberline {11.2.1}Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{153}{subsection.11.2.1}%
-\contentsline {subsection}{\numberline {11.2.2}Perda Hinge (Hinge Loss)}{155}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.2}Binary Weighted Cross-Entropy (WCE)}{156}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.3}Perda Hinge (Hinge Loss)}{157}{subsection.11.2.3}%
 \contentsline {section}{\numberline {11.3}Funções de Perda para Classificação Multilabel}{157}{section.11.3}%
 \contentsline {subsection}{\numberline {11.3.1}Entropia Cruzada Categórica (Categorical Cross-Entropy)}{157}{subsection.11.3.1}%
-\contentsline {subsection}{\numberline {11.3.2}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{157}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.2}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{158}{subsection.11.3.2}%
 \contentsline {section}{\numberline {11.4}Comparativo: Funções de Perda para Classificação}{158}{section.11.4}%
 \contentsline {section}{\numberline {11.5}Fluxograma: Escolhendo a Função de Perda Ideal}{158}{section.11.5}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
@@ -284,6 +285,20 @@
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \contentsline {chapter}{Referências}{217}{section*.96}%
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 

@@ -2741,8 +2741,14 @@
     <bcf:citekey order="275" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="276" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="277" intorder="1">EntropyShannon</bcf:citekey>
-    <bcf:citekey order="278" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
-    <bcf:citekey order="279" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="278" intorder="1">EntropyShannon</bcf:citekey>
+    <bcf:citekey order="279" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
+    <bcf:citekey order="280" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
+    <bcf:citekey order="281" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="282" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="283" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="284" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="285" intorder="1">LossesArticle</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

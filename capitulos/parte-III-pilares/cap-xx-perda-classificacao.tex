@@ -25,7 +25,7 @@ Passado alguns anos, outros autores já estavam trabalhando com esse conceito in
     \label{eq:kl-divergence}
 \end{equacaodestaque}
 
-Essa função tem como principal objetivo mediar a "perda" ou o "excesso" de informação quando é utilizada uma distribuição $q$ para aproximar a distribuição real $q$. Além disso, é a partir dessa fórmula que é possível chegar na definição de Entropia-Cruzada (\textit{Cross-Entropy}), para isso, o primeiro passo, é utilizar as propriedades do logarítmo para reescrever da divergência KL, assim, tem-se:
+Essa função tem como principal objetivo medir a "perda" ou o "excesso" de informação quando é utilizada uma distribuição $q$ para aproximar a distribuição real $q$. Além disso, é a partir dessa fórmula que é possível chegar na definição de Entropia-Cruzada (\textit{Cross-Entropy}), para isso, o primeiro passo, é utilizar as propriedades do logarítmo para reescrever da divergência KL, assim, tem-se:
 
 \[
     I(1:2) = I_{1:2}(X) = \int f_1 (x) (\log f_1 (x) - \log f_2 (x)) d\lambda (x)
@@ -72,9 +72,23 @@ Essa equação nos diz que o custo real de codificar os dados usando um modelo i
 
 A partir desses dois conceitos é possível conhecer melhor a função de perda \textit{Binary-Cross-Entropy}. Ela é dada pela Equação \ref{eq:binary-cross-entropy}. Note, que a definição da \textit{BCE} apresente grandes similaridades com Entropia-Cruzada, principalmente pelos primeiros termos $y \log (\hat{y})$, que é justamente a definição de Entropia-Cruzada.
 
-\begin{equacaodestaque}{Entropia Cruzada Binária}
-    L(y, \hat{y}) = -[y \log(\hat{y}) + (1 - y) \log(1 - \hat{y})]
+\begin{equacaodestaque}{Entropia Cruzada Binária (\textit{BCE}) para um par de Amostras}
+    \Loss(y_j, \hat{y}_j) = -[y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y_j})]
     \label{eq:binary-cross-entropy}
+\end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor previsto para a saída;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+\end{itemize}
+
+Nesta equação a \textit{Binary Cross-Entropy} está sendo calculada para um par de amostras $y_j$ e $\hat{y}_j$. Em um cenário em que se está sendo calculada a \textit{BCE} para um conjunto maior de amostras essa fórmula é aplicada repetidas vezes, seus resultados são somados e é calculada a média aritmética para o número total de amostras, de forma que é esse o valor utilizado como parâmetro para o aprendizado do modelo. Essa versão para entropia-cruzada binária pode ser escrita como na Equação \ref{eq:binary-cross-entropy-para-n-amostras}.
+
+\begin{equacaodestaque}{Entropia Cruzada Binária (\textit{BCE}) para $N$ Amostras}
+    \Loss_{BCE} = \frac{1}{N} \sum_{j=1}^{N} \Loss_{BCE} (y_j, \hat{y}_j)
+    \label{eq:binary-cross-entropy-para-n-amostras}
 \end{equacaodestaque}
 
 Além disso, a \textit{BCE} já vem sendo utilizada no contexto de aprendizado de máquina a um bom tempo. Um dos trabalhos que cita o uso dessa função para ser utilizada em cenários de classificação binária é o \textit{Connectionist Learning Procedures} de \textcite{HintonConnectionist}, em que o autor cita que ao minimizar a Entropia-Cruzada-Binária para as distribuições do resultado desejado e o atual resultado era semelhante a maximivizar a a versossimilhança do modelo gerar as saídas corretas.
@@ -124,14 +138,32 @@ Dito isso, o próximo passo para entender a \textit{BCE} é conhecer a sua repre
 \end{figure}
 
 \begin{equacaodestaque}{Derivada da Entropia Cruzada Binária}
-    \frac{\partial L}{\partial \hat{y}} = \frac{\hat{y} - y}{\hat{y}(1 - \hat{y})}
+    \frac{\partial \Loss}{\partial \hat{y}} = \frac{\hat{y} - y}{\hat{y}(1 - \hat{y})}
     \label{eq:binary-cross-entropy-derivada}
+\end{equacaodestaque}
+
+\subsection{Binary Weighted Cross-Entropy (WCE)}
+
+Uma variante da entropia-cruzada binária é a \textit{binary weighted cross-entropy}, ela tem como principal objetivo ser utilizada em casos em que uma classe é mais presente que outra \parencite{LossesArticle}. Para isso, essa função atribui pesos para as diferentes classes, assim, a classe que é menos presente é possui um peso maior, dessa forma, o modelo que está sendo treinado consegue "prestar mais atenção" nas classes menos frequêntes. \textcite{LossesArticle} explicam que essa é uma função utilizada em cenários em que os erros são caros e críticos.
+
+Dessa forma, é possível escrever a \textit{binary weighted cross-entropy} como a Equação \ref{eq:binary-weighted-cross-entropy}.
+
+\begin{equacaodestaque}{\textit{Binary Weighted Cross-Entropy} (\textit{WCE})}
+    \Loss_{WCE} (y_j, \hat{y}_j) = - [\alpha_1 y_j \log (\hat{y}_j) + \alpha_0 (1 - y_j) \log (1 - \hat{y}_j)]
+    \label{eq:binary-weighted-cross-entropy}
+\end{equacaodestaque}
+
+Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuídos para cada uma das classes, dessa forma, a perda geral é obtida ao calcular a média com base de $N$ amostras, assim, é possível escrever como na Equação \ref{eq:binary-weighted-cross-entropy-para-n-amostras}.
+
+\begin{equacaodestaque}{\textit{Binary Weighted Cross-Entropy}  (\textit{WCE}) para $N$ Amostras}
+    \Loss_{WCE} = \frac{1}{N} \sum_{j = 1}^{N} \Loss_{WCE} (y_j, \hat{y}_j)
+    \label{eq:binary-weighted-cross-entropy-para-n-amostras}
 \end{equacaodestaque}
 
 \subsection{Perda Hinge (Hinge Loss)}
 
 \begin{equacaodestaque}{Hinge Loss}
-    L(y, f(x)) = \max(0, 1 - y \cdot f(x))
+    \Loss(y, f(x)) = \max(0, 1 - y \cdot f(x))
     \label{eq:hinge-loss}
 \end{equacaodestaque}
 

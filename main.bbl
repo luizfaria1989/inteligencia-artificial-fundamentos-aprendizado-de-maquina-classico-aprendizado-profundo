@@ -427,14 +427,15 @@
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{17}
       \field{journaltitle}{The Annals of Statistics}
-      \field{month}{10}
       \field{number}{5}
       \field{title}{{Greedy function approximation: A gradient boosting machine.}}
+      \field{urlday}{17}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
       \field{volume}{29}
-      \field{year}{2025}
-      \field{dateera}{ce}
+      \field{year}{2001}
+      \field{urldateera}{ce}
       \field{pages}{1189\bibrangedash 1232}
       \range{pages}{44}
       \verb{doi}
@@ -447,7 +448,6 @@
       \verb https://doi.org/10.1214/aos/1013203451
       \endverb
       \keyw{boosting,decision trees,Function estimation,robust nonparametric regression}
-      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'GreedyFunctionApproximation'}
     \endentry
     \entry{Gauss1809}{book}{}{}
       \name{author}{1}{}{%
@@ -649,6 +649,52 @@
       \verb https://arxiv.org/abs/1606.08415
       \endverb
     \endentry
+    \entry{HintonConnectionist}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=813bd95fe553e6079cd53a567b238287}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E.},
+           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{813bd95fe553e6079cd53a567b238287}
+      \strng{fullhash}{813bd95fe553e6079cd53a567b238287}
+      \strng{fullhashraw}{813bd95fe553e6079cd53a567b238287}
+      \strng{bibnamehash}{813bd95fe553e6079cd53a567b238287}
+      \strng{authorbibnamehash}{813bd95fe553e6079cd53a567b238287}
+      \strng{authornamehash}{813bd95fe553e6079cd53a567b238287}
+      \strng{authorfullhash}{813bd95fe553e6079cd53a567b238287}
+      \strng{authorfullhashraw}{813bd95fe553e6079cd53a567b238287}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A major goal of research on networks of neuron-like processing units is to discover efficient learning procedures that allow these networks to construct complex internal representations of their environment. The learning procedures must be capable of modifying the connection strengths in such a way that internal units which are not part of the input or output come to represent important features of the task domain. Several interesting gradient-descent procedures have recently been discovered. Each connection computes the derivative, with respect to the connection strength, of a global measure of the error in the performance of the network. The strength is then adjusted in the direction that decreases the error. These relatively simple, gradient-descent learning procedures work well for small tasks and the new challenge is to find ways of improving their convergence rate and their generalization abilities so that they can be applied to larger, more realistic tasks.}
+      \field{issn}{0004-3702}
+      \field{journaltitle}{Artificial Intelligence}
+      \field{number}{1}
+      \field{title}{Connectionist learning procedures}
+      \field{urlday}{18}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{40}
+      \field{year}{1989}
+      \field{urldateera}{ce}
+      \field{pages}{185\bibrangedash 234}
+      \range{pages}{50}
+      \verb{doi}
+      \verb https://doi.org/10.1016/0004-3702(89)90049-0
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/0004370289900490
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/0004370289900490
+      \endverb
+    \endentry
     \entry{Householder1941}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=bef6b1fd48cb3e642d8a49047501277a}{%
@@ -706,14 +752,15 @@
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{17}
       \field{journaltitle}{The Annals of Mathematical Statistics}
-      \field{month}{10}
       \field{number}{1}
       \field{title}{{Robust Estimation of a Location Parameter}}
+      \field{urlday}{17}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
       \field{volume}{35}
-      \field{year}{2025}
-      \field{dateera}{ce}
+      \field{year}{1964}
+      \field{urldateera}{ce}
       \field{pages}{73\bibrangedash 101}
       \range{pages}{29}
       \verb{doi}
@@ -725,7 +772,6 @@
       \verb{url}
       \verb https://doi.org/10.1214/aoms/1177703732
       \endverb
-      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'HuberLoss'}
     \endentry
     \entry{ImageToImage}{misc}{}{}
       \name{author}{4}{}{%
@@ -768,13 +814,14 @@
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{day}{17}
       \field{eprintclass}{cs.CV}
       \field{eprinttype}{arXiv}
-      \field{month}{10}
       \field{title}{Image-to-Image Translation with Conditional Adversarial Networks}
-      \field{year}{2025}
-      \field{dateera}{ce}
+      \field{urlday}{17}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2018}
+      \field{urldateera}{ce}
       \verb{eprint}
       \verb 1611.07004
       \endverb
@@ -784,7 +831,6 @@
       \verb{url}
       \verb https://arxiv.org/abs/1611.07004
       \endverb
-      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'ImageToImage'}
     \endentry
     \entry{AdamMethod}{misc}{}{}
       \name{author}{2}{}{%
@@ -961,6 +1007,57 @@
       \endverb
       \verb{url}
       \verb https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf
+      \endverb
+    \endentry
+    \entry{KullbackLeiblerDivergence}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=bfc8a6682ceeecf67fdad2887af1898d}{%
+           family={Kullback},
+           familyi={K\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ba8d68e022d57a7f8ab9393fc434df7a}{%
+           family={Leibler},
+           familyi={L\bibinitperiod},
+           given={R.\bibnamedelimi A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{e3d54cade1397688b490b3e9bd190312}
+      \strng{fullhash}{e3d54cade1397688b490b3e9bd190312}
+      \strng{fullhashraw}{e3d54cade1397688b490b3e9bd190312}
+      \strng{bibnamehash}{e3d54cade1397688b490b3e9bd190312}
+      \strng{authorbibnamehash}{e3d54cade1397688b490b3e9bd190312}
+      \strng{authornamehash}{e3d54cade1397688b490b3e9bd190312}
+      \strng{authorfullhash}{e3d54cade1397688b490b3e9bd190312}
+      \strng{authorfullhashraw}{e3d54cade1397688b490b3e9bd190312}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00034851}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{number}{1}
+      \field{title}{On Information and Sufficiency}
+      \field{urlday}{18}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{22}
+      \field{year}{1951}
+      \field{urldateera}{ce}
+      \field{pages}{79\bibrangedash 86}
+      \range{pages}{8}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/2236703
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/2236703
       \endverb
     \endentry
     \entry{TanhLambert}{incollection}{}{}
@@ -1670,6 +1767,40 @@
       \field{pages}{533\bibrangedash 536}
       \range{pages}{4}
     \endentry
+    \entry{EntropyShannon}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=22e2130b8d96f93daba648ff62af869b}{%
+           family={Shannon},
+           familyi={S\bibinitperiod},
+           given={C.\bibnamedelimi E.},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{fullhash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{fullhashraw}{22e2130b8d96f93daba648ff62af869b}
+      \strng{bibnamehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authorbibnamehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authornamehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authorfullhash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authorfullhashraw}{22e2130b8d96f93daba648ff62af869b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Bell System Technical Journal}
+      \field{number}{3}
+      \field{title}{A mathematical theory of communication}
+      \field{volume}{27}
+      \field{year}{1948}
+      \field{pages}{379\bibrangedash 423}
+      \range{pages}{45}
+      \verb{doi}
+      \verb 10.1002/j.1538-7305.1948.tb01338.x
+      \endverb
+    \endentry
     \entry{LossesArticle}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=93e141b5d802e4e01a6e89c21fe987f0}{%
@@ -1978,9 +2109,6 @@
       \field{year}{2015}
     \endentry
   \enddatalist
-  \missing{EntropyShannon}
-  \missing{HintonConnectionist}
-  \missing{KullbackLeiblerDivergence}
 \endrefsection
 \endinput
 

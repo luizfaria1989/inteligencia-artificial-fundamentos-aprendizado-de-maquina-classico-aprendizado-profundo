@@ -254,6 +254,22 @@
 
 \usepackage{subcaption}
 
+\usepackage{mathrsfs}
+\newsavebox\foobox
+\newlength{\foodim}
+\newcommand{\slantbox}[2][0]{\mbox{%
+        \sbox{\foobox}{#2}%
+        \foodim=#1\wd\foobox
+        \hskip \wd\foobox
+        \hskip -0.5\foodim
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore
+        \hskip 0.5\foodim
+}}
+\def\Loss{\slantbox[-.45]{$\mathscr{L}$}}
+
 % ===================================================================
 % FIM DO PREÂMBULO
 % ===================================================================

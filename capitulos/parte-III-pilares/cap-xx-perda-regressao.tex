@@ -36,7 +36,7 @@ Passado quase 200 anos, o erro quadrático médio se torna uma das principais fu
 Assim, é possível agora apresentar a fórmula do \textit{MSE}, o qual é calculado através da Equação \ref{eq:mse}.
 
 \begin{equacaodestaque}{Erro Quadrático Médio (MSE)}
-    \mathbb{L}_{\text{MSE}} = \frac{1}{N} \sum_{j=1}^{N} (y_j - \hat{y}_j)^2
+    \Loss_{\text{MSE}} = \frac{1}{N} \sum_{j=1}^{N} (y_j - \hat{y}_j)^2
     \label{eq:mse}
 \end{equacaodestaque}
 
@@ -101,11 +101,11 @@ Além disso, cabe também destacar a derivada da função \textit{MSE}, a qual e
 Note que diferente das funções de ativação em que era calculada a sua derivada ordinária, aqui é calculado as derivadas parciais das funções de perda para cada um dos seus componentes, a saída do modelo $\hat{y}_j$ e a saída esperada $y_j$. Com base nessas duas derivadas, é possível construir o vetor gradiente.
 
 \begin{equacaodestaque}{Erro Quadrático Médio (\textit{MSE}) Derivada}
-    \frac{\partial \mathbb{L}_{\text{MSE}}}{\partial \hat{y}_j} = \frac{2}{N}(\hat{y}_j - y_j)
+    \frac{\partial \Loss_{\text{MSE}}}{\partial \hat{y}_j} = \frac{2}{N}(\hat{y}_j - y_j)
     \label{eq:mse-derivada}
 \end{equacaodestaque}
 
-Tendo a sua derivada, vale a pena analisar também o seu gráfico, para isso, é possível vê-lo na Figura \ref{fig:mse-derivada}. a 
+Tendo a sua derivada, vale a pena analisar também o seu gráfico, para isso, é possível vê-lo na Figura \ref{fig:mse-derivada}. 
 
 \begin{figure}[h!]
     \centering
@@ -171,7 +171,7 @@ Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-
 Visto esses diferentes cenários em que o erro absoluto médio foi utilizado para resolver problemas de regressão é possível ver agora a sua definição matemática, para isso, o \textit{MAE} está definido na Equação \ref{eq:mae}. Perceba que ele é responsável por calcular a diferença entre os dois pontos, o valor real $\hat{y}_j$ e o valor predito $y_j$, para todos os $N$ casos analisados e a partir disso calcular a média dos resultados.
 
 \begin{equacaodestaque}{Erro Absoluto Médio (\textit{MAE})}
-    \mathbb{L}_{\text{MAE}} = \frac{1}{N} \sum_{j=1}^{N} |y_j - \hat{y}_j|
+    \Loss_{\text{MAE}} = \frac{1}{N} \sum_{j=1}^{N} |y_j - \hat{y}_j|
     \label{eq:mae}
 \end{equacaodestaque}
 
@@ -223,7 +223,7 @@ A partir do seu gráfico e de sua equação é possível retirar diferentes info
 Se a função não é derivável em zero, é esperado que ela não seja uma boa alternativa para ser utilizada junto com otimizadores baseados na descida do gradiente, pois, pontos de descontinuidade como esse podem acabar atrapalhando a forma com que o modelo é otimizado. Contudo, \textcite{LossesArticle} argumentam, é possível resolver esse problema utilizado técnicas de subgradiente, sendo possível então escrever a derivada do \textit{MAE} com a Equação \ref{eq:mae-derivada}.
 
 \begin{equacaodestaque}{Erro Absoluto Médio (\textit{MAE}) Derivada}
-    \frac{\partial \mathbb{L}_{\text{MAE}}}{\partial \hat{y}_j} = 
+    \frac{\partial \Loss_{\text{MAE}}}{\partial \hat{y}_j} = 
     \begin{cases} 
       -1 & \text{se } \hat{y}_j > y_j \\
       +1 & \text{se } \hat{y}_j < y_j \\
@@ -298,7 +298,7 @@ A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, q
 O que Huber estava querendo basicamente era uma função que se comportasse de forma quadrática para os casos em que $|t| < k$ e que se comportasse de forma linear para os casos em que $t \ge k$. Essa função criada pelo pesquisador é a função que está sendo estudada, a perda Huber, a qual pode ser representada, agora com notações voltadas para o cenário de aprendizado de máquina, com a Equação \ref{eq:huber-loss}.
 
 \begin{equacaodestaque}{Huber Loss}
-    L_{\text{Huber}}(y, \hat{y}) = 
+    \Loss_{\text{Huber}}(y, \hat{y}) = 
     \begin{cases} 
       \frac{1}{2}(y - \hat{y})^2 & \text{para } |y - \hat{y}| \le \delta \\
       \delta (|y - \hat{y}| - \frac{1}{2}\delta) & \text{caso contrário}
@@ -362,7 +362,7 @@ Conhecido o gráfico e sua equação, é possível agora discutir algumas das pr
 O gradiente da perda Huber deve ser calculado por partes, como explicam \textcite{LossesArticle}, para isso, é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
 
 \begin{equacaodestaque}{Huber Loss Derivada}
-    \frac{\partial \mathbb{L}_{\delta}}{\partial \hat{y}} = 
+    \frac{\partial \Loss_{\delta}}{\partial \hat{y}} = 
     \begin{cases} 
         \hat{y} - y & \text{se } | y - \hat{y} | \le \delta \\
         \delta \cdot \text{sgn}(\hat{y} - y) & \text{se } | y - \hat{y} | > \delta
