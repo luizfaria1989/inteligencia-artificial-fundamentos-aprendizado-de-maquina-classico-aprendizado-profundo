@@ -6,6 +6,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {11.1}Exemplo Ilustrativo:}{153}{section.11.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {11.2}Funções de Perda para Classificação Binária}{153}{section.11.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {11.2.1}Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{153}{subsection.11.2.1}\protected@file@percent }
+\newlabel{sec:binary-cross-entropy}{{11.2.1}{153}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{subsection.11.2.1}{}}
 \newlabel{eq:entropia-de-shannon}{{11.1}{153}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{equation.11.1}{}}
 \newlabel{eq:kl-divergence}{{11.2}{153}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{equation.11.2}{}}
 \newlabel{eq:cross-entropy}{{11.3}{154}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{equation.11.3}{}}
@@ -13,30 +14,51 @@
 \newlabel{eq:binary-cross-entropy-para-n-amostras}{{11.5}{155}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{equation.11.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11.1}{\ignorespaces Representação gráfica da função de perda Entropia-Cruzada-Binária (\textit  {Binary-Cross-Entropy}).}}{156}{figure.caption.90}\protected@file@percent }
 \newlabel{fig:binary-cross-entropy}{{11.1}{156}{Representação gráfica da função de perda Entropia-Cruzada-Binária (\textit {Binary-Cross-Entropy})}{figure.caption.90}{}}
-\newlabel{eq:binary-cross-entropy-derivada}{{11.6}{156}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{equation.11.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2.2}Binary Weighted Cross-Entropy (WCE)}{156}{subsection.11.2.2}\protected@file@percent }
-\newlabel{eq:binary-weighted-cross-entropy}{{11.7}{156}{Binary Weighted Cross-Entropy (WCE)}{equation.11.7}{}}
-\newlabel{eq:binary-weighted-cross-entropy-para-n-amostras}{{11.8}{157}{Binary Weighted Cross-Entropy (WCE)}{equation.11.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2.3}Perda Hinge (Hinge Loss)}{157}{subsection.11.2.3}\protected@file@percent }
-\newlabel{eq:hinge-loss}{{11.9}{157}{Perda Hinge (Hinge Loss)}{equation.11.9}{}}
-\newlabel{eq:hinge-loss-derivada}{{11.10}{157}{Perda Hinge (Hinge Loss)}{equation.11.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {11.3}Funções de Perda para Classificação Multilabel}{157}{section.11.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.1}Entropia Cruzada Categórica (Categorical Cross-Entropy)}{157}{subsection.11.3.1}\protected@file@percent }
-\newlabel{eq:categorical-cross-entropy}{{11.11}{157}{Entropia Cruzada Categórica (Categorical Cross-Entropy)}{equation.11.11}{}}
-\newlabel{eq:category-cross-entropy-derivada}{{11.12}{158}{Entropia Cruzada Categórica (Categorical Cross-Entropy)}{equation.11.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.2}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{158}{subsection.11.3.2}\protected@file@percent }
-\newlabel{eq:sparse-categorical-cross-entropy}{{11.13}{158}{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{equation.11.13}{}}
-\newlabel{eq:sparse-categorical-cross-entropy-derivada}{{11.14}{158}{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{equation.11.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {11.4}Comparativo: Funções de Perda para Classificação}{158}{section.11.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.5}Fluxograma: Escolhendo a Função de Perda Ideal}{158}{section.11.5}\protected@file@percent }
+\newlabel{eq:binary-cross-entropy-derivada}{{11.6}{157}{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{equation.11.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11.2}{\ignorespaces Representação gráfica da derivada da função de perda Entropia-Cruzada-Binária.}}{157}{figure.caption.91}\protected@file@percent }
+\newlabel{fig:binary-cross-entropy-derivada}{{11.2}{157}{Representação gráfica da derivada da função de perda Entropia-Cruzada-Binária}{figure.caption.91}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2.2}Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{158}{subsection.11.2.2}\protected@file@percent }
+\newlabel{sec:binary-weighted-cross-entropy}{{11.2.2}{158}{Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{subsection.11.2.2}{}}
+\newlabel{eq:binary-weighted-cross-entropy}{{11.7}{158}{Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{equation.11.7}{}}
+\newlabel{eq:binary-weighted-cross-entropy-para-n-amostras}{{11.8}{158}{Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{equation.11.8}{}}
+\newlabel{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-0}{{11.3a}{159}{Alto peso para a classe 0}{figure.caption.92}{}}
+\newlabel{sub@fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-0}{{a}{159}{Alto peso para a classe 0}{figure.caption.92}{}}
+\newlabel{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-1}{{11.3b}{159}{Alto peso para a classe 1}{figure.caption.92}{}}
+\newlabel{sub@fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-1}{{b}{159}{Alto peso para a classe 1}{figure.caption.92}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11.3}{\ignorespaces Comparação da Entropia Cruzada Ponderada (\textit  {WCE}) alterando os pesos $\alpha _0$ e $\alpha _1$.}}{159}{figure.caption.92}\protected@file@percent }
+\newlabel{fig:comparativo-entropia-cruzada-ponderada-binaria}{{11.3}{159}{Comparação da Entropia Cruzada Ponderada (\textit {WCE}) alterando os pesos $\alpha _0$ e $\alpha _1$}{figure.caption.92}{}}
+\newlabel{eq:binary-weighted-cross-entropy-derivada}{{11.9}{159}{Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{equation.11.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2.3}Perda Hinge (Hinge Loss)}{159}{subsection.11.2.3}\protected@file@percent }
+\newlabel{eq:hinge-loss}{{11.10}{159}{Perda Hinge (Hinge Loss)}{equation.11.10}{}}
+\newlabel{fig:wce-derivada-alpha0}{{11.4a}{160}{Gradiente amplificado para erros na classe 0}{figure.caption.93}{}}
+\newlabel{sub@fig:wce-derivada-alpha0}{{a}{160}{Gradiente amplificado para erros na classe 0}{figure.caption.93}{}}
+\newlabel{fig:wce-derivada-alpha1}{{11.4b}{160}{Gradiente amplificado para erros na classe 1}{figure.caption.93}{}}
+\newlabel{sub@fig:wce-derivada-alpha1}{{b}{160}{Gradiente amplificado para erros na classe 1}{figure.caption.93}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11.4}{\ignorespaces Comparação da derivada da Entropia Cruzada Ponderada (\textit  {WCE}).}}{160}{figure.caption.93}\protected@file@percent }
+\newlabel{fig:binary-weighted-cross-entropy-derivada-comparacao}{{11.4}{160}{Comparação da derivada da Entropia Cruzada Ponderada (\textit {WCE})}{figure.caption.93}{}}
+\newlabel{eq:hinge-loss-derivada}{{11.11}{160}{Perda Hinge (Hinge Loss)}{equation.11.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.3}Funções de Perda para Classificação Multi-Classe}{160}{section.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.1}Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{160}{subsection.11.3.1}\protected@file@percent }
+\newlabel{eq:categorical-cross-entropy-per-sample}{{11.12}{161}{Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{equation.11.12}{}}
+\newlabel{eq:categorical-cross-entropy-per-n-samples}{{11.13}{161}{Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{equation.11.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11.5}{\ignorespaces Representação gráfica da função de perda Entropia Cruzada Categórica (\textit  {Categorical Cross Entropy}).}}{162}{figure.caption.94}\protected@file@percent }
+\newlabel{fig:categorical-cross-entropy}{{11.5}{162}{Representação gráfica da função de perda Entropia Cruzada Categórica (\textit {Categorical Cross Entropy})}{figure.caption.94}{}}
+\newlabel{eq:perdas-softmax}{{11.14}{162}{Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{equation.11.14}{}}
+\newlabel{eq:category-cross-entropy-derivada}{{11.15}{164}{Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{equation.11.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.2}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{165}{subsection.11.3.2}\protected@file@percent }
+\newlabel{sec:sparse-cross-entropy}{{11.3.2}{165}{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{subsection.11.3.2}{}}
+\newlabel{eq:sparse-categorical-cross-entropy}{{11.16}{165}{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{equation.11.16}{}}
+\newlabel{eq:sparse-categorical-cross-entropy-derivada}{{11.17}{165}{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{equation.11.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.4}Comparativo: Funções de Perda para Classificação}{165}{section.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.5}Fluxograma: Escolhendo a Função de Perda Ideal}{165}{section.11.5}\protected@file@percent }
 \@setckpt{capitulos/parte-III-pilares/cap-xx-perda-classificacao}{
-\setcounter{page}{159}
-\setcounter{equation}{14}
+\setcounter{page}{166}
+\setcounter{equation}{17}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{0}
+\setcounter{footnote}{2}
 \setcounter{mpfootnote}{0}
 \setcounter{@memmarkcntra}{0}
 \setcounter{storedpagenumber}{1}
@@ -78,15 +100,15 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{161}
-\setcounter{lastsheet}{223}
-\setcounter{lastpage}{221}
-\setcounter{figure}{1}
+\setcounter{sheetsequence}{168}
+\setcounter{lastsheet}{231}
+\setcounter{lastpage}{229}
+\setcounter{figure}{5}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
 \setcounter{lotdepth}{1}
 \setcounter{Item}{2}
-\setcounter{Hfootnote}{3}
+\setcounter{Hfootnote}{5}
 \setcounter{bookmark@seq@number}{0}
 \setcounter{memhycontfloat}{0}
 \setcounter{mem@Hpagenote}{0}
@@ -106,7 +128,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{285}
+\setcounter{instcount}{295}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -213,7 +235,7 @@
 \setcounter{bbx:relatedtotal}{0}
 \setcounter{tcbbreakpart}{1}
 \setcounter{tcblayer}{0}
-\setcounter{tcolorbox@number}{143}
+\setcounter{tcolorbox@number}{147}
 \setcounter{tcbrastercolumn}{1}
 \setcounter{tcbrasterrow}{1}
 \setcounter{tcbrasternum}{1}
