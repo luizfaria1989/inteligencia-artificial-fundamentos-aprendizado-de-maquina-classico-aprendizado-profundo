@@ -1978,6 +1978,9 @@
       \field{year}{2015}
     \endentry
   \enddatalist
+  \missing{EntropyShannon}
+  \missing{HintonConnectionist}
+  \missing{KullbackLeiblerDivergence}
 \endrefsection
 \endinput
 
