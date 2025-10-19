@@ -448,23 +448,637 @@ Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é
 
 \subsection{Perda Log-Cosh}
 
+\begin{equacaodestaque}{Perda Log-Cosh (\textit{Log-Cosh Loss})}
+    \Loss_{\text{Log-Cosh}} = \sum_{j=1}^{N} \log(\cosh(y_j - \hat{y}_j))
+    \label{eq:log-cosh-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Log-Cosh Loss},
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4.5, xmax=4.5,
+            ymin=-0.5, ymax=4.5,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função ln(cosh(x))
+            \addplot[
+                domain=-4:4, 
+                samples=101,
+                color=teal, 
+                very thick
+            ] {ln(cosh(x))};
+            
+            \addlegendentry{$L = \log(\cosh(\text{erro}))$}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda Log-Cosh. Note como ela é quadrática perto de zero e se torna linear para erros maiores.}
+    \label{fig:log-cosh-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Perda Log-Cosh}
+    \frac{\partial \Loss_{\text{Log-Cosh}}}{\partial \hat{y}_j} = \tanh(\hat{y}_j - y_j)
+    \label{eq:log-cosh-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Perda Log-Cosh},
+            xlabel={Erro ($\hat{y} - y$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4.5, xmax=4.5,
+            ymin=-1.5, ymax=1.5,         % Limites para a função tanh (-1 a 1)
+            ytick={-1, -0.5, 0, 0.5, 1}, % Marcas no eixo y
+            legend pos=south east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função tanh(x)
+            \addplot[
+                domain=-4:4, 
+                samples=101,
+                color=teal, 
+                very thick
+            ] {tanh(x)};
+            
+            \addlegendentry{$L' = \tanh(\text{erro})$}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da função de perda Log-Cosh, que corresponde à função tangente hiperbólica (\textit{tanh}).}
+    \label{fig:log-cosh-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
 \section{Lidando com a Escala: Foco no Erro Relativo}
 
 \subsection{Erro Quadrático Médio Logarítmico (MSLE)}
+
+\begin{equacaodestaque}{Erro Quadrático Médio Logarítmico (\textit{MSLE})}
+    \Loss_{\text{MSLE}} = \frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) - \log(\hat{y}_j + 1))^2
+    \label{eq:msle-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: MSLE (para valor real $y=10$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=25,
+            ymin=-0.5, ymax=6,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função (ln(11) - ln(x+1))^2
+            \addplot[
+                domain=0:25, 
+                samples=101,
+                color=green, 
+                very thick
+            ] {(ln(10+1) - ln(x+1))^2};
+            
+            \addlegendentry{$L = (\log(11) - \log(\hat{y}+1))^2$}
+
+            % Linha vertical para marcar o valor real
+            \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 6);
+            \node[above, gray!80, font=\tiny] at (axis cs:10, 6) {Valor Real};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda MSLE. A perda é assimétrica e penaliza mais a subestimação.}
+    \label{fig:msle-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada do Erro Quadrático Médio Logarítmico (\textit{MSLE})}
+    \frac{\partial \Loss_{\text{MSLE}}}{\partial \hat{y}_j} = - \frac{2}{N} \cdot \frac{\log(y_j + 1) - \log(\hat{y}_j + 1)}{\hat{y}_j + 1}
+    \label{eq:msle-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da MSLE (para valor real $y=10$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=25,
+            ymin=-1, ymax=5,
+            legend pos=north east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da derivada
+            \addplot[
+                domain=0:25, 
+                samples=101,
+                color=orange, 
+                very thick
+            ] {-2 * (ln(10+1) - ln(x+1)) / (x+1)};
+            
+            \addlegendentry{$L' \text{ para } y=10$}
+
+            % Linha vertical para marcar o valor real onde o gradiente é zero
+            \draw[dashed, gray] (axis cs:10, -1) -- (axis cs:10, 5);
+            \node[above, gray!80, font=\tiny] at (axis cs:10, 5) {Valor Real};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$).}
+    \label{fig:msle-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
 \subsection{Perda Quantílica}
 
+\begin{equacaodestaque}{Perda Quantílica (\textit{Quantile Loss})}
+    \Loss_{\tau}(y_j, \hat{y}_j) = 
+    \begin{cases} 
+        \tau (y_j - \hat{y}_j) & \text{se } y_j \ge \hat{y}_j \\
+        (1 - \tau)(\hat{y}_j - y_j) & \text{se } y_j < \hat{y}_j
+    \end{cases}
+    \label{eq:quantile-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Perda Quantílica (Pinball Loss)},
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4.5, xmax=4.5,
+            ymin=-0.5, ymax=3.5,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Tau = 0.5 (MAE)
+            \addplot[domain=-4:4, samples=5, color=gray, thick] {0.5*abs(x)};
+            \addlegendentry{$\tau=0.5$ (Mediana)}
+            
+            % Tau = 0.9
+            \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.9*x) : ((1-0.9)*(-x))};
+            \addlegendentry{$\tau=0.9$ (Percentil 90)}
+            
+            % Tau = 0.1
+            \addplot[domain=-4:4, samples=5, color=red, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
+            \addlegendentry{$\tau=0.1$ (Percentil 10)}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da Perda Quantílica para diferentes valores de $\tau$. Note a assimetria da penalidade.}
+    \label{fig:quantile-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Perda Quantílica}
+    \frac{\partial \Loss_{\tau}}{\partial \hat{y}_j} = 
+    \begin{cases} 
+        -(1 - \tau) & \text{se } y_j < \hat{y}_j \text{ (superestimação)}\\
+        -\tau & \text{se } y_j > \hat{y}_j \text{ (subestimação)}
+    \end{cases}
+    \label{eq:quantile-loss-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Perda Quantílica},
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial (\text{erro})}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4.5, xmax=4.5,
+            ymin=-1.1, ymax=1.1,
+            ytick={-0.9, -0.5, -0.1, 0, 0.1, 0.5, 0.9},
+            legend pos=south east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Linhas para Tau = 0.9
+            \addplot[const plot, color=blue, very thick] coordinates {(-4, 0.9-1) (0, 0.9-1)};
+            \addplot[const plot, color=blue, very thick] coordinates {(0, 0.9) (4, 0.9)};
+            \addlegendentry{$\tau=0.9$}
+            
+            % Linhas para Tau = 0.5
+            \addplot[const plot, color=gray, thick] coordinates {(-4, 0.5-1) (0, 0.5-1)};
+            \addplot[const plot, color=gray, thick] coordinates {(0, 0.5) (4, 0.5)};
+            \addlegendentry{$\tau=0.5$}
+
+            % Linhas para Tau = 0.1
+            \addplot[const plot, color=red, very thick] coordinates {(-4, 0.1-1) (0, 0.1-1)};
+            \addplot[const plot, color=red, very thick] coordinates {(0, 0.1) (4, 0.1)};
+            \addlegendentry{$\tau=0.1$}
+
+            % Círculos abertos para a descontinuidade
+            \addplot[only marks, mark=o, color=blue, mark size=2pt] coordinates {(0, -0.1) (0, 0.9)};
+            \addplot[only marks, mark=o, color=gray, mark size=2pt] coordinates {(0, -0.5) (0, 0.5)};
+            \addplot[only marks, mark=o, color=red, mark size=2pt] coordinates {(0, -0.9) (0, 0.1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica.}
+    \label{fig:quantile-loss-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
 \subsection{Perda Epsilon-Insensível}
+
+\begin{equacaodestaque}{Perda Epsilon-Insensível (\textit{$\epsilon$-Insensitive Loss})}
+    \Loss_{\epsilon}(y, \hat{y}) = 
+    \begin{cases} 
+        0 & \text{se } |y - \hat{y}| \le \epsilon \\
+        |y - \hat{y}| - \epsilon & \text{se } |y - \hat{y}| > \epsilon
+    \end{cases}
+    \label{eq:epsilon-insensitive-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Epsilon-Insensível ($\epsilon=1$)},
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4.5, xmax=4.5,
+            ymin=-0.5, ymax=3.5,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Define o valor de epsilon
+            \def\epsilon{1.0}
+
+            % Adiciona o gráfico da função
+            \addplot[
+                domain=-4:4, 
+                samples=101,
+                color=purple, 
+                very thick
+            ] {max(0, abs(x) - \epsilon)};
+            
+            \addlegendentry{$L_{\epsilon=1}(\text{erro})$}
+
+            % Linhas tracejadas para marcar a margem epsilon
+            \draw[dashed, gray] (axis cs:-\epsilon, -0.5) -- (axis cs:-\epsilon, 3.5);
+            \draw[dashed, gray] (axis cs:\epsilon, -0.5) -- (axis cs:\epsilon, 3.5);
+            \node[above, gray!80, font=\tiny] at (axis cs:0, 2) {Zona de Perda Zero};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda Epsilon-Insensível com uma margem de $\epsilon=1$.}
+    \label{fig:epsilon-insensitive-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Perda Epsilon-Insensível}
+    \frac{\partial \Loss_{\epsilon}}{\partial \hat{y}} = 
+    \begin{cases} 
+        -1 & \text{se } \hat{y} - y > \epsilon \\
+        0 & \text{se } |\hat{y} - y| \le \epsilon \\
+        1 & \text{se } \hat{y} - y < -\epsilon
+    \end{cases}
+    \label{eq:epsilon-insensitive-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Perda Epsilon-Insensível ($\epsilon=1$)},
+            xlabel={Erro ($y - \hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial (\text{erro})}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4.5, xmax=4.5,
+            ymin=-1.5, ymax=1.5,
+            ytick={-1, 0, 1},
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Define o valor de epsilon
+            \def\epsilon{1.0}
+
+            % Parte negativa da derivada (-1)
+            \addplot[const plot, color=red, very thick] coordinates {(-4, -1) (-\epsilon, -1)};
+            
+            % Parte central da derivada (0)
+            \addplot[const plot, color=gray, very thick] coordinates {(-\epsilon, 0) (\epsilon, 0)};
+            
+            % Parte positiva da derivada (+1)
+            \addplot[const plot, color=blue, very thick] coordinates {(\epsilon, 1) (4, 1)};
+            
+            % Círculos abertos/fechados para as descontinuidades
+            \addplot[only marks, mark=*, color=gray, mark size=1.5pt] coordinates {(-\epsilon, 0) (\epsilon, 0)};
+            \addplot[only marks, mark=o, color=red, mark size=1.5pt] coordinates {(-\epsilon, -1)};
+            \addplot[only marks, mark=o, color=blue, mark size=1.5pt] coordinates {(\epsilon, 1)};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon$.}
+    \label{fig:epsilon-insensitive-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
 
 \section{Perdas Baseadas em Distribuições de Dados}
 
 \subsection{Perda de Poisson}
 
+\begin{equacaodestaque}{Perda de Poisson (\textit{Poisson Loss})}
+    \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \hat{y}_j - y_j \log(\hat{y}_j)
+    \label{eq:poisson-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Perda de Poisson},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=20,
+            ymin=-2, ymax=12,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para y=2
+            \addplot[domain=0.1:20, samples=101, color=red, thick] {x - 2*ln(x)};
+            \addlegendentry{$y=2$}
+            \draw[dashed, red!50] (axis cs:2, -2) -- (axis cs:2, {2-2*ln(2)});
+
+            % Curva para y=5
+            \addplot[domain=0.1:20, samples=101, color=blue, thick] {x - 5*ln(x)};
+            \addlegendentry{$y=5$}
+            \draw[dashed, blue!50] (axis cs:5, -2) -- (axis cs:5, {5-5*ln(5)});
+
+            % Curva para y=10
+            \addplot[domain=0.1:20, samples=101, color=green, thick] {x - 10*ln(x)};
+            \addlegendentry{$y=10$}
+            \draw[dashed, green!50] (axis cs:10, -2) -- (axis cs:10, {10-10*ln(10)});
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat{y}=y$.}
+    \label{fig:poisson-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Perda de Poisson}
+    \frac{\partial \Loss_{\text{Poisson}}}{\partial \hat{y}_j} = 1 - \frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j - y_j}{\hat{y}_j}
+    \label{eq:poisson-loss-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Perda de Poisson},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=20,
+            ymin=-4, ymax=1.5,
+            legend pos=south east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para y=2
+            \addplot[domain=0.5:20, samples=101, color=red, thick] {1 - 2/x};
+            \addlegendentry{$y=2$}
+            
+            % Curva para y=5
+            \addplot[domain=0.5:20, samples=101, color=blue, thick] {1 - 5/x};
+            \addlegendentry{$y=5$}
+
+            % Curva para y=10
+            \addplot[domain=0.5:20, samples=101, color=green, thick] {1 - 10/x};
+            \addlegendentry{$y=10$}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat{y}=y$ e assintótico a 1 para $\hat{y} \to \infty$.}
+    \label{fig:poisson-loss-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
 \subsection{Perda de Tweedie}
 
+\begin{equacaodestaque}{Perda de Tweedie (\textit{Tweedie Loss})}
+    \Loss_{\text{Tweedie}}(y_j, \hat{y}_j; p) = -\frac{y_j \cdot \hat{y}_j^{1-p}}{1-p} + \frac{\hat{y}_j^{2-p}}{2-p}
+    \label{eq:tweedie-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Perda de Tweedie ($p=1.5$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=15,
+            ymin=0, ymax=15,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Definição do parâmetro p
+            \def\p{1.5}
+
+            % Curva para y=1
+            \addplot[domain=0.1:15, samples=101, color=red, thick] 
+                { -1*x^(1-\p)/(1-\p) + x^(2-\p)/(2-\p) };
+            \addlegendentry{$y=1$}
+            \draw[dashed, red!50] (axis cs:1, 0) -- (axis cs:1, {-1*1^(1-\p)/(1-\p) + 1^(2-\p)/(2-\p)});
+
+            % Curva para y=4
+            \addplot[domain=0.1:15, samples=101, color=blue, thick] 
+                { -4*x^(1-\p)/(1-\p) + x^(2-\p)/(2-\p) };
+            \addlegendentry{$y=4$}
+            \draw[dashed, blue!50] (axis cs:4, 0) -- (axis cs:4, {-4*4^(1-\p)/(1-\p) + 4^(2-\p)/(2-\p)});
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat{y}=y$.}
+    \label{fig:tweedie-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Perda de Tweedie}
+    \frac{\partial \Loss_{\text{Tweedie}}}{\partial \hat{y}_j} = \hat{y}_j^{-p}(\hat{y}_j - y_j)
+    \label{eq:tweedie-loss-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Perda de Tweedie ($p=1.5$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=15,
+            ymin=-2, ymax=1.5,
+            legend pos=south east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Definição do parâmetro p
+            \def\p{1.5}
+            
+            % Curva para y=1
+            \addplot[domain=0.2:15, samples=101, color=red, thick] 
+                {x^(-\p)*(x-1)};
+            \addlegendentry{$y=1$}
+            
+            % Curva para y=4
+            \addplot[domain=0.2:15, samples=101, color=blue, thick] 
+                {x^(-\p)*(x-4)};
+            \addlegendentry{$y=4$}
+
+            % Linhas verticais onde o gradiente é zero
+            \draw[dashed, red!50] (axis cs:1, -2) -- (axis cs:1, 1.5);
+            \draw[dashed, blue!50] (axis cs:4, -2) -- (axis cs:4, 1.5);
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real.}
+    \label{fig:tweedie-loss-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
 \subsection{Divergência Kullback-Leibler}
+
+\begin{equacaodestaque}{Divergência KL entre duas Gaussianas}
+    D_{KL}(P || Q) = \log\frac{\sigma_2}{\sigma_1} + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}
+    \label{eq:kl-divergence-gaussiana}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Conceito da Divergência KL para Regressão},
+            xlabel={Valor da Variável Contínua (y)},
+            ylabel={Densidade de Probabilidade},
+            axis lines=left,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-4, xmax=6,
+            ymin=0, ymax=0.5,
+            legend pos=north east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Distribuição Real P
+            \addplot[
+                domain=-4:6, samples=101, color=blue, very thick,
+                ] {exp(-(x-0)^2 / (2*1^2)) / (1 * sqrt(2*pi))};
+            \addlegendentry{Distribuição Real $P \sim \mathcal{N}(\mu_1, \sigma_1^2)$}
+
+            % Distribuição Prevista Q
+            \addplot[
+                domain=-4:6, samples=101, color=red, thick,
+            ] {exp(-(x-1.5)^2 / (2*1.5^2)) / (1.5 * sqrt(2*pi))};
+            \addlegendentry{Distribuição Prevista $Q \sim \mathcal{N}(\mu_2, \sigma_2^2)$}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$).}
+    \label{fig:kl-divergence-concept-regressao}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivadas da Divergência KL (Gaussiana)}
+    \frac{\partial D_{KL}}{\partial \mu_2} = \frac{\mu_2 - \mu_1}{\sigma_2^2}
+    \\[10pt] % Espaçamento vertical
+    \frac{\partial D_{KL}}{\partial \sigma_2} = \frac{1}{\sigma_2} - \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{\sigma_2^3}
+    \label{eq:kl-divergence-derivada-gaussiana}
+\end{equacaodestaque}
 
 \section{Comparativo: Funções de Perda para Regressão}
 

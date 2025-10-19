@@ -85,7 +85,7 @@ Em que:
     \item $\hat{y}_j$ representa o valor predito pelo modelo;
 \end{itemize}
 
-Nesta equação a \textit{Binary Cross-Entropy} está sendo calculada para um par de amostras $y_j$ e $\hat{y}_j$. Em um cenário em que se está sendo calculada a \textit{BCE} para um conjunto maior de amostras essa fórmula é aplicada repetidas vezes, seus resultados são somados e é calculada a média aritmética para o número total de amostras, de forma que é esse o valor utilizado como parâmetro para o aprendizado do modelo. Essa versão para entropia-cruzada binária pode ser escrita como na Equação \ref{eq:binary-cross-entropy-para-n-amostras}.
+Perceba que a fórmula da entropia cruzada binária faz um uso muito inteligente para calcular a perda, ela aplica o cálculo de duas entropias cruzadas. Para isso, a primeira entropia cruzada $y_j \log(\hat{y}_j)$ calcula a distância de uma classe 0 com o retorno do modelo $\hat{y}_j$. A segunda entropia cruzada $(1 - y_j) \log(1 - \hat{y_j})$ faz o cálculo da distância para os casos em que está sendo analisada a classe 1. Dessa forma, em um cenário em que o resultado é a classe 0, a primeira entropia cruzada é toda multiplicado por zero, sendo eliminado da fórmula, o mesmo vale para quando o resultado é a classe 1, em que a segunda entropia cruzada passa a ser zero.
 
 \begin{equacaodestaque}{Entropia Cruzada Binária (\textit{BCE}) para $N$ Amostras}
     \Loss_{BCE} = \frac{1}{N} \sum_{j=1}^{N} \Loss_{BCE} (y_j, \hat{y}_j)
@@ -401,54 +401,105 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
 
 \subsection{Perda Hinge (Hinge Loss)}
 
+A Hinge Loss é uma função de perda que está relacionada com o uso de máquinas de vetores de suporte (\textit{SVMs}), ela aparece pela primeira vez no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. É possível fazer a sua dedução para entender melhor o problema que os pesquisadores estavam analisando ao desenvolver o trabalho. No artigo \textcite{HingeLoss} começam introduzindo um problema em que analisam dados que não podem ser separados sem erros, de forma que eles querem então separar esses dados gerando a menor quantidade possível de erros. Para isso, os autores introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$. 
+
+Assim, \textcite{HingeLoss} querem minimizar uma função da forma:
+
+\[
+    `\Phi ' = \sum_{i = 1}^l \xi_i^{\sigma}
+\]
+
+Para $\sigma > 0$, são sujeitas as restrições:
+
+\[
+    y_i (\textbf{w} \cdot \textbf{x}_i + b) \ge 1 - \xi_i, i = 1, 2, \cdots, l
+\]
+
+\[
+    \xi \ge 0, i = 1, 2, \cdots, l
+\]
+
+Perceba então que para que $\xi$ siga as restrições propostas, ele deve ser maior ou igual as restrições, e como ele deve ser o menor possível para minimizar o erro, o menor que ele pode ser é o máximo entre 0 e $1 - y(\textbf{w} \cdot \textbf{x}_i + b)$. É possível então escrever algo da forma:
+
+\[
+    \xi = \max (0, 1 - y(\textbf{w} \cdot \textbf{x}_i + b))
+\]
+
+Essa função encontrada ao buscar o mínimo entre esses dois termos, é justamente a Hinge Loss, que agora pode ser expressa com as notações do livro na Equação \ref{eq:hinge-loss}.
+
 \begin{equacaodestaque}{Hinge Loss}
-    \Loss(y, f(x)) = \max(0, 1 - y \cdot f(x))
+    \Loss_{\text{Hinge}}(y, f(x)) = \max(0, 1 - y \cdot f(x))
     \label{eq:hinge-loss}
 \end{equacaodestaque}
 
-\begin{tikzpicture}
-    \begin{axis}[
-        title={Função de Perda: Hinge Loss},
-        xlabel={Saída Bruta do Modelo ($f(x)$)},
-        ylabel={Perda Calculada},
-        axis lines=middle,          % Eixos centrados em (0,0)
-        grid=major,                 % Adiciona uma grade principal
-        grid style={dashed, gray!40}, % Estilo da grade
-        xmin=-3.5, xmax=3.5,        % Limites do eixo x
-        ymin=-0.5, ymax=4.5,         % Limites do eixo y
-        legend pos=north west,      % Posição da legenda
-        width=12cm,                 % Largura do gráfico
-        height=9cm,                 % Altura do gráfico
-        title style={font=\bfseries},
-        label style={font=\small},
-        tick label style={font=\scriptsize}
-    ]
-        % Curva para a classe real y=+1
-        \addplot[
-            domain=-3:3, 
-            samples=100, 
-            color=blue, 
-            very thick
-        ] {max(0, 1-x)};
-        \addlegendentry{Classe Real = 1 ($L=\max(0, 1-f(x))$)}
+Em que:
 
-        % Curva para a classe real y=-1
-        \addplot[
-            domain=-3:3, 
-            samples=100, 
-            color=red, 
-            very thick
-        ] {max(0, 1+x)};
-        \addlegendentry{Classe Real = -1 ($L=\max(0, 1+f(x))$)}
-        
-        % Opcional: Linhas tracejadas para marcar as margens
-        \draw[dashed, gray!70] (axis cs:1, 0) -- (axis cs:1, 4.5);
-        \draw[dashed, gray!70] (axis cs:-1, 0) -- (axis cs:-1, 4.5);
-        \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:1.1, 2) {Margem};
-        \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:-0.9, 2) {Margem};
-        
-    \end{axis}
-\end{tikzpicture}
+\begin{itemize}
+    \item $y$ representa os rótulos dos dados, e também segue o formato $y \in {-1, +1}$
+    \item $f(x)$ representa a saída bruta do modelo ou a função de decisão (geralmente the signed distance da barreira de decisão)
+\end{itemize}
+
+\textcite{LossesArticle} explicam que para calcular a margem para uma amostra $x$, deve ser calculado o produto $yf(x)$, uma classificação correta com uma margem suficiente gera um resultado positivo para esse produto, reduzindo a perda para zero.
+
+Cabe também disctutir o gráfico dessa função de perda, o qual é dado pela Figura \ref{fig:hinge-loss}. Perceba que diferente do gráfico da \textit{binary cross-entropy} que fazia uso de logarítimos e por isso apresentava curvas suaves, a \textit{hinge loss} utilizada a função $\max$ e equação da reta, como consequência, o seu gráfico é composto por duas retas que se cruzam no ponto de mínimo.
+
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Hinge Loss},
+            xlabel={Saída Bruta do Modelo ($f(x)$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,          % Eixos centrados em (0,0)
+            grid=major,                 % Adiciona uma grade principal
+            grid style={dashed, gray!40}, % Estilo da grade
+            xmin=-3.5, xmax=3.5,        % Limites do eixo x
+            ymin=-0.5, ymax=4.5,         % Limites do eixo y
+            legend pos=north west,      % Posição da legenda
+            width=12cm,                 % Largura do gráfico
+            height=9cm,                 % Altura do gráfico
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para a classe real y=+1
+            \addplot[
+                domain=-3:3, 
+                samples=100, 
+                color=blue, 
+                very thick
+            ] {max(0, 1-x)};
+            \addlegendentry{Classe Real = 1 ($L=\max(0, 1-f(x))$)}
+
+            % Curva para a classe real y=-1
+            \addplot[
+                domain=-3:3, 
+                samples=100, 
+                color=red, 
+                very thick
+            ] {max(0, 1+x)};
+            \addlegendentry{Classe Real = -1 ($L=\max(0, 1+f(x))$)}
+            
+            % Opcional: Linhas tracejadas para marcar as margens
+            \draw[dashed, gray!70] (axis cs:1, 0) -- (axis cs:1, 4.5);
+            \draw[dashed, gray!70] (axis cs:-1, 0) -- (axis cs:-1, 4.5);
+            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:1.1, 2) {Margem};
+            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:-0.9, 2) {Margem};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Representação gráfica da função de perda Hinge Loss.}
+    \label{fig:hinge-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Visto como surgiu a \textit{hinge loss}, sua equação e seu gráfico, é possível agora discutir algumas propriedades dessa função de perda:
+
+\begin{itemize}
+    \item \textbf{Maximização de margem:} Como explicam \textcite{LossesArticle}, a \textit{hinge loss} força que a predição esteja correta ($\text{sign} (f(x)) = y$) mas também que a margem $[f(x)]$ seja pelo menos 1, uma predição correta mas com uma margem menor que 1 continua gerando uma perda positiva.
+    \item \textbf{Penalidade linear:} Perceba pelo gráfico da Figura \ref{fig:hinge-loss} que essa função é composta por duas retas. Quando o cálculo dos termos $yf(x)$ é menor que 1, a \textit{hinge loss} aumenta de forma linear com a distância $1-yf(x)$, essa penalidadde linear geralmente é responsável por gerar gradientes mais esparsos \parencite{LossesArticle}.
+\end{itemize}
+
+Também cabe destacar a derivada dessa função de perda, para calculá-la deve-se derivar as duas funções, as quais vão gerar uma função escrita através de chaves, como a mostrada na Equação \ref{eq:hinge-loss-derivada}.
 
 \begin{equacaodestaque}{Derivada da Hinge Loss}
     \frac{\partial \Loss}{\partial f(x)} = 
@@ -459,7 +510,137 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
     \label{eq:hinge-loss-derivada}
 \end{equacaodestaque}
 
+Além da \textit{hinge loss} tradicional, existe uma variante que faz uso de um expoente ao quadrado para calcular a perda. Dessa forma, a perda conseque crescer de forma mais rápida e com isso aumentar a penalização dos erros. Essa é a \textit{squared hinge loss}, a qual está apresentada na seção seguinte.
+
+\subsection{Squared Hinge Loss}
+
+A fórmula da \textit{squared hinge loss} não difere muito da \textit{hinge loss} tradicional, neste caso, essa variante eleva ao quadrado todo o resultado da perda calculada pela \textit{hinge loss}. Ela pode ser vista na Equação \ref{eq:squared-hinge-loss}.
+
+\begin{equacaodestaque}{Squared Hinge Loss}
+    \Loss_{\text{Squared Hinge}}(y, f(x)) = (\max(0, 1 - y \cdot f(x)))^2
+    \label{eq:squared-hinge-loss}
+\end{equacaodestaque}
+
+Por ultizar um termo ao quadrado para calcular a perda, o seu gráfico também muda. Como pode ser visto na Figura \ref{fig:squared-hinge-loss}, ele agora apresenta um comportamento mais suave, além disso, os seus valores agora crescem de forma mais rápida que a \textit{hinge loss} tradicional, fazendo com que ela lide com os erros de forma mais severa que sua versão tradicional.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: Squared Hinge Loss},
+            xlabel={Saída Bruta do Modelo ($f(x)$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-3.5, xmax=3.5,
+            ymin=-0.5, ymax=9.5,         % Aumentei o ymax para acomodar as parábolas
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para a classe real y=+1
+            \addplot[
+                domain=-3:3, 
+                samples=201, % Aumentei os samples para uma curva mais suave
+                color=blue, 
+                very thick
+            ] {(max(0, 1-x))^2}; % Adicionado o ^2
+            \addlegendentry{Classe Real = 1 ($L=(\max(0, 1-f(x)))^2$)}
+
+            % Curva para a classe real y=-1
+            \addplot[
+                domain=-3:3, 
+                samples=201, 
+                color=red, 
+                very thick
+            ] {(max(0, 1+x))^2}; % Adicionado o ^2
+            \addlegendentry{Classe Real = -1 ($L=(\max(0, 1+f(x)))^2$)}
+            
+            % Linhas tracejadas para marcar as margens
+            \draw[dashed, gray!70] (axis cs:1, 0) -- (axis cs:1, 9.5);
+            \draw[dashed, gray!70] (axis cs:-1, 0) -- (axis cs:-1, 9.5);
+            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:1.1, 4) {Margem};
+            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:-0.9, 4) {Margem};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Representação gráfica da função de perda Squared Hinge Loss.}
+    \label{fig:squared-hinge-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Para calcular a sua derivada deve-se aplicar a regra da cadeia, separando então termo ao quadrado da função perda hinge tradicional. De forma que ao fazer isso é possível encontrar a Equação \ref{eq:squared-hinge-loss-derivada}.
+
+\begin{equacaodestaque}{Derivada da Squared Hinge Loss}
+    \frac{\partial \Loss{\text{Squared Hinge}}}{\partial f(x)} = 
+    \begin{cases} 
+        -2y(1 - y \cdot f(x)) & \text{se } y \cdot f(x) < 1 \\
+        0 & \text{se } y \cdot f(x) \ge 1
+    \end{cases}
+    \label{eq:squared-hinge-loss-derivada}
+\end{equacaodestaque}
+
+De forma semelhante ao que foi feito com as outras funções até agora, é possível plotar o gráfico da derivada da \textit{hinge loss}. Ele está representado na Figura \ref{fig:squared-hinge-loss-derivada}. Note, que diferente do gráfico da \textit{hinge loss} em que a correção a ser feita é dada de forma constante, a derivada da \textit{squared hinge loss} é calculada de forma linear.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Squared Hinge Loss},
+            xlabel={Saída Bruta do Modelo ($f(x)$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial f(x)}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-3.5, xmax=3.5,
+            ymin=-8.5, ymax=8.5,         % Ajustar o y para a escala linear da derivada
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Derivada para a classe real y=+1
+            % Fórmula: (x < 1) ? (2*(x-1)) : 0
+            \addplot[
+                domain=-3:3, 
+                samples=10, 
+                color=blue, 
+                very thick
+            ] {(x < 1) ? (2*(x-1)) : 0};
+            \addlegendentry{Classe Real = 1}
+
+            % Derivada para a classe real y=-1
+            % Fórmula: (x > -1) ? (2*(x+1)) : 0
+            \addplot[
+                domain=-3:3, 
+                samples=10, 
+                color=red, 
+                very thick
+            ] {(x > -1) ? (2*(x+1)) : 0};
+            \addlegendentry{Classe Real = -1}
+            
+            % Linhas tracejadas para marcar as margens
+            \draw[dashed, gray!70] (axis cs:1, -8.5) -- (axis cs:1, 8.5);
+            \draw[dashed, gray!70] (axis cs:-1, -8.5) -- (axis cs:-1, 8.5);
+            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:1.1, 2) {Margem};
+            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:-0.9, 2) {Margem};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Representação gráfica da derivada da função de perda Squared Hinge Loss. O gradiente é proporcional à distância da margem.}
+    \label{fig:squared-hinge-loss-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
 \section{Funções de Perda para Classificação Multi-Classe}
+
+\subsection{Exemplo Ilustrativo:}
 
 \subsection{Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)} 
 
@@ -635,18 +816,287 @@ Aplicando a distributiva:
     \label{eq:category-cross-entropy-derivada}
 \end{equacaodestaque}
 
+Note também que a que essa simplificação dos cálculos para a derivada na entropia cruzada utilizando a \textit{softmax} também reflete no gráfico, que é composto apenas de , como é possível ver na Figura \ref{fig:categorical-cross-entropy-derivada-com-softmax}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Entropia Cruzada Categórica com Softmax},
+            xlabel={Probabilidade Prevista para a Classe $i$ ($\hat{y}_i$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial z_i}$)},
+            axis lines=middle,             % Eixos centrados em (0,0)
+            grid=major,                  % Adiciona uma grade principal
+            grid style={dashed, gray!40},  % Estilo da grade
+            xmin=-0.1, xmax=1.1,           % Limites do eixo x
+            ymin=-1.1, ymax=1.1,           % Limites do eixo y
+            legend pos=north west,         % Posição da legenda
+            width=12cm,                    % Largura do gráfico
+            height=9cm,                    % Altura do gráfico
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para a classe correta (y_i = 1)
+            % A derivada é y_hat - 1
+            \addplot[
+                domain=0:1,
+                samples=10,
+                color=blue,
+                very thick
+            ] {x - 1};
+            \addlegendentry{Classe Correta ($y_i=1 \implies \hat{y}_i - 1$)}
+
+            % Curva para uma classe incorreta (y_i = 0)
+            % A derivada é y_hat - 0
+            \addplot[
+                domain=0:1,
+                samples=10,
+                color=red,
+                very thick
+            ] {x};
+            \addlegendentry{Classe Incorreta ($y_i=0 \implies \hat{y}_i - 0$)}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Representação gráfica da derivada da \textit{categorical cross entropy} com Softmax.}
+    \label{fig:categorical-cross-entropy-derivada-com-softmax}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Caso a \textit{cetegorical cross entropy} não seja utilizada em conjunto com a função de ativação \textit{softmax} na saída do modelo, a sua derivada passa a ser um pouco mais complexa, sendo representada pela Equação \ref{eq:categorical-cross-entropy-derivada}.
+
+\begin{equacaodestaque}{Derivada da Entropia Cruzada Categórica (em relação à previsão)}
+    \frac{\partial \Loss}{\partial \hat{y}_i} = -\frac{y_i}{\hat{y}_i}
+    \label{eq:categorical-cross-entropy-derivada}
+\end{equacaodestaque}
+
+Conhecida a \textit{CCE}, uma das principais funcões de perda para ser utilizada para problemas de classificação multi-classe, é possível se perguntar: O que acontece se os dados não estiverem codificados em formato \textit{one-hot}? Para contornar esse problema, uma solução é utilizar a \textit{sparse categorical cross-entropy}, a qual será explicada em sequência.
+
 \subsection{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}
 \label{sec:sparse-cross-entropy}
 
-\begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa}
-    L_i = - \log(\hat{y}_{i, y_i})
-    \label{eq:sparse-categorical-cross-entropy}
+A entropia cruzada categórica esparsa é utilizada para os cenários em que os rótulos das classes são dados em inteiros $y_j \in {1, 2, \cdots C}$ \parencite{LossesArticle}. A \textit{sparese CCE} para um conjunto de individual de predição é dada pela Equação \ref{eq:sparse-categorical-cross-entropy-per-sample}
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa (\textit{Esparse CCE}) para uma Amostra $j$}
+    \Loss_{\text{sparse CCE}}(y_j, \hat{y}_j) = - \sum_{c=1}^{C} y_{j,c} \log(\hat{y}_{j,c})
+    \label{eq:sparse-categorical-cross-entropy-per-sample}
 \end{equacaodestaque}
 
-\begin{equacaodestaque}{Derivada da Entropia Cruzada Categórica Esparsa}
-    \frac{\partial L_i}{\partial z_{i,k}} = \hat{y}_{i,k} - y_{i,k}
-    \label{eq:sparse-categorical-cross-entropy-derivada}
+Já para um conjunto maior de amostras, o cálculo da perda é dado de forma semelhante à \textit{CCE}, calculando as médias das perdas, como na Equação \ref{eq:sparse-categorical-cross-entropy-per-n-samples}
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa (Sparse \textit{CCE}) para $n$ Amostras}
+    \Loss_{\text{sparse CCE}}(\theta) = - \frac{1}{n} \sum_{i = 1}^n \sum_{c=1}^C y_{j, c} \log(\hat{y}_{j,c})
+    \label{eq:sparse-categorical-cross-entropy-per-n-samples}
 \end{equacaodestaque}
+
+Perceba que as fórmulas da \textit{sparse categorical cross entropy} são iguais as da sua versão para rótulos codificados para formato \textit{one-hot}, por isso os seus gráficos também serão iguais, assim, o próximo passo é discutir algumas das características dessa função de perda.
+
+\begin{itemize}
+    \item \textbf{Eficiência:} \textcite{LossesArticle} explicam que em problemas de classificação com um grande número de classes, a codificação \textit{one-hot} pode ser memória-intensiva, ao utilizar a \textit{sparse CCE}, os seus indexes que já apontam diretamente para a probabilidade conseguem escapar de trabalhar com dados em formato \textit{one-hot}.
+    \item \textbf{Similadirades com a \textit{CCE}:} A \textit{sparse CCE} possui grandes similaridades com a \textit{CCE} original, isso significa que vantagens como a diferenciabilidade e a penalização de erros muito confiantes que são características da \textit{categorical cross entropy}, também estão presentes na sua versão esparsa.
+\end{itemize}
+
+Além dessa variante, a \textit{categorical cross-entropy} possui uma versão que faz uso de pesos para as classes, buscando trabalhar com casos em que existe uma presença maior de algumas classes do que de outras. Essa é a \textit{weighted categorical cross-entropy}, que será vista em seguida.
+
+\subsection{Weighted Categorical Cross-Entropy (WCCE)}
+
+A fórmula da \textit{weighted categorical cross-entropy} lembra bastante a fórmula da \textit{weighted binary cross-entropy}, pois sua única diferença com a variante original é a adição de um peso multiplicando o erro para aquela classe. Essa função de perda para uma amostra $j$ é dada pela Equação \ref{eq:weighted-categorical-cross-entropy-per-sample}.
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica Ponderada (\textit{WCCE}) para uma Amostra $j$}
+    \Loss_{\text{WCCE}}(y_j, \hat{y}_j) = - \sum_{c=1}^{C} \alpha y_{j,c} \log(\hat{y}_{j,c})
+    \label{eq:weighted-categorical-cross-entropy-per-sample}
+\end{equacaodestaque}
+
+De forma semelhante as outras funções, é possível expandir essa fórmula para calcular a perda para um conjunto $n$ de amostras, para isso, é feito o cálculo da média das perdas individuais, como é mostrado na Equação \ref{eq:weighted-categorical-cross-entropy}.
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica Ponderada (\textit{CWCE}) para $n$ Amostras}
+    \Loss_{\text{WCCE}}(\theta) = - \frac{1}{n} \sum_{i = 1}^n \sum_{c=1}^C \alpha_n y_{j, c} \log(\hat{y}_{j,c})
+    \label{eq:weighted-categorical-cross-entropy}
+\end{equacaodestaque}
+
+Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possível utilizar a sua variante multi-classe para ser trabalhada em cenários em que uma classe, ou um grupo de classes aparece de forma mais frequente que outro.
+
+\section{Focal Loss}
+
+\begin{equacaodestaque}{Focal Loss}
+    \Loss_{\text{FL}}(p_t) = -(1 - p_t)^\gamma \log(p_t)
+    \label{eq:focal-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Comparação: Cross-Entropy vs. Focal Loss},
+            xlabel={Probabilidade Prevista para a Classe Correta ($p_t$)},
+            ylabel={Perda Calculada},
+            axis lines=left,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=0, xmax=1.05,
+            ymin=0, ymax=5,
+            legend pos=north east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Cross-Entropy Padrão
+            \addplot[
+                domain=0.01:1, samples=100, color=gray, dashed, thick
+            ] {-ln(x)};
+            \addlegendentry{Cross-Entropy ($L = -\log(p_t)$)}
+
+            % Focal Loss com gamma=2
+            \addplot[
+                domain=0.01:1, samples=100, color=purple, very thick
+            ] {-(1-x)^2 * ln(x)};
+            \addlegendentry{Focal Loss ($\gamma=2$)}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da Focal Loss em comparação com a Entropia Cruzada padrão. A perda para exemplos fáceis ($p_t \to 1$) é drasticamente reduzida.}
+    \label{fig:focal-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Focal Loss}
+    \frac{\partial \Loss_{\text{FL}}}{\partial z} = 
+    \begin{cases} 
+        \hat{y}(\gamma(1-\hat{y})\log(\hat{y}) + \hat{y} - 1) & \text{se } y=1 \\
+        (1-\hat{y})(\gamma\hat{y}\log(1-\hat{y}) + \hat{y}) & \text{se } y=0
+    \end{cases}
+    \label{eq:focal-loss-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Focal Loss ($\gamma=2$)},
+            xlabel={Probabilidade Prevista ($\hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial z}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-0.1, xmax=1.1,
+            ymin=-1.1, ymax=1.1,
+            legend pos=south east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Derivada da Cross-Entropy padrão (y_hat - y)
+            \addplot[domain=0:1, samples=10, color=gray, dashed, thick] {x-1};
+            \addplot[domain=0:1, samples=10, color=gray, dashed, thick] {x};
+            \addlegendentry{Derivada CE}
+            
+            % Derivada da Focal Loss para y=1
+            \addplot[
+                domain=0:1, samples=101, color=purple, very thick
+            ] {x*(2*(1-x)*ln(x) + x - 1)};
+            \addlegendentry{Derivada FL ($y=1$)}
+
+            % Derivada da Focal Loss para y=0
+            \addplot[
+                domain=0:1, samples=101, color=orange, very thick
+            ] {(1-x)*(2*x*ln(1-x) + x)};
+            \addlegendentry{Derivada FL ($y=0$)}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da Focal Loss. O gradiente para exemplos fáceis (próximo das bordas 0 e 1) é suprimido em comparação com a derivada da Entropia Cruzada padrão.}
+    \label{fig:focal-loss-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\section{Multilabel Loss}
+
+\begin{equacaodestaque}{Perda para Classificação Multirrótulo}
+    \Loss_{\text{Multilabel}} = - \sum_{j=1}^{q} [y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y}_j)]
+    \label{eq:multilabel-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Contribuição de um Rótulo para a Perda Multirrótulo},
+            xlabel={Probabilidade Prevista para o Rótulo $j$ ($\hat{y}_j$)},
+            ylabel={Contribuição Individual para a Perda},
+            axis lines=left,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=0, xmax=1,
+            ymin=0, ymax=5,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para quando o rótulo está presente (y_j = 1)
+            \addplot[
+                domain=0.01:0.999, samples=100, color=blue, very thick
+            ] {-ln(x)};
+            \addlegendentry{Rótulo Presente ($y_j=1$)}
+
+            % Curva para quando o rótulo está ausente (y_j = 0)
+            \addplot[
+                domain=0.001:0.99, samples=100, color=red, very thick
+            ] {-ln(1-x)};
+            \addlegendentry{Rótulo Ausente ($y_j=0$)}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{A perda multirrótulo é a soma das contribuições de cada rótulo individual, que se comportam como a BCE.}
+    \label{fig:multilabel-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada da Perda Multirrótulo}
+    \frac{\partial \Loss_{\text{Multilabel}}}{\partial z_i} = \hat{y}_i - y_i
+    \label{eq:multilabel-loss-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da Perda Multirrótulo (para um Rótulo)},
+            xlabel={Probabilidade Prevista para o Rótulo $i$ ($\hat{y}_i$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial z_i}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-0.1, xmax=1.1,
+            ymin=-1.1, ymax=1.1,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Curva para rótulo presente (y_i = 1)
+            \addplot[domain=0:1, samples=10, color=blue, very thick] {x - 1};
+            \addlegendentry{Rótulo Presente ($y_i=1$)}
+
+            % Curva para rótulo ausente (y_i = 0)
+            \addplot[domain=0:1, samples=10, color=red, very thick] {x};
+            \addlegendentry{Rótulo Ausente ($y_i=0$)}
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{O gradiente para cada rótulo é simplesmente a diferença entre a probabilidade prevista e o valor real (0 ou 1).}
+    \label{fig:multilabel-loss-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
 
 \section{Comparativo: Funções de Perda para Classificação}
 
