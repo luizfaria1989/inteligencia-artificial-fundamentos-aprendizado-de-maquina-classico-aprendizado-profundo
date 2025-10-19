@@ -335,7 +335,7 @@ Passado mais de dois séculos, a tangente hiperbólica já estava sendo utilizad
 É possível escrever a tangente hiperbólica utilizando a definição de tangente, que é o quociente a função seno com a função cosseno, só que neste caso usando as funções hiperbólicas. Assim ela é representada pela Equação \ref{eq:tanh}.
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh)}
-    \tanh(y_j) = \frac{\sinh(y_j)}{\cosh(y_j)} = \frac{e^y_j - e^{-y_j}}{e^y_j + e^{-y_j}}
+    \mathcal{A}_{\tanh(y_j)} = \frac{\sinh(y_j)}{\cosh(y_j)} = \frac{e^y_j - e^{-y_j}}{e^y_j + e^{-y_j}}
     \label{eq:tanh}
 \end{equacaodestaque}
 
@@ -365,14 +365,14 @@ Como foi visto em seções anteriores, é interessante ao escolher uma função 
 De forma análoga a feita na sigmoide logística, vale a pena calcular a derivada da tangente hiperbólica para entender como o gradiente é propagado para as camadas anteriores ao utilizar essa função de ativação. Dessa forma, a sua derivada está representada na Equação \ref{eq:tanh-derivada}.
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada}
-    \frac{d}{dy_j}[\tanh](y_j) = \text{sech}^2(y_j)
+    \frac{d}{dy_j}[\mathcal{A}_{\tanh}](y_j) = \text{sech}^2(y_j)
     \label{eq:tanh-derivada}
 \end{equacaodestaque}
 
 Assim como a sigmoide logística, a tangente hiperbólica possui uma vantagem, ela pode ser escrita de forma recursiva, o que ajuda a poupar cálculos para a o \textit{backward pass}, pois é possível simplemente armazenar o resultado dessa função que estava calculado no \textit{forward pass} e reutilizá-lo ao calcular a sua derivada. Isso é muito útil pois quanto menos calculos forem feitos, maior é a tendência que o modelo será mais rápido e com isso irá convergir em menos tempo \footnote{Note que tanto a sigmoide quanto a tangente hiperbólica fazem uso de exponenciais em suas fórmulas, essas operações acabam por ser caras (em termos de poder de processamento) quando comparadas com as simples operações de comparação da hard tanh, a qual será vista em seções futuras.}. Dessa forma, tem-se que a derivada da tangente hiperbólica escrita de forma recursiva pode ser expressa pela Equação \ref{eq:tanh-derivada-recursiva}
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada Recursivamente}
-    \frac{d}{dy_j}[\tanh](y_j) = 1 - \tanh^2(y_j)
+    \frac{d}{dy_j}[\mathcal{A}_{\tanh}](y_j) = 1 - \tanh^2(y_j)
     \label{eq:tanh-derivada-recursiva}
 \end{equacaodestaque}
 
@@ -408,7 +408,7 @@ A próxima função sigmoidal a ser analisada é a \textit{softsign}, diferente 
 A principal diferença da \textit{softsign} com as outras sigmoidais está na sua fórmula, como pode ser visto na Equação \ref{eq:softsign} é que ela não utiliza nenhum exponencial para compor sua função. Isso faz com que ela seja uma função mais "barata" em termos de custo computacional para ser implementada em redes neurais. Assim, é possível obter resultados parecidos porem utilizando cálculos menos complexos e com isso encontrar redes mais rápidas de serem treinadas.
 
 \begin{equacaodestaque}{\textit{Softsign}}
-    \text{softsign}(y_j) = \frac{y_j}{1 + |y_j|}
+    \mathcal{A}_{\text{Softsign}}(y_j) = \frac{y_j}{1 + |y_j|}
     \label{eq:softsign}
 \end{equacaodestaque}
 
@@ -438,7 +438,7 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
 Com relação a sua diferenciabilidade, a \textit{softsign} pode ser derivada em todos os seus pontos, e sua derivada pode ser vista na Equação \ref{eq:softsign-derivada}. Com base nela, é possível notar uma outra diferença da \textit{softsign} com a tangente hiperbólica e a sigmoide. Diferente das outras duas, a derivada da \textit{softsign} não pode ser expressa em termos da sua própria função. Assim, enquanto nas outras funções é feito um cálculo complexo na função e um simples na derivada, pois é aproveitado o resultado, na \textit{softsign} isso não ocorre.
 
 \begin{equacaodestaque}{\textit{Softsign} Derivada}
-    \frac{d}{dy_j}[\text{softsign}](y_j) = \frac{1}{(1 + |y_j|)^2}
+    \frac{d}{dy_j}[\mathcal{A}_{\text{softsign}}](y_j) = \frac{1}{(1 + |y_j|)^2}
     \label{eq:softsign-derivada}
 \end{equacaodestaque}
 
@@ -476,7 +476,7 @@ Agora será visto duas funções sigmoidais, criadas no contexto de redes neurai
 A primeira é a \textit{hard sigmoid}. Como pode ser visto na Equação \ref{eq:hard-sigmoid}, a qual está presente na documentação do \textcite{PyTorchHardSigmoid}, ela pode ser escrita juntando 3 diferentes funções, duas delas sendo funções constantes e uma terceira sendo a função identidade. Note que ela perde a suavidade da função seno, possuindo bicos que a impedem de ser derivada em todos os seus pontos, contudo, seus cálculos são bem mais simples quando comparados com a sigmoide tradicional, não tem nenhuma exponencial para atrasar as respostas da função. Mas note que também existe um crescimento linear quando os valores estão entre -3 e 3.
 
 \begin{equacaodestaque}{\textit{Hard Sigmoid}}
-        \text{hard sigmoid}(y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ y_j/6 + 0.5 & \text{se } -3 \le y_j \le 3 \\ 1 & \text{se } y_j > 3 \end{cases}
+        \mathcal{A}_{\text{Hard sigmoid}}(y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ y_j/6 + 0.5 & \text{se } -3 \le y_j \le 3 \\ 1 & \text{se } y_j > 3 \end{cases}
     \label{eq:hard-sigmoid}
 \end{equacaodestaque}
 
@@ -512,7 +512,7 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
 Com relação a derivada da \textit{hard sigmoid}, para obtê-lá, deve-se derivar todas as três expressões construindo a sua derivada. Note que os pontos que as retas se tocam no gráfico da Figura \ref{fig:hard-sigmoid} são pontos de descontinuidade, pois quando calculados os limites laterais nesses pontos eles serão diferentes. Isso faz com que essa função não possa ser derivada desses locais. Considerando isso, é possível expressar a derivada da \textit{hard sigmoid} com a Equação \ref{eq:hard-sigmoid-derivada}.
 
 \begin{equacaodestaque}{\textit{Hard Sigmoid} Derivada}
-        \frac{d}{dy_j}[\text{hard sigmoid}](y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ 1/6 & \text{se } -3 < y_j < 3 \\ 0 & \text{se } y_j > 3 \end{cases}
+        \frac{d}{dy_j}[\mathcal{A}_{\text{Hard sigmoid}}](y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ 1/6 & \text{se } -3 < y_j < 3 \\ 0 & \text{se } y_j > 3 \end{cases}
     \label{eq:hard-sigmoid-derivada}
 \end{equacaodestaque}
 
@@ -549,7 +549,7 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
 Além disso, também existe a função \textit{hard tanh}, que apresenta a mesma proposta da \textit{hard sigmoid}, mas, nesse sentido, busca imitar o comportamento da função de ativação tangente hiperbólica. Para isso, ela segue uma ideia parecida com a da equação da \textit{hard sigmoid}, escrevendo a sua equação em forma de condicionais, mas ajustando os seus valores para corresponder ao funcionamento da tanh. Essa função está expressa na Equação \ref{eq:hard-tanh}.
 
 \begin{equacaodestaque}{\textit{Hard Tanh}}
-        \text{hard tanh}(y_j) = \begin{cases} -1 & \text{se } y_j < -1 \\ y_j & \text{se } -1 \le y_j \le 1 \\ 1 & \text{se } y_j > 1 \end{cases}
+        \mathcal{A}_{\text{Hard tanh}}(y_j) = \begin{cases} -1 & \text{se } y_j < -1 \\ y_j & \text{se } -1 \le y_j \le 1 \\ 1 & \text{se } y_j > 1 \end{cases}
     \label{eq:hard-tanh}
 \end{equacaodestaque}
 
@@ -587,7 +587,7 @@ Perceba também que o gráfico, bem como sua equação, é bem mais simples que 
 Agora é possível também considerar também a derivada da \textit{hard tanh}, a qual é calculada de forma semelhante a da \textit{hard sigmoid}, derivando as três expressões de sua equação separadamente. Feito isso, a derivada da \textit{hard tanh} está expressa na Equação \ref{eq:hard-tanh-derivada}.
 
 \begin{equacaodestaque}{\textit{Hard Tanh} Derivada}
-        \frac{d}{dy_j}[\text{hard tanh}](y_j) = \begin{cases} 0 & \text{se } y_j < -1 \\ 1 & \text{se } -1 < y_j < 1 \\ 0 & \text{se } y_j > 1 \end{cases}
+        \frac{d}{dy_j}[\mathcal{A}_{\text{Hard tanh}}](y_j) = \begin{cases} 0 & \text{se } y_j < -1 \\ 1 & \text{se } -1 < y_j < 1 \\ 0 & \text{se } y_j > 1 \end{cases}
     \label{eq:hard-tanh-derivada}
 \end{equacaodestaque}
 
@@ -634,7 +634,7 @@ Para explicar melhor essa condição será utilizado um problema como base.
 Como foi visto no capítulo anterior, o gradiente retropropagado para camadas anteriores de uma rede neural é proporcional a multiplicação da perda, com a derivada da função de ativação no ponto e o valor do resultado da camada anterior de neurônios. 
 
 \[
-    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma'(x^{(L)})
+    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \mathcal{A}'(x^{(L)})
 \]
 
 Em que: 
@@ -646,14 +646,14 @@ Em que:
     \item $x^{(L)}$: Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
     \item $y^{(L)}$: Representa o vetor de saídas da camada $L$
     \item $\delta^{(L)}$: Representa o vetor do gradienye na camada $L$;
-    \item $\sigma'(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
+    \item $\mathcal{A}'(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
     \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
 \end{itemize}
 
 Considerando isso, imagine que temos uma rede composta por quatro camadas densas e cada camada tem apenas um neurônio com pesos iguais a 1. Dessa forma, é possível simplificar a fórmula vista para a Equação \ref{eq:gradiente-retropropagado-simplificado}.
 
 \begin{equation}
-        \delta^{(L)} =  \delta^{(L+1)} \times \sigma'(x^{(L)})
+        \delta^{(L)} =  \delta^{(L+1)} \times \mathcal{A}'(x^{(L)})
         \label{eq:gradiente-retropropagado-simplificado}
 \end{equation}
 
