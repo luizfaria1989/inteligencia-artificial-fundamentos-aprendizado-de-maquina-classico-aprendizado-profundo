@@ -1,195 +1,207 @@
-\chapter{Tabela das Funções de Ativação}
+\chapter{Comparativo das Funções de Ativação}
+\label{cap:comparativo-ativacao}
 
-\begin{longtable}{@{} l p{0.25\linewidth} p{0.3\linewidth} p{0.3\linewidth} @{}}
-    
-    % --- TÍTULO (CAPTION) ---
-    \caption{Comparativo das famílias de funções de ativação, suas propriedades, vantagens e desvantagens.}
-    \label{tab:funcoes_comparativo_completo} \\
+Este capítulo apresenta um resumo detalhado das principais funções de ativação utilizadas em redes neurais, destacando suas fórmulas, vantagens e desvantagens em um formato de fácil consulta.
 
-    % --- CABEÇALHO DA PRIMEIRA PÁGINA ---
-    \toprule
-    \textbf{Função} & \textbf{Equação e Derivada} & \textbf{Vantagens} & \textbf{Desvantagens} \\
-    \midrule
-    \endfirsthead
+% ===================================================================
+% Família Sigmoidal
+% ===================================================================
+\section{Família Sigmoidal}
 
-    % --- CABEÇALHO DAS PÁGINAS SEGUINTES ---
-    \multicolumn{4}{l}{\small\textbf{Tabela \thetable{} – Continuação}} \\
-    \toprule
-    \textbf{Função} & \textbf{Equação e Derivada} & \textbf{Vantagens} & \textbf{Desvantagens} \\
-    \midrule
-    \endhead
+\subsection{Sigmoide}
 
-    % --- RODAPÉ DE CONTINUAÇÃO ---
-    \multicolumn{4}{r}{\small\textit{(Continua na próxima página)}} \\
-    \endfoot
+\textit{Uma função clássica que mapeia qualquer valor real para o intervalo (0, 1), útil para modelar probabilidades na camada de saída de classificadores binários.}
 
-    % --- RODAPÉ FINAL (NA ÚLTIMA PÁGINA) ---
-    \bottomrule
-    \multicolumn{4}{l}{\parbox{\linewidth}{\small\textit{Fonte: O autor (2025).}}} \\
-    \endlastfoot
+\begin{equacaodestaque}{Função Sigmoide e sua Derivada}
+    \sigma(z) = \frac{1}{1 + e^{-z}} \\
+    \sigma'(z) = \sigma(z)(1 - \sigma(z))
+\end{equacaodestaque}
 
-    % --- CONTEÚDO DA TABELA (UNIFICADO) ---
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item A saída no intervalo (0, 1) é facilmente interpretável como uma probabilidade.
+    \item A função é suave e diferenciável em todos os pontos, garantindo um gradiente bem definido.
+\end{itemize}
 
-    % --- Família Sigmoidal ---
-    \textbf{Sigmoide} & 
-    $\displaystyle \frac{1}{1 + e^{-z_i}}$ \newline\vspace{0.2cm}
-    $\displaystyle \sigma(z_i)(1 - \sigma(z_i))$ 
-    & 
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Saída no intervalo (0, 1), interpretável como probabilidade.
-        \item Função suave e diferenciável.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Não é centrada em zero.
-        \item Sofre com o desvanecimento do gradiente.
-    \end{itemize}
-    \\ \addlinespace
-    
-    \textbf{Tangente hip.} & 
-    $\displaystyle \frac{e^{z_i} - e^{-z_i}}{e^{z_i} + e^{-z_i}}$ \newline\vspace{0.2cm}
-    $\displaystyle 1 - \tanh^2(z_i)$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Centrada em zero, acelera a convergência.
-        \item Gradiente mais forte que a sigmoide.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Ainda sofre com o desvanecimento do gradiente.
-    \end{itemize}
-    \\ \addlinespace
-    
-    \textbf{Softsign} &
-    $\displaystyle \frac{z_i}{1 + |z_i|}$ \newline\vspace{0.2cm}
-    $\displaystyle \frac{1}{(1 + |z_i|)^2}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Computacionalmente eficiente.
-        \item Satura mais lentamente que a Tanh.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Derivada não pode ser expressa em termos da própria função.
-    \end{itemize}
-    \\ \addlinespace
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item A saída não é centrada em zero, o que pode retardar a convergência durante o treinamento.
+    \item Sofre com o problema do desvanecimento do gradiente (\textit{vanishing gradient}) em suas regiões de saturação (valores muito altos ou muito baixos).
+\end{itemize}
 
-    \textbf{Hard Sigmoid} &
-    $\displaystyle \begin{cases} 0 & \text{se } z_i < -3 \\ z_i/6 + 0.5 & \text{se } -3 \le z_i \le 3 \\ 1 & \text{se } z_i > 3 \end{cases}$ \newline\vspace{0.2cm}
-    $\displaystyle \begin{cases} 0 & \text{se } z_i < -3 \\ 1/6 & \text{se } -3 < z_i < 3 \\ 0 & \text{se } z_i > 3 \end{cases}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Extremamente rápida e eficiente.
-        \item Ideal para hardware com poucos recursos.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Não é suave; pode "matar" gradientes.
-        \item É uma aproximação.
-    \end{itemize}
-    \\ \addlinespace
-    
-    \textbf{Hard Tanh} &
-    $\displaystyle \begin{cases} -1 & \text{se } z_i < -1 \\ z_i & \text{se } -1 \le z_i \le 1 \\ 1 & \text{se } z_i > 1 \end{cases}$ \newline\vspace{0.2cm}
-    $\displaystyle \begin{cases} 0 & \text{se } z_i < -1 \\ 1 & \text{se } -1 < z_i < 1 \\ 0 & \text{se } z_i > 1 \end{cases}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Extremamente rápida e centrada em zero.
-        \item Ótima para hardware de baixo consumo.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Não é suave; derivada nula em grande parte do domínio.
-    \end{itemize}
-    \\ \addlinespace
+\subsection{Tangente Hiperbólica (Tanh)}
 
-    % --- Família Retificadora ---
-    \textbf{ReLU} & 
-    $ \begin{cases}z_i, & \text{se } z_i > 0 \\0, & \text{se } z_i \leq 0\end{cases} $ \newline\vspace{0.2cm}
-    $ \begin{cases}1, & \text{se } z_i > 0 \\0, & \text{se } z_i < 0 \\ \nexists & \text{se } z_i = 0\end{cases}$ 
-    & 
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Computacionalmente eficiente.
-        \item Evita o desvanecimento do gradiente.
-        \item Promove esparsidade na rede.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Não é centrada em zero.
-        \item Pode "morrer" (Dying ReLU).
-        \item Pode sofrer com a explosão de gradientes.
-    \end{itemize}
-    \\ \addlinespace
+\textit{Uma função sigmoidal que mapeia valores para o intervalo (-1, 1), funcionando como uma alternativa à Sigmoide que é centrada em zero.}
 
-    \textbf{LReLU} & 
-    $ \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha \cdot z_i, & \text{se } z_i < 0\end{cases} $ \newline\vspace{0.2cm}
-    $\begin{cases}1, & \text{se } z_i > 0 \\ \alpha, & \text{se } z_i < 0 \\ \nexists, & \text{se } z_i = 0\end{cases}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Resolve o problema da "Dying ReLU".
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item O valor de $\alpha$ não é aprendido.
-        \item Resultados podem ser inconsistentes.
-    \end{itemize}
-    \\ \addlinespace
+\begin{equacaodestaque}{Função Tanh e sua Derivada}
+    \tanh(z) = \frac{e^{z} - e^{-z}}{e^{z} + e^{-z}} \\
+    \tanh'(z) = 1 - \tanh^2(z)
+\end{equacaodestaque}
 
-    \textbf{PReLU} &
-    $ \begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha_i \cdot z_i, & \text{se } z_i < 0\end{cases} $ \newline\vspace{0.2cm}
-    $\begin{cases}1, & \text{se } z_i > 0 \\ \alpha_i, & \text{se } z_i < 0 \\ \nexists, & \text{se } z_i = 0\end{cases}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Variação da LReLU onde $\alpha$ é um parâmetro aprendido.
-        \item Pode melhorar a performance.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Risco de sobreajuste (overfitting) se os dados forem poucos.
-    \end{itemize}
-    \\ \addlinespace
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item A saída centrada em zero ajuda a acelerar a convergência do modelo.
+    \item Possui um gradiente mais forte que o da função Sigmoide.
+\end{itemize}
 
-    \textbf{ELU} &
-    $\begin{cases}z_i, & \text{se } z_i \ge 0 \\ \alpha (e^{z_i} - 1) , & \text{se } z_i < 0\end{cases}$ \newline\vspace{0.2cm}
-    $ \begin{cases}1, & \text{se } z_i > 0 \\ \alpha e^{z_i}, & \text{se } z_i < 0 \end{cases}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Saídas com média próxima de zero.
-        \item Mais robusta a ruído que LReLU/PReLU.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Computacionalmente mais custosa (exponencial).
-    \end{itemize}
-    \\ \addlinespace
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Assim como a Sigmoide, ainda sofre com o problema do desvanecimento do gradiente nas regiões de saturação.
+\end{itemize}
 
-    \textbf{SELU} &
-    $\lambda \begin{cases}z_i, & \text{se } z_i > 0 \\ \alpha (e^{z_i} - 1) , & \text{se } z_i \le 0\end{cases}$ \newline\vspace{0.2cm}
-    $ \lambda \begin{cases}1, & \text{se } z_i > 0 \\ \alpha e^{z_i}, & \text{se } z_i \le 0\end{cases}$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Propriedades de autonormalização.
-        \item Evita gradientes explosivos/desvanecentes em redes muito profundas.
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Requer inicialização de pesos específica (LeCun normal).
-        \item Computacionalmente mais custosa.
-    \end{itemize}
-    \\ \addlinespace
+\subsection{Softsign}
+\textit{Uma alternativa computacionalmente eficiente à Tanh que se aproxima dela, mas satura de forma mais lenta.}
+\begin{equacaodestaque}{Função Softsign e sua Derivada}
+    \text{softsign}(z) = \frac{z}{1 + |z|} \\
+    \text{softsign}'(z) = \frac{1}{(1 + |z|)^2}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item É computacionalmente mais barata que a Tanh, pois não envolve exponenciais.
+    \item Satura mais lentamente que a Tanh, o que pode mitigar o desvanecimento do gradiente.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item A sua derivada não pode ser expressa em termos da própria função, diferente da Sigmoide e Tanh.
+\end{itemize}
 
-    \textbf{GELU} &
-    $z_i \cdot \Phi(z_i)$ \newline\vspace{0.2cm}
-    $ \Phi(z_i) + z_i\phi(z_i)$
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Suave e diferenciável em todos os pontos.
-        \item Performance estado da arte em Transformers (BERT, GPT).
-    \end{itemize}
-    &
-    \begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
-        \item Computacionalmente mais custosa que ReLU.
-    \end{itemize}
-    \\
-    
-\end{longtable}
+\subsection{Hard Sigmoid}
+\textit{Uma aproximação linear por partes da função Sigmoide, extremamente rápida e ideal para hardware com recursos limitados.}
+\begin{equacaodestaque}{Função Hard Sigmoid e sua Derivada}
+    f(z) = \begin{cases} 0 & \text{se } z < -3 \\ z/6 + 0.5 & \text{se } -3 \le z \le 3 \\ 1 & \text{se } z > 3 \end{cases} \\
+    f'(z) = \begin{cases} 1/6 & \text{se } -3 < z < 3 \\ 0 & \text{caso contrário} \end{cases}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Extremamente rápida e eficiente em termos computacionais.
+    \item Ideal para computação em hardware com poucos recursos ou em dispositivos móveis.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Não é uma função suave, e sua derivada é nula em grande parte do domínio, o que pode "matar" os gradientes.
+    \item É apenas uma aproximação da Sigmoide.
+\end{itemize}
+
+\subsection{Hard Tanh}
+\textit{Uma aproximação linear por partes da Tanh, oferecendo alta velocidade computacional e uma saída centrada em zero.}
+\begin{equacaodestaque}{Função Hard Tanh e sua Derivada}
+    f(z) = \begin{cases} -1 & \text{se } z < -1 \\ z & \text{se } -1 \le z \le 1 \\ 1 & \text{se } z > 1 \end{cases} \\
+    f'(z) = \begin{cases} 1 & \text{se } -1 < z < 1 \\ 0 & \text{caso contrário} \end{cases}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Extremamente rápida e com saída centrada em zero.
+    \item Ótima para hardware de baixo consumo e redes neurais recorrentes.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Não é suave e possui derivada nula fora do intervalo [-1, 1], podendo levar ao problema de gradientes nulos.
+\end{itemize}
+
+% ===================================================================
+% Família Retificadora
+% ===================================================================
+\section{Família Retificadora}
+
+\subsection{ReLU (Rectified Linear Unit)}
+
+\textit{A função de ativação mais popular, que anula valores negativos e mantém os positivos, sendo computacionalmente muito eficiente e ajudando a mitigar o desvanecimento do gradiente.}
+
+\begin{equacaodestaque}{Função ReLU e sua Derivada}
+    \text{ReLU}(z) = \begin{cases}z, & \text{se } z > 0 \\0, & \text{se } z \leq 0\end{cases} \\
+    \text{ReLU}'(z) = \begin{cases}1, & \text{se } z > 0 \\0, & \text{se } z < 0\end{cases}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Computacionalmente muito barata (apenas uma comparação com zero).
+    \item Ajuda a evitar o problema do desvanecimento do gradiente para valores positivos.
+    \item Promove esparsidade na rede, pois neurônios com saídas negativas são desativados.
+\end{itemize}
+
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item A saída não é centrada em zero.
+    \item Pode sofrer com o problema da "Dying ReLU", onde neurônios ficam permanentemente inativos se seus pesos forem atualizados de forma que a entrada seja sempre negativa.
+\end{itemize}
+
+\subsection{Leaky ReLU (LReLU)}
+\textit{Uma variação da ReLU que permite uma pequena inclinação para valores negativos, evitando que os neurônios "morram".}
+\begin{equacaodestaque}{Função LReLU e sua Derivada}
+    \text{LReLU}(z) = \begin{cases}z, & \text{se } z \ge 0 \\ \alpha \cdot z, & \text{se } z < 0\end{cases} \\
+    \text{LReLU}'(z) = \begin{cases}1, & \text{se } z > 0 \\ \alpha, & \text{se } z < 0\end{cases}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Resolve o problema da "Dying ReLU" ao permitir um pequeno gradiente para entradas negativas.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item O valor da inclinação $\alpha$ é um hiperparâmetro definido manualmente e não é aprendido.
+    \item Os resultados podem ser inconsistentes, pois o $\alpha$ ideal pode variar.
+\end{itemize}
+
+\subsection{Parametric ReLU (PReLU)}
+\textit{Uma evolução da Leaky ReLU onde o coeficiente de inclinação para a parte negativa ($\alpha$) é um parâmetro aprendido durante o treinamento.}
+\begin{equacaodestaque}{Função PReLU e sua Derivada}
+    \text{PReLU}(z) = \begin{cases}z, & \text{se } z \ge 0 \\ \alpha_i \cdot z, & \text{se } z < 0\end{cases} \\
+    \text{PReLU}'(z) = \begin{cases}1, & \text{se } z > 0 \\ \alpha_i, & \text{se } z < 0\end{cases}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Generaliza a LReLU ao tornar $\alpha$ um parâmetro que a rede aprende.
+    \item Pode levar a uma melhor performance, pois o modelo se adapta aos dados.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Adiciona mais parâmetros à rede, aumentando o risco de sobreajuste (\textit{overfitting}) em datasets pequenos.
+\end{itemize}
+
+\subsection{ELU (Exponential Linear Unit)}
+\textit{Uma alternativa à ReLU que produz saídas com média próxima de zero e é mais robusta a ruído, usando uma função exponencial suave para valores negativos.}
+\begin{equacaodestaque}{Função ELU e sua Derivada}
+    \text{ELU}(z) = \begin{cases}z, & \text{se } z \ge 0 \\ \alpha (e^{z} - 1) , & \text{se } z < 0\end{cases} \\
+    \text{ELU}'(z) = \begin{cases}1, & \text{se } z > 0 \\ \alpha e^{z}, & \text{se } z < 0 \end{cases}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Produz saídas com média mais próxima de zero, o que acelera o aprendizado.
+    \item É mais robusta a ruído que as variantes da ReLU.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item É computacionalmente mais custosa devido ao cálculo da função exponencial.
+\end{itemize}
+
+\subsection{SELU (Scaled Exponential Linear Unit)}
+\textit{Uma variação da ELU com constantes específicas ($\lambda$ e $\alpha$) que induzem propriedades de autonormalização, sendo ideal para redes neurais muito profundas.}
+\begin{equacaodestaque}{Função SELU e sua Derivada}
+    \text{SELU}(z) = \lambda \begin{cases}z, & \text{se } z > 0 \\ \alpha (e^{z} - 1) , & \text{se } z \le 0\end{cases} \\
+    \text{SELU}'(z) = \lambda \begin{cases}1, & \text{se } z > 0 \\ \alpha e^{z}, & \text{se } z \le 0\end{cases}
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Possui propriedades de autonormalização, ou seja, a saída de cada camada tende a preservar uma média 0 e variância 1.
+    \item Evita os problemas de desvanecimento e explosão de gradientes em redes muito profundas.
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Requer uma inicialização de pesos específica (LeCun normal) para funcionar corretamente.
+    \item É computacionalmente mais custosa.
+\end{itemize}
+
+\subsection{GELU (Gaussian Error Linear Unit)}
+\textit{Uma função de ativação suave e de alto desempenho, popular em modelos Transformer, que pondera a entrada por sua magnitude através da função de distribuição cumulativa gaussiana.}
+\begin{equacaodestaque}{Função GELU e sua Derivada}
+    \text{GELU}(z) = z \cdot \Phi(z) \\
+    \text{GELU}'(z) = \Phi(z) + z\phi(z)
+\end{equacaodestaque}
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item É uma função suave e diferenciável em todos os pontos.
+    \item Apresenta performance de estado da arte em modelos baseados em Transformers (BERT, GPT).
+\end{itemize}
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item É computacionalmente mais custosa que a ReLU.
+\end{itemize}

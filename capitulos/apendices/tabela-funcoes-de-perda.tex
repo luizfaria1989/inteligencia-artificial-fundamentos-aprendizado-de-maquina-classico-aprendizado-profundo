@@ -1,0 +1,202 @@
+\chapter{Comparativo das Funções de Perda}
+\label{cap:comparativo-perda}
+
+Este capítulo detalha as principais funções de perda utilizadas em tarefas de regressão e classificação, apresentando suas formulações matemáticas, principais vantagens e considerações de uso.
+
+% ===================================================================
+% Funções de Perda para Regressão
+% ===================================================================
+\section{Funções de Perda para Regressão}
+
+\subsection{Erro Quadrático Médio (MSE)}
+
+\textit{Uma das perdas mais comuns para regressão, que mede a média dos erros quadrados, penalizando fortemente previsões distantes do valor real.}
+
+\begin{equacaodestaque}{Erro Quadrático Médio (MSE) e sua Derivada}
+    \Loss = \frac{1}{N} \sum_{j=1}^{N} (y_j - \hat{y}_j)^2 \\
+    \frac{\partial \Loss}{\partial \hat{y}_j} = \frac{2}{N}(\hat{y}_j - y_j)
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item Penaliza erros grandes de forma quadrática, sendo ideal para cenários onde grandes desvios são indesejáveis.
+    \item É uma função convexa, o que garante um único mínimo global e facilita a otimização.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item É muito sensível a \textit{outliers}, que podem dominar o gradiente e prejudicar o treinamento.
+    \item A unidade da perda (ex: metros quadrados) é diferente da unidade original dos dados (ex: metros), o que dificulta a interpretação direta do erro.
+\end{itemize}
+
+\subsection{Erro Absoluto Médio (MAE)}
+
+\textit{Mede a média dos erros absolutos, sendo menos sensível a outliers e mais intuitiva que o MSE, pois mantém a unidade original dos dados.}
+
+\begin{equacaodestaque}{Erro Absoluto Médio (MAE) e sua Derivada}
+    \Loss = \frac{1}{N} \sum_{j=1}^{N} |y_j - \hat{y}_j| \\
+    \frac{\partial \Loss}{\partial \hat{y}_j} = \text{sgn}(\hat{y}_j - y_j)
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item É robusta a \textit{outliers} devido à sua penalidade linear para os erros.
+    \item A perda é intuitiva, pois está na mesma escala da variável alvo.
+    \item Recomendada quando \textit{outliers} são esperados e não devem influenciar excessivamente o modelo.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item Não é diferenciável no ponto zero, embora isso seja contornável na prática com subgradientes.
+    \item O gradiente é constante, o que pode dificultar a convergência para o mínimo exato, exigindo taxas de aprendizado menores no final do treino.
+\end{itemize}
+
+\subsection{Huber Loss}
+
+\textit{Uma perda híbrida que combina o melhor do MSE para erros pequenos e do MAE para erros grandes, oferecendo robustez a outliers sem sacrificar a estabilidade perto do mínimo.}
+
+\begin{equacaodestaque}{Huber Loss e sua Derivada}
+    \Loss_{\delta}(y, \hat{y}) = \begin{cases} \frac{1}{2}(y - \hat{y})^2 & \text{se } |y - \hat{y}| \le \delta \\ \delta |y - \hat{y}| - \frac{1}{2}\delta^2 & \text{caso contrário} \end{cases} \\
+    \frac{\partial \Loss_{\delta}}{\partial \hat{y}} = \begin{cases} \hat{y} - y & \text{se } |y - \hat{y}| \le \delta \\ \delta \cdot \text{sgn}(\hat{y} - y) & \text{caso contrário} \end{cases}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item Combina a boa convergência do MSE perto do mínimo com a robustez do MAE para erros grandes.
+    \item É diferenciável em todos os pontos, exceto em $\pm\delta$.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item Requer o ajuste do hiperparâmetro $\delta$, que define o limiar entre o comportamento quadrático e linear.
+\end{itemize}
+
+\subsection{Log-Cosh Loss}
+
+\textit{Uma função de perda suave que se comporta como o MSE para erros pequenos e como o MAE para erros grandes, sendo uma alternativa à Huber Loss que não requer hiperparâmetros.}
+
+\begin{equacaodestaque}{Log-Cosh Loss e sua Derivada}
+    \Loss = \sum_{j=1}^{N} \log(\cosh(y_j - \hat{y}_j)) \\
+    \frac{\partial \Loss}{\partial \hat{y}_j} = \tanh(\hat{y}_j - y_j)
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item É duplamente diferenciável em todos os pontos, o que a torna suave e bem-comportada para otimizadores baseados em gradiente.
+    \item Não requer o ajuste de hiperparâmetros como a Huber Loss.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item É computacionalmente mais custosa que o MSE e o MAE devido às funções $\log$ e $\cosh$.
+\end{itemize}
+
+\subsection{Quantile Loss (Pinball Loss)}
+
+\textit{Utilizada para prever um quantil específico (como a mediana ou o 90º percentil) em vez da média, sendo útil para estimar intervalos de incerteza.}
+
+\begin{equacaodestaque}{Quantile Loss e sua Derivada}
+    \Loss_{\tau}(y, \hat{y}) = \begin{cases} \tau (y - \hat{y}) & \text{se } y \ge \hat{y} \\ (1-\tau)(\hat{y}-y) & \text{caso contrário} \end{cases} \\
+    \frac{\partial \Loss_{\tau}}{\partial \hat{y}} = \begin{cases} -(1-\tau) & \text{se } \hat{y}>y \\ -\tau & \text{se } \hat{y}<y \end{cases}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item Permite a criação de modelos que preveem diferentes quantis, fornecendo uma visão mais completa da distribuição da variável alvo.
+    \item Muito útil em finanças, meteorologia e análise de risco para estimar intervalos de confiança.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item Requer a definição do quantil $\tau$ como um hiperparâmetro.
+    \item Não é diferenciável em zero, assim como o MAE.
+\end{itemize}
+
+% ===================================================================
+% Funções de Perda para Classificação
+% ===================================================================
+\section{Funções de Perda para Classificação}
+
+\subsection{Entropia Cruzada Binária (BCE)}
+
+\textit{A função de perda padrão para problemas de classificação binária, que mede a "distância" entre a distribuição de probabilidade prevista e a distribuição real (0 ou 1).}
+
+\begin{equacaodestaque}{Entropia Cruzada Binária (BCE) e sua Derivada}
+    \Loss = -[y \log(\hat{y}) + (1-y)\log(1-\hat{y})] \\
+    \frac{\partial \Loss}{\partial z} = \hat{y} - y \quad \text{(com Sigmoide na saída)}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item É a escolha padrão e mais eficaz para tarefas de classificação binária.
+    \item Otimiza diretamente a log-verossimilhança do modelo, resultando em previsões probabilísticas.
+    \item Penaliza fortemente previsões que estão confiantes e erradas.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item Pode levar a modelos enviesados em cenários com classes muito desbalanceadas.
+    \item Exige que a saída do modelo seja uma probabilidade no intervalo (0, 1), geralmente obtida com uma função Sigmoide.
+\end{itemize}
+
+\subsection{Hinge Loss}
+
+\textit{Projetada para treinamento de classificadores de máxima margem, como as Support Vector Machines (SVMs), penalizando apenas previsões incorretas ou corretas mas com pouca confiança.}
+
+\begin{equacaodestaque}{Hinge Loss e sua Derivada}
+    \Loss = \max(0, 1 - y \cdot \hat{y}) \quad (y \in \{-1, 1\}) \\
+    \frac{\partial \Loss}{\partial \hat{y}} = \begin{cases} -y & \text{se } y \cdot \hat{y} < 1 \\ 0 & \text{caso contrário} \end{cases}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item Otimiza explicitamente para maximizar a margem de separação entre as classes.
+    \item Não penaliza exemplos que já estão classificados corretamente e fora da margem, focando o aprendizado nos pontos difíceis.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item A saída do modelo não é uma probabilidade, mas sim uma pontuação de decisão.
+    \item Pode ser mais sensível a \textit{outliers} do que perdas baseadas em entropia.
+\end{itemize}
+
+\subsection{Entropia Cruzada Categórica (CCE)}
+
+\textit{A extensão da BCE para problemas de classificação multi-classe, comparando a distribuição de probabilidade prevista com o rótulo real em formato one-hot.}
+
+\begin{equacaodestaque}{Entropia Cruzada Categórica (CCE) e sua Derivada}
+    \Loss = - \sum_{c=1}^{C} y_{c} \log(\hat{y}_{c}) \\
+    \frac{\partial \Loss}{\partial z_i} = \hat{y}_i - y_i \quad \text{(com Softmax na saída)}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item É a função de perda padrão e mais eficaz para classificação multi-classe.
+    \item Requer que os rótulos de destino estejam em formato \textit{one-hot}.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item Assume que as classes são mutuamente exclusivas (cada amostra pertence a apenas uma classe).
+    \item É sensível ao desbalanceamento de classes, podendo favorecer a classe majoritária.
+\end{itemize}
+
+\subsection{Focal Loss}
+
+\textit{Uma modificação da Entropia Cruzada que reduz a perda atribuída a exemplos fáceis e bem classificados, forçando o modelo a focar em exemplos difíceis e mal classificados.}
+
+\begin{equacaodestaque}{Focal Loss}
+    \Loss = -(1 - p_t)^\gamma \log(p_t) \\
+    \text{onde } p_t \text{ é a probabilidade da classe correta}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens / Quando Usar}
+\begin{itemize}
+    \item Reduz o peso de exemplos fáceis, permitindo que o modelo se concentre nos erros mais significativos.
+    \item É extremamente eficaz para treinar modelos em datasets com grande desbalanceamento de classes, como na detecção de objetos.
+\end{itemize}
+
+\subsubsection*{Desvantagens / Considerações}
+\begin{itemize}
+    \item Adiciona o hiperparâmetro de foco $\gamma$, que precisa ser ajustado para balancear o peso entre exemplos fáceis e difíceis.
+\end{itemize}

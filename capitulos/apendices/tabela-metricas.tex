@@ -1,0 +1,153 @@
+\chapter{Comparativo das Métricas de Avaliação}
+\label{cap:comparativo-metricas}
+
+Após o treinamento de um modelo, é essencial avaliar seu desempenho de forma quantitativa. Este capítulo apresenta as métricas de avaliação mais comuns para tarefas de classificação e regressão, detalhando suas fórmulas, interpretações e contextos de aplicação.
+
+% ===================================================================
+% Métricas para Classificação
+% ===================================================================
+\section{Métricas para Classificação}
+
+\subsection{Acurácia (Accuracy)}
+
+\textit{Uma métrica direta que mede a proporção de previsões corretas sobre o total de previsões, oferecendo uma visão geral do desempenho do modelo.}
+
+\begin{equacaodestaque}{Acurácia}
+    \text{Acurácia} = \frac{VP + VN}{VP + VN + FP + FN}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item Representa o percentual de predições corretas (Verdadeiros Positivos + Verdadeiros Negativos) em relação ao total de amostras.
+    \item Fornece uma medida geral e intuitiva da performance do classificador.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item É mais útil em cenários com classes bem balanceadas.
+    \item Pode ser uma métrica enganosa em datasets com classes desbalanceadas. Por exemplo, se 95\% das amostras são da classe A, um modelo que sempre prevê A terá 95\% de acurácia, mas será inútil.
+\end{itemize}
+
+\subsection{Precisão (Precision)}
+
+\textit{Avalia a exatidão das previsões positivas, respondendo à pergunta: "De todas as vezes que o modelo previu a classe positiva, quantas estavam corretas?".}
+
+\begin{equacaodestaque}{Precisão}
+    \text{Precisão} = \frac{VP}{VP + FP}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item Mede a proporção de Verdadeiros Positivos entre todas as predições que o modelo classificou como positivas.
+    \item Indica a "qualidade" ou "confiabilidade" das predições positivas.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item É crucial quando o custo de um Falso Positivo (FP) é alto. Por exemplo, em um filtro de spam (marcar um e-mail importante como spam) ou em um diagnóstico médico (diagnosticar uma pessoa saudável com uma doença).
+\end{itemize}
+
+\subsection{Revocação (Recall / Sensibilidade)}
+
+\textit{Mede a capacidade do modelo de encontrar todas as amostras positivas relevantes, respondendo à pergunta: "De todos os exemplos realmente positivos, quantos o modelo conseguiu identificar?".}
+
+\begin{equacaodestaque}{Revocação}
+    \text{Revocação} = \frac{VP}{VP + FN}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item Mede a proporção de Verdadeiros Positivos que foram corretamente identificados pelo modelo.
+    \item Indica a "completude" ou a "abrangência" do classificador em relação à classe positiva.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item É crucial quando o custo de um Falso Negativo (FN) é alto. Por exemplo, na detecção de fraudes (não identificar uma transação fraudulenta) ou no diagnóstico de uma doença grave (não diagnosticar um paciente doente).
+\end{itemize}
+
+\subsection{F1-Score}
+
+\textit{A média harmônica entre Precisão e Revocação, fornecendo uma única pontuação que equilibra o trade-off entre as duas métricas.}
+
+\begin{equacaodestaque}{F1-Score}
+    \text{F1-Score} = 2 \times \frac{\text{Precisão} \times \text{Revocação}}{\text{Precisão} + \text{Revocação}}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item É a média harmônica de Precisão e Revocação, o que significa que penaliza valores extremos de uma das métricas.
+    \item Fornece uma única métrica que busca um balanço entre a qualidade (Precisão) e a completude (Revocação) das predições positivas.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item É especialmente útil em cenários com classes desbalanceadas, onde a Acurácia pode ser enganosa e é necessário um bom equilíbrio entre Precisão e Revocação.
+\end{itemize}
+
+\subsection{AUC-ROC}
+
+\textit{Mede a capacidade geral de um modelo de distinguir entre as classes positiva e negativa, independentemente do limiar de classificação escolhido.}
+
+\begin{equacaodestaque}{Curva ROC}
+    \text{A curva ROC é plotada com a Taxa de Verdadeiros Positivos} \\
+    \text{(Revocação) no eixo Y e a Taxa de Falsos Positivos no eixo X.} \\
+    \text{FPR} = \frac{FP}{FP+VN}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item A AUC (Área Sob a Curva) representa a probabilidade de que o modelo classifique uma amostra positiva aleatória com uma pontuação maior do que uma amostra negativa aleatória.
+    \item AUC = 1.0 indica um classificador perfeito.
+    \item AUC = 0.5 indica um desempenho equivalente a um classificador aleatório.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item Para avaliar e comparar o desempenho geral de modelos de forma agnóstica ao limiar de decisão.
+    \item É uma boa métrica agregada para problemas de classificação binária.
+\end{itemize}
+
+% ===================================================================
+% Métricas para Regressão
+% ===================================================================
+\section{Métricas para Regressão}
+
+\subsection{RMSE (Root Mean Square Error)}
+
+\textit{Representa o desvio padrão dos erros de predição (resíduos), medindo a magnitude média dos erros na mesma unidade da variável alvo.}
+
+\begin{equacaodestaque}{Raiz do Erro Quadrático Médio (RMSE)}
+    \text{RMSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item É a raiz quadrada do MSE. Um RMSE de 10, por exemplo, significa que, em média, as previsões do modelo estão a 10 unidades de distância dos valores reais.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item Quando se deseja que o erro seja expresso na mesma unidade da variável alvo para facilitar a interpretação.
+    \item Assim como o MSE, penaliza erros maiores mais fortemente que o MAE devido ao termo quadrático.
+\end{itemize}
+
+\subsection{R² (Coeficiente de Determinação)}
+
+\textit{Indica a proporção da variância na variável alvo que é explicada pelo modelo, fornecendo uma medida da qualidade do ajuste.}
+
+\begin{equacaodestaque}{Coeficiente de Determinação (R²)}
+    R^2 = 1 - \frac{\sum_{i=1}^{N}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{N}(y_i - \bar{y})^2}
+\end{equacaodestaque}
+
+\subsubsection*{Interpretação}
+\begin{itemize}
+    \item Um R² de 0.85 significa que 85\% da variabilidade da variável alvo é explicada pelas variáveis preditoras do modelo.
+    \item Seus valores variam de $-\infty$ a 1. Quanto mais próximo de 1, melhor o modelo se ajusta aos dados. Um valor negativo indica que o modelo é pior que um modelo ingênuo que sempre prevê a média.
+\end{itemize}
+
+\subsubsection*{Quando Usar / Considerações}
+\begin{itemize}
+    \item Para entender o quão bem as variáveis de entrada explicam a variação da variável de saída.
+    \item Cuidado: o valor do R² tende a aumentar à medida que mais variáveis são adicionadas ao modelo, mesmo que elas não sejam úteis. Nesses casos, o R² ajustado é uma métrica mais apropriada.
+\end{itemize}

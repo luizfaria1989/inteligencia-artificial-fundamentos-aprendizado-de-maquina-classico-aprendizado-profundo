@@ -1,0 +1,178 @@
+\chapter{Comparativo dos Otimizadores}
+\label{cap:comparativo-otimizadores}
+
+A escolha do otimizador é um passo crucial no treinamento de redes neurais. Este capítulo apresenta os principais algoritmos de otimização baseados em gradiente, desde os métodos clássicos até as variantes adaptativas modernas, detalhando suas equações, ideias centrais e características.
+
+% ===================================================================
+% Otimizadores Clássicos
+% ===================================================================
+\section{Otimizadores Clássicos}
+
+\subsection{Gradiente Descendente (GD)}
+
+\textit{Atualiza os parâmetros na direção oposta ao gradiente, calculado sobre \textbf{todo} o conjunto de dados.}
+
+\begin{equacaodestaque}{Atualização do Gradiente Descendente}
+    \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t)
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Garante uma convergência estável para um mínimo local (ou global, em funções convexas).
+\end{itemize}
+
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item É computacionalmente caro e lento para datasets grandes, pois exige que todos os dados estejam na memória para cada atualização.
+\end{itemize}
+
+\subsection{Gradiente Descendente Estocástico (SGD)}
+
+\textit{Atualiza os parâmetros usando o gradiente de \textbf{uma única amostra} aleatória por vez.}
+
+\begin{equacaodestaque}{Atualização do Gradiente Descendente Estocástico}
+    \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t; x^{(i)})
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Muito mais rápido por iteração em comparação com o GD em lote.
+    \item A natureza ruidosa das atualizações pode ajudar a escapar de mínimos locais rasos.
+\end{itemize}
+
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Apresenta uma trajetória de convergência ruidosa e com alta variância, podendo nunca se estabilizar no mínimo exato.
+\end{itemize}
+
+\subsection{Gradiente Descendente com Momento}
+
+\textit{Adiciona "inércia" à atualização, acumulando uma média móvel dos gradientes passados para acelerar a descida.}
+
+\begin{equacaodestaque}{Atualização com Momento}
+    v_t = \beta v_{t-1} + \eta \nabla f(\theta_t) \\
+    \theta_{t+1} = \theta_t - v_t
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Acelera a convergência, especialmente em direções onde o gradiente é consistente.
+    \item Ajuda a amortecer oscilações em direções de alta curvatura.
+\end{itemize}
+
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item Adiciona o hiperparâmetro de momento $\beta$, que precisa ser ajustado.
+\end{itemize}
+
+\subsection{Gradiente Acelerado de Nesterov (NAG)}
+
+\textit{Um momento "mais inteligente" que calcula o gradiente em um ponto futuro estimado ("lookahead") para corrigir a direção da atualização.}
+
+\begin{equacaodestaque}{Atualização com Momento de Nesterov}
+    g_t = \nabla f(\theta_t - \beta v_{t-1}) \\
+    v_t = \beta v_{t-1} + \eta g_t \\
+    \theta_{t+1} = \theta_t - v_t
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Frequentemente converge mais rápido que o momento padrão.
+    \item É mais eficaz em "antecipar" a curvatura, evitando ultrapassar o ponto de mínimo.
+\end{itemize}
+
+% ===================================================================
+% Otimizadores Adaptativos Modernos
+% ===================================================================
+\section{Otimizadores Adaptativos Modernos}
+
+\subsection{AdaGrad (Adaptive Gradient Algorithm)}
+
+\textit{Adapta a taxa de aprendizado para cada parâmetro individualmente, diminuindo-a para parâmetros com gradientes grandes e frequentes.}
+
+\begin{equacaodestaque}{Atualização do AdaGrad}
+    \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{N_t + \epsilon}} g_t \\
+    \text{(onde } N_t \text{ acumula os quadrados dos gradientes } g_t^2\text{)}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item É muito eficaz para lidar com dados esparsos, como em processamento de linguagem natural.
+\end{itemize}
+
+\subsubsection*{Desvantagens}
+\begin{itemize}
+    \item A taxa de aprendizado pode decair de forma muito agressiva e parar o treinamento prematuramente, pois o acumulador de gradientes no denominador só cresce.
+\end{itemize}
+
+\subsection{RMSProp (Root Mean Square Propagation)}
+
+\textit{Resolve o problema do AdaGrad usando uma média móvel exponencial dos quadrados dos gradientes, o que evita que a taxa de aprendizado decaia para zero.}
+
+\begin{equacaodestaque}{Atualização do RMSProp}
+    \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_t \\
+    \text{(onde } E[g^2]_t \text{ é uma média móvel de } g_t^2\text{)}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Apresenta bom desempenho em problemas não-estacionários (onde a distribuição dos dados muda).
+    \item É uma melhoria direta sobre o AdaGrad.
+\end{itemize}
+
+\subsection{Adam (Adaptive Moment Estimation)}
+
+\textit{Calcula taxas de aprendizado adaptativas para cada parâmetro usando estimativas de primeiro (momento) e segundo (RMSProp) momentos dos gradientes.}
+
+\begin{equacaodestaque}{Conceito do Adam}
+    \text{Combina a inércia do \textbf{Momento} (1º momento, $m_t$)} \\
+    \text{com a escala adaptativa do \textbf{RMSProp} (2º momento, $v_t$)} \\
+    \text{e adiciona uma etapa de correção de viés.}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Geralmente considerado o otimizador padrão para a maioria dos problemas.
+    \item Combina os benefícios dos métodos de momento e de taxa de aprendizado adaptativa, sendo robusto e eficiente.
+\end{itemize}
+
+\subsection{AdaMax}
+
+\textit{Generaliza o segundo momento do Adam, substituindo a média dos quadrados ($L_2$) pelo máximo ($L_\infty$) dos gradientes recentes, tornando a atualização mais estável.}
+
+\begin{equacaodestaque}{Conceito do AdaMax}
+    \text{Variante do Adam que usa a norma infinita ($L_\infty$) para o} \\
+    \text{segundo momento, em vez da norma $L_2$.}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Pode ser mais estável que o Adam, especialmente em cenários com gradientes ruidosos ou esparsos.
+\end{itemize}
+
+\subsection{Nadam (Nesterov-accelerated Adam)}
+
+\textit{Incorpora o conceito de "lookahead" do Gradiente Acelerado de Nesterov (NAG) na estimativa do primeiro momento do Adam para uma atualização mais precisa.}
+
+\begin{equacaodestaque}{Conceito do Nadam}
+    \text{Combina o otimizador \textbf{Adam} com o momento de \textbf{Nesterov (NAG)}.}
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Frequentemente converge mais rápido que o Adam, especialmente em problemas com gradientes complexos e ruidosos.
+\end{itemize}
+
+\subsection{AdamW (Adam with Decoupled Weight Decay)}
+
+\textit{Corrige a implementação da regularização L2 (decaimento de peso) no Adam, desacoplando-a da atualização do gradiente e aplicando-a diretamente aos pesos.}
+
+\begin{equacaodestaque}{Atualização do AdamW}
+    \theta_{t+1} = \theta_t - \eta \cdot (\text{update}_{Adam} + \lambda\theta_t)
+\end{equacaodestaque}
+
+\subsubsection*{Vantagens}
+\begin{itemize}
+    \item Melhora a generalização do modelo em comparação com o Adam padrão com regularização L2.
+    \item Torna o ajuste da taxa de aprendizado e do decaimento de peso mais independente um do outro.
+\end{itemize}
