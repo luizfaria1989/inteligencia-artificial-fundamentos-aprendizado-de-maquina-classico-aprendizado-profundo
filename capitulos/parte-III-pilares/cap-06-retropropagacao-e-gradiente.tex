@@ -973,7 +973,7 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
 
 O \textit{AdaGrad} simbolizou não somente um avanço para os algoritmos de otimização, como também introduziu o conceito de diferentes taxas de aprendizado, permitindo com que um modelo possa aprender bem tanto características muito frequentes como características mais incomuns. Dessa forma, um novo periódo de otimizadores surgiu, seguindo os conceitos do \textit{AdaGrad} mas buscando incrementar o seu algoritmo a fim de corrigir falhas que ficaram para trás. Ao longo dessa seção, serão vistos mais otimizadores que atuam de forma parecida ao \textit{AdaGrad}, adicinando melhorias para o seu desempenho.
 
-\subsection{RMSProp}
+\subsection{Root Mean Square Propagation (RMSProp)}
 
 Diferente dos outros métodos de otimização que surgiram em artigos, o \textit{RMSProp} tem uma concepação diferente, sendo apresentado por Geoffrey Hinton nas suas notas de aula do curso \textit{Neural Networks for Machine Learning} como um método que semelhante ao AdaGrad, dividia o gradiente \parencite{RMSPropMethod}. Para isso, o \textit{RMSProp} combina a ideia de somente usar o sinal do gradiente com a ideia de adptar o tamanho do passo separadamente para diferentes pesos, de forma que para funcionar em \textit{mini-batches} é mantido uma média móvel do quadrado do gradiente para cada peso \parencite{RMSPropMethod}.
 
