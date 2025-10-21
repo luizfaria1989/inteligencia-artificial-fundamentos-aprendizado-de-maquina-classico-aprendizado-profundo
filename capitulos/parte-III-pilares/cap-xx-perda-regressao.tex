@@ -557,6 +557,21 @@ Para isso, as próximas seções buscam explorar diferentes cenários em que as 
 
 \section{Lidando com a Escala: Foco no Erro Relativo}
 
+As funções de perda vistas até agora possuem um detalhe em comum: todas lidam com o erro de fazendo um cálculo absoluto. Para entender melhor essa frase é possível ilustrar isso com um exemplo. Considere que existem duas situações que está sendo previsto os valores de imóveis:
+
+\begin{itemize}
+    \item Cenário A: O modelo previu que uma casa vale 50.000 R\$, equanto no rótulo está que ela vale 10.000 R\$;
+    \item Cenário B: O modelo previu que uma casa vale 950.000 R\$, equanto no rótulo está que ela vale 1.000.000 R\$.
+\end{itemize}
+
+Para fazer o trabalho dessa regressão foi utilizada a função de perda erro quadrático médio. Note que essa função calcula primeiro a diferença entre o valor previsto pelo modelo e o valor apresentado no rótulo. Com isso, essa diferença será a mesma para esses dois cenários, 50.000 R\$.
+
+Essa é uma forma de analisar o problema. Mas também pode ser visto de forma relativa, veja que o modelo do cenário A previu que a casa vale apenas a metade do seu valor real, ele fez uma previsão subestimada. Por outro lado, o modelo do cenário B foi mais realista, ele sabe que a casa possui um valor alto, contudo, ainda sim ficou uma distância do valor real. 
+
+O erro quadrático médio, e as outras três funções de perda vistas até agora tratam os erros dos cenários A e B como iguais. Mas e se você estivesse em uma situação em que o modelo subestimar os valores dos rôtulos seja considerada muito negativa, e por isso deve ser evitada?
+
+Aí você precisaria de funções de perda que lidassem com o erro relativo das previsões do modelo. Para isso, esse capítulo busca explicar três funções de perda para serem utilizadas nesse cenário. O erro quadrático médio logarítico, que possui uma tendência de penalizar mais as subestimação. O erro percentual absoluto médio, que funciona de forma aposta o \textit{MSLE}, penalizando mais a superestimação, porém com um problema de descontinuidade que pode fazer com que o cálculo da métrica "exploda". E por fim, será visto o erro percentual absoluto médio simétrico, o qual busca corrigir o problema da descontinuidade da sua variante original.
+
 \subsection{Erro Quadrático Médio Logarítmico (MSLE)}
 
 \begin{equacaodestaque}{Erro Quadrático Médio Logarítmico (\textit{MSLE})}
@@ -646,6 +661,186 @@ Para isso, as próximas seções buscam explorar diferentes cenários em que as 
     \end{tikzpicture}
     \caption{Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$).}
     \label{fig:msle-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\subsection{Erro Percentual Absoluto Médio (MAPE)}
+
+\begin{equacaodestaque}{Erro Percentual Absoluto Médio (\textit{MAPE})}
+    \Loss_{\text{MAPE}} = \frac{1}{N} \sum_{j=1}^{N} \left| \frac{y_j - \hat{y}_j}{y_j} \right|
+    \label{eq:mape-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: MAPE (para valor real $y=10$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=25,
+            ymin=-0.2, ymax=2,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função abs((10 - x) / 10)
+            \addplot[
+                domain=0:25, 
+                samples=101,
+                color=blue, 
+                very thick
+            ] {abs((10 - x) / 10)};
+            
+            \addlegendentry{$L = \left|\frac{10 - \hat{y}}{10}\right|$}
+
+            % Linha vertical para marcar o valor real
+            \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 2);
+            \node[above, gray!80, font=\tiny] at (axis cs:10, 2) {Valor Real};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda MAPE. A perda é simétrica em valor absoluto, mas o seu alcance para superestimação ($\hat{y} > y$) é ilimitado.}
+    \label{fig:mape-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada do Erro Percentual Absoluto Médio (\textit{MAPE})}
+    \frac{\partial \Loss_{\text{MAPE}}}{\partial \hat{y}_j} = - \frac{1}{N} \cdot \frac{\text{sgn}(y_j - \hat{y}_j)}{y_j}
+    \label{eq:mape-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da MAPE (para valor real $y=10$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=25,
+            ymin=-0.5, ymax=0.5,
+            legend pos=north east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize},
+            declare function={sgn(\x) = (\x > 0) - (\x < 0);}
+        ]
+            \addplot[
+                domain=0:25, 
+                samples=201,
+                color=red, 
+                very thick
+            ] {-sgn(10-x)/10};
+            
+            \addlegendentry{$L' = -\frac{\text{sgn}(10 - \hat{y})}{10}$}
+
+            \draw[dashed, gray] (axis cs:10, -0.5) -- (axis cs:10, 0.5);
+            \node[above, gray!80, font=\tiny] at (axis cs:10, 0.5) {Valor Real};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da MAPE. O gradiente é constante, exceto por uma descontinuidade no ponto exato da predição correta, o que pode dificultar a convergência do treino.}
+    \label{fig:mape-derivada}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\subsection{Erro Percentual Absoluto Médio Simétrico (sMAPE)}
+
+\begin{equacaodestaque}{Erro Percentual Absoluto Médio Simétrico (\textit{sMAPE})}
+    \Loss_{\text{sMAPE}} = \frac{1}{N} \sum_{j=1}^{N} \frac{|\hat{y}_j - y_j|}{(|\hat{y}_j| + |y_j|)/2}
+    \label{eq:smape-loss}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Função de Perda: sMAPE (para valor real $y=10$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Perda Calculada},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=25,
+            ymin=-0.2, ymax=2.2,
+            legend pos=north west,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+            % Adiciona o gráfico da função 2*abs(x - 10) / (abs(x) + abs(10))
+            \addplot[
+                domain=0:25, 
+                samples=101,
+                color=purple, 
+                very thick
+            ] {2*abs(x - 10) / (abs(x) + 10)};
+            
+            \addlegendentry{$L = \frac{2|\hat{y} - 10|}{|\hat{y}| + 10}$}
+
+            % Linha vertical para marcar o valor real
+            \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 2.2);
+            \node[above, gray!80, font=\tiny] at (axis cs:10, 2.2) {Valor Real};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da função de perda sMAPE. A perda é limitada (entre 0 e 2, ou 0\% e 200\%) e resolve o problema da divisão por zero da MAPE.}
+    \label{fig:smape-loss}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\begin{equacaodestaque}{Derivada do Erro Percentual Absoluto Médio Simétrico (\textit{sMAPE})}
+    \frac{\partial \Loss_{\text{sMAPE}}}{\partial \hat{y}_j} = \frac{2}{N} \cdot \frac{\text{sgn}(\hat{y}_j - y_j)(\hat{y}_j + y_j) - |\hat{y}_j - y_j|\text{sgn}(\hat{y}_j)}{(\hat{y}_j + y_j)^2}
+    \label{eq:smape-derivada}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Derivada da sMAPE (para valor real $y=10$)},
+            xlabel={Valor Previsto ($\hat{y}$)},
+            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-1, xmax=25,
+            ymin=-0.5, ymax=0.5,
+            legend pos=north east,
+            width=12cm,
+            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize},
+            declare function={sgn(\x) = (\x > 0) - (\x < 0);}
+        ]
+            \addplot[
+                domain=0:25, 
+                samples=201,
+                color=brown, 
+                very thick
+            ] {2 * (sgn(x-10)*(x+10) - abs(x-10)) / ((x+10)^2)};
+            
+            \addlegendentry{$L' \text{ para } y=10$}
+
+            \draw[dashed, gray] (axis cs:10, -0.5) -- (axis cs:10, 0.5);
+            \node[above, gray!80, font=\tiny] at (axis cs:10, 0.5) {Valor Real};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico da derivada da sMAPE. O gradiente não é constante, diminuindo à medida que a previsão se afasta do valor real, o que pode estabilizar o treino.}
+    \label{fig:smape-derivada}
     \fonte{O autor (2025).}
 \end{figure}
 

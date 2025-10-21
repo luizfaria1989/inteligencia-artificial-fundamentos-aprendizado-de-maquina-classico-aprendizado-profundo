@@ -115,241 +115,243 @@
 \contentsline {subsection}{\numberline {10.3.2}Erro Absoluto Médio (Mean Absolute Error - MAE)}{147}{subsection.10.3.2}%
 \contentsline {subsection}{\numberline {10.3.3}Huber Loss: O Melhor de Dois Mundos}{151}{subsection.10.3.3}%
 \contentsline {subsection}{\numberline {10.3.4}Perda Log-Cosh}{153}{subsection.10.3.4}%
-\contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{157}{section.10.4}%
+\contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{156}{section.10.4}%
 \contentsline {subsection}{\numberline {10.4.1}Erro Quadrático Médio Logarítmico (MSLE)}{157}{subsection.10.4.1}%
-\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{158}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{158}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{158}{subsection.10.5.2}%
-\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{161}{section.10.6}%
-\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{161}{subsection.10.6.1}%
-\contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{161}{subsection.10.6.2}%
-\contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{163}{subsection.10.6.3}%
-\contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{163}{section.10.7}%
-\contentsline {section}{\numberline {10.8}Fluxograma: Escolhendo a Função de Perda Ideal}{163}{section.10.8}%
+\contentsline {subsection}{\numberline {10.4.2}Erro Percentual Absoluto Médio (MAPE)}{159}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Erro Percentual Absoluto Médio Simétrico (sMAPE)}{159}{subsection.10.4.3}%
+\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{161}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{161}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{163}{subsection.10.5.2}%
+\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{163}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{163}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{165}{subsection.10.6.2}%
+\contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{165}{subsection.10.6.3}%
+\contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{167}{section.10.7}%
+\contentsline {section}{\numberline {10.8}Fluxograma: Escolhendo a Função de Perda Ideal}{167}{section.10.8}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {11}\MakeTextUppercase []{Funções de Perda para Classificação}}{165}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Exemplo Ilustrativo:}{165}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Funções de Perda para Classificação Binária}{165}{section.11.2}%
-\contentsline {subsection}{\numberline {11.2.1}Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{165}{subsection.11.2.1}%
-\contentsline {subsection}{\numberline {11.2.2}Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{169}{subsection.11.2.2}%
-\contentsline {subsection}{\numberline {11.2.3}Perda Hinge (Hinge Loss)}{171}{subsection.11.2.3}%
-\contentsline {subsection}{\numberline {11.2.4}Squared Hinge Loss}{174}{subsection.11.2.4}%
-\contentsline {section}{\numberline {11.3}Funções de Perda para Classificação Multi-Classe}{176}{section.11.3}%
-\contentsline {subsection}{\numberline {11.3.1}Exemplo Ilustrativo:}{176}{subsection.11.3.1}%
-\contentsline {subsection}{\numberline {11.3.2}Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{176}{subsection.11.3.2}%
-\contentsline {subsection}{\numberline {11.3.3}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{181}{subsection.11.3.3}%
-\contentsline {subsection}{\numberline {11.3.4}Weighted Categorical Cross-Entropy (WCCE)}{181}{subsection.11.3.4}%
-\contentsline {section}{\numberline {11.4}Multilabel Loss}{182}{section.11.4}%
-\contentsline {section}{\numberline {11.5}Comparativo: Funções de Perda para Classificação}{182}{section.11.5}%
-\contentsline {section}{\numberline {11.6}Fluxograma: Escolhendo a Função de Perda Ideal}{182}{section.11.6}%
+\contentsline {chapter}{\chapternumberline {11}\MakeTextUppercase []{Funções de Perda para Classificação}}{169}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Exemplo Ilustrativo:}{169}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Funções de Perda para Classificação Binária}{169}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão}{169}{subsection.11.2.1}%
+\contentsline {subsection}{\numberline {11.2.2}Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}{173}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.3}Perda Hinge (Hinge Loss)}{175}{subsection.11.2.3}%
+\contentsline {subsection}{\numberline {11.2.4}Squared Hinge Loss}{178}{subsection.11.2.4}%
+\contentsline {section}{\numberline {11.3}Funções de Perda para Classificação Multi-Classe}{180}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Exemplo Ilustrativo:}{180}{subsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3.2}Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}{180}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.3}Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}{185}{subsection.11.3.3}%
+\contentsline {subsection}{\numberline {11.3.4}Weighted Categorical Cross-Entropy (WCCE)}{185}{subsection.11.3.4}%
+\contentsline {section}{\numberline {11.4}Multilabel Loss}{186}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Comparativo: Funções de Perda para Classificação}{186}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Fluxograma: Escolhendo a Função de Perda Ideal}{186}{section.11.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {12}\MakeTextUppercase []{Funções de Perda para Usos Específicos}}{185}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Focal Loss}{185}{section.12.1}%
+\contentsline {chapter}{\chapternumberline {12}\MakeTextUppercase []{Funções de Perda para Usos Específicos}}{189}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Focal Loss}{189}{section.12.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {13}\MakeTextUppercase []{Métricas de Avaliação}}{187}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Métricas de Avaliação}{187}{section.13.1}%
-\contentsline {subsection}{\numberline {13.1.1}Acurácia}{187}{subsection.13.1.1}%
-\contentsline {subsection}{\numberline {13.1.2}Precisão}{187}{subsection.13.1.2}%
-\contentsline {subsection}{\numberline {13.1.3}Revocação ou Sensibilidade}{187}{subsection.13.1.3}%
-\contentsline {subsection}{\numberline {13.1.4}F1-Score}{187}{subsection.13.1.4}%
-\contentsline {subsection}{\numberline {13.1.5}Curva ROC e AUC}{187}{subsection.13.1.5}%
-\contentsline {subsection}{\numberline {13.1.6}Métricas Para Regressão ($R^2$)}{188}{subsection.13.1.6}%
+\contentsline {chapter}{\chapternumberline {13}\MakeTextUppercase []{Métricas de Avaliação}}{191}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Métricas de Avaliação}{191}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Acurácia}{191}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Precisão}{191}{subsection.13.1.2}%
+\contentsline {subsection}{\numberline {13.1.3}Revocação ou Sensibilidade}{191}{subsection.13.1.3}%
+\contentsline {subsection}{\numberline {13.1.4}F1-Score}{191}{subsection.13.1.4}%
+\contentsline {subsection}{\numberline {13.1.5}Curva ROC e AUC}{191}{subsection.13.1.5}%
+\contentsline {subsection}{\numberline {13.1.6}Métricas Para Regressão ($R^2$)}{192}{subsection.13.1.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {14}\MakeTextUppercase []{Autodiff}}{189}{chapter.14}%
-\contentsline {section}{\numberline {14.1}Técnicas de Diferenciação}{189}{section.14.1}%
-\contentsline {section}{\numberline {14.2}Autodiff Direta}{189}{section.14.2}%
-\contentsline {subsection}{\numberline {14.2.1}Autodiff Direta}{189}{subsection.14.2.1}%
-\contentsline {subsection}{\numberline {14.2.2}Autodiff Direta Com Números Duais}{189}{subsection.14.2.2}%
-\contentsline {section}{\numberline {14.3}Autodiff Reversa}{189}{section.14.3}%
+\contentsline {chapter}{\chapternumberline {14}\MakeTextUppercase []{Autodiff}}{193}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Técnicas de Diferenciação}{193}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Autodiff Direta}{193}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Autodiff Direta}{193}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}Autodiff Direta Com Números Duais}{193}{subsection.14.2.2}%
+\contentsline {section}{\numberline {14.3}Autodiff Reversa}{193}{section.14.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {15}\MakeTextUppercase []{Metaheurísticas: Otimizando Redes Neurais Sem o Gradiente}}{191}{chapter.15}%
-\contentsline {section}{\numberline {15.1}Algoritmos Evolutivos}{191}{section.15.1}%
-\contentsline {section}{\numberline {15.2}Inteligência de Enxame}{191}{section.15.2}%
-\contentsline {part}{\partnumberline {IV}\MakeTextUppercase []{Aprendizado de Máquina Clássico}}{193}{part.4}%
+\contentsline {chapter}{\chapternumberline {15}\MakeTextUppercase []{Metaheurísticas: Otimizando Redes Neurais Sem o Gradiente}}{195}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Algoritmos Evolutivos}{195}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Inteligência de Enxame}{195}{section.15.2}%
+\contentsline {part}{\partnumberline {IV}\MakeTextUppercase []{Aprendizado de Máquina Clássico}}{197}{part.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {16}\MakeTextUppercase []{Técnicas de Regressão}}{195}{chapter.16}%
-\contentsline {section}{\numberline {16.1}Exemplo Ilustrativo}{195}{section.16.1}%
-\contentsline {section}{\numberline {16.2}Regressão Linear}{195}{section.16.2}%
-\contentsline {subsection}{\numberline {16.2.1}Função de Custo MSE}{195}{subsection.16.2.1}%
-\contentsline {subsection}{\numberline {16.2.2}Equação Normal}{195}{subsection.16.2.2}%
-\contentsline {subsection}{\numberline {16.2.3}Implementação em Python}{195}{subsection.16.2.3}%
-\contentsline {section}{\numberline {16.3}Regressão Polininomial}{195}{section.16.3}%
-\contentsline {subsection}{\numberline {16.3.1}Impletanção em Python}{195}{subsection.16.3.1}%
-\contentsline {section}{\numberline {16.4}Regressão de Ridge}{195}{section.16.4}%
-\contentsline {subsection}{\numberline {16.4.1}Implementação em Python}{195}{subsection.16.4.1}%
-\contentsline {section}{\numberline {16.5}Regressão de Lasso}{195}{section.16.5}%
-\contentsline {subsection}{\numberline {16.5.1}Implementação em Python}{195}{subsection.16.5.1}%
-\contentsline {section}{\numberline {16.6}Elastic Net}{195}{section.16.6}%
-\contentsline {subsection}{\numberline {16.6.1}Implementação em Python}{195}{subsection.16.6.1}%
-\contentsline {section}{\numberline {16.7}Regressão Logística}{195}{section.16.7}%
-\contentsline {subsection}{\numberline {16.7.1}Implementação em Python}{195}{subsection.16.7.1}%
-\contentsline {section}{\numberline {16.8}Regressão Softmax}{195}{section.16.8}%
-\contentsline {subsection}{\numberline {16.8.1}Implementação em Python}{195}{subsection.16.8.1}%
-\contentsline {section}{\numberline {16.9}Outras Técnicas de Regressão}{195}{section.16.9}%
+\contentsline {chapter}{\chapternumberline {16}\MakeTextUppercase []{Técnicas de Regressão}}{199}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Exemplo Ilustrativo}{199}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Regressão Linear}{199}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}Função de Custo MSE}{199}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}Equação Normal}{199}{subsection.16.2.2}%
+\contentsline {subsection}{\numberline {16.2.3}Implementação em Python}{199}{subsection.16.2.3}%
+\contentsline {section}{\numberline {16.3}Regressão Polininomial}{199}{section.16.3}%
+\contentsline {subsection}{\numberline {16.3.1}Impletanção em Python}{199}{subsection.16.3.1}%
+\contentsline {section}{\numberline {16.4}Regressão de Ridge}{199}{section.16.4}%
+\contentsline {subsection}{\numberline {16.4.1}Implementação em Python}{199}{subsection.16.4.1}%
+\contentsline {section}{\numberline {16.5}Regressão de Lasso}{199}{section.16.5}%
+\contentsline {subsection}{\numberline {16.5.1}Implementação em Python}{199}{subsection.16.5.1}%
+\contentsline {section}{\numberline {16.6}Elastic Net}{199}{section.16.6}%
+\contentsline {subsection}{\numberline {16.6.1}Implementação em Python}{199}{subsection.16.6.1}%
+\contentsline {section}{\numberline {16.7}Regressão Logística}{199}{section.16.7}%
+\contentsline {subsection}{\numberline {16.7.1}Implementação em Python}{199}{subsection.16.7.1}%
+\contentsline {section}{\numberline {16.8}Regressão Softmax}{199}{section.16.8}%
+\contentsline {subsection}{\numberline {16.8.1}Implementação em Python}{199}{subsection.16.8.1}%
+\contentsline {section}{\numberline {16.9}Outras Técnicas de Regressão}{199}{section.16.9}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {17}\MakeTextUppercase []{Árvores de Decisão e Florestas Aleatórias}}{197}{chapter.17}%
-\contentsline {section}{\numberline {17.1}Exemplo Ilustrativo}{197}{section.17.1}%
-\contentsline {section}{\numberline {17.2}Entendendo o Conceito de Árvores}{197}{section.17.2}%
-\contentsline {subsection}{\numberline {17.2.1}Árvores Binárias}{197}{subsection.17.2.1}%
-\contentsline {section}{\numberline {17.3}Árvores de Decisão}{197}{section.17.3}%
-\contentsline {subsection}{\numberline {17.3.1}Implementação em Python}{197}{subsection.17.3.1}%
-\contentsline {section}{\numberline {17.4}Florestas Aleatórias}{197}{section.17.4}%
-\contentsline {subsection}{\numberline {17.4.1}Implementação em Python}{197}{subsection.17.4.1}%
+\contentsline {chapter}{\chapternumberline {17}\MakeTextUppercase []{Árvores de Decisão e Florestas Aleatórias}}{201}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Exemplo Ilustrativo}{201}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Entendendo o Conceito de Árvores}{201}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}Árvores Binárias}{201}{subsection.17.2.1}%
+\contentsline {section}{\numberline {17.3}Árvores de Decisão}{201}{section.17.3}%
+\contentsline {subsection}{\numberline {17.3.1}Implementação em Python}{201}{subsection.17.3.1}%
+\contentsline {section}{\numberline {17.4}Florestas Aleatórias}{201}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}Implementação em Python}{201}{subsection.17.4.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {18}\MakeTextUppercase []{Máquinas de Vetores de Suporte}}{199}{chapter.18}%
-\contentsline {section}{\numberline {18.1}Exemplo Ilustrativo}{199}{section.18.1}%
+\contentsline {chapter}{\chapternumberline {18}\MakeTextUppercase []{Máquinas de Vetores de Suporte}}{203}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Exemplo Ilustrativo}{203}{section.18.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {19}\MakeTextUppercase []{Ensamble}}{201}{chapter.19}%
-\contentsline {section}{\numberline {19.1}Exemplo Ilustrativo}{201}{section.19.1}%
+\contentsline {chapter}{\chapternumberline {19}\MakeTextUppercase []{Ensamble}}{205}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Exemplo Ilustrativo}{205}{section.19.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {20}\MakeTextUppercase []{Dimensionalidade}}{203}{chapter.20}%
-\contentsline {section}{\numberline {20.1}Exemplo Ilustrativo}{203}{section.20.1}%
-\contentsline {section}{\numberline {20.2}A Maldição da Dimensionalidade}{203}{section.20.2}%
-\contentsline {section}{\numberline {20.3}Seleção de Características (Feature Selection)}{203}{section.20.3}%
-\contentsline {section}{\numberline {20.4}Extração de Características (Feature Extraction)}{203}{section.20.4}%
-\contentsline {subsection}{\numberline {20.4.1}Análise de Componentes Principais (PCA)}{203}{subsection.20.4.1}%
-\contentsline {subsection}{\numberline {20.4.2}t-SNE (t-Distributed Stochastic Neighbor Embedding) e UMAP}{203}{subsection.20.4.2}%
+\contentsline {chapter}{\chapternumberline {20}\MakeTextUppercase []{Dimensionalidade}}{207}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Exemplo Ilustrativo}{207}{section.20.1}%
+\contentsline {section}{\numberline {20.2}A Maldição da Dimensionalidade}{207}{section.20.2}%
+\contentsline {section}{\numberline {20.3}Seleção de Características (Feature Selection)}{207}{section.20.3}%
+\contentsline {section}{\numberline {20.4}Extração de Características (Feature Extraction)}{207}{section.20.4}%
+\contentsline {subsection}{\numberline {20.4.1}Análise de Componentes Principais (PCA)}{207}{subsection.20.4.1}%
+\contentsline {subsection}{\numberline {20.4.2}t-SNE (t-Distributed Stochastic Neighbor Embedding) e UMAP}{207}{subsection.20.4.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {21}\MakeTextUppercase []{Clusterização}}{205}{chapter.21}%
-\contentsline {section}{\numberline {21.1}Exemplo Ilustrativo}{205}{section.21.1}%
-\contentsline {section}{\numberline {21.2}Aprendizado Não Supervisionado: Encontrando Grupos nos Dados}{205}{section.21.2}%
-\contentsline {section}{\numberline {21.3}Clusterização Particional: K-Means}{205}{section.21.3}%
-\contentsline {section}{\numberline {21.4}Clusterização Hierárquica}{205}{section.21.4}%
-\contentsline {section}{\numberline {21.5}Clusterização Baseada em Densidade: DBSCAN}{205}{section.21.5}%
-\contentsline {part}{\partnumberline {V}\MakeTextUppercase []{Redes Neurais Profundas (DNNs)}}{207}{part.5}%
+\contentsline {chapter}{\chapternumberline {21}\MakeTextUppercase []{Clusterização}}{209}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Exemplo Ilustrativo}{209}{section.21.1}%
+\contentsline {section}{\numberline {21.2}Aprendizado Não Supervisionado: Encontrando Grupos nos Dados}{209}{section.21.2}%
+\contentsline {section}{\numberline {21.3}Clusterização Particional: K-Means}{209}{section.21.3}%
+\contentsline {section}{\numberline {21.4}Clusterização Hierárquica}{209}{section.21.4}%
+\contentsline {section}{\numberline {21.5}Clusterização Baseada em Densidade: DBSCAN}{209}{section.21.5}%
+\contentsline {part}{\partnumberline {V}\MakeTextUppercase []{Redes Neurais Profundas (DNNs)}}{211}{part.5}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {22}\MakeTextUppercase []{Perceptrons MLP - Redes Neurais Artificiais}}{209}{chapter.22}%
+\contentsline {chapter}{\chapternumberline {22}\MakeTextUppercase []{Perceptrons MLP - Redes Neurais Artificiais}}{213}{chapter.22}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {23}\MakeTextUppercase []{Redes FeedForward (FFNs)}}{211}{chapter.23}%
+\contentsline {chapter}{\chapternumberline {23}\MakeTextUppercase []{Redes FeedForward (FFNs)}}{215}{chapter.23}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {24}\MakeTextUppercase []{Redes de Crença Profunda (DBNs) e Máquinas de Boltzmann Restritas}}{213}{chapter.24}%
+\contentsline {chapter}{\chapternumberline {24}\MakeTextUppercase []{Redes de Crença Profunda (DBNs) e Máquinas de Boltzmann Restritas}}{217}{chapter.24}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {25}\MakeTextUppercase []{Redes Neurais Convolucionais (CNN)}}{216}{chapter.25}%
-\contentsline {section}{\numberline {25.1}Exemplo Ilustrativo}{216}{section.25.1}%
-\contentsline {section}{\numberline {25.2}Camadas Convolucionais: O Bloco Fundamental para as CNNs}{216}{section.25.2}%
-\contentsline {subsection}{\numberline {25.2.1}Implementação em Python}{216}{subsection.25.2.1}%
-\contentsline {section}{\numberline {25.3}Camadas de Poooling: Reduzindo a Dimensionalidade}{218}{section.25.3}%
-\contentsline {subsection}{\numberline {25.3.1}Max Pooling}{218}{subsection.25.3.1}%
-\contentsline {subsubsection}{\numberline {25.3.1.1}Implementação em Python}{218}{subsubsection.25.3.1.1}%
-\contentsline {subsection}{\numberline {25.3.2}Average Pooling}{220}{subsection.25.3.2}%
-\contentsline {subsubsection}{\numberline {25.3.2.1}Implementação em Python}{220}{subsubsection.25.3.2.1}%
-\contentsline {subsection}{\numberline {25.3.3}Global Average Pooling}{221}{subsection.25.3.3}%
-\contentsline {subsubsection}{\numberline {25.3.3.1}Implementação em Python}{221}{subsubsection.25.3.3.1}%
-\contentsline {section}{\numberline {25.4}Camada Flatten: Achatando os Dados}{222}{section.25.4}%
-\contentsline {subsection}{\numberline {25.4.1}Implementação em Python}{222}{subsection.25.4.1}%
-\contentsline {section}{\numberline {25.5}Criando uma CNN}{223}{section.25.5}%
-\contentsline {section}{\numberline {25.6}Detecção de Objetos}{223}{section.25.6}%
-\contentsline {section}{\numberline {25.7}Redes Totalmente Convolucionais (FCNs)}{223}{section.25.7}%
-\contentsline {section}{\numberline {25.8}You Only Look Once (YOLO)}{223}{section.25.8}%
-\contentsline {section}{\numberline {25.9}Algumas Arquiteturas de CNNs}{223}{section.25.9}%
-\contentsline {subsection}{\numberline {25.9.1}LeNet-5}{223}{subsection.25.9.1}%
-\contentsline {subsection}{\numberline {25.9.2}AlexNet}{223}{subsection.25.9.2}%
-\contentsline {subsection}{\numberline {25.9.3}GoogLeNet}{223}{subsection.25.9.3}%
-\contentsline {subsection}{\numberline {25.9.4}VGGNet}{223}{subsection.25.9.4}%
-\contentsline {subsection}{\numberline {25.9.5}ResNet}{223}{subsection.25.9.5}%
-\contentsline {subsection}{\numberline {25.9.6}Xception}{223}{subsection.25.9.6}%
-\contentsline {subsection}{\numberline {25.9.7}SENet}{223}{subsection.25.9.7}%
+\contentsline {chapter}{\chapternumberline {25}\MakeTextUppercase []{Redes Neurais Convolucionais (CNN)}}{220}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Exemplo Ilustrativo}{220}{section.25.1}%
+\contentsline {section}{\numberline {25.2}Camadas Convolucionais: O Bloco Fundamental para as CNNs}{220}{section.25.2}%
+\contentsline {subsection}{\numberline {25.2.1}Implementação em Python}{220}{subsection.25.2.1}%
+\contentsline {section}{\numberline {25.3}Camadas de Poooling: Reduzindo a Dimensionalidade}{222}{section.25.3}%
+\contentsline {subsection}{\numberline {25.3.1}Max Pooling}{222}{subsection.25.3.1}%
+\contentsline {subsubsection}{\numberline {25.3.1.1}Implementação em Python}{222}{subsubsection.25.3.1.1}%
+\contentsline {subsection}{\numberline {25.3.2}Average Pooling}{224}{subsection.25.3.2}%
+\contentsline {subsubsection}{\numberline {25.3.2.1}Implementação em Python}{224}{subsubsection.25.3.2.1}%
+\contentsline {subsection}{\numberline {25.3.3}Global Average Pooling}{225}{subsection.25.3.3}%
+\contentsline {subsubsection}{\numberline {25.3.3.1}Implementação em Python}{225}{subsubsection.25.3.3.1}%
+\contentsline {section}{\numberline {25.4}Camada Flatten: Achatando os Dados}{226}{section.25.4}%
+\contentsline {subsection}{\numberline {25.4.1}Implementação em Python}{226}{subsection.25.4.1}%
+\contentsline {section}{\numberline {25.5}Criando uma CNN}{227}{section.25.5}%
+\contentsline {section}{\numberline {25.6}Detecção de Objetos}{227}{section.25.6}%
+\contentsline {section}{\numberline {25.7}Redes Totalmente Convolucionais (FCNs)}{227}{section.25.7}%
+\contentsline {section}{\numberline {25.8}You Only Look Once (YOLO)}{227}{section.25.8}%
+\contentsline {section}{\numberline {25.9}Algumas Arquiteturas de CNNs}{227}{section.25.9}%
+\contentsline {subsection}{\numberline {25.9.1}LeNet-5}{227}{subsection.25.9.1}%
+\contentsline {subsection}{\numberline {25.9.2}AlexNet}{227}{subsection.25.9.2}%
+\contentsline {subsection}{\numberline {25.9.3}GoogLeNet}{227}{subsection.25.9.3}%
+\contentsline {subsection}{\numberline {25.9.4}VGGNet}{227}{subsection.25.9.4}%
+\contentsline {subsection}{\numberline {25.9.5}ResNet}{227}{subsection.25.9.5}%
+\contentsline {subsection}{\numberline {25.9.6}Xception}{227}{subsection.25.9.6}%
+\contentsline {subsection}{\numberline {25.9.7}SENet}{227}{subsection.25.9.7}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {26}\MakeTextUppercase []{Redes Residuais (ResNets)}}{225}{chapter.26}%
+\contentsline {chapter}{\chapternumberline {26}\MakeTextUppercase []{Redes Residuais (ResNets)}}{229}{chapter.26}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {27}\MakeTextUppercase []{Redes Neurais Recorrentes (RNN)}}{227}{chapter.27}%
-\contentsline {section}{\numberline {27.1}Exemplo Ilustrativo}{227}{section.27.1}%
-\contentsline {section}{\numberline {27.2}Neurônios e Células Recorrentes}{227}{section.27.2}%
-\contentsline {subsection}{\numberline {27.2.1}Implementação em Python}{227}{subsection.27.2.1}%
-\contentsline {section}{\numberline {27.3}Células de Memória}{227}{section.27.3}%
-\contentsline {subsection}{\numberline {27.3.1}Implementação em Python}{227}{subsection.27.3.1}%
-\contentsline {section}{\numberline {27.4}Criando uma RNN}{227}{section.27.4}%
-\contentsline {section}{\numberline {27.5}O Problema da Memória de Curto Prazo}{227}{section.27.5}%
-\contentsline {subsection}{\numberline {27.5.1}Células LSTM}{227}{subsection.27.5.1}%
-\contentsline {subsection}{\numberline {27.5.2}Conexões Peephole}{227}{subsection.27.5.2}%
-\contentsline {subsection}{\numberline {27.5.3}Células GRU}{227}{subsection.27.5.3}%
+\contentsline {chapter}{\chapternumberline {27}\MakeTextUppercase []{Redes Neurais Recorrentes (RNN)}}{231}{chapter.27}%
+\contentsline {section}{\numberline {27.1}Exemplo Ilustrativo}{231}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Neurônios e Células Recorrentes}{231}{section.27.2}%
+\contentsline {subsection}{\numberline {27.2.1}Implementação em Python}{231}{subsection.27.2.1}%
+\contentsline {section}{\numberline {27.3}Células de Memória}{231}{section.27.3}%
+\contentsline {subsection}{\numberline {27.3.1}Implementação em Python}{231}{subsection.27.3.1}%
+\contentsline {section}{\numberline {27.4}Criando uma RNN}{231}{section.27.4}%
+\contentsline {section}{\numberline {27.5}O Problema da Memória de Curto Prazo}{231}{section.27.5}%
+\contentsline {subsection}{\numberline {27.5.1}Células LSTM}{231}{subsection.27.5.1}%
+\contentsline {subsection}{\numberline {27.5.2}Conexões Peephole}{231}{subsection.27.5.2}%
+\contentsline {subsection}{\numberline {27.5.3}Células GRU}{231}{subsection.27.5.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {28}\MakeTextUppercase []{Técnicas para Melhorar o Desempenho de Redes Neurais}}{229}{chapter.28}%
-\contentsline {section}{\numberline {28.1}Técnicas de Inicialização}{229}{section.28.1}%
-\contentsline {section}{\numberline {28.2}Reguralização L1 e L2}{229}{section.28.2}%
-\contentsline {section}{\numberline {28.3}Normalização}{229}{section.28.3}%
-\contentsline {subsection}{\numberline {28.3.1}Normalização de Camadas}{229}{subsection.28.3.1}%
-\contentsline {subsection}{\numberline {28.3.2}Normalização de Batch}{229}{subsection.28.3.2}%
-\contentsline {section}{\numberline {28.4}Cliping do Gradiente}{229}{section.28.4}%
-\contentsline {section}{\numberline {28.5}Dropout: Menos Neurônios Mais Aprendizado}{229}{section.28.5}%
-\contentsline {section}{\numberline {28.6}Data Augmentation}{229}{section.28.6}%
+\contentsline {chapter}{\chapternumberline {28}\MakeTextUppercase []{Técnicas para Melhorar o Desempenho de Redes Neurais}}{233}{chapter.28}%
+\contentsline {section}{\numberline {28.1}Técnicas de Inicialização}{233}{section.28.1}%
+\contentsline {section}{\numberline {28.2}Reguralização L1 e L2}{233}{section.28.2}%
+\contentsline {section}{\numberline {28.3}Normalização}{233}{section.28.3}%
+\contentsline {subsection}{\numberline {28.3.1}Normalização de Camadas}{233}{subsection.28.3.1}%
+\contentsline {subsection}{\numberline {28.3.2}Normalização de Batch}{233}{subsection.28.3.2}%
+\contentsline {section}{\numberline {28.4}Cliping do Gradiente}{233}{section.28.4}%
+\contentsline {section}{\numberline {28.5}Dropout: Menos Neurônios Mais Aprendizado}{233}{section.28.5}%
+\contentsline {section}{\numberline {28.6}Data Augmentation}{233}{section.28.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {29}\MakeTextUppercase []{Transformers}}{231}{chapter.29}%
-\contentsline {section}{\numberline {29.1}As Limitações das RNNs: O Gargalo Sequencial}{231}{section.29.1}%
-\contentsline {section}{\numberline {29.2}A Ideia Central: Self-Attention (Query, Key, Value)}{231}{section.29.2}%
-\contentsline {section}{\numberline {29.3}Escalando a Atenção: Multi-Head Attention}{231}{section.29.3}%
-\contentsline {section}{\numberline {29.4}A Arquitetura Completa: O Bloco Transformer}{231}{section.29.4}%
-\contentsline {section}{\numberline {29.5}Entendendo a Posição: Codificação Posicional}{231}{section.29.5}%
-\contentsline {section}{\numberline {29.6}As Três Grandes Arquiteturas}{231}{section.29.6}%
-\contentsline {subsection}{\numberline {29.6.1}Encoder-Only (Ex: BERT): Para tarefas de entendimento}{231}{subsection.29.6.1}%
-\contentsline {subsection}{\numberline {29.6.2}Decoder-Only (Ex: GPT): Para tarefas de geração}{231}{subsection.29.6.2}%
-\contentsline {subsection}{\numberline {29.6.3}Encoder-Decoder (Ex: T5): Para tarefas de tradução/sumarização}{231}{subsection.29.6.3}%
-\contentsline {section}{\numberline {29.7}Além do Texto: Vision Transformers (ViT)}{231}{section.29.7}%
+\contentsline {chapter}{\chapternumberline {29}\MakeTextUppercase []{Transformers}}{235}{chapter.29}%
+\contentsline {section}{\numberline {29.1}As Limitações das RNNs: O Gargalo Sequencial}{235}{section.29.1}%
+\contentsline {section}{\numberline {29.2}A Ideia Central: Self-Attention (Query, Key, Value)}{235}{section.29.2}%
+\contentsline {section}{\numberline {29.3}Escalando a Atenção: Multi-Head Attention}{235}{section.29.3}%
+\contentsline {section}{\numberline {29.4}A Arquitetura Completa: O Bloco Transformer}{235}{section.29.4}%
+\contentsline {section}{\numberline {29.5}Entendendo a Posição: Codificação Posicional}{235}{section.29.5}%
+\contentsline {section}{\numberline {29.6}As Três Grandes Arquiteturas}{235}{section.29.6}%
+\contentsline {subsection}{\numberline {29.6.1}Encoder-Only (Ex: BERT): Para tarefas de entendimento}{235}{subsection.29.6.1}%
+\contentsline {subsection}{\numberline {29.6.2}Decoder-Only (Ex: GPT): Para tarefas de geração}{235}{subsection.29.6.2}%
+\contentsline {subsection}{\numberline {29.6.3}Encoder-Decoder (Ex: T5): Para tarefas de tradução/sumarização}{235}{subsection.29.6.3}%
+\contentsline {section}{\numberline {29.7}Além do Texto: Vision Transformers (ViT)}{235}{section.29.7}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {30}\MakeTextUppercase []{Redes Adversárias Generativas (GANs)}}{233}{chapter.30}%
+\contentsline {chapter}{\chapternumberline {30}\MakeTextUppercase []{Redes Adversárias Generativas (GANs)}}{237}{chapter.30}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {31}\MakeTextUppercase []{Mixture of Experts (MoE)}}{235}{chapter.31}%
+\contentsline {chapter}{\chapternumberline {31}\MakeTextUppercase []{Mixture of Experts (MoE)}}{239}{chapter.31}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {32}\MakeTextUppercase []{Modelos de Difusão}}{237}{chapter.32}%
+\contentsline {chapter}{\chapternumberline {32}\MakeTextUppercase []{Modelos de Difusão}}{241}{chapter.32}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {33}\MakeTextUppercase []{Redes Neurais de Grafos (GNNs)}}{239}{chapter.33}%
-\contentsline {part}{\partnumberline {VI}\MakeTextUppercase []{Apêndices}}{241}{part.6}%
+\contentsline {chapter}{\chapternumberline {33}\MakeTextUppercase []{Redes Neurais de Grafos (GNNs)}}{243}{chapter.33}%
+\contentsline {part}{\partnumberline {VI}\MakeTextUppercase []{Apêndices}}{245}{part.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Comparativo dos Otimizadores}}{243}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Otimizadores Clássicos}{243}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Gradiente Descendente (GD)}{243}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}Gradiente Descendente Estocástico (SGD)}{243}{subsection.A.1.2}%
-\contentsline {subsection}{\numberline {A.1.3}Gradiente Descendente com Momento}{244}{subsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.1.4}Gradiente Acelerado de Nesterov (NAG)}{244}{subsection.A.1.4}%
-\contentsline {section}{\numberline {A.2}Otimizadores Adaptativos Modernos}{245}{section.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}AdaGrad (Adaptive Gradient Algorithm)}{245}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}RMSProp (Root Mean Square Propagation)}{245}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Adam (Adaptive Moment Estimation)}{246}{subsection.A.2.3}%
-\contentsline {subsection}{\numberline {A.2.4}AdaMax}{246}{subsection.A.2.4}%
-\contentsline {subsection}{\numberline {A.2.5}Nadam (Nesterov-accelerated Adam)}{246}{subsection.A.2.5}%
-\contentsline {subsection}{\numberline {A.2.6}AdamW (Adam with Decoupled Weight Decay)}{247}{subsection.A.2.6}%
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Comparativo dos Otimizadores}}{247}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Otimizadores Clássicos}{247}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Gradiente Descendente (GD)}{247}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Gradiente Descendente Estocástico (SGD)}{247}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}Gradiente Descendente com Momento}{248}{subsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.1.4}Gradiente Acelerado de Nesterov (NAG)}{248}{subsection.A.1.4}%
+\contentsline {section}{\numberline {A.2}Otimizadores Adaptativos Modernos}{249}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}AdaGrad (Adaptive Gradient Algorithm)}{249}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}RMSProp (Root Mean Square Propagation)}{249}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Adam (Adaptive Moment Estimation)}{250}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}AdaMax}{250}{subsection.A.2.4}%
+\contentsline {subsection}{\numberline {A.2.5}Nadam (Nesterov-accelerated Adam)}{250}{subsection.A.2.5}%
+\contentsline {subsection}{\numberline {A.2.6}AdamW (Adam with Decoupled Weight Decay)}{251}{subsection.A.2.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {appendix}{\chapternumberline {B}\MakeTextUppercase []{Comparativo das Funções de Ativação}}{249}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Família Sigmoidal}{249}{section.B.1}%
-\contentsline {subsection}{\numberline {B.1.1}Sigmoide}{249}{subsection.B.1.1}%
-\contentsline {subsection}{\numberline {B.1.2}Tangente Hiperbólica (Tanh)}{249}{subsection.B.1.2}%
-\contentsline {subsection}{\numberline {B.1.3}Softsign}{250}{subsection.B.1.3}%
-\contentsline {subsection}{\numberline {B.1.4}Hard Sigmoid}{250}{subsection.B.1.4}%
-\contentsline {subsection}{\numberline {B.1.5}Hard Tanh}{251}{subsection.B.1.5}%
-\contentsline {section}{\numberline {B.2}Família Retificadora}{251}{section.B.2}%
-\contentsline {subsection}{\numberline {B.2.1}ReLU (Rectified Linear Unit)}{251}{subsection.B.2.1}%
-\contentsline {subsection}{\numberline {B.2.2}Leaky ReLU (LReLU)}{252}{subsection.B.2.2}%
-\contentsline {subsection}{\numberline {B.2.3}Parametric ReLU (PReLU)}{253}{subsection.B.2.3}%
-\contentsline {subsection}{\numberline {B.2.4}ELU (Exponential Linear Unit)}{253}{subsection.B.2.4}%
-\contentsline {subsection}{\numberline {B.2.5}SELU (Scaled Exponential Linear Unit)}{254}{subsection.B.2.5}%
-\contentsline {subsection}{\numberline {B.2.6}GELU (Gaussian Error Linear Unit)}{254}{subsection.B.2.6}%
+\contentsline {appendix}{\chapternumberline {B}\MakeTextUppercase []{Comparativo das Funções de Ativação}}{253}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Família Sigmoidal}{253}{section.B.1}%
+\contentsline {subsection}{\numberline {B.1.1}Sigmoide}{253}{subsection.B.1.1}%
+\contentsline {subsection}{\numberline {B.1.2}Tangente Hiperbólica (Tanh)}{253}{subsection.B.1.2}%
+\contentsline {subsection}{\numberline {B.1.3}Softsign}{254}{subsection.B.1.3}%
+\contentsline {subsection}{\numberline {B.1.4}Hard Sigmoid}{254}{subsection.B.1.4}%
+\contentsline {subsection}{\numberline {B.1.5}Hard Tanh}{255}{subsection.B.1.5}%
+\contentsline {section}{\numberline {B.2}Família Retificadora}{255}{section.B.2}%
+\contentsline {subsection}{\numberline {B.2.1}ReLU (Rectified Linear Unit)}{255}{subsection.B.2.1}%
+\contentsline {subsection}{\numberline {B.2.2}Leaky ReLU (LReLU)}{256}{subsection.B.2.2}%
+\contentsline {subsection}{\numberline {B.2.3}Parametric ReLU (PReLU)}{257}{subsection.B.2.3}%
+\contentsline {subsection}{\numberline {B.2.4}ELU (Exponential Linear Unit)}{257}{subsection.B.2.4}%
+\contentsline {subsection}{\numberline {B.2.5}SELU (Scaled Exponential Linear Unit)}{258}{subsection.B.2.5}%
+\contentsline {subsection}{\numberline {B.2.6}GELU (Gaussian Error Linear Unit)}{258}{subsection.B.2.6}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {appendix}{\chapternumberline {C}\MakeTextUppercase []{Comparativo das Funções de Perda}}{255}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Funções de Perda para Regressão}{255}{section.C.1}%
-\contentsline {subsection}{\numberline {C.1.1}Erro Quadrático Médio (MSE)}{255}{subsection.C.1.1}%
-\contentsline {subsection}{\numberline {C.1.2}Erro Absoluto Médio (MAE)}{255}{subsection.C.1.2}%
-\contentsline {subsection}{\numberline {C.1.3}Huber Loss}{256}{subsection.C.1.3}%
-\contentsline {subsection}{\numberline {C.1.4}Log-Cosh Loss}{257}{subsection.C.1.4}%
-\contentsline {subsection}{\numberline {C.1.5}Quantile Loss (Pinball Loss)}{257}{subsection.C.1.5}%
-\contentsline {section}{\numberline {C.2}Funções de Perda para Classificação}{258}{section.C.2}%
-\contentsline {subsection}{\numberline {C.2.1}Entropia Cruzada Binária (BCE)}{258}{subsection.C.2.1}%
-\contentsline {subsection}{\numberline {C.2.2}Hinge Loss}{258}{subsection.C.2.2}%
-\contentsline {subsection}{\numberline {C.2.3}Entropia Cruzada Categórica (CCE)}{259}{subsection.C.2.3}%
-\contentsline {subsection}{\numberline {C.2.4}Focal Loss}{259}{subsection.C.2.4}%
+\contentsline {appendix}{\chapternumberline {C}\MakeTextUppercase []{Comparativo das Funções de Perda}}{259}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Funções de Perda para Regressão}{259}{section.C.1}%
+\contentsline {subsection}{\numberline {C.1.1}Erro Quadrático Médio (MSE)}{259}{subsection.C.1.1}%
+\contentsline {subsection}{\numberline {C.1.2}Erro Absoluto Médio (MAE)}{259}{subsection.C.1.2}%
+\contentsline {subsection}{\numberline {C.1.3}Huber Loss}{260}{subsection.C.1.3}%
+\contentsline {subsection}{\numberline {C.1.4}Log-Cosh Loss}{261}{subsection.C.1.4}%
+\contentsline {subsection}{\numberline {C.1.5}Quantile Loss (Pinball Loss)}{261}{subsection.C.1.5}%
+\contentsline {section}{\numberline {C.2}Funções de Perda para Classificação}{262}{section.C.2}%
+\contentsline {subsection}{\numberline {C.2.1}Entropia Cruzada Binária (BCE)}{262}{subsection.C.2.1}%
+\contentsline {subsection}{\numberline {C.2.2}Hinge Loss}{262}{subsection.C.2.2}%
+\contentsline {subsection}{\numberline {C.2.3}Entropia Cruzada Categórica (CCE)}{263}{subsection.C.2.3}%
+\contentsline {subsection}{\numberline {C.2.4}Focal Loss}{263}{subsection.C.2.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {appendix}{\chapternumberline {D}\MakeTextUppercase []{Comparativo das Métricas de Avaliação}}{261}{appendix.D}%
-\contentsline {section}{\numberline {D.1}Métricas para Classificação}{261}{section.D.1}%
-\contentsline {subsection}{\numberline {D.1.1}Acurácia (Accuracy)}{261}{subsection.D.1.1}%
-\contentsline {subsection}{\numberline {D.1.2}Precisão (Precision)}{261}{subsection.D.1.2}%
-\contentsline {subsection}{\numberline {D.1.3}Revocação (Recall / Sensibilidade)}{262}{subsection.D.1.3}%
-\contentsline {subsection}{\numberline {D.1.4}F1-Score}{262}{subsection.D.1.4}%
-\contentsline {subsection}{\numberline {D.1.5}AUC-ROC}{263}{subsection.D.1.5}%
-\contentsline {section}{\numberline {D.2}Métricas para Regressão}{264}{section.D.2}%
-\contentsline {subsection}{\numberline {D.2.1}RMSE (Root Mean Square Error)}{264}{subsection.D.2.1}%
-\contentsline {subsection}{\numberline {D.2.2}R² (Coeficiente de Determinação)}{264}{subsection.D.2.2}%
+\contentsline {appendix}{\chapternumberline {D}\MakeTextUppercase []{Comparativo das Métricas de Avaliação}}{265}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Métricas para Classificação}{265}{section.D.1}%
+\contentsline {subsection}{\numberline {D.1.1}Acurácia (Accuracy)}{265}{subsection.D.1.1}%
+\contentsline {subsection}{\numberline {D.1.2}Precisão (Precision)}{265}{subsection.D.1.2}%
+\contentsline {subsection}{\numberline {D.1.3}Revocação (Recall / Sensibilidade)}{266}{subsection.D.1.3}%
+\contentsline {subsection}{\numberline {D.1.4}F1-Score}{266}{subsection.D.1.4}%
+\contentsline {subsection}{\numberline {D.1.5}AUC-ROC}{267}{subsection.D.1.5}%
+\contentsline {section}{\numberline {D.2}Métricas para Regressão}{268}{section.D.2}%
+\contentsline {subsection}{\numberline {D.2.1}RMSE (Root Mean Square Error)}{268}{subsection.D.2.1}%
+\contentsline {subsection}{\numberline {D.2.2}R² (Coeficiente de Determinação)}{268}{subsection.D.2.2}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{267}{section*.189}%
+\contentsline {chapter}{Referências}{271}{section*.193}%
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
