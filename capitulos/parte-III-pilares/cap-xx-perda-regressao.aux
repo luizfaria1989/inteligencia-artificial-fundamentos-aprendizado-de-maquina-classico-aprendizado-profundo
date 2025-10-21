@@ -36,59 +36,59 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {10.7}{\ignorespaces Comparação da Perda de Huber com diferentes valores de $\delta $.}}{153}{figure.caption.89}\protected@file@percent }
 \newlabel{fig:huber-delta-comparacoes}{{10.7}{153}{Comparação da Perda de Huber com diferentes valores de $\delta $}{figure.caption.89}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {10.3.4}Perda Log-Cosh}{153}{subsection.10.3.4}\protected@file@percent }
-\newlabel{eq:log-cosh-loss}{{10.9}{153}{Perda Log-Cosh}{equation.10.9}{}}
-\newlabel{eq:log-cosh-derivada}{{10.10}{153}{Perda Log-Cosh}{equation.10.10}{}}
+\newlabel{eq:log-cosh-loss}{{10.9}{154}{Perda Log-Cosh}{equation.10.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10.8}{\ignorespaces Gráfico da função de perda Log-Cosh. Note como ela é quadrática perto de zero e se torna linear para erros maiores.}}{154}{figure.caption.90}\protected@file@percent }
 \newlabel{fig:log-cosh-loss}{{10.8}{154}{Gráfico da função de perda Log-Cosh. Note como ela é quadrática perto de zero e se torna linear para erros maiores}{figure.caption.90}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.9}{\ignorespaces Gráfico da derivada da função de perda Log-Cosh, que corresponde à função tangente hiperbólica (\textit  {tanh}).}}{154}{figure.caption.91}\protected@file@percent }
-\newlabel{fig:log-cosh-derivada}{{10.9}{154}{Gráfico da derivada da função de perda Log-Cosh, que corresponde à função tangente hiperbólica (\textit {tanh})}{figure.caption.91}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{155}{section.10.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Erro Quadrático Médio Logarítmico (MSLE)}{155}{subsection.10.4.1}\protected@file@percent }
-\newlabel{eq:msle-loss}{{10.11}{155}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.10}{\ignorespaces Gráfico da função de perda MSLE. A perda é assimétrica e penaliza mais a subestimação.}}{155}{figure.caption.92}\protected@file@percent }
-\newlabel{fig:msle-loss}{{10.10}{155}{Gráfico da função de perda MSLE. A perda é assimétrica e penaliza mais a subestimação}{figure.caption.92}{}}
-\newlabel{eq:msle-derivada}{{10.12}{155}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.11}{\ignorespaces Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$).}}{156}{figure.caption.93}\protected@file@percent }
-\newlabel{fig:msle-derivada}{{10.11}{156}{Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$)}{figure.caption.93}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{156}{section.10.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{156}{subsection.10.5.1}\protected@file@percent }
-\newlabel{eq:quantile-loss}{{10.13}{156}{Perda Quantílica}{equation.10.13}{}}
-\newlabel{eq:quantile-loss-derivada}{{10.14}{156}{Perda Quantílica}{equation.10.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{156}{subsection.10.5.2}\protected@file@percent }
-\newlabel{eq:epsilon-insensitive-loss}{{10.15}{156}{Perda Epsilon-Insensível}{equation.10.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.12}{\ignorespaces Gráfico da Perda Quantílica para diferentes valores de $\tau $. Note a assimetria da penalidade.}}{157}{figure.caption.94}\protected@file@percent }
-\newlabel{fig:quantile-loss}{{10.12}{157}{Gráfico da Perda Quantílica para diferentes valores de $\tau $. Note a assimetria da penalidade}{figure.caption.94}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.13}{\ignorespaces Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica.}}{157}{figure.caption.95}\protected@file@percent }
-\newlabel{fig:quantile-loss-derivada}{{10.13}{157}{Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica}{figure.caption.95}{}}
-\newlabel{eq:epsilon-insensitive-derivada}{{10.16}{157}{Perda Epsilon-Insensível}{equation.10.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.14}{\ignorespaces Gráfico da função de perda Epsilon-Insensível com uma margem de $\epsilon =1$.}}{158}{figure.caption.96}\protected@file@percent }
-\newlabel{fig:epsilon-insensitive-loss}{{10.14}{158}{Gráfico da função de perda Epsilon-Insensível com uma margem de $\epsilon =1$}{figure.caption.96}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.15}{\ignorespaces Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $.}}{158}{figure.caption.97}\protected@file@percent }
-\newlabel{fig:epsilon-insensitive-derivada}{{10.15}{158}{Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $}{figure.caption.97}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{159}{section.10.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{159}{subsection.10.6.1}\protected@file@percent }
-\newlabel{eq:poisson-loss}{{10.17}{159}{Perda de Poisson}{equation.10.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.16}{\ignorespaces Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{159}{figure.caption.98}\protected@file@percent }
-\newlabel{fig:poisson-loss}{{10.16}{159}{Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.98}{}}
-\newlabel{eq:poisson-loss-derivada}{{10.18}{159}{Perda de Poisson}{equation.10.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{159}{subsection.10.6.2}\protected@file@percent }
-\newlabel{eq:tweedie-loss}{{10.19}{159}{Perda de Tweedie}{equation.10.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.17}{\ignorespaces Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat  {y}=y$ e assintótico a 1 para $\hat  {y} \to \infty $.}}{160}{figure.caption.99}\protected@file@percent }
-\newlabel{fig:poisson-loss-derivada}{{10.17}{160}{Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat {y}=y$ e assintótico a 1 para $\hat {y} \to \infty $}{figure.caption.99}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.18}{\ignorespaces Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{160}{figure.caption.100}\protected@file@percent }
-\newlabel{fig:tweedie-loss}{{10.18}{160}{Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.100}{}}
-\newlabel{eq:tweedie-loss-derivada}{{10.20}{160}{Perda de Tweedie}{equation.10.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.19}{\ignorespaces Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real.}}{161}{figure.caption.101}\protected@file@percent }
-\newlabel{fig:tweedie-loss-derivada}{{10.19}{161}{Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real}{figure.caption.101}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{161}{subsection.10.6.3}\protected@file@percent }
-\newlabel{eq:kl-divergence-gaussiana}{{10.21}{161}{Divergência Kullback-Leibler}{equation.10.21}{}}
-\newlabel{eq:kl-divergence-derivada-gaussiana}{{10.22}{161}{Divergência Kullback-Leibler}{equation.10.22}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{161}{section.10.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.8}Fluxograma: Escolhendo a Função de Perda Ideal}{161}{section.10.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.20}{\ignorespaces A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$).}}{162}{figure.caption.102}\protected@file@percent }
-\newlabel{fig:kl-divergence-concept-regressao}{{10.20}{162}{A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$)}{figure.caption.102}{}}
+\newlabel{eq:log-cosh-derivada}{{10.10}{155}{Perda Log-Cosh}{equation.10.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.9}{\ignorespaces Gráfico da derivada da função de perda Log-Cosh, que corresponde à função tangente hiperbólica (\textit  {tanh}).}}{156}{figure.caption.91}\protected@file@percent }
+\newlabel{fig:log-cosh-derivada}{{10.9}{156}{Gráfico da derivada da função de perda Log-Cosh, que corresponde à função tangente hiperbólica (\textit {tanh})}{figure.caption.91}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{157}{section.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Erro Quadrático Médio Logarítmico (MSLE)}{157}{subsection.10.4.1}\protected@file@percent }
+\newlabel{eq:msle-loss}{{10.11}{157}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.10}{\ignorespaces Gráfico da função de perda MSLE. A perda é assimétrica e penaliza mais a subestimação.}}{157}{figure.caption.92}\protected@file@percent }
+\newlabel{fig:msle-loss}{{10.10}{157}{Gráfico da função de perda MSLE. A perda é assimétrica e penaliza mais a subestimação}{figure.caption.92}{}}
+\newlabel{eq:msle-derivada}{{10.12}{157}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.11}{\ignorespaces Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$).}}{158}{figure.caption.93}\protected@file@percent }
+\newlabel{fig:msle-derivada}{{10.11}{158}{Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$)}{figure.caption.93}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{158}{section.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{158}{subsection.10.5.1}\protected@file@percent }
+\newlabel{eq:quantile-loss}{{10.13}{158}{Perda Quantílica}{equation.10.13}{}}
+\newlabel{eq:quantile-loss-derivada}{{10.14}{158}{Perda Quantílica}{equation.10.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{158}{subsection.10.5.2}\protected@file@percent }
+\newlabel{eq:epsilon-insensitive-loss}{{10.15}{158}{Perda Epsilon-Insensível}{equation.10.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.12}{\ignorespaces Gráfico da Perda Quantílica para diferentes valores de $\tau $. Note a assimetria da penalidade.}}{159}{figure.caption.94}\protected@file@percent }
+\newlabel{fig:quantile-loss}{{10.12}{159}{Gráfico da Perda Quantílica para diferentes valores de $\tau $. Note a assimetria da penalidade}{figure.caption.94}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.13}{\ignorespaces Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica.}}{159}{figure.caption.95}\protected@file@percent }
+\newlabel{fig:quantile-loss-derivada}{{10.13}{159}{Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica}{figure.caption.95}{}}
+\newlabel{eq:epsilon-insensitive-derivada}{{10.16}{159}{Perda Epsilon-Insensível}{equation.10.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.14}{\ignorespaces Gráfico da função de perda Epsilon-Insensível com uma margem de $\epsilon =1$.}}{160}{figure.caption.96}\protected@file@percent }
+\newlabel{fig:epsilon-insensitive-loss}{{10.14}{160}{Gráfico da função de perda Epsilon-Insensível com uma margem de $\epsilon =1$}{figure.caption.96}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.15}{\ignorespaces Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $.}}{160}{figure.caption.97}\protected@file@percent }
+\newlabel{fig:epsilon-insensitive-derivada}{{10.15}{160}{Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $}{figure.caption.97}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{161}{section.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{161}{subsection.10.6.1}\protected@file@percent }
+\newlabel{eq:poisson-loss}{{10.17}{161}{Perda de Poisson}{equation.10.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.16}{\ignorespaces Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{161}{figure.caption.98}\protected@file@percent }
+\newlabel{fig:poisson-loss}{{10.16}{161}{Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.98}{}}
+\newlabel{eq:poisson-loss-derivada}{{10.18}{161}{Perda de Poisson}{equation.10.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{161}{subsection.10.6.2}\protected@file@percent }
+\newlabel{eq:tweedie-loss}{{10.19}{161}{Perda de Tweedie}{equation.10.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.17}{\ignorespaces Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat  {y}=y$ e assintótico a 1 para $\hat  {y} \to \infty $.}}{162}{figure.caption.99}\protected@file@percent }
+\newlabel{fig:poisson-loss-derivada}{{10.17}{162}{Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat {y}=y$ e assintótico a 1 para $\hat {y} \to \infty $}{figure.caption.99}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.18}{\ignorespaces Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{162}{figure.caption.100}\protected@file@percent }
+\newlabel{fig:tweedie-loss}{{10.18}{162}{Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.100}{}}
+\newlabel{eq:tweedie-loss-derivada}{{10.20}{162}{Perda de Tweedie}{equation.10.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.19}{\ignorespaces Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real.}}{163}{figure.caption.101}\protected@file@percent }
+\newlabel{fig:tweedie-loss-derivada}{{10.19}{163}{Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real}{figure.caption.101}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{163}{subsection.10.6.3}\protected@file@percent }
+\newlabel{eq:kl-divergence-gaussiana}{{10.21}{163}{Divergência Kullback-Leibler}{equation.10.21}{}}
+\newlabel{eq:kl-divergence-derivada-gaussiana}{{10.22}{163}{Divergência Kullback-Leibler}{equation.10.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{163}{section.10.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.8}Fluxograma: Escolhendo a Função de Perda Ideal}{163}{section.10.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.20}{\ignorespaces A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$).}}{164}{figure.caption.102}\protected@file@percent }
+\newlabel{fig:kl-divergence-concept-regressao}{{10.20}{164}{A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$)}{figure.caption.102}{}}
 \@setckpt{capitulos/parte-III-pilares/cap-xx-perda-regressao}{
-\setcounter{page}{163}
+\setcounter{page}{165}
 \setcounter{equation}{22}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
@@ -136,9 +136,9 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{165}
-\setcounter{lastsheet}{271}
-\setcounter{lastpage}{269}
+\setcounter{sheetsequence}{167}
+\setcounter{lastsheet}{273}
+\setcounter{lastpage}{271}
 \setcounter{figure}{20}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
@@ -164,7 +164,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{276}
+\setcounter{instcount}{280}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}

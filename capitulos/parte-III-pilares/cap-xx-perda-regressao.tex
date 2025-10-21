@@ -446,12 +446,20 @@ Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a es
 
 Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é nítido que o grau de complexidade do problema pode aumentar, pois haverá mais um hiperparâmetro para ser otimizado de forma manual. Isso pode não ser ideal para cenários em que já existem muitos hiperparâmetros. Para isso, \textcite{LossesArticle} explicam que essa função é comumumente utilizada em problemas de gressão robusta, como em regressões lineares e em \textit{time series forecasting}, em que \textit{outliers} e ruído podem estar presentes.
 
+Com isso, foi possível ver que a perda de Huber é uma excelente alternativa para os casos em que deseja-se controlar os pontos em que o cálculo da perda deve atuar de forma severa (usando termos quadráticos, semelhante a perda L2) e a partir de quis casos esse cálculo pode ser menos punitivo (usando termos lineares, semelhante a perda L1). Contudo, foi visto que ela tem um problema, os pontos em que essas funções se juntam gera uma descontinuidade, atrabalhando a derivação dessas funções. Para resolver esse problema da descontinuidade, pode ser utilizada como alternativa a perda Log-Cosh, a qual será vista em seguida.
+
 \subsection{Perda Log-Cosh}
+
+A perda Log-Cosh é uma função de perda que vem ganhando popularidade entre os desenvolvedores, em \textit{Statistical Properties of the log-cosh Loss Function Used in Machine Learning}, \textcite{StatisticalPropetiesLogCosh} explicam que ela aparece em cenários de autoencoders variacionais, detecção de câncer, algortimos de aprendizado baseados em árvores (como o XGBoost) e também em regressão quantílica (\textit{quantile regression}).
+
+Com relação a sua fórmula, é possível vê-la na Equação \ref{eq:log-cosh-loss}. Note que ela não adiciona nenhuma função nova, ela apenas faz a aplicação da função logaritmo que recebe como parâmetro de entrada a função cosseno hiperbólica. Essa combinação geram uma séries de propriedades interessantes, as quais serão discutidas depois ne analisar o seu gráfico.
 
 \begin{equacaodestaque}{Perda Log-Cosh (\textit{Log-Cosh Loss})}
     \Loss_{\text{Log-Cosh}} = \sum_{j=1}^{N} \log(\cosh(y_j - \hat{y}_j))
     \label{eq:log-cosh-loss}
 \end{equacaodestaque}
+
+Já com relação ao gráfico dessa função, ele está presente na Figura \ref{fig:log-cosh-loss}. Note que a perda log-cosh atua de forma parecida com a perda de huber. Para valores em que a diferença da saída do modelo e o rôtulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que lembra ao de uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh passa a assumir um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funcoes bem como os erros padroes apresentam resultados similares. Com isso, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a \textit{Huber Loss}, mas ainda é desejável manter a variação no cálculo do erro do modelo.
 
 \begin{figure}[h!]
     \centering
@@ -489,10 +497,22 @@ Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é
     \fonte{O autor (2025).}
 \end{figure}
 
+Com relação as suas propriedades é possível discutir algumas a seguir:
+
+\begin{itemize}
+    \item \textbf{Convexa:} É possível ver pelo gráfico da Figura \ref{fig:log-cosh-loss} que ela é uma função convexa, apresentando um formato característico de funil, além de possuír um único ponto de mínimo global. Mas note que não é possível garantir essa propriedade em cenários em que ela está sendo aplicada em modelos de redes neurais densas, devido as transformações não-lineares que ocorrem.
+    \item \textbf{Robustez para \textit{outliers}:} Assim como a perda de Huber e o erro absoluto médio, a perda log-cosh não pune de forma agressiva os erros cometidos pelo modelo ao ser treinado. Isso garante que essa função possa ser aplicada em cenários em que os dados possuem muitos \textit{outliers} sem afetar drasticamente o treinamento do modelo.
+    \item \textbf{Continuidade e diferenciabilidade:} Diferente de a perda de Huber, que possui pontos de descontuidade na ligação da função linear com a quadrática, a perda log-cosh consegue ser contínua em todos os seus pontos. Além disso, isso também é uma vantagem sobre o erro absoluto médio, pois este também apresenta um ponto de descontinuidade em 0, o qual precisa do cálculo do subgradiente para garantir o aprendizado dos modelos que fazem uso de otimizadores baseados em gradiente. Dessa forma, além de ser contínua, a perda log-cosh pode ser derivada em todos os seus pontos, algo útil caso esteja sendo usados otimizadores que atuam como o método do gradiente.
+\end{itemize}
+
+Visto essas diferentes propriedades dessa função, cabe agora analisar a sua derivada, a qual será útil para a retropropagação e consequentemente o aprendizado do modelo. Para isso, ela pode ser vista na Equação \ref{eq:log-cosh-derivada}. Perceba que a derivada da perda log-cosh envolve o cálculo da tangente hiperbólica, que coincidementemente, também é utilizada em aprendizado de máquina como uma função de ativação, tendo como objetivo introduzir a não-liearidade para as saídas de uma camada densa.
+
 \begin{equacaodestaque}{Derivada da Perda Log-Cosh}
     \frac{\partial \Loss_{\text{Log-Cosh}}}{\partial \hat{y}_j} = \tanh(\hat{y}_j - y_j)
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
+
+Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o qual está representado na Figura \ref{eq:log-cosh-derivada}. Caso você leitor tenha lido o Capítulo \ref{cap:ativacao-sigmoidais}, você não verá nada novo aqui, é apenas o gráfico característico em formato de "S" que as funções sigmoidais possuem. Um ponto interessante a ser destacado ao analisar o gráfico é que as saídas dessa função serão em um intervalo $[-1, 1]$, o que podem fazer com que o sinal do gradiente fique alternando, garantindo uma convergência mais rápida em alguns casos.
 
 \begin{figure}[h!]
     \centering
@@ -530,6 +550,10 @@ Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é
     \label{fig:log-cosh-derivada}
     \fonte{O autor (2025).}
 \end{figure}
+
+Vistas essas quatro funções: O erro quadrático médio (\textit{MSE}), o erro absoluto médio (\textit{MAE}), a perda de Huber e a perda log-cosh. Já é possível resolver a grande maioria dos problemas de regressão em aprendizado de máquina. Contudo, existem problemas que vão além dessas perdas, precisando de funções mais específicas para garantir uma melhor avaliação do erro e a partir dele, saber atualizar o gradiente e com isso o modelo aprender de fato.
+
+Para isso, as próximas seções buscam explorar diferentes cenários em que as funções de perda para regressão vistas até agora não são a melhor escolha. Assim, serão exploradas mais três secões, a primeira focada no erro relativo, a segunda focada em funções de erro que não calculam a média dos diversos erros, e a última para casos em são utilizas distribuições específicas para os valores.
 
 \section{Lidando com a Escala: Foco no Erro Relativo}
 

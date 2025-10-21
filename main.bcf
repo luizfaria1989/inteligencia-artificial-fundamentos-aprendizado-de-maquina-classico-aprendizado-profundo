@@ -2740,31 +2740,31 @@
     <bcf:citekey order="274" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="275" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="276" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="277" intorder="1">EntropyShannon</bcf:citekey>
-    <bcf:citekey order="278" intorder="1">EntropyShannon</bcf:citekey>
-    <bcf:citekey order="279" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
-    <bcf:citekey order="280" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
-    <bcf:citekey order="281" intorder="1">HintonConnectionist</bcf:citekey>
-    <bcf:citekey order="282" intorder="1">HintonConnectionist</bcf:citekey>
-    <bcf:citekey order="283" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="284" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="285" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="286" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="277" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="278" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="279" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="280" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="281" intorder="1">EntropyShannon</bcf:citekey>
+    <bcf:citekey order="282" intorder="1">EntropyShannon</bcf:citekey>
+    <bcf:citekey order="283" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
+    <bcf:citekey order="284" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
+    <bcf:citekey order="285" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="286" intorder="1">HintonConnectionist</bcf:citekey>
     <bcf:citekey order="287" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="288" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="289" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="290" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="291" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="292" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="293" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="294" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="295" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="292" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="293" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="294" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="295" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="296" intorder="1">HingeLoss</bcf:citekey>
     <bcf:citekey order="297" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="298" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="299" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="300" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="301" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="298" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="299" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="300" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="301" intorder="1">HingeLoss</bcf:citekey>
     <bcf:citekey order="302" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="303" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="304" intorder="1">LossesArticle</bcf:citekey>
@@ -2773,6 +2773,10 @@
     <bcf:citekey order="307" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="308" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="309" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="310" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="311" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="312" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="313" intorder="1">LossesArticle</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
