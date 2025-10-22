@@ -112,18 +112,18 @@
 \contentsline {section}{\numberline {10.2}Exemplo Ilustrativo: Jogando Dados}{143}{section.10.2}%
 \contentsline {section}{\numberline {10.3}Funções de Perda para Regressão para Propósitos Gerais}{144}{section.10.3}%
 \contentsline {subsection}{\numberline {10.3.1}Erro Quadrático Médio (Mean Squared Error - MSE)}{144}{subsection.10.3.1}%
-\contentsline {subsection}{\numberline {10.3.2}Erro Absoluto Médio (Mean Absolute Error - MAE)}{147}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.2}Erro Absoluto Médio (Mean Absolute Error - MAE)}{148}{subsection.10.3.2}%
 \contentsline {subsection}{\numberline {10.3.3}Huber Loss: O Melhor de Dois Mundos}{151}{subsection.10.3.3}%
 \contentsline {subsection}{\numberline {10.3.4}Perda Log-Cosh}{153}{subsection.10.3.4}%
 \contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{156}{section.10.4}%
 \contentsline {subsection}{\numberline {10.4.1}Erro Quadrático Médio Logarítmico (MSLE)}{157}{subsection.10.4.1}%
-\contentsline {subsection}{\numberline {10.4.2}Erro Percentual Absoluto Médio (MAPE)}{159}{subsection.10.4.2}%
-\contentsline {subsection}{\numberline {10.4.3}Erro Percentual Absoluto Médio Simétrico (sMAPE)}{159}{subsection.10.4.3}%
-\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{161}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{161}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{163}{subsection.10.5.2}%
-\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{163}{section.10.6}%
-\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{163}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.4.2}Erro Percentual Absoluto Médio (MAPE)}{158}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Erro Percentual Absoluto Médio Simétrico (sMAPE)}{160}{subsection.10.4.3}%
+\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{160}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{160}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{162}{subsection.10.5.2}%
+\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{162}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{162}{subsection.10.6.1}%
 \contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{165}{subsection.10.6.2}%
 \contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{165}{subsection.10.6.3}%
 \contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{167}{section.10.7}%
@@ -147,6 +147,7 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {12}\MakeTextUppercase []{Funções de Perda para Usos Específicos}}{189}{chapter.12}%
 \contentsline {section}{\numberline {12.1}Focal Loss}{189}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Fluxograma:}{189}{section.12.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {13}\MakeTextUppercase []{Métricas de Avaliação}}{191}{chapter.13}%
 \contentsline {section}{\numberline {13.1}Métricas de Avaliação}{191}{section.13.1}%

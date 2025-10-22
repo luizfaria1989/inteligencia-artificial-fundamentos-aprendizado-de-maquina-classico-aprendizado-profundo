@@ -52,37 +52,79 @@ Neste caso, o \textit{MSE} calcula o erro individualmente para cada uma das pred
 
 Tendo a sua equação, é possível também plotar o seu gráfico, para isso, ele pode ser visto na Figura \ref{fig:mse}.
 
-\begin{figure}
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Erro ($y - \hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,          % Eixos centrados em (0,0)
-            grid=major,                 % Adiciona uma grade principal
-            grid style={dashed, gray!40}, % Estilo da grade
-            xmin=-3.5, xmax=3.5,        % Limites do eixo x
-            ymin=-0.5, ymax=9.5,         % Limites do eixo y
-            legend pos=north west,      % Posição da legenda
-            width=12cm,                 % Largura do gráfico
-            height=9cm,                 % Altura do gráfico
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função x^2
-            \addplot[
-                domain=-3:3, 
-                samples=100, 
-                color=blue, 
-                very thick
-            ] {x^2};
-            
-            % Adiciona uma entrada na legenda
-            \addlegendentry{$L = \text{erro}^2$}
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Função de perda para regressão erro quadrático médio (\textit{MSE}).}
-    \label{fig:mse}
+\begin{figure}[h!]
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): SEU GRÁFICO 2D ORIGINAL (MODIFICADO) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Erro},
+                ylabel={Perda},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-3.5, xmax=3.5,
+                ymin=-0.5, ymax=9.5,
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função x^2
+                \addplot[
+                    domain=-3:3, 
+                    samples=100, 
+                    color=blue, 
+                    very thick
+                ] {x^2};
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em duas dimensões da função criada.} % Legenda da subfigura
+        \label{fig:mse-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): NOVO GRÁFICO 3D ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Ângulo de visão (azimute, elevação)
+                zmin=0, zmax=35, % Ajuste o zmax conforme o domínio
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície (y - y_hat)^2, que é (x - y)^2 no pgfplots
+                \addplot3[
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
+                ] { (x - y)^2 }; % A função de perda MSE
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em três dimensões da superfície criada.} % Legenda da subfigura
+        \label{fig:mse-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações do erro quadrático médio (\textit{MSE}) em duas e em três dimensões.}
+    \label{fig:mse} % Rótulo principal da figura
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -108,37 +150,82 @@ Note que diferente das funções de ativação em que era calculada a sua deriva
 Tendo a sua derivada, vale a pena analisar também o seu gráfico, para isso, é possível vê-lo na Figura \ref{fig:mse-derivada}. 
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Erro ($\hat{y} - y$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-3.5, xmax=3.5,
-            ymin=-6.5, ymax=6.5,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função 2*x
-            \addplot[
-                domain=-3:3, 
-                samples=100, 
-                color=red, 
-                very thick
-            ] {2*x};
-            
-            % Adiciona uma entrada na legenda
-            \addlegendentry{$\frac{\partial L}{\partial \hat{y}} = \frac{2}{N} \cdot \text{erro}$}
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da derivada da função de perda erro quadrático médio (\textit{MSE}).}
-    \label{fig:mse-derivada}
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): Gráfico 2D da Derivada do MSE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Gradiente vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = \hat{y} - y$)},
+                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-3.5, xmax=3.5,        % Limites do seu gráfico
+                ymin=-6.5, ymax=6.5,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função 2*x
+                \addplot[
+                    domain=-3:3, 
+                    samples=100, 
+                    color=red, 
+                    very thick
+                ] {2*x};
+                
+                % Mantendo sua legenda (com o fator 1/N)
+                \addlegendentry{$\frac{\partial L}{\partial \hat{y}} = \frac{2}{N} \cdot e$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (Gradiente vs. Erro).} % Legenda da subfigura
+        \label{fig:mse-derivada-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Derivada do MSE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície do Gradiente (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=-20.5, zmax=20.5, % Ajustado para 2 * (erro máx 10)
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície do gradiente: 2 * (y_hat - y)
+                \addplot3[
+                    mesh,           
+                    color=red,      % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { 2 * (y - x) }; % A função da derivada: 2 * (y_previsto - y_real)
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:mse-derivada-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da derivada (gradiente) da função de perda MSE.}
+    \label{fig:mse-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -177,37 +264,82 @@ Visto esses diferentes cenários em que o erro absoluto médio foi utilizado par
 
 Também vale a pena analisar o \textit{MAE} de forma gráfica, para isso ele está representado na Figura \ref{fig:mae}.
 
-\begin{figure}
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Erro ($y - \hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,          % Eixos centrados em (0,0)
-            grid=major,                 % Adiciona uma grade principal
-            grid style={dashed, gray!40}, % Estilo da grade
-            xmin=-4.5, xmax=4.5,        % Limites do eixo x
-            ymin=-0.5, ymax=4.5,         % Limites do eixo y
-            legend pos=north west,      % Posição da legenda
-            width=12cm,                 % Largura do gráfico
-            height=9cm,                 % Altura do gráfico
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função abs(x)
-            \addplot[
-                domain=-4:4, 
-                samples=100, 
-                color=red, 
-                very thick
-            ] {abs(x)};
-            
-            % Adiciona uma entrada na legenda
-            \addlegendentry{$L = |\text{erro}|$}
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda erro absoluto médio (\textit{MAE}).}
-    \label{fig:mae}
+\begin{figure}[h!]
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): Gráfico 2D do MAE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico MAE
+                ymin=-0.5, ymax=4.5,         % Limites do seu gráfico MAE
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função abs(x)
+                \addplot[
+                    domain=-4:4, 
+                    samples=100, 
+                    color=red, 
+                    very thick
+                ] {abs(x)};
+                
+                \addlegendentry{$L = |e|$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em duas dimensões.} % Legenda da subfigura
+        \label{fig:mae-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D do MAE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=10.5, % Limite Z ajustado para o MAE (abs(-5 - 5) = 10)
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície abs(y - y_hat)
+                \addplot3[
+                    mesh,           
+                    color=red,      % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { abs(x - y) }; % A função de perda MAE
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em três dimensões.} % Legenda da subfigura
+        \label{fig:mae-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações do erro absoluto médio (\textit{MAE}) em duas e em três dimensões.}
+    \label{fig:mae} % Rótulo principal do seu gráfico MAE
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -235,46 +367,92 @@ Se a função não é derivável em zero, é esperado que ela não seja uma boa 
 Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atrapalha a plotagem do gráfico do \textit{MAE}, o qual está representado na Figura \ref{fig:mae-derivada}.
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Erro ($\hat{y} - y$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-3.5, xmax=3.5,
-            ymin=-1.5, ymax=1.5,
-            ytick={-1, 0, 1}, % Define os pontos no eixo y
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Parte negativa da derivada (-1)
-            \addplot[
-                domain=-3:0, 
-                samples=100, 
-                color=red, 
-                very thick
-            ] {-1};
+    \centering % Centraliza a figura na página
 
-            % Parte positiva da derivada (+1)
-            \addplot[
-                domain=0:3, 
-                samples=100, 
-                color=red, 
-                very thick
-            ] {1};
-            
-            % Adiciona círculos abertos para indicar a descontinuidade em x=0
-            \addplot[only marks, mark=o, color=red, mark size=2pt] coordinates {(0,-1) (0,1)};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da derivada da função de perda erro absoluto médio (\textit{MAE}).}
-    \label{fig:mae-derivada}
+    % --- SUBFIGURA (a): Gráfico 2D da Derivada do MAE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Gradiente vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = \hat{y} - y$)},
+                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-3.5, xmax=3.5,        % Limites do seu gráfico
+                ymin=-1.5, ymax=1.5,         % Limites do seu gráfico
+                ytick={-1, 0, 1},           % Pontos no eixo y
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Parte negativa da derivada (-1)
+                \addplot[
+                    domain=-3:0, 
+                    samples=100, 
+                    color=red, 
+                    very thick
+                ] {-1};
+
+                % Parte positiva da derivada (+1)
+                \addplot[
+                    domain=0:3, 
+                    samples=100, 
+                    color=red, 
+                    very thick
+                ] {1};
+                
+                % Círculos abertos para a descontinuidade em x=0
+                \addplot[only marks, mark=o, color=red, mark size=2pt] coordinates {(0,-1) (0,1)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (Gradiente vs. Erro).} % Legenda da subfigura
+        \label{fig:mae-derivada-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Derivada do MAE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície do Gradiente (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=-1.5, zmax=1.5, % Espelha o eixo Y do gráfico 2D
+                ztick={-1, 0, 1}, % Consistente com o 2D
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície do gradiente: sign(y_hat - y)
+                \addplot3[
+                    mesh,           
+                    color=red,      % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { sign(y - x) }; % A função da derivada: sign(y_previsto - y_real)
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:mae-derivada-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da derivada (gradiente) da função de perda MAE.}
+    \label{fig:mae-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -308,47 +486,92 @@ O que Huber estava querendo basicamente era uma função que se comportasse de f
 
 É possível também representar a perda Huber utilizando gráficos, para isso, ela pode ser vista na Figura \ref{fig:huber-loss}. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
 
-\begin{figure}
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: Huber Loss ($\delta=1$)},
-            xlabel={Erro ($y - \hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,          % Eixos centrados em (0,0)
-            grid=major,                 % Adiciona uma grade principal
-            grid style={dashed, gray!40}, % Estilo da grade
-            xmin=-4.5, xmax=4.5,        % Limites do eixo x
-            ymin=-0.5, ymax=4.5,         % Limites do eixo y
-            legend pos=north west,      % Posição da legenda
-            width=12cm,                 % Largura do gráfico
-            height=9cm,                 % Altura do gráfico
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Define o valor de delta
-            \def\delta{1.0}
+\begin{figure}[h!]
+    \centering % Centraliza a figura na página
 
-            % Adiciona o gráfico da função Huber usando uma expressão condicional
-            % Se |x| <= delta, usa 0.5*x^2. Senão, usa delta*(|x| - 0.5*delta).
-            \addplot[
-                domain=-4:4, 
-                samples=201, % Samples ímpares para incluir o ponto x=0
-                color=orange, 
-                very thick
-            ] { abs(x) <= \delta ? 0.5*x^2 : \delta*(abs(x) - 0.5*\delta) };
+    % --- SUBFIGURA (a): Gráfico 2D da Huber Loss ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            % Define o valor de delta para este gráfico
+            \def\delta{1.0} 
             
-            % Adiciona uma entrada na legenda
-            \addlegendentry{$L_{\delta=1}(\text{erro})$}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
+                ymin=-0.5, ymax=4.5,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função Huber Loss
+                \addplot[
+                    domain=-4:4, 
+                    samples=201, 
+                    color=orange, 
+                    very thick
+                ] { abs(x) <= \delta ? 0.5*x^2 : \delta*(abs(x) - 0.5*\delta) };
+                
+                \addlegendentry{$L_{\delta=1}(e)$}
 
-            % Opcional: Adiciona linhas para mostrar a transição em delta
-            \draw[dashed, gray] (axis cs:-\delta, 0) -- (axis cs:-\delta, {\delta*(\delta-0.5*\delta)});
-            \draw[dashed, gray] (axis cs:\delta, 0) -- (axis cs:\delta, {\delta*(\delta-0.5*\delta)});
+                % Linhas de transição em delta
+                \draw[dashed, gray] (axis cs:-\delta, 0) -- (axis cs:-\delta, {\delta*(\delta-0.5*\delta)});
+                \draw[dashed, gray] (axis cs:\delta, 0) -- (axis cs:\delta, {\delta*(\delta-0.5*\delta)});
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em duas dimensões.} % Legenda da subfigura
+        \label{fig:huber-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Huber Loss ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            % Define o valor de delta para este gráfico
+            \def\delta{1.0}
+            
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=10.5, % Limite Z ajustado para Huber com domínio -5:5
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da Huber Loss
+                \addplot3[
+                    mesh,           
+                    color=orange,   % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { abs(x-y) <= \delta ? 0.5*(x-y)^2 : \delta*(abs(x-y) - 0.5*\delta) }; % A função Huber 3D
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em três dimensões.} % Legenda da subfigura
+        \label{fig:huber-3d}
+    \end{subfigure}
 
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda erro Huber \textit{loss}.}
-    \label{fig:huber-loss}
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da função de perda Huber (\textit{Huber Loss}, $\delta=1$) em duas e em três dimensões.}
+    \label{fig:huber-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -462,38 +685,81 @@ Com relação a sua fórmula, é possível vê-la na Equação \ref{eq:log-cosh-
 Já com relação ao gráfico dessa função, ele está presente na Figura \ref{fig:log-cosh-loss}. Note que a perda log-cosh atua de forma parecida com a perda de huber. Para valores em que a diferença da saída do modelo e o rôtulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que lembra ao de uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh passa a assumir um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funcoes bem como os erros padroes apresentam resultados similares. Com isso, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a \textit{Huber Loss}, mas ainda é desejável manter a variação no cálculo do erro do modelo.
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: Log-Cosh Loss},
-            xlabel={Erro ($y - \hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-4.5, xmax=4.5,
-            ymin=-0.5, ymax=4.5,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função ln(cosh(x))
-            \addplot[
-                domain=-4:4, 
-                samples=101,
-                color=teal, 
-                very thick
-            ] {ln(cosh(x))};
-            
-            \addlegendentry{$L = \log(\cosh(\text{erro}))$}
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda Log-Cosh. Note como ela é quadrática perto de zero e se torna linear para erros maiores.}
-    \label{fig:log-cosh-loss}
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): Gráfico 2D da Log-Cosh Loss ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
+                ymin=-0.5, ymax=4.5,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função ln(cosh(x))
+                \addplot[
+                    domain=-4:4, 
+                    samples=101,
+                    color=teal, 
+                    very thick
+                ] {ln(cosh(x))};
+                
+                \addlegendentry{$L = \log(\cosh(e))$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em duas dimensões.} % Legenda da subfigura
+        \label{fig:log-cosh-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Log-Cosh Loss ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=10.5, % Limite Z ajustado para Log-Cosh com domínio -5:5
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da Log-Cosh Loss
+                \addplot3[
+                    mesh,           
+                    color=teal,     % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { ln(cosh(x - y)) }; % A função Log-Cosh 3D
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Representação gráfica em três dimensões.} % Legenda da subfigura
+        \label{fig:log-cosh-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da função de perda Log-Cosh (\textit{Log-Cosh Loss}) em duas e em três dimensões.}
+    \label{fig:log-cosh-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -515,39 +781,83 @@ Visto essas diferentes propriedades dessa função, cabe agora analisar a sua de
 Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o qual está representado na Figura \ref{eq:log-cosh-derivada}. Caso você leitor tenha lido o Capítulo \ref{cap:ativacao-sigmoidais}, você não verá nada novo aqui, é apenas o gráfico característico em formato de "S" que as funções sigmoidais possuem. Um ponto interessante a ser destacado ao analisar o gráfico é que as saídas dessa função serão em um intervalo $[-1, 1]$, o que podem fazer com que o sinal do gradiente fique alternando, garantindo uma convergência mais rápida em alguns casos.
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Derivada da Perda Log-Cosh},
-            xlabel={Erro ($\hat{y} - y$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-4.5, xmax=4.5,
-            ymin=-1.5, ymax=1.5,         % Limites para a função tanh (-1 a 1)
-            ytick={-1, -0.5, 0, 0.5, 1}, % Marcas no eixo y
-            legend pos=south east,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função tanh(x)
-            \addplot[
-                domain=-4:4, 
-                samples=101,
-                color=teal, 
-                very thick
-            ] {tanh(x)};
-            
-            \addlegendentry{$L' = \tanh(\text{erro})$}
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da derivada da função de perda Log-Cosh, que corresponde à função tangente hiperbólica (\textit{tanh}).}
-    \label{fig:log-cosh-derivada}
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): Gráfico 2D da Derivada da Log-Cosh ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Gradiente vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = \hat{y} - y$)},
+                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
+                ymin=-1.5, ymax=1.5,         % Limites do seu gráfico
+                ytick={-1, -0.5, 0, 0.5, 1}, % Marcas no eixo y
+                legend pos=south east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função tanh(x)
+                \addplot[
+                    domain=-4:4, 
+                    samples=101,
+                    color=teal, 
+                    very thick
+                ] {tanh(x)};
+                
+                \addlegendentry{$L' = \tanh(e)$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (Gradiente vs. Erro).} % Legenda da subfigura
+        \label{fig:log-cosh-derivada-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Derivada da Log-Cosh ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície do Gradiente (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=-1.5, zmax=1.5, % Espelha o eixo Y do gráfico 2D
+                ztick={-1, 0, 1}, % Consistente com o 2D
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície do gradiente: tanh(y_hat - y)
+                \addplot3[
+                    mesh,           
+                    color=teal,     % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { tanh(y - x) }; % A função da derivada: tanh(y_previsto - y_real)
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:log-cosh-derivada-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da derivada (gradiente) da função de perda Log-Cosh.}
+    \label{fig:log-cosh-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -580,42 +890,85 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: MSLE (para valor real $y=10$)},
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=25,
-            ymin=-0.5, ymax=6,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função (ln(11) - ln(x+1))^2
-            \addplot[
-                domain=0:25, 
-                samples=101,
-                color=green, 
-                very thick
-            ] {(ln(10+1) - ln(x+1))^2};
-            
-            \addlegendentry{$L = (\log(11) - \log(\hat{y}+1))^2$}
+    \centering % Centraliza a figura na página
 
-            % Linha vertical para marcar o valor real
-            \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 6);
-            \node[above, gray!80, font=\tiny] at (axis cs:10, 6) {Valor Real};
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda MSLE. A perda é assimétrica e penaliza mais a subestimação.}
-    \label{fig:msle-loss}
+    % --- SUBFIGURA (a): Gráfico 2D da MSLE (Corte em y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Valor Previsto (Visão 2D)},
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-1, xmax=25,        % Limites do seu gráfico
+                ymin=-0.5, ymax=6,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função (ln(11) - ln(x+1))^2
+                \addplot[
+                    domain=0:25, 
+                    samples=101,
+                    color=green, 
+                    very thick
+                ] {(ln(10+1) - ln(x+1))^2};
+                
+                \addlegendentry{$L(\hat{y} | y=10)$}
+
+                % Linha vertical para marcar o valor real
+                \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 6);
+                \node[above, gray!80, font=\tiny] at (axis cs:10, 6) {Valor Real ($y=10$)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (corte em $y=10$).} % Legenda da subfigura
+        \label{fig:msle-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da MSLE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=12, % Ajustado para (ln(26)-ln(1))^2
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da MSLE
+                \addplot3[
+                    mesh,           
+                    color=green,    % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=0:25,    % Domínio > -1 (usando 0:25)
+                    domain y=0:25,  % Domínio > -1 (usando 0:25)
+                    samples=15      % Mesma resolução da malha
+                ] { (ln(x+1) - ln(y+1))^2 }; % A função MSLE 3D
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:msle-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da função de perda MSLE (\textit{Mean Squared Logarithmic Error}).}
+    \label{fig:msle-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -625,42 +978,85 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Derivada da MSLE (para valor real $y=10$)},
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=25,
-            ymin=-1, ymax=5,
-            legend pos=north east,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da derivada
-            \addplot[
-                domain=0:25, 
-                samples=101,
-                color=orange, 
-                very thick
-            ] {-2 * (ln(10+1) - ln(x+1)) / (x+1)};
-            
-            \addlegendentry{$L' \text{ para } y=10$}
+    \centering % Centraliza a figura na página
 
-            % Linha vertical para marcar o valor real onde o gradiente é zero
-            \draw[dashed, gray] (axis cs:10, -1) -- (axis cs:10, 5);
-            \node[above, gray!80, font=\tiny] at (axis cs:10, 5) {Valor Real};
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da derivada da MSLE. O gradiente (correção) para subestimações (valores $< 10$) é muito maior que para superestimações (valores $> 10$).}
-    \label{fig:msle-derivada}
+    % --- SUBFIGURA (a): Gráfico 2D da Derivada da MSLE (Corte em y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Gradiente vs. Valor Previsto (Visão 2D)},
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-1, xmax=25,        % Limites do seu gráfico
+                ymin=-1, ymax=5,         % Limites do seu gráfico
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da derivada (fórmula corrigida para corresponder aos eixos)
+                \addplot[
+                    domain=0:25, 
+                    samples=101,
+                    color=orange, 
+                    very thick
+                ] {2 * (ln(10+1) - ln(x+1)) / (x+1)}; % Corrigido (removido o -)
+                
+                \addlegendentry{$L' \text{ para } y=10$}
+
+                % Linha vertical para marcar o valor real
+                \draw[dashed, gray] (axis cs:10, -1) -- (axis cs:10, 5);
+                \node[above, gray!80, font=\tiny] at (axis cs:10, 5) {Valor Real};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (corte em $y=10$).} % Legenda da subfigura
+        \label{fig:msle-derivada-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Derivada da MSLE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície do Gradiente (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=-1.5, zmax=6.5, % Ajustado para o pico do gradiente
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da derivada da MSLE (fórmula corrigida)
+                \addplot3[
+                    mesh,           
+                    color=orange,   % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=0:25,    % Domínio de x (y_real)
+                    domain y=0:25,  % Domínio de y (y_previsto)
+                    samples=15      % Mesma resolução da malha
+                ] { 2 * (ln(x+1) - ln(y+1)) / (y+1) }; % L' = 2(log(y+1)-log(y_hat+1))/(y_hat+1)
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:msle-derivada-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da derivada (gradiente) da função de perda MSLE.}
+    \label{fig:msle-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -672,42 +1068,85 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: MAPE (para valor real $y=10$)},
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=25,
-            ymin=-0.2, ymax=2,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função abs((10 - x) / 10)
-            \addplot[
-                domain=0:25, 
-                samples=101,
-                color=blue, 
-                very thick
-            ] {abs((10 - x) / 10)};
-            
-            \addlegendentry{$L = \left|\frac{10 - \hat{y}}{10}\right|$}
+    \centering % Centraliza a figura na página
 
-            % Linha vertical para marcar o valor real
-            \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 2);
-            \node[above, gray!80, font=\tiny] at (axis cs:10, 2) {Valor Real};
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda MAPE. A perda é simétrica em valor absoluto, mas o seu alcance para superestimação ($\hat{y} > y$) é ilimitado.}
-    \label{fig:mape-loss}
+    % --- SUBFIGURA (a): Gráfico 2D da MAPE (Corte em y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Valor Previsto (Visão 2D)},
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-1, xmax=25,        % Limites do seu gráfico
+                ymin=-0.2, ymax=2,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função abs((10 - x) / 10)
+                \addplot[
+                    domain=0:25, 
+                    samples=101,
+                    color=blue, 
+                    very thick
+                ] {abs((10 - x) / 10)};
+                
+                \addlegendentry{$L(\hat{y} | y=10)$}
+
+                % Linha vertical para marcar o valor real
+                \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 2);
+                \node[above, gray!80, font=\tiny] at (axis cs:10, 2) {Valor Real ($y=10$)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (corte em $y=10$).} % Legenda da subfigura
+        \label{fig:mape-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da MAPE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=25, % Ajustado para o domínio
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da MAPE
+                \addplot3[
+                    mesh,           
+                    color=blue,     % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=1:25,    % Domínio de x (y_real) > 0 para evitar divisão por zero
+                    domain y=0:25,  % Domínio de y (y_previsto)
+                    samples=15      % Mesma resolução da malha
+                ] { abs((x - y) / x) }; % A função MAPE 3D: L = |(y - y_hat) / y|
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa ($y>0$).} % Legenda da subfigura
+        \label{fig:mape-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da função de perda MAPE (\textit{Mean Absolute Percentage Error}).}
+    \label{fig:mape-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -717,40 +1156,88 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Derivada da MAPE (para valor real $y=10$)},
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=25,
-            ymin=-0.5, ymax=0.5,
-            legend pos=north east,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize},
-            declare function={sgn(\x) = (\x > 0) - (\x < 0);}
-        ]
-            \addplot[
-                domain=0:25, 
-                samples=201,
-                color=red, 
-                very thick
-            ] {-sgn(10-x)/10};
-            
-            \addlegendentry{$L' = -\frac{\text{sgn}(10 - \hat{y})}{10}$}
+    \centering % Centraliza a figura na página
 
-            \draw[dashed, gray] (axis cs:10, -0.5) -- (axis cs:10, 0.5);
-            \node[above, gray!80, font=\tiny] at (axis cs:10, 0.5) {Valor Real};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da derivada da MAPE. O gradiente é constante, exceto por uma descontinuidade no ponto exato da predição correta, o que pode dificultar a convergência do treino.}
-    \label{fig:mape-derivada}
+    % --- SUBFIGURA (a): Gráfico 2D da Derivada da MAPE (Corte em y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Gradiente vs. Valor Previsto (Visão 2D)},
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-1, xmax=25,        % Limites do seu gráfico
+                ymin=-0.5, ymax=0.5,         % Limites do seu gráfico
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                declare function={sgn(\x) = (\x > 0) - (\x < 0);} % Função Sinal
+            ]
+                % Gráfico da derivada
+                \addplot[
+                    domain=0:25, 
+                    samples=201,
+                    color=red, 
+                    very thick
+                ] {-sgn(10-x)/10};
+                
+                \addlegendentry{$L'(\hat{y} | y=10)$}
+
+                % Linha vertical
+                \draw[dashed, gray] (axis cs:10, -0.5) -- (axis cs:10, 0.5);
+                \node[above, gray!80, font=\tiny] at (axis cs:10, 0.5) {Valor Real};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (corte em $y=10$).} % Legenda da subfigura
+        \label{fig:mape-derivada-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Derivada da MAPE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície do Gradiente (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=-1.5, zmax=1.5, % Gradiente máx/mín é +/- 1 (em y=1)
+                ztick={-1, 0, 1},
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                declare function={sgn(\x) = (\x > 0) - (\x < 0);} % Função Sinal
+            ]
+                % Gráfico da superfície da derivada da MAPE
+                \addplot3[
+                    mesh,           
+                    color=red,      % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=1:25,    % Domínio de x (y_real) > 0
+                    domain y=0:25,  % Domínio de y (y_previsto)
+                    samples=15      % Mesma resolução da malha
+                ] { -sgn(x - y) / x }; % L' = -sgn(y - y_hat) / y
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa ($y>0$).} % Legenda da subfigura
+        \label{fig:mape-derivada-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da derivada (gradiente) da função de perda MAPE.}
+    \label{fig:mape-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -762,42 +1249,85 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: sMAPE (para valor real $y=10$)},
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=25,
-            ymin=-0.2, ymax=2.2,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Adiciona o gráfico da função 2*abs(x - 10) / (abs(x) + abs(10))
-            \addplot[
-                domain=0:25, 
-                samples=101,
-                color=purple, 
-                very thick
-            ] {2*abs(x - 10) / (abs(x) + 10)};
-            
-            \addlegendentry{$L = \frac{2|\hat{y} - 10|}{|\hat{y}| + 10}$}
+    \centering % Centraliza a figura na página
 
-            % Linha vertical para marcar o valor real
-            \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 2.2);
-            \node[above, gray!80, font=\tiny] at (axis cs:10, 2.2) {Valor Real};
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda sMAPE. A perda é limitada (entre 0 e 2, ou 0\% e 200\%) e resolve o problema da divisão por zero da MAPE.}
-    \label{fig:smape-loss}
+    % --- SUBFIGURA (a): Gráfico 2D da sMAPE (Corte em y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Valor Previsto (Visão 2D)},
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-1, xmax=25,        % Limites do seu gráfico
+                ymin=-0.2, ymax=2.2,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função 2*abs(x - 10) / (abs(x) + 10)
+                \addplot[
+                    domain=0:25, 
+                    samples=101,
+                    color=purple, 
+                    very thick
+                ] {2*abs(x - 10) / (abs(x) + 10)};
+                
+                \addlegendentry{$L(\hat{y} | y=10)$}
+
+                % Linha vertical para marcar o valor real
+                \draw[dashed, gray] (axis cs:10, 0) -- (axis cs:10, 2.2);
+                \node[above, gray!80, font=\tiny] at (axis cs:10, 2.2) {Valor Real ($y=10$)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (corte em $y=10$).} % Legenda da subfigura
+        \label{fig:smape-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da sMAPE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=2.2, % sMAPE é limitada entre 0 e 2
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da sMAPE
+                \addplot3[
+                    mesh,           
+                    color=purple,   % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=0:25,    % Domínio de x (y_real)
+                    domain y=0:25,  % Domínio de y (y_previsto)
+                    samples=15      % Mesma resolução da malha
+                ] { 2*abs(x - y) / (abs(x) + abs(y) + 1e-6) }; % L = 2|y - y_hat| / (|y| + |y_hat|)
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:smape-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da função de perda sMAPE (\textit{Symmetric Mean Absolute Percentage Error}).}
+    \label{fig:smape-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -807,40 +1337,87 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Derivada da sMAPE (para valor real $y=10$)},
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=25,
-            ymin=-0.5, ymax=0.5,
-            legend pos=north east,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize},
-            declare function={sgn(\x) = (\x > 0) - (\x < 0);}
-        ]
-            \addplot[
-                domain=0:25, 
-                samples=201,
-                color=brown, 
-                very thick
-            ] {2 * (sgn(x-10)*(x+10) - abs(x-10)) / ((x+10)^2)};
-            
-            \addlegendentry{$L' \text{ para } y=10$}
+    \centering % Centraliza a figura na página
 
-            \draw[dashed, gray] (axis cs:10, -0.5) -- (axis cs:10, 0.5);
-            \node[above, gray!80, font=\tiny] at (axis cs:10, 0.5) {Valor Real};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da derivada da sMAPE. O gradiente não é constante, diminuindo à medida que a previsão se afasta do valor real, o que pode estabilizar o treino.}
-    \label{fig:smape-derivada}
+    % --- SUBFIGURA (a): Gráfico 2D da Derivada da sMAPE (Corte em y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Gradiente vs. Valor Previsto (Visão 2D)},
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-1, xmax=25,        % Limites do seu gráfico
+                ymin=-0.5, ymax=0.5,         % Limites do seu gráfico
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                declare function={sgn(\x) = (\x > 0) - (\x < 0);} % Função Sinal
+            ]
+                % Gráfico da derivada
+                \addplot[
+                    domain=0:25, 
+                    samples=201,
+                    color=brown, 
+                    very thick
+                ] {2 * (sgn(x-10)*(x+10) - abs(x-10)) / ((x+10)^2)};
+                
+                \addlegendentry{$L' \text{ para } y=10$}
+
+                % Linha vertical
+                \draw[dashed, gray] (axis cs:10, -0.5) -- (axis cs:10, 0.5);
+                \node[above, gray!80, font=\tiny] at (axis cs:10, 0.5) {Valor Real};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (corte em $y=10$).} % Legenda da subfigura
+        \label{fig:smape-derivada-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Derivada da sMAPE ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície do Gradiente (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=-4.2, zmax=1.2, % Gradiente é grande para y pequeno
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                declare function={sgn(\x) = (\x > 0) - (\x < 0);} % Função Sinal
+            ]
+                % Gráfico da superfície da derivada da sMAPE
+                \addplot3[
+                    mesh,           
+                    color=brown,    % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=1:25,    % Domínio de x (y_real) > 0
+                    domain y=0:25,  % Domínio de y (y_previsto)
+                    samples=15      % Mesma resolução da malha
+                ] { 2 * (sgn(y-x)*(abs(y)+abs(x)) - abs(y-x)*sgn(y)) / ((abs(y)+abs(x))^2) }; % Derivada da sMAPE 3D
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa ($y>0$).} % Legenda da subfigura
+        \label{fig:smape-derivada-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da derivada (gradiente) da função de perda sMAPE.}
+    \label{fig:smape-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -858,39 +1435,106 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: Perda Quantílica (Pinball Loss)},
-            xlabel={Erro ($y - \hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-4.5, xmax=4.5,
-            ymin=-0.5, ymax=3.5,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Tau = 0.5 (MAE)
-            \addplot[domain=-4:4, samples=5, color=gray, thick] {0.5*abs(x)};
-            \addlegendentry{$\tau=0.5$ (Mediana)}
-            
-            % Tau = 0.9
-            \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.9*x) : ((1-0.9)*(-x))};
-            \addlegendentry{$\tau=0.9$ (Percentil 90)}
-            
-            % Tau = 0.1
-            \addplot[domain=-4:4, samples=5, color=red, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
-            \addlegendentry{$\tau=0.1$ (Percentil 10)}
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da Perda Quantílica para diferentes valores de $\tau$. Note a assimetria da penalidade.}
-    \label{fig:quantile-loss}
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): Gráfico 2D da Perda Quantílica ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
+                ymin=-0.5, ymax=3.5,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Tau = 0.5 (MAE)
+                \addplot[domain=-4:4, samples=5, color=gray, thick] {0.5*abs(x)};
+                \addlegendentry{$\tau=0.5$ (Mediana)}
+                
+                % Tau = 0.9
+                \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.9*x) : ((1-0.9)*(-x))};
+                \addlegendentry{$\tau=0.9$ (Percentil 90)}
+                
+                % Tau = 0.1
+                \addplot[domain=-4:4, samples=5, color=red, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
+                \addlegendentry{$\tau=0.1$ (Percentil 10)}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (Perda vs. Erro).} % Legenda da subfigura
+        \label{fig:quantile-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Perda Quantílica ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=10.5, % Ajustado para o domínio
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Tau = 0.5 (Plano de fundo como superfície)
+                \addplot3[
+                    surf,           % Superfície sólida
+                    color=gray,
+                    opacity=0.5,    % Semi-transparente
+                    shader=interp,
+                    domain=-5:5,
+                    domain y=-5:5,
+                    samples=30      % Mais samples para 'surf' suave
+                ] { 0.5*abs(x - y) };
+                \addlegendentry{$\tau=0.5$}
+
+                % Tau = 0.9 (Malha)
+                \addplot3[
+                    mesh,           
+                    color=blue,
+                    domain=-5:5,
+                    domain y=-5:5,
+                    samples=15      % Menos samples para 'mesh'
+                ] { (x - y >= 0) ? (0.9*(x - y)) : ((1-0.9)*(-(x - y))) };
+                \addlegendentry{$\tau=0.9$}
+                
+                % Tau = 0.1 (Malha)
+                \addplot3[
+                    mesh,           
+                    color=red,
+                    domain=-5:5,
+                    domain y=-5:5,
+                    samples=15
+                ] { (x - y >= 0) ? (0.1*(x - y)) : ((1-0.1)*(-(x - y))) };
+                \addlegendentry{$\tau=0.1$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:quantile-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da Perda Quantílica (\textit{Pinball Loss}) em duas e em três dimensões.}
+    \label{fig:quantile-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -961,46 +1605,92 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 \end{equacaodestaque}
 
 \begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Função de Perda: Epsilon-Insensível ($\epsilon=1$)},
-            xlabel={Erro ($y - \hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-4.5, xmax=4.5,
-            ymin=-0.5, ymax=3.5,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
+    \centering % Centraliza a figura na página
+
+    % --- SUBFIGURA (a): Gráfico 2D da Epsilon-Insensitive Loss ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
             % Define o valor de epsilon
             \def\epsilon{1.0}
-
-            % Adiciona o gráfico da função
-            \addplot[
-                domain=-4:4, 
-                samples=101,
-                color=purple, 
-                very thick
-            ] {max(0, abs(x) - \epsilon)};
             
-            \addlegendentry{$L_{\epsilon=1}(\text{erro})$}
+            \begin{axis}[
+                % Dimensões ajustadas para caber lado a lado
+                width=\linewidth,  
+                height=7cm,
+                title={(a) Perda vs. Erro (Visão 2D)},
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
+                ymin=-0.5, ymax=3.5,         % Limites do seu gráfico
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da função
+                \addplot[
+                    domain=-4:4, 
+                    samples=101,
+                    color=purple, 
+                    very thick
+                ] {max(0, abs(x) - \epsilon)};
+                
+                \addlegendentry{$L_{\epsilon=1}(e)$}
 
-            % Linhas tracejadas para marcar a margem epsilon
-            \draw[dashed, gray] (axis cs:-\epsilon, -0.5) -- (axis cs:-\epsilon, 3.5);
-            \draw[dashed, gray] (axis cs:\epsilon, -0.5) -- (axis cs:\epsilon, 3.5);
-            \node[above, gray!80, font=\tiny] at (axis cs:0, 2) {Zona de Perda Zero};
+                % Linhas tracejadas para marcar a margem epsilon
+                \draw[dashed, gray] (axis cs:-\epsilon, -0.5) -- (axis cs:-\epsilon, 3.5);
+                \draw[dashed, gray] (axis cs:\epsilon, -0.5) -- (axis cs:\epsilon, 3.5);
+                \node[above, gray!80, font=\tiny] at (axis cs:0, 2) {Zona de Perda Zero};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visão 2D (Perda vs. Erro).} % Legenda da subfigura
+        \label{fig:epsilon-2d}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal flexível entre as subfiguras
+    % --- SUBFIGURA (b): Gráfico 3D da Epsilon-Insensitive Loss ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            % Define o valor de epsilon
+            \def\epsilon{1.0}
             
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da função de perda Epsilon-Insensível com uma margem de $\epsilon=1$.}
-    \label{fig:epsilon-insensitive-loss}
+            \begin{axis}[
+                % Dimensões consistentes com o gráfico (a)
+                width=\linewidth,
+                height=7cm,
+                title={(b) Superfície de Perda (Visão 3D)},
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45}, % Mesmo ângulo de visão do seu template
+                zmin=0, zmax=10.5, % Ajustado para max(0, abs(10) - 1) = 9
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+                % Gráfico da superfície da Epsilon-Insensitive Loss
+                \addplot3[
+                    mesh,           
+                    color=purple,   % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { max(0, abs(x - y) - \epsilon) }; % A função Epsilon-Insensitive 3D
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D completa.} % Legenda da subfigura
+        \label{fig:epsilon-3d}
+    \end{subfigure}
+
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da função de perda Epsilon-Insensível (\textit{Epsilon-Insensitive Loss}, $\epsilon=1$) em duas e em três dimensões.}
+    \label{fig:epsilon-insensitive-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
