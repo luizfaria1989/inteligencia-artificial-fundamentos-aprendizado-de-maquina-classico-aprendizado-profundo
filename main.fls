@@ -1029,6 +1029,14 @@ INPUT ./capitulos/parte-III-pilares/cap-09-modernas.tex
 INPUT ./capitulos/parte-III-pilares/cap-09-modernas.tex
 INPUT capitulos/parte-III-pilares/cap-09-modernas.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8t.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr8t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT ./capitulos/parte-III-pilares/cap-xx-perda-regressao.tex
 INPUT ./capitulos/parte-III-pilares/cap-xx-perda-regressao.tex
 OUTPUT capitulos/parte-III-pilares/cap-xx-perda-regressao.aux
