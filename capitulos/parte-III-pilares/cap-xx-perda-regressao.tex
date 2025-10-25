@@ -128,6 +128,8 @@ Tendo a sua equação, é possível também plotar o seu gráfico, para isso, el
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características do Erro Quadrático Médio}
+
 Tendo o seu gráfico e sua equação é possível discutir algumas propriedades interessantes do erro quadrático médio, entre elas vale destacar:
 
 \begin{itemize}
@@ -236,6 +238,27 @@ Tendo a sua derivada, vale a pena analisar também o seu gráfico, para isso, é
     \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-perda-regressao}
 \end{equation}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do Erro Quadrático Médio em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma outra abordagem para resolver problemas de regressão. Para isso, a próxima seção busca apresentar o erro absoluto médio, que é uma alternativa para o erro quadrático médio que tem como principal diferença o jeito que lida com \textit{outliers}.
 
 \subsection{Erro Absoluto Médio (Mean Absolute Error - MAE)}
@@ -342,6 +365,8 @@ Também vale a pena analisar o \textit{MAE} de forma gráfica, para isso ele est
     \label{fig:mae} % Rótulo principal do seu gráfico MAE
     \fonte{O autor (2025).}
 \end{figure}
+
+\textbf{Características do Erro Absoluto Médio}
 
 A partir do seu gráfico e de sua equação é possível retirar diferentes informações dessa função de perda, as quais estão discutidas a seguir:
 
@@ -458,9 +483,30 @@ Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atra
 
 Perceba que a derivada do erro absoluto médio é representado em forma de uma função por partes, neste caso, ela é divida em duas diferentes retas, parecida com a função de ativação degrau unitário. Assim, a derivada do \textit{MAE} é composta por duas retas constantes, a primeira constante em $-1$ e a segunda constante em $1$, apresentando uma descontinuidade em zero.
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do Erro Absoluto Médio em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Visto o erro quadrático médio, que penaliza fortamente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não se preocupe tanto com os \textit{outliers}? Essa é a proposta da perda Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela será vista em seguida.
 
-\subsection{Huber Loss: O Melhor de Dois Mundos}
+\subsection{Perda de Huber}
 
 A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss} define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}.
 
@@ -575,6 +621,8 @@ O que Huber estava querendo basicamente era uma função que se comportasse de f
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características da Perda de Huber}
+
 Conhecido o gráfico e sua equação, é possível agora discutir algumas das propriedades da perda huber, as quais são apresentadas a seguir:
 
 \begin{itemize}
@@ -669,6 +717,27 @@ Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a es
 
 Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é nítido que o grau de complexidade do problema pode aumentar, pois haverá mais um hiperparâmetro para ser otimizado de forma manual. Isso pode não ser ideal para cenários em que já existem muitos hiperparâmetros. Para isso, \textcite{LossesArticle} explicam que essa função é comumumente utilizada em problemas de gressão robusta, como em regressões lineares e em \textit{time series forecasting}, em que \textit{outliers} e ruído podem estar presentes.
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Apliações da Perda de Huber em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Com isso, foi possível ver que a perda de Huber é uma excelente alternativa para os casos em que deseja-se controlar os pontos em que o cálculo da perda deve atuar de forma severa (usando termos quadráticos, semelhante a perda L2) e a partir de quis casos esse cálculo pode ser menos punitivo (usando termos lineares, semelhante a perda L1). Contudo, foi visto que ela tem um problema, os pontos em que essas funções se juntam gera uma descontinuidade, atrabalhando a derivação dessas funções. Para resolver esse problema da descontinuidade, pode ser utilizada como alternativa a perda Log-Cosh, a qual será vista em seguida.
 
 \subsection{Perda Log-Cosh}
@@ -762,6 +831,8 @@ Já com relação ao gráfico dessa função, ele está presente na Figura \ref{
     \label{fig:log-cosh-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
+
+\textbf{Características da Perda Log-Cosh}
 
 Com relação as suas propriedades é possível discutir algumas a seguir:
 
@@ -861,6 +932,27 @@ Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Perda Log-Cosh em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Vistas essas quatro funções: O erro quadrático médio (\textit{MSE}), o erro absoluto médio (\textit{MAE}), a perda de Huber e a perda log-cosh. Já é possível resolver a grande maioria dos problemas de regressão em aprendizado de máquina. Contudo, existem problemas que vão além dessas perdas, precisando de funções mais específicas para garantir uma melhor avaliação do erro e a partir dele, saber atualizar o gradiente e com isso o modelo aprender de fato.
 
 Para isso, as próximas seções buscam explorar diferentes cenários em que as funções de perda para regressão vistas até agora não são a melhor escolha. Assim, serão exploradas mais três secões, a primeira focada no erro relativo, a segunda focada em funções de erro que não calculam a média dos diversos erros, e a última para casos em são utilizas distribuições específicas para os valores.
@@ -884,10 +976,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
 
 \subsection{Erro Quadrático Médio Logarítmico (MSLE)}
 
+A primeira função a ser vista nessa nova categoria é o erro quadrático médio logarítimico, também chamado de \textit{Mean Squared Logarithmic Error} (\textit{MSLE}). A sua fórmula é dada pela Equação \ref{eq:msle-loss}. Perceba que diferente das funções vistas até agora, ela faz o cálculo do logaritmo natural dos valores reais ($y_j$) e dos valores previstos pelo modelo ($\hat{y}_j$). Além disso, um ponto que vale a pena ser destacado é com relação ao valor de 1 que é somado aos valores antes do cálculo do logaritmo. Isso ocorre para evitar com que esse resultado possa ser negativo ou zero, gerando uma indeterminação ao calcular o logaritimo.
+
 \begin{equacaodestaque}{Erro Quadrático Médio Logarítmico (\textit{MSLE})}
     \Loss_{\text{MSLE}} = \frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) - \log(\hat{y}_j + 1))^2
     \label{eq:msle-loss}
 \end{equacaodestaque}
+
+Com relação ao seu gráfico, ele pode visto na Figura \ref{fig:msle-loss}. Na Figura \ref{fig:msle-2d}, a esquerda, está a visão em duas dimensões dessa função, enquanto na Figura \ref{fig:msle-3d}, a direita, está a visão em três dimensões. Perceba que a adição do logaritmo para essa função traz alguns benefícios como a continuidade em seus pontos além de garantir uma superfície suave e diferenciável. Contudo, a pricipal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -971,6 +1067,15 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \label{fig:msle-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
+
+\textbf{Características do Erro Quadrático Médio Logarítmico}
+
+Conhecendo a fórmula dessa função e suas representações gráficas, cabe agora discutir algumas das características dessa função:
+
+\begin{itemize}
+    \item \textbf{Tendência de penalizar subestimações:} Como pode ser visto nos gráficos da Figura \ref{fig:msle-loss}, a função \textit{MSLE} não forma uma curva convexa simétrica verticalmente, perceba que conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto menor for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior.
+    \item \textbf{Continuidade e Diferencibilidade:} Ainda com relação aos seus gráficos é possível analisar a continuidade dessa função. Note que ela não apresenta nenhum ponto "problema" que poderia afetar o cálculo das derivadas e com isso atrabalhar o fluxo do gradiente. Além disso, o uso dos logaritmos para essa função permite que suas curvas sejam suaves, o que também ajuda na sua continuidade.
+\end{itemize}
 
 \begin{equacaodestaque}{Derivada do Erro Quadrático Médio Logarítmico (\textit{MSLE})}
     \frac{\partial \Loss_{\text{MSLE}}}{\partial \hat{y}_j} = - \frac{2}{N} \cdot \frac{\log(y_j + 1) - \log(\hat{y}_j + 1)}{\hat{y}_j + 1}
@@ -1059,6 +1164,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \label{fig:msle-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do Erro Quadrático Logarítimico Médio em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \subsection{Erro Percentual Absoluto Médio (MAPE)}
 
@@ -1149,6 +1269,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \label{fig:mape-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
+
+\textbf{Características do Erro Percentual Absoluto Médio}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
 
 \begin{equacaodestaque}{Derivada do Erro Percentual Absoluto Médio (\textit{MAPE})}
     \frac{\partial \Loss_{\text{MAPE}}}{\partial \hat{y}_j} = - \frac{1}{N} \cdot \frac{\text{sgn}(y_j - \hat{y}_j)}{y_j}
@@ -1241,6 +1369,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do Erro Percentual Absoluto Médio em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
 \subsection{Erro Percentual Absoluto Médio Simétrico (sMAPE)}
 
 \begin{equacaodestaque}{Erro Percentual Absoluto Médio Simétrico (\textit{sMAPE})}
@@ -1331,6 +1474,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características do Erro Percentual Absoluto Médio Simétrico}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
 \begin{equacaodestaque}{Derivada do Erro Percentual Absoluto Médio Simétrico (\textit{sMAPE})}
     \frac{\partial \Loss_{\text{sMAPE}}}{\partial \hat{y}_j} = \frac{2}{N} \cdot \frac{\text{sgn}(\hat{y}_j - y_j)(\hat{y}_j + y_j) - |\hat{y}_j - y_j|\text{sgn}(\hat{y}_j)}{(\hat{y}_j + y_j)^2}
     \label{eq:smape-derivada}
@@ -1420,6 +1571,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \label{fig:smape-derivada} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do Erro Percentual Absoluto Médio em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
@@ -1538,6 +1704,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características da Perda Quantílica}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
 \begin{equacaodestaque}{Derivada da Perda Quantílica}
     \frac{\partial \Loss_{\tau}}{\partial \hat{y}_j} = 
     \begin{cases} 
@@ -1592,6 +1766,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \label{fig:quantile-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Perda Quantília em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \subsection{Perda Epsilon-Insensível}
 
@@ -1694,6 +1883,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características da Perda Epsilon-Insensível}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
 \begin{equacaodestaque}{Derivada da Perda Epsilon-Insensível}
     \frac{\partial \Loss_{\epsilon}}{\partial \hat{y}} = 
     \begin{cases} 
@@ -1748,6 +1945,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Perda Epsilon-Insensível em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
 \section{Perdas Baseadas em Distribuições de Dados}
 
 \subsection{Perda de Poisson}
@@ -1798,6 +2010,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características da Perda de Poisson}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
 \begin{equacaodestaque}{Derivada da Perda de Poisson}
     \frac{\partial \Loss_{\text{Poisson}}}{\partial \hat{y}_j} = 1 - \frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j - y_j}{\hat{y}_j}
     \label{eq:poisson-loss-derivada}
@@ -1840,6 +2060,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \label{fig:poisson-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Perda de Poisson em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \subsection{Perda de Tweedie}
 
@@ -1889,6 +2124,14 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características da Perda de Tweedie}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
 \begin{equacaodestaque}{Derivada da Perda de Tweedie}
     \frac{\partial \Loss_{\text{Tweedie}}}{\partial \hat{y}_j} = \hat{y}_j^{-p}(\hat{y}_j - y_j)
     \label{eq:tweedie-loss-derivada}
@@ -1937,6 +2180,21 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Perda de Tweedie}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
 \subsection{Divergência Kullback-Leibler}
 
 \begin{equacaodestaque}{Divergência KL entre duas Gaussianas}
@@ -1982,12 +2240,35 @@ Aí você precisaria de funções de perda que lidassem com o erro relativo das 
     \fonte{O autor (2025).}
 \end{figure}
 
+\textbf{Características da Divergência de Kullback-Leibler}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
 \begin{equacaodestaque}{Derivadas da Divergência KL (Gaussiana)}
     \frac{\partial D_{KL}}{\partial \mu_2} = \frac{\mu_2 - \mu_1}{\sigma_2^2}
     \\[10pt] % Espaçamento vertical
     \frac{\partial D_{KL}}{\partial \sigma_2} = \frac{1}{\sigma_2} - \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{\sigma_2^3}
     \label{eq:kl-divergence-derivada-gaussiana}
 \end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Divergência de Kullback-Leibler em Problemas de Regressão}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \section{Comparativo: Funções de Perda para Regressão}
 

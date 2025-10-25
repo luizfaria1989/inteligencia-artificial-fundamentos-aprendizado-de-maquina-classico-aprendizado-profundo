@@ -971,6 +971,27 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
     \label{fig:curvas-de-aprendizado-adagrad-mnist}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 O \textit{AdaGrad} simbolizou não somente um avanço para os algoritmos de otimização, como também introduziu o conceito de diferentes taxas de aprendizado, permitindo com que um modelo possa aprender bem tanto características muito frequentes como características mais incomuns. Dessa forma, um novo periódo de otimizadores surgiu, seguindo os conceitos do \textit{AdaGrad} mas buscando incrementar o seu algoritmo a fim de corrigir falhas que ficaram para trás. Ao longo dessa seção, serão vistos mais otimizadores que atuam de forma parecida ao \textit{AdaGrad}, adicinando melhorias para o seu desempenho.
 
 \subsection{Root Mean Square Propagation (RMSProp)}
@@ -1007,6 +1028,27 @@ O último passo do \textit{RSMProp} consistem em atualizar os parâmetros de $\t
 \end{algorithm}
 
 Perceba que o \textit{RMSProp} consegue corrigir um dos problemas do \textit{AdaGrad} ao atualizar o vetor acumulador utilizando uma taxa de decaimento $\nu$. No \textit{AdaGrad} o vetor acumalor só cresce, enquanto no RMSProp os termos mais antigos vão tendo seu valor reduzido gradativamente pelo coeficiente $\nu$. Dessa forma, é possível melhor focar nos termos mais recentes que fazem parte do vetor acumulador.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do RMSProp em Otimização de Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \subsection{Adaptive Moment Estimation (Adam)}
 
@@ -1104,6 +1146,27 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} co
     }
     \label{fig:comparativo-adam-convnet}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do Adam em Otimização de Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Assim como os métodos \textit{AdaGrad} e \textit{RMSProp} foram grandes inspirações para o desenvolvimento do otimizador \textit{Adam}, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
@@ -1206,6 +1269,27 @@ Utilizando os otimizadores \textit{SGD}, \textit{Momentum}, \textit{Nesterov}, \
  
 Comparando com o \textit{Adam} tradicional, a principal diferença do \textit{NAdam} com esse outro otimizador está justamente relacionada ao decaimento do erro, que é consideravalemente maior, enquanto o \textit{NAdam} já estava se estabilizando com cerca de 10 épocas, o \textit{Adam} parece demorar mais. De fato como apresentado por \textcite{NadamMethod}, o \textit{NAdam} é capaz de acelerar as taxas de convergência do modelo que está sendo treinado.
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do NAdam em Otimização de Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \subsection{Adam With Decoupled Weight Decay (AdamW)}
 
 Uma outra variante do \textit{Adam} tradicional é o \textit{AdamW}. Essa variante foi apresentada no trabalho \textit{Decoupled Weight Decay Regularization} dos pesquisadores \textcite{AdamWMethod}, em que eles propuseram uma forma diferente de corrigir como a relgularização $L^2$, era feita no método original. Para isso, o \textit{AdamW} desacopla o decaimento do peso da atualização principal do do gradiente, e o aplica como um passo separado e final na atualização dos parâmetros \parencite{AdamWMethod}.
@@ -1281,6 +1365,27 @@ Quando comparamos agora as duas variantes do \textit{Adam} vemos um cenário dif
 Agora se analisar o \textit{AdamW} o resultado é bem mais positivo. Assim como o \textit{SGDW} existe uma linha vertical em azul no \textit{AdamW}, o que nos mostra que é possível escolher uma quantidade grande de taxas de aprendizado que permitam ao modelo uma boa convergência, além é claro dela ser mais independente com relação do decaimento de peso.
 
 Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira tentar taxas de aprendizado diferentes e ainda sim obter uma boa convergência do modelo. Por exemplo, se quiser você pode escolher uma taxa de aprendizado mais alta, permitindo com que o modelo dê passos mais largos e assim consiga convergir de forma mais rápida. Mas você ainda tem a oportunidade de utilizar taxas de aprendizado menores e provavelmente irá encontrar um ponto de mínimo.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do ADamW em Otimização de Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \subsection{Comparativo dos Otimizadores Modernos}
 

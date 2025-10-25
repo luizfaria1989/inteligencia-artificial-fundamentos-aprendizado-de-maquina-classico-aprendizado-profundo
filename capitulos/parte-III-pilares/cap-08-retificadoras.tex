@@ -168,6 +168,27 @@ Além da sua representação em forma de equação, é possível fazer também o
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Rectified Linear Unit em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Assim, com toda essa simplicidade e versatilidade, a \textit{ReLU} se tornou uma função que é considerada padrão para a maioria das redes neurais \textit{feedforward} \parencite{DeepLearningBook}. Contudo, ela também apresenta problemas assim como as sigmoidais, sendo um desses problemas o dos \textit{ReLUs} agonizantes, o qual será explicado em sequência.
 
 \section{O Problema dos ReLUs Agonizantes}
@@ -305,6 +326,27 @@ Além disso, ainda na tabela \ref{tab:leaky-relu-desempenho}, nas redes composta
 Agora comparando as redes que fazem uso de quatro camadas, cabe destacar os resultados da entropia cruzada no conjunto de desenvolvimento (\textit{Dev CrossEnt}), que é uma métrica responsável por medir a diferença entre duas distribuições de probabilidade, neste cenário: a distrubição de probabilidade prevista pelo modelo e a distribuição de probabilidade real, com base nesses dois valores, a entropia cruzada consegue medir o quão bem o modelo de rede neural criado pelos pesquisadores está prevendo a transcrição correta da fala durante a fase de treinamento e ajuste, para isso, é utilizado o conjunto de dados de desenvolvimento (\textit{Dev Set}). Tendo isso em mente, o modelo de quatro camadas que fez uso da \textit{Leaky ReLU} em sua arquitetura obteve o melhor resultado dos seus outros dois concorrentes, sendo assim, ele teve como resultado uma entropia cruzada de 1.78, 0.01 menor que o modelo que fez uso da \textit{ReLU} tradicional (que obteve 1.79) e 0.2 menor que o modelo que fez uso da tangente hiperbólica (que obteve 1.98).
 
 Ainda no grupo de redes que possuem quatro camadas, é possível ver um empate ao analisar a acurácia no conjunto de desenvolvimento (\textit{Dev Acc}), que é uma métrica responsável por medir a proporção das previsões corretas feitas pelo modelo quando comparadas com o total de previsões feitas. Assim, perceba que na tabela \ref{tab:leaky-relu-desempenho}, as redes que fizeram uso tanto da \textit{ReLU} quanto da \textit{Leaky ReLU} obtiveram a mesma acurácia de 53.9\%, já quando comparadas com a tangente hiperbólica, é possível ver uma diferença de 4.1 pontos percentuais, indicando as funções retificadoras acabam sendo mais precisas para essa análise. Não somente elas são mais precisas, mas quando comparadas com a \textit{Leaky ReLU}, nota-se outros ganhos também, como menores taxas de erro de palavra (\textit{WER}) tanto no conjunto \textit{Switchboard} (\textit{SWBD}) quanto no conjunto de avaliação (\textit{EV}).
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Leaky ReLU em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Assim, a \textit{Leaky ReLU} já é uma evolução quando comparamos com a ReLU tradicional, mas, é possível ir além e encontrar funções ainda mais complexas que também buscam assim como a \textit{LReLU} resolver o problema dos \textit{ReLUs} agonizantes com um vazamento de gradiente nos casos negativos, uma dessas funções é a \textit{PReLU}, a qual será vista em seguida.
 
@@ -475,6 +517,21 @@ Ao comparar o modelo C, que faz uso da \textit{PReLU} e possui mais camadas conv
 Um feito importante que deve ser destacado sobre a \textit{PReLU}, que inclusive é o nome do artigo que foi responsável por introduzir essa função para a comunidade científica, é de que durante a pesquisa do texto \textit{Delving Deep into Rectifiers: Surpassing Human Level Performance on Image Net Classification}, \textcite{PReLUArticle} foram capazes de criar uma rede neural capaz de superar a capacidade humana de reconhecer diferentes conjuntos de imagens no \textit{ImagneNet} Classification, isso ocorreu porque a um humano ao analisar o \textit{ImageNet} apresenta uma taxa de erro \textit{Top-5} de 5.1\% e em um dos testes realizados pelos autores, uma rede neural alcançou uma taxa de erro \textit{Top-5} de 4.94\%, superando assim a capacidade humana de reconhecimento de imagens. 
 
 Assim, é nítido destacar que não somente a \textit{PReLU}, mas as funções retificadoras de forma geral, foram capazes de trazer melhorias significativas para os modelos de aprendizado profundo quando comparadas com as funções sigmoides, as quais foram o padrão da indústria por muitos anos. De fato, a resolução do problema do desaparecimento do gradiente, possibilitou a criação de redes neurais ainda mais profundas, e com isso, sendo capazes de extrair mais informações e consequente melhores métricas, sendo capazes até de superar a capacidade humanas em algumas tarefas como no artigo de introdução da \textit{PReLU}.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Parametric ReLU em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \subsection{Randomized Leaky ReLU (RReLU)}
 
@@ -688,6 +745,21 @@ Já ao analisar a Tabela \ref{tab:rrelu-cifar-100}, que mostra a taxa de erro de
 
 Ainda em \textit{Empirical Evaluation of Rectified Activations in Convolutional Network} \textcite{XuRReLU} explicam que a \textit{RReLU} é uma função que ajuda a combater o sobreajuste (overfitting) do modelo, mas ainda devem ser feitos mais testes para descobrir como a aleatoriedade afeta os processos de treino e teste \parencite{XuRReLU}. Essa característica de ajudar a combater o sobreajuste é uma vantagem que a \textit{RReLU} possui, permitindo com que modelos maiores e mais profundos possam ser criados e mesmo assim obtenham resultados significativos. Provavelmente, um dos motivos dela possuir essa função está no fato de que ela introduz uma maior aleatoriedade para o modelo, ajudando a impedir que ele decore os padrões, como em imagens dos conjuntos \textit{CIFAR-10} e \textit{CIFAR-100}.
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Randomized Leaky ReLU em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
 \section{As Variantes Não Lineares: Em Busca da Suavidade}
 
 Seguindo adiante, agora será visto um novo conjunto de variantes da \textit{ReLU} tradicional, elas incluem funções que apresentam gráficos com curvas mais suaves, como é o caso da \textit{ELU}, que faz uso de funções exponenciais para a sua composição e com isso consegue não só resolver o problema dos \textit{ReLUs} agonizantes, mas também sendo uma função contínua na origem e portanto derivável em todo o seu domínio.
@@ -805,6 +877,21 @@ Por fim, cabe destacar algumas afirmações realizadas pelos autores ainda em \t
 
 Mesmo apresentando um grande salto, quando comparada com a \textit{ReLU} tradicional, a \textit{ELU} também pode ser modificada para atender outros casos. Para isso, ela também tem variações, sendo uma delas a \textit{SELU}, a qual adiciona a \textit{ELU} um termo $\lambda$ para garantir uma autonormalização da rede que está sendo criada. Essa função será vista em seguida.
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Exponential Linear Unit em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
+
 \subsection{Scaled Exponential Linear Unit (SELU)}
 
 A próxima função é uma variante da \textit{ELU}, a \textit{Scaled Exponential Linear Unit}, ou \textit{SELU}. Ela se distingue da ELU tradicional pelo fato de que ela é capaz de implemtar propriedades auto-normalizadoras em uma rede que faz uso dessa função, como explicam os autores no artigo de sua introdução \textit{Self-Normalizing Neural Networks} \parencite{SELUArticle}.
@@ -913,6 +1000,21 @@ Para analisar essa tabela, pode-se primeiro olhar o ranking médio de cada uma d
 O interessante dessa comparação é analisar ela considerando aquelas redes que fazem uso de técnicas de normalização para conseguir uma maior desempenho, como a \textit{BatchNorm} e a \textit{LayerNorm}, cada uma delas utiliza uma técnica de normalização diferente de forma a garantir que que problemas como os gradientes explosivos e desaparacimento do gradiente não ocorra com tanta frequência e com isso permitindo um melhor convergência do modelo que está sendo treinado. Ao olhar por essa ótica, pode-se chegar a conclusão que criar uma rede neural utilizando a \textit{SELU} não só irá garantir uma maior versatilidade para a resolução de problemas, como também você não terá que se preocupar em aplicar técnicas de normalização ao construir essa rede.
 
 Voltando para o seu texto de introdução, os autores destacam propriedades importantes dessa nova função de atiavção criada, como o fato de que de que elas possbilitam a criação de redes neurais mais profundas além de serem capazes de aplicar fortes esquemas de regularização \parencite{SELUArticle}. Por favorecer a criação de RNAs mais profundas, como consequência, a \textit{SELU} se torna uma excelente alternativa para ser utilizada em problemas complexos, que possuem muitas características e por essa razação necessitam de que mais camadas sejam construídas a fim de garantir um melhor processamento e aprendizado dos dados e com base nisso, alcançar métricas maiores, como uma maior acurácia indicando uma gerenalização maior e também uma perda menor, indicando que o gradiente conseguiu uma convergência melhor.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Scaled Exponential Linerar Unit em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \subsection{Noisy ReLU (NReLU)}
 
@@ -1114,6 +1216,21 @@ Esse resultado prová-se ainda mais nítido quando é analisado o caso em que am
 Esse tópico de permitir a criação de redes mais profundas, que aconteceu justamente ao optar por funções retificadoras como a \textit{ReLU} e a \textit{Noisy ReLU} ao invés de funções sigmoidais, está intrinsicamente relacionado ao problema da desaparecimento do gradiente. Em redes que faziam uso de funções sigmoidais, os programadores e pesquisadores estavam constantemente correndo o risco de que ao adicionar mais camadas a fim de que essa rede pudesse alcançar melhores métricas, o problema do desaparecimento do gradiente viesse a tona. Isso acontece, porque ao adicionar mais camadas, existe uma maior chance de que esse vetor seja mais uma vez multiplicado por valores pequenos e com isso diminuísse o seu valor.
 
 Ainda em \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} citam que uma das propriedades interessantes da \textit{NReLU} é a \textit{intensity equivarience} (equivariância de intensidade), a qual é bem útil para o reconhecimento de objetos. No texto, os autores destacam que um dos principais objetivos ao contruir um sistema que faça o reconhecimento de objetos, é garantir que a saída seja invariante às propriedades da sua entrada, como localização, escala, iluminação e orientação, e a NReLU é uma das funções que quando adicionada em uma rede neural, garante que isso possa ser atingido \parencite{Nair2010}.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações da Noisy ReLU em Redes Neurais}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Aplicação 4 (Área):}
+\end{itemize}
 
 \section{O Problema dos Gradientes Explosivos}
 
