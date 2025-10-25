@@ -138,6 +138,15 @@ Dito isso, o próximo passo para entender a \textit{BCE} é conhecer a sua repre
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Entropia Cruzada Binária}
+\vspace{1em}
+
 Conhecendo como funcionam os princípios por trás da entropia-cruzada binária, além das suas fórmulas e gráficos, o próximo passo é discutir propriedades interessantes dessa função de perda. 
 
 \begin{itemize}
@@ -146,6 +155,12 @@ Conhecendo como funcionam os princípios por trás da entropia-cruzada binária,
     \item \textbf{Pune erros confiantes:} \textcite{LossesArticle} explicam que quando $\hat{y}_j$ é perto de 1, mas o valor real é o oposto, neste caso, $y_j = 0$, o termo logarítimico $\log(\hat{y}j)$ ou $\log(1 - \hat{y}_j)$ fica grande em magnitudade, penalizando muito os erros confiantes. Essa relação também vale para o contrário, em que $\hat{y}_j$ é perto de 0, mas $y_j = 1$.
     \item \textbf{Desbalanceamento de classes:} Um último ponto que vale ser destacado sobre a função de perda \textit{binary cross-entropy} é que em cenários em que uma classe é significativamente mais presente que outra, a \textit{BCE} pode gerar modelos enviesados \footnote{Como uma possível solução para esse problema, é possível utilizar a função de perda \textit{binary weighted cross-entropy} (a qual está explica na Seção \ref{sec:binary-weighted-cross-entropy}), essa função busca resolver o problema do desbalanceamento de classes aplicando pesos para as diferentes classes do problema estudado.} \parencite{LossesArticle}.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Sabendo dessas propriedades e caraterísticas da \textit{BCE}, é possível agora discutir a sua derivada. As derivadas das funções de perda são muito úteis para aqueles modelos que aprendem por meio da descida do gradiente. Pois, o primeiro gradiente a ser calculado, é o gradiente da perda para a camada de saída do modelo. Esse gradiente é então propagado para trás, no chamado \textit{backward-pass}, atualizando os pesos e vieses do modelo.
 
@@ -210,6 +225,7 @@ Também vale a pena disctuir o gráfico da derivada da entropia cruzada binária
 \medskip
 
 \textbf{Algumas Aplicações da Entropia-Cruzada Binária em Problemas de Classificação Binária}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -323,6 +339,21 @@ Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuíd
     \label{fig:comparativo-entropia-cruzada-ponderada-binaria}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Entropia Cruzada Binária Ponderada}
+\vspace{1em}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Também cabe analisar a derivada da entropia cruzada ponderada binária, a qual é dada pela Equação \ref{eq:binary-cross-entropy-derivada}. Perceba que o resultado é parecido com o da entropia cruzada binária, mas neste caso, adicionando os pesos $\alpha_0$ e $\alpha_1$.
 
 \begin{equacaodestaque}{Entropia Cruzada Ponderada Binária (\textit{WCE}) Derivada}
@@ -421,6 +452,7 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
 \medskip
 
 \textbf{Algumas Aplicações da Entropia-Cruzada Ponderada Binária em Problemas de Classificação Binária}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -522,12 +554,27 @@ Cabe também disctutir o gráfico dessa função de perda, o qual é dado pela F
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da \textit{Hinge Loss}}
+\vspace{1em}
+
 Visto como surgiu a \textit{hinge loss}, sua equação e seu gráfico, é possível agora discutir algumas propriedades dessa função de perda:
 
 \begin{itemize}
     \item \textbf{Maximização de margem:} Como explicam \textcite{LossesArticle}, a \textit{hinge loss} força que a predição esteja correta ($\text{sign} (f(x)) = y$) mas também que a margem $[f(x)]$ seja pelo menos 1, uma predição correta mas com uma margem menor que 1 continua gerando uma perda positiva.
     \item \textbf{Penalidade linear:} Perceba pelo gráfico da Figura \ref{fig:hinge-loss} que essa função é composta por duas retas. Quando o cálculo dos termos $yf(x)$ é menor que 1, a \textit{hinge loss} aumenta de forma linear com a distância $1-yf(x)$, essa penalidadde linear geralmente é responsável por gerar gradientes mais esparsos \parencite{LossesArticle}.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Também cabe destacar a derivada dessa função de perda, para calculá-la deve-se derivar as duas funções, as quais vão gerar uma função escrita através de chaves, como a mostrada na Equação \ref{eq:hinge-loss-derivada}.
 
@@ -603,6 +650,27 @@ Por ultizar um termo ao quadrado para calcular a perda, o seu gráfico também m
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da \textit{Hinge Loss}}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Para calcular a sua derivada deve-se aplicar a regra da cadeia, separando então termo ao quadrado da função perda hinge tradicional. De forma que ao fazer isso é possível encontrar a Equação \ref{eq:squared-hinge-loss-derivada}.
 
 \begin{equacaodestaque}{Derivada da Squared Hinge Loss}
@@ -675,6 +743,7 @@ De forma semelhante ao que foi feito com as outras funções até agora, é poss
 \medskip
 
 \textbf{Algumas Aplicações da Perda Hinge Problemas de Classificação Binária}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -745,6 +814,15 @@ Considerando essas duas fórmulas, é possível também analisar o gráfico da e
 
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Entropia Cruzada Categórica}
+\vspace{1em}
+
 Considerando esses cenários, agora cabe destacar algumas características dessa função de perda:
 
 \begin{itemize}
@@ -752,6 +830,12 @@ Considerando esses cenários, agora cabe destacar algumas características dessa
     \item \textbf{Penalização alta para erros confiantes:} Como \textcite{LossesArticle} explicam, a entropia cruzada categórica segue a mesma ideia da entropia cruzada binária, de forma que essa função também tem como propriedade punir os erros confiantes de forma mais elevada.
     \item \textbf{Requisitos \textit{one-hot}}: Como dito anteriormente a \textit{CCE} aceita um vetor em formato \textit{one-hot}, isso significa que os valores tanto para $y_j$ quanto para $\hat{y}_j$ devem estar em formato de probabilidade, estando em valores entre zero e um \footnote{Para trabalhar com valores em que os rôtulos estão organizados com valores inteiros é possível utilizar uma variante da \textit{categorical cross-entropy}: a \textit{sparse cross-entropy}. Essa função está melhor explicada na Seção \ref{sec:sparse-cross-entropy}}.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 É possível também discutir a derivada da entropia cruzada categórica, pois ela trás uma discussão interessante. Como dito anteriormente, na maioria das vezes a saída da última camada de um modelo de classificação multi-classe é adicionada a função de ativação \textit{softmax}, permitindo que os valores da saída se enquandrem no intervalo ${0, 1}$, como consequência, é possível simplificar o cálculo do gradiente para essa função. 
 
@@ -923,6 +1007,7 @@ Caso a \textit{cetegorical cross entropy} não seja utilizada em conjunto com a 
 \medskip
 
 \textbf{Algumas Aplicações da Entropia-Cruzada Categórica em Problemas de Classificação Multi-Classe}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -952,10 +1037,25 @@ Já para um conjunto maior de amostras, o cálculo da perda é dado de forma sem
 
 Perceba que as fórmulas da \textit{sparse categorical cross entropy} são iguais as da sua versão para rótulos codificados para formato \textit{one-hot}, por isso os seus gráficos também serão iguais, assim, o próximo passo é discutir algumas das características dessa função de perda.
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Entropia Cruzada Categórica Esparsa}
+\vspace{1em}
+
 \begin{itemize}
     \item \textbf{Eficiência:} \textcite{LossesArticle} explicam que em problemas de classificação com um grande número de classes, a codificação \textit{one-hot} pode ser memória-intensiva, ao utilizar a \textit{sparse CCE}, os seus indexes que já apontam diretamente para a probabilidade conseguem escapar de trabalhar com dados em formato \textit{one-hot}.
     \item \textbf{Similadirades com a \textit{CCE}:} A \textit{sparse CCE} possui grandes similaridades com a \textit{CCE} original, isso significa que vantagens como a diferenciabilidade e a penalização de erros muito confiantes que são características da \textit{categorical cross entropy}, também estão presentes na sua versão esparsa.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Além dessa variante, a \textit{categorical cross-entropy} possui uma versão que faz uso de pesos para as classes, buscando trabalhar com casos em que existe uma presença maior de algumas classes do que de outras. Essa é a \textit{weighted categorical cross-entropy}, que será vista em seguida.
 
@@ -966,6 +1066,7 @@ Além dessa variante, a \textit{categorical cross-entropy} possui uma versão qu
 \medskip
 
 \textbf{Algumas Aplicações da Entropia-Cruzada Categórica Esparsa em Problemas de Classificação Multi-Classe}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -990,6 +1091,8 @@ De forma semelhante as outras funções, é possível expandir essa fórmula par
     \label{eq:weighted-categorical-cross-entropy}
 \end{equacaodestaque}
 
+
+
 Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possível utilizar a sua variante multi-classe para ser trabalhada em cenários em que uma classe, ou um grupo de classes aparece de forma mais frequente que outro.
 
 \medskip
@@ -999,6 +1102,7 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
 \medskip
 
 \textbf{Algumas Aplicações da Entropia-Cruzada Categórica Ponderada em Problemas de Classificação Multi-Classe}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -1052,6 +1156,27 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Perda Multirotulo}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \begin{equacaodestaque}{Derivada da Perda Multirrótulo}
     \frac{\partial \Loss_{\text{Multilabel}}}{\partial z_i} = \hat{y}_i - y_i
     \label{eq:multilabel-loss-derivada}
@@ -1098,6 +1223,7 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
 \medskip
 
 \textbf{Algumas Aplicações da Perda Multirótulo em Problemas de Classificação Multi-Label}
+\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}

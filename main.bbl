@@ -51,6 +51,79 @@
       \field{title}{Rectifier Nonlinearities Improve Neural Networks Acustic Models}
       \field{year}{2013}
     \endentry
+    \entry{OptimizingFL}{misc}{}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=309ea029701e12a4e490983166e93214}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Roopkatha},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5cad440c8173d2b723092a68ecf77ebb}{%
+           family={Koti},
+           familyi={K\bibinitperiod},
+           given={Sampath},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2c2cb2988cb4550a80bc85770a8783dd}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Gyanendra},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1a527f1afabe8f5161842be384efa934}{%
+           family={Chakraborty},
+           familyi={C\bibinitperiod},
+           given={Anirban},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=874cfd8dc70b216d5dc97c562095e634}{%
+           family={Gurrala},
+           familyi={G\bibinitperiod},
+           given={Gurunath},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d541c4703286aba3a7b8f6fe98830852}{%
+           family={Jagyasi},
+           familyi={J\bibinitperiod},
+           given={Bhushan},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c44f39ba10c22d844ad14801d1345691}{%
+           family={Simmhan},
+           familyi={S\bibinitperiod},
+           given={Yogesh},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c2198810d533cff2782f0a76e858a718}
+      \strng{fullhash}{726c4f83e112699f197f93fe0c92c54d}
+      \strng{fullhashraw}{726c4f83e112699f197f93fe0c92c54d}
+      \strng{bibnamehash}{c2198810d533cff2782f0a76e858a718}
+      \strng{authorbibnamehash}{c2198810d533cff2782f0a76e858a718}
+      \strng{authornamehash}{c2198810d533cff2782f0a76e858a718}
+      \strng{authorfullhash}{726c4f83e112699f197f93fe0c92c54d}
+      \strng{authorfullhashraw}{726c4f83e112699f197f93fe0c92c54d}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.DC}
+      \field{eprinttype}{arXiv}
+      \field{title}{Optimizing Federated Learning for Scalable Power-demand Forecasting in Microgrids}
+      \field{year}{2025}
+      \verb{eprint}
+      \verb 2508.08022
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2508.08022
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2508.08022
+      \endverb
+    \endentry
     \entry{CauchyMetodoDoGradiente}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=8495b42141aa0537d3c126985f420e06}{%
@@ -379,6 +452,80 @@
       \verb{url}
       \verb http://jmlr.org/papers/v12/duchi11a.html
       \endverb
+    \endentry
+    \entry{MedicalCostsEstimationUsingLR}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=49e3ffdda92abe26d55d5e3b5ec9cecc}{%
+           family={Dwikasaria},
+           familyi={D\bibinitperiod},
+           given={Ni\bibnamedelima Made\bibnamedelima Dita},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1bad0ef0c56f4acd95cd61be8833dc21}{%
+           family={Sutramiani},
+           familyi={S\bibinitperiod},
+           given={Ni\bibnamedelima Putu},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=377d505a0c3e4cc96983f6c834d09950}{%
+           family={Putri},
+           familyi={P\bibinitperiod},
+           given={Komang\bibnamedelimb Sri\bibnamedelima Yanisa},
+           giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2dddfb353e6dd4a3b67bc8aeac297ba3}{%
+           family={Kusuma},
+           familyi={K\bibinitperiod},
+           given={Nyoman\bibnamedelimb Tri\bibnamedelima Rahaditya},
+           giveni={N\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=21c3762ad763d957ed08b18c894dd96a}{%
+           family={Pramana},
+           familyi={P\bibinitperiod},
+           given={Made\bibnamedelimb Dimas\bibnamedelimb Aldi\bibnamedelima Dwi},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c0499304efc6f44d3ecf5698c96f3d2f}{%
+           family={Darma},
+           familyi={D\bibinitperiod},
+           given={I\bibnamedelima Wayan\bibnamedelimb Agus\bibnamedelima Surya},
+           giveni={I\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{108e83d2cecbca6341680a71297729d7}
+      \strng{fullhash}{c93ddfbba265dc81eafb4ec51ad8dfa0}
+      \strng{fullhashraw}{c93ddfbba265dc81eafb4ec51ad8dfa0}
+      \strng{bibnamehash}{108e83d2cecbca6341680a71297729d7}
+      \strng{authorbibnamehash}{108e83d2cecbca6341680a71297729d7}
+      \strng{authornamehash}{108e83d2cecbca6341680a71297729d7}
+      \strng{authorfullhash}{c93ddfbba265dc81eafb4ec51ad8dfa0}
+      \strng{authorfullhashraw}{c93ddfbba265dc81eafb4ec51ad8dfa0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2252-3006}
+      \field{journaltitle}{JURNAL ILMIAH MERPATI}
+      \field{month}{12}
+      \field{number}{3}
+      \field{title}{Medical Costs Estimation Using Linear Regression Method}
+      \field{urlday}{25}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \field{pages}{171\bibrangedash 179}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://scispace.com/pdf/medical-costs-estimation-using-linear-regression-method-38k6wo4bri.pdf&ved=2ahUKEwiT5fDb8r-QAxVhK7kGHQArCKkQFnoECBgQAQ&usg=AOvVaw22f-dAUr1phgkxjmJ7Nh7a
+      \endverb
+      \verb{url}
+      \verb https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://scispace.com/pdf/medical-costs-estimation-using-linear-regression-method-38k6wo4bri.pdf&ved=2ahUKEwiT5fDb8r-QAxVhK7kGHQArCKkQFnoECBgQAQ&usg=AOvVaw22f-dAUr1phgkxjmJ7Nh7a
+      \endverb
+      \keyw{Medical Costs,Data Mining,Estimation,Linear Regression}
     \endentry
     \entry{ElmanNetwork}{article}{}{}
       \name{author}{1}{}{%
@@ -1863,6 +2010,72 @@
       \verb https://arxiv.org/abs/2208.04564
       \endverb
     \endentry
+    \entry{CouplingMachineLearningAndCropModeling}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=663799e59ea6a62137f5a4f2bf120cea}{%
+           family={Shahhosseini},
+           familyi={S\bibinitperiod},
+           given={Mohsen},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1f29fc91078c567722522cd878da9130}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Guiping},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ef471d54d7fd537736dfe1d922436b93}{%
+           family={Huber},
+           familyi={H\bibinitperiod},
+           given={Isaiah},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0f44be1df98487fb81b0e40b262afda5}{%
+           family={Archontoulis},
+           familyi={A\bibinitperiod},
+           given={Sotirios\bibnamedelima V.},
+           giveni={S\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{1eeb613f391d2fba192ba6721deb1466}
+      \strng{fullhash}{866586f7c921e9df0d80682437578201}
+      \strng{fullhashraw}{866586f7c921e9df0d80682437578201}
+      \strng{bibnamehash}{1eeb613f391d2fba192ba6721deb1466}
+      \strng{authorbibnamehash}{1eeb613f391d2fba192ba6721deb1466}
+      \strng{authornamehash}{1eeb613f391d2fba192ba6721deb1466}
+      \strng{authorfullhash}{866586f7c921e9df0d80682437578201}
+      \strng{authorfullhashraw}{866586f7c921e9df0d80682437578201}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2045-2322}
+      \field{journaltitle}{Scientific Reports}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Coupling machine learning and crop modeling improves crop yield prediction in the US Corn Belt}
+      \field{urlday}{25}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{11}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1038/s41598-020-80820-1
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1038/s41598-020-80820-1
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1038/s41598-020-80820-1
+      \endverb
+    \endentry
     \entry{EntropyShannon}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=22e2130b8d96f93daba648ff62af869b}{%
@@ -1895,6 +2108,67 @@
       \range{pages}{45}
       \verb{doi}
       \verb 10.1002/j.1538-7305.1948.tb01338.x
+      \endverb
+    \endentry
+    \entry{OptimalHousePricePrediction}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=3fd9eac218835b4bc2e54405a61db332}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Hemlata},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b0113856c4886c668c7c301299b6b870}{%
+           family={Harsora},
+           familyi={H\bibinitperiod},
+           given={Hitesh},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=17a25defb7d70318fd8e84d7728c3529}{%
+           family={Ogunleye},
+           familyi={O\bibinitperiod},
+           given={Bayode},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI AG}%
+      }
+      \strng{namehash}{283ae959d35a06c5c123fa70c9545318}
+      \strng{fullhash}{283ae959d35a06c5c123fa70c9545318}
+      \strng{fullhashraw}{283ae959d35a06c5c123fa70c9545318}
+      \strng{bibnamehash}{283ae959d35a06c5c123fa70c9545318}
+      \strng{authorbibnamehash}{283ae959d35a06c5c123fa70c9545318}
+      \strng{authornamehash}{283ae959d35a06c5c123fa70c9545318}
+      \strng{authorfullhash}{283ae959d35a06c5c123fa70c9545318}
+      \strng{authorfullhashraw}{283ae959d35a06c5c123fa70c9545318}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2813-2203}
+      \field{journaltitle}{Analytics}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{An Optimal House Price Prediction Algorithm: XGBoost}
+      \field{urlday}{25}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{3}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{30\bibrangedash 45}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.3390/analytics3010003
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.3390/analytics3010003
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.3390/analytics3010003
       \endverb
     \endentry
     \entry{LossesArticle}{article}{}{}

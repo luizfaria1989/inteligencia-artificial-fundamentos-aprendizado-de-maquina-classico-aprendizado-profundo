@@ -2714,69 +2714,81 @@
     <bcf:citekey order="248" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="249" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="250" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="251" intorder="1">GreedyFunctionApproximation</bcf:citekey>
-    <bcf:citekey order="252" intorder="1">GreedyFunctionApproximation</bcf:citekey>
-    <bcf:citekey order="253" intorder="1">GreedyFunctionApproximation</bcf:citekey>
-    <bcf:citekey order="254" intorder="1">GreedyFunctionApproximation</bcf:citekey>
-    <bcf:citekey order="255" intorder="1">GreedyFunctionApproximation</bcf:citekey>
-    <bcf:citekey order="256" intorder="1">ImageToImage</bcf:citekey>
-    <bcf:citekey order="257" intorder="1">ImageToImage</bcf:citekey>
-    <bcf:citekey order="258" intorder="1">ImageToImage</bcf:citekey>
-    <bcf:citekey order="259" intorder="1">ImageToImage</bcf:citekey>
-    <bcf:citekey order="260" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="261" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="262" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="263" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="264" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="265" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="266" intorder="1">HuberLoss</bcf:citekey>
-    <bcf:citekey order="267" intorder="1">HuberLoss</bcf:citekey>
-    <bcf:citekey order="268" intorder="1">HuberLoss</bcf:citekey>
-    <bcf:citekey order="269" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="270" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="271" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="251" intorder="1">MedicalCostsEstimationUsingLR</bcf:citekey>
+    <bcf:citekey order="252" intorder="1">MedicalCostsEstimationUsingLR</bcf:citekey>
+    <bcf:citekey order="253" intorder="1">MedicalCostsEstimationUsingLR</bcf:citekey>
+    <bcf:citekey order="254" intorder="1">OptimalHousePricePrediction</bcf:citekey>
+    <bcf:citekey order="255" intorder="1">OptimalHousePricePrediction</bcf:citekey>
+    <bcf:citekey order="256" intorder="1">OptimalHousePricePrediction</bcf:citekey>
+    <bcf:citekey order="257" intorder="1">CouplingMachineLearningAndCropModeling</bcf:citekey>
+    <bcf:citekey order="258" intorder="1">CouplingMachineLearningAndCropModeling</bcf:citekey>
+    <bcf:citekey order="259" intorder="1">CouplingMachineLearningAndCropModeling</bcf:citekey>
+    <bcf:citekey order="260" intorder="1">OptimizingFL</bcf:citekey>
+    <bcf:citekey order="261" intorder="1">OptimizingFL</bcf:citekey>
+    <bcf:citekey order="262" intorder="1">OptimizingFL</bcf:citekey>
+    <bcf:citekey order="263" intorder="1">GreedyFunctionApproximation</bcf:citekey>
+    <bcf:citekey order="264" intorder="1">GreedyFunctionApproximation</bcf:citekey>
+    <bcf:citekey order="265" intorder="1">GreedyFunctionApproximation</bcf:citekey>
+    <bcf:citekey order="266" intorder="1">GreedyFunctionApproximation</bcf:citekey>
+    <bcf:citekey order="267" intorder="1">GreedyFunctionApproximation</bcf:citekey>
+    <bcf:citekey order="268" intorder="1">ImageToImage</bcf:citekey>
+    <bcf:citekey order="269" intorder="1">ImageToImage</bcf:citekey>
+    <bcf:citekey order="270" intorder="1">ImageToImage</bcf:citekey>
+    <bcf:citekey order="271" intorder="1">ImageToImage</bcf:citekey>
     <bcf:citekey order="272" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="273" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="274" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="275" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="276" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="277" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
-    <bcf:citekey order="278" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
-    <bcf:citekey order="279" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
-    <bcf:citekey order="280" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
-    <bcf:citekey order="281" intorder="1">EntropyShannon</bcf:citekey>
-    <bcf:citekey order="282" intorder="1">EntropyShannon</bcf:citekey>
-    <bcf:citekey order="283" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
-    <bcf:citekey order="284" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
-    <bcf:citekey order="285" intorder="1">HintonConnectionist</bcf:citekey>
-    <bcf:citekey order="286" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="277" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="278" intorder="1">HuberLoss</bcf:citekey>
+    <bcf:citekey order="279" intorder="1">HuberLoss</bcf:citekey>
+    <bcf:citekey order="280" intorder="1">HuberLoss</bcf:citekey>
+    <bcf:citekey order="281" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="282" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="283" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="284" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="285" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="286" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="287" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="288" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="289" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="290" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="291" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="292" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="293" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="294" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="295" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="296" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="297" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="298" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="299" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="300" intorder="1">HingeLoss</bcf:citekey>
-    <bcf:citekey order="301" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="289" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="290" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="291" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="292" intorder="1">StatisticalPropetiesLogCosh</bcf:citekey>
+    <bcf:citekey order="293" intorder="1">EntropyShannon</bcf:citekey>
+    <bcf:citekey order="294" intorder="1">EntropyShannon</bcf:citekey>
+    <bcf:citekey order="295" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
+    <bcf:citekey order="296" intorder="1">KullbackLeiblerDivergence</bcf:citekey>
+    <bcf:citekey order="297" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="298" intorder="1">HintonConnectionist</bcf:citekey>
+    <bcf:citekey order="299" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="300" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="301" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="302" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="303" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="304" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="305" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="306" intorder="1">LossesArticle</bcf:citekey>
     <bcf:citekey order="307" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="308" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="309" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="310" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="311" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="312" intorder="1">LossesArticle</bcf:citekey>
-    <bcf:citekey order="313" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="308" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="309" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="310" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="311" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="312" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="313" intorder="1">HingeLoss</bcf:citekey>
+    <bcf:citekey order="314" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="315" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="316" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="317" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="318" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="319" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="320" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="321" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="322" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="323" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="324" intorder="1">LossesArticle</bcf:citekey>
+    <bcf:citekey order="325" intorder="1">LossesArticle</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

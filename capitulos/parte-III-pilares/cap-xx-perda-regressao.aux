@@ -3,172 +3,173 @@
 \@writefile{toc}{\setlength  {\cftchapterindent }{0em} \setlength  {\cftchapternumwidth }{\cftlastnumwidth }}
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {10}\MakeTextUppercase    []{Funções de Perda para Regressão}}{155}{chapter.10}\protected@file@percent }
 \newlabel{cap:perda-regressao}{{10}{155}{\texorpdfstring {\MakeTextUppercase {\tempf@rtoc }}{\tempf@rtoc }}{chapter.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.1}A Intuição da Perda: Medindo o Erro do Modelo}{155}{section.10.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.2}Exemplo Ilustrativo: Jogando Dados}{155}{section.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Exemplo Ilustrativo: Jogando Dardos}{155}{section.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Características das Funções de Perda}{156}{section.10.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {10.3}Funções de Perda para Regressão para Propósitos Gerais}{156}{section.10.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Erro Quadrático Médio (Mean Squared Error - MSE)}{156}{subsection.10.3.1}\protected@file@percent }
-\newlabel{eq:mse}{{10.1}{157}{Erro Quadrático Médio (Mean Squared Error - MSE)}{equation.10.1}{}}
-\newlabel{fig:mse-2d}{{10.1a}{157}{Representação gráfica em duas dimensões da função criada}{figure.caption.95}{}}
-\newlabel{sub@fig:mse-2d}{{a}{157}{Representação gráfica em duas dimensões da função criada}{figure.caption.95}{}}
-\newlabel{fig:mse-3d}{{10.1b}{157}{Representação gráfica em três dimensões da superfície criada}{figure.caption.95}{}}
-\newlabel{sub@fig:mse-3d}{{b}{157}{Representação gráfica em três dimensões da superfície criada}{figure.caption.95}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Visualizações do erro quadrático médio (\textit  {MSE}) em duas e em três dimensões.}}{157}{figure.caption.95}\protected@file@percent }
-\newlabel{fig:mse}{{10.1}{157}{Visualizações do erro quadrático médio (\textit {MSE}) em duas e em três dimensões}{figure.caption.95}{}}
-\newlabel{eq:mse-derivada}{{10.2}{159}{Erro Quadrático Médio (Mean Squared Error - MSE)}{equation.10.2}{}}
-\newlabel{fig:mse-derivada-2d}{{10.2a}{159}{Visão 2D (Gradiente vs. Erro)}{figure.caption.96}{}}
-\newlabel{sub@fig:mse-derivada-2d}{{a}{159}{Visão 2D (Gradiente vs. Erro)}{figure.caption.96}{}}
-\newlabel{fig:mse-derivada-3d}{{10.2b}{159}{Superfície 3D completa}{figure.caption.96}{}}
-\newlabel{sub@fig:mse-derivada-3d}{{b}{159}{Superfície 3D completa}{figure.caption.96}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MSE.}}{159}{figure.caption.96}\protected@file@percent }
-\newlabel{fig:mse-derivada}{{10.2}{159}{Visualizações da derivada (gradiente) da função de perda MSE}{figure.caption.96}{}}
-\newlabel{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-perda-regressao}{{10.3}{159}{Erro Quadrático Médio (Mean Squared Error - MSE)}{equation.10.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Erro Absoluto Médio (Mean Absolute Error - MAE)}{160}{subsection.10.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.3}{\ignorespaces CurvPerdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST}}{161}{figure.caption.97}\protected@file@percent }
-\newlabel{fig:comparativo-perdas-image-to-image}{{10.3}{161}{CurvPerdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST}{figure.caption.97}{}}
-\newlabel{eq:mae}{{10.4}{161}{Erro Absoluto Médio (Mean Absolute Error - MAE)}{equation.10.4}{}}
-\newlabel{fig:mae-2d}{{10.4a}{161}{Representação gráfica em duas dimensões}{figure.caption.98}{}}
-\newlabel{sub@fig:mae-2d}{{a}{161}{Representação gráfica em duas dimensões}{figure.caption.98}{}}
-\newlabel{fig:mae-3d}{{10.4b}{161}{Representação gráfica em três dimensões}{figure.caption.98}{}}
-\newlabel{sub@fig:mae-3d}{{b}{161}{Representação gráfica em três dimensões}{figure.caption.98}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.4}{\ignorespaces Visualizações do erro absoluto médio (\textit  {MAE}) em duas e em três dimensões.}}{161}{figure.caption.98}\protected@file@percent }
-\newlabel{fig:mae}{{10.4}{161}{Visualizações do erro absoluto médio (\textit {MAE}) em duas e em três dimensões}{figure.caption.98}{}}
-\newlabel{eq:mae-derivada}{{10.5}{162}{Erro Absoluto Médio (Mean Absolute Error - MAE)}{equation.10.5}{}}
-\newlabel{fig:mae-derivada-2d}{{10.5a}{163}{Visão 2D (Gradiente vs. Erro)}{figure.caption.99}{}}
-\newlabel{sub@fig:mae-derivada-2d}{{a}{163}{Visão 2D (Gradiente vs. Erro)}{figure.caption.99}{}}
-\newlabel{fig:mae-derivada-3d}{{10.5b}{163}{Superfície 3D completa}{figure.caption.99}{}}
-\newlabel{sub@fig:mae-derivada-3d}{{b}{163}{Superfície 3D completa}{figure.caption.99}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.5}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MAE.}}{163}{figure.caption.99}\protected@file@percent }
-\newlabel{fig:mae-derivada}{{10.5}{163}{Visualizações da derivada (gradiente) da função de perda MAE}{figure.caption.99}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.3}Perda de Huber}{164}{subsection.10.3.3}\protected@file@percent }
-\newlabel{eq:huber-loss-do-huber}{{10.6}{164}{Perda de Huber}{equation.10.6}{}}
-\newlabel{eq:huber-loss}{{10.7}{164}{Perda de Huber}{equation.10.7}{}}
-\newlabel{fig:huber-2d}{{10.6a}{165}{Representação gráfica em duas dimensões}{figure.caption.100}{}}
-\newlabel{sub@fig:huber-2d}{{a}{165}{Representação gráfica em duas dimensões}{figure.caption.100}{}}
-\newlabel{fig:huber-3d}{{10.6b}{165}{Representação gráfica em três dimensões}{figure.caption.100}{}}
-\newlabel{sub@fig:huber-3d}{{b}{165}{Representação gráfica em três dimensões}{figure.caption.100}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.6}{\ignorespaces Visualizações da função de perda Huber (\textit  {Huber Loss}, $\delta =1$) em duas e em três dimensões.}}{165}{figure.caption.100}\protected@file@percent }
-\newlabel{fig:huber-loss}{{10.6}{165}{Visualizações da função de perda Huber (\textit {Huber Loss}, $\delta =1$) em duas e em três dimensões}{figure.caption.100}{}}
-\newlabel{eq:huber-loss-derivada}{{10.8}{165}{Perda de Huber}{equation.10.8}{}}
-\newlabel{fig:huber-comparacoes-mae}{{10.7a}{166}{Perda Huber com $\delta = 0.5$}{figure.caption.101}{}}
-\newlabel{sub@fig:huber-comparacoes-mae}{{a}{166}{Perda Huber com $\delta = 0.5$}{figure.caption.101}{}}
-\newlabel{fig:huber-comparacoes-mse}{{10.7b}{166}{Perda Huber com $\delta = 4.0$}{figure.caption.101}{}}
-\newlabel{sub@fig:huber-comparacoes-mse}{{b}{166}{Perda Huber com $\delta = 4.0$}{figure.caption.101}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.7}{\ignorespaces Comparação da Perda de Huber com diferentes valores de $\delta $.}}{166}{figure.caption.101}\protected@file@percent }
-\newlabel{fig:huber-delta-comparacoes}{{10.7}{166}{Comparação da Perda de Huber com diferentes valores de $\delta $}{figure.caption.101}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.4}Perda Log-Cosh}{166}{subsection.10.3.4}\protected@file@percent }
-\newlabel{eq:log-cosh-loss}{{10.9}{167}{Perda Log-Cosh}{equation.10.9}{}}
-\newlabel{fig:log-cosh-2d}{{10.8a}{167}{Representação gráfica em duas dimensões}{figure.caption.102}{}}
-\newlabel{sub@fig:log-cosh-2d}{{a}{167}{Representação gráfica em duas dimensões}{figure.caption.102}{}}
-\newlabel{fig:log-cosh-3d}{{10.8b}{167}{Representação gráfica em três dimensões}{figure.caption.102}{}}
-\newlabel{sub@fig:log-cosh-3d}{{b}{167}{Representação gráfica em três dimensões}{figure.caption.102}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.8}{\ignorespaces Visualizações da função de perda Log-Cosh (\textit  {Log-Cosh Loss}) em duas e em três dimensões.}}{167}{figure.caption.102}\protected@file@percent }
-\newlabel{fig:log-cosh-loss}{{10.8}{167}{Visualizações da função de perda Log-Cosh (\textit {Log-Cosh Loss}) em duas e em três dimensões}{figure.caption.102}{}}
-\newlabel{eq:log-cosh-derivada}{{10.10}{168}{Perda Log-Cosh}{equation.10.10}{}}
-\newlabel{fig:log-cosh-derivada-2d}{{10.9a}{169}{Visão 2D (Gradiente vs. Erro)}{figure.caption.103}{}}
-\newlabel{sub@fig:log-cosh-derivada-2d}{{a}{169}{Visão 2D (Gradiente vs. Erro)}{figure.caption.103}{}}
-\newlabel{fig:log-cosh-derivada-3d}{{10.9b}{169}{Superfície 3D completa}{figure.caption.103}{}}
-\newlabel{sub@fig:log-cosh-derivada-3d}{{b}{169}{Superfície 3D completa}{figure.caption.103}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.9}{\ignorespaces Visualizações da derivada (gradiente) da função de perda Log-Cosh.}}{169}{figure.caption.103}\protected@file@percent }
-\newlabel{fig:log-cosh-derivada}{{10.9}{169}{Visualizações da derivada (gradiente) da função de perda Log-Cosh}{figure.caption.103}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{170}{section.10.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Erro Quadrático Médio Logarítmico (MSLE)}{171}{subsection.10.4.1}\protected@file@percent }
-\newlabel{eq:msle-loss}{{10.11}{171}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.11}{}}
-\newlabel{fig:msle-2d}{{10.10a}{171}{Visão 2D (corte em $y=10$)}{figure.caption.104}{}}
-\newlabel{sub@fig:msle-2d}{{a}{171}{Visão 2D (corte em $y=10$)}{figure.caption.104}{}}
-\newlabel{fig:msle-3d}{{10.10b}{171}{Superfície 3D completa}{figure.caption.104}{}}
-\newlabel{sub@fig:msle-3d}{{b}{171}{Superfície 3D completa}{figure.caption.104}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.10}{\ignorespaces Visualizações da função de perda MSLE (\textit  {Mean Squared Logarithmic Error}).}}{171}{figure.caption.104}\protected@file@percent }
-\newlabel{fig:msle-loss}{{10.10}{171}{Visualizações da função de perda MSLE (\textit {Mean Squared Logarithmic Error})}{figure.caption.104}{}}
-\newlabel{eq:msle-derivada}{{10.12}{172}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.12}{}}
-\newlabel{fig:msle-derivada-2d}{{10.11a}{172}{Visão 2D (corte em $y=10$)}{figure.caption.105}{}}
-\newlabel{sub@fig:msle-derivada-2d}{{a}{172}{Visão 2D (corte em $y=10$)}{figure.caption.105}{}}
-\newlabel{fig:msle-derivada-3d}{{10.11b}{172}{Superfície 3D completa}{figure.caption.105}{}}
-\newlabel{sub@fig:msle-derivada-3d}{{b}{172}{Superfície 3D completa}{figure.caption.105}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.11}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MSLE.}}{172}{figure.caption.105}\protected@file@percent }
-\newlabel{fig:msle-derivada}{{10.11}{172}{Visualizações da derivada (gradiente) da função de perda MSLE}{figure.caption.105}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}Erro Percentual Absoluto Médio (MAPE)}{173}{subsection.10.4.2}\protected@file@percent }
-\newlabel{eq:mape-loss}{{10.13}{173}{Erro Percentual Absoluto Médio (MAPE)}{equation.10.13}{}}
-\newlabel{fig:mape-2d}{{10.12a}{173}{Visão 2D (corte em $y=10$)}{figure.caption.106}{}}
-\newlabel{sub@fig:mape-2d}{{a}{173}{Visão 2D (corte em $y=10$)}{figure.caption.106}{}}
-\newlabel{fig:mape-3d}{{10.12b}{173}{Superfície 3D completa ($y>0$)}{figure.caption.106}{}}
-\newlabel{sub@fig:mape-3d}{{b}{173}{Superfície 3D completa ($y>0$)}{figure.caption.106}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.12}{\ignorespaces Visualizações da função de perda MAPE (\textit  {Mean Absolute Percentage Error}).}}{173}{figure.caption.106}\protected@file@percent }
-\newlabel{fig:mape-loss}{{10.12}{173}{Visualizações da função de perda MAPE (\textit {Mean Absolute Percentage Error})}{figure.caption.106}{}}
-\newlabel{eq:mape-derivada}{{10.14}{174}{Erro Percentual Absoluto Médio (MAPE)}{equation.10.14}{}}
-\newlabel{fig:mape-derivada-2d}{{10.13a}{174}{Visão 2D (corte em $y=10$)}{figure.caption.107}{}}
-\newlabel{sub@fig:mape-derivada-2d}{{a}{174}{Visão 2D (corte em $y=10$)}{figure.caption.107}{}}
-\newlabel{fig:mape-derivada-3d}{{10.13b}{174}{Superfície 3D completa ($y>0$)}{figure.caption.107}{}}
-\newlabel{sub@fig:mape-derivada-3d}{{b}{174}{Superfície 3D completa ($y>0$)}{figure.caption.107}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.13}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MAPE.}}{174}{figure.caption.107}\protected@file@percent }
-\newlabel{fig:mape-derivada}{{10.13}{174}{Visualizações da derivada (gradiente) da função de perda MAPE}{figure.caption.107}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}Erro Percentual Absoluto Médio Simétrico (sMAPE)}{174}{subsection.10.4.3}\protected@file@percent }
-\newlabel{eq:smape-loss}{{10.15}{174}{Erro Percentual Absoluto Médio Simétrico (sMAPE)}{equation.10.15}{}}
-\newlabel{fig:smape-2d}{{10.14a}{175}{Visão 2D (corte em $y=10$)}{figure.caption.108}{}}
-\newlabel{sub@fig:smape-2d}{{a}{175}{Visão 2D (corte em $y=10$)}{figure.caption.108}{}}
-\newlabel{fig:smape-3d}{{10.14b}{175}{Superfície 3D completa}{figure.caption.108}{}}
-\newlabel{sub@fig:smape-3d}{{b}{175}{Superfície 3D completa}{figure.caption.108}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.14}{\ignorespaces Visualizações da função de perda sMAPE (\textit  {Symmetric Mean Absolute Percentage Error}).}}{175}{figure.caption.108}\protected@file@percent }
-\newlabel{fig:smape-loss}{{10.14}{175}{Visualizações da função de perda sMAPE (\textit {Symmetric Mean Absolute Percentage Error})}{figure.caption.108}{}}
-\newlabel{eq:smape-derivada}{{10.16}{175}{Erro Percentual Absoluto Médio Simétrico (sMAPE)}{equation.10.16}{}}
-\newlabel{fig:smape-derivada-2d}{{10.15a}{176}{Visão 2D (corte em $y=10$)}{figure.caption.109}{}}
-\newlabel{sub@fig:smape-derivada-2d}{{a}{176}{Visão 2D (corte em $y=10$)}{figure.caption.109}{}}
-\newlabel{fig:smape-derivada-3d}{{10.15b}{176}{Superfície 3D completa ($y>0$)}{figure.caption.109}{}}
-\newlabel{sub@fig:smape-derivada-3d}{{b}{176}{Superfície 3D completa ($y>0$)}{figure.caption.109}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.15}{\ignorespaces Visualizações da derivada (gradiente) da função de perda sMAPE.}}{176}{figure.caption.109}\protected@file@percent }
-\newlabel{fig:smape-derivada}{{10.15}{176}{Visualizações da derivada (gradiente) da função de perda sMAPE}{figure.caption.109}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{176}{section.10.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{176}{subsection.10.5.1}\protected@file@percent }
-\newlabel{eq:quantile-loss}{{10.17}{176}{Perda Quantílica}{equation.10.17}{}}
-\newlabel{eq:quantile-loss-derivada}{{10.18}{176}{Perda Quantílica}{equation.10.18}{}}
-\newlabel{fig:quantile-2d}{{10.16a}{177}{Visão 2D (Perda vs. Erro)}{figure.caption.110}{}}
-\newlabel{sub@fig:quantile-2d}{{a}{177}{Visão 2D (Perda vs. Erro)}{figure.caption.110}{}}
-\newlabel{fig:quantile-3d}{{10.16b}{177}{Superfície 3D completa}{figure.caption.110}{}}
-\newlabel{sub@fig:quantile-3d}{{b}{177}{Superfície 3D completa}{figure.caption.110}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.16}{\ignorespaces Visualizações da Perda Quantílica (\textit  {Pinball Loss}) em duas e em três dimensões.}}{177}{figure.caption.110}\protected@file@percent }
-\newlabel{fig:quantile-loss}{{10.16}{177}{Visualizações da Perda Quantílica (\textit {Pinball Loss}) em duas e em três dimensões}{figure.caption.110}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.17}{\ignorespaces Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica.}}{177}{figure.caption.111}\protected@file@percent }
-\newlabel{fig:quantile-loss-derivada}{{10.17}{177}{Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica}{figure.caption.111}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{178}{subsection.10.5.2}\protected@file@percent }
-\newlabel{eq:epsilon-insensitive-loss}{{10.19}{178}{Perda Epsilon-Insensível}{equation.10.19}{}}
-\newlabel{fig:epsilon-2d}{{10.18a}{178}{Visão 2D (Perda vs. Erro)}{figure.caption.112}{}}
-\newlabel{sub@fig:epsilon-2d}{{a}{178}{Visão 2D (Perda vs. Erro)}{figure.caption.112}{}}
-\newlabel{fig:epsilon-3d}{{10.18b}{178}{Superfície 3D completa}{figure.caption.112}{}}
-\newlabel{sub@fig:epsilon-3d}{{b}{178}{Superfície 3D completa}{figure.caption.112}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.18}{\ignorespaces Visualizações da função de perda Epsilon-Insensível (\textit  {Epsilon-Insensitive Loss}, $\epsilon =1$) em duas e em três dimensões.}}{178}{figure.caption.112}\protected@file@percent }
-\newlabel{fig:epsilon-insensitive-loss}{{10.18}{178}{Visualizações da função de perda Epsilon-Insensível (\textit {Epsilon-Insensitive Loss}, $\epsilon =1$) em duas e em três dimensões}{figure.caption.112}{}}
-\newlabel{eq:epsilon-insensitive-derivada}{{10.20}{178}{Perda Epsilon-Insensível}{equation.10.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.19}{\ignorespaces Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $.}}{179}{figure.caption.113}\protected@file@percent }
-\newlabel{fig:epsilon-insensitive-derivada}{{10.19}{179}{Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $}{figure.caption.113}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{179}{section.10.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{179}{subsection.10.6.1}\protected@file@percent }
-\newlabel{eq:poisson-loss}{{10.21}{179}{Perda de Poisson}{equation.10.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.20}{\ignorespaces Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{180}{figure.caption.114}\protected@file@percent }
-\newlabel{fig:poisson-loss}{{10.20}{180}{Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.114}{}}
-\newlabel{eq:poisson-loss-derivada}{{10.22}{180}{Perda de Poisson}{equation.10.22}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{180}{subsection.10.6.2}\protected@file@percent }
-\newlabel{eq:tweedie-loss}{{10.23}{180}{Perda de Tweedie}{equation.10.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.21}{\ignorespaces Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat  {y}=y$ e assintótico a 1 para $\hat  {y} \to \infty $.}}{181}{figure.caption.115}\protected@file@percent }
-\newlabel{fig:poisson-loss-derivada}{{10.21}{181}{Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat {y}=y$ e assintótico a 1 para $\hat {y} \to \infty $}{figure.caption.115}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.22}{\ignorespaces Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{181}{figure.caption.116}\protected@file@percent }
-\newlabel{fig:tweedie-loss}{{10.22}{181}{Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.116}{}}
-\newlabel{eq:tweedie-loss-derivada}{{10.24}{182}{Perda de Tweedie}{equation.10.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.23}{\ignorespaces Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real.}}{182}{figure.caption.117}\protected@file@percent }
-\newlabel{fig:tweedie-loss-derivada}{{10.23}{182}{Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real}{figure.caption.117}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{182}{subsection.10.6.3}\protected@file@percent }
-\newlabel{eq:kl-divergence-gaussiana}{{10.25}{182}{Divergência Kullback-Leibler}{equation.10.25}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.24}{\ignorespaces A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$).}}{183}{figure.caption.118}\protected@file@percent }
-\newlabel{fig:kl-divergence-concept-regressao}{{10.24}{183}{A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$)}{figure.caption.118}{}}
-\newlabel{eq:kl-divergence-derivada-gaussiana}{{10.26}{183}{Divergência Kullback-Leibler}{equation.10.26}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{184}{section.10.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.8}Fluxograma: Escolhendo a Função de Perda Ideal}{184}{section.10.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Erro Quadrático Médio (MSE)}{156}{subsection.10.3.1}\protected@file@percent }
+\newlabel{eq:mse}{{10.1}{157}{Erro Quadrático Médio (MSE)}{equation.10.1}{}}
+\newlabel{fig:mse-2d}{{10.1a}{158}{Representação gráfica em duas dimensões da função criada}{figure.caption.95}{}}
+\newlabel{sub@fig:mse-2d}{{a}{158}{Representação gráfica em duas dimensões da função criada}{figure.caption.95}{}}
+\newlabel{fig:mse-3d}{{10.1b}{158}{Representação gráfica em três dimensões da superfície criada}{figure.caption.95}{}}
+\newlabel{sub@fig:mse-3d}{{b}{158}{Representação gráfica em três dimensões da superfície criada}{figure.caption.95}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Visualizações da função de perda erro quadrático médio (\textit  {MSE}) em duas e em três dimensões.}}{158}{figure.caption.95}\protected@file@percent }
+\newlabel{fig:mse}{{10.1}{158}{Visualizações da função de perda erro quadrático médio (\textit {MSE}) em duas e em três dimensões}{figure.caption.95}{}}
+\newlabel{eq:mse-derivada}{{10.2}{159}{Erro Quadrático Médio (MSE)}{equation.10.2}{}}
+\newlabel{eq:vetor-gradiente-mse}{{10.3}{160}{Erro Quadrático Médio (MSE)}{equation.10.3}{}}
+\newlabel{fig:mse-derivada-2d}{{10.2a}{160}{Visão 2D (Gradiente vs. Erro)}{figure.caption.96}{}}
+\newlabel{sub@fig:mse-derivada-2d}{{a}{160}{Visão 2D (Gradiente vs. Erro)}{figure.caption.96}{}}
+\newlabel{fig:mse-derivada-3d}{{10.2b}{160}{Superfície 3D completa}{figure.caption.96}{}}
+\newlabel{sub@fig:mse-derivada-3d}{{b}{160}{Superfície 3D completa}{figure.caption.96}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MSE.}}{160}{figure.caption.96}\protected@file@percent }
+\newlabel{fig:mse-derivada}{{10.2}{160}{Visualizações da derivada (gradiente) da função de perda MSE}{figure.caption.96}{}}
+\newlabel{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-perda-regressao}{{10.4}{160}{Erro Quadrático Médio (MSE)}{equation.10.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Erro Absoluto Médio (MAE)}{162}{subsection.10.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.3}{\ignorespaces CurvPerdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST}}{163}{figure.caption.97}\protected@file@percent }
+\newlabel{fig:comparativo-perdas-image-to-image}{{10.3}{163}{CurvPerdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST}{figure.caption.97}{}}
+\newlabel{eq:mae}{{10.5}{163}{Erro Absoluto Médio (MAE)}{equation.10.5}{}}
+\newlabel{fig:mae-2d}{{10.4a}{164}{Representação gráfica em duas dimensões}{figure.caption.98}{}}
+\newlabel{sub@fig:mae-2d}{{a}{164}{Representação gráfica em duas dimensões}{figure.caption.98}{}}
+\newlabel{fig:mae-3d}{{10.4b}{164}{Representação gráfica em três dimensões}{figure.caption.98}{}}
+\newlabel{sub@fig:mae-3d}{{b}{164}{Representação gráfica em três dimensões}{figure.caption.98}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.4}{\ignorespaces Visualizações da função de perda erro absoluto médio (\textit  {MAE}) em duas e em três dimensões.}}{164}{figure.caption.98}\protected@file@percent }
+\newlabel{fig:mae}{{10.4}{164}{Visualizações da função de perda erro absoluto médio (\textit {MAE}) em duas e em três dimensões}{figure.caption.98}{}}
+\newlabel{eq:mae-derivada}{{10.6}{165}{Erro Absoluto Médio (MAE)}{equation.10.6}{}}
+\newlabel{fig:mae-derivada-2d}{{10.5a}{165}{Visão 2D (Gradiente vs. Erro)}{figure.caption.99}{}}
+\newlabel{sub@fig:mae-derivada-2d}{{a}{165}{Visão 2D (Gradiente vs. Erro)}{figure.caption.99}{}}
+\newlabel{fig:mae-derivada-3d}{{10.5b}{165}{Superfície 3D completa}{figure.caption.99}{}}
+\newlabel{sub@fig:mae-derivada-3d}{{b}{165}{Superfície 3D completa}{figure.caption.99}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.5}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MAE.}}{165}{figure.caption.99}\protected@file@percent }
+\newlabel{fig:mae-derivada}{{10.5}{165}{Visualizações da derivada (gradiente) da função de perda MAE}{figure.caption.99}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.3}Perda de Huber}{166}{subsection.10.3.3}\protected@file@percent }
+\newlabel{eq:huber-loss-do-huber}{{10.7}{166}{Perda de Huber}{equation.10.7}{}}
+\newlabel{eq:huber-loss}{{10.8}{167}{Perda de Huber}{equation.10.8}{}}
+\newlabel{fig:huber-2d}{{10.6a}{167}{Representação gráfica em duas dimensões}{figure.caption.100}{}}
+\newlabel{sub@fig:huber-2d}{{a}{167}{Representação gráfica em duas dimensões}{figure.caption.100}{}}
+\newlabel{fig:huber-3d}{{10.6b}{167}{Representação gráfica em três dimensões}{figure.caption.100}{}}
+\newlabel{sub@fig:huber-3d}{{b}{167}{Representação gráfica em três dimensões}{figure.caption.100}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.6}{\ignorespaces Visualizações da função de perda Huber (\textit  {Huber Loss}, $\delta =1$) em duas e em três dimensões.}}{167}{figure.caption.100}\protected@file@percent }
+\newlabel{fig:huber-loss}{{10.6}{167}{Visualizações da função de perda Huber (\textit {Huber Loss}, $\delta =1$) em duas e em três dimensões}{figure.caption.100}{}}
+\newlabel{eq:huber-loss-derivada}{{10.9}{168}{Perda de Huber}{equation.10.9}{}}
+\newlabel{fig:huber-comparacoes-mae}{{10.7a}{168}{Perda Huber com $\delta = 0.5$}{figure.caption.101}{}}
+\newlabel{sub@fig:huber-comparacoes-mae}{{a}{168}{Perda Huber com $\delta = 0.5$}{figure.caption.101}{}}
+\newlabel{fig:huber-comparacoes-mse}{{10.7b}{168}{Perda Huber com $\delta = 4.0$}{figure.caption.101}{}}
+\newlabel{sub@fig:huber-comparacoes-mse}{{b}{168}{Perda Huber com $\delta = 4.0$}{figure.caption.101}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.7}{\ignorespaces Comparação da Perda de Huber com diferentes valores de $\delta $.}}{168}{figure.caption.101}\protected@file@percent }
+\newlabel{fig:huber-delta-comparacoes}{{10.7}{168}{Comparação da Perda de Huber com diferentes valores de $\delta $}{figure.caption.101}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.4}Perda Log-Cosh}{169}{subsection.10.3.4}\protected@file@percent }
+\newlabel{eq:log-cosh-loss}{{10.10}{169}{Perda Log-Cosh}{equation.10.10}{}}
+\newlabel{fig:log-cosh-2d}{{10.8a}{170}{Representação gráfica em duas dimensões}{figure.caption.102}{}}
+\newlabel{sub@fig:log-cosh-2d}{{a}{170}{Representação gráfica em duas dimensões}{figure.caption.102}{}}
+\newlabel{fig:log-cosh-3d}{{10.8b}{170}{Representação gráfica em três dimensões}{figure.caption.102}{}}
+\newlabel{sub@fig:log-cosh-3d}{{b}{170}{Representação gráfica em três dimensões}{figure.caption.102}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.8}{\ignorespaces Visualizações da função de perda Log-Cosh (\textit  {Log-Cosh Loss}) em duas e em três dimensões.}}{170}{figure.caption.102}\protected@file@percent }
+\newlabel{fig:log-cosh-loss}{{10.8}{170}{Visualizações da função de perda Log-Cosh (\textit {Log-Cosh Loss}) em duas e em três dimensões}{figure.caption.102}{}}
+\newlabel{eq:log-cosh-derivada}{{10.11}{171}{Perda Log-Cosh}{equation.10.11}{}}
+\newlabel{fig:log-cosh-derivada-2d}{{10.9a}{172}{Visão 2D (Gradiente vs. Erro)}{figure.caption.103}{}}
+\newlabel{sub@fig:log-cosh-derivada-2d}{{a}{172}{Visão 2D (Gradiente vs. Erro)}{figure.caption.103}{}}
+\newlabel{fig:log-cosh-derivada-3d}{{10.9b}{172}{Superfície 3D completa}{figure.caption.103}{}}
+\newlabel{sub@fig:log-cosh-derivada-3d}{{b}{172}{Superfície 3D completa}{figure.caption.103}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.9}{\ignorespaces Visualizações da derivada (gradiente) da função de perda Log-Cosh.}}{172}{figure.caption.103}\protected@file@percent }
+\newlabel{fig:log-cosh-derivada}{{10.9}{172}{Visualizações da derivada (gradiente) da função de perda Log-Cosh}{figure.caption.103}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}Lidando com a Escala: Foco no Erro Relativo}{172}{section.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Erro Quadrático Médio Logarítmico (MSLE)}{173}{subsection.10.4.1}\protected@file@percent }
+\newlabel{eq:msle-loss}{{10.12}{173}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.12}{}}
+\newlabel{fig:msle-2d}{{10.10a}{174}{Visão 2D (corte em $y=10$)}{figure.caption.104}{}}
+\newlabel{sub@fig:msle-2d}{{a}{174}{Visão 2D (corte em $y=10$)}{figure.caption.104}{}}
+\newlabel{fig:msle-3d}{{10.10b}{174}{Superfície 3D completa}{figure.caption.104}{}}
+\newlabel{sub@fig:msle-3d}{{b}{174}{Superfície 3D completa}{figure.caption.104}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.10}{\ignorespaces Visualizações da função de perda MSLE (\textit  {Mean Squared Logarithmic Error}).}}{174}{figure.caption.104}\protected@file@percent }
+\newlabel{fig:msle-loss}{{10.10}{174}{Visualizações da função de perda MSLE (\textit {Mean Squared Logarithmic Error})}{figure.caption.104}{}}
+\newlabel{eq:msle-derivada}{{10.13}{175}{Erro Quadrático Médio Logarítmico (MSLE)}{equation.10.13}{}}
+\newlabel{fig:msle-derivada-2d}{{10.11a}{175}{Visão 2D (corte em $y=10$)}{figure.caption.105}{}}
+\newlabel{sub@fig:msle-derivada-2d}{{a}{175}{Visão 2D (corte em $y=10$)}{figure.caption.105}{}}
+\newlabel{fig:msle-derivada-3d}{{10.11b}{175}{Superfície 3D completa}{figure.caption.105}{}}
+\newlabel{sub@fig:msle-derivada-3d}{{b}{175}{Superfície 3D completa}{figure.caption.105}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.11}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MSLE.}}{175}{figure.caption.105}\protected@file@percent }
+\newlabel{fig:msle-derivada}{{10.11}{175}{Visualizações da derivada (gradiente) da função de perda MSLE}{figure.caption.105}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}Erro Percentual Absoluto Médio (MAPE)}{175}{subsection.10.4.2}\protected@file@percent }
+\newlabel{eq:mape-loss}{{10.14}{175}{Erro Percentual Absoluto Médio (MAPE)}{equation.10.14}{}}
+\newlabel{fig:mape-2d}{{10.12a}{176}{Visão 2D (corte em $y=10$)}{figure.caption.106}{}}
+\newlabel{sub@fig:mape-2d}{{a}{176}{Visão 2D (corte em $y=10$)}{figure.caption.106}{}}
+\newlabel{fig:mape-3d}{{10.12b}{176}{Superfície 3D completa ($y>0$)}{figure.caption.106}{}}
+\newlabel{sub@fig:mape-3d}{{b}{176}{Superfície 3D completa ($y>0$)}{figure.caption.106}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.12}{\ignorespaces Visualizações da função de perda MAPE (\textit  {Mean Absolute Percentage Error}).}}{176}{figure.caption.106}\protected@file@percent }
+\newlabel{fig:mape-loss}{{10.12}{176}{Visualizações da função de perda MAPE (\textit {Mean Absolute Percentage Error})}{figure.caption.106}{}}
+\newlabel{eq:mape-derivada}{{10.15}{176}{Erro Percentual Absoluto Médio (MAPE)}{equation.10.15}{}}
+\newlabel{fig:mape-derivada-2d}{{10.13a}{176}{Visão 2D (corte em $y=10$)}{figure.caption.107}{}}
+\newlabel{sub@fig:mape-derivada-2d}{{a}{176}{Visão 2D (corte em $y=10$)}{figure.caption.107}{}}
+\newlabel{fig:mape-derivada-3d}{{10.13b}{176}{Superfície 3D completa ($y>0$)}{figure.caption.107}{}}
+\newlabel{sub@fig:mape-derivada-3d}{{b}{176}{Superfície 3D completa ($y>0$)}{figure.caption.107}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.13}{\ignorespaces Visualizações da derivada (gradiente) da função de perda MAPE.}}{176}{figure.caption.107}\protected@file@percent }
+\newlabel{fig:mape-derivada}{{10.13}{176}{Visualizações da derivada (gradiente) da função de perda MAPE}{figure.caption.107}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}Erro Percentual Absoluto Médio Simétrico (sMAPE)}{177}{subsection.10.4.3}\protected@file@percent }
+\newlabel{eq:smape-loss}{{10.16}{177}{Erro Percentual Absoluto Médio Simétrico (sMAPE)}{equation.10.16}{}}
+\newlabel{fig:smape-2d}{{10.14a}{177}{Visão 2D (corte em $y=10$)}{figure.caption.108}{}}
+\newlabel{sub@fig:smape-2d}{{a}{177}{Visão 2D (corte em $y=10$)}{figure.caption.108}{}}
+\newlabel{fig:smape-3d}{{10.14b}{177}{Superfície 3D completa}{figure.caption.108}{}}
+\newlabel{sub@fig:smape-3d}{{b}{177}{Superfície 3D completa}{figure.caption.108}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.14}{\ignorespaces Visualizações da função de perda sMAPE (\textit  {Symmetric Mean Absolute Percentage Error}).}}{177}{figure.caption.108}\protected@file@percent }
+\newlabel{fig:smape-loss}{{10.14}{177}{Visualizações da função de perda sMAPE (\textit {Symmetric Mean Absolute Percentage Error})}{figure.caption.108}{}}
+\newlabel{eq:smape-derivada}{{10.17}{178}{Erro Percentual Absoluto Médio Simétrico (sMAPE)}{equation.10.17}{}}
+\newlabel{fig:smape-derivada-2d}{{10.15a}{178}{Visão 2D (corte em $y=10$)}{figure.caption.109}{}}
+\newlabel{sub@fig:smape-derivada-2d}{{a}{178}{Visão 2D (corte em $y=10$)}{figure.caption.109}{}}
+\newlabel{fig:smape-derivada-3d}{{10.15b}{178}{Superfície 3D completa ($y>0$)}{figure.caption.109}{}}
+\newlabel{sub@fig:smape-derivada-3d}{{b}{178}{Superfície 3D completa ($y>0$)}{figure.caption.109}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.15}{\ignorespaces Visualizações da derivada (gradiente) da função de perda sMAPE.}}{178}{figure.caption.109}\protected@file@percent }
+\newlabel{fig:smape-derivada}{{10.15}{178}{Visualizações da derivada (gradiente) da função de perda sMAPE}{figure.caption.109}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Mudando o Objetivo da Previsão: Além da Média}{179}{section.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Perda Quantílica}{179}{subsection.10.5.1}\protected@file@percent }
+\newlabel{eq:quantile-loss}{{10.18}{179}{Perda Quantílica}{equation.10.18}{}}
+\newlabel{fig:quantile-2d}{{10.16a}{179}{Visão 2D (Perda vs. Erro)}{figure.caption.110}{}}
+\newlabel{sub@fig:quantile-2d}{{a}{179}{Visão 2D (Perda vs. Erro)}{figure.caption.110}{}}
+\newlabel{fig:quantile-3d}{{10.16b}{179}{Superfície 3D completa}{figure.caption.110}{}}
+\newlabel{sub@fig:quantile-3d}{{b}{179}{Superfície 3D completa}{figure.caption.110}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.16}{\ignorespaces Visualizações da Perda Quantílica (\textit  {Pinball Loss}) em duas e em três dimensões.}}{179}{figure.caption.110}\protected@file@percent }
+\newlabel{fig:quantile-loss}{{10.16}{179}{Visualizações da Perda Quantílica (\textit {Pinball Loss}) em duas e em três dimensões}{figure.caption.110}{}}
+\newlabel{eq:quantile-loss-derivada}{{10.19}{179}{Perda Quantílica}{equation.10.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.17}{\ignorespaces Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica.}}{180}{figure.caption.111}\protected@file@percent }
+\newlabel{fig:quantile-loss-derivada}{{10.17}{180}{Gráfico da derivada da Perda Quantílica (em relação ao erro). O gradiente é uma função de degrau assimétrica}{figure.caption.111}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Perda Epsilon-Insensível}{180}{subsection.10.5.2}\protected@file@percent }
+\newlabel{eq:epsilon-insensitive-loss}{{10.20}{180}{Perda Epsilon-Insensível}{equation.10.20}{}}
+\newlabel{fig:epsilon-2d}{{10.18a}{181}{Visão 2D (Perda vs. Erro)}{figure.caption.112}{}}
+\newlabel{sub@fig:epsilon-2d}{{a}{181}{Visão 2D (Perda vs. Erro)}{figure.caption.112}{}}
+\newlabel{fig:epsilon-3d}{{10.18b}{181}{Superfície 3D completa}{figure.caption.112}{}}
+\newlabel{sub@fig:epsilon-3d}{{b}{181}{Superfície 3D completa}{figure.caption.112}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.18}{\ignorespaces Visualizações da função de perda Epsilon-Insensível (\textit  {Epsilon-Insensitive Loss}, $\epsilon =1$) em duas e em três dimensões.}}{181}{figure.caption.112}\protected@file@percent }
+\newlabel{fig:epsilon-insensitive-loss}{{10.18}{181}{Visualizações da função de perda Epsilon-Insensível (\textit {Epsilon-Insensitive Loss}, $\epsilon =1$) em duas e em três dimensões}{figure.caption.112}{}}
+\newlabel{eq:epsilon-insensitive-derivada}{{10.21}{181}{Perda Epsilon-Insensível}{equation.10.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.19}{\ignorespaces Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $.}}{181}{figure.caption.113}\protected@file@percent }
+\newlabel{fig:epsilon-insensitive-derivada}{{10.19}{181}{Gráfico da derivada da Perda Epsilon-Insensível. O gradiente é zero dentro da margem $\epsilon $}{figure.caption.113}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}Perdas Baseadas em Distribuições de Dados}{182}{section.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Perda de Poisson}{182}{subsection.10.6.1}\protected@file@percent }
+\newlabel{eq:poisson-loss}{{10.22}{182}{Perda de Poisson}{equation.10.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.20}{\ignorespaces Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{182}{figure.caption.114}\protected@file@percent }
+\newlabel{fig:poisson-loss}{{10.20}{182}{Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.114}{}}
+\newlabel{eq:poisson-loss-derivada}{{10.23}{183}{Perda de Poisson}{equation.10.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.21}{\ignorespaces Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat  {y}=y$ e assintótico a 1 para $\hat  {y} \to \infty $.}}{183}{figure.caption.115}\protected@file@percent }
+\newlabel{fig:poisson-loss-derivada}{{10.21}{183}{Gráfico da derivada da Perda de Poisson. O gradiente é zero quando $\hat {y}=y$ e assintótico a 1 para $\hat {y} \to \infty $}{figure.caption.115}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Perda de Tweedie}{184}{subsection.10.6.2}\protected@file@percent }
+\newlabel{eq:tweedie-loss}{{10.24}{184}{Perda de Tweedie}{equation.10.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.22}{\ignorespaces Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat  {y}=y$.}}{184}{figure.caption.116}\protected@file@percent }
+\newlabel{fig:tweedie-loss}{{10.22}{184}{Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat {y}=y$}{figure.caption.116}{}}
+\newlabel{eq:tweedie-loss-derivada}{{10.25}{184}{Perda de Tweedie}{equation.10.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.23}{\ignorespaces Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real.}}{185}{figure.caption.117}\protected@file@percent }
+\newlabel{fig:tweedie-loss-derivada}{{10.23}{185}{Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real}{figure.caption.117}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Divergência Kullback-Leibler}{185}{subsection.10.6.3}\protected@file@percent }
+\newlabel{eq:kl-divergence-gaussiana}{{10.26}{185}{Divergência Kullback-Leibler}{equation.10.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.24}{\ignorespaces A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$).}}{186}{figure.caption.118}\protected@file@percent }
+\newlabel{fig:kl-divergence-concept-regressao}{{10.24}{186}{A Divergência KL mede a diferença entre a distribuição prevista pelo modelo ($Q$) e a distribuição real dos dados ($P$)}{figure.caption.118}{}}
+\newlabel{eq:kl-divergence-derivada-gaussiana}{{10.27}{186}{Divergência Kullback-Leibler}{equation.10.27}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.7}Comparativo: Funções de Perda para Regressão}{187}{section.10.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.8}Fluxograma: Escolhendo a Função de Perda Ideal}{187}{section.10.8}\protected@file@percent }
 \@setckpt{capitulos/parte-III-pilares/cap-xx-perda-regressao}{
-\setcounter{page}{185}
-\setcounter{equation}{26}
+\setcounter{page}{188}
+\setcounter{equation}{27}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{0}
+\setcounter{footnote}{1}
 \setcounter{mpfootnote}{0}
 \setcounter{@memmarkcntra}{0}
 \setcounter{storedpagenumber}{1}
@@ -210,15 +211,15 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{187}
-\setcounter{lastsheet}{295}
-\setcounter{lastpage}{293}
+\setcounter{sheetsequence}{190}
+\setcounter{lastsheet}{302}
+\setcounter{lastpage}{300}
 \setcounter{figure}{24}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
 \setcounter{lotdepth}{1}
 \setcounter{Item}{2}
-\setcounter{Hfootnote}{3}
+\setcounter{Hfootnote}{4}
 \setcounter{bookmark@seq@number}{0}
 \setcounter{memhycontfloat}{0}
 \setcounter{mem@Hpagenote}{0}
@@ -238,7 +239,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{280}
+\setcounter{instcount}{292}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
