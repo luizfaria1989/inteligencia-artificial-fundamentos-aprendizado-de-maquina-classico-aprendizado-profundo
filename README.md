@@ -30,9 +30,9 @@ Este é um trabalho em andamento. O conteúdo pode (e vai) sofrer alterações, 
 * [ ] Probabilidade e Estatística para Aprendizado de Máquina
 
 ### 📘 Parte 3: Pilares das Redes Neurais
-* [ ] O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente
-* [ ] Funções de Ativação Sigmoidais
-* [ ] Funções de Ativação Retificadoras
+* [x] O Algoritmo da Repropropagação e Os Otimizadores Baseados em Gradiente
+* [x] Funções de Ativação Sigmoidais
+* [x] Funções de Ativação Retificadoras
 * [ ] Funções de Ativação Modernas e Outras Funções de Ativação
 * [ ] Funções de Perda para Regressão
 * [ ] Funções de Perda para Classificação
