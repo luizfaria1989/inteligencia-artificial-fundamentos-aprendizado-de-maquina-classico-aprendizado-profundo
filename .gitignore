@@ -17,3 +17,10 @@
 Thumbs.db
 *.bcf
 *.xml
+*.script
+*.dat
+*.table
+*.bbl-SAVE-ERROR
+*.listing
+*.nlo
+*.nls
