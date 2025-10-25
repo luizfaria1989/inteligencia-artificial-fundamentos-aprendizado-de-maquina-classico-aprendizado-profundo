@@ -15,3 +15,5 @@
 *.pdf
 .DS_Store
 Thumbs.db
+*.bcf
+*.xml
