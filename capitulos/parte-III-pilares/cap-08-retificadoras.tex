@@ -131,6 +131,27 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Rectified Linear Unit}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 ao trabalhar com redes neurais, uma das maiores vantagens destas é o fato de “aprenderem” com base na retropropagação do gradiente nas camadas da rede. Assim, ao calcular o gradiente para fazer a retropropagação do erro e ajustar os pesos e vieses das camadas, é necessário ter em mente também a derivada daquela função de ativação que que será aplicada em uma camada de neurônios da rede, dado que ela entrará no \textit{backward pass} do modelo.
 
 Para achar a derivada da \textit{ReLU}, deve-se derivar as duas condicionais dela, assim, quando $x$ for maior que zero, a saída será 1, já quando $x$ for menor que zero, a saída será zero. Mas você vai encontrar um problema nisso, a derivada dessa função não existe quando $x$ é 0, pois o limite lateral à esquerda dessa função é zero, enquanto o limite lateral a direita dela é um. Isso passa a ser um problema quando queremos calcular o valor de saída justamente quando aquele valor de entrada é zero. Na prática, esse problema é fácil de resolver, ao desenvolver o código dessa função, escolher qual será o resultado da \textit{ReLU} quando esse valor de entrada for zero. Podemos dizer que ele será um ou zero, isso irá depender somente da nossa implementação da derivada da \textit{ReLU}.
@@ -248,6 +269,27 @@ Já para a sua representação gráfica, ela está presente na Figura \ref{fig:l
     \label{fig:leaky-relu}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Leaky ReLU}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Sabendo de sua expressão e seu gráfico, é possível agora calcular sua derivada, para isso, deve-se derivar as duas condicionais que estão na função da \textit{Leaky ReLU}. Assim, quando a entrada dessa função for maior que zero, essa função será $x$ que derivada é 1, já quando a entrada for menor que zero, a função será $\alpha x$, que quando derivada tem como resultado a própria constante $\alpha$. Contudo, como dito anteriormente, a derivada da \textit{Leaky ReLU} não existe quando a entrada é exatamente zero, mas na prática, ao trabalhar com a sua definição na retropropagação, é possível definir um valor para a derivada nesse ponto, assim como foi feito com a \textit{ReLU} tradicional. Com isso em mente, tem-se então a Equação \ref{eq:leaky-relu-derivada}, a qual representa a derivada da \textit{Leaky ReLU}.
 
@@ -387,6 +429,27 @@ Com base em sua equação, tem-se o gráfico da \textit{PReLU} na Figura \ref{fi
     \label{fig:prelu}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Parametric ReLU}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Conhecendo a sua fórmula e como ela se comporta, cabe também derivar a \textit{PReLU}, para isso, deve-se derivar cada uma das expressões dos condicionais de forma separada, assim como foi feito com a \textit{Leaky ReLU} e a \textit{ReLU} anteriormente. Como a fórmula da \textit{PReLU} é igual a \textit{LReLU}, podemos apenas nos lembrar dela e citar a Equação \ref{eq:prelu-derivada} como sua derivada. Note que, essa derivada também não existe quando a entrada é exatamente zero, mas assim como na \textit{Leaky ReLU}. É possível "corrigir" isso dizendo que ela será igual a $\alpha$ nesse ponto, para que o gradiente continue fluindo durante o \textit{backward pass}. Vale lembrar, que essa reta em $\alpha$ irá variar conforme a rede neural aprende as características e se ajusta ao problema que está tentando resolver.
 
@@ -581,6 +644,27 @@ O gráfico da \textit{RReLU} está presente na Figura \ref{fig:rrelu}. Na repres
     \label{fig:rrelu}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Randomized Leaky ReLU}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Conhecendo como a \textit{RReLU} se comporta, é possível também calcular a sua derivada, a qual será de extrema utilidade durante a retropropagação, fazendo que os pesos e vieses do modelo sejam ajustados e com base nisso ele consiga aprender melhor o problema que está sendo analisado. Como a \textit{RReLU} utiliza a mesma fórmula que funções como a \textit{Leaky ReLU} e a \textit{PReLU}, pode-se apenas repetir a expressão de sua derivada novamente, a qual será dada pela Equação \ref{eq:rrelu-derivada}. Note que mesmo compartilhando a mesma fórmula, o termo $\alpha$ possui significado distintos em cada uma dessas funções, neste caso, ele é um valor aleatório dado pela distribuição $U(l, u)$.
 
@@ -806,6 +890,27 @@ Conhecendo como é a fórmula da \textit{ELU}, é possível também plotar o seu
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Exponential Linear Unit}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Agora que a sua fórmula e seu gráfico são conhecidos, cabe também calcular a sua derivada, a qual será útil na retropropagação do modelo. Para isso, é possível seguir a mesma estratégia vista até agora, derivando a função em cada um dos casos, gerando assim a sua derivada. Nos cenários em que a entrada é positiva, a derivada será sempre 1, pois quando derivamos a expressão $x$, ela nos irá retornar 1. Já quando temos o cenário negativo, teremos como resultado da derivação da expressão $alpha \cdot (e^{y_j} - 1)$ o termo $alpha \cdot e^{y_j}$. Um ponto a ser destacado é de que a \textit{ELU} é contínua na origem, assim, não tendo que preocupar em escolher um valor da derivada quando o seu valor de entrada for zero. Assim, tem-se como resultado final a Equação \ref{eq:elu-derivada}
 
 \begin{equacaodestaque}{\textit{Exponential Linear Unit} (\textit{ELU}) Derivada}
@@ -933,6 +1038,27 @@ Pelo fato da \textit{SELU} ter um comportamento que também retorna valores para
     \label{fig:selu}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Scaled Exponential Linear Unit}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Considerando agora como é a equação da \textit{SELU} e qual é o seu comportamento no gráfico, é possível também calcular a sua derivada para ser utilizada na retroproapagação do gradiente, para isso, deve-se derivar a Equação \ref{eq:selu}, considerando os dois cenários, em que a sua entrada será positiva e quando sua entrada for negativa ou zero. Um ponto que ajuda bastante ao calcular a derivada da \textit{SELU} está no fato dela ser composta pela função \textit{ELU} multiplicada por uma constante, se utilizarmos regras de derivação para esse cenário, precisaremos apenas derivar a \textit{ELU} e depois adicionar a constante $\lambda$ multiplicando-a. Como a derivada da \textit{ELU} já foi calculada, ela pode ser aproveitada agora. Você pode ver então a derivada da \textit{Scaled Exponential Linear Unit} na Equação \ref{eq:selu-derivada}.
 
@@ -1119,6 +1245,27 @@ Entendendo a estrutura e como funciona a \textit{Noisy ReLU}, é possível plota
     \label{fig:nrelu}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Noisy ReLU}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Ao calcular a derivada da \textit{NReLU} você encontrará um problema que não havia aparecido nas outras funções. O termo de ruído $\mathcal{N}$ é um termo não determísitico, o que significa que mesmo que tivéssemos a mesma entrada para a função \textit{Noisy ReLU} duas ou mais vezes, não poderíamos afirmar com certeza de que essas saídas seriam iguais. Para resolver esses problemas, os autores consideram para a \textit{NReLU} que sua função para o \textit{backward pass} será irá retornar zero quando o valor de entrada for negativo ou nulo, e irá retornar um, quando o valor de entrada for positivo \parencite{Nair2010}. Então a expressão que representa a \textit{NReLU} para a retropropagação é dada pela Equação \ref{eq:nrelu-derivada}, note que ela é a mesma expressão da derivada da \textit{ReLU} tradicional.
 
