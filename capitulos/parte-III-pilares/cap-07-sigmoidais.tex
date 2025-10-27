@@ -285,6 +285,27 @@ O gráfico da sigmoide está presente na Figura \ref{fig:sigmoide}, note que ele
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Sigmoide Logística}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Um ponto a ser destacado nas funções de ativação, e que começou a ser visto no capítulo anterior (Capítulo \ref{cap:retropropagacao-gradiente}), é que se estamos construindo um modelo que aprende por meio da retropropagação, nós estamos também interessados em entender como essas funções de ativação se comportam em suas derivadas, pois ela é um dos componentes básicos para se calcular o gradiente retropropagado.
 
 Assim, ao derivar a sigmoide logística é possível encontrar a Equação \ref{eq:sigmoide-derivada}.
@@ -381,6 +402,27 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \label{fig:tanh}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Tangente Hiperbólica}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Como foi visto em seções anteriores, é interessante ao escolher uma função de ativação verificar se ela é centrada em zero, como no caso da tangente hiperbólica. Isso acontece pois funções desse tipo permitem uma convergência mais rápida do modelo para os pontos de mínimo, garantindo um melhor desempenho com menos iterações, quando comparadas com funções que não são centradas em zero, como a sigmoide.
 
@@ -479,6 +521,27 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Softsign}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Com relação a sua diferenciabilidade, a \textit{softsign} pode ser derivada em todos os seus pontos, e sua derivada pode ser vista na Equação \ref{eq:softsign-derivada}. Com base nela, é possível notar uma outra diferença da \textit{softsign} com a tangente hiperbólica e a sigmoide. Diferente das outras duas, a derivada da \textit{softsign} não pode ser expressa em termos da sua própria função. Assim, enquanto nas outras funções é feito um cálculo complexo na função e um simples na derivada, pois é aproveitado o resultado, na \textit{softsign} isso não ocorre.
 
 \begin{equacaodestaque}{\textit{Softsign} Derivada}
@@ -575,6 +638,27 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Hard Sigmoid}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 Com relação a derivada da \textit{hard sigmoid}, para obtê-lá, deve-se derivar todas as três expressões construindo a sua derivada. Note que os pontos que as retas se tocam no gráfico da Figura \ref{fig:hard-sigmoid} são pontos de descontinuidade, pois quando calculados os limites laterais nesses pontos eles serão diferentes. Isso faz com que essa função não possa ser derivada desses locais. Considerando isso, é possível expressar a derivada da \textit{hard sigmoid} com a Equação \ref{eq:hard-sigmoid-derivada}.
 
 \begin{equacaodestaque}{\textit{Hard Sigmoid} Derivada}
@@ -647,6 +731,27 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
     \label{fig:hard-tanh}
     \fonte{O autor (2025).}
 \end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Características da Hard Tanh}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Característica 1:}
+    \item \textbf{Característica 2:}
+    \item \textbf{Característica 3:}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Perceba também que o gráfico, bem como sua equação, é bem mais simples que a tangente hiperbólica tradicional, isso faz com que a \textit{hard tanh} seja uma função mais barata para ser empregada ao desenvolver um modelo de rede neural. Isso signica que ela pode ser uma função ideal para ser utilizada naqueles sistemas que possuem recursos limitados, como uma quantidade pequena de memória ram, ou seu a possibilidade de utilizar uma placa gráfica dedicada para o processamento dos dados. O mesmo vale para a \textit{hard sigmoid}.
 
