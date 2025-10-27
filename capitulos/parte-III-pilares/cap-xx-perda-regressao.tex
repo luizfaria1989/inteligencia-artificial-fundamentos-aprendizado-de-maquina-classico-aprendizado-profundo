@@ -292,7 +292,7 @@ Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma out
 
 \subsection{Erro Absoluto Médio (MAE)}
 
-O erro absoluto médio é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, ela é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
+O erro absoluto médio, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
 Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-Image Translation with Conditional Adversarial Networks} \parencite{ImageToImage}. Nele, \textcite{ImageToImage} argumentam que preferiram trabalhar com a função de perda \textit{L1 distance} (um dos diferentes nomes utilizados para se referir ao \textit{MAE}) devido a essa função gerar imagens menos borradas. É possível ver essa comparação nas imagens da Figura \ref{fig:comparativo-perdas-image-to-image}. Perceba que a perda que apresenta os resultados mais consistentes com a realidade é justamente a \textit{L1 + cGAN}, a qual possuí o \textit{MAE} em sua composição.
 
@@ -300,14 +300,20 @@ Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-
     \centering
     \includegraphics[width=0.65\linewidth]{../imagens/perda-regressao/image-to-image-perdas-comparativo.png}
     
-    \caption[CurvPerdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST]{%
+    \caption[Perdas diferentes induzem qualidades de resultados diferentes. Cada coluna mostra resultados treinados sob uma perda diferenteas de aprendizado no dataset MNIST]{%
         \newline
         \small Fonte: \parencite{ImageToImage}.
     }
     \label{fig:comparativo-perdas-image-to-image}
 \end{figure}
 
-Visto esses diferentes cenários em que o erro absoluto médio foi utilizado para resolver problemas de regressão é possível ver agora a sua definição matemática, para isso, o \textit{MAE} está definido na Equação \ref{eq:mae}. Perceba que ele é responsável por calcular a diferença entre os dois pontos, o valor real $\hat{y}_j$ e o valor predito $y_j$, para todos os $N$ casos analisados e a partir disso calcular a média dos resultados.
+Além disso, vale a pena destacar como o erro absoluto médio se enquadra no exemplo ilustrativo do jogo dos dardos. Para isso, diferente do erro quatrático médio, em que quanto mais longe do centro, o número de pontos perdidos aumentava de forma quadrática, no \textit{MAE} a penalização com relação aos jogadores ruins é mais suave, sendo dada de forma linear. 
+
+Além disso, é interessante fazer uma outra analogia considerando o cenário em que o \textit{MAE} se encontra. Para isso, é preciso considerar que será feito um novo jogo de dardos com dez participantes, em que cada um tem direito de jogar apenas um dardo, e que no final os dez dardos serão somados e com base neles será dado o resultado da equipe. Se tivéssemos uma equipe muito ruim utilizando como métrica o \textit{MSE} para avaliar os pontos, o resultado seria péssimo, porque esses dardos estariam muito longes do centro, e como o erro é elevado ao quadrado, isso geraria uma pontuação muito baixa. 
+
+Contudo, se a métrica escolhida para avaliar o jogo fosse o \textit{MAE} o resultado seria bem melhor, visto que o erro cresce de forma linear. Saindo da alogia e voltando para o cenário de aprendizado de máquina, é possível associar os jogadores ruins com os \textit{outliers}, eles estão presentes nos dados e vão atrapalhar o aprendizado do seu modelo. Contudo, escolher uma função que não seja tão agressiva na medição desses \textit{outliers} pode ser uma excelente alternativa para trabalhar em cenários em que essa configuração será muito comum.
+
+Visto esses diferentes cenários em que o erro absoluto médio foi utilizado para resolver problemas de regressão, além de como ele pode ser associado com o jogo dos dardos, é possível ver agora a sua definição matemática. Para isso, o \textit{MAE} está definido na Equação \ref{eq:mae}. Perceba que ele é responsável por calcular a diferença entre os dois pontos, o valor real $\hat{y}_j$ e o valor predito $y_j$, para todos os $N$ casos analisados e a partir disso calcular a média dos resultados.
 
 \begin{equacaodestaque}{Erro Absoluto Médio (\textit{MAE})}
     \Loss_{\text{MAE}} = \frac{1}{N} \sum_{j=1}^{N} |y_j - \hat{y}_j|
@@ -432,7 +438,7 @@ Como foi destacado anteriormente, o \textit{MAE} não é derivável em zero. Ini
     \label{eq:mae-derivada}
 \end{equacaodestaque}
 
-Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atrapalha a plotagem do gráfico do \textit{MAE}, o qual está representado na Figura \ref{fig:mae-derivada}.
+Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atrapalha a plotagem do gráfico do \textit{MAE}, o qual está representado na Figura \ref{fig:mae-derivada}. De forma semelhante ao que foi feito até agora, na figura da esquerda, a Figura \ref{fig:mae-derivada-2d}, está a representação em duas dimensões dessa função, enquanto na figura da direta, a Figura \ref{fig:mae-derivada-3d}.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -522,7 +528,7 @@ Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atra
     \fonte{O autor (2025).}
 \end{figure}
 
-Perceba que a derivada do erro absoluto médio é representado em forma de uma função por partes, neste caso, ela é divida em duas diferentes retas, parecida com a função de ativação degrau unitário. Assim, a derivada do \textit{MAE} é composta por duas retas constantes, a primeira constante em $-1$ e a segunda constante em $1$, apresentando uma descontinuidade em zero.
+Perceba que a derivada do erro absoluto médio é representado em forma de uma função por partes, neste caso, ela é divida em duas diferentes retas, parecida com a função de ativação degrau unitário. Note também que existe um "bico" na união dessas duas retas, isso acontece devido a descontinuidade dessa função em zero, o que impede de ser derivada nesse ponto. Assim, a derivada do \textit{MAE} pode ser interpretada como a composição de duas retas constantes, a primeira constante em -1, e a segunda constante em 1.
 
 \medskip
 \begin{center}
@@ -533,13 +539,15 @@ Perceba que a derivada do erro absoluto médio é representado em forma de uma f
 \textbf{Algumas Aplicações do Erro Absoluto Médio em Problemas de Regressão}
 \vspace{1em}
 
-Semelhante ao que foi feito no erro quadrático médio, agora podem ser discutidas algumas das aplicações do \textit{MAE} em problemas de regressão. Para isso, é possível citar os trabalhos:
+Além dos casos discutidos no início da seção: o \texttt{LAD\_TreeBoost} e o artigo \textit{Image-to-Image Translation with Conditional Adversarial Networks}, o \textit{MAE} também está presente em uma série de trabalhos, atuando tanto como função de perda, quanto servindo como uma métrica de avaliação, indicando se o modelo desenvolvido está performando bem ou não. Dito isso, essa seção busca explorar algumas dessas aplicações do erro absoluto médio, semelhante ao que foi feito ao analisar o erro quadrático médio. 
+
+Dito isso, vale destacar os trabalhos:
 
 \begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
+    \item \textbf{Avaliação de idade óssea e estimação do escore de cálcio na artéria coronária (Saúde):} Em \textit{Regression Metric Loss: Learning a Semantic Representation Space for Medical Images}, \textcite{chao2022regressionmetriclosslearning} desenvolvem algortimos de regressão para estimar escore de cálcio da artéria coronária e também um segundo algoritmo para avaliação da idade óssea. Além disso, os autores apresentam uma nova função de perda, a \textit{RM-Loss} que demonstra ser mais apta para resolver os problemas propostos de regressão \parencite{chao2022regressionmetriclosslearning}. Como forma de avaliar essa nova função criada e também as diferentes outras funções comparadas no artigo, \textcite{chao2022regressionmetriclosslearning} utilizam o erro absoluto médio como uma das métricas;
+    \item \textbf{Restauração de imagens (Engenharia):} No artigo \textit{Noise2Noise: Learning Image Restoration without Clean Data}, \textcite{Noise2Noise} estavam estudando formas de restaurar imagens corrompidas sem a utilização de dados limpos. Em um dos experimentos os autores estavam buscando uma forma ideal de remover textos de imagens, de forma que a perda L1, por ser uma função de perda robusta, conseguiu atingir bons resultados nessa tarefa \parencite{Noise2Noise};
+    \item \textbf{Previsão da produção de energia eólica (Setor energético):} Já em \textit{Minimum Open Data Subset for Wind Power Prediction}, \textcite{MinimumOpenDataSubsetForWindPowerPrediction} utilizam um modelo de florestas aleatórias com o objetivo de prever a produção de energia eólica. Para avaliar o modelo de regressão desenvolvido, os autores utilizam como métricas o \textit{MAE} além do \textit{RMSE}. Além disso, vale comentar que em testes realizados pelos pesquisadores foi possível criar um modelo com erro absoluto médio de 0,071, indicando um excelente resultado para para o algoritmo criado \parencite{MinimumOpenDataSubsetForWindPowerPrediction}.
+    \item \textbf{Previsão de poluição do ar (Setor ambiental):} Por fim, vale a pena destacar o trabaho de \textcite{nedungadi2025aircastimprovingairpollution}, \textit{AirCast: Improving Air Pollution Forecasting Through Multi-Variable Data Alignment}, em que os autores buscam formas de melhorar a previsão da poluição do ar. Como forma de ajudar a resolver esse problema, os autores utilizam uma função inspirada pelo erro absoluto médio, o \textit{Frequency-weighted Mean Absolute Error} (\textit{fMAE}), que tem como principal vantagem lidar com variáveis que apresentam uma distribuição de cauda pesada, como as variáveis PM1, PM2.5 e PM10, que indicam a qualidade do ar \parencite{nedungadi2025aircastimprovingairpollution}.
 \end{itemize}
 
 \medskip
@@ -663,6 +671,12 @@ O que Huber estava querendo basicamente era uma função que se comportasse de f
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Perda de Huber}
 \vspace{1em}
 
@@ -672,6 +686,12 @@ Conhecido o gráfico e sua equação, é possível agora discutir algumas das pr
     \item \textbf{Robustez para \textit{outliers}:} Assim como o \textit{MAE}, a perda Huber não penaliza de forma quadrática os erros como comparado com o erro quadrático médio, dessa forma, os \textit{outliers} não conseguem afetar desticmaente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle}.
     \item \textbf{Diferenciabilidade em $\delta$:} Um ponto a ser destacado ao se utilizar a perda Huber é que ela apresenta pontos de descontinuidade para o cenário em que $y - \hat{y} = \delta$, contudo a função é contínua em todo o resto, dessa forma, isso não a impede de ser utilizada em conjunto com otimizadores baseados em gradiente \parencite{LossesArticle}.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 O gradiente da perda Huber deve ser calculado por partes, como explicam \textcite{LossesArticle}, para isso, é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
 
@@ -874,6 +894,12 @@ Já com relação ao gráfico dessa função, ele está presente na Figura \ref{
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Perda Log-Cosh}
 \vspace{1em}
 
@@ -884,6 +910,12 @@ Com relação as suas propriedades é possível discutir algumas a seguir:
     \item \textbf{Robustez para \textit{outliers}:} Assim como a perda de Huber e o erro absoluto médio, a perda log-cosh não pune de forma agressiva os erros cometidos pelo modelo ao ser treinado. Isso garante que essa função possa ser aplicada em cenários em que os dados possuem muitos \textit{outliers} sem afetar drasticamente o treinamento do modelo.
     \item \textbf{Continuidade e diferenciabilidade:} Diferente de a perda de Huber, que possui pontos de descontuidade na ligação da função linear com a quadrática, a perda log-cosh consegue ser contínua em todos os seus pontos. Além disso, isso também é uma vantagem sobre o erro absoluto médio, pois este também apresenta um ponto de descontinuidade em 0, o qual precisa do cálculo do subgradiente para garantir o aprendizado dos modelos que fazem uso de otimizadores baseados em gradiente. Dessa forma, além de ser contínua, a perda log-cosh pode ser derivada em todos os seus pontos, algo útil caso esteja sendo usados otimizadores que atuam como o método do gradiente.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Visto essas diferentes propriedades dessa função, cabe agora analisar a sua derivada, a qual será útil para a retropropagação e consequentemente o aprendizado do modelo. Para isso, ela pode ser vista na Equação \ref{eq:log-cosh-derivada}. Perceba que a derivada da perda log-cosh envolve o cálculo da tangente hiperbólica, que coincidementemente, também é utilizada em aprendizado de máquina como uma função de ativação, tendo como objetivo introduzir a não-liearidade para as saídas de uma camada densa.
 
@@ -1108,6 +1140,12 @@ Com relação ao seu gráfico, ele pode visto na Figura \ref{fig:msle-loss}. Na 
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características do Erro Quadrático Médio Logarítmico}
 \vspace{1em}
 
@@ -1117,6 +1155,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Tendência de penalizar subestimações:} Como pode ser visto nos gráficos da Figura \ref{fig:msle-loss}, a função \textit{MSLE} não forma uma curva convexa simétrica verticalmente, perceba que conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto menor for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior.
     \item \textbf{Continuidade e Diferencibilidade:} Ainda com relação aos seus gráficos é possível analisar a continuidade dessa função. Note que ela não apresenta nenhum ponto "problema" que poderia afetar o cálculo das derivadas e com isso atrabalhar o fluxo do gradiente. Além disso, o uso dos logaritmos para essa função permite que suas curvas sejam suaves, o que também ajuda na sua continuidade.
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada do Erro Quadrático Médio Logarítmico (\textit{MSLE})}
     \frac{\partial \Loss_{\text{MSLE}}}{\partial \hat{y}_j} = - \frac{2}{N} \cdot \frac{\log(y_j + 1) - \log(\hat{y}_j + 1)}{\hat{y}_j + 1}
@@ -1309,6 +1353,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características do Erro Percentual Absoluto Médio}
 \vspace{1em}
 
@@ -1317,6 +1367,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada do Erro Percentual Absoluto Médio (\textit{MAPE})}
     \frac{\partial \Loss_{\text{MAPE}}}{\partial \hat{y}_j} = - \frac{1}{N} \cdot \frac{\text{sgn}(y_j - \hat{y}_j)}{y_j}
@@ -1511,6 +1567,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características do Erro Percentual Absoluto Médio Simétrico}
 \vspace{1em}
 
@@ -1519,6 +1581,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada do Erro Percentual Absoluto Médio Simétrico (\textit{sMAPE})}
     \frac{\partial \Loss_{\text{sMAPE}}}{\partial \hat{y}_j} = \frac{2}{N} \cdot \frac{\text{sgn}(\hat{y}_j - y_j)(\hat{y}_j + y_j) - |\hat{y}_j - y_j|\text{sgn}(\hat{y}_j)}{(\hat{y}_j + y_j)^2}
@@ -1739,6 +1807,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Perda Quantílica}
 \vspace{1em}
 
@@ -1747,6 +1821,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada da Perda Quantílica}
     \frac{\partial \Loss_{\tau}}{\partial \hat{y}_j} = 
@@ -1917,6 +1997,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Perda Epsilon-Insensível}
 \vspace{1em}
 
@@ -1925,6 +2011,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada da Perda Epsilon-Insensível}
     \frac{\partial \Loss_{\epsilon}}{\partial \hat{y}} = 
@@ -2045,6 +2137,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Perda de Poisson}
 \vspace{1em}
 
@@ -2053,6 +2151,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada da Perda de Poisson}
     \frac{\partial \Loss_{\text{Poisson}}}{\partial \hat{y}_j} = 1 - \frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j - y_j}{\hat{y}_j}
@@ -2159,6 +2263,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Perda de Tweedie}
 \vspace{1em}
 
@@ -2167,6 +2277,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivada da Perda de Tweedie}
     \frac{\partial \Loss_{\text{Tweedie}}}{\partial \hat{y}_j} = \hat{y}_j^{-p}(\hat{y}_j - y_j)
@@ -2275,6 +2391,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \fonte{O autor (2025).}
 \end{figure}
 
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Características da Divergência de Kullback-Leibler}
 \vspace{1em}
 
@@ -2283,6 +2405,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Característica 2:}
     \item \textbf{Característica 3:}
 \end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Derivadas da Divergência KL (Gaussiana)}
     \frac{\partial D_{KL}}{\partial \mu_2} = \frac{\mu_2 - \mu_1}{\sigma_2^2}
