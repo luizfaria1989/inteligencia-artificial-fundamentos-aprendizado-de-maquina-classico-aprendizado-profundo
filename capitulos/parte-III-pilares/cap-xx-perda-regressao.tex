@@ -25,7 +25,7 @@ Assim, antes de discutir as funções de perda para tarefas de regressão, é im
 
 A primeira seção desse capítulo que explora as funções de perda busca focar nas funções de perda mais comuns, que geralmente são umas das primeiras alternativas para serem utilizadas ao contruir um modelo de regressão. Entre elas, vale destacar a dupla de funções erro quadrático médio (também conhecido como perda L2) e o erro absoluto médio (que também recebe o nome de perda L1). Contudo, essa seção também apresenta outras alternativas, como a perda de Huber, uma função que tem como objetivo unir as principais características do \textit{MSE} e do \textit{MAE}. Além disso, também é apresentada uma alternativa para a perda de Huber, a Log-Cosh \textit{Loss}, que apresenta propriedades parecidas com essa outra função, mas que resolve os problemas de descontinuidade.
 
-\subsection{Erro Quadrático Médio (MSE)}
+\subsection{Erro Quadrático Médio (MSE)} \index{Funções de Perda!Erro Quadrático Médio (MSE)}
 
 A primeira função de perda a ser vista nesse capítulo é a erro quadrático médio (\textit{mean squared error}) também conhecida com \textit{MSE} ou perda L2. Suas origens são voltadas para o século XIX, com o avanço dos estudos da astronomica, em que os estudiosos buscavam entender o comportamento das estrelas e dos outros planetas. A \textit{MSE} surge naturalmente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas), nele \textcite{Legendre1805} introduz o método conhecido como método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros.
 
@@ -290,7 +290,7 @@ Assim, algumas aplicações do \textit{MSE} são:
 
 Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma outra abordagem para resolver problemas de regressão. Para isso, a próxima seção busca apresentar o erro absoluto médio, que é uma alternativa para o erro quadrático médio que tem como principal diferença o jeito que lida com \textit{outliers}.
 
-\subsection{Erro Absoluto Médio (MAE)}
+\subsection{Erro Absoluto Médio (MAE)} \index{Funções de Perda!Erro Absoluto Médio (MAE)}
 
 O erro absoluto médio, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
@@ -558,7 +558,7 @@ Dito isso, vale destacar os trabalhos:
 
 Visto o erro quadrático médio, que penaliza fortamente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não se preocupe tanto com os \textit{outliers}? Essa é a proposta da perda de Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela é o tópico principal da próxima seção.
 
-\subsection{Perda de Huber}
+\subsection{Perda de Huber} \index{Funções de Perda!Perda de Huber}
 
 A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss} define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}.
 
@@ -804,7 +804,7 @@ Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é
 
 Com isso, foi possível ver que a perda de Huber é uma excelente alternativa para os casos em que deseja-se controlar os pontos em que o cálculo da perda deve atuar de forma severa (usando termos quadráticos, semelhante a perda L2) e a partir de quis casos esse cálculo pode ser menos punitivo (usando termos lineares, semelhante a perda L1). Contudo, foi visto que ela tem um problema, os pontos em que essas funções se juntam gera uma descontinuidade, atrabalhando a derivação dessas funções. Para resolver esse problema da descontinuidade, pode ser utilizada como alternativa a perda Log-Cosh, a qual será vista em seguida.
 
-\subsection{Perda Log-Cosh}
+\subsection{Perda Log-Cosh} \index{Funções de Perda!Perda Log-Cosh}
 
 A perda Log-Cosh é uma função de perda que vem ganhando popularidade entre os desenvolvedores, em \textit{Statistical Properties of the log-cosh Loss Function Used in Machine Learning}, \textcite{StatisticalPropetiesLogCosh} explicam que ela aparece em cenários de autoencoders variacionais, detecção de câncer, algortimos de aprendizado baseados em árvores (como o XGBoost) e também em regressão quantílica (\textit{quantile regression}).
 
@@ -1048,7 +1048,7 @@ O erro quadrático médio, e as outras três funções de perda vistas até agor
 
 Aí você precisaria de funções de perda que lidassem com o erro relativo das previsões do modelo. Para isso, esse capítulo busca explicar três funções de perda para serem utilizadas nesse cenário. O erro quadrático médio logarítico, que possui uma tendência de penalizar mais as subestimação. O erro percentual absoluto médio, que funciona de forma aposta o \textit{MSLE}, penalizando mais a superestimação, porém com um problema de descontinuidade que pode fazer com que o cálculo da métrica "exploda". E por fim, será visto o erro percentual absoluto médio simétrico, o qual busca corrigir o problema da descontinuidade da sua variante original.
 
-\subsection{Erro Quadrático Médio Logarítmico (MSLE)}
+\subsection{Erro Quadrático Médio Logarítmico (MSLE)} \index{Funções de Perda!Erro Quadrático Médio Logarítimico (MSLE)}
 
 A primeira função a ser vista nessa nova categoria é o erro quadrático médio logarítimico, também chamado de \textit{Mean Squared Logarithmic Error} (\textit{MSLE}). A sua fórmula é dada pela Equação \ref{eq:msle-loss}. Perceba que diferente das funções vistas até agora, ela faz o cálculo do logaritmo natural dos valores reais ($y_j$) e dos valores previstos pelo modelo ($\hat{y}_j$). Além disso, um ponto que vale a pena ser destacado é com relação ao valor de 1 que é somado aos valores antes do cálculo do logaritmo. Isso ocorre para evitar com que esse resultado possa ser negativo ou zero, gerando uma indeterminação ao calcular o logaritimo.
 
@@ -1264,7 +1264,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Erro Percentual Absoluto Médio (MAPE)}
+\subsection{Erro Percentual Absoluto Médio (MAPE)} \index{Funções de Perda!Erro Percentual Absoluto Médio (MAPE)}
 
 \begin{equacaodestaque}{Erro Percentual Absoluto Médio (\textit{MAPE})}
     \Loss_{\text{MAPE}} = \frac{1}{N} \sum_{j=1}^{N} \left| \frac{y_j - \hat{y}_j}{y_j} \right|
@@ -1479,7 +1479,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Erro Percentual Absoluto Médio Simétrico (sMAPE)}
+\subsection{Erro Percentual Absoluto Médio Simétrico (sMAPE)} \index{Funções de Perda!Erro Percentual Absoluto Médio Simétrico (sMAPE)}
 
 \begin{equacaodestaque}{Erro Percentual Absoluto Médio Simétrico (\textit{sMAPE})}
     \Loss_{\text{sMAPE}} = \frac{1}{N} \sum_{j=1}^{N} \frac{|\hat{y}_j - y_j|}{(|\hat{y}_j| + |y_j|)/2}
@@ -1694,7 +1694,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
-\subsection{Perda Quantílica}
+\subsection{Perda Quantílica} \index{Funções de Perda!Perda Quantílica}
 
 \begin{equacaodestaque}{Perda Quantílica (\textit{Quantile Loss})}
     \Loss_{\tau}(y_j, \hat{y}_j) = 
@@ -1898,7 +1898,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Perda Epsilon-Insensível}
+\subsection{Perda Epsilon-Insensível} \index{Funções de Perda!Perda Epsilon-Insensível}
 
 \begin{equacaodestaque}{Perda Epsilon-Insensível (\textit{$\epsilon$-Insensitive Loss})}
     \Loss_{\epsilon}(y, \hat{y}) = 
@@ -2090,7 +2090,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 
 \section{Perdas Baseadas em Distribuições de Dados}
 
-\subsection{Perda de Poisson}
+\subsection{Perda de Poisson} \index{Funções de Perda!Perda de Poisson}
 
 \begin{equacaodestaque}{Perda de Poisson (\textit{Poisson Loss})}
     \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \hat{y}_j - y_j \log(\hat{y}_j)
@@ -2216,7 +2216,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Perda de Tweedie}
+\subsection{Perda de Tweedie} \index{Funções de Perda!Perda de Tweedie}
 
 \begin{equacaodestaque}{Perda de Tweedie (\textit{Tweedie Loss})}
     \Loss_{\text{Tweedie}}(y_j, \hat{y}_j; p) = -\frac{y_j \cdot \hat{y}_j^{1-p}}{1-p} + \frac{\hat{y}_j^{2-p}}{2-p}
@@ -2347,7 +2347,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Divergência Kullback-Leibler}
+\subsection{Divergência Kullback-Leibler} \index{Funções de Perda!Divergência de Kullback-Leibler}
 
 \begin{equacaodestaque}{Divergência KL entre duas Gaussianas}
     D_{KL}(P || Q) = \log\frac{\sigma_2}{\sigma_1} + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}
