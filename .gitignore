@@ -24,3 +24,14 @@ Thumbs.db
 *.listing
 *.nlo
 *.nls
+*.glg
+*.glo
+*.glsdefs
+*.ist
+*.bcf-SAVE-ERROR
+*.idx
+*.ilg
+*.ind
+*.gls
+*.synctex(busy)
+*.bbl
