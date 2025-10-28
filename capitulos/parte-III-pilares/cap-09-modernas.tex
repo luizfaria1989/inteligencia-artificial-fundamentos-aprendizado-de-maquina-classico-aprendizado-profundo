@@ -7,7 +7,7 @@
 
 \section{Funções Modernas: O Estado-da-Arte das Funções de Ativação}
 
-\subsection{Gaussian Error Linear Unit (GELU)}
+\subsection{Gaussian Error Linear Unit (GELU)} \index{Funções de Ativação!Gaussian Error Linear Unit (GELU)}
 
 Agora chegamos na última função que iremos ver neste texto, ela é a Gaussian Error Linear Unit, ou GELU. Ela é uma das mais diferentes quando nós passamos a analisar como é sua fórmula, a qual veremos mais em frente. A GELU foi introduzida no artigo \textit{Gaussian Error Linear Units (GELUs)} dos autores \textcite{GELUArticle}, nele, os pesquisadores apresentam uma nova função de ativação de alta performance para ser utilizada na construção de redes neurais.
 
@@ -153,7 +153,7 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 \end{center}
 \medskip
 
-\subsection{Swish}
+\subsection{Swish} \index{Funções de Ativação!Swish}
 
 \begin{equacaodestaque}{Swish}
     \mathcal{A}_{\text{Swish}}(z_i) = z_i \cdot \sigma(z_i) = z_i \frac{1}{1 + e^{-z_i}}
@@ -260,7 +260,7 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 \end{center}
 \medskip
 
-\subsection{Hard-Swish (h-swish)}
+\subsection{Hard-Swish (h-swish)} \index{Funções de Ativação!Hard-Swish (h-swish)}
 
 \begin{equacaodestaque}{Hard-Swish}
     \mathcal{A}_{\text{h-Swish}}(z_i) = z_i \cdot \frac{\text{ReLU6}(z_i + 3)}{6}
@@ -367,7 +367,7 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 \end{center}
 \medskip
 
-\subsection{Mish}
+\subsection{Mish} \index{Funções de Ativação!Mish}
 
 \begin{equacaodestaque}{Mish}
     \mathcal{A}_{\text{Mish}}(z_i) = z_i \cdot \tanh(\text{softplus}(z_i)) = z_i \cdot \tanh(\ln(1 + e^{z_i}))
@@ -478,7 +478,7 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 \end{center}
 \medskip
 
-\subsection{Hard-Mish (h-mish)}
+\subsection{Hard-Mish (h-mish)} \index{Funções de Ativação!Hard-Mish (h-mish)}
 
 \begin{equacaodestaque}{Hard-Mish}
     \mathcal{A}_{\text{h-Mish}}(z_i) = \frac{z_i}{2} \cdot \min(\max(z_i + 2, 0), 2)
