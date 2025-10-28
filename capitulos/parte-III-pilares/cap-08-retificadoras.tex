@@ -43,7 +43,7 @@ Saindo do assunto da pipoca e voltando para o tema deste texto, existe uma famí
 % ReLU
 % ===================================================================
 
-\section{Rectified Linear Unit (ReLU): A Revolução Retificadora}
+\section{Rectified Linear Unit (ReLU): A Revolução Retificadora} \index{Funções de Ativação!Rectified Linear Unit (ReLU)}
 
 Como foi visto anteriormente no Capítulo \ref{cap:ativacao-sigmoidais}, as funções sigmoidais surgiram com inspiração nos neurônios humanos e como eles se comportam com determinados estímulos. Mas essas não foram as únicas funções que tiveram essa origem. Na década de 40, o pesquisador Alton Householder estava estudando um cenário parecido em seu trabalho \textit{A theory of steady-state activity in nerve fiber network: I. Definition of mathematical biofysics}, nele o autor analisou o comportamento de fibras nervosas e quando elas irão assumir caráter excitatório ou inibitório, para isso ele apresentou a Equação \ref{eq:fibra-nervosa-householder} \parencite{Householder1941}.
 
@@ -233,7 +233,7 @@ Como foi visto, que a causa do \textit{ReLUs} agonizantes era justamente isso: m
 
 Assim, essas variantes, como a \textit{Leaky ReLU} e a \textit{PReLU} buscam tentar corrigir um amenizar esse problema da \textit{ReLU} mas mantendo algumas de suas principais propriedades, como a não linearidade, a capacidade de ser escrita compondo duas retas permitindo a criação de uma função simples e rápida de ser computada em uma rede neural.
 
-\subsection{Leaky ReLU (LReLU)}
+\subsection{Leaky ReLU (LReLU)} \index{Funções de Ativação!Leaky ReLU (LReLU)}
 
 Seguindo adiante, é possível analisar agora a \textit{Leaky ReLU}, ela é uma variante da \textit{ReLU} que foi criada com intuito de corrigir o problema do \textit{ReLUs} agonizantes. Assim como a \textit{ReLU}, que foi explicada com a analogia do vendedor de pipoca, é possível extender essa explicação para essa nova função, antes o limiar para comprar um pacote de pipoca era de R\$ 5,00, quem tivesse menos que isso não comprava nada. Mas agora, para garantir que todos possam comprar pipoca, você como vendedor definiu que quando uma pessoa tiver menos que R\$ 5,00 ela também será capaz de comprar pipoca, só que neste caso ela comprará um punhado de pipoca que será proporcional ao dinheiro que ela tem multiplicado por uma constante $\alpha$. Assim, uma pessoa com um valor próximo de R\$ 5,00 pode sair com um punhado de pipoca quase igual ao do pacote original se essa constante $\alpha$ for um valor muito proximo de um. Com isso, você como vendedor consegue obter lucro com uma nova clientela além de não perder clientes por não possuírem o valor total do pacote de pipoca. A \textit{Leaky ReLU} traz uma proposta parecida para resolver com o problema do \textit{ReLUs} agonizantes.
 
@@ -394,7 +394,7 @@ Ainda no grupo de redes que possuem quatro camadas, é possível ver um empate a
 
 Assim, a \textit{Leaky ReLU} já é uma evolução quando comparamos com a ReLU tradicional, mas, é possível ir além e encontrar funções ainda mais complexas que também buscam assim como a \textit{LReLU} resolver o problema dos \textit{ReLUs} agonizantes com um vazamento de gradiente nos casos negativos, uma dessas funções é a \textit{PReLU}, a qual será vista em seguida.
 
-\subsection{Parametric ReLU (PReLU)}
+\subsection{Parametric ReLU (PReLU)} \index{Funções de Ativação!Parametric ReLU (PReLU)}
 
 Continuando nas analogias do vendedor de pipoca para explicar as funções retificadoras, podemos também pensar uma para a \textit{Parametric ReLU}. Na \textit{LReLU} nós tínhamos uma constante fixa, que valia para todos os valores de entrada e não mudava, era como se o vendedor de pipoca definisse um valor para a proporção de pipoca que a pessoa irá receber quando tiver com uma quantia menor de dinheiro que o limiar da venda. Mas agora, este vendedor está mais experiente, e sabe que pode ajustar essa constante sempre que quiser, assim, quando estiverem muitas pessoas na praça em que está vendendo pipoca, ele poderá colocar uma constante que será capaz de dar uma quantidade ainda maior de pipoca para aqueles que não possuem o valor total de um pacote, o que incentivaria a venda para as pessoas. Já quando estivesse em um lugar mais vazio, colocaria uma constante que daria menos pipoca, para maximizar o seu lucro. A Diferença da \textit{PReLU} para a \textit{LReLU} está justamente nessa constante e como ela irá se comportar.
 
@@ -599,7 +599,7 @@ Assim, é nítido destacar que não somente a \textit{PReLU}, mas as funções r
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Randomized Leaky ReLU (RReLU)}
+\subsection{Randomized Leaky ReLU (RReLU)} \index{Funções de Ativação!Randomized Leaky ReLU (RReLU)}
 
 Anteriormente, na \textit{Parametric ReLU}, existia uma padrão aprendível que era atualizado ao longo da retropropagação da rede, nós o comparamos com o caso do vendedor de pipoca ficando mais experiente para as vendas. No caso da \textit{RReLU} temos um vendedor um tanto quanto instável, ele se baseia na sorte/aleatoriedade para definir qual será o punhado de pipoca que cada pessoa irá receber ao comprar com um valor abaixo do limiar de venda. Para isso, não existe mais um padrão, algo como o horário ou a quantidade de pessoas na praça para fazer aumentar o diminuir a quantidade de pipoca que tera em um punhado. Essa estratégia parece caótica, mas pode ser interessante caso voce queira instigar as vendas e deixa-las divertidas, você pode comprar um punhado de pipoca, mas nao ira saber quanto irá receber, é uma grande aposta.
 
@@ -854,7 +854,7 @@ Seguindo adiante, agora será visto um novo conjunto de variantes da \textit{ReL
 
 Além disso, é possível conhecer também uma variante da \textit{ELU}, a \textit{Scaled Exponetial Linear Unit}, uma função que é utilizada para construir redes capazes de se autonormalizarem, ademais será visto a \textit{Noisy ReLU}, outra variante da \textit{ReLU}, mas que dessa vez adiciona ruído em sua saída a fim de garantir uma melhor performance quando comparada com a sua função original.
 
-\subsection{Exponential Linear Unit (ELU)}
+\subsection{Exponential Linear Unit (ELU)} \index{Funções de Ativação!Exponential Linear Unit (ELU)}
 
 Continuando com as analogias do vendedor de pipoca, o vendedor de pipoca que faz uso da \textit{ELU} para as suas vendas trabalha de forma diferente. Ao invés de vender um punhado de pipoca de forma linear com base no dinheiro que o cliente tem quando ele não quer comprar o pacote inteiro por não possuir o valor total, ele adota uma curva exponencial como base, assim, clientes com valores muito próximos de R\$ 5,00 recebem uma quantia muito grande de pipoca, quase equivalente ao pacote total, enquanto aqueles que possuem valores pequenos irão receber um punhado pequeno de pipoca. Talvés seja uma forma de incentivar aqueles que quase tem o valor total para comprar uma pipoca, mas ainda sim garantir a clientela dos que possuem pouco dinheiro e aumentando o seu lucro como vendendor.
 
@@ -1002,7 +1002,7 @@ Mesmo apresentando um grande salto, quando comparada com a \textit{ReLU} tradici
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Scaled Exponential Linear Unit (SELU)}
+\subsection{Scaled Exponential Linear Unit (SELU)} \index{Funções de Ativação!Scaled Exponential Linear Unit (SELU)}
 
 A próxima função é uma variante da \textit{ELU}, a \textit{Scaled Exponential Linear Unit}, ou \textit{SELU}. Ela se distingue da ELU tradicional pelo fato de que ela é capaz de implemtar propriedades auto-normalizadoras em uma rede que faz uso dessa função, como explicam os autores no artigo de sua introdução \textit{Self-Normalizing Neural Networks} \parencite{SELUArticle}.
 
@@ -1148,7 +1148,7 @@ Voltando para o seu texto de introdução, os autores destacam propriedades impo
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Noisy ReLU (NReLU)}
+\subsection{Noisy ReLU (NReLU)} \index{Funções de Ativação!Noisy ReLU (NReLU)}
 
 Seguindo adiante, é possível conhecer a \textit{Noisy ReLU}, também conhecida como \textit{NReLU}. Um dos trabalhos que explora as característica dessa função e como ela pode ser aplicada em uma RNA é o \textit{Rectified Linear Units Improve Restricted Boltzmann Machines} dos autores \textcite{Nair2010}. Nesse texto, os autores comparam o desenpenho dessa função com a função binária, dada pela equação \ref{eq:equacao-binary}, que era a opção mais comum para ser utilizada na construção de máquinas restritas de Boltzmann.
 
