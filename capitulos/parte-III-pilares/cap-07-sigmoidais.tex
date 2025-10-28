@@ -172,7 +172,7 @@ No começo foi fácil, mas depois de um tempo foi ficando repetitivo, então voc
 
 Na matematica, as funções do tipo sigmoide são excelentes para esse tipo de problema, pois possuem uma propriedade muito interessante: dado um valor de entrada, elas são capazes de "empurrar" esse valor para dois diferentes extremos. No caso da sigmoide logísitca, a função que dá nome a essa família, ela é capaz de empurrar essa entrada para valores próximos de zero ou um. Se nós consideramos que zero é uma avaliação negativa e um é uma avaliação positiva, essa função se torna perfeita para resolver o seu problema de classificar comentários.
 
-\section{A Sigmoide Logística: Ótima para Classificações Binárias}
+\section{A Sigmoide Logística: Ótima para Classificações Binárias} \index{Funções de Ativação!Sigmoide Logística}
 
 Por mais que a sigmoide hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textit{Recherches mathématiques sur la loi d'accroissement de la population} (Pesquisas matemáticas sobre a lei de crescimento da população), em que \textcite{SigmoidVerhulst1845} propõe a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em "S" característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
 
@@ -369,7 +369,7 @@ Conhecendo a sigmoide logística, a função que dá nome a essa família de fun
 
 Para isso, será vista primeira a tangente hiperbólica, e como ela melhora uma das desvantagens da sigmoide, com o fato dessa nova função ser centrada em zero.
 
-\section{Tangente Hiperbólica: A Pioneira nas Redes Convolucionais}
+\section{Tangente Hiperbólica: A Pioneira nas Redes Convolucionais} \index{Funções de Ativação!Tangente Hiperbólica (tanh)}
 
 Assim como a função sigmoide, a tangente hiperbólica não possui suas origens voltadas para o uso em redes neurais. Neste caso, um dos matemáticos que ficou reconhecido por criar a notação das funções hiperbólicas, seno, cosseno e tangente, foi o suíço Johann Heinrich Lambert no trabalho de 1769 \textit{Mémoire sur quelques propriétés remarquables des quantités transcendantes circulaires et logarithmiques} (Memória sobre algumas propriedades notáveis de grandezas transcendentais circulares e logarítmicas), em que provou que muitas das identidades trigonométricas possuíam suas equivalentes hiperbólicas \parencite{TanhLambert}.
 
@@ -487,7 +487,7 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
 
 Por fim, perceba que a tanto a tangente hiperbólica quando a sigmoide logística são funções de ativação "caras", por utilizarem exponenciais em sua composição. Assim, a próxima função a ser vista busca justamente corrigir esse problema, possuindo a mesma proposta das sigmoidais, porém, sendo mais "barata" em termos de custo computacional.
 
-\section{Softsign: Uma Sigmoidal Mais Barata}
+\section{Softsign: Uma Sigmoidal Mais Barata} \index{Funções de Ativação!Softsign}
 
 A próxima função sigmoidal a ser analisada é a \textit{softsign}, diferente da tangente hiperbólica e da sigmoide que tiveram suas origens em outros campos diferentes da ciência da computação, a \textit{softsign} foi criada com o intuito de ser trabalhada em uma rede neural. Ela foi introduzida no artigo \textit{A Better Activation Function for Artificial Neural Networks} de 1993, do cientista \textcite{Softsign1998}, no texto o autor propõe a \textit{softsign} como uma alternativa para as funções sigmoidais tradicionais.
 
@@ -598,7 +598,7 @@ Além disso, essa função também sofre do mesmo problema das outras duas funç
 
 Seguindo na proposta de ver funções sigmoidais que são mais "baratas", a próxima seção busca explorar isso com outras duas funções: a \textit{hard sigmoid} e a \textit{hard tanh}. Essas funções tem como intuito imitar o comportamento das sigmoidais porém, escrito em forma de retas, dessa forma, elas sacrificam a suavidade das sigmoidais para garantir um menor custo computacional.
 
-\section{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho}
+\section{Hard Sigmoid e Hard Tanh: O Sacrifício da Suavidade em Prol do Desempenho} \index{Funções de Ativação!Hard Sigmoid} \index{Funções de Ativação!Hard Tanh}
 
 Agora será visto duas funções sigmoidais, criadas no contexto de redes neurais, cujo o seu intuito é ser trazer velocidade para o modelo que está sendo criado, elas são a \textit{hard sigmoid} e \textit{hard tanh}. Elas são inspiradas nas suas versões originais ou \textit{soft}, com o mesmo intuito de variar até um certo ponto e depois saturar. Contudo, não garantem a mesma suavidade que as outras funções.
 
