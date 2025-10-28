@@ -42,6 +42,132 @@
 % ===================================================================
 \begin{document}
 
+\begin{acronym}
+    % --- Siglas Gerais ---
+    \acro{IA}{Inteligência Artificial}
+    \acro{ML}{Aprendizado de Máquina (Machine Learning)} % Embora não explícito, é o tema central
+    \acro{RNA}{Rede Neural Artificial} % Implícito no contexto de redes neurais
+    \acro{DNN}{Rede Neural Profunda (Deep Neural Network)}
+    \acro{GPU}{Unidade de Processamento Gráfico (Graphics Processing Unit)} % Mencionada no contexto de processamento
+
+    % --- Otimizadores (Cap. 6 e Apêndice A) ---
+    \acro{GD}{Gradiente Descendente (Gradient Descent)}
+    \acro{SGD}{Gradiente Descendente Estocástico (Stochastic Gradient Descent)}
+    \acro{NAG}{Gradiente Acelerado de Nesterov (Nesterov Accelerated Gradient)}
+    \acro{AdaGrad}{Adaptive Gradient Algorithm}
+    \acro{RMSProp}{Root Mean Square Propagation}
+    \acro{Adam}{Adaptive Moment Estimation}
+    \acro{AdaMax}{Adaptive Moment Estimation based on the infinity norm}
+    \acro{Nadam}{Nesterov-accelerated Adaptive Moment Estimation}
+    \acro{AdamW}{Adam with Decoupled Weight Decay}
+    \acro{RAdam}{Rectified Adam}
+
+    % --- Funções de Ativação (Cap. 7, 8, 9 e Apêndice B) ---
+    \acro{ReLU}{Unidade Linear Retificada (Rectified Linear Unit)}
+    \acro{LReLU}{Leaky Rectified Linear Unit}
+    \acro{PReLU}{Parametric Rectified Linear Unit}
+    \acro{RReLU}{Randomized Leaky Rectified Linear Unit}
+    \acro{ELU}{Unidade Linear Exponencial (Exponential Linear Unit)}
+    \acro{SELU}{Unidade Linear Exponencial Escalonada (Scaled Exponential Linear Unit)}
+    \acro{GELU}{Unidade Linear de Erro Gaussiano (Gaussian Error Linear Unit)}
+    \acro{SiLU}{Sigmoid Linear Unit}
+    \acro{h-swish}{Hard-Swish}
+    \acro{h-mish}{Hard-Mish}
+
+    % --- Funções de Perda (Cap. 10, 11, 12 e Apêndice C) ---
+    \acro{MSE}{Erro Quadrático Médio (Mean Squared Error)}
+    \acro{MAE}{Erro Absoluto Médio (Mean Absolute Error)}
+    \acro{MSLE}{Erro Quadrático Médio Logarítmico (Mean Squared Logarithmic Error)}
+    \acro{MAPE}{Erro Percentual Absoluto Médio (Mean Absolute Percentage Error)}
+    \acro{sMAPE}{Erro Percentual Absoluto Médio Simétrico (Symmetric Mean Absolute Percentage Error)}
+    \acro{BCE}{Entropia Cruzada Binária (Binary Cross-Entropy)}
+    \acro{WCE}{Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy)}
+    \acro{CCE}{Entropia Cruzada Categórica (Categorical Cross-Entropy)}
+    \acro{WCCE}{Weighted Categorical Cross-Entropy}
+    \acro{KL}{Divergência Kullback-Leibler (Kullback-Leibler Divergence)}
+    \acro{FL}{Focal Loss}
+
+    % --- Métricas (Cap. 13 e Apêndice D) ---
+    \acro{VP}{Verdadeiro Positivo (True Positive)}
+    \acro{VN}{Verdadeiro Negativo (True Negative)}
+    \acro{FP}{Falso Positivo (False Positive)}
+    \acro{FN}{Falso Negativo (False Negative)}
+    \acro{ROC}{Característica de Operação do Receptor (Receiver Operating Characteristic)}
+    \acro{AUC}{Área Sob a Curva (Area Under the Curve)}
+    \acro{RMSE}{Raiz do Erro Quadrático Médio (Root Mean Square Error)}
+    \acro{R2}{Coeficiente de Determinação (Coefficient of Determination)}
+
+    % --- Redes Neurais e Componentes (Parte V) ---
+    \acro{MLP}{Perceptron Multicamadas (Multi-Layer Perceptron)}
+    \acro{FFN}{Rede FeedForward (FeedForward Network)}
+    \acro{DBN}{Rede de Crença Profunda (Deep Belief Network)}
+    \acro{RBM}{Máquina de Boltzmann Restrita (Restricted Boltzmann Machine)}
+    \acro{CNN}{Rede Neural Convolucional (Convolutional Neural Network)}
+    \acro{FCN}{Rede Totalmente Convolucional (Fully Convolutional Network)}
+    \acro{YOLO}{You Only Look Once}
+    \acro{ResNet}{Rede Residual (Residual Network)}
+    \acro{SENet}{Squeeze-and-Excitation Network}
+    \acro{RNN}{Rede Neural Recorrente (Recurrent Neural Network)}
+    \acro{LSTM}{Memória Longa de Curto Prazo (Long Short-Term Memory)}
+    \acro{GRU}{Unidade Recorrente Gated (Gated Recurrent Unit)}
+    \acro{ViT}{Vision Transformer}
+    \acro{GAN}{Rede Adversária Generativa (Generative Adversarial Network)}
+    \acro{MoE}{Mistura de Especialistas (Mixture of Experts)}
+    \acro{GNN}{Rede Neural de Grafos (Graph Neural Network)}
+
+    % --- Outras ---
+    \acro{PCA}{Análise de Componentes Principais (Principal Component Analysis)}
+    \acro{SVD}{Decomposição em Valores Singulares (Singular Value Decomposition)}
+    \acro{t-SNE}{t-Distributed Stochastic Neighbor Embedding}
+    \acro{UMAP}{Uniform Manifold Approximation and Projection}
+    \acro{DBSCAN}{Density-Based Spatial Clustering of Applications with Noise}
+    \acro{SVM}{Máquina de Vetores de Suporte (Support Vector Machine)}
+    \acro{ILSVRC}{Desafio de Reconhecimento Visual em Larga Escala ImageNet (ImageNet Large Scale Visual Recognition Challenge)}
+    \acro{SIFT}{Scale-Invariant Feature Transform}
+    \acro{FVs}{Fisher Vectors}
+    \acro{SNN}{Rede Neural Auto-Normalizadora (Self-Normalizing Neural Network)}
+    \acro{WER}{Taxa de Erro de Palavra (Word Error Rate)}
+    \acro{SWBD}{Switchboard (dataset)}
+    \acro{CH}{CallHome (dataset)}
+    \acro{EV}{Conjunto de Avaliação (Evaluation set)}
+    \acro{LAD}{Mínimo Desvio Absoluto (Least Absolute Deviation)}
+    \acro{EW-RSM}{Erro Quadrático Médio Exponencialmente Ponderado (Exponentially Weighted Mean Squared Error)}
+    \acro{fMAE}{Erro Absoluto Médio Ponderado pela Frequência (Frequency-weighted Mean Absolute Error)}
+    \acro{RDA}{Regularized Dual Averaging}
+    \acro{FB}{Forward-Backward splitting} 
+    \acro{PA}{Passive-Aggressive algorithms} 
+    \acro{AROW}{Adaptive Regularization of Weight Vectors} 
+\end{acronym}
+
+\newglossaryentry{labelUnica}{
+    name={Nome do Termo},
+    description={A explicação clara e concisa do que diabos esse termo significa. Pode ser longa, pode ter \textit{itálico}, o que você precisar.},
+    symbol={\ensuremath{\eta}} % Opcional: Se tiver um símbolo associado, use \ensuremath{} para modo matemático
+}
+
+% Exemplo Concreto do seu livro:
+\newglossaryentry{retropapagacao}{
+    name={Retropropagação},
+    description={Um dos principais algoritmos para o treinamento de redes neurais. Permite o aprendizado atráves do ajuste sucessivo dos parâmetros da rede com auxílio do cálculo do gradiente da perda propagado das camadas finais para as camadas iniciais.} \index{Glossário!Retropropagação} % Indexar no índice remissivo também? Boa ideia!
+}
+
+\newglossaryentry{gradiente-descendente}{ 
+    name={Gradiente descendente},
+    description={Método de otimização iterativo que tem como objetivo encontrar pontos de mínimo de uma função (geralmente funções de perda) dando pequenos "passos" na direção contrária do vetor gradiente.} \index{Glossário!Gradiente Descendente}
+}
+
+\newglossaryentry{sigmoide}{
+    name={Sigmoide logística},
+    description={Função de ativação do tipo sigmoidal que foi comumente empregada em redes neurais antes da popularização das funções retificadoras. Pode ser utilizada na camada de saída de um modelo para que a sua saída fique limitada em um intervalo [0,1], sendo útil para problemas de classificação binárias.}
+    symbol={\Loss_{\text{sigmoid}}}
+}
+
+\newglossaryentry{tangente-hiperbolica}{
+    name={Tangente hiperbólica},
+    description={Função de ativação do tipo sigmoidal que, assim como a sigmoide, foi amplamente utilizada em redes neurais antes do surgimento das funções retificadoras. Ela é uma função limitada em um intervalo de [-1,1], que tem como característica empurrar os valores de sua entrada para esses extremos.}
+    symbol={\Loss_{\text{tanh}}}
+}
+
 % --- ELEMENTOS PRÉ-TEXTUAIS ---
 % O comando \frontmatter inicia a contagem de páginas em algarismos romanos (i, ii, ...)
 % e desativa a numeração de capítulos para os elementos iniciais.
@@ -62,6 +188,12 @@
 
 % Gera o Sumário automaticamente com base nos comandos \part, \chapter, \section, etc.
 \tableofcontents
+
+% --- IMPRIMIR A LISTA DE SIGLAS ---
+\cleardoublepage
+\phantomsection
+\chapter*{Lista de Siglas}
+\addcontentsline{toc}{chapter}{Lista de Siglas}
 
 % --- ELEMENTOS TEXTUAIS (O CONTEÚDO PRINCIPAL DO LIVRO) ---
 % O comando \mainmatter reinicia a contagem de páginas em algarismos arábicos (1, 2, ...)
@@ -156,6 +288,12 @@
 % Gera a lista de Referências a partir do arquivo 'bibliografia.bib',
 % formatada no estilo ABNT pelo biblatex.
 \printbibliography[title={Referências}]
+
+% --- IMPRIMIR O GLOSSÁRIO ---
+\cleardoublepage % Começar em página nova
+\phantomsection % Ajuda links
+\printglossaries % Este comando imprime TODAS as listas de glossário definidas
+% Não precisa de \addcontentsline se usou a opção [toc] no \usepackage
 
 \printindex
 
