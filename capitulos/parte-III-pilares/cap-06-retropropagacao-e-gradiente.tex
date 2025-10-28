@@ -28,7 +28,7 @@ Conhecendo esses dois tópicos, é possível aprofundar em métodos mais elabora
 % Método do Gradiente Descendente
 % ===================================================================
 
-\section{O Método do Gradiente Descendente: O Motor da Retropropagação}
+\section{O Método do Gradiente Descendente: O Motor da Retropropagação} \index{Otimizadores!Método do Gradiente}
 
 O Método do Gradiente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em português) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
@@ -184,7 +184,7 @@ Conhecendo o funcionamento do método do gradiente, é possível agora entender 
 % A Retropropagação
 % ===================================================================
 
-\section{A Retropropagação: Aprendendo com os Erros}
+\section{A Retropropagação: Aprendendo com os Erros} \index{Retropropagação}
 
 Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de rede neural, existe uma ferramenta que trabalha justamente com essse processo, ela é a retropropagação ou \textit{backpropagation} em inglês.
 
@@ -558,7 +558,7 @@ Além disso, foram surgindo também outras variantes do método do gradiente, co
 
 Assim, essa seção busca introduzir esses novos métodos, de forma que sejam destacadas as suas diferenças ao método do gradiente tradicional, bem como quais as melhorias eles apresentam. Primeiro será visto o gradiente com momento.
 
-\subsection{Método do Gradiente com Momento}
+\subsection{Método do Gradiente com Momento} \index{Otimizadores!Método do Gradiente com Momento}
 
 Uma boa analogia para entender como o método do gradiente com momento funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganhando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida com a pedra rolando morro abaixo.
 
@@ -628,7 +628,7 @@ De forma semelhante ao método do gradiente, o método do gradiente com momento 
 
 Sabendo o método do gradiente como momento, é possível também conhecer outras soluções que buscam fazer uso do vetor gradiente para encontrar os pontos de mínimo, neste caso, na seção seguinte será analisado o método do gradiente estocástico ou \textit{stochastic gradient descent (SGD)}.
 
-\subsection{Método do Gradiente Estocástico (SGD)}
+\subsection{Método do Gradiente Estocástico (SGD)} \index{Otimizadores!Método do Gradiente Estocástico (SGD)}
 
 Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o método do gradiente estocástico também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
 
@@ -714,7 +714,7 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
     \fonte{O autor (2025).}
 \end{figure}
 
-\subsection{Método do Gradiente em Mini-Batch (GD mini-batch)}
+\subsection{Método do Gradiente em Mini-Batch (GD mini-batch)} \index{Otimizadores!Método do Gradiente em Mini-Batch (GD mini-batch)}
 
 Entendendo como funciona o \textit{SGD}, o próximo passo é conhecer o método do gradiente em \textit{mini-batch}, que busca ser uma alternativa entre o gradiente estocástico e o gradiente em \textit{batch}. Como explica \textcite{MaosAObra}, o \textit{GD mini-batch} calcula os gradientes para pequenos conjuntos aleatórios, chamados \textit{mini-batches}, que fazem parte do conjunto total de parâmetros.
 
@@ -722,7 +722,7 @@ Por utilizar mais parâmetros de uma vez para calcular o gradiente, o gradiente 
 
 Uma boa vantagem do \textit{GD mini-batch} está no fato que esses \textit{batches} podem ter tamanhos escolhidos pelo programador, de forma que caso a máquina que esteja usando possua uma quantidade maior de memória \textit{ram}, você pode utilizar \textit{batches} maiores, ajudando na convergência do modelo para melhores pontos de mínimo.
 
-\subsection{Gradiente Acelerado de Nesterov (NAG)}
+\subsection{Gradiente Acelerado de Nesterov (NAG)} \index{Otimizadores!Gradiente Acelerado de Nesterov (NAG)}
 
 Uma outra variante do método do gradiente é o gradiente acelerado de Nesterov (\textit{NAG}). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionamente mais barata de resolver problemas de programação convexa. 
 
@@ -859,7 +859,7 @@ Conforme os anos foram passando, foram surgindo novos otimizadores, também insp
 
 Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com esses algoritmos apresentassem um desempenho maior. Pois, para caracterísitcas que apareciam menos dos \textit{datasets} era possível atribuir taxas de aprendizados mais altas, como uma forma do modelo prestar mais atenção nessas caracterísitcas. Ao mesmo tempo que atribuir taxas de aprendizado menores para características mais comuns, permitia uma melhor convergência.
 
-\subsection{Adadptive Gradient Algorithm (AdaGrad)}
+\subsection{Adadptive Gradient Algorithm (AdaGrad)} \index{Otimizadores!Adpative Gradient Algorithm (AdaGrad)}
 
 Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \textit{o Adadptive Gradient Algorithm (AdaGrad)}, foi descrito por \textcite{AdaGradMethod} como uma adpatação dos métodos iterativos baseados em gradiente, que nos permite encontrar "agulhas em palheiros" em forma de características muito preditivas, mas raramente vistas.
 
@@ -995,7 +995,7 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
 
 O \textit{AdaGrad} simbolizou não somente um avanço para os algoritmos de otimização, como também introduziu o conceito de diferentes taxas de aprendizado, permitindo com que um modelo possa aprender bem tanto características muito frequentes como características mais incomuns. Dessa forma, um novo periódo de otimizadores surgiu, seguindo os conceitos do \textit{AdaGrad} mas buscando incrementar o seu algoritmo a fim de corrigir falhas que ficaram para trás. Ao longo dessa seção, serão vistos mais otimizadores que atuam de forma parecida ao \textit{AdaGrad}, adicinando melhorias para o seu desempenho.
 
-\subsection{Root Mean Square Propagation (RMSProp)}
+\subsection{Root Mean Square Propagation (RMSProp)} \index{Otimizadores!Root Mean Square Propagation (RMSProp)}
 
 Diferente dos outros métodos de otimização que surgiram em artigos, o \textit{RMSProp} tem uma concepação diferente, sendo apresentado por Geoffrey Hinton nas suas notas de aula do curso \textit{Neural Networks for Machine Learning} como um método que semelhante ao AdaGrad, dividia o gradiente \parencite{RMSPropMethod}. Para isso, o \textit{RMSProp} combina a ideia de somente usar o sinal do gradiente com a ideia de adptar o tamanho do passo separadamente para diferentes pesos, de forma que para funcionar em \textit{mini-batches} é mantido uma média móvel do quadrado do gradiente para cada peso \parencite{RMSPropMethod}.
 
@@ -1052,7 +1052,7 @@ Perceba que o \textit{RMSProp} consegue corrigir um dos problemas do \textit{Ada
 \end{center}
 \medskip
 
-\subsection{Adaptive Moment Estimation (Adam)}
+\subsection{Adaptive Moment Estimation (Adam)} \index{Otimizadores!Adaptive Moment Estimation (Adam)}
 
 Uma evolução natural dos algortitmos de otimização \textit{AdaGrad} e \textit{RMSProp} é o \textit{Adam} ou \textit{Adaptive Moment Estimation}. Esse algortimo foi apresentado pelos pesquisadores \textcite{AdamMethod}, no artigo \textit{Adam: A Method for Stochastic Optimization}, o qual veio para ser um método de otimização estocástica que requere apenas gradientes de primeira ordem com poucos requisitos de memória.
 
@@ -1173,7 +1173,7 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} co
 
 Assim como os métodos \textit{AdaGrad} e \textit{RMSProp} foram grandes inspirações para o desenvolvimento do otimizador \textit{Adam}, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
-\subsection{AdaMax}
+\subsection{AdaMax} \index{Otimizadores!AdaMax}
 
 Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textcite{AdamMethod}, além de apresentarem o \textit{Adam} como um novo otimizador, eles também apresentam uma variante dele, o \textit{AdaMax}, que ao invés de utilizar a norma $L^2$ para calcular o segundo momento, utilizam a norma $L^p$, em que $p \to \infty$, provando ser um algoritmo surpreendemente simples e estável. Dessa forma, os autores foram chegram no otimizador listado no Algortimo \ref{alg:adamax}.
 
@@ -1207,7 +1207,7 @@ A diferença do \textit{AdaMax} está na próxima etapa, em que é atualizada a 
     \end{algorithmic}
 \end{algorithm}
 
-\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)} \index{Otimizadores!Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
 
 Com o \textit{Nadam}, ou \textit{Nesterov-accelerated Adaptive Moment Estimation}, ocorreu a mesma ideia de incremento presente nos outros métodos de otimização vistos até o momento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidiu apresentar no trabaho \textit{Incorporating Nesterov Momentum Into Adam}, uma modificação do componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (\textit{NAG}). Ao fazer essa mudança, o autor conseguiu comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
 
@@ -1294,7 +1294,7 @@ Comparando com o \textit{Adam} tradicional, a principal diferença do \textit{NA
 \end{center}
 \medskip
 
-\subsection{Adam With Decoupled Weight Decay (AdamW)}
+\subsection{Adam With Decoupled Weight Decay (AdamW)} \index{Otimizadores!Adam With Decoupled Weight Decay (AdamW)}
 
 Uma outra variante do \textit{Adam} tradicional é o \textit{AdamW}. Essa variante foi apresentada no trabalho \textit{Decoupled Weight Decay Regularization} dos pesquisadores \textcite{AdamWMethod}, em que eles propuseram uma forma diferente de corrigir como a relgularização $L^2$, era feita no método original. Para isso, o \textit{AdamW} desacopla o decaimento do peso da atualização principal do do gradiente, e o aplica como um passo separado e final na atualização dos parâmetros \parencite{AdamWMethod}.
 
@@ -1431,11 +1431,11 @@ Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na
 
 \subsection{Outros Otimizadores}
 
-\textbf{Rectified Adam (RAdam)}
+\textbf{Rectified Adam (RAdam)} \index{Otimizadores!Rectified Adam (RAdam)}
 
 Uma outra variante do \textit{Adam} que também busca melhorar o otimizador original é o \textit{Rectified Adam} ou \textit{RAdam}. Ele surgiu no trabalho \textit{On the Variance of the Adaptive Learning Rate and Beyond} dos autores \textcite{RAdamMethod} como uma atualização do Adam que buscava corrigir um problema identificado com a taxa de aprendizado adaptativa do otimizador: a sua variância é grande problemática nos primeiros estágios; de forma que eles propusaram o \textit{RAdam}, uma variante que introduz um termo para retificar a variância da taxa de aprendizado adpativa.
 
-\textbf{Lion}
+\textbf{Lion} \index{Otimizadores!Lion}
 
 \section{Comparativo de Desempenho: Otimizadores}
 
