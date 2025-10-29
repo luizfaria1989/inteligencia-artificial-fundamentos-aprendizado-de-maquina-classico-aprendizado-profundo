@@ -76,6 +76,8 @@ Além disso, no trabalho \textit{Deep Sparse Rectifier Neural Networks} dos auto
     \item \textbf{Distribuídas, mas esparsas}. Representações densamente distribuídas são as representações mais ricas, sendo potencialmente exponencialmente mais eficientes do que as puramente locais, além disso a eficiência das representações esparsas ainda é exponencialmente maior, com a potência do expoente sendo o número de características diferentes de zero, elas podem representar uma boa compensação em relação aos critérios acima \parencite{Glorot}.
 \end{itemize}
 
+\index{AlexNet}
+
 Por fim, um último trabalho que colaborou para a popularização da \textit{ReLU} foi a \textit{AlexNet}, de \textcite{AlexNet}, essa rede neural convolucional (\textit{CNN}) foi capaz ganhar o Desafio de Reconhecimento Visual em Larga Escala \textit{ImageNet} (\textit{ILSVRC}) sendo treinada para classificar 1.2 milhões de imagens de alta resolução e classificá-las em 1000 diferentes classes. Para isso, essa \textit{CNN} foi construída utilizando 8 camadas com pesos, sendo as primeiras 5 camadas convolucionais, enquanto as três últimas são camadas totalmente conectadas, a última camada de neurônios faz uso da função de ativação \textit{softmax} para fazer a distribuição em 1000 diferentes classes, por último mas não menos importante, a \textit{AlexNet} fez uso da ReLU em sua arquitetura \parencite{AlexNet}.
 
 Assim, como pode ser visto na tabela \ref{tab:desempenho-alexnet}, a \textit{AlexNet} foi capaz de alcançar uma taxa de erro de 15.3\% na fase de testes, note com base na variação de camadas convolucionais, que essa é uma rede que se beneficia da sua profundidade, algo que provavelmente só foi capaz de ocorrer devido ao uso da \textit{ReLU} como função de ativação, por não gerar o problema do desaparecimento de gradientes como nas sigmoidais. Além disso, a rede \textit{SIFT + FVs} (\textit{Scale-Invariant Feature Transform + Fisher Vectors}) é mostrada na tabela como base de comparativo, perceba que a \textit{AlexNet} foi capaz de diminuir com mais de 10\% dos erros que essa rede gerava.
@@ -195,7 +197,7 @@ Além da sua representação em forma de equação, é possível fazer também o
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Rectified Linear Unit em Redes Neurais}
+\textbf{Algumas Aplicações da Rectified Linear Unit em Redes Neurais} \index{Aplicações práticas! ReLU}
 \vspace{1em}
 
 \begin{itemize}
@@ -213,7 +215,7 @@ Além da sua representação em forma de equação, é possível fazer também o
 
 Assim, com toda essa simplicidade e versatilidade, a \textit{ReLU} se tornou uma função que é considerada padrão para a maioria das redes neurais \textit{feedforward} \parencite{DeepLearningBook}. Contudo, ela também apresenta problemas assim como as sigmoidais, sendo um desses problemas o dos \textit{ReLUs} agonizantes, o qual será explicado em sequência.
 
-\section{O Problema dos ReLUs Agonizantes}
+\section{O Problema dos ReLUs Agonizantes} \index{ReLUs agonizantes}
 
 Mesmo apresentando tantas propriedades úteis, como o fato de impedir o problema do desaparecimento de gradientes além de ser uma função computacionalmente barata, a \textit{ReLU} não é perfeita. Ela é responsável por causar um problema conhecido como \textit{ReLUs} agonizantes (\textit{Dying ReLUs problem}), que será explicado nessa seção. Para isso, é preciso lembrar primeiro da equação da camada densa:
 
@@ -376,7 +378,7 @@ Ainda no grupo de redes que possuem quatro camadas, é possível ver um empate a
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Leaky ReLU em Redes Neurais}
+\textbf{Algumas Aplicações da Leaky ReLU em Redes Neurais} \index{Aplicações práticas! Leaky ReLU (LReLU)}
 \vspace{1em}
 
 \begin{itemize}
@@ -589,7 +591,7 @@ Assim, é nítido destacar que não somente a \textit{PReLU}, mas as funções r
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Parametric ReLU em Redes Neurais}
+\textbf{Algumas Aplicações da Parametric ReLU em Redes Neurais} \index{Aplicações práticas! Parametric ReLU (PReLU)}
 \vspace{1em}
 
 \begin{itemize}
@@ -838,7 +840,7 @@ Ainda em \textit{Empirical Evaluation of Rectified Activations in Convolutional 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Randomized Leaky ReLU em Redes Neurais}
+\textbf{Algumas Aplicações da Randomized Leaky ReLU em Redes Neurais} \index{Aplicações práticas! Randomized Leaky ReLU (RReLU)}
 \vspace{1em}
 
 \begin{itemize}
@@ -992,7 +994,7 @@ Mesmo apresentando um grande salto, quando comparada com a \textit{ReLU} tradici
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Exponential Linear Unit em Redes Neurais}
+\textbf{Algumas Aplicações da Exponential Linear Unit em Redes Neurais} \index{Aplicações práticas! Exponential Linear Unit (ELU)}
 \vspace{1em}
 
 \begin{itemize}
@@ -1138,7 +1140,7 @@ Voltando para o seu texto de introdução, os autores destacam propriedades impo
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Scaled Exponential Linerar Unit em Redes Neurais}
+\textbf{Algumas Aplicações da Scaled Exponential Linerar Unit em Redes Neurais} \index{Aplicações práticas! Scaled Exponential Linear Unit (SELU)}
 \vspace{1em}
 
 \begin{itemize}
@@ -1376,7 +1378,7 @@ Ainda em \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Noisy ReLU em Redes Neurais}
+\textbf{Algumas Aplicações da Noisy ReLU em Redes Neurais} \index{Aplicações práticas! Noisy ReLU (NReLU)}
 \vspace{1em}
 
 \begin{itemize}
@@ -1386,7 +1388,7 @@ Ainda em \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, 
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\section{O Problema dos Gradientes Explosivos}
+\section{O Problema dos Gradientes Explosivos} \index{Gradientes explosivos}
 
 Anteriormente, ao conhecer as sigmoidais no Capítulo \ref{cap:ativacao-sigmoidais}, foi possível ver que elas eram comumente utilizadas como as funções de ativação padrão de uma rede neural antes das retificadoras. Mas elas possuíam um problema, o do desaparacimento do gradiente. Esse problema acontecia porque essas funções retornavam sempre números muito pequenos em suas derivadas, que consequentemente eram multiplicadas no \textit{backward pass} com o gradiente retropropagado gerando como produto um número pequeno, esse número era então novamente multiplicado por outra constante de baixo valor e por aí vai, como resultado, o gradiente retropropagado que chegava nas primeiras camadas para atualizar os pesos e vieses da rede possuía um valor tão pequeno que muitas vezes não resultava em uma atualização capaz de gerar impacto no aprendizado da rede. Assim, tínhamos o problema do desaparecimento do gradiente.
 
@@ -1464,7 +1466,7 @@ Perceba também que se você tiver uma função como a \textit{ReLU}, em que o m
 
 Conhecidas todas essas diferentes funções de ativação retificadoras, começando pela \textit{ReLU}, com as suas propriedades e como ela foi importante para o desenvolvimento de redes neurais mais profundas. E, terminando explicando o problema do gradiente explosivo, cabe então sumarizar o conteúdo visto. Para isso, é possível ver esse resumo na próxima seção.
 
-\section{Comparativo: Funções Retificadoras}
+\section{Comparativo: Funções Retificadoras} \index{Comparativos!Funções retificadoras}
 
 Por fim, visto todas essas funções, é possível compilá-las na Tabela \ref{tab:comparativo-funcoes-retificadoras}. A qual é responsável por destacar a principal característica de cada uma das funções retificadoras, bem como suas vantagens e desvantagens de forma resumida.
 
