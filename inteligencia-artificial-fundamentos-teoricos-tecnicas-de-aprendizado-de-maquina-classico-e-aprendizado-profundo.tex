@@ -139,32 +139,8 @@
     \acro{AROW}{Adaptive Regularization of Weight Vectors} 
 \end{acronym}
 
-\newglossaryentry{labelUnica}{
-    name={Nome do Termo},
-    description={A explicação clara e concisa do que diabos esse termo significa. Pode ser longa, pode ter \textit{itálico}, o que você precisar.},
-    symbol={\ensuremath{\eta}} % Opcional: Se tiver um símbolo associado, use \ensuremath{} para modo matemático
-}
-
-% Exemplo Concreto do seu livro:
-\newglossaryentry{retropapagacao}{
-    name={Retropropagação},
-    description={Um dos principais algoritmos para o treinamento de redes neurais. Permite o aprendizado atráves do ajuste sucessivo dos parâmetros da rede com auxílio do cálculo do gradiente da perda propagado das camadas finais para as camadas iniciais.} \index{Glossário!Retropropagação} % Indexar no índice remissivo também? Boa ideia!
-}
-
-\newglossaryentry{gradiente-descendente}{ 
-    name={Gradiente descendente},
-    description={Método de otimização iterativo que tem como objetivo encontrar pontos de mínimo de uma função (geralmente funções de perda) dando pequenos "passos" na direção contrária do vetor gradiente.} \index{Glossário!Gradiente Descendente}
-}
-
-\newglossaryentry{sigmoide}{
-    name={Sigmoide logística},
-    description={Função de ativação do tipo sigmoidal que foi comumente empregada em redes neurais antes da popularização das funções retificadoras. Pode ser utilizada na camada de saída de um modelo para que a sua saída fique limitada em um intervalo [0,1], sendo útil para problemas de classificação binárias.} \index{Glossário!Sigmoide Logística}
-}
-
-\newglossaryentry{tangente-hiperbolica}{
-    name={Tangente hiperbólica},
-    description={Função de ativação do tipo sigmoidal que, assim como a sigmoide, foi amplamente utilizada em redes neurais antes do surgimento das funções retificadoras. Ela é uma função limitada em um intervalo de [-1,1], que tem como característica empurrar os valores de sua entrada para esses extremos.} \index{Glossário!Tangente Hiperbólica}
-}
+% Adiciona entradas do glossário
+\input{glossario.tex}
 
 % --- ELEMENTOS PRÉ-TEXTUAIS ---
 % O comando \frontmatter inicia a contagem de páginas em algarismos romanos (i, ii, ...)
