@@ -560,7 +560,7 @@ Assim, essa seção busca introduzir esses novos métodos, de forma que sejam de
 
 \subsection{Método do Gradiente com Momento} \index{Otimizadores!Método do Gradiente com Momento}
 
-Uma boa analogia para entender como o método do gradiente com momento funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganhando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida com a pedra rolando morro abaixo.
+Uma boa analogia para entender como o \gls{metodo-do-gradiente-com-momento} funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganhando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida com a pedra rolando morro abaixo.
 
 Da mesma forma que o método do gradiente não surgiu originalmente no contexto do aprendizado de máquina, a sua variante com momento não foi diferente. Um os artigos que trabalha com esse conceito de utilizar o momento para acelerar a velocidade do método do gradiente e com isso obter uma convergência mais rápida é o \textit{Some methods of speeding up the convergence of iteration methods}, do pesquisador da URSS \textcite{polyak1964}, nele o autor busca criar métodos iterativos mais rápidos para resolver equações funcionais. Para isso, ele introduz um método de "dois passos", que consiste na junção do método do gradiente com um segundo termo que dá inércia ao método, por último, ele justifica que esse método trás de fato uma convergência mais veloz quando comparado com métodos como o do gradiente.
 
@@ -630,7 +630,7 @@ Sabendo o método do gradiente como momento, é possível também conhecer outra
 
 \subsection{Método do Gradiente Estocástico (SGD)} \index{Otimizadores!Método do Gradiente Estocástico (SGD)}
 
-Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o método do gradiente estocástico também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
+Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o \gls{metodo-do-gradiente-estocastico} também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
 
 Contudo, apenas nos anos 60 métodos que se baseiam no cálculo de funções de erro com ruido passaram a aparecer no cenário de aprendizado de máquina, como foi o caso dos pesquisadores \textcite{Adeline} com \textit{ADALINE (Adaptive Linear Neuron)}. Nele, os autores buscam otimizar os valores dos pesos dos neurônios de uma rede em que ao calcular o erro do modelo, este era afetado por ruído \parencite{Adeline}
 
@@ -716,7 +716,7 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
 
 \subsection{Método do Gradiente em Mini-Batch (GD mini-batch)} \index{Otimizadores!Método do Gradiente em Mini-Batch (GD mini-batch)}
 
-Entendendo como funciona o \textit{SGD}, o próximo passo é conhecer o método do gradiente em \textit{mini-batch}, que busca ser uma alternativa entre o gradiente estocástico e o gradiente em \textit{batch}. Como explica \textcite{MaosAObra}, o \textit{GD mini-batch} calcula os gradientes para pequenos conjuntos aleatórios, chamados \textit{mini-batches}, que fazem parte do conjunto total de parâmetros.
+Entendendo como funciona o \textit{SGD}, o próximo passo é conhecer o \gls{metodo-do-gradiente-em-mini-batch}, que busca ser uma alternativa entre o gradiente estocástico e o gradiente em \textit{batch}. Como explica \textcite{MaosAObra}, o \textit{GD mini-batch} calcula os gradientes para pequenos conjuntos aleatórios, chamados \textit{mini-batches}, que fazem parte do conjunto total de parâmetros.
 
 Por utilizar mais parâmetros de uma vez para calcular o gradiente, o gradiente em \textit{mini-batch} possui uma vantagem quando comparado com o gradiente estocástico, ele irá apresentar um progresso de parâmetros menos irregular \parencite{MaosAObra}. Dessa forma, o gradiente em \textit{mini-batch} consegue chegar um pouco mais perto dos pontos de mínimo, ajudando na convergência.
 
@@ -724,7 +724,7 @@ Uma boa vantagem do \textit{GD mini-batch} está no fato que esses \textit{batch
 
 \subsection{Gradiente Acelerado de Nesterov (NAG)} \index{Otimizadores!Gradiente Acelerado de Nesterov (NAG)}
 
-Uma outra variante do método do gradiente é o gradiente acelerado de Nesterov (\textit{NAG}). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionamente mais barata de resolver problemas de programação convexa. 
+Uma outra variante do método do gradiente é o \gls{gradiente-acelerado-de-nesterov} (\textit{NAG}). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionamente mais barata de resolver problemas de programação convexa. 
 
 No texto, o autor trás a adição de um novo conceito para encontrar os pontos de mínimos, o chamado ponto de \textit{lookahead} (olhar para frente em português), o qual serve de base para os cálculos do gradiente \parencite{NAGMethod}. Assim o \textit{NAG} possui dois passos: o primeiro consiste no cálculo da predição futura (no ponto de \textit{lookahead}), dando um passo na direção do momento anterior, em seguida, com base nesse novo ponto calculado, é possível encontrar o valor do gradiente e com isso, atualizar os parâmetros da rede neural.
 
@@ -815,7 +815,7 @@ Sabendo o funcionamento do \textit{NAG}, também é possível desenvolver o seu 
     \end{algorithmic}
 \end{algorithm}
 
-\subsection{Comparativo de Otimizadores Clássicos}
+\subsection{Comparativo de Otimizadores Clássicos} \index{Comparativos!Otimizadores Clássicos}
 
 Por fim, é possível compilar as características desses otimizadores vistos na Tabela \ref{tab:comparativo-otimizadores-classicos}. Dessa forma, é destacado a principal característica do otimizador, bem como suas vantagens e desvantagens.
 
@@ -861,7 +861,7 @@ Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com
 
 \subsection{Adadptive Gradient Algorithm (AdaGrad)} \index{Otimizadores!Adpative Gradient Algorithm (AdaGrad)}
 
-Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \textit{o Adadptive Gradient Algorithm (AdaGrad)}, foi descrito por \textcite{AdaGradMethod} como uma adpatação dos métodos iterativos baseados em gradiente, que nos permite encontrar "agulhas em palheiros" em forma de características muito preditivas, mas raramente vistas.
+Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \gls{adagrad}, foi descrito por \textcite{AdaGradMethod} como uma adpatação dos métodos iterativos baseados em gradiente, que nos permite encontrar "agulhas em palheiros" em forma de características muito preditivas, mas raramente vistas.
 
 O que os autores se referem ao ato de encontrar "agulhas em palheiros", está ligado diretamente na forma como o \textit{AdaGrad} atua para melhorar o desempenho de um modelo tanto para reconhecer caracteríticas que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim caracterítiscas muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
 
@@ -977,7 +977,7 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais}
+\textbf{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais} \index{Aplicações práticas! Adpative Gradient Algorithm (AdaGrad)}
 \vspace{1em}
 
 \begin{itemize}
@@ -1036,7 +1036,7 @@ Perceba que o \textit{RMSProp} consegue corrigir um dos problemas do \textit{Ada
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do RMSProp em Otimização de Redes Neurais}
+\textbf{Algumas Aplicações do RMSProp em Otimização de Redes Neurais} \index{Aplicações práticas! RMSProp}
 \vspace{1em}
 
 \begin{itemize}
@@ -1155,7 +1155,7 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} co
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Adam em Otimização de Redes Neurais}
+\textbf{Algumas Aplicações do Adam em Otimização de Redes Neurais} \index{Aplicações práticas! Adaptive Moment Esitmation (Adam)}
 \vspace{1em}
 
 \begin{itemize}
@@ -1278,7 +1278,7 @@ Comparando com o \textit{Adam} tradicional, a principal diferença do \textit{NA
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do NAdam em Otimização de Redes Neurais}
+\textbf{Algumas Aplicações do NAdam em Otimização de Redes Neurais} \index{Aplicações práticas! NAdam}
 \vspace{1em}
 
 \begin{itemize}
@@ -1376,7 +1376,7 @@ Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do ADamW em Otimização de Redes Neurais}
+\textbf{Algumas Aplicações do ADamW em Otimização de Redes Neurais} \index{Aplicações práticas! ADamW}
 \vspace{1em}
 
 \begin{itemize}
@@ -1392,7 +1392,7 @@ Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira 
 \end{center}
 \medskip
 
-\subsection{Comparativo dos Otimizadores Modernos}
+\subsection{Comparativo dos Otimizadores Modernos} \index{Comparativos!Otimizadores Modernos}
 
 Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na seção de otimizadores clássicos, é possível fazer uma tabela contendo as suas principais características. Para isso, tem-se então a Tabela \ref{tab:comparativo-otimizadores-modernos}
 
