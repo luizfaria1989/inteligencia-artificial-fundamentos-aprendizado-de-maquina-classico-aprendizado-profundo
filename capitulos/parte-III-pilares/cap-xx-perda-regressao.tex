@@ -266,7 +266,7 @@ Considerando a derivada parcial da Equação \ref{mse-derivada}, é possível co
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Erro Quadrático Médio em Problemas de Regressão}
+\textbf{Algumas Aplicações do Erro Quadrático Médio em Problemas de Regressão} \index{Aplicações práticas! Erro quadrático médio (MSE)}
 \vspace{1em}
 
 Além de estar presente nas deduções do algoritmo da retropropagação como uma função de perda, o erro quadrático médio acaba sendo uma função bem versátil para ser aplicada em problemas de regressão. Não somente isso, mas seu uso não se restringe a somente uma função de perda que será utilizada como "mapa" para a otimização do modelo, o \textit{MSE} também é uma ótima métrica para avaliar o desempenho de um modelo de regressão. E junto do \textit{MSE} está o \textit{RMSE}, cujo o cálculo é dado pela raíz quadrada do erro quadrático médio. Juntas, essas duas funções se tornam ótimas escolhas para medir como um modelo está performando.
@@ -536,7 +536,7 @@ Perceba que a derivada do erro absoluto médio é representado em forma de uma f
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Erro Absoluto Médio em Problemas de Regressão}
+\textbf{Algumas Aplicações do Erro Absoluto Médio em Problemas de Regressão} \index{Aplicações práticas! Erro absoluto médio (MAE)}
 \vspace{1em}
 
 Além dos casos discutidos no início da seção: o \texttt{LAD\_TreeBoost} e o artigo \textit{Image-to-Image Translation with Conditional Adversarial Networks}, o \textit{MAE} também está presente em uma série de trabalhos, atuando tanto como função de perda, quanto servindo como uma métrica de avaliação, indicando se o modelo desenvolvido está performando bem ou não. Dito isso, essa seção busca explorar algumas dessas aplicações do erro absoluto médio, semelhante ao que foi feito ao analisar o erro quadrático médio. 
@@ -693,17 +693,6 @@ Conhecido o gráfico e sua equação, é possível agora discutir algumas das pr
 \end{center}
 \medskip
 
-O gradiente da perda Huber deve ser calculado por partes, como explicam \textcite{LossesArticle}, para isso, é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
-
-\begin{equacaodestaque}{Huber Loss Derivada}
-    \frac{\partial \Loss_{\delta}}{\partial \hat{y}} = 
-    \begin{cases} 
-        \hat{y} - y & \text{se } | y - \hat{y} | \le \delta \\
-        \delta \cdot \text{sgn}(\hat{y} - y) & \text{se } | y - \hat{y} | > \delta
-    \end{cases}
-    \label{eq:huber-loss-derivada}
-\end{equacaodestaque}
-
 Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a escolha de valores para o parâmetro $\delta$. Um valor muito pequeno para $\delta$ faz com que a função se comporte mais como o erro absoluto médio, é possível ver essa situação na Figura \ref{fig:huber-comparacoes-mae}, já ao escolher um valor muito grande para $\delta$ faz com que a perda Huber se assemelhe mais a função erro quadrático médio, essa sitação está na Figura \ref{fig:huber-comparacoes-mse}. \textcite{LossesArticle} explicam que a escolha de valores para $\delta$ pode ser feita de forma empírica, através de validação cruzada (\textit{cross-validation}). Assim, testes são recomendados a fim de escolher o melhor valor para $\delta$ no cenário em que está sendo trabalhado.
 
 \begin{figure}[h!]
@@ -780,13 +769,28 @@ Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a es
 
 Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é nítido que o grau de complexidade do problema pode aumentar, pois haverá mais um hiperparâmetro para ser otimizado de forma manual. Isso pode não ser ideal para cenários em que já existem muitos hiperparâmetros. Para isso, \textcite{LossesArticle} explicam que essa função é comumumente utilizada em problemas de gressão robusta, como em regressões lineares e em \textit{time series forecasting}, em que \textit{outliers} e ruído podem estar presentes.
 
+
+
+O gradiente da perda Huber deve ser calculado por partes, como explicam \textcite{LossesArticle}, para isso, é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
+
+\begin{equacaodestaque}{Huber Loss Derivada}
+    \frac{\partial \Loss_{\delta}}{\partial \hat{y}} = 
+    \begin{cases} 
+        \hat{y} - y & \text{se } | y - \hat{y} | \le \delta \\
+        \delta \cdot \text{sgn}(\hat{y} - y) & \text{se } | y - \hat{y} | > \delta
+    \end{cases}
+    \label{eq:huber-loss-derivada}
+\end{equacaodestaque}
+
+
+
 \medskip
 \begin{center}
  * * *
 \end{center}
 \medskip
 
-\textbf{Algumas Apliações da Perda de Huber em Problemas de Regressão}
+\textbf{Algumas Aplicações da Perda de Huber em Problemas de Regressão} \index{Aplicações práticas! Perda de Huber}
 \vspace{1em}
 
 \begin{itemize}
@@ -1011,7 +1015,7 @@ Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Perda Log-Cosh em Problemas de Regressão}
+\textbf{Algumas Aplicações da Perda Log-Cosh em Problemas de Regressão} \index{Aplicações práticas! Perda Log-Cosh}
 \vspace{1em}
 
 \begin{itemize}
@@ -1254,7 +1258,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Erro Quadrático Logarítimico Médio em Problemas de Regressão}
+\textbf{Algumas Aplicações do Erro Quadrático Logarítimico Médio em Problemas de Regressão} \index{Aplicações práticas! Erro quadrático logarítimico médio}
 \vspace{1em}
 
 \begin{itemize}
@@ -1469,7 +1473,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Erro Percentual Absoluto Médio em Problemas de Regressão}
+\textbf{Algumas Aplicações do Erro Percentual Absoluto Médio em Problemas de Regressão} \index{Aplicações práticas! Erro percentual absoluto médio}
 \vspace{1em}
 
 \begin{itemize}
@@ -1682,7 +1686,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Erro Percentual Absoluto Médio em Problemas de Regressão}
+\textbf{Algumas Aplicações do Erro Percentual Absoluto Médio em Problemas de Regressão} \index{Aplicações práticas! Erro percentual médio simétrico}
 \vspace{1em}
 
 \begin{itemize}
@@ -1813,7 +1817,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Características da Perda Quantílica}
+\textbf{Características da Perda Quantílica} 
 \vspace{1em}
 
 \begin{itemize}
@@ -1888,7 +1892,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Perda Quantília em Problemas de Regressão}
+\textbf{Algumas Aplicações da Perda Quantília em Problemas de Regressão} \index{Aplicações práticas! Perda quantílica}
 \vspace{1em}
 
 \begin{itemize}
@@ -2078,7 +2082,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Perda Epsilon-Insensível em Problemas de Regressão}
+\textbf{Algumas Aplicações da Perda Epsilon-Insensível em Problemas de Regressão} \index{Aplicações práticas! Perda epsilon-insensível}
 \vspace{1em}
 
 \begin{itemize}
@@ -2206,7 +2210,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Perda de Poisson em Problemas de Regressão}
+\textbf{Algumas Aplicações da Perda de Poisson em Problemas de Regressão} \index{Aplicações práticas! Perda de Poisson}
 \vspace{1em}
 
 \begin{itemize}
@@ -2337,7 +2341,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Perda de Tweedie}
+\textbf{Algumas Aplicações da Perda de Tweedie} \index{Aplicações práticas! Perda de Tweedie}
 \vspace{1em}
 
 \begin{itemize}
@@ -2397,7 +2401,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Características da Divergência de Kullback-Leibler}
+\textbf{Características da Divergência de Kullback-Leibler} 
 \vspace{1em}
 
 \begin{itemize}
@@ -2425,7 +2429,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Divergência de Kullback-Leibler em Problemas de Regressão}
+\textbf{Algumas Aplicações da Divergência de Kullback-Leibler em Problemas de Regressão} \index{Aplicações práticas! Divergência de Kullback-Leibler}
 \vspace{1em}
 
 \begin{itemize}
