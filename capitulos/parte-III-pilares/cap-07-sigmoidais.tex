@@ -130,7 +130,7 @@ Basicamente os teoremas da aproximação universal reforçam o uso de funções 
 
 Se nos tivéssemos uma rede neural em que os neurônios não possuíssem uma função de ativação, ou, fosse uma função linear, mesmo juntando todas essas camadas de neurônios que trazem expressões lineares, a junção disso, ainda seria uma expressão linear. Mas quando introduzimos uma função não linear, como a sigmoide, o teorema da aproximação universal, nos garante que somos capazes de encontrar qualquer função que estivermos procurando, desde que ela seja mensurável de Borel.
 
-\section{Propriedades das Funções de Ativação: Escolhendo Uma Boa Função de Ativação}
+\section{Propriedades das Funções de Ativação: Escolhendo Uma Boa Função de Ativação} \index{Propriedades das funções de ativação}
 
 Visto um dos motivos de se utilizar funções de ativação em uma rede neural, cabe agora entender um pouco dessa classe de funções. Em \textit{A Survey on Activation Functions and their relation with Xavier and He Normal Initialization}, \textcite{PropriedadesFuncoesDeAtivacao} discute algumas das propriedades das funções de ativação, dizendo que é esperado que essas funções sejam: não-lineares, diferenciáveis, contínuas, limitadas, centradas em zero. Além disso, o autor discute também que é interessante considerar também o custo computacional dessas funções que estão sendo aplicadas em uma rede neural \parencite{PropriedadesFuncoesDeAtivacao}.
 
@@ -349,7 +349,7 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Sigmoide Logística em Redes Neurais}
+\textbf{Algumas Aplicações da Sigmoide Logística em Redes Neurais} \index{Aplicações práticas! Sigmoide logística}
 \vspace{1em}
 
 \begin{itemize}
@@ -469,7 +469,7 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Tangente Hiperbólica em Redes Neurais}
+\textbf{Algumas Aplicações da Tangente Hiperbólica em Redes Neurais} \index{Aplicações práticas! Tangente hiperbólica (tanh)}
 \vspace{1em}
 
 \begin{itemize}
@@ -580,7 +580,7 @@ Além disso, essa função também sofre do mesmo problema das outras duas funç
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Softsign em Redes Neurais}
+\textbf{Algumas Aplicações da Softsign em Redes Neurais} \index{Aplicações práticas! Softsign}
 \vspace{1em}
 
 \begin{itemize}
@@ -798,7 +798,7 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações das Funções Hard Sigmoid e Hard Tanh em Redes Neurais}
+\textbf{Algumas Aplicações das Funções Hard Sigmoid e Hard Tanh em Redes Neurais} \index{Aplicações práticas!Hard Tanh} \index{Aplicações práticas! Hard Sigmoid}
 \vspace{1em}
 
 \begin{itemize}
@@ -816,7 +816,7 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
 
 Conhecendo todas essas diferentes funções de ativação, é possível finalmente entender o que é o problema do desaparecimento de gradientes e como ele ocorre em uma rede neural, além de relacionar a atuação das funções sigmoidais com o aparecimento desse fenônemo. Para isso, é possível ver essas explicações na seção a seguir.
 
-\section{O Desaparecimento de Gradientes}
+\section{O Desaparecimento de Gradientes} \index{Desaparecimento de gradientes}
 
 Mesmo possuindo muitas propriedades atrativas para a utilização da familia sigmoidal em redes neurais, como a continuidade em todos os pontos e suavidade, além de que suas derivadas podem ser feitas com as próprias funções (no caso da sigmoide e da tangente hiperbólica), essa familia de funções trouxe um problema para os cientistas da época.
 
@@ -894,7 +894,7 @@ Nesse sentido, o Capítulo \ref{cap:ativacao-retificadoras} busca explicar as fu
 
 Assim, o último passo ao conhecer todas essas funções, é resumir o seu conteúdo para melhor entendimento. Este resumo pode ser visto na próxima seção.
 
-\section{Comparativo: Funções Sigmoidais}
+\section{Comparativo: Funções Sigmoidais} \index{Comparativos!Funções sigmoidais}
 
 Tendo visto diferentes funções de ativação sigmoidais, é possível compilá-las em na Tabela \ref{tab:comparativo-funcoes-sigmoidais}, destacando as suas fórmulas, vantagens e desvantagens ao serem utilizadas em uma rede neural.
 
