@@ -558,22 +558,22 @@ Dito isso, vale destacar os trabalhos:
 
 Visto o erro quadrático médio, que penaliza fortamente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não se preocupe tanto com os \textit{outliers}? Essa é a proposta da perda de Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela é o tópico principal da próxima seção.
 
-\subsection{Perda de Huber} \index{Funções de Perda!Perda de Huber}
+\subsection{Perda de Huber (Huber Loss)} \index{Funções de Perda!Perda de Huber (Huber Loss)}
 
-A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss} define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}.
+A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss}, estava estudando maneiras de fazer uma estimação robusta de um parâmetro de localização (como a média o mediana de um conjunto de dados) quando a distribuição dos dados é aproximadamente conhecida. Além disso, no trabalho, o autor define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}, a qual prova ser uma solução ideal para o problema estudado \parencite{HuberLoss}.
 
 \begin{equation}
-    p(t) = 
+    \rho(t) = 
     \begin{cases}
-        \frac{1}{2} t^2 \text{para} |t| < k \\
-        k |t| - \frac{1}{2} k^2 para t \ge k
+        \frac{1}{2} t^2 & \text{se} |t| < k \\
+        k |t| - \frac{1}{2} k^2 & \text{se} t \ge k
     \end{cases}
     \label{eq:huber-loss-do-huber}
 \end{equation}
 
-O que Huber estava querendo basicamente era uma função que se comportasse de forma quadrática para os casos em que $|t| < k$ e que se comportasse de forma linear para os casos em que $t \ge k$. Essa função criada pelo pesquisador é a função que está sendo estudada, a perda Huber, a qual pode ser representada, agora com notações voltadas para o cenário de aprendizado de máquina, com a Equação \ref{eq:huber-loss}.
+O que Huber estava querendo basicamente com a Equação \ref{eq:huber-loss-do-huber} era uma função que se comportasse de forma quadrática para os casos em que $|t| < k$ e que se comportasse de forma linear para os casos em que $t \ge k$. Essa função criada pelo pesquisador é a função que está sendo estudada, a perda de Huber, a qual pode ser representada, agora com notações voltadas para o cenário de aprendizado de máquina, com a Equação \ref{eq:huber-loss}.
 
-\begin{equacaodestaque}{Huber Loss}
+\begin{equacaodestaque}{Perda de Huber (Huber \textit{Loss})}
     \Loss_{\text{Huber}}(y, \hat{y}) = 
     \begin{cases} 
       \frac{1}{2}(y - \hat{y})^2 & \text{para } |y - \hat{y}| \le \delta \\
@@ -582,7 +582,7 @@ O que Huber estava querendo basicamente era uma função que se comportasse de f
     \label{eq:huber-loss}
 \end{equacaodestaque}
 
-É possível também representar a perda Huber utilizando gráficos, para isso, ela pode ser vista na Figura \ref{fig:huber-loss}. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
+É possível também representar a perda de Huber utilizando gráficos, para isso, ela pode ser vista na Figura \ref{fig:huber-loss}. Para isso, na Figura \ref{fig:huber-2d} está representado a visualização em duas dimensões dessa função, enquanto na Figura \ref{fig:huber-3d} está a representação no espaço da superfície, assim como o que vem sendo feito até agora. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -666,34 +666,12 @@ O que Huber estava querendo basicamente era uma função que se comportasse de f
     \end{subfigure}
 
     % --- Legenda e Fonte da Figura Principal ---
-    \caption{Visualizações da função de perda Huber (\textit{Huber Loss}, $\delta=1$) em duas e em três dimensões.}
+    \caption{Visualizações da função de perda de Huber (\textit{Huber Loss}, $\delta=1$) em duas e em três dimensões.}
     \label{fig:huber-loss} % Rótulo principal do seu gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\textbf{Características da Perda de Huber}
-\vspace{1em}
-
-Conhecido o gráfico e sua equação, é possível agora discutir algumas das propriedades da perda huber, as quais são apresentadas a seguir:
-
-\begin{itemize}
-    \item \textbf{Robustez para \textit{outliers}:} Assim como o \textit{MAE}, a perda Huber não penaliza de forma quadrática os erros como comparado com o erro quadrático médio, dessa forma, os \textit{outliers} não conseguem afetar desticmaente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle}.
-    \item \textbf{Diferenciabilidade em $\delta$:} Um ponto a ser destacado ao se utilizar a perda Huber é que ela apresenta pontos de descontinuidade para o cenário em que $y - \hat{y} = \delta$, contudo a função é contínua em todo o resto, dessa forma, isso não a impede de ser utilizada em conjunto com otimizadores baseados em gradiente \parencite{LossesArticle}.
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a escolha de valores para o parâmetro $\delta$. Um valor muito pequeno para $\delta$ faz com que a função se comporte mais como o erro absoluto médio, é possível ver essa situação na Figura \ref{fig:huber-comparacoes-mae}, já ao escolher um valor muito grande para $\delta$ faz com que a perda Huber se assemelhe mais a função erro quadrático médio, essa sitação está na Figura \ref{fig:huber-comparacoes-mse}. \textcite{LossesArticle} explicam que a escolha de valores para $\delta$ pode ser feita de forma empírica, através de validação cruzada (\textit{cross-validation}). Assim, testes são recomendados a fim de escolher o melhor valor para $\delta$ no cenário em que está sendo trabalhado.
+Um ponto a ser destacado ao utilizar a perda de Huber é com relação a escolha de valores para o parâmetro $\delta$. Um valor muito pequeno para $\delta$ faz com que a função se comporte mais como o erro absoluto médio, é possível ver essa situação na Figura \ref{fig:huber-comparacoes-mae}, já ao escolher um valor muito grande para $\delta$ faz com que a perda de Huber se assemelhe mais a função erro quadrático médio, essa sitação está na Figura \ref{fig:huber-comparacoes-mse}. \textcite{LossesArticle} explicam que a escolha de valores para $\delta$ pode ser feita de forma empírica, através de validação cruzada (\textit{cross-validation}). Assim, testes são recomendados a fim de escolher o melhor valor para $\delta$ no cenário em que está sendo trabalhado.
 
 \begin{figure}[h!]
     \centering
@@ -767,11 +745,34 @@ Um ponto a ser destacado ao utilizar a Huber \textit{loss} é com relação a es
     \fonte{O autor (2025).}
 \end{figure}
 
-Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é nítido que o grau de complexidade do problema pode aumentar, pois haverá mais um hiperparâmetro para ser otimizado de forma manual. Isso pode não ser ideal para cenários em que já existem muitos hiperparâmetros. Para isso, \textcite{LossesArticle} explicam que essa função é comumumente utilizada em problemas de gressão robusta, como em regressões lineares e em \textit{time series forecasting}, em que \textit{outliers} e ruído podem estar presentes.
+Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é nítido que o grau de complexidade do problema pode aumentar, pois haverá mais um hiperparâmetro para ser otimizado de forma manual. Isso pode não ser ideal para cenários em que já existem muitos hiperparâmetros. Para isso, \textcite{LossesArticle} explicam que essa função é comumumente utilizada em problemas de gressão robusta, como em regressões lineares e em previsão de séries temporais (\textit{time series forecasting}), em que \textit{outliers} e ruído podem estar presentes.
 
-O gradiente da perda Huber deve ser calculado por partes, como explicam \textcite{LossesArticle}, para isso, é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
-\begin{equacaodestaque}{Huber Loss Derivada}
+\textbf{Características da Perda de Huber}
+\vspace{1em}
+
+Conhecido o gráfico e sua equação, é possível agora discutir algumas das propriedades da perda de Huber, as quais são apresentadas a seguir:
+
+\begin{itemize}
+    \item \textbf{Robustez para \textit{outliers}:} Assim como o \textit{MAE}, a perda de Huber não penaliza de forma quadrática os erros como comparado com o erro quadrático médio, dessa forma, os \textit{outliers} não conseguem afetar drasticamente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle};
+    \item \textbf{Diferenciabilidade em $\delta$:} Um ponto a ser destacado ao se utilizar a perda Huber é que ela apresenta pontos de descontinuidade para o cenário em que $y - \hat{y} = \delta$, contudo a função é contínua em todo o resto, dessa forma, isso não a impede de ser utilizada em conjunto com otimizadores baseados em gradiente \parencite{LossesArticle};
+    \item \textbf{Convexa:} Bem como as funções de perda vistas até agora, a perda de Huber também é uma função convexa. Isso pode ser visto nos gráficos da Figura \ref{fig:huber-loss}, note que ela segue a forma clássica de uma funil, comum em funções convexas. Essa característica é uma vantagem para a perda de Huber, pois facilita com que os otimizadores encontrem os pontos de mínimo. Contudo, em redes neurais isso é mais complicado, devido as transformações não-lineares que ocorrem no modelo, fazendo com que a função de perda deixe de ser convexa.
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+Cabe também discutir a diferenciabilidade da perda de Huber, e como é dado o cálculo do seu gradiente. Dito isso, como explicam \textcite{LossesArticle}, o gradiente da perda de Huber deve ser calculado por partes, sendo que é possível utilizar a Equação \ref{eq:huber-loss-derivada} como guia.
+
+\begin{equacaodestaque}{Derivada Parcial da Perda de Huber (Huber \textit{loss}) em Relação a $\hat{y}$}
     \frac{\partial \Loss_{\delta}}{\partial \hat{y}} = 
     \begin{cases} 
         \hat{y} - y & \text{se } | y - \hat{y} | \le \delta \\
@@ -779,6 +780,8 @@ O gradiente da perda Huber deve ser calculado por partes, como explicam \textcit
     \end{cases}
     \label{eq:huber-loss-derivada}
 \end{equacaodestaque}
+
+Mesmo possuindo esse problema de descontinuidade da função em $y - \hat{y} = \delta$, como foi visto isso não atrapalha o cálculo do gradiente. De forma semelhante, também não atrapalha a construção do gráfico da sua derivada, o qual pode ser visto na Figura \ref{fig:huber-derivada}, na Figura \ref{fig:huber-derivada-2d} é possível ver a representação em duas dimensões, já na Figura \ref{fig:huber-derivada-3d} está a representação da superfície no espaço.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -880,17 +883,25 @@ O gradiente da perda Huber deve ser calculado por partes, como explicam \textcit
     \fonte{O autor (2025).}
 \end{figure}
 
+Perceba que dá para ver como os pontos de descontinuidade atrapalham o formato do gráfico. Note que existem dois pontos que formam um "bico", eles são justamente os pontos em que $y - \hat{y} = \delta$. A descontinuidade pode não atrapalhar a plotagem do gráfico de forma geral, contudo, é sempre importante destacar os detalhes em que esses pontos refletem no gráfico da derivada.
+
 \medskip
 \begin{center}
  * * *
 \end{center}
 \medskip
 
+Criada por Huber como intuito de ser utilizada para fazer uma estimação robusta de parâmetros, a perda de Huber provou ser muito mais que uma solução isolada para resolver um problema específico. E com o passar do tempo, foi tornando-se uma excelente alternativa para ser utilizada ao construir modelos de aprendizado de máquina, servindo como uma função de perda para poder medir o erro do modelo que estaca sendo treinado.
+
+Essa seção busca listar alguns trabalhos que fazem uso dessa função de perda para resolver problemas variados no contexto de inteligência artificial.
+
+Dito isso, vale citar os trabalhos:
+
 \textbf{Algumas Aplicações da Perda de Huber em Problemas de Regressão} \index{Aplicações práticas! Perda de Huber}
 \vspace{1em}
 
 \begin{itemize}
-    \item \textbf{Aplicação 1 (Área):} \textit{A Huber loss-based super learner with applications to healthcare expenditures} \textcite{HuberLossSuperLearner}
+    \item \textbf{Previsão de custos (Saúde):} Em \textit{A Huber loss-based super learner with applications to healthcare expenditures}, \textcite{HuberLossSuperLearner} desenvolvem um algoritmo de \textit{ensemble} chamado de \textit{Super Leaner} que tem como um dos objetivos fazer a previsão de custos para a área da saúde. Para isso, os autores usam uma série de outros métodos para compor o \textit{Super Leaner}, como máquinas de vetores de suporte e florestas aleatórias, além disso, para calcular a perda é feito uso da perda de Huber \parencite{HuberLossSuperLearner}.
     \item \textbf{Aplicação 2 (Área):} \textit{Robust Aleatoric Modeling for Future Vehicle Localization} \textcite{RobustAleatoricModelingVehicleLocalization}
     \item \textbf{Aplicação 3 (Área):} \textit{RobustTrend: A Huber Loss with a Combined First and Second Order Difference Regularization for Time Series Trend Filtering} \textcite{RobustTrendHuberLoss}
     \item \textbf{Aplicação 4 (Área):} \textit{Adaptive Huber Regression} \textcite{AdaptiveHuberRegression}
