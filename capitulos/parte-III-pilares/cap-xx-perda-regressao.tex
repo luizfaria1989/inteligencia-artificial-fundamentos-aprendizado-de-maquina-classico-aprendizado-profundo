@@ -19,13 +19,46 @@ Essa ideia de medir o quão próximo você está do resultado desejado utilizand
 
 \section{Características das Funções de Perda}
 
-Assim, antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa pode ter.
+Assim, antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa pode ter. Dito isso, em \textit{Loss Functions and Metrics in Deep Learning}, \textcite{LossesArticle} explicam algumas características desse grupo de funções. Para isso, os autores argumentam que algumas propriedades das funções de perda são: convexidade, diferenciabilidade, robustez, suavidade, esparsidade, monotocidade \parencite{LossesArticle}. Todas essas propriedades devem ser consideradas quando estiver escolhendo a função de perda ideal para resolver um determinado tipo de problema.
+
+Para isso, cabe agora discutir essas propriedades.
+
+\medskip
+\textbf{Convexidade}
+\medskip
+
+Uma função convexa é uma função na qual qual ponto de mínimo local é também o ponto de mínimo global \parencite{LossesArticle}. Uma forma fácil de identificar se uma função que está sendo analisada é convexa ou não é verificar se ela possui o formato de um funil ou um formato da letra "V". Funções convexas são ideais para ser utilizadas como funções de perda porque facilitam a otimização utilizando métodos baseados em gradiente. Como foi visto no Capítulo \ref{cap:retropropagacao-gradiente}, é bem mais fácil para o modelo encontrar pontos de mínimo em uma função que apresenta o formato de um funil do que em uma função não-convexa, cheia de ondas e com vários pontos de mínimo locais.
+
+\medskip
+\textbf{Diferenciabilidade}
+\medskip
+
+A questão da diferenciabilidade está realacionada também com a utilização de otimizadores baseados em gradiente. Ao utilizar a retropropagação para fazer o ajuste de parâmetros, o primeiro cálculo do gradiente será pelas derivadas parciais da função de perda, as quais juntas formam o vetor gradiente que será propagado por toda a rede, das camadas mais próximas da saída até as camadas mais próximas da entrada, ajustando os valores dos pesos e vieses do modelo. Utilizar uma função que não seja diferenciável ou que possuam muitos pontos de descontinuidae certamente irá afetar negativamente o algoritmo da retropagação, atrapalhando o aprendizado com o uso do gradiente \footnote{Vale dizer também que mesmo que uma função apresente um ou outro ponto de descontinuidade, pode ser que isso não atrapalhe a otimização por gradiente, um exemplo disso é a função erro absoluto médio, que a apresenta um ponto de descontinuidade, mas, é possível contornar esse "problema" utilizando o cálculo do subgradiente.}.
+
+\medskip
+\textbf{Robustez}
+\medskip
+
+\medskip
+\textbf{Suavidade}
+\medskip
+
+Falando agora da suavidade, ela se relaciona com a questão da continuidade da função. Uma função que não é suave, que apresenta pontos de descontinuidade, como "bicos" ou transições bruscas entre um pedaço e e outro da função afeta diretamene o cálculo da derivada e consequêntemente do gradiente. Esses pontos de descontinuidade, são um empecilho para o cálculo da derivada, pois uma função não pode ser derivada em um ponto no qual não é contínua. Considerar se uma função é suave ou não é ideal pois também irá refletir no cálculo do gradiente dessa função de perda.
+
+\medskip
+\textbf{Esparsidade}
+\medskip
+
+\medskip
+\textbf{Monotocidade}
+\medskip
 
 \section{Funções de Perda para Regressão para Propósitos Gerais}
 
 A primeira seção desse capítulo que explora as funções de perda busca focar nas funções de perda mais comuns, que geralmente são umas das primeiras alternativas para serem utilizadas ao contruir um modelo de regressão. Entre elas, vale destacar a dupla de funções erro quadrático médio (também conhecido como perda L2) e o erro absoluto médio (que também recebe o nome de perda L1). Contudo, essa seção também apresenta outras alternativas, como a perda de Huber, uma função que tem como objetivo unir as principais características do \textit{MSE} e do \textit{MAE}. Além disso, também é apresentada uma alternativa para a perda de Huber, a Log-Cosh \textit{Loss}, que apresenta propriedades parecidas com essa outra função, mas que resolve os problemas de descontinuidade.
 
 \subsection{Erro Quadrático Médio (MSE)} \index{Funções de Perda!Erro Quadrático Médio (MSE)}
+\label{sec:mse-loss}
 
 A primeira função de perda a ser vista nesse capítulo é a erro quadrático médio (\textit{mean squared error}) também conhecida com \textit{MSE} ou perda L2. Suas origens são voltadas para o século XIX, com o avanço dos estudos da astronomica, em que os estudiosos buscavam entender o comportamento das estrelas e dos outros planetas. A \textit{MSE} surge naturalmente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas), nele \textcite{Legendre1805} introduz o método conhecido como método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros.
 
@@ -291,6 +324,7 @@ Assim, algumas aplicações do \textit{MSE} são:
 Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma outra abordagem para resolver problemas de regressão. Para isso, a próxima seção busca apresentar o erro absoluto médio, que é uma alternativa para o erro quadrático médio que tem como principal diferença o jeito que lida com \textit{outliers}.
 
 \subsection{Erro Absoluto Médio (MAE)} \index{Funções de Perda!Erro Absoluto Médio (MAE)}
+\label{sec:mae-loss}
 
 O erro absoluto médio, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
@@ -559,6 +593,7 @@ Dito isso, vale destacar os trabalhos:
 Visto o erro quadrático médio, que penaliza fortamente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não se preocupe tanto com os \textit{outliers}? Essa é a proposta da perda de Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela é o tópico principal da próxima seção.
 
 \subsection{Perda de Huber (Huber Loss)} \index{Funções de Perda!Perda de Huber (Huber Loss)}
+\label{sec:huber-loss}
 
 A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss}, estava estudando maneiras de fazer uma estimação robusta de um parâmetro de localização (como a média o mediana de um conjunto de dados) quando a distribuição dos dados é aproximadamente conhecida. Além disso, no trabalho, o autor define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}, a qual prova ser uma solução ideal para o problema estudado \parencite{HuberLoss}.
 
@@ -901,10 +936,10 @@ Dito isso, vale citar os trabalhos:
 \vspace{1em}
 
 \begin{itemize}
-    \item \textbf{Previsão de custos (Saúde):} Em \textit{A Huber loss-based super learner with applications to healthcare expenditures}, \textcite{HuberLossSuperLearner} desenvolvem um algoritmo de \textit{ensemble} chamado de \textit{Super Leaner} que tem como um dos objetivos fazer a previsão de custos para a área da saúde. Para isso, os autores usam uma série de outros métodos para compor o \textit{Super Leaner}, como máquinas de vetores de suporte e florestas aleatórias, além disso, para calcular a perda é feito uso da perda de Huber \parencite{HuberLossSuperLearner}.
-    \item \textbf{Aplicação 2 (Área):} \textit{Robust Aleatoric Modeling for Future Vehicle Localization} \textcite{RobustAleatoricModelingVehicleLocalization}
-    \item \textbf{Aplicação 3 (Área):} \textit{RobustTrend: A Huber Loss with a Combined First and Second Order Difference Regularization for Time Series Trend Filtering} \textcite{RobustTrendHuberLoss}
-    \item \textbf{Aplicação 4 (Área):} \textit{Adaptive Huber Regression} \textcite{AdaptiveHuberRegression}
+    \item \textbf{Previsão de custos (Saúde):} Em \textit{A Huber loss-based super learner with applications to healthcare expenditures}, \textcite{HuberLossSuperLearner} desenvolvem um algoritmo de \textit{ensemble} chamado de \textit{Super Leaner} que tem como um dos objetivos fazer a previsão de custos para a área da saúde. Para isso, os autores usam uma série de outros métodos para compor o \textit{Super Leaner}, como máquinas de vetores de suporte e florestas aleatórias, além disso, para calcular a perda é feito uso da perda de Huber \parencite{HuberLossSuperLearner};
+    \item \textbf{Visão computacional de veículos autônomos (Automotiva):} Além disso, no trabalho \textit{Robust Aleatoric Modeling for Future Vehicle Localization},\textcite{RobustAleatoricModelingVehicleLocalization} apresentam uma rede \textit{feedfoward} para previsão robusta para fazer a localização de objetos com intuito de ser utilizada em veículos autônomos. Para fazer isso, os autores adotam a perda de Huber como função de perda para o modelo, como justificativa, eles explicam que ela apresenta a capacidade de treinar modelos de forma robusta contra caixas delimitadoras de referência (\textit{ground-truth}) anormais ou discrepantes;
+    \item \textbf{Filtragem de tendências (Área):} Já no texto \textit{RobustTrend: A Huber Loss with a Combined First and Second Order Difference Regularization for Time Series Trend Filtering}, \textcite{RobustTrendHuberLoss} discutem um novo algoritmo de filtragem de tendências em séries temporais, de forma que o objetivo é extrair o sinal de tendência de uma série temporal mesmo quando houver \textit{outliers} ou variações abruptas na tendência. Com esse objetivo em mente, os autores utilizam a perda de Huber como a função de perda escolhida para ser otimizada \parencite{RobustTrendHuberLoss}. A escolha da perda de Huber é ideal para esse tipo de problema, dado que como os autores explicam, existe a presença de \textit{outliers} nos dados que estão sendo analisados;
+    \item \textbf{Aplicação 4 (Área):} Por vim, vale citar o artigo \textit{Adaptive Huber Regression} dos pesquisadores \textcite{AdaptiveHuberRegression}, nele, é proposta uma mudança no parâmetro de robustificação da perda de Huber, o qual antes era fixo e agora passa a ser variável, considerando o tamanho da amostra, dimensão dos dados e outros parâmetros. Para testar essa nova forma de lidar com a perda de Huber, os autores utilizam o \textit{dataset} NCI-60, o qual possui 60 linhas de células de cancêr humano \parencite{AdaptiveHuberRegression}.
 \end{itemize}
 
 \medskip
@@ -915,7 +950,8 @@ Dito isso, vale citar os trabalhos:
 
 Com isso, foi possível ver que a perda de Huber é uma excelente alternativa para os casos em que deseja-se controlar os pontos em que o cálculo da perda deve atuar de forma severa (usando termos quadráticos, semelhante a perda L2) e a partir de quis casos esse cálculo pode ser menos punitivo (usando termos lineares, semelhante a perda L1). Contudo, foi visto que ela tem um problema, os pontos em que essas funções se juntam gera uma descontinuidade, atrabalhando a derivação dessas funções. Para resolver esse problema da descontinuidade, pode ser utilizada como alternativa a perda Log-Cosh, a qual será vista em seguida.
 
-\subsection{Perda Log-Cosh} \index{Funções de Perda!Perda Log-Cosh}
+\subsection{Perda Log-Cosh (Log-Cosh Loss)} \index{Funções de Perda!Perda Log-Cosh (Log-Cosh Loss)}
+\label{sec:log-cosh-loss}
 
 A perda Log-Cosh é uma função de perda que vem ganhando popularidade entre os desenvolvedores, em \textit{Statistical Properties of the log-cosh Loss Function Used in Machine Learning}, \textcite{StatisticalPropetiesLogCosh} explicam que ela aparece em cenários de autoencoders variacionais, detecção de câncer, algortimos de aprendizado baseados em árvores (como o XGBoost) e também em regressão quantílica (\textit{quantile regression}).
 
