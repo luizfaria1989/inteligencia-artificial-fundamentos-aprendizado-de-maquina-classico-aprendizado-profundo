@@ -39,6 +39,9 @@ A questão da diferenciabilidade está realacionada também com a utilização d
 \textbf{Robustez}
 \medskip
 
+As funções de perda devem ser capazes de lidar com \textit{outliers} e não serem afetadas por um pequeno número de valores extremos \parencite{LossesArticle}. Os \textit{outliers} são valores que estão fora da padrão dos dados gerais, eles podem ter valores consideravelmente maiores ou menores que a distribuição geral. Eles são um dos principais problemas ao utilizar uma função de perda, pois, caso esta seja sensível a \textit{outliers}, esses dados irão "bagunçar" com o cálculo da perda e consequentemente atrabalhar o aprendizado por gradiente. Escolher uma função que seja robusta a \textit{outliers} é uma escolha ideal para resolver problemas em que esse tipo de dado estará presente, pois ele não irá conseguir afetar drasticamento o cálculo da perda.
+
+
 \medskip
 \textbf{Suavidade}
 \medskip
@@ -49,9 +52,21 @@ Falando agora da suavidade, ela se relaciona com a questão da continuidade da f
 \textbf{Esparsidade}
 \medskip
 
+Uma função de perda que promova a esparsidade deve incentivar o modelo a produzir uma saída esparsa \parencite{LossesArticle}. \textit{LossesArticle} explicam que essa propriedade é útil ao trabalhar com dados de alta dimensão e quando o número de características importantes é pequeno.
+
 \medskip
 \textbf{Monotocidade}
 \medskip
+
+Uma função de perda é monotônica se seu valor diminui à medida que a saída prevista se aproxima da saída verdadeira \parencite{LossesArticle}. Ao escolher uma função de perda que seja monotônica é possível garantir que o processo de otimização do modelo esteja caminhando em direção da solução correta.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+Vistas essas seis propriedades para se considerar ao escolher uma função de perda, agora cabe finalmente estudar essas funções. Para isso, a próxima seção começa introduzindo algumas das funções de perda mais populares para serem utilizadas em problemas de regressão.
 
 \section{Funções de Perda para Regressão para Propósitos Gerais}
 
