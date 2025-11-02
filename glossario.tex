@@ -21,7 +21,7 @@
 }
 
 \newglossaryentry{tangente-hiperbolica}{
-    name={Tangente hiperbólica},
+    name={Tangente hiperbólica (tanh)},
     description={Função de ativação do tipo sigmoidal que, assim como a sigmoide, foi amplamente utilizada em redes neurais antes do surgimento das funções retificadoras. Ela é uma função limitada em um intervalo de [-1,1], que tem como característica empurrar os valores de sua entrada para esses extremos.} \index{Glossário!Tangente Hiperbólica}
 }
 
@@ -30,23 +30,59 @@
     description={Função de ativação do tipo sigmoidal que tem como principal objetivo ser uma alternativa mais "barata" em termos de custo computacional para as opções mais tradicionais: sigmoide logística e tangente hiperbólica.} \index{Glossário!\textit{Softsign}}
 }
 
+\newglossaryentry{hard-sigmoid}{
+    name={\textit{Hard sigmoid}},
+    description={Função de ativação linear por partes que tem como objetivo imitar o comportamento da função sigmoidal tangente sigmoide logística. Por não utilizar exponenciais em sua fórmula, a \textit{hard sigmoid} conseque uma maior eficência nos cálculos. Contudo, ela não é suave, o que pode atrapalhar ao ser utilizada com otimizadores baseados em gradiente.} 
+    \index{Glossário!\textit{Hard sigmoid}}
+}
+
+\newglossaryentry{hard-tanh}{
+    name={\textit{Hard tanh}},
+    description={Função de ativação linear por partes que tem como objetivo imitar o comportamento da função sigmoidal tangente hiperbólica. Por não utilizar exponenciais em sua fórmula, a \textit{hard tanh} conseque uma maior eficência nos cálculos. Contudo, ela não é suave, o que pode atrapalhar ao ser utilizada com otimizadores baseados em gradiente.}
+    \index{Glossário!\textit{Hard tanh}}
+}
+
+\newglossaryentry{relu}{
+    name={\textit{Rectified linear unit} (\textit{ReLU})},
+    description={Função de ativação linear por partes dada pela equação $\max(0, x).$ A \textit{ReLU} é uma das funções mais populares para ser utilizada em redes neurais, pois é uma função "barata" em termos de custo computacional, além do fato de combater o problema do desaparecimento do gradiente. Contudo, a \textit{ReLU} fica susceptível ao problema dos \textit{dying ReLUs}.}
+    \index{Glossário!\textit{Rectified Linear Unit} (\textit{ReLU})}
+}
+
+\newglossaryentry{leaky-relu}{
+    name={\textit{Leaky ReLU} (\textit{LReLU})},
+    description={Função de ativação linear por partes dada pela equação $\max(\alpha x, x)$, em que $\alpha$ representa o coeficiente de vazamento. A \textit{leaky ReLU} é uma variante da \textit{ReLU} tradicional, ela surgiu com o intuito de combater o problema dos \textit{dying ReLUs} causada pela sua variante original.}
+    \index{Glossário!\textit{Leaky ReLU} (\textit{LReLU})}
+}
+
+\newglossaryentry{parametric-relu}{
+    name={\textit{Parametric ReLU} (\textit{PReLU})},
+    description={Função de ativação linear por partes dada pela equação $\max(\alpha x, x)$, em que $\alpha$ representa o coeficiente de vazamento, no caso da \textit{PReLU} este coeficiente é variável, sendo aprendido pela rede através da retropropagação. A \textit{PReLU} é a uma variante da \textit{leaky ReLU} e consequentemente da própria \textit{ReLU}. Por possuir um coefiente de vazamento, a \textit{PReLU} conseque combater o problema dos \textit{dying ReLUs}.}
+    \index{Glossário!\textit{Parametric ReLU} (\textit{PReLU})}
+}
+
+\newglossaryentry{vanishing-gradient-problem}{
+    name={Problema do desaparecimento do gradiente (\textit{vanishing gradient problem})},
+    description={É um tipo de problema pode ocorrer em redes que fazem uso de otimização baseadea em gradiente. Uma das principais causas está no uso de funções sigmoidais, que durante a retropropagação do gradiente, multiplicam esse vetor por valores pequenos, resultando em um vetor com valores pequenos em magnitude. Isso atrapalha principalmente as camadas iniciais do modelo, e consequêntemente o aprendizado como um todo.}
+    \index{Glossário!\textit{Desaparacimento do gradiente}}
+}
+
 \newglossaryentry{metodo-do-gradiente-em-batch}{
     name={Método do gradiente em \textit{batch}},
     description={Otimizador para redes neurais que utiliza todos os parâmetros do modelo de uma vez para serem atualizados com base no vetor gradiente.} \index{Glossário!Método do gradiente em \textit{batch}}
 }
 
 \newglossaryentry{metodo-do-gradiente-estocastico}{
-    name={Método do gradiente estocástico},
+    name={Método do gradiente estocástico (\textit{SGD})},
     description={Otimizador para redes neurais que utiliza um parâmetro por vez, escolhido aleatoriamente, para ser atualizado com base no vetor gradiente. Por ser um processo de natureza estocástica, o \textit{SGD} apresenta uma trajetória ruidosa, isso o ajuda a escapar de mínimos locais, contudo, também atrapalha a convergência para o ponto de mínimo global.} \index{Glossário!Método do gradiente estocástico}
 }
 
 \newglossaryentry{metodo-do-gradiente-em-mini-batch}{
-    name={Método do gradiente em \textit{mini-batch}},
+    name={Método do gradiente em \textit{mini-batch} (GD \textit{mini-batch})},
     description={Otimizador para redes neurais que busca ser uma alternativa entre o método do gradiente estocastico e o método do gradiente em batch. Nessa forma, o \textit{GD Mini-Batch} escolhe uma lote (\textit{batch}) aleatoriamente e calcula a atualização de parâmetros para esse lote.} \index{Glossário!Método do gradiente em \textit{mini-batch}}
 }
 
 \newglossaryentry{gradiente-acelerado-de-nesterov}{
-    name={Gradiente acelerado de Nesterov},
+    name={Gradiente acelerado de Nesterov (NAG)},
     description={Otimizador para redes neurais que faz uso de um ponto de \textit{lookahead} para acelerar a convergência do modelo que está sendo treinado. Para isso, o \textit{NAG} utiliza do momento para encontrar o ponto de \textit{lookahead}, e a partir desse novo ponto calcula  o vetor gradiente e atualização de parâmetros.} \index{Glossário!Gradiente acelerado de Nesterov}
 }
 
@@ -58,4 +94,22 @@
 \newglossaryentry{adagrad}{
     name={\textit{Adadptive Gradient Algorithm (AdaGrad)}},
     description={Otimizador moderno para redes neurais que tem como principal diferencial a distribuição do gradiente de forma diferente com base na frequência que cada característica aparece no treinamento. Características menos frequentes recebem um gradiente maior, resultadando em uma atualização de pesos maior e uma forma de fazer o modelo "prestar mais atenção" em características incomuns.} \index{Glossário!\textit{Adaptive Gradient Algorithm(AdaGrad)}}
+}
+
+\newglossaryentry{mse-loss}{
+    name={Erro quadrático médio (\textit{MSE})},
+    description={Função de perda empregada para resolver problemas de regressão. Ela é responsável por calcular a média dos quadrados da diferença do valor predito com o valor real. Uma das principais características dessa função é a sua sensiblidade para \textit{outliers}. Além de ser utilizado como função de perda, o \textit{MSE} também é comumente empregado como uma métrica de avaliação.}
+    \index{Glossário!Erro quadrático médio (\textit{MSE})}
+}
+
+\newglossaryentry{mae-loss}{
+    name={Erro absoluto médio (\textit{MAE})},
+    description={Função de perda empregada para resolver problemas de regressão. Ela é responsável por calcular a média da diferença absoluta do valor predito com o valor real. Uma das principais características dessa função é a sua robustez para \textit{outliers}, ademais, ela apresenta problemas de diferencibilidade na origem, os quais são resolvidos aplicando técnicas de sub-gradiente. Além de ser utilizado como função de perda, o \textit{MAE} também é comumente empregado como uma métrica de avaliação.}
+    \index{Glossário!Erro absoluto médio (\textit{MAE})}
+}
+
+\newglossaryentry{huber-loss}{
+    name={Perda de Huber (\textit{Huber loss})},
+    description={Função de perda empregada para resolver problemas de regressão. Ela é basicamente uma junção das funções \textit{MSE} e \textit{MAE}, até um certo ponto $\delta$ a perda de Huber atua penalizando os erros de forma quadrática, depois, ela passa a funcionar de forma linear. Isso garante para essa função a capacidade de ser robusta para \textit{outliers}.}
+    \index{Glossário!Perda de Huber (\textit{Huber loss})}
 }
