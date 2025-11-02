@@ -75,7 +75,7 @@ A primeira seção desse capítulo que explora as funções de perda busca focar
 \subsection{Erro Quadrático Médio (MSE)} \index{Funções de Perda!Erro Quadrático Médio (MSE)}
 \label{sec:mse-loss}
 
-A primeira função de perda a ser vista nesse capítulo é a erro quadrático médio (\textit{mean squared error}) também conhecida com \textit{MSE} ou perda L2. Suas origens são voltadas para o século XIX, com o avanço dos estudos da astronomica, em que os estudiosos buscavam entender o comportamento das estrelas e dos outros planetas. A \textit{MSE} surge naturalmente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas), nele \textcite{Legendre1805} introduz o método conhecido como método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros.
+A primeira função de perda a ser vista nesse capítulo é a \gls{mse-loss}, também conhecida com \textit{mean squared error} ou perda L2. Suas origens são voltadas para o século XIX, com o avanço dos estudos da astronomica, em que os estudiosos buscavam entender o comportamento das estrelas e dos outros planetas. A \textit{MSE} surge naturalmente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas), nele \textcite{Legendre1805} introduz o método conhecido como método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros.
 
 Contudo, o trabalho de Legendre não foi o único resposável por popularizar o método dos mínimos quadrados. Em \textit{Theoria Motus Corporum Coelestium in Sectionibus Conicis Solem Ambientium}, \textcite{Gauss1809}, em uma série de artigos, discute um problema que se inicia com um sistema de equações linerares com mais equações que icognitas derivadas de observações atronômicas que possuem erros, seu objetivo é então encontrar o valor mais provável para essas icôgnitas.
 
@@ -314,6 +314,17 @@ Considerando a derivada parcial da Equação \ref{mse-derivada}, é possível co
 \end{center}
 \medskip
 
+\begin{equacaodestaque}{Raíz do Erro Quadrático Médio (\textit{RMSE})}
+    {RMSE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (y_j - \hat{y}_j)^2}
+    \label{eq:rmse}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \textbf{Algumas Aplicações do Erro Quadrático Médio em Problemas de Regressão} \index{Aplicações práticas! Erro quadrático médio (MSE)}
 \vspace{1em}
 
@@ -341,7 +352,7 @@ Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma out
 \subsection{Erro Absoluto Médio (MAE)} \index{Funções de Perda!Erro Absoluto Médio (MAE)}
 \label{sec:mae-loss}
 
-O erro absoluto médio, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
+O \gls{mae-loss}, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
 Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-Image Translation with Conditional Adversarial Networks} \parencite{ImageToImage}. Nele, \textcite{ImageToImage} argumentam que preferiram trabalhar com a função de perda \textit{L1 distance} (um dos diferentes nomes utilizados para se referir ao \textit{MAE}) devido a essa função gerar imagens menos borradas. É possível ver essa comparação nas imagens da Figura \ref{fig:comparativo-perdas-image-to-image}. Perceba que a perda que apresenta os resultados mais consistentes com a realidade é justamente a \textit{L1 + cGAN}, a qual possuí o \textit{MAE} em sua composição.
 
@@ -610,7 +621,7 @@ Visto o erro quadrático médio, que penaliza fortamente ou \textit{outliers}, e
 \subsection{Perda de Huber (Huber Loss)} \index{Funções de Perda!Perda de Huber (Huber Loss)}
 \label{sec:huber-loss}
 
-A Huber \textit{Loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss}, estava estudando maneiras de fazer uma estimação robusta de um parâmetro de localização (como a média o mediana de um conjunto de dados) quando a distribuição dos dados é aproximadamente conhecida. Além disso, no trabalho, o autor define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}, a qual prova ser uma solução ideal para o problema estudado \parencite{HuberLoss}.
+A \gls{huber-loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que apresentou para a comunidade científica no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. No artigo, \textcite{HuberLoss}, estava estudando maneiras de fazer uma estimação robusta de um parâmetro de localização (como a média o mediana de um conjunto de dados) quando a distribuição dos dados é aproximadamente conhecida. Além disso, no trabalho, o autor define um estimador robusto $p$ que segue a Equação \ref{eq:huber-loss-do-huber}, a qual prova ser uma solução ideal para o problema estudado \parencite{HuberLoss}.
 
 \begin{equation}
     \rho(t) = 
@@ -1870,15 +1881,15 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
     \label{eq:quantile-loss}
 \end{equacaodestaque}
 
+% --- FIGURA 1: FOCO NO TAU = 0.5 (MAE) ---
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
 
-    % --- SUBFIGURA (a): Gráfico 2D da Perda Quantílica ---
+    % --- SUBFIGURA (a): Gráfico 2D da Perda Quantílica (Tau=0.5) ---
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Erro ($e = y - \hat{y}$)},
@@ -1886,71 +1897,186 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
-                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
-                ymin=-0.5, ymax=3.5,         % Limites do seu gráfico
+                xmin=-4.5, xmax=4.5,
+                ymin=-0.5, ymax=3.5,
                 legend pos=north west,
                 title style={font=\bfseries\small},
                 label style={font=\small},
-                tick label style={font=\scriptsize}
+                tick label style={font=\scriptsize},
+                title={Visão 2D (Perda vs. Erro)}
             ]
                 % Tau = 0.5 (MAE)
-                \addplot[domain=-4:4, samples=5, color=gray, thick] {0.5*abs(x)};
+                \addplot[domain=-4:4, samples=5, color=gray, very thick] {0.5*abs(x)};
                 \addlegendentry{$\tau=0.5$ (Mediana)}
-                
-                % Tau = 0.9
-                \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.9*x) : ((1-0.9)*(-x))};
-                \addlegendentry{$\tau=0.9$ (Percentil 90)}
-                
-                % Tau = 0.1
-                \addplot[domain=-4:4, samples=5, color=red, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
-                \addlegendentry{$\tau=0.1$ (Percentil 10)}
             \end{axis}
         \end{tikzpicture}
-        \caption{Visão 2D (Perda vs. Erro).} % Legenda da subfigura
-        \label{fig:quantile-2d}
+        \caption{Perda 2D para $\tau=0.5$.}
+        \label{fig:quantile-2d-tau05}
     \end{subfigure}
     \hfill % Adiciona espaço horizontal flexível entre as subfiguras
-    % --- SUBFIGURA (b): Gráfico 3D da Perda Quantílica ---
+    % --- SUBFIGURA (b): Gráfico 3D da Perda Quantílica (Tau=0.5) ---
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões consistentes com o gráfico (a)
                 width=\linewidth,
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
                 zlabel={Perda},
                 grid=major,
-                view={150}{45}, % Mesmo ângulo de visão do seu template
-                zmin=0, zmax=10.5, % Ajustado para o domínio
+                view={150}{45},
+                zmin=0, zmax=10.5,
                 legend pos=north east,
                 title style={font=\bfseries\small},
                 label style={font=\small},
-                tick label style={font=\scriptsize}
+                tick label style={font=\scriptsize},
+                title={Superfície 3D completa}
             ]
                 % Tau = 0.5 (Plano de fundo como superfície)
                 \addplot3[
-                    surf,           % Superfície sólida
+                    surf,
                     color=gray,
-                    opacity=0.5,    % Semi-transparente
+                    opacity=0.8, % Um pouco mais opaco para destacar
                     shader=interp,
                     domain=-5:5,
                     domain y=-5:5,
-                    samples=30      % Mais samples para 'surf' suave
+                    samples=30
                 ] { 0.5*abs(x - y) };
                 \addlegendentry{$\tau=0.5$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D para $\tau=0.5$.}
+        \label{fig:quantile-3d-tau05}
+    \end{subfigure}
 
+    % --- Legenda e Fonte da Figura Principal ---
+    \caption{Visualizações da Perda Quantílica para $\tau=0.5$ (Erro Absoluto Médio).}
+    \label{fig:quantile-loss-tau05}
+    \fonte{O autor (2025).}
+\end{figure}
+
+% --- FIGURA 2: GRADE 2x2 PARA TAU = 0.9 e TAU = 0.1 ---
+\begin{figure}[h!]
+    \centering
+
+    % --- LINHA DE CIMA: TAU = 0.9 ---
+    
+    % Top-Esquerda: 2D para Tau = 0.9
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,
+                ymin=-0.5, ymax=3.5,
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Visão 2D ($\tau=0.9$)}
+            ]
+                % Tau = 0.9
+                \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.9*x) : ((1-0.9)*(-x))};
+                \addlegendentry{$\tau=0.9$ (Percentil 90)}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Perda 2D para $\tau=0.9$.}
+        \label{fig:quantile-2d-tau09}
+    \end{subfigure}
+    \hfill
+    % Top-Direita: 3D para Tau = 0.9
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45},
+                zmin=0, zmax=10.5,
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Superfície 3D ($\tau=0.9$)}
+            ]
                 % Tau = 0.9 (Malha)
                 \addplot3[
                     mesh,           
                     color=blue,
                     domain=-5:5,
                     domain y=-5:5,
-                    samples=15      % Menos samples para 'mesh'
+                    samples=15
                 ] { (x - y >= 0) ? (0.9*(x - y)) : ((1-0.9)*(-(x - y))) };
                 \addlegendentry{$\tau=0.9$}
-                
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície 3D para $\tau=0.9$.}
+        \label{fig:quantile-3d-tau09}
+    \end{subfigure}
+
+    \vspace{0.5cm} % Espaço vertical entre as linhas
+
+    % --- LINHA DE BAIXO: TAU = 0.1 ---
+
+    % Baixo-Esquerda: 2D para Tau = 0.1
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Erro ($e = y - \hat{y}$)},
+                ylabel={Perda Calculada},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-4.5, xmax=4.5,
+                ymin=-0.5, ymax=3.5,
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Visão 2D ($\tau=0.1$)}
+            ]
+                % Tau = 0.1
+                \addplot[domain=-4:4, samples=5, color=red, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
+                \addlegendentry{$\tau=0.1$ (Percentil 10)}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Perda 2D para $\tau=0.1$.}
+        \label{fig:quantile-2d-tau01}
+    \end{subfigure}
+    \hfill
+    % Baixo-Direita: 3D para Tau = 0.1
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda},
+                grid=major,
+                view={150}{45},
+                zmin=0, zmax=10.5,
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Superfície 3D ($\tau=0.1$)}
+            ]
                 % Tau = 0.1 (Malha)
                 \addplot3[
                     mesh,           
@@ -1962,13 +2088,13 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
                 \addlegendentry{$\tau=0.1$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D completa.} % Legenda da subfigura
-        \label{fig:quantile-3d}
+        \caption{Superfície 3D para $\tau=0.1$.}
+        \label{fig:quantile-3d-tau01}
     \end{subfigure}
 
     % --- Legenda e Fonte da Figura Principal ---
-    \caption{Visualizações da Perda Quantílica (\textit{Pinball Loss}) em duas e em três dimensões.}
-    \label{fig:quantile-loss} % Rótulo principal do seu gráfico
+    \caption{Visualizações das Perdas Quantílicas para os percentis 90 ($\tau=0.9$) e 10 ($\tau=0.1$).}
+    \label{fig:quantile-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
 
