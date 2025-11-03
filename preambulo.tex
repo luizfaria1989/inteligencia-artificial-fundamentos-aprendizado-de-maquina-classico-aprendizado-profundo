@@ -281,8 +281,13 @@
 
 \usepackage[printonlyused, withpage]{acronym} % Opções recomendadas
 
-\usepackage[toc]{glossaries} % 'toc' adds the glossary to your table of contents, which is usually nice.
-\makeglossaries
+% No seu preâmbulo (substitua o \usepackage{acronym})
+\usepackage[
+    toc,      % Põe no sumário
+]{glossaries-extra}
+
+% Comando obrigatório para inicializar o pacote
+\makenoidxglossaries
 
 \usepackage{titlesec}
 \usepackage{xcolor} % Para definir as cores
