@@ -1244,4 +1244,40 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
 
 \section{Comparativo: Funções de Perda para Classificação}
 
+\begin{table}[htbp]
+    \centering
+    \begin{threeparttable}
+        \caption{Comparativo das funções de perda para problemas de classificação}
+        \label{tab:comparativo-funcoes-de-perda-para-classificacao}
+        % p{3.2cm} define uma largura fixa para a primeira coluna.
+        % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
+        % >{\raggedright\arraybackslash} alinha o texto à esquerda para melhor leitura.
+        \begin{tabularx}{\textwidth}{p{3.2cm} *{1}{>{\raggedright\arraybackslash}X}}
+            \toprule
+            \textbf{Função} & \textbf{Principais Características} \\
+            \midrule
+            Entropia Cruzada Binária (\textit{BCE}) & - \\
+            \addlinespace
+            Entropia Cruzada Ponderada Binária (\textit{WBCE}) & - \\
+            \addlinespace
+            Perda de Hinge (\textit{Hinge Loss}) & - \\
+            \addlinespace
+            Entropia Cruzada Categórica (\textit{CCE}) & -  \\
+            \addlinespace
+            Entropia Cruzada categórica Esparsa (\textit{Sparse CCE}) & - \\
+            \addlinespace
+            Entropia Cruzada Categórica Ponderada (\textit{WCCE}) & - \\
+            \addlinespace
+            Perda Multirrótulo (\textit{Multilabel Loss}) & - \\
+            \addlinespace
+        \end{tabularx}
+        
+        \begin{tablenotes}[para]
+            \small
+            \item[] Fonte: O autor (2025).
+        \end{tablenotes}
+
+    \end{threeparttable}
+\end{table}
+
 \section{Fluxograma: Escolhendo a Função de Perda Ideal}
