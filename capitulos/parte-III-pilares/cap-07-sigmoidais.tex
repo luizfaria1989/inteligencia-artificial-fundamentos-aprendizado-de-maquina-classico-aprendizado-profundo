@@ -136,29 +136,47 @@ Visto um dos motivos de se utilizar funções de ativação em uma rede neural, 
 
 Dessa forma, é possível discutir elaborar pouco de cada uma dessas propriedades em seguida.
 
+\medskip
 \textbf{Não-linearidade}
+\medskip
 
 Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{percetron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
 
+\medskip
 \textbf{Diferenciabilidade}
+\medskip
 
 O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrisicamente ligado em como a retropropagação do erro. Como visto no Capítulo \ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
 
+\medskip
 \textbf{Continuidade}
+\medskip
 
 A continuidade está ligada com a diferencibilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descotinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja "quinas" no desenho da função e que o gráfico pode ser desenhado "sem tirar o lápis do papel". Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
 
+\medskip
 \textbf{Limitada}
+\medskip
 
 Considerar que uma função de ativação seja limitada ao escolher uma função de ativação para construir uma rede neural está ligado com os problemas do gradiente. Neste caso, uma função que não é limitada pode sofrer do problema do gradiente explosivo, o qual é explicado com maiores detalhes no Capítulo \ref{cap:ativacao-retificadoras}. Nesse sentido, o problema do gradiente explosivo o gradiente de uma rede neural começa a crescer de forma acelerada afetando o aprendizado da rede e as atualizações de pesos e vieses.
 
+\medskip
 \textbf{Centrada em zero}
+\medskip
 
 Uma função que não é centrada em zero, que é sempre positiva ou sempre negativa, afeta como a saída ocorre \parencite{PropriedadesFuncoesDeAtivacao}. Como explica \textcite{PropriedadesFuncoesDeAtivacao}, um cenário em que isso acontece, significa que a saída está sendo sempre movida para os valores positivos ou negativos, e como resultado, o vetor de pesos precisa de uma quantidade maior de iterações para ser melhor ajustado. Dessa forma, ao escolher uma função que é centrada em zero, é possível garantir um treinamento com menos iterações mas ainda assim garantir uma boa convergência do modelo que está sendo treinado.
 
+\medskip
 \textbf{Custo computacional}
+\medskip
 
 Cabe considerar também o custo computacional de uma função de ativação. Funções mais simples, como a degrau unitário e a \textit{ReLU}, as quais fazem apenas comparações com o valor da entrada, apresentam um custo computacional bem menor quando comparadas com funções mais complexas, como aquelas que fazem uso de muitos exponenciais em sua fórmula. Com isso, ao utilizar uma função de ativação muito "cara" em termos computacionais, isso acaba por gerar um gargalo no tempo de treino do modelo em desenvolvimento.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 Vale destacar também que muitas dessas propriedades não estão presentes em todas as funções de ativação. A sigmoide por exemplo é uma função que não está centrada em zero, possuindo apenas saídas positivas. Já a \textit{ReLU} apresenta um ponto de descontinuidade na origem, mas isso não atrapalha essas funções de ativação de serem utilizadas ao construir uma rede neural. As propriedades servem mais como um guia, destacando vantagens que se pode ter ao utilizar determinada função de ativação.
 
@@ -260,9 +278,15 @@ Ao comparar a degrau unitário com a sigmoide, é possível notar uma diferença
 A função sigmoide é escrita com uma exponencial, como na Equação \ref{eq:sigmoide}. Como explica \textcite{ActivationFunctionsLederer}, a sigmoide ela é uma função limitada, diferenciável e monotônica, o que significa que conforme os valores de $x$ aumentam os valores de $f(x)$ também aumentam.
 
 \begin{equacaodestaque}{Sigmoide Logística}
-    \sigma(y_j) = \frac{1}{1 + e^{-y_j}}
+    \sigma(x_j) = \frac{1}{1 + e^{-x_j}}
     \label{eq:sigmoide}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 O gráfico da sigmoide está presente na Figura \ref{fig:sigmoide}, note que ele possui o formato de um "S" deitado. Assim, também é possível dizer que a função sigmoide é uma função suave, contínua (o que a possibilita de ser derivável em todos os pontos) e também é não-linear. \textcite{ActivationFunctionsLederer} explica que uma das propriedades interessantes da sigmoide está no fato dela empurrar os valores de entrada para dois extremos, neste caso, 0 e 1. Essa propriedade de retornar valores em um intervalo de 0 a 1 é bem útil quando queremos fazer uma classificação binária, para isso, utilizamos a sigmoide aplicada na última camada densa de neurônios, limitando os intervalos, de forma que podemos interpretá-los como probabilidades, em que quanto mais próximo de 1, mais próximo aquele resultado está de uma classe A, por exemplo, já valores mais distantes pertenceriam a uma classe B.
 
@@ -270,8 +294,8 @@ O gráfico da sigmoide está presente na Figura \ref{fig:sigmoide}, note que ele
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\sigma(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\sigma(x_j)$},
             xmin=-8.5, xmax=8.5,
             ymin=-0.3, ymax=1.1,
             axis lines=middle,
@@ -312,14 +336,14 @@ Um ponto a ser destacado nas funções de ativação, e que começou a ser visto
 Assim, ao derivar a sigmoide logística é possível encontrar a Equação \ref{eq:sigmoide-derivada}.
 
 \begin{equacaodestaque}{Sigmoide Logística Derivada}
-    \frac{d}{dy_j}[\sigma](y_j) = \frac{e^{-y_j}}{(1 + e^{-y_j})^2}
+    \frac{d}{dx_j}[\sigma](x_j) = \frac{e^{-x_j}}{(1 + e^{-x_j})^2}
     \label{eq:sigmoide-derivada}
 \end{equacaodestaque}
 
 Um ponto a ser destacado é que a sigmoide também pode ser expressa de uma forma recurssiva, algo que é muito útil pois ajuda a poupar cálculos a serem feitos. Dessa forma, também tem-se a Equação \ref{eq:sigmoide-derivada-recursiva}.
 
 \begin{equacaodestaque}{Sigmoide Logística Derivada Recursivamente}
-    \frac{d}{dy_j}[\sigma](y_j) = \sigma(y_j)(1 - \sigma(y_j))
+    \frac{d}{dx_j}[\sigma](x_j) = \sigma(x_j)(1 - \sigma(x_j))
     \label{eq:sigmoide-derivada-recursiva}
 \end{equacaodestaque}
 
@@ -329,8 +353,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\sigma'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\sigma'(x_j)$},
             xmin=-8.3, xmax=8.3,
             ymin=-0.05, ymax=0.35,
             axis lines=middle,
@@ -379,9 +403,15 @@ Passado mais de dois séculos, a tangente hiperbólica já estava sendo utilizad
 É possível escrever a tangente hiperbólica utilizando a definição de tangente, que é o quociente a função seno com a função cosseno, só que neste caso usando as funções hiperbólicas. Assim ela é representada pela Equação \ref{eq:tanh}.
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh)}
-    \mathcal{A}_{\tanh(y_j)} = \frac{\sinh(y_j)}{\cosh(y_j)} = \frac{e^y_j - e^{-y_j}}{e^y_j + e^{-y_j}}
+    \mathcal{A}_{\tanh(x_j)} = \frac{\sinh(x_j)}{\cosh(x_j)} = \frac{e^x_j - e^{-x_j}}{e^x_j + e^{-x_j}}
     \label{eq:tanh}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parecidas. Como afirma \textcite{ActivationFunctionsLederer}, a tangente hiperbólica é infinitamente diferenciável, sendo uma versão escalada e rotacionada da sigmoide logística. Assim, veja no gráfico da Figura \ref{fig:tanh} que ela é uma função que está centrada em zero, e seus valores variam agora em um intervalo de -1 a 1, diferente da sigmoide, que varia somente de 0 a 1.
 
@@ -389,8 +419,8 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\tanh(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\tanh(x_j)$},
             xmin=-5, xmax=5,
             ymin=-1.2, ymax=1.2,
             axis lines=middle,
@@ -432,14 +462,14 @@ Como foi visto em seções anteriores, é interessante ao escolher uma função 
 De forma análoga a feita na sigmoide logística, vale a pena calcular a derivada da tangente hiperbólica para entender como o gradiente é propagado para as camadas anteriores ao utilizar essa função de ativação. Dessa forma, a sua derivada está representada na Equação \ref{eq:tanh-derivada}.
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada}
-    \frac{d}{dy_j}[\mathcal{A}_{\tanh}](y_j) = \text{sech}^2(y_j)
+    \frac{d}{dx_j}[\mathcal{A}_{\tanh}](x_j) = \text{sech}^2(x_j)
     \label{eq:tanh-derivada}
 \end{equacaodestaque}
 
 Assim como a sigmoide logística, a tangente hiperbólica possui uma vantagem, ela pode ser escrita de forma recursiva, o que ajuda a poupar cálculos para a o \textit{backward pass}, pois é possível simplemente armazenar o resultado dessa função que estava calculado no \textit{forward pass} e reutilizá-lo ao calcular a sua derivada. Isso é muito útil pois quanto menos calculos forem feitos, maior é a tendência que o modelo será mais rápido e com isso irá convergir em menos tempo \footnote{Note que tanto a sigmoide quanto a tangente hiperbólica fazem uso de exponenciais em suas fórmulas, essas operações acabam por ser caras (em termos de poder de processamento) quando comparadas com as simples operações de comparação da hard tanh, a qual será vista em seções futuras.}. Dessa forma, tem-se que a derivada da tangente hiperbólica escrita de forma recursiva pode ser expressa pela Equação \ref{eq:tanh-derivada-recursiva}
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada Recursivamente}
-    \frac{d}{dy_j}[\mathcal{A}_{\tanh}](y_j) = 1 - \tanh^2(y_j)
+    \frac{d}{dx_j}[\mathcal{A}_{\tanh}](x_j) = 1 - \tanh^2(x_j)
     \label{eq:tanh-derivada-recursiva}
 \end{equacaodestaque}
 
@@ -449,8 +479,8 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\tanh'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\tanh'(x_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -497,9 +527,15 @@ A próxima função sigmoidal a ser analisada é a \textit{softsign}, diferente 
 A principal diferença da \textit{softsign} com as outras sigmoidais está na sua fórmula, como pode ser visto na Equação \ref{eq:softsign} é que ela não utiliza nenhum exponencial para compor sua função. Isso faz com que ela seja uma função mais "barata" em termos de custo computacional para ser implementada em redes neurais. Assim, é possível obter resultados parecidos porem utilizando cálculos menos complexos e com isso encontrar redes mais rápidas de serem treinadas.
 
 \begin{equacaodestaque}{\textit{Softsign}}
-    \mathcal{A}_{\text{Softsign}}(y_j) = \frac{y_j}{1 + |y_j|}
+    \mathcal{A}_{\text{Softsign}}(x_j) = \frac{x_j}{1 + |x_j|}
     \label{eq:softsign}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 A \textit{softsign} também possui uma representação gráfica, como vista na Figura \ref{fig:softsign}, ela possui o formato em "S" característico das sigmoidais além de ser centrada em zero como a tangente hiperbólica. Além disso, como \textcite{Softsign1998} destaca em seu texto, ela é uma função que é diferenciável em toda a reta possuindo também a mesma propriedade das outras sigmoidais de empurrar os valores de entrada para os seus extremos. Nota-se também pelo seu gráfico que ela também uma função contínua, suave e não-linear.
 
@@ -508,8 +544,8 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
     % Gráfico da função Softsign usando PGFPlots
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{softsign}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{softsign}(x_j)$},
             xmin=-15, xmax=15,
             ymin=-1.2, ymax=1.2,
             axis lines=middle,
@@ -550,7 +586,7 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
 Com relação a sua diferenciabilidade, a \textit{softsign} pode ser derivada em todos os seus pontos, e sua derivada pode ser vista na Equação \ref{eq:softsign-derivada}. Com base nela, é possível notar uma outra diferença da \textit{softsign} com a tangente hiperbólica e a sigmoide. Diferente das outras duas, a derivada da \textit{softsign} não pode ser expressa em termos da sua própria função. Assim, enquanto nas outras funções é feito um cálculo complexo na função e um simples na derivada, pois é aproveitado o resultado, na \textit{softsign} isso não ocorre.
 
 \begin{equacaodestaque}{\textit{Softsign} Derivada}
-    \frac{d}{dy_j}[\mathcal{A}_{\text{softsign}}](y_j) = \frac{1}{(1 + |y_j|)^2}
+    \frac{d}{dx_j}[\mathcal{A}_{\text{softsign}}](x_j) = \frac{1}{(1 + |x_j|)^2}
     \label{eq:softsign-derivada}
 \end{equacaodestaque}
 
@@ -561,8 +597,8 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
     % Gráfico da derivada da função Softsign
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{softsign}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{softsign}'(x_j)$},
             xmin=-10, xmax=10,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -610,9 +646,15 @@ Agora será visto duas funções sigmoidais, criadas no contexto de redes neurai
 A primeira é a \textit{hard sigmoid}. Como pode ser visto na Equação \ref{eq:hard-sigmoid}, a qual está presente na documentação do \textcite{PyTorchHardSigmoid}, ela pode ser escrita juntando 3 diferentes funções, duas delas sendo funções constantes e uma terceira sendo a função identidade. Note que ela perde a suavidade da função seno, possuindo bicos que a impedem de ser derivada em todos os seus pontos, contudo, seus cálculos são bem mais simples quando comparados com a sigmoide tradicional, não tem nenhuma exponencial para atrasar as respostas da função. Mas note que também existe um crescimento linear quando os valores estão entre -3 e 3.
 
 \begin{equacaodestaque}{\textit{Hard Sigmoid}}
-        \mathcal{A}_{\text{Hard sigmoid}}(y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ y_j/6 + 0.5 & \text{se } -3 \le y_j \le 3 \\ 1 & \text{se } y_j > 3 \end{cases}
+        \mathcal{A}_{\text{Hard sigmoid}}(x_j) = \begin{cases} 0 & \text{se } x_j < -3 \\ x_j/6 + 0.5 & \text{se } -3 \le x_j \le 3 \\ 1 & \text{se } x_j > 3 \end{cases}
     \label{eq:hard-sigmoid}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico, o qual está representado na Figura \ref{fig:hard-sigmoid}. Ele lembra uma função sigmoide logística, porém, sem todas as curvas suaves daquela função, apresentando no lugar um conjunto de três diferentes retas, a primeira constante em zero, a segunda a função identidade e a terceira também constante em um. 
 
@@ -620,8 +662,8 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{hard sigmoid}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{hard sigmoid}(x_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -667,7 +709,7 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
 Com relação a derivada da \textit{hard sigmoid}, para obtê-lá, deve-se derivar todas as três expressões construindo a sua derivada. Note que os pontos que as retas se tocam no gráfico da Figura \ref{fig:hard-sigmoid} são pontos de descontinuidade, pois quando calculados os limites laterais nesses pontos eles serão diferentes. Isso faz com que essa função não possa ser derivada desses locais. Considerando isso, é possível expressar a derivada da \textit{hard sigmoid} com a Equação \ref{eq:hard-sigmoid-derivada}.
 
 \begin{equacaodestaque}{\textit{Hard Sigmoid} Derivada}
-        \frac{d}{dy_j}[\mathcal{A}_{\text{Hard sigmoid}}](y_j) = \begin{cases} 0 & \text{se } y_j < -3 \\ 1/6 & \text{se } -3 < y_j < 3 \\ 0 & \text{se } y_j > 3 \end{cases}
+        \frac{d}{dx_j}[\mathcal{A}_{\text{Hard sigmoid}}](x_j) = \begin{cases} 0 & \text{se } x_j < -3 \\ 1/6 & \text{se } -3 < x_j < 3 \\ 0 & \text{se } x_j > 3 \end{cases}
     \label{eq:hard-sigmoid-derivada}
 \end{equacaodestaque}
 
@@ -677,8 +719,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{hard sigmoid}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{hard sigmoid}'(x_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=0.8,
             axis lines=middle,
@@ -704,9 +746,15 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
 Além disso, também existe a função \textit{hard tanh}, que apresenta a mesma proposta da \textit{hard sigmoid}, mas, nesse sentido, busca imitar o comportamento da função de ativação tangente hiperbólica. Para isso, ela segue uma ideia parecida com a da equação da \textit{hard sigmoid}, escrevendo a sua equação em forma de condicionais, mas ajustando os seus valores para corresponder ao funcionamento da tanh. Essa função está expressa na Equação \ref{eq:hard-tanh}.
 
 \begin{equacaodestaque}{\textit{Hard Tanh}}
-        \mathcal{A}_{\text{Hard tanh}}(y_j) = \begin{cases} -1 & \text{se } y_j < -1 \\ y_j & \text{se } -1 \le y_j \le 1 \\ 1 & \text{se } y_j > 1 \end{cases}
+        \mathcal{A}_{\text{Hard tanh}}(x_j) = \begin{cases} -1 & \text{se } x_j < -1 \\ x_j & \text{se } -1 \le x_j \le 1 \\ 1 & \text{se } x_j > 1 \end{cases}
     \label{eq:hard-tanh}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é possível vez na Figura \ref{fig:hard-tanh}, ele é composto por três retas, sendo duas delas constantes e uma terceira sendo a função identidade. Note que ele também possui "bicos", o que o impede essa função de ser derivada nesses pontos, uma vez que ela não é contínua nessas regiões.
 
@@ -714,8 +762,8 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{hard tanh}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{hard tanh}(x_j)$},
             xmin=-5, xmax=5,
             ymin=-1.2, ymax=1.2,
             axis lines=middle,
@@ -763,7 +811,7 @@ Perceba também que o gráfico, bem como sua equação, é bem mais simples que 
 Agora é possível também considerar também a derivada da \textit{hard tanh}, a qual é calculada de forma semelhante a da \textit{hard sigmoid}, derivando as três expressões de sua equação separadamente. Feito isso, a derivada da \textit{hard tanh} está expressa na Equação \ref{eq:hard-tanh-derivada}.
 
 \begin{equacaodestaque}{\textit{Hard Tanh} Derivada}
-        \frac{d}{dy_j}[\mathcal{A}_{\text{Hard tanh}}](y_j) = \begin{cases} 0 & \text{se } y_j < -1 \\ 1 & \text{se } -1 < y_j < 1 \\ 0 & \text{se } y_j > 1 \end{cases}
+        \frac{d}{dx_j}[\mathcal{A}_{\text{Hard tanh}}](x_j) = \begin{cases} 0 & \text{se } x_j < -1 \\ 1 & \text{se } -1 < x_j < 1 \\ 0 & \text{se } x_j > 1 \end{cases}
     \label{eq:hard-tanh-derivada}
 \end{equacaodestaque}
 
@@ -773,8 +821,8 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{hard tanh}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{hard tanh}'(x_j)$},
             xmin=-5, xmax=5,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -858,10 +906,10 @@ Considerando isso, imagine que temos uma rede composta por quatro camadas densas
 Considere também que as camadas da rede possuem a seguinte configuração:
 
 \begin{itemize}
-    \item Sigmoide da primeira camada: tem como resultado da derivada $\sigma'(y_j) = 0.2$
-    \item Sigmoide da camada densa 2: tem como resultado da derivada $\sigma'(y_j) = 0.05$
-    \item Sigmoide da camada densa 3: tem como resultado da derivada $\sigma'(y_j) = 0.1$
-    \item Sigmoide da camada de saída: tem como resultado da derivada $\sigma'(y_j) = 0.08$
+    \item Sigmoide da primeira camada: tem como resultado da derivada $\sigma'(x_j) = 0.2$
+    \item Sigmoide da camada densa 2: tem como resultado da derivada $\sigma'(x_j) = 0.05$
+    \item Sigmoide da camada densa 3: tem como resultado da derivada $\sigma'(x_j) = 0.1$
+    \item Sigmoide da camada de saída: tem como resultado da derivada $\sigma'(x_j) = 0.08$
 \end{itemize}
 
 Além disso, você sabe também que o gradiente inicial na camada de saída está sendo de 1. Com isso é possível calcular o gradiente retropropagado para a primeira camada, comecando pela terceira, já que já temos o valor do gradiente para a camada de saída, dessa forma temos que:
