@@ -92,6 +92,14 @@ Perceba que a fórmula da entropia cruzada binária faz um uso muito inteligente
     \label{eq:binary-cross-entropy-para-n-amostras}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
+
 Além disso, a \textit{BCE} já vem sendo utilizada no contexto de aprendizado de máquina a um bom tempo. Um dos trabalhos que cita o uso dessa função para ser utilizada em cenários de classificação binária é o \textit{Connectionist Learning Procedures} de \textcite{HintonConnectionist}, em que o autor cita que ao minimizar a Entropia-Cruzada-Binária para as distribuições do resultado desejado e o atual resultado era semelhante a maximivizar a a versossimilhança do modelo gerar as saídas corretas.
 
 Dito isso, o próximo passo para entender a \textit{BCE} é conhecer a sua representação gráfica, a qual está presente na Figura \ref{fig:binary-cross-entropy}. Note que o gráfico apresenta duas curvas, uma para a distribuição para a classe real, e outra para a distribuição para a classe de saídas do modelo. Perceba que o ponto de mínimo do gráfico é aquele em que as duas curvas se encontram, e com isso a distância entre as duas é mínima, e consequentemente a perda também será.
@@ -247,6 +255,16 @@ Dessa forma, é possível escrever a \textit{binary weighted cross-entropy} como
     \Loss_{WCE} (y_j, \hat{y}_j) = - [\alpha_1 y_j \log (\hat{y}_j) + \alpha_0 (1 - y_j) \log (1 - \hat{y}_j)]
     \label{eq:binary-weighted-cross-entropy}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+    \item $\alpha_1$
+    \item $\alpha_2$
+\end{itemize}
 
 Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuídos para cada uma das classes, dessa forma, a perda geral é obtida ao calcular a média com base de $N$ amostras, assim, é possível escrever como na Equação \ref{eq:binary-weighted-cross-entropy-para-n-amostras}.
 
@@ -777,6 +795,14 @@ Considerando um conjunto $\hat{y}_j = [\hat{y}_{j,1}, \dots, \hat{y}_{j,C}]$ que
     \label{eq:categorical-cross-entropy-per-sample}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
+
 De forma que ao calcular a média sobre $n$ amostras é possível chegar na Equação \ref{eq:categorical-cross-entropy-per-n-samples}, que representa a perda entropia cruzada categórica para $n$ amostras.
 
 \begin{equacaodestaque}{Entropia Cruzada Categórica (\textit{CCE}) para $n$ Amostras}
@@ -1101,6 +1127,13 @@ De forma semelhante as outras funções, é possível expandir essa fórmula par
     \label{eq:weighted-categorical-cross-entropy}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
 
 
 Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possível utilizar a sua variante multi-classe para ser trabalhada em cenários em que uma classe, ou um grupo de classes aparece de forma mais frequente que outro.
