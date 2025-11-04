@@ -57,9 +57,15 @@ Essa equação mostra quando uma fibra nervosa irá disparar, para isso, deve-se
 Essa equação criada por Householder, lembra bastante a expressão da função \gls{relu}, a qual é denotada pelas Equações \ref{eq:relu}.
 
 \begin{equacaodestaque}{\textit{Rectified Linear Unit} (\textit{ReLU})}
-    \mathcal{A}_{\text{ReLU}}(y_j) = \begin{cases}y_j, & \text{se } y_j > 0 \\0, & \text{se } y_j \leq 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{ReLU}}(y_j) = \max(0, y_j)
+    \mathcal{A}_{\text{ReLU}}(x_j) = \begin{cases}x_j, & \text{se } x_j > 0 \\0, & \text{se } x_j \leq 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{ReLU}}(x_j) = \max(0, x_j)
     \label{eq:relu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Dito isso, mesmo com ela existindo a mais de 80 anos, ela só passou a ser amplamente utilizada nos anos 2010, antes disso, as sigmoides eram a grande maioria quando o assunto era função de ativação. Contudo, as sigmoides eram funções saturantes, e isso fazia com que sua derivada retornasse muitos valores pequenos ao longo da função. Ao multiplicar vários valores pequenos na retropropagação do gradiente, o vetor gradiente ia diminuindo até chegar um ponto em que ele não conseguia atualizar os pesos e vieses das redes neurais de forma eficiente, assim, tínhamos o problema do desaparecimento do gradiente. As funções retificadoras, sendo a principal delas a \textit{ReLU}, surgem para corrigir esse problema crônico. 
 
@@ -118,8 +124,8 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{ReLU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{ReLU}(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.8, ymax=2.3,
             axis lines=middle,
@@ -162,7 +168,7 @@ Para achar a derivada da \textit{ReLU}, deve-se derivar as duas condicionais del
 Assim, a derivada da \textit{ReLU} é dada pela Equação \ref{eq:relu-derivada}.
 
 \begin{equacaodestaque}{\textit{Rectified Linear Unit} (\textit{ReLU} Derivada)}
-    \frac{d}{dy_j} [\mathcal{A}_{ReLU}](y_j) = \begin{cases}1, & \text{se } y_j > 0 \\0, & \text{se } y_j \leqslant 0 \end{cases}
+    \frac{d}{dx_j} [\mathcal{A}_{ReLU}](x_j) = \begin{cases}1, & \text{se } x_j > 0 \\0, & \text{se } x_j \leqslant 0 \end{cases}
     \label{eq:relu-derivada}
 \end{equacaodestaque}
 
@@ -174,8 +180,8 @@ Além da sua representação em forma de equação, é possível fazer também o
     \centering % Centraliza o gráfico na página
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{ReLU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{ReLU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.8, ymax=1.8,
             axis lines=middle,
@@ -245,9 +251,15 @@ Essa função de ativação foi apresentada no artigo \textit{Recfier Nonlineari
 Também é possível discutir a expressão matemática da \textit{Leaky ReLU}, a qual é dada pela Equação \ref{eq:leaky-relu}, que é bem parecida com a \textit{ReLU}, porém, ela também irá retornar valores negativos quando a sua entrada for um valor negativo, diferente da \textit{ReLU}, que iria retornar como saída zero. A constante $\alpha$, no texto original é dada por 0.1 fazendo com que os valores negativos sejam pequenos mas ainda sim, diferentes de zero quando passam pela entrada \parencite{LeakyReLUArticle} \footnote{Cabe destacar que, essa constante $\alpha$ pode ser ajustada para diferentes cenários, podendo ser valores diferentes de 0.1 como foram propostos no texto original, é possível ver isso acontecendo em comparativos ao longo desse capítulo, em que diferentes autores optam por valores diferentes de $\alpha$ para melhor ajustar ao problema que está sendo analisado.}. 
 
 \begin{equacaodestaque}{\textit{Leaky ReLU} (\textit{LReLU})}
-    \mathcal{A}_{\text{LReLU}}(y_j) = \begin{cases}y_j, & \text{se } y_j \ge 0 \\ \alpha \cdot y_j, & \text{se } y_j < 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{LReLU}}(y_j) = \max(0, \alpha y_j)
+    \mathcal{A}_{\text{LReLU}}(x_j) = \begin{cases}x_j, & \text{se } x_j \ge 0 \\ \alpha \cdot x_j, & \text{se } x_j < 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{LReLU}}(x_j) = \max(0, \alpha x_j)
     \label{eq:leaky-relu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Em que a constante $\alpha$ representa uma constante pré-definida pelo programador ao desenvolver a rede neural. Por padrão, em bibliotecas como o \textcite{PyTorchLeakyReLU} essa constante tem valor de 0.1.
 
@@ -257,8 +269,8 @@ Já para a sua representação gráfica, ela está presente na Figura \ref{fig:l
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{LReLU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{LReLU}(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.8, ymax=2.3,
             axis lines=middle,
@@ -298,7 +310,7 @@ Já para a sua representação gráfica, ela está presente na Figura \ref{fig:l
 Sabendo de sua expressão e seu gráfico, é possível agora calcular sua derivada, para isso, deve-se derivar as duas condicionais que estão na função da \textit{Leaky ReLU}. Assim, quando a entrada dessa função for maior que zero, essa função será $x$ que derivada é 1, já quando a entrada for menor que zero, a função será $\alpha x$, que quando derivada tem como resultado a própria constante $\alpha$. Contudo, como dito anteriormente, a derivada da \textit{Leaky ReLU} não existe quando a entrada é exatamente zero, mas na prática, ao trabalhar com a sua definição na retropropagação, é possível definir um valor para a derivada nesse ponto, assim como foi feito com a \textit{ReLU} tradicional. Com isso em mente, tem-se então a Equação \ref{eq:leaky-relu-derivada}, a qual representa a derivada da \textit{Leaky ReLU}.
 
 \begin{equacaodestaque}{\textit{Leaky ReLU} (\textit{LReLU} Derivada)}
-    \frac{d}{dy_j} [\mathcal{A}_{LReLU}](y_j) = \begin{cases}1, & \text{se } y_j > 0 \\ \alpha, & \text{se } y_j \leqslant  0 \end{cases}
+    \frac{d}{dx_j} [\mathcal{A}_{LReLU}](x_j) = \begin{cases}1, & \text{se } x_j > 0 \\ \alpha, & \text{se } x_j \leqslant  0 \end{cases}
     \label{eq:leaky-relu-derivada}
 \end{equacaodestaque}
 
@@ -308,8 +320,8 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{LReLU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{LReLU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -407,9 +419,15 @@ Proposta por \textcite{PReLUArticle} no artigo \textit{Delving Deep into Rectifi
 A fórmula matemática da \textit{PReLU} é dada pela Equação \ref{eq:prelu}. Como explicam \textcite{PReLUArticle}, a \textit{PReLU} generaliza a tradicional \textit{ReLU}, além de melhorar o \textit{model fitting} apresentando quase nenhum custo computacional extra e com um baixo risco de sobreajuste (\textit{overfitting}). Este coeficiente $\alpha$, que ela apresenta assim como a \textit{Leaky ReLU} que foi visto anteriormente, é aprendível, e não uma constante fixa, isso indica ser otimizado utilizando a retropropagação do gradiente de forma simultânea com as outras camadas da rede neural criada \parencite{PReLUArticle}. Assim, por esse fato tem-se uma melhor eficiência no aprendizado e no tempo da rede, dado que não precisamos criar uma nova etapa só para ajustar os valores de \textit{alpha} das camadas densas que fazem o uso da \textit{Parametric ReLU}.
 
 \begin{equacaodestaque}{\textit{Parametric ReLU} (\textit{PReLU})}
-    \mathcal{A}_{\text{PReLU}}(y_j) = \begin{cases}y_j, & \text{se } y_j \ge 0 \\ \alpha_i \cdot y_j, & \text{se } y_j < 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{PReLU}}(y_j) = \max(0, \alpha y_j)
+    \mathcal{A}_{\text{PReLU}}(x_j) = \begin{cases}x_j, & \text{se } x_j \ge 0 \\ \alpha_i \cdot x_j, & \text{se } x_j < 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{PReLU}}(x_j) = \max(0, \alpha x_j)
     \label{eq:prelu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Com base em sua equação, tem-se o gráfico da \textit{PReLU} na Figura \ref{fig:prelu}, note que caso este coeficiente for igual a zero, nos temos então a \textit{ReLU} tradicional, já quando ele for igual a 0.1, tem-se a \textit{LReLU}, no gráfico $\alpha$ está com valor de 0.2, mas ele irá variar conforme a rede aprende e para cada problema, podendo apresentar diferentes valores em diferentes situações. Com isso, é possível perceber que a \textit{PReLU} é composta por duas funções do primeiro grau, sendo assimétrica, e também apresentando um ponto de descontinuidade em zero, o que impede de ser derivada neste ponto.
 
@@ -417,8 +435,8 @@ Com base em sua equação, tem-se o gráfico da \textit{PReLU} na Figura \ref{fi
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{PReLU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{PReLU}(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.5, ymax=2.3,
             axis lines=middle,
@@ -459,7 +477,7 @@ Com base em sua equação, tem-se o gráfico da \textit{PReLU} na Figura \ref{fi
 Conhecendo a sua fórmula e como ela se comporta, cabe também derivar a \textit{PReLU}, para isso, deve-se derivar cada uma das expressões dos condicionais de forma separada, assim como foi feito com a \textit{Leaky ReLU} e a \textit{ReLU} anteriormente. Como a fórmula da \textit{PReLU} é igual a \textit{LReLU}, podemos apenas nos lembrar dela e citar a Equação \ref{eq:prelu-derivada} como sua derivada. Note que, essa derivada também não existe quando a entrada é exatamente zero, mas assim como na \textit{Leaky ReLU}. É possível "corrigir" isso dizendo que ela será igual a $\alpha$ nesse ponto, para que o gradiente continue fluindo durante o \textit{backward pass}. Vale lembrar, que essa reta em $\alpha$ irá variar conforme a rede neural aprende as características e se ajusta ao problema que está tentando resolver.
 
 \begin{equacaodestaque}{\textit{Parametric ReLU} (\textit{PReLU} Derivada)}
-    \frac{d}{dy_j} [\mathcal{A}_{PReLU}](y_j) = \begin{cases}1, & \text{se } y_j > 0 \\ \alpha_i, & \text{se } y_j \le 0 \end{cases}
+    \frac{d}{dx_j} [\mathcal{A}_{PReLU}](x_j) = \begin{cases}1, & \text{se } x_j > 0 \\ \alpha_i, & \text{se } x_j \le 0 \end{cases}
     \label{eq:prelu-derivada}
 \end{equacaodestaque}
 
@@ -469,8 +487,8 @@ Sabendo a fórmula da derivada da \textit{PReLU}, é possível plotar o seu grá
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{PReLU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{PReLU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -613,14 +631,20 @@ Segundo \textcite{XuRReLU}, em \textit{Empirical Evaluation of Rectified Activat
 A fórmula da \textit{RReLU} é dada pela Equação \ref{eq:rrelu}, note que é a mesma expressão da \textit{Leaky ReLU} e da \textit{PReLU}, mas o que muda é o significado do termo $\alpha$ em cada uma delas. Neste caso: $\alpha \sim U (l, u)$ em que $l < u$  e $l, u \in [0, 1)$ 
 
 \begin{equacaodestaque}{\textit{Randomized Leaky ReLU} (\textit{RReLU})}
-    \mathcal{A}_{\text{RReLU}}(y_j) = \begin{cases} y_j, & \text{se } y_j > 0 \\ \alpha_i y_j, & \text{se } y_j \leq 0 \end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{RReLU}}(y_j) = \max(0, \alpha y_j)
+    \mathcal{A}_{\text{RReLU}}(x_j) = \begin{cases} x_j, & \text{se } x_j > 0 \\ \alpha_i x_j, & \text{se } x_j \leq 0 \end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{RReLU}}(x_j) = \max(0, \alpha x_j)
     \label{eq:rrelu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Na fase de testes, deve-se calcular a média de todos os valores de $\alpha$ durante o treino, e com isso $\alpha$ se torna uma constante fixa do tipo $(l+u)/2$ de forma que com isso seja possível obter um resultado determinístico, no artigo, os autores utilizam a fórmula \ref{eq:equacao-rrelu-teste} para calcular a \textit{RReLU} durante o teste do modelo \parencite{XuRReLU}.
 
 \begin{equation}
-    \mathcal{A}_{\text{RReLU}}(y_j) = \frac{y_j}{\frac{l + u}{2}}
+    \mathcal{A}_{\text{RReLU}}(x_j) = \frac{x_j}{\frac{l + u}{2}}
     \label{eq:equacao-rrelu-teste}
 \end{equation}
 
@@ -630,8 +654,8 @@ O gráfico da \textit{RReLU} está presente na Figura \ref{fig:rrelu}. Na repres
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{RReLU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{RReLU}(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.8, ymax=2.3,
             axis lines=middle,
@@ -677,7 +701,7 @@ Conhecendo como a \textit{RReLU} se comporta, é possível também calcular a su
 Com relação ao problema da descontinuidade no ponto zero, é possível apenas escolher para qual valor essa função irá retornar neste caso, assim, vamos considerar que quando a sua entrada for zero, ela irá retornar o segundo caso, em que é a própria constante $\alpha$
 
 \begin{equacaodestaque}{\textit{Randomized Leaky ReLU} (\textit{RReLU}) Derivada}
-    \frac{d}{dy_j} [\mathcal{A}_{\text{RReLU}}](y_j) = \begin{cases}1, & \text{se } y_j > 0 \\ \alpha_i, & \text{se } y_j \leqslant  0 \end{cases}
+    \frac{d}{dx_j} [\mathcal{A}_{\text{RReLU}}](x_j) = \begin{cases}1, & \text{se } x_j > 0 \\ \alpha_i, & \text{se } x_j \leqslant  0 \end{cases}
     \label{eq:rrelu-derivada}
 \end{equacaodestaque}
 
@@ -687,8 +711,8 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{RReLU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{RReLU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -702,7 +726,7 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
 
         % Plota a derivada para z > 0
         \addplot[red, thick, domain=0:2.1] {1};
-        \addlegendentry{$f'(y_j) = 1$}
+        \addlegendentry{$f'(x_j) = 1$}
 
         % Plota a região hachurada para z < 0
         \addplot[
@@ -869,9 +893,15 @@ A \textit{ELU} ou \textit{Exponential Linear Unit} foi introduzida no artigo \te
 A \textit{Exponential Linear Unit} pode é descrita utilizando a Equação \ref{eq:elu}. Note que há uma grande diferença dela quando comparamos com a \textit{ReLU}, a \textit{ELU} faz uso de funções exponenciais, algo que é computacionalmente mais "caro" para um computador quando comparado com apenas cálculos simples como uma função identidade.
 
 \begin{equacaodestaque}{\textit{Exponential Linear Unit} (\textit{ELU})}
-    \mathcal{A}_{\text{ELU}}(y_j) = \begin{cases}y_j, & \text{se } y_j \ge 0 \\ \alpha \cdot (e^{y_j} - 1), & \text{se } y_j < 0\end{cases}
+    \mathcal{A}_{\text{ELU}}(x_j) = \begin{cases}x_j, & \text{se } x_j \ge 0 \\ \alpha \cdot (e^{x_j} - 1), & \text{se } x_j < 0\end{cases}
     \label{eq:elu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Conhecendo como é a fórmula da \textit{ELU}, é possível também plotar o seu gráfico, o qual está presente na Figura \ref{fig:elu}. Ao analisar, é possível ver uma diferença notável quando o comparada com as funções vistas anterioemente, a \textit{ELU} não apresenta um bico no ponto de origem, ela é uma função bem mais suave. Além disso, note que ela segue o mesmo padrão das outras funções: ela retorna a função identidade nos casos em que a entrada é maior que zero, assim como as outras variantes, mas quando é tratado dos casos em que a entrada é negativa, nota-se que ela utiliza uma funcão exponencial, o que garante a suavidade vista no gráfico. Perceba também que ela possui valores negativos, assim como as variantes com vazamento, indicando que ela também pode ser capaz de lidar com o problema do \textit{ReLUS} agonizantes causado pela \textit{ReLU} tradicional e que vem sendo mitigado com outras variantes como a \textit{Leaky ReLU}.
 
@@ -879,8 +909,8 @@ Conhecendo como é a fórmula da \textit{ELU}, é possível também plotar o seu
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{ELU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{ELU}(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-1.2, ymax=2.3,
             axis lines=middle,
@@ -917,10 +947,10 @@ Conhecendo como é a fórmula da \textit{ELU}, é possível também plotar o seu
 \end{center}
 \medskip
 
-Agora que a sua fórmula e seu gráfico são conhecidos, cabe também calcular a sua derivada, a qual será útil na retropropagação do modelo. Para isso, é possível seguir a mesma estratégia vista até agora, derivando a função em cada um dos casos, gerando assim a sua derivada. Nos cenários em que a entrada é positiva, a derivada será sempre 1, pois quando derivamos a expressão $x$, ela nos irá retornar 1. Já quando temos o cenário negativo, teremos como resultado da derivação da expressão $alpha \cdot (e^{y_j} - 1)$ o termo $alpha \cdot e^{y_j}$. Um ponto a ser destacado é de que a \textit{ELU} é contínua na origem, assim, não tendo que preocupar em escolher um valor da derivada quando o seu valor de entrada for zero. Assim, tem-se como resultado final a Equação \ref{eq:elu-derivada}
+Agora que a sua fórmula e seu gráfico são conhecidos, cabe também calcular a sua derivada, a qual será útil na retropropagação do modelo. Para isso, é possível seguir a mesma estratégia vista até agora, derivando a função em cada um dos casos, gerando assim a sua derivada. Nos cenários em que a entrada é positiva, a derivada será sempre 1, pois quando derivamos a expressão $x$, ela nos irá retornar 1. Já quando temos o cenário negativo, teremos como resultado da derivação da expressão $alpha \cdot (e^{x_j} - 1)$ o termo $alpha \cdot e^{x_j}$. Um ponto a ser destacado é de que a \textit{ELU} é contínua na origem, assim, não tendo que preocupar em escolher um valor da derivada quando o seu valor de entrada for zero. Assim, tem-se como resultado final a Equação \ref{eq:elu-derivada}
 
 \begin{equacaodestaque}{\textit{Exponential Linear Unit} (\textit{ELU}) Derivada}
-    \frac{d}{dy_j} [\mathcal{A}_{ELU}](y_j) = \begin{cases}1, & \text{se } y_j > 0 \\ \alpha \cdot e^{y_j}, & \text{se } y_j \le 0 \end{cases}
+    \frac{d}{dx_j} [\mathcal{A}_{ELU}](x_j) = \begin{cases}1, & \text{se } x_j > 0 \\ \alpha \cdot e^{x_j}, & \text{se } x_j \le 0 \end{cases}
     \label{eq:elu-derivada}
 \end{equacaodestaque}
 
@@ -930,8 +960,8 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{ELU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{ELU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
             axis lines=middle,
@@ -1012,12 +1042,18 @@ Mesmo apresentando um grande salto, quando comparada com a \textit{ReLU} tradici
 
 A próxima função é uma variante da \textit{ELU}, a \textit{Scaled Exponential Linear Unit}, ou \textit{SELU}. Ela se distingue da ELU tradicional pelo fato de que ela é capaz de implemtar propriedades auto-normalizadoras em uma rede que faz uso dessa função, como explicam os autores no artigo de sua introdução \textit{Self-Normalizing Neural Networks} \parencite{SELUArticle}.
 
-Os autores apresentam a Equação \ref{eq:selu} para calcular essa função, em que o termo $\lambda$ é uma constante que será maior que 1 \parencite{SELUArticle}. Note que essa fórmula é bem parecida com a da \textit{Exponential Linear Unit}, a única diferença é que ela estará sendo multiplicada pela constante $\lambda$, assim pode-se escrever também que $\text{SELU}(y_j) = \lambda \text{ELU}(y_j)$.
+Os autores apresentam a Equação \ref{eq:selu} para calcular essa função, em que o termo $\lambda$ é uma constante que será maior que 1 \parencite{SELUArticle}. Note que essa fórmula é bem parecida com a da \textit{Exponential Linear Unit}, a única diferença é que ela estará sendo multiplicada pela constante $\lambda$, assim pode-se escrever também que $\text{SELU}(x_j) = \lambda \text{ELU}(x_j)$.
 
 \begin{equacaodestaque}{\textit{Scaled Exponential Linear Unit} (\textit{SELU})}
-    \mathcal{A}_{\text{SELU}}(y_j) = \lambda \begin{cases}y_j, & \text{se } y_j > 0 \\ \alpha \cdot (e^{y_j} - 1), & \text{se } y_j \le 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{SELU}}(y_j) = \lambda \text{ELU}(y_j)
+    \mathcal{A}_{\text{SELU}}(x_j) = \lambda \begin{cases}x_j, & \text{se } x_j > 0 \\ \alpha \cdot (e^{x_j} - 1), & \text{se } x_j \le 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{SELU}}(x_j) = \lambda \text{ELU}(x_j)
     \label{eq:selu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Com relação ao seu gráfico, ele está presente na Figura \ref{fig:selu}, neste caso, está sendo considerado que as constantes $\alpha$ e $\lambda$ são dadas por 1.7 e 1.05 respectivamente. Note que é um gráfico que lembra bastante a \textit{Leaky ReLU}, mas que neste caso, quando a função recebe valores negativos, ela não estará mais assumindo o comportamento de uma reta, e sim o de uma curva exponencial, já para os cenários em que a entrada é postiva os resultados serão próximos os de uma função identidade, mas com uma reta um pouco mais inclinada. 
 
@@ -1027,8 +1063,8 @@ Pelo fato da \textit{SELU} ter um comportamento que também retorna valores para
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{SELU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{SELU}(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-2, ymax=2.5,
             axis lines=middle,
@@ -1069,7 +1105,7 @@ Pelo fato da \textit{SELU} ter um comportamento que também retorna valores para
 Considerando agora como é a equação da \textit{SELU} e qual é o seu comportamento no gráfico, é possível também calcular a sua derivada para ser utilizada na retroproapagação do gradiente, para isso, deve-se derivar a Equação \ref{eq:selu}, considerando os dois cenários, em que a sua entrada será positiva e quando sua entrada for negativa ou zero. Um ponto que ajuda bastante ao calcular a derivada da \textit{SELU} está no fato dela ser composta pela função \textit{ELU} multiplicada por uma constante, se utilizarmos regras de derivação para esse cenário, precisaremos apenas derivar a \textit{ELU} e depois adicionar a constante $\lambda$ multiplicando-a. Como a derivada da \textit{ELU} já foi calculada, ela pode ser aproveitada agora. Você pode ver então a derivada da \textit{Scaled Exponential Linear Unit} na Equação \ref{eq:selu-derivada}.
 
 \begin{equacaodestaque}{\textit{Scaled Exponential Linear Unit} (\textit{SELU}) Derivada}
-    \frac{d}{dy_j} [\mathcal{A}_{SELU}](y_j) = \lambda \begin{cases}1, & \text{se } y_j > 0 \\ \alpha \cdot e^{y_j}, & \text{se } y_j \le 0\end{cases}
+    \frac{d}{dx_j} [\mathcal{A}_{SELU}](x_j) = \lambda \begin{cases}1, & \text{se } x_j > 0 \\ \alpha \cdot e^{x_j}, & \text{se } x_j \le 0\end{cases}
     \label{eq:selu-derivada}
 \end{equacaodestaque}
 
@@ -1081,8 +1117,8 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{SELU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{SELU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=2.0, % Ajustado para lambda > 1
             axis lines=middle,
@@ -1159,22 +1195,34 @@ Voltando para o seu texto de introdução, os autores destacam propriedades impo
 Seguindo adiante, é possível conhecer a \textit{Noisy ReLU}, também conhecida como \textit{NReLU}. Um dos trabalhos que explora as característica dessa função e como ela pode ser aplicada em uma RNA é o \textit{Rectified Linear Units Improve Restricted Boltzmann Machines} dos autores \textcite{Nair2010}. Nesse texto, os autores comparam o desenpenho dessa função com a função binária, dada pela equação \ref{eq:equacao-binary}, que era a opção mais comum para ser utilizada na construção de máquinas restritas de Boltzmann.
 
 \begin{equacaodestaque}{Função de Ativação Binária (\textit{Binary})}
-    \mathcal{A}(y_j) = \begin{cases} 
-    1 & \text{se } y_j \ge \theta \\ 
-    0 & \text{se } y_j < \theta 
+    \mathcal{A}(x_j) = \begin{cases} 
+    1 & \text{se } x_j \ge \theta \\ 
+    0 & \text{se } x_j < \theta 
     \end{cases}
     \label{eq:equacao-binary}
 \end{equacaodestaque}
 
-No texto, \textcite{Nair2010}, apresentam a \textit{NReLU} como sendo dada pela equação $\max{0, y_j + \mathcal{N}(0, \sigma(y_j))}$, em que $\mathcal{N}(0, V)$ representa o ruído Gaussiano (\textit{Gaussian noise} em inglês), com méida zero e vairância dada por $V$. Também é possível expressar a \textit{Noisy ReLU} com a Equação \ref{eq:nrelu}.
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
+
+No texto, \textcite{Nair2010}, apresentam a \textit{NReLU} como sendo dada pela equação $\max{0, x_j + \mathcal{N}(0, \sigma(x_j))}$, em que $\mathcal{N}(0, V)$ representa o ruído Gaussiano (\textit{Gaussian noise} em inglês), com méida zero e vairância dada por $V$. Também é possível expressar a \textit{Noisy ReLU} com a Equação \ref{eq:nrelu}.
 
 \begin{equacaodestaque}{\textit{Noisy ReLU} (\textit{NReLU})}
-    \mathcal{A}_{\text{NReLU}}(y_j) = \begin{cases} 
-    y_j + \mathcal{N} (0, \sigma(y_j)) & \text{se } y_j > 0 \\
-    0 & \text{se } y_j \le 0
+    \mathcal{A}_{\text{NReLU}}(x_j) = \begin{cases} 
+    x_j + \mathcal{N} (0, \sigma(x_j)) & \text{se } x_j > 0 \\
+    0 & \text{se } x_j \le 0
     \end{cases}
     \label{eq:nrelu}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $x_j$ representa o valor da entrada da função de ativação
+\end{itemize}
 
 Antes de seguir em frente, é útil entende primeiro o que é ruído gaussiano, e para isso, é preciso entender antes a distribuição gaussiana. Segundo \textcite{DeepLearningBook}, a distribuição gaussiana é a distribuição mais utilizada para números reais, ela também é conhecida por ser chamada de distribuição normal, ela é dada pela Equação \ref{eq:distribuicao-gaussiana}.
 
@@ -1233,8 +1281,8 @@ Entendendo a estrutura e como funciona a \textit{Noisy ReLU}, é possível plota
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{NReLU}(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{NReLU}(x_j)$},
             xmin=-1.3, xmax=2.3,
             ymin=-2.3, ymax=2.3,
             axis lines=middle,
@@ -1276,9 +1324,9 @@ Entendendo a estrutura e como funciona a \textit{Noisy ReLU}, é possível plota
 Ao calcular a derivada da \textit{NReLU} você encontrará um problema que não havia aparecido nas outras funções. O termo de ruído $\mathcal{N}$ é um termo não determísitico, o que significa que mesmo que tivéssemos a mesma entrada para a função \textit{Noisy ReLU} duas ou mais vezes, não poderíamos afirmar com certeza de que essas saídas seriam iguais. Para resolver esses problemas, os autores consideram para a \textit{NReLU} que sua função para o \textit{backward pass} será irá retornar zero quando o valor de entrada for negativo ou nulo, e irá retornar um, quando o valor de entrada for positivo \parencite{Nair2010}. Então a expressão que representa a \textit{NReLU} para a retropropagação é dada pela Equação \ref{eq:nrelu-derivada}, note que ela é a mesma expressão da derivada da \textit{ReLU} tradicional.
 
 \begin{equacaodestaque}{\textit{Noisy ReLU} (\textit{NReLU}) para o \textit{Backward Pass}}
-    \frac{d}{dy_j}{\mathcal{A}_{\text{NReLU}}}(y_j) = \begin{cases} 
-        1 & \text{se } y_j > 0 \\
-        0 & \text{se } y_j \le 0
+    \frac{d}{dx_j}{\mathcal{A}_{\text{NReLU}}}(x_j) = \begin{cases} 
+        1 & \text{se } x_j > 0 \\
+        0 & \text{se } x_j \le 0
     \end{cases}
     \label{eq:nrelu-derivada}
 \end{equacaodestaque}
@@ -1289,8 +1337,8 @@ Se a função da \textit{Noisy ReLU} no \textit{backward pass} será a mesma que
     \centering % Centraliza o gráfico na página
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={$y_j$},
-            ylabel={$\text{NReLU}'(y_j)$},
+            xlabel={$x_j$},
+            ylabel={$\text{NReLU}'(x_j)$},
             xmin=-2.3, xmax=2.3,
             ymin=-0.8, ymax=1.8,
             axis lines=middle,
@@ -1429,10 +1477,10 @@ Considerando isso, imagine que temos uma rede composta por quatro camadas densas
 Considere também que as camadas da rede possuem a seguinte configuração:
 
 \begin{itemize}
-    \item SELU da primeira camada: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(y_j) = 1.5$
-    \item SELU da camada densa 2: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(y_j) = 1.4$
-    \item SELU da camada densa 3: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(y_j) = 1.45$
-    \item SELU da camada de saída: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(y_j)= 1.5$
+    \item SELU da primeira camada: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(x_j) = 1.5$
+    \item SELU da camada densa 2: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(x_j) = 1.4$
+    \item SELU da camada densa 3: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(x_j) = 1.45$
+    \item SELU da camada de saída: tem como resultado da derivada $\mathcal{A}_{\text{SELU}}(x_j)= 1.5$
 \end{itemize}
 
 Além disso, você sabe também que o gradiente inicial na camada de saída está sendo de 25. Com isso é possível calcular o gradiente retropropagado para a primeira camada, comecando pela terceira, já que já temos o valor do gradiente para a camada de saída, dessa forma temos que:
@@ -1486,9 +1534,9 @@ Por fim, visto todas essas funções, é possível compilá-las na Tabela \ref{t
             \toprule
             \textbf{Função} & \textbf{Principal característica} &\textbf{Vantagem} & \textbf{Desvantagem} \\
             \midrule
-            \textit{Rectfied Linear Unit} (\textit{ReLU}) & Retorna $y_j$ quando $y_j > 0$, caso contrário, retorna zero. & É a função padrão para ser utilizada em uma rede \textit{feedforwad}. & Sobre do problema dos \textit{ReLUs} agonizantes. \\
+            \textit{Rectfied Linear Unit} (\textit{ReLU}) & Retorna $x_j$ quando $x_j > 0$, caso contrário, retorna zero. & É a função padrão para ser utilizada em uma rede \textit{feedforwad}. & Sobre do problema dos \textit{ReLUs} agonizantes. \\
             \addlinespace
-            \textit{Leaky ReLU} (\textit{LReLU}) & Variante da \textit{ReLU} que apresenta um coeficiente $\alpha$, permitindo um pequeno "vazamento" de gradiente em situações que $y_j < 0$ & Consegue mitigar o problema dos \textit{ReLUs} agonizantes. & Adiciona mais um hiperparâmetro que precisa ser ajustado manualmente. \\
+            \textit{Leaky ReLU} (\textit{LReLU}) & Variante da \textit{ReLU} que apresenta um coeficiente $\alpha$, permitindo um pequeno "vazamento" de gradiente em situações que $x_j < 0$ & Consegue mitigar o problema dos \textit{ReLUs} agonizantes. & Adiciona mais um hiperparâmetro que precisa ser ajustado manualmente. \\
             \addlinespace
             \textit{Parametric ReLU} (\textit{PReLU}) & Variante da \textit{Leaky ReLU} em que $\alpha$ é um parâmetro aprendível & Por possuir um coeficiente aprendível, a \textit{PReLU} apresenta uma tendência maior de se adptar aos dados. & Apresenta mais parâmetros, aumentando o grau de complexidade da rede neural. \\
             \addlinespace
