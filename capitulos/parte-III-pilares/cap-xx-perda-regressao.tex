@@ -1447,7 +1447,7 @@ Perceba que o uso dos logaritimos na função, fazem com que a superfície do \t
 
 Além disso, voltando para o exemplo anterior dos modelos prevendo preços de imóveis, é possível agora discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
 
-Para isso, a Tabela \ref{tab:comparativo-mse-msle} compara das duas situções vistas na seção anterior, e mostra qual foi o valor do erro calculado para essas situações.
+Para isso, a Tabela \ref{tab:comparativo-mse-msle} compara os dois cenários vistos na seção anterior, e mostra qual foi o valor do erro calculado para essas situações.
 
 \begin{table}[htbp]
     \centering
@@ -1481,7 +1481,7 @@ Com isso, é possível ter uma ideia de que o erro quadrático logarítimico mé
 \end{center}
 \medskip
 
-Assim como o erro quadrático médio, que possui uma métrica derivada, o \textit{RMSE}. Com o erro quadrático logarítimico médio não é diferente. Assim, é possível também utilizar a métrica raíz do erro quadrático médio logarítimico (\textit{RMSLE}) que serve de métrica para avaliar modelos de aprendizado de máquina. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raíz quadrada da função de perda \textit{RMSE}.
+Além disso, assim como o erro quadrático médio, que possui uma métrica derivada, o \textit{RMSE}. Com o erro quadrático logarítimico médio não é diferente. Assim, é possível também utilizar a métrica raíz do erro quadrático médio logarítimico (\textit{RMSLE}) que serve de métrica para avaliar modelos de aprendizado de máquina. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raíz quadrada da função de perda \textit{RMSE}.
 
 \begin{equacaodestaque}{Raíz do Erro Quadrático Médio Logarítmico (\textit{RMSLE})}
     \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) - \log(\hat{y}_j + 1))^2}
@@ -1499,12 +1499,14 @@ Ao calcular a raíz quadrada do erro quadrático médio logarítimico é possív
 \textbf{Algumas Aplicações do Erro Quadrático Logarítimico Médio em Problemas de Regressão} \index{Aplicações práticas! Erro quadrático logarítimico médio}
 \vspace{1em}
 
-Por fim, vale a pena discutir algumas das aplicações, tanto do \textit{MSLE} quanto do \textit{RMLSE}. Para isso, vale citar os trabalhos:
+Visto o erro quadrático logarítimico médio e também o \textit{RMSLE}, cabe agora discutir alguns cenários em que essa função pode ser aplicada para resolver problemas de regressão. Você verá que essas duas funções podem aparecer tanto como métricas, avaliando o desempenho do modelo, mas também podem atuar como uma função de perda, servindo de guia para o cálculo do gradiente e consequentemete o ajuste dos parâmetros da rede.
+
+Dito isso, vale destacar os trabalhos:
 
 \begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
+    \item \textbf{Predição do preço de casas (Mercado imobiliário):} Em \textit{A Net Over Your Head: A Neural Network Approach to Home Price Predictions}, \textcite{SunKim-NetOverYourHead} discutem formas de prever o preço de casas, para isso eles desenvolvem uma rede neural, indo contra a tendência de utilizar técnicas mais tradicionais, como regressão linear ou florestas aleatórias. Para isso, eles utilizam como métrica o \textit{RMSLE}, como justificativa, os autores explicam que o \textit{dataset} que está sendo utilizado apresenta casas que têm ordem de magnitude de diferença de preço, e com isso uma previsão ruim para uma casa de alto valor terá mais peso que uma previsão ruim para uma casa de baixo valor; ao usar o \textit{RMSLE} é possível capturar as ordens de magnitude dos preços das casas, algo que não acontece com o \textit{RMSE} \parencite{SunKim-NetOverYourHead};
+    \item \textbf{Predição no tempo de internação de pacientes (Saúde):} Além disso, no trabalho \textit{Predicting Hospital Length of Stay of Patients Leaving the Emergency Department}, \textcite{Winter2023PredictingLOS} analisam maneiras de prever o tempo de internação de um paciente qualquer após receber alta no pronto-socorro e sua transferência para a próxima unidade hospitalar. Com esse objetivo em mente, os autores usam um modelo de regressão de \textit{gradient boosting} com arquitetura \textit{CatBoost}, para a função de perda, os autores escolhem duas, a primeira sendo o \textit{RMSE} e a segunda o \textit{RMSLE}, como justificativa, os autores apontam que o \textit{RSMLE} penaliza erros proporcionais e é menos afetado por \textit{outliers};
+    \item \textbf{Previsão de séries temporais (Área):} Por fim, no texto \textit{A Comprehensive Survey of Regression Based Loss Functions for Time Series Forecasting}, \textcite{Jadon2022ComprehensiveSurvey} analisam uma série de funções de perda que são comumente utilizadas na previsão de séries temporais, sendo uma delas o \textit{MSLE}. No trabalho, os autores apontam que o erro quadrático logaritimo médio reduz o efeito punitivo de diferenças significativas em grandes valores previsos; sendo apropriado quando o modelo prevê quantidades não escalonadas diretamente \parencite{Jadon2022ComprehensiveSurvey}. Além disso, \textcite{Jadon2022ComprehensiveSurvey} analisam também o \textit{RMSLE}, explicando que ele pode ser uma função de perda para ser utilizada em cenários em que a subestimação dos valores reais não é aceitável, mas a superestimações do modelo não são consideradas um problema.
 \end{itemize}
 
 \medskip
@@ -1945,7 +1947,7 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
-\subsection{Perda Quantílica} \index{Funções de Perda!Perda Quantílica}
+\subsection{Perda Quantílica (Quantile Loss)} \index{Funções de Perda!Perda Quantílica (\textit{Quantile Loss})}
 
 \begin{equacaodestaque}{Perda Quantílica (\textit{Quantile Loss})}
     \Loss_{\tau}(y_j, \hat{y}_j) = 
@@ -2456,7 +2458,7 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
 
 \section{Perdas Baseadas em Distribuições de Dados}
 
-\subsection{Perda de Poisson} \index{Funções de Perda!Perda de Poisson}
+\subsection{Perda de Poisson (Poisson Loss)} \index{Funções de Perda!Perda de Poisson (\textit{Poisson Loss})}
 
 \begin{equacaodestaque}{Perda de Poisson (\textit{Poisson Loss})}
     \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \hat{y}_j - y_j \log(\hat{y}_j)
@@ -2582,7 +2584,7 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \item \textbf{Aplicação 4 (Área):}
 \end{itemize}
 
-\subsection{Perda de Tweedie} \index{Funções de Perda!Perda de Tweedie}
+\subsection{Perda de Tweedie (Tweedie Loss)} \index{Funções de Perda!Perda de Tweedie (\textit{Tweedie Loss})}
 
 \begin{equacaodestaque}{Perda de Tweedie (\textit{Tweedie Loss})}
     \Loss_{\text{Tweedie}}(y_j, \hat{y}_j; p) = -\frac{y_j \cdot \hat{y}_j^{1-p}}{1-p} + \frac{\hat{y}_j^{2-p}}{2-p}
@@ -2802,5 +2804,51 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
 \end{itemize}
 
 \section{Comparativo: Funções de Perda para Regressão}
+
+\begin{table}[htbp]
+    \centering
+    \begin{threeparttable}
+        \caption{Comparativo das funções das funções de perda para problemas de regressão}
+        \label{tab:comparativo-funcoes-de-perda-para-regressao}
+        % p{3.2cm} define uma largura fixa para a primeira coluna.
+        % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
+        % >{\raggedright\arraybackslash} alinha o texto à esquerda para melhor leitura.
+        \begin{tabularx}{\textwidth}{p{3.2cm} *{1}{>{\raggedright\arraybackslash}X}}
+            \toprule
+            \textbf{Função} & \textbf{Principais características} \\
+            \midrule
+            Erro quadrático médio (\textit{MSE}) & -  \\
+            \addlinespace
+            Erro asboluto médio (\textit{MAE}) & - \\
+            \addlinespace
+            Perda de Huber (\textit{Huber loss}) & - \\
+            \addlinespace
+            Perda log-cosh (\textit{Log-cosh loss}) & - \\
+            \addlinespace
+            Erro quadrático logarítimico médio (\textit{MSLE}) & - \\
+            \addlinespace
+            Erro percentual absoluto médio (\textit{MAPE}) & - \\
+            \addlinespace
+            Erro percentual absoluto médio simétrico (\textit{sMAPE}) & -\\
+            \addlinespace
+            Perda quantílica (\textit{Quantile loss}) & - \\
+            \addlinespace
+            Perda epsilon-insensível (\textit{$\epsilon$-insentive}) & - \\
+            \addlinespace
+            Perda de Poisson (\textit{Poisson loss}) & - \\
+            \addlinespace
+            Perda de Tweedie (\textit{Tweedie loss}) & - \\
+            \addlinespace
+            Divergência de Kullback-Leibler (\textit{KL-divergence}) & - \\
+            \addlinespace
+        \end{tabularx}
+        
+        \begin{tablenotes}[para]
+            \small
+            \item[] Fonte: O autor (2025).
+        \end{tablenotes}
+
+    \end{threeparttable}
+\end{table}
 
 \section{Fluxograma: Escolhendo a Função de Perda Ideal}
