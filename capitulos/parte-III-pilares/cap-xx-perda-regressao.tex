@@ -97,9 +97,9 @@ Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o c�
 Em que:
 
 \begin{itemize}
-    \item $y_j$ representa o valor real para a saída;
-    \item $\hat{y}_j$ representa o valor previsto pelo modelo;
-    \item $N$ representa o número de predições feitas.
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
 \end{itemize}
 
 Neste caso, o \textit{MSE} calcula o erro individualmente para cada uma das predições, soma esses valores e em seguida calcula a média.
@@ -388,6 +388,14 @@ Visto esses diferentes cenários em que o erro absoluto médio foi utilizado par
     \label{eq:mae}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
+
 
 Também vale a pena analisar o erro absoluto médio de forma gráfica. Para isso, suas representações em duas e três dimensões estão presentes na Figura \ref{fig:mae} de forma semelhante ao que foi feito ao apresentar o \textit{MSE}.
 
@@ -650,6 +658,15 @@ O que Huber estava querendo basicamente com a Equação \ref{eq:huber-loss-do-hu
     \end{cases}
     \label{eq:huber-loss}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras;
+    \item $\delta$ representa
+\end{itemize}
 
 É possível também representar a perda de Huber utilizando gráficos, para isso, ela pode ser vista na Figura \ref{fig:huber-loss}. Para isso, na Figura \ref{fig:huber-2d} está representado a visualização em duas dimensões dessa função, enquanto na Figura \ref{fig:huber-3d} está a representação no espaço da superfície, assim como o que vem sendo feito até agora. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
 
@@ -996,6 +1013,14 @@ Com relação a sua fórmula, é possível vê-la na Equação \ref{eq:log-cosh-
     \label{eq:log-cosh-loss}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
+
 Já com relação ao gráfico dessa função, ele está presente na Figura \ref{fig:log-cosh-loss}. Note que a perda log-cosh atua de forma parecida com a perda de Huber. Para valores em que a diferença da saída do modelo e o rôtulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que lembra ao de uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh passa a assumir um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funcoes bem como os erros padrões apresentam resultados similares. Com isso, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a \textit{Huber Loss}, mas ainda é desejável manter a variação no cálculo do erro do modelo.
 
 \begin{figure}[h!]
@@ -1240,6 +1265,14 @@ A primeira função a ser vista nessa nova categoria é o erro quadrático médi
     \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (\ln(y_j + 1) - \ln(\hat{y}_j + 1))^2
     \label{eq:msle-loss}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
 
 Com relação ao seu gráfico, ele pode visto na Figura \ref{fig:msle-loss}. Na Figura \ref{fig:msle-2d}, a esquerda, está a visão em duas dimensões dessa função, enquanto na Figura \ref{fig:msle-3d}, a direita, está a visão em três dimensões. Perceba que a adição do logaritmo para essa função traz alguns benefícios como a continuidade em seus pontos além de garantir uma superfície suave e diferenciável. Contudo, a pricipal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
 
@@ -1488,6 +1521,14 @@ Além disso, assim como o erro quadrático médio, que possui uma métrica deriv
     \label{eq:rmsle-metric}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
+
 Ao calcular a raíz quadrada do erro quadrático médio logarítimico é possível ter uma noção melhor da magnitudade dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do \textit{RMSE}. Dessa forma, a equação da raíz do erro quadrático médio logarítimico conseque melhorar a interpretabilidade dos erros, servindo como uma métrica, a qual pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
 
 \medskip
@@ -1523,6 +1564,14 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \Loss_{\text{MAPE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} \left| \frac{y_j - \hat{y}_j}{y_j} \right|
     \label{eq:mape-loss}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -1738,6 +1787,14 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \Loss_{\text{sMAPE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} \frac{|\hat{y}_j - y_j|}{(|\hat{y}_j| + |y_j|)/2}
     \label{eq:smape-loss}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
