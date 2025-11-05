@@ -1,0 +1,326 @@
+\chapter{Métricas de Avaliação Para Algoritmos de Classificação}
+\label{cap:metricas-de-avaliacao-para-classificação}
+
+% ----------------------------------------------------------------------
+\section{Matriz de Confusão}
+\label{sec:matriz-de-confusao}
+% (Esta seção provavelmente conterá uma tabela/diagrama, não uma equação)
+
+% ----------------------------------------------------------------------
+\section{Matriz de Confusão em Problemas de Classificação Multi-Classe}
+\label{sec:matriz-de-confusao-multiclasse}
+
+% ----------------------------------------------------------------------
+\section{Acurácia}
+\label{sec:acuracia}
+
+\begin{equacaodestaque}{Acurácia (\textit{Accuracy})}
+    Acurácia = \frac{VP + VN}{VP + VN + FP + FN}
+    \label{eq:equacao-acuracia}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Precisão (Precision), Valor Preditivo Positivo (PPV)}
+\label{sec:precisao}
+% O usuário listou TDR, que é True Discovery Rate, mas é menos comum que PPV.
+% Mantive PPV que é sinônimo de Precisão.
+
+\begin{equacaodestaque}{Precisão (\textit{Precision})}
+    Precisão = \frac{VP}{VP + FP}
+    \label{eq:equacao-precisao}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Revocação (Recall), Sensibilidade (Sensitivity) ou Taxa de Verdadeiros Positivos (TPR)}
+\label{sec:recall}
+% "Recall" é amplamente usado em português, mas "Revocação" é a tradução literal.
+
+\begin{equacaodestaque}{Revocação (\textit{Recall})}
+    Recall = \frac{VP}{VP + FN}
+    \label{eq:equacao-recall}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{F1-Score}
+\label{sec:f1-score}
+
+\begin{equacaodestaque}{F1-Score}
+    F_1 = 2 \cdot \frac{\text{Precisão} \cdot \text{Recall}}{\text{Precisão} + \text{Recall}}
+    \label{eq:equacao-f1-score}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Especificidade (Specificity) ou Taxa de Verdadeiros Negativos (TNR)}
+\label{sec:especificidade}
+
+\begin{equacaodestaque}{Especificidade (\textit{Specificity})}
+    Especificidade = \frac{VN}{VN + FP}
+    \label{eq:equacao-especificidade}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Valor Preditivo Negativo (NPV)}
+\label{sec:npv}
+
+\begin{equacaodestaque}{Valor Preditivo Negativo (\textit{NPV})}
+    NPV = \frac{VN}{VN + FN}
+    \label{eq:equacao-npv}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Taxa de Falsa Descoberta (FDR)}
+\label{sec:fdr}
+
+\begin{equacaodestaque}{Taxa de Falsa Descoberta (\textit{FDR})}
+    FDR = \frac{FP}{FP + VP} = 1 - \text{Precisão}
+    \label{eq:equacao-fdr}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Curva Precision-Recall (PR)}
+\label{sec:curva-pr}
+% (Sem fórmula simples, é um gráfico)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Curva Precision-Recall em Problemas de Classificação Multi-Classe}
+\label{sec:curva-pr-multiclasse}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Área Sob a Curva ROC (AUC-ROC)}
+\label{sec:auc-roc}
+% (Sem fórmula simples, é a integral da curva ROC)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Curva ROC (AUC-ROC) Multi-Classe}
+\label{sec:auc-roc-multiclasse}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
