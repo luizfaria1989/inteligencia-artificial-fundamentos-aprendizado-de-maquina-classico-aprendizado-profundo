@@ -1,0 +1,585 @@
+\chapter{Métricas de Avaliação Para Outros Algoritmos}
+\label{cap:metricas-de-avaliacao-para-especificos}
+
+% ----------------------------------------------------------------------
+\section{Métricas Para Classificação de Imagens}
+\label{sec:metricas-classificacao-imagens}
+% (Esta seção geralmente reutiliza métricas do capítulo anterior, 
+% como Acurácia, Precisão, Recall, F1 e AUC-ROC)
+
+% ----------------------------------------------------------------------
+\section{Métricas Para Detecção de Objetos}
+\label{sec:metricas-deteccao-objetos}
+
+% --- IoU é fundamental para esta seção ---
+\begin{equacaodestaque}{Interseção sobre União (IoU) / Índice Jaccard}
+    IoU(A, B) = \frac{|A \cap B|}{|A \cup B|} = \frac{\text{Área da Interseção}}{\text{Área da União}}
+    \label{eq:equacao-iou}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Average Precision (AP)}
+\label{sec:average-precision-ap}
+% (Média da precisão em vários níveis de recall)
+\begin{equacaodestaque}{Average Precision (AP)}
+    AP = \sum_{k=1}^{N} (r_k - r_{k-1}) p_k
+    \label{eq:equacao-ap}
+\end{equacaodestaque}
+% Onde p_k e r_k são a precisão e o recall no k-ésimo limiar.
+% Uma definição alternativa comum é a integral: AP = \int_{0}^{1} p(r) dr
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Average Recall (AR)}
+\label{sec:average-recall-ar}
+% (Média do recall em vários limiares de IoU ou contagens de detecção)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Métricas Para Segmentação de Imagens}
+\label{sec:metricas-segmentacao-imagens}
+% (Muitas métricas aqui também dependem da IoU, calculada em nível de pixel)
+
+% Corrigido o typo "Accuarcy" e traduzido
+\subsection{Acurácia de Pixel (Pixel Accuracy)}
+\label{sec:pixel-accuracy}
+\begin{equacaodestaque}{Acurácia de Pixel}
+    PA = \frac{\sum_{i} \text{Pixels Corretos}}{\sum_{i} \text{Total de Pixels}} = \frac{VP + VN}{VP + VN + FP + FN}
+    \label{eq:equacao-pixel-accuracy}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Boundary F1-Score (BF)}
+\label{sec:boundary-f1}
+% (É o F1-Score padrão, mas calculado apenas em pixels próximos às bordas)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Masked Average Precision (Mask AP)}
+\label{sec:mask-ap}
+% (É o mesmo conceito do AP, mas usando a IoU das máscaras de segmentação)
+
+\subsection{Panoptic Quality (PQ)}
+\label{sec:panoptic-quality-pq}
+\begin{equacaodestaque}{Panoptic Quality (PQ)}
+    PQ = \underbrace{\frac{\sum_{(p,g) \in TP} \text{IoU}(p,g)}{|TP|}}_{\text{Qualidade de Segmentação (SQ)}} \times \underbrace{\frac{|TP|}{|TP| + \frac{1}{2}|FP| + \frac{1}{2}|FN|}}_{\text{Qualidade de Reconhecimento (RQ)}}
+    \label{eq:equacao-pq}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Métricas Para Geração de Imagens}
+\label{sec:metricas-geracao-imagens}
+
+\subsection{Peak Signal-to-Noise Ratio (PSNR)}
+\label{sec:psnr}
+\begin{equacaodestaque}{Peak Signal-to-Noise Ratio (PSNR)}
+    PSNR = 10 \cdot \log_{10} \left( \frac{MAX_I^2}{MSE} \right)
+    \label{eq:equacao-psnr}
+\end{equacaodestaque}
+% Onde MAX_I é o valor máximo possível do pixel (ex: 255)
+% e MSE é o Erro Quadrático Médio entre as imagens.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Structural Similarity Index (SSIM)}
+\label{sec:ssim}
+\begin{equacaodestaque}{Structural Similarity Index (SSIM)}
+    SSIM(x,y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2 + \mu_y^2 + C_1)(\sigma_x^2 + \sigma_y^2 + C_2)}
+    \label{eq:equacao-ssim}
+\end{equacaodestaque}
+% \mu é a média, \sigma^2 é a variância, \sigma_{xy} é a covariância.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Inception Score (IS)}
+\label{sec:inception-score-is}
+\begin{equacaodestaque}{Inception Score (IS)}
+    IS(G) = \exp\left( \mathbb{E}_{x \sim p_g} D_{KL}(p(y|x) || p(y)) \right)
+    \label{eq:equacao-is}
+\end{equacaodestaque}
+% Mede a divergência KL entre a distribuição de classes (p(y|x)) e a marginal (p(y)).
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Fréchet Inception Distance (FID)}
+\label{sec:fid}
+\begin{equacaodestaque}{Fréchet Inception Distance (FID)}
+    FID = ||\mu_r - \mu_g||_2^2 + \text{Tr}\left(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2}\right)
+    \label{eq:equacao-fid}
+\end{equacaodestaque}
+% \mu_r, \mu_g são as médias e \Sigma_r, \Sigma_g são as matrizes de covariância
+% das ativações do Inception para imagens reais (r) e geradas (g).
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+% ----------------------------------------------------------------------
+\section{Métricas Para Processamento de Linguagem Natural}
+\label{sec:metricas-pln}
+
+\subsection{Accuracy}
+% (Reutilização)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Precision, Recall and F1-Score}
+% (Reutilização)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{AUC-ROC}
+% (Reutilização)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{BLEU Score}
+\label{sec:bleu}
+\begin{equacaodestaque}{BLEU (Bilingual Evaluation Understudy)}
+    BLEU = \text{BP} \cdot \exp\left(\sum_{n=1}^{N} w_n \log p_n\right)
+    \label{eq:equacao-bleu}
+\end{equacaodestaque}
+% BP é a "Brevity Penalty" (penalidade de brevidade).
+% p_n é a precisão dos n-gramas modificados.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{METEOR}
+\label{sec:meteor}
+% (Métrica complexa baseada em alinhamento e F-score; sem fórmula única simples)
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{ROUGE Score}
+\label{sec:rouge}
+% (É um conjunto de métricas; ROUGE-N é o mais comum)
+\begin{equacaodestaque}{ROUGE-N (Recall-Oriented Understudy for Gisting Evaluation)}
+    \text{ROUGE-N} = \frac{\sum_{S \in \text{Ref}} \sum_{g_n \in S} \text{Count}_{\text{match}}(g_n)}{\sum_{S \in \text{Ref}} \sum_{g_n \in S} \text{Count}(g_n)}
+    \label{eq:equacao-rouge-n}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Perplexidade (Perplexity)}
+\label{sec:perplexity}
+\begin{equacaodestaque}{Perplexidade (Perplexity)}
+    PPL(W) = \exp\left( -\frac{1}{N} \sum_{i=1}^{N} \log P(w_i | w_1, ..., w_{i-1}) \right)
+    \label{eq:equacao-perplexity}
+\end{equacaodestaque}
+% É o exponencial da entropia cruzada (Cross-Entropy).
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Correspondência Exata (Exact Match - EM)}
+\label{sec:exact-match}
+\begin{equacaodestaque}{Correspondência Exata (Exact Match - EM)}
+    EM = \frac{\text{Número de Predições Idênticas à Referência}}{\text{Número Total de Predições}}
+    \label{eq:equacao-em}
+\end{equacaodestaque}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Taxa de Erro de Palavra (Word Error Rate - WER)}
+\label{sec:wer}
+\begin{equacaodestaque}{Taxa de Erro de Palavra (WER)}
+    WER = \frac{S + D + I}{N}
+    \label{eq:equacao-wer}
+\end{equacaodestaque}
+% S = Substituições, D = Deleções, I = Inserções
+% N = Número de palavras no texto de referência
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\subsection{Taxa de Erro de Caractere (Character Error Rate - CER)}
+\label{sec:cer}
+\begin{equacaodestaque}{Taxa de Erro de Caractere (CER)}
+    CER = \frac{S + D + I}{C}
+    \label{eq:equacao-cer}
+\end{equacaodestaque}
+% S = Substituições, D = Deleções, I = Inserções
+% C = Número de caracteres no texto de referência
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Algumas Aplicações do xxx}
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Aplicação 1 (Área):}
+    \item \textbf{Aplicação 2 (Área):}
+    \item \textbf{Aplicação 3 (Área):}
+\end{itemize}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
