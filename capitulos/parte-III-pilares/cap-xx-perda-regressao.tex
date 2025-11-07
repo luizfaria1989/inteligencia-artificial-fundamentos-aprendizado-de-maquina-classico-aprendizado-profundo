@@ -1560,6 +1560,126 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
+Até agora todas as funções de perda vistas possui um detalhe em comum: elas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Mas existem funções de perda que vão além do cálculo da média para calcular o erro de um modelo de regressão.
+
+Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana, mas e quando isso não for a realidade ? E quando a caraterística mais comum estiver deslocada mais para a esquerda (como na Figura \ref{fig:dist-skew-esquerda}), ou mais para a direita da distribuição (como na Figura \ref{fig:dist-skew-direita}) ? 
+
+\begin{figure}[h!]
+    \centering 
+
+    % --- SUBFIGURA (a): Distribuição Assimétrica à Direita ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={Valor},
+                ylabel={Densidade},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-5, xmax=10,
+                ymin=0, ymax=0.5,
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Distribuição Assimétrica à Direita}
+            ]
+                
+                % Curva "desenhada" com smooth
+                \addplot[
+                    blue, thick, fill=blue!10,
+                    smooth, tension=0.7 % 'tension' controla a suavidade
+                ] coordinates {
+                    (-4, 0)
+                    (0, 0.1)
+                    (1.5, 0.4)  % Pico (Moda)
+                    (3, 0.25)
+                    (5, 0.1)
+                    (8, 0.02)
+                    (10, 0)
+                };
+
+                % Mediana (mais perto do pico)
+                \pgfmathsetmacro{\medianpos}{2.2} 
+                \addplot[dashed, color=green, thick] coordinates {(\medianpos,0) (\medianpos,0.38)};
+                \node[above, font=\tiny, green] at (axis cs:\medianpos,0.38) {Mediana};
+
+                % Média (puxada pela cauda)
+                \pgfmathsetmacro{\meanpos}{3.1} 
+                \addplot[dashed, color=red, thick] coordinates {(\meanpos,0) (\meanpos,0.38)};
+                \node[above, font=\tiny, red] at (axis cs:\meanpos,0.38) {Média};
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Assimétrica à direita (skew positivo).}
+        \label{fig:dist-skew-direita}
+    \end{subfigure}
+    \hfill 
+    % --- SUBFIGURA (b): Distribuição Assimétrica à Esquerda ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={Valor},
+                ylabel={Densidade},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=-10, xmax=5,
+                ymin=0, ymax=0.5,
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Distribuição Assimétrica à Esquerda}
+            ]
+                
+                % Curva "desenhada" com smooth
+                \addplot[
+                    blue, thick, fill=blue!10,
+                    smooth, tension=0.7
+                ] coordinates {
+                    (-10, 0)
+                    (-8, 0.02)
+                    (-5, 0.1)
+                    (-3, 0.25)
+                    (-1.5, 0.4) % Pico (Moda)
+                    (0, 0.1)
+                    (4, 0)
+                };
+
+                % Mediana (mais perto do pico)
+                \pgfmathsetmacro{\medianneg}{-2.2} 
+                \addplot[dashed, color=green, thick] coordinates {(\medianneg,0) (\medianneg,0.38)};
+                \node[above, font=\tiny, green] at (axis cs:\medianneg,0.38) {Mediana};
+
+                % Média (puxada pela cauda)
+                \pgfmathsetmacro{\meannneg}{-3.1} 
+                \addplot[dashed, color=red, thick] coordinates {(\meannneg,0) (\meannneg,0.38)};
+                \node[above, font=\tiny, red] at (axis cs:\meannneg,0.38) {Média};
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Assimétrica à esquerda (skew negativo).}
+        \label{fig:dist-skew-esquerda}
+    \end{subfigure}
+
+    \caption{Exemplos de distribuições assimétricas (desenhadas) onde a média (vermelho) e a mediana (verde) divergem, justificando o uso da Perda Quantílica.}
+    \label{fig:distribuicoes-assimetricas}
+    \fonte{O autor (2025).}
+\end{figure}
+
+Existe uma função de perda que consegue lidar justamente com esse cenário, em que os dados seguem uma distribuição assimétrica, ela é a perda quantílica, que foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la é possível definir o quantil que será analisado, sendo possível escolher se ela irá funcionar de forma assimétrica, ou de forma parecida com o \textit{MAE}.
+
+Além disso, existe uma outra função de perda que também não trabalha com o cálculo da média dos erros, ela é a $\epsilon$-insensível, sendo uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Neste caso, ao utilizar essa função, é possível definir uma "margem de tolerância" em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
+
+Dessa forma, é possível comecar a seção explicando primeiro a perda quantílica.
+
 \subsection{Perda Quantílica (Quantile Loss)} \index{Funções de Perda!Perda Quantílica (\textit{Quantile Loss})}
 
 \begin{equacaodestaque}{Perda Quantílica (\textit{Quantile Loss})}
@@ -1570,6 +1690,14 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \end{cases}
     \label{eq:quantile-loss}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $\tau$ ...
+\end{itemize}
 
 % --- FIGURA 1: FOCO NO TAU = 0.5 (MAE) ---
 \begin{figure}[h!]
@@ -1890,6 +2018,14 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \label{eq:epsilon-insensitive-loss}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $\epsilon$ ...
+\end{itemize}
+
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
 
@@ -2078,6 +2214,14 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \label{eq:poisson-loss}
 \end{equacaodestaque}
 
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
+
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
@@ -2203,6 +2347,14 @@ Visto o erro quadrático logarítimico médio, uma função de perda assimétric
     \Loss_{\text{Tweedie}}(y_j, \hat{y}_j; p) = -\frac{y_j \cdot \hat{y}_j^{1-p}}{1-p} + \frac{\hat{y}_j^{2-p}}{2-p}
     \label{eq:tweedie-loss}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $y_j$ representa o valor real da j-ésima amostra;
+    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $N$ representa o número de amostras.
+\end{itemize}
 
 \begin{figure}[h!]
     \centering
