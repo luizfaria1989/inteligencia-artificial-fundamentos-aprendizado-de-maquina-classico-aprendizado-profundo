@@ -1255,7 +1255,7 @@ Essa é uma forma de analisar o problema. Mas também pode ser visto de forma re
 
 O erro quadrático médio, e as outras três funções de perda vistas até agora tratam os erros dos cenários A e B como iguais. Mas e se você estivesse em uma situação em que o modelo subestimar os valores dos rôtulos seja considerada muito negativa, e por isso deve ser evitada?
 
-Aí você precisaria de funções de perda que lidassem com o erro relativo das previsões do modelo. Para isso, essa seção busca explicar três funções de perda para serem utilizadas nesse cenário. O erro quadrático médio logarítico, que possui uma tendência de penalizar mais as subestimação. O erro percentual absoluto médio, que funciona de forma aposta o \textit{MSLE}, penalizando mais a superestimação, porém com um problema de descontinuidade que pode fazer com que o cálculo da métrica "exploda". E por fim, será visto o erro percentual absoluto médio simétrico, o qual busca corrigir o problema da descontinuidade da sua variante original.
+Para isso, essa seção busca explicar a função de perda erro quadrático médio logarítico, que possui uma tendência de penalizar mais as subestimação. Serão vistos seus gráficos, sua fórmula e aplicações, assim como nas outras funções vistas até o momento.
 
 \subsection{Erro Quadrático Médio Logarítmico (MSLE)} \index{Funções de Perda!Erro Quadrático Médio Logarítimico (MSLE)}
 
@@ -1556,7 +1556,7 @@ Dito isso, vale destacar os trabalhos:
 \end{center}
 \medskip
 
-Visto o erro quadrático logarítimico médio, uma função de perda assimétrica que tem como principal caracterísitca a tendência de penalizar mais as subestimações feitas pelo modelo, o próximo passo é discutir agora uma função com a caraterística contrária. Dessa forma, a próxima seção é dedicada a explicar o erro percentual absoluto médio, que também é assimétrica, mas com a tendência de penalizar mais as superestimações.
+Visto o erro quadrático logarítimico médio, uma função de perda assimétrica que tem como principal caracterísitca a tendência de penalizar mais as subestimações feitas pelo modelo, o próximo passo é discutir agora uma função que possua a característica contrária, de penalizar mais as superestimações. Para isso, é preciso ir para a próxima seção dessa capítulo, que analisa funções de perda que calculam a perda levando em consideração outros cálculos, além da média, e nela estudar a perda quantílica, que pode ser ajustada de forma que possa penalizar mais as subestimações ou as superestimações, dependendo de como seus parâmetros são ajustados.
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
