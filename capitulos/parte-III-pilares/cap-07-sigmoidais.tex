@@ -981,3 +981,22 @@ Tendo visto diferentes funções de ativação sigmoidais, é possível compilá
 
     \end{threeparttable}
 \end{table}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+\textbf{Indo Além das Funções de Ativação Sigmoidais}
+\medskip
+
+Nesse capítulo foi visto um dos grandes grupos de função de ativação: as funções sigmoidais. Foi visto que elas estiveram presente em uma gama de redes neurais do século passado, fazendo parte da definição da retropopagação e também da rede de Elman, por exemplo. Contudo, a sua natureza saturante fazia com que a sua derivada atingisse valores muito pequenos, como 0.25. Isso atrapalhava a retropopagação do gradiente, que era constantemente multiplicado por escalares pequenos resultando no problema do desaparecimento do gradiente.
+
+Esse problema impedia a criação de redes neurais muito profundas, pois quando mais camadas densas fossem adicionadas, maior era a chance de que seriam adicionadas como função de ativação uma função sigmoidal, aumentando ainda mais o risco de gerar problemas com o gradiente. isso foi um problema sério e que precisava de uma solução, e ela veio de uma forma bem simples e elegante, que foi com o uso da unidade linear retificadora, ou \textit{ReLU}. A \textit{ReLU} e a sua família de funções retificadoras é o tema central do capítulo que sucede este, o Capítulo \ref{cap:ativacao-retificadoras}, ele segue a mesma estrutura deste capítulo, é apresentado o contexto em que essas funções surgiram e se popularizaram, bem como suas fórmulas e derivadas. Além disso, o Capítulo \ref{cap:ativacao-retificadoras} também explica algums problemas que essas funções acabaram causando com o gradiente na rede, sendo eles o \textit{dying ReLUs problem} e o problema do gradiente explosivo.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
