@@ -2378,6 +2378,84 @@ Essa análise de descontinuidade pode ser feita também com o próprio gráfico 
 
 \subsection{Perda de Poisson (Poisson Loss)} \index{Funções de Perda!Perda de Poisson (\textit{Poisson Loss})}
 
+\textbf{A Distribuição de Poisson}
+\vspace{1em}
+
+\begin{equacaodestaque}{Distribuição de Poisson (PMF)}
+    P(y_j; \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}
+    \label{eq:poisson-distribution-pmf}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering % Centraliza a figura inteira
+    
+    % --- GRÁFICO 1: Lambda Baixo (Assimétrico) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+              axis x line=center,
+              axis y line=center,
+              xtick={0,2,...,19},
+              ytick={0.1,0.2,...,0.4},
+                domain = 0:18,
+                samples = 19,
+                xlabel={$k$},
+                ylabel={$P[k]$},
+                xlabel style={right},
+                ylabel style={above left},
+                ymax=0.5,
+                xmax=20,
+                x post scale=1.4
+                ]
+                \addplot+[ycomb,blue,thick] {poisson(1)};
+                \addlegendentry{$\lambda = 1$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Com $\lambda$ baixo, a distribuição é assimétrica e "espremida" perto do zero.}
+        \label{fig:poisson-low-lambda}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal entre os sub-gráficos
+    
+    % --- GRÁFICO 2: Lambda Alto (Sino) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+              axis x line=center,
+              axis y line=center,
+              xtick={0,2,...,19},
+              ytick={0.1,0.2,...,0.4},
+                domain = 0:18,
+                samples = 19,
+                xlabel={$k$},
+                ylabel={$P[k]$},
+                xlabel style={right},
+                ylabel style={above left},
+                ymax=0.5,
+                xmax=20,
+                x post scale=1.4
+                ]
+                \addplot+[ycomb,brown,thick] {poisson(9)};
+                 \addlegendentry{$\lambda = 9$};
+            \end{axis}
+        \end{tikzpicture}
+
+        \caption{Com $\lambda$ alto, a distribuição se aproxima de uma curva Normal (Gaussiana), mas permanece discreta.}
+        \label{fig:poisson-high-lambda}
+    \end{subfigure}
+    
+    \caption{Comparação visual da Distribuição de Poisson com $\lambda$ baixo e alto.}
+    \label{fig:poisson-comparison}
+    \fonte{O autor (2025).} % Adicionando seu \fonte
+\end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
 \begin{equacaodestaque}{Perda de Poisson (\textit{Poisson Loss})}
     \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \hat{y}_j - y_j \log(\hat{y}_j)
     \label{eq:poisson-loss}
@@ -2511,6 +2589,91 @@ Em que:
 \end{itemize}
 
 \subsection{Deviância Gamma (Gamma Devience)} \index{Funções de Perda!Deviância Gamma (\textit{Gamma Devience})}
+
+\textbf{A Distribuição Gamma}
+\vspace{1em}
+
+\begin{equacaodestaque}{Distribuição Gamma (PDF)}
+    f(y_j; k, \theta) = \frac{y_j^{k-1} e^{-y_j/\theta}}{\theta^k \Gamma(k)}
+    \label{eq:gamma-distribution-pdf}
+\end{equacaodestaque}
+
+\begin{figure}[h!]
+    \centering % Centraliza a figura inteira
+    
+    % --- GRÁFICO 1: Forma Baixa (k=1) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Distribuição Gamma ($k=1, \theta=2$)},
+                xlabel={$x$ (valor contínuo)},
+                ylabel={$f(x; k, \theta)$},
+                smooth, % Linha contínua suave
+                ymin=0,
+                xmin=0, xmax=15,
+                grid=major,
+                grid style={dashed, gray!40},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+            % Com k=1, theta=2: (x^0 * exp(-x/2)) / (2^1 * gamma(1)) = 0.5 * exp(-x/2)
+            
+            % <--- MUDANÇA AQUI ---
+            % Substituindo a fórmula complexa pela sua função definida:
+            \addplot[domain=0.01:15, samples=101, color=blue, thick] 
+                { gamma_pdf(x, 1, 2) };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Com forma $k=1$, a distribuição é uma exponencial decrescente.}
+        \label{fig:gamma-low-k}
+    \end{subfigure}
+    \hfill % Adiciona espaço horizontal entre os sub-gráficos
+    
+    % --- GRÁFICO 2: Forma Média (k=3) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Distribuição Gamma ($k=3, \theta=2$)},
+                xlabel={$x$ (valor contínuo)},
+                ylabel={$f(x; k, \theta)$},
+                smooth,
+                ymin=0,
+                xmin=0, xmax=20, % Range maior para ver a cauda
+                grid=major,
+                grid style={dashed, gray!40},
+                label style={font=\small},
+                tick label style={font=\scriptsize}
+            ]
+            % Com k=3, theta=2: (x^2 * exp(-x/2)) / (2^3 * gamma(3)) = (x^2 * exp(-x/2)) / 16
+            
+            % <--- MUDANÇA AQUI ---
+            % Substituindo a fórmula complexa pela sua função definida:
+            \addplot[domain=0.01:20, samples=101, color=red, thick] 
+                { gamma_pdf(x, 3, 2) };
+        
+            % Média da Gamma = k * theta = 3 * 2 = 6
+            % A altura do pico (0.166) foi calculada
+            \draw[dashed, red!70] (axis cs:6, 0) -- (axis cs:6, 0.166); 
+            \node[above, font=\tiny] at (axis cs:6, 0.166) {Média ($\mu=6$)};
+
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Com forma $k=3$, a distribuição tem um pico claro e uma cauda longa à direita (assimétrica).}
+        \label{fig:gamma-high-k}
+    \end{subfigure}
+    
+    \caption{Comparação visual da Distribuição Gamma variando o parâmetro de forma $k$.}
+    \label{fig:gamma-comparison}
+    \fonte{O autor (2025).} % Adicionando seu \fonte
+\end{figure}
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
 
 \begin{equacaodestaque}{Perda Gamma (\textit{Gamma Loss})}
     \Loss_{\text{Gamma}}(y_j, \hat{y}_j) = \log\left(\frac{\hat{y}_j}{y_j}\right) + \frac{y_j}{\hat{y}_j} - 1
