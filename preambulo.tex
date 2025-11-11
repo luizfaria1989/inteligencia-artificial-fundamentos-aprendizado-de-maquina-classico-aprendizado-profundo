@@ -103,17 +103,6 @@
     bookmarksopen=true              % Abre o painel de bookmarks (índices)
 }
 
-% Pacote para customização avançada de cabeçalhos e rodapés.
-% Descomente as linhas abaixo apenas se precisar de um layout diferente
-% do padrão oferecido pelo abntex2.
-%
-% \usepackage{fancyhdr}
-% \pagestyle{fancy}
-% \fancyhf{} % Limpa todos os campos
-% \fancyhead[LE,RO]{\nouppercase{\leftmark}} % Nome do capítulo no cabeçalho
-% \fancyfoot[LE,RO]{\thepage} % Número da página no rodapé
-
-
 % --- COMANDOS CUSTOMIZADOS (OPCIONAL) ---
 % Aqui você pode definir seus próprios comandos para agilizar a escrita.
 % Exemplo:
@@ -123,6 +112,14 @@
 \usetikzlibrary{patterns, positioning, fit, shapes.geometric, arrows.meta, fpu, decorations.pathmorphing, shadows, shapes.symbols}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+
+\pgfmathdeclarefunction{poisson}{1}{%
+  \pgfmathparse{(#1^x)*exp(-#1)/(x!)}%
+}
+
+\pgfmathdeclarefunction{gamma_pdf}{3}{%
+  \pgfmathparse{(#1^(#2-1) * exp(-#1/#3)) / (#3^#2 * (#2-1)!)}%
+}
 
 % --- Definindo as cores (hues) ---
 \definecolor{darkblue}{rgb}{0.16, 0.32, 0.75}
