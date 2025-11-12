@@ -2376,15 +2376,43 @@ Essa análise de descontinuidade pode ser feita também com o próprio gráfico 
 \section{Perdas Baseadas em Distribuições de Dados}
 \label{sec:perdas-baseadas-em-distribuicoes-de-dados}
 
+Exceto pela perda $\epsilon$-insensível que trabalhava com distribuições que não eram simétricas, a maioria das perdas trabalhadas até agora neste capítulo possuem uma característica em comum: são perdas utilizadas para dados que seguem a distribuição normal. Foi possível ver isso inclusive na explicação sobre o erro quadrático médio, e como Gauss prova que o método dos mínimos quadrados é uma solução ideal para ser utilizado em cenários em que os dados seguem a distribuição Gaussiana.
+
+Contudo, mesmo a distribuição normal sendo a mais comum para modelar os diferentes problemas que envolvem regressão, existem também outras distribuições que são igualmente importante. Essa seção foca em explicar três funções de perda que são utilizadas para trabalhar com distribuições específicas, são elas: a perda de Poisson, a perda Gamma e a perda de Tweedie.
+
+Para explicar essas funções, esta seção toma um rumo diferente das outras vistas até o momento, ao invés de explicar diretamente a função de perda, antes é explicado sobre a sua respectiva distribuição, apresentando gráficos e fórmulas, como a função densidade e probabilidade. Tendo conhecimento sobre as distribuições, e então introduzida a função de perda, junto com suas fórmulas, derivadas, representações gráficas e também algumas aplicações em algoritmos de aprendizado de máquina.
+
+Dito isso, é possível começar então explicando sobre a distribuição de Poisson.
+
 \subsection{Perda de Poisson (Poisson Loss)} \index{Funções de Perda!Perda de Poisson (\textit{Poisson Loss})}
 
-\textbf{A Distribuição de Poisson}
+\textbf{A Distribuição de Poisson} \index{Distribuição de Poisson}
 \vspace{1em}
 
+Imagine que você está procurando uma forma de modelar a quantidade de ligações que você pode receber em seu telefone por dia. Primeiro, você pensou que essa quantidade seguiria uma distribuição normal, mas encontrou um problema, a distribuição normal é contínua, e não tem como você receber $2,5$ ligações em um período. Além disso, você decidiu que precisava dividir o tempo em um conjunto de intervalos discretos, assim, todas as ligações que você receber das 14:00 as 14:59 ficarão no mesmo intervalo. Esse problema possui ainda uma terceira particularidade, não existe um limite de ligações que você pode receber, pode ser que das 13:00 as 13:59 você receba duas ligações, mas também pode ser que você receba 314 ligações naquele horário. Foi então que procurando mais sobre o assunto, você descobriu sobre uma distribuição diferente, que parece cumprir todos os requisitos para modelar esse seu problema, essa é a distribuição de Poisson.
+
+\medskip
+\begin{center}
+ * * *
+\end{center}
+\medskip
+
+A distribuição de Poisson é dada pela Equação \ref{eq:poisson-distribution-pmf}, em que o espaço amostral é conjunto de inteiros não-negativos. Outro detalhe dessa distribuição, como aponta xxx, é que ela não possui uma limite superior nos valores que podem ser observados. Isso é um ponto interessante, pois na distribuição normal isso não acontece, ela apresenta um limite superior para esses valores.
+
 \begin{equacaodestaque}{Distribuição de Poisson (PMF)}
-    P(y_j; \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}
+    P(y_j| \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}, \quad y_j \in {0, 1, 2, ...}
     \label{eq:poisson-distribution-pmf}
 \end{equacaodestaque}
+
+Em que:
+
+\begin{itemize}
+    \item $\lambda$ representa a taxa de Poisson, ou seja, a contagem esperada
+\end{itemize}
+
+Essa distribuição possui diversas propriedades interessantes. Como explica xxx, a distribuição de Poisson segue a média, a variância e todos os cumulativos de Y que são igual a $\lambda$. Isso significa que a média e a variância dessa distribuição são iguais, e como consequência o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
+
+É possível ver isso melhor nas plotagens dessa distribuição. Na Figura \ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele é baixo, o que signica que a média da distribuição é baixa, por isso a maioria dos dados está bem próximo de zero, mas além disso, a vari6ancia também é baixa, indicando que os dados são representados no gráfico de forma assimétrica. Já na Figura \ref{fig:poisson-high-lambda} o cenário é o inverso, o $\lambda$ é alto, o que reflete em dados melhores distribuidos no gráfico, além de uma média maior, perceba como o gráfico passa a lembrar o de uma distribuição Normal, mas ainda sim, permance discreto.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura inteira
@@ -2590,7 +2618,7 @@ Em que:
 
 \subsection{Deviância Gamma (Gamma Devience)} \index{Funções de Perda!Deviância Gamma (\textit{Gamma Devience})}
 
-\textbf{A Distribuição Gamma}
+\textbf{A Distribuição Gamma} \index{Distribuição Gamma}
 \vspace{1em}
 
 \begin{equacaodestaque}{Distribuição Gamma (PDF)}
