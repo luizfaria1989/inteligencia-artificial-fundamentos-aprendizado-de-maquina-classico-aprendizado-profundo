@@ -2478,14 +2478,32 @@ Essa distribuição possui diversas propriedades interessantes. Como explica xxx
     \fonte{O autor (2025).} % Adicionando seu \fonte
 \end{figure}
 
+Além disso, vale a pena discutir também a função log-verossimilhança dessa função, pois é a partir dela que é possível chegar no cálculo da perda de Poisson. Dito isso, a log-verossimilhança negativa dessa função, que omite os termos constantes que não dependem de $\lambda_j$ é dada pela Equação \ref{eq:log-verossimilhanca-negativa-de-poisson}
+
+\begin{equacaodestaque}{Log-Verossimilhança Negativa para a Distribuição de Poisson}
+    l_j (\lambda_j) = \lambda_j - y_j \log(\lambda_j)
+    \label{eq:log-verossimilhanca-negativa-de-poisson}
+\end{equacaodestaque}
+
+Ainda em xxx, xxx explica algum cenários em que essa distribuição pode ser utilizada para descrever um problema, entre algum dos explicados pelo autor, vale a pena citar:
+
+\begin{itemize}
+    \item \textbf{Um ensaio biológico sobre tuberculina:} A distribuição de poisson com a sua função de log-verossimilhança é utilizada para descrever os casos de tuberculina em população de bovinos;
+    \item \textbf{Um estudo sobre o dano das ondas em navios cargueiros:} xxx utilizam a distribuição de poisson assim como o cálculo da log-verossimilhança para estimar o dano das ondas em vaios cargueiros.
+\end{itemize}
+
+Na prática um bom indicativo para considerar utilizar a distribuição de poisson para modelar os eventos e consequentemente utilizar a perda de Poisson para criar um modelo de regressão é considerar as próprias características dessa distribuição. Assim, ao analisar um problema e perceber que os dados seguem uma distribuição discreta, são inteiros não negativos e que a média dos dados é igual a variância, talvez valha a pena dar uma analisa e ver se a distribuição de Poisson pode ser aplicada.
+
 \medskip
 \begin{center}
  * * *
 \end{center}
 \medskip
 
+Considerando o conteúdo introdutório discutido até o momento para explicar a distribuição de Poisson, é possível finalmente entender essa função com mais detalhes. A perda de Poisson é dada pela Equação \ref{eq:poisson-loss}, perceba que ela é basicamente o cálculo da log-verossimilhança negativa, em que o termo $\lambda_j$ neste caso é dado pelo valor predito $\hat{y}_j$ pelo modelo.
+
 \begin{equacaodestaque}{Perda de Poisson (\textit{Poisson Loss})}
-    \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \hat{y}_j - y_j \log(\hat{y}_j)
+    \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \hat{y}_j - y_j \log(\hat{y}_j)
     \label{eq:poisson-loss}
 \end{equacaodestaque}
 
@@ -2497,43 +2515,156 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
+Considerando a fórmula da perda de Poisson, é possível também discutir os seus gráficos, os quais estão presentes na Figura \ref{fig:poisson-loss-grid}, é interessante notar como os seus gráficos variam conforme os valores reais $y$ mudam. Quando o valor real é um valor pequeno, como está retratado na Figura \ref{fig:poisson-2d-low} (para a visão em duas dimensões da função) e na Figura \ref{fig:poisson-3d-low} (para a vista da superfície da função no espaço), a perda de Poisson possui uma convexidade mais "apertada". Já nos cenários da Figura \ref{fig:poisson-2d-high} (visão em duas dimensões) e na Figura \ref{fig:poisson-3d-high} (visão em três dimensões), o valor de $y$ é grande, o que resulta em uma função que é mais "larga".
+
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=20,
-            ymin=-2, ymax=12,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Curva para y=2
-            \addplot[domain=0.1:20, samples=101, color=red, thick] {x - 2*ln(x)};
-            \addlegendentry{$y=2$}
-            \draw[dashed, red!50] (axis cs:2, -2) -- (axis cs:2, {2-2*ln(2)});
 
-            % Curva para y=5
-            \addplot[domain=0.1:20, samples=101, color=blue, thick] {x - 5*ln(x)};
-            \addlegendentry{$y=5$}
-            \draw[dashed, blue!50] (axis cs:5, -2) -- (axis cs:5, {5-5*ln(5)});
+    % --- LINHA DE CIMA: y PEQUENO (y=2) ---
+    
+    % Top-Esquerda: 2D para y=2
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=10,
+                ymin=-1, ymax=5,
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Visão 2D (Alvo $y=2$)}
+            ]
+                % Perda Poisson: x - y*ln(x) -> Aqui x é y_hat, y fixo em 2
+                \addplot[domain=0.1:10, samples=100, color=red, very thick] {x - 2*ln(x)};
+                \addlegendentry{$y=2$}
+                
+                % Linha pontilhada no mínimo
+                \draw[dashed, red!60] (axis cs:2, -2) -- (axis cs:2, {2-2*ln(2)});
+                \node[anchor=north, font=\tiny, text=red] at (axis cs:2, -0.8) {Mínimo em $\hat{y}=2$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Comportamento para valor real baixo.}
+        \label{fig:poisson-2d-low}
+    \end{subfigure}
+    \hfill
+    % Top-Direita: 3D para Região Baixa
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Loss},
+                grid=major,
+                view={135}{35}, % Angulo de visão
+                legend pos=north east,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Superfície 3D (Valores Baixos)},
+                zmin=-2, zmax=5
+            ]
+                % Superfície Poisson: y_hat - y_real * ln(y_hat)
+                % No pgfplots 3d: x é o eixo 1, y é o eixo 2.
+                % Vamos definir x = y (Real) e y = y_hat (Previsto)
+                % Formula: y - x * ln(y)
+                \addplot3[
+                    mesh,           
+                    color=purple,   % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { y - x*ln(y) };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície local (Região $1 \le y \le 5$).}
+        \label{fig:poisson-3d-low}
+    \end{subfigure}
 
-            % Curva para y=10
-            \addplot[domain=0.1:20, samples=101, color=green, thick] {x - 10*ln(x)};
-            \addlegendentry{$y=10$}
-            \draw[dashed, green!50] (axis cs:10, -2) -- (axis cs:10, {10-10*ln(10)});
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da Perda de Poisson para diferentes valores reais de $y$. O mínimo de cada curva ocorre em $\hat{y}=y$.}
-    \label{fig:poisson-loss}
+    \vspace{0.5cm} % Espaço vertical
+
+    % --- LINHA DE BAIXO: y GRANDE (y=10) ---
+
+    % Baixo-Esquerda: 2D para y=10
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=25,
+                % Ajustando ymin/ymax para focar na curvatura
+                ymin=-14, ymax=-10, 
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Visão 2D (Alvo $y=10$)}
+            ]
+                % Perda Poisson para y=10
+                \addplot[domain=1:25, samples=100, color=blue, very thick] {x - 10*ln(x)};
+                \addlegendentry{$y=10$}
+                
+                % Linha pontilhada no mínimo
+                \draw[dashed, blue!60] (axis cs:10, -20) -- (axis cs:10, {10-10*ln(10)});
+                 \node[anchor=north, font=\tiny, text=blue] at (axis cs:10, -13.2) {Mínimo em $\hat{y}=10$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Comportamento para valor real alto.}
+        \label{fig:poisson-2d-high}
+    \end{subfigure}
+    \hfill
+    % Baixo-Direita: 3D para Região Alta
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Loss},
+                grid=major,
+                view={135}{35},
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title={Superfície 3D (Valores Altos)}
+            ]
+                % Formula: y - x * ln(y) (x=Real, y=Previsto)
+                \addplot3[
+                    mesh,           
+                    color=purple,   % Cor consistente com o gráfico 2D
+                    shader=interp,  
+                    domain=-5:5,    % Mesmo domínio do seu template
+                    domain y=-5:5,  % Mesmo domínio do seu template
+                    samples=15      % Mesma resolução da malha
+                ] { y - x*ln(y) };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície local (Região $8 \le y \le 12$).}
+        \label{fig:poisson-3d-high}
+    \end{subfigure}
+
+    % --- Legenda e Fonte ---
+    \caption{Comparação da Perda de Poisson ($L = \hat{y} - y \ln \hat{y}$) para diferentes magnitudes de $y$. Observe como a convexidade é mais "apertada" para valores pequenos e se alarga para valores grandes.}
+    \label{fig:poisson-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
 
@@ -2547,9 +2678,40 @@ Em que:
 \vspace{1em}
 
 \begin{itemize}
-    \item \textbf{Característica 1:}
-    \item \textbf{Característica 2:}
-    \item \textbf{Característica 3:}
+    \item \textbf{Convexa:} Umas das vantagens de se utilizar a perda de Poisson, está no fato dela ser uma função convexa, o que facilita para que os otimizadores baseados em gradiente consigam mais facilmente encontrar um ponto de mínimo global, ou chegar muito próximo dele, casos estejam configurados com os parâmetros ideais.
+    \item \textbf{Continuidade e Suavidade:} Além de ser uma função convexa, a perda de Poisson também é uma função contínua e suave, isso se dá devido ao fato de não fazer o uso de cálculos que possam causar "bicos" nos seus gráficos, como o uso de módulos para calcular o valor absoluto. Se a função é suave e contínua, ela também se torna chamativa para ser utilizada em conjunto com otimizadores baseados em gradiente, pois estes não encontrarão dificuldades para percorrer a superfície da função.
+    \item \textbf{Não-negatividade e Link Functions:} \textcite{LossesArticle} explicam que como dados de contagem não podem ser negativos, deve-se antentar com os valores preditos pelo modelo $\hat{y}_j$, pois eles deverão estar restritos em $\hat{y}_j > 0$. Os autores explicam que em modelos lineares generalizados a função exponencial é comumunmente utilizada como uma link function para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Dessa forma é possível discutir uma versão alternativa para descrever a perda de Poisson considerando que $\text{exp}$ está sendo usada como uma link function.
+    
+    Sabemos que um modelo de aprendizado de máquina, geralmente retorna algo que segue o padrão mostrado na Equação xxx
+ 
+    \begin{equation}
+        \hat{y}_j = \textbf{W}^T x_j + b
+    \end{equation}
+
+    Esse valor pode ser negativo e queremos que ele fique em um intervalo $\hat{y} > 0$. Então como \textcite{LossesArticle} surgerem, uma das soluções é utilizar a função exponencial como uma link function, então escrevemos
+
+    \[
+        \hat{y}_j = \text{exp}(\textbf{W}^T x_j + b)
+    \]
+
+    Ao substituir essa expressão na Equação \ref{eq:poisson-loss}, que mostra a função de perda de Poisson, é possível chegar Em
+
+    \[
+        \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j \log(\text{exp}(\textbf{W}^T x_j + b))
+    \]
+
+    É possível simplificar os cálculos do logaritmimo, resultando na expressão
+
+    \[
+        \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j  (\text{exp}(\textbf{W}^T x_j + b))
+    \]
+
+    A qual pode ser reescrita uma última vez como 
+
+    \[
+        \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\hat{y}_j) - y_j  (\text{exp}(\hat{y}_j))
+    \]
+
 \end{itemize}
 
 \medskip
@@ -2557,6 +2719,8 @@ Em que:
  * * *
 \end{center}
 \medskip
+
+Vistas algumas propriedades dessa função, cabe também discutir a sua derivada, que será útil para a retropropagação do gradiente e o aprendizado do modelo. Calculando a derivada da perda de Poisson em relação aos valores preditos pelo modelo, é possível chegar na Equação \ref{eq:poisson-loss-derivada}.
 
 \begin{equacaodestaque}{Derivada da Perda de Poisson}
     \frac{\partial \Loss_{\text{Poisson}}}{\partial \hat{y}_j} = 1 - \frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j - y_j}{\hat{y}_j}
@@ -2599,6 +2763,15 @@ Em que:
     \label{fig:poisson-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
+
+Além disso, como foi visto anteriomente, a função exponencial é utilizada como uma link function para resolver o problema dos dados da saída do modelo $\hat{y}$ serem sempre positivos, de forma que é possível escrever uma nova expressão, e até mais simplificada para o cenário em que $\text{exp}$ é combinada com a perda de Poisson para servir como uma link function. Dessa forma, essa expressão pode ser vista na Equação xx.
+
+\begin{equacaodestaque}{Derivada da Perda de Poisson Com exp como Link Function}
+    \frac{\partial \Loss_{\text{Poisson}}}{\partial \hat{y}_j} = \hat{y}_j - y_j
+    \label{eq:poisson-loss-com-link-function-derivada}
+\end{equacaodestaque}
+
+Dessa forma, a derivada passa ser a diferença entre o valor predito pelo modelo $\hat{y}_j$ com o valor real $y$.
 
 \medskip
 \begin{center}
