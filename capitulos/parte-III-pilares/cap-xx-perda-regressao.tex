@@ -417,7 +417,7 @@ Também vale a pena analisar o erro absoluto médio de forma gráfica. Para isso
                 \addplot[
                     domain=-4:4, 
                     samples=100, 
-                    color=red, 
+                    color=blue,  
                     very thick
                 ] {abs(x)};
                 
@@ -448,12 +448,12 @@ Também vale a pena analisar o erro absoluto médio de forma gráfica. Para isso
             ]
                 % Gráfico da superfície abs(y - y_hat)
                 \addplot3[
-                    mesh,           
-                    color=red,      % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { abs(x - y) }; % A função de perda MAE
             \end{axis}
         \end{tikzpicture}
@@ -687,7 +687,7 @@ Em que:
                 \addplot[
                     domain=-4:4, 
                     samples=201, 
-                    color=orange, 
+                    color=blue,  
                     very thick
                 ] { abs(x) <= \delta ? 0.5*x^2 : \delta*(abs(x) - 0.5*\delta) };
                 
@@ -724,12 +724,12 @@ Em que:
             ]
                 % Gráfico da superfície da Huber Loss
                 \addplot3[
-                    mesh,           
-                    color=orange,   % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { abs(x-y) <= \delta ? 0.5*(x-y)^2 : \delta*(abs(x-y) - 0.5*\delta) }; % A função Huber 3D
             \end{axis}
         \end{tikzpicture}
@@ -799,7 +799,7 @@ Um ponto a ser destacado ao utilizar a perda de Huber é com relação a escolha
                 \addplot[
                     domain=-4:4, 
                     samples=201, 
-                    color=red, 
+                    color=blue, 
                     very thick
                 ] {(abs(x) <= \delta) ? (0.5*x^2) : (\delta*(abs(x) - 0.5*\delta))};
 
@@ -1031,7 +1031,7 @@ Já com relação ao gráfico dessa função, ele está presente na Figura~\ref{
                 \addplot[
                     domain=-4:4, 
                     samples=101,
-                    color=teal, 
+                    color=blue,  
                     very thick
                 ] {ln(cosh(x))};
                 
@@ -1061,12 +1061,12 @@ Já com relação ao gráfico dessa função, ele está presente na Figura~\ref{
             ]
                 % Gráfico da superfície da Log-Cosh Loss
                 \addplot3[
-                    mesh,           
-                    color=teal,     % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { ln(cosh(x - y)) }; % A função Log-Cosh 3D
             \end{axis}
         \end{tikzpicture}
@@ -1138,7 +1138,7 @@ Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o
                 \addplot[
                     domain=-4:4, 
                     samples=101,
-                    color=teal, 
+                    color=red, 
                     very thick
                 ] {tanh(x)};
                 
@@ -1170,7 +1170,7 @@ Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o
                 % Gráfico da superfície do gradiente: tanh(y_hat - y)
                 \addplot3[
                     mesh,           
-                    color=teal,     % Cor consistente com o gráfico 2D
+                    color=red,     % Cor consistente com o gráfico 2D
                     shader=interp,  
                     domain=-5:5,    % Mesmo domínio do seu template
                     domain y=-5:5,  % Mesmo domínio do seu template
@@ -1280,7 +1280,7 @@ Com relação ao seu gráfico, ele pode visto na Figura~\ref{fig:msle-loss}. Na 
                 \addplot[
                     domain=0:25, 
                     samples=101,
-                    color=green, 
+                    color=blue,  
                     very thick
                 ] {(ln(10+1) - ln(x+1))^2};
                 
@@ -1314,12 +1314,12 @@ Com relação ao seu gráfico, ele pode visto na Figura~\ref{fig:msle-loss}. Na 
             ]
                 % Gráfico da superfície da MSLE
                 \addplot3[
-                    mesh,           
-                    color=green,    % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=0:25,    % Domínio > -1 (usando 0:25)
-                    domain y=0:25,  % Domínio > -1 (usando 0:25)
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-0:25,    % Domínio de x (y_real)
+                    domain y=-0:25,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { (ln(x+1) - ln(y+1))^2 }; % A função MSLE 3D
             \end{axis}
         \end{tikzpicture}
@@ -1390,7 +1390,7 @@ Em seguida, é possível ver representação gráfica da derivada da Equação~\
                 \addplot[
                     domain=0:25, 
                     samples=101,
-                    color=orange, 
+                    color=red, 
                     very thick
                 ] {2 * (ln(10+1) - ln(x+1)) / (x+1)}; % Corrigido (removido o -)
                 
@@ -1425,7 +1425,7 @@ Em seguida, é possível ver representação gráfica da derivada da Equação~\
                 % Gráfico da superfície da derivada da MSLE (fórmula corrigida)
                 \addplot3[
                     mesh,           
-                    color=orange,   % Cor consistente com o gráfico 2D
+                    color=red,   % Cor consistente com o gráfico 2D
                     shader=interp,  
                     domain=0:25,    % Domínio de x (y_real)
                     domain y=0:25,  % Domínio de y (y_previsto)
@@ -1752,7 +1752,7 @@ Além das equação da perda quantílica, é possível também fazer a plotagem 
                 title={Visão 2D (Perda vs. Erro)}
             ]
                 % Tau = 0.5 (MAE)
-                \addplot[domain=-4:4, samples=5, color=gray, very thick] {0.5*abs(x)};
+                \addplot[domain=-4:4, samples=5, color=blue, very thick] {0.5*abs(x)};
                 \addlegendentry{$\tau=0.5$ (Mediana)}
             \end{axis}
         \end{tikzpicture}
@@ -1780,11 +1780,12 @@ Além das equação da perda quantílica, é possível também fazer a plotagem 
             ]
                 % Tau = 0.5 (Plano de fundo como superfície)
                 \addplot3[
-                    mesh,           
-                    color=red,
-                    domain=-5:5,
-                    domain y=-5:5,
-                    samples=15
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { 0.5*abs(x - y) };
                 \addlegendentry{$\tau=0.5$}
             \end{axis}
@@ -1861,11 +1862,12 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
             ]
                 % Tau = 0.9 (Malha)
                 \addplot3[
-                    mesh,           
+                    mesh,           % Tipo de gráfico: superfície
                     color=blue,
-                    domain=-5:5,
-                    domain y=-5:5,
-                    samples=15
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { (x - y >= 0) ? (0.9*(x - y)) : ((1-0.9)*(-(x - y))) };
                 \addlegendentry{$\tau=0.9$}
             \end{axis}
@@ -1896,7 +1898,7 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
                 title={Visão 2D ($\tau=0.1$)}
             ]
                 % Tau = 0.1
-                \addplot[domain=-4:4, samples=5, color=red, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
+                \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
                 \addlegendentry{$\tau=0.1$ (Percentil 10)}
             \end{axis}
         \end{tikzpicture}
@@ -1924,11 +1926,12 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
             ]
                 % Tau = 0.1 (Malha)
                 \addplot3[
-                    mesh,           
-                    color=red,
-                    domain=-5:5,
-                    domain y=-5:5,
-                    samples=15
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { (x - y >= 0) ? (0.1*(x - y)) : ((1-0.1)*(-(x - y))) };
                 \addlegendentry{$\tau=0.1$}
             \end{axis}
@@ -2120,7 +2123,7 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
                 \addplot[
                     domain=-4:4, 
                     samples=101,
-                    color=purple, 
+                    color=blue, 
                     very thick
                 ] {max(0, abs(x) - \epsilon)};
                 
@@ -2158,12 +2161,12 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
             ]
                 % Gráfico da superfície da Epsilon-Insensitive Loss
                 \addplot3[
-                    mesh,           
-                    color=purple,   % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { max(0, abs(x - y) - \epsilon) }; % A função Epsilon-Insensitive 3D
             \end{axis}
         \end{tikzpicture}
@@ -2295,7 +2298,7 @@ Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfi
                 % (y - x > epsilon) ? -1 : ( (y - x < -epsilon) ? 1 : 0 )
                 \addplot3[
                     mesh,           
-                    color=purple,   % Cor consistente com o gráfico 2D
+                    color=red,   % Cor consistente com o gráfico 2D
                     shader=interp,  
                     domain=-5:5,    % Mesmo domínio do seu template
                     domain y=-5:5,  % Mesmo domínio do seu template
@@ -2405,6 +2408,7 @@ Essa distribuição possui diversas propriedades interessantes. Como explica xxx
         \label{fig:poisson-low-lambda}
     \end{subfigure}
     \hfill
+    
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -2499,7 +2503,7 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
                 title={Visão 2D (Alvo $y=2$)}
             ]
                 % Perda Poisson: x - y*ln(x) -> Aqui x é y_hat, y fixo em 2
-                \addplot[domain=0.1:10, samples=100, color=red, very thick] {x - 2*ln(x)};
+                \addplot[domain=0.1:10, samples=100, color=blue, very thick] {x - 2*ln(x)};
                 \addlegendentry{$y=2$}
                 
                 % Linha pontilhada no mínimo
@@ -2530,12 +2534,12 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
                 zmin=-2, zmax=5
             ]
                 \addplot3[
-                    mesh,           
-                    color=purple,   % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { y - x*ln(y) };
             \end{axis}
         \end{tikzpicture}
@@ -2596,12 +2600,12 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
             ]
                 % Formula: y - x * ln(y) (x=Real, y=Previsto)
                 \addplot3[
-                    mesh,           
-                    color=purple,   % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    mesh,           % Tipo de gráfico: superfície
+                    color=blue,
+                    shader=interp,  % Suaviza as cores
+                    domain=-5:5,    % Domínio de x (y_real)
+                    domain y=-5:5,  % Domínio de y (y_previsto)
+                    samples=15      % Resolução da malha
                 ] { y - x*ln(y) };
             \end{axis}
         \end{tikzpicture}
