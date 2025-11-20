@@ -18,9 +18,9 @@
 --- Estagiário descobrindo o problema do desaparecimento de gradientes
 \end{flushright}
 
-Conhecendo como uma rede neural aprende, é possível agora entender outros pontos que são essenciais para o seu funcionamento, sendo um deles as funções de ativação. O principal objetivo de se adicionar uma função de ativação como a sigmoide após a camada densa de modelo está voltado a introdução da não-lineridade. Dessa forma, um modelo de rede neural torná-se mais capaz de aproximar uma gama de funções que antes não eram possíveis com funções de ativação lineares.
+Conhecendo como uma rede neural aprende, é possível agora entender outros pontos que são essenciais para o seu funcionamento, sendo um deles as funções de ativação. O principal objetivo de se adicionar uma função de ativação como a sigmoide após a camada densa de modelo está voltado a introdução da não-linearidade. Dessa forma, um modelo de rede neural torná-se mais capaz de aproximar uma gama de funções que antes não eram possíveis com funções de ativação lineares.
 
-Esse capítulo se inicia justamente discutindo a importância de introduzir a não-linearidade para uma rede que está sendo criada, como justificativa são citados alguns dos diferentes teoremas da aproximação universal. O restante do captítulo é dedicado as funções sigmoidais, começando pela sigmoide, e como elas surgiram no cenário de aprendizado de máquina como uma forma de replicar o comportamento dos neurônios humanos em redes artificiais. 
+Esse capítulo se inicia justamente discutindo a importância de introduzir a não-linearidade para uma rede que está sendo criada, como justificativa são citados alguns dos diferentes teoremas da aproximação universal. O restante do capítulo é dedicado as funções sigmoidais, começando pela sigmoide, e como elas surgiram no cenário de aprendizado de máquina como uma forma de replicar o comportamento dos neurônios humanos em redes artificiais. 
 
 Além disso, são discutidas outras funções, como a tangente hiperbólica (tanh) e a \textit{softsign}. Seguindo adiante, é explicada uma das principais desvantagens de se utilizar funções sigmoidais em uma rede: o problema do desaparecimento do gradiente. E como ele se tornou um empecilho para a criação de redes neurais mais profundas. No fim do capítulo, está uma tabela resumindo as principais características das funções de ativação que foram apresentadas.
 
@@ -140,19 +140,19 @@ Dessa forma, é possível discutir elaborar pouco de cada uma dessas propriedade
 \textbf{Não-linearidade}
 \medskip
 
-Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{percetron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
+Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{perceptron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
 
 \medskip
 \textbf{Diferenciabilidade}
 \medskip
 
-O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrisicamente ligado em como a retropropagação do erro. Como visto no Capítulo \ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
+O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrinsecamente ligado em como a retropropagação do erro. Como visto no Capítulo \ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
 
 \medskip
 \textbf{Continuidade}
 \medskip
 
-A continuidade está ligada com a diferencibilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descotinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja "quinas" no desenho da função e que o gráfico pode ser desenhado "sem tirar o lápis do papel". Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
+A continuidade está ligada com a diferenciabilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descontinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja "quinas" no desenho da função e que o gráfico pode ser desenhado "sem tirar o lápis do papel". Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
 
 \medskip
 \textbf{Limitada}
@@ -188,13 +188,13 @@ Imagine que você está trabalhando para uma empresa na área de marketing e pre
 
 No começo foi fácil, mas depois de um tempo foi ficando repetitivo, então você teve a ideia de automatizar esse processo. Assim, você decide criar um diagrama de uma “caixa-preta” responsável por classificar automaticamente esses comentários da mesma forma que estava fazendo. Essa “caixa” irá receber uma entrada, neste caso, o texto do comentário sobre o produto, e irá retornar uma saída, uma classificação positiva ou negativa sobre o comentário. 
 
-Na matematica, as funções do tipo sigmoide são excelentes para esse tipo de problema, pois possuem uma propriedade muito interessante: dado um valor de entrada, elas são capazes de "empurrar" esse valor para dois diferentes extremos. No caso da sigmoide logísitca, a função que dá nome a essa família, ela é capaz de empurrar essa entrada para valores próximos de zero ou um. Se nós consideramos que zero é uma avaliação negativa e um é uma avaliação positiva, essa função se torna perfeita para resolver o seu problema de classificar comentários.
+Na matemática, as funções do tipo sigmoide são excelentes para esse tipo de problema, pois possuem uma propriedade muito interessante: dado um valor de entrada, elas são capazes de "empurrar" esse valor para dois diferentes extremos. No caso da sigmoide logísitca, a função que dá nome a essa família, ela é capaz de empurrar essa entrada para valores próximos de zero ou um. Se nós consideramos que zero é uma avaliação negativa e um é uma avaliação positiva, essa função se torna perfeita para resolver o seu problema de classificar comentários.
 
 \section{A Sigmoide Logística: Ótima para Classificações Binárias} \index{Funções de Ativação!Sigmoide Logística}
 
 Por mais que a \gls{sigmoide} hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textit{Recherches mathématiques sur la loi d'accroissement de la population} (Pesquisas matemáticas sobre a lei de crescimento da população), em que \textcite{SigmoidVerhulst1845} propõe a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em "S" característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
 
-Nos anos 1980, estavam ocorrendo mudanças com as funções que eram utilizadas para construir uma rede neural, um desses motivos foi a introdução da retropropagação pelos pesquisadores Daviel Rumelhart, Geoffrey Hinton e Ronald Williams. A retropropagação era uma técnica que permitia que um modelo aprendesse com base nos seus erros, ajustando automaticamente os seus parâmetros em busca de conseguir uma melhor acurácia \parencite{BackpropagationArticle}. 
+Nos anos 1980, estavam ocorrendo mudanças com as funções que eram utilizadas para construir uma rede neural, um desses motivos foi a introdução da retropropagação pelos pesquisadores David Rumelhart, Geoffrey Hinton e Ronald Williams. A retropropagação era uma técnica que permitia que um modelo aprendesse com base nos seus erros, ajustando automaticamente os seus parâmetros em busca de conseguir uma melhor acurácia \parencite{BackpropagationArticle}. 
 
 Além disso, na pesquisa que introduz a retropropagação, \textit{Learning representations by back-propagating errors} de 1986, os cientistas propõem o uso da função sigmoide logística como uma das candidatas para ser utilizada junto com a retropropagação como uma função de ativação, como justificativa, \textcite{BackpropagationArticle} citam o fato dela ser uma função que é capaz de introduzir a não-linearidade para o modelo, permitindo que ele aprenda padrões mais complexos, e também por possui uma derivada limitada.
 
@@ -340,14 +340,14 @@ Assim, ao derivar a sigmoide logística é possível encontrar a Equação \ref{
     \label{eq:sigmoide-derivada}
 \end{equacaodestaque}
 
-Um ponto a ser destacado é que a sigmoide também pode ser expressa de uma forma recurssiva, algo que é muito útil pois ajuda a poupar cálculos a serem feitos. Dessa forma, também tem-se a Equação \ref{eq:sigmoide-derivada-recursiva}.
+Um ponto a ser destacado é que a sigmoide também pode ser expressa de uma forma recursiva, algo que é muito útil pois ajuda a poupar cálculos a serem feitos. Dessa forma, também tem-se a Equação \ref{eq:sigmoide-derivada-recursiva}.
 
 \begin{equacaodestaque}{Sigmoide Logística Derivada Recursivamente}
     \frac{d}{dx_j}[\sigma](x_j) = \sigma(x_j)(1 - \sigma(x_j))
     \label{eq:sigmoide-derivada-recursiva}
 \end{equacaodestaque}
 
-Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comportamento. Com isso, a derivada da sigmoide logística pode ser vista na Figura \ref{fig:sigmoide-derivada}. Perceba que o valor máximo que a derivada da sigmoide retorna é pouco maior que 0.2, esse é um dos pontos que mais atrapalha as redes que fazem uso de muitas funções sigmoidais, porque acaba por gerar um problema conhecido por desaparacimento do gradiente. Mas é importante destacar o quão importante são as derivadas das funções de ativação, pois muitas vezes elas acabam por gerar diversos problemas.
+Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comportamento. Com isso, a derivada da sigmoide logística pode ser vista na Figura \ref{fig:sigmoide-derivada}. Perceba que o valor máximo que a derivada da sigmoide retorna é pouco maior que 0.2, esse é um dos pontos que mais atrapalha as redes que fazem uso de muitas funções sigmoidais, porque acaba por gerar um problema conhecido por desaparecimento do gradiente. Mas é importante destacar o quão importante são as derivadas das funções de ativação, pois muitas vezes elas acabam por gerar diversos problemas.
 
 \begin{figure}[h!]
     \centering
@@ -390,7 +390,7 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
 \end{center}
 \medskip
 
-Conhecendo a sigmoide logística, a função que dá nome a essa família de funções de ativação, é possível conhecer agora outras funções dessa mesma família. Essas funções apresentam propriedades semelhantes com a sigmoide, como a caracterítisca curva em "S" mas com algumas variações em sua estrutura ou fórmula, as quais podem ser úteis em alguns cenários.
+Conhecendo a sigmoide logística, a função que dá nome a essa família de funções de ativação, é possível conhecer agora outras funções dessa mesma família. Essas funções apresentam propriedades semelhantes com a sigmoide, como a característica curva em "S" mas com algumas variações em sua estrutura ou fórmula, as quais podem ser úteis em alguns cenários.
 
 Para isso, será vista primeira a tangente hiperbólica, e como ela melhora uma das desvantagens da sigmoide, com o fato dessa nova função ser centrada em zero.
 
@@ -466,7 +466,7 @@ De forma análoga a feita na sigmoide logística, vale a pena calcular a derivad
     \label{eq:tanh-derivada}
 \end{equacaodestaque}
 
-Assim como a sigmoide logística, a tangente hiperbólica possui uma vantagem, ela pode ser escrita de forma recursiva, o que ajuda a poupar cálculos para a o \textit{backward pass}, pois é possível simplemente armazenar o resultado dessa função que estava calculado no \textit{forward pass} e reutilizá-lo ao calcular a sua derivada. Isso é muito útil pois quanto menos calculos forem feitos, maior é a tendência que o modelo será mais rápido e com isso irá convergir em menos tempo \footnote{Note que tanto a sigmoide quanto a tangente hiperbólica fazem uso de exponenciais em suas fórmulas, essas operações acabam por ser caras (em termos de poder de processamento) quando comparadas com as simples operações de comparação da hard tanh, a qual será vista em seções futuras.}. Dessa forma, tem-se que a derivada da tangente hiperbólica escrita de forma recursiva pode ser expressa pela Equação \ref{eq:tanh-derivada-recursiva}
+Assim como a sigmoide logística, a tangente hiperbólica possui uma vantagem, ela pode ser escrita de forma recursiva, o que ajuda a poupar cálculos para a o \textit{backward pass}, pois é possível simplesmente armazenar o resultado dessa função que estava calculado no \textit{forward pass} e reutilizá-lo ao calcular a sua derivada. Isso é muito útil pois quanto menos cálculos forem feitos, maior é a tendência que o modelo será mais rápido e com isso irá convergir em menos tempo \footnote{Note que tanto a sigmoide quanto a tangente hiperbólica fazem uso de exponenciais em suas fórmulas, essas operações acabam por ser caras (em termos de poder de processamento) quando comparadas com as simples operações de comparação da hard tanh, a qual será vista em seções futuras.}. Dessa forma, tem-se que a derivada da tangente hiperbólica escrita de forma recursiva pode ser expressa pela Equação \ref{eq:tanh-derivada-recursiva}
 
 \begin{equacaodestaque}{Tangente Hiperbólica (tanh) Derivada Recursivamente}
     \frac{d}{dx_j}[\mathcal{A}_{\tanh}](x_j) = 1 - \tanh^2(x_j)
@@ -494,7 +494,7 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
     \fonte{O autor (2025).}
 \end{figure}
 
-Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam de zero conforme aumentam ou diminuem na sua derivada. Eles atingem um pico de 1, e conforme as entradas se aproximam de $\pm 4$ a saída da derivada da tangente hiperbólica também fica próxima de zero. Mais uma vez, nota-se que a tangente hiperbólica não atinge valores muito altos em sua derivada, isso acaba por gerar um problema conhecido como desaparacimento do gradiente, o qual será explicado em seções futuras.
+Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam de zero conforme aumentam ou diminuem na sua derivada. Eles atingem um pico de 1, e conforme as entradas se aproximam de $\pm 4$ a saída da derivada da tangente hiperbólica também fica próxima de zero. Mais uma vez, nota-se que a tangente hiperbólica não atinge valores muito altos em sua derivada, isso acaba por gerar um problema conhecido como desaparecimento do gradiente, o qual será explicado em seções futuras.
 
 \medskip
 \begin{center}
@@ -806,7 +806,7 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
 \end{center}
 \medskip
 
-Perceba também que o gráfico, bem como sua equação, é bem mais simples que a tangente hiperbólica tradicional, isso faz com que a \textit{hard tanh} seja uma função mais barata para ser empregada ao desenvolver um modelo de rede neural. Isso signica que ela pode ser uma função ideal para ser utilizada naqueles sistemas que possuem recursos limitados, como uma quantidade pequena de memória ram, ou seu a possibilidade de utilizar uma placa gráfica dedicada para o processamento dos dados. O mesmo vale para a \textit{hard sigmoid}.
+Perceba também que o gráfico, bem como sua equação, é bem mais simples que a tangente hiperbólica tradicional, isso faz com que a \textit{hard tanh} seja uma função mais barata para ser empregada ao desenvolver um modelo de rede neural. Isso significa que ela pode ser uma função ideal para ser utilizada naqueles sistemas que possuem recursos limitados, como uma quantidade pequena de memória ram, ou seu a possibilidade de utilizar uma placa gráfica dedicada para o processamento dos dados. O mesmo vale para a \textit{hard sigmoid}.
 
 Agora é possível também considerar também a derivada da \textit{hard tanh}, a qual é calculada de forma semelhante a da \textit{hard sigmoid}, derivando as três expressões de sua equação separadamente. Feito isso, a derivada da \textit{hard tanh} está expressa na Equação \ref{eq:hard-tanh-derivada}.
 
@@ -867,7 +867,7 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
 \end{center}
 \medskip
 
-Conhecendo todas essas diferentes funções de ativação, é possível finalmente entender o que é o problema do desaparecimento de gradientes e como ele ocorre em uma rede neural, além de relacionar a atuação das funções sigmoidais com o aparecimento desse fenônemo. Para isso, é possível ver essas explicações na seção a seguir.
+Conhecendo todas essas diferentes funções de ativação, é possível finalmente entender o que é o problema do desaparecimento de gradientes e como ele ocorre em uma rede neural, além de relacionar a atuação das funções sigmoidais com o aparecimento desse fenômeno. Para isso, é possível ver essas explicações na seção a seguir.
 
 \section{O Desaparecimento de Gradientes} \index{Desaparecimento de gradientes}
 
@@ -891,7 +891,7 @@ Em que:
     \item $b^{(L)}$: Representa o vetor de viés da camada $L$;
     \item $x^{(L)}$: Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
     \item $y^{(L)}$: Representa o vetor de saídas da camada $L$
-    \item $\delta^{(L)}$: Representa o vetor do gradienye na camada $L$;
+    \item $\delta^{(L)}$: Representa o vetor do gradiente na camada $L$;
     \item $\mathcal{A}'(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
     \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
 \end{itemize}
@@ -912,7 +912,7 @@ Considere também que as camadas da rede possuem a seguinte configuração:
     \item Sigmoide da camada de saída: tem como resultado da derivada $\sigma'(x_j) = 0.08$
 \end{itemize}
 
-Além disso, você sabe também que o gradiente inicial na camada de saída está sendo de 1. Com isso é possível calcular o gradiente retropropagado para a primeira camada, comecando pela terceira, já que já temos o valor do gradiente para a camada de saída, dessa forma temos que:
+Além disso, você sabe também que o gradiente inicial na camada de saída está sendo de 1. Com isso é possível calcular o gradiente retropropagado para a primeira camada, começando pela terceira, já que já temos o valor do gradiente para a camada de saída, dessa forma temos que:
 
 \[\begin{WithArrows}
     \delta^{(3)} & = \delta^{(4)} \times \sigma'(x^{(3)}) \Arrow{Subtituindo os valores} \\
@@ -935,7 +935,7 @@ De forma semelhante, é finalmente possível encontrar o gradiente retropropagad
 
 Note que o gradiente que entrou ao ser calculado pela perda era de 1, no final da camada chegou apenas 0.001, ou seja, ele diminui mil vezes. Se considerarmos uma situação como esta, em que a derivada função de ativação irá retornar uma valor baixo, esse valor será multiplicado com os outros termos da expressão fazendo com que o valor total do gradiente retropropagado naquela camada seja baixo. Nós também vimos que redes em que é utilizada a retropropagação, cálculo do gradiente é utilizado como forma de fazer com que os pesos e vieses dos neurônios se atualizem e com isso a rede aprenda. E se os pesos são atualizados com uma variação muito pequena quando comparamos com seus valores anteriores, isso significa que essa rede estaria dando pequenos passos para encontrar a sua função. 
 
-Ao passar valores muito extremos para uma função de ativação sigmoide, estamos prejudicando o aprendizado de uma rede neural, pois isso implica em derivadas com valores pequenos e consequentemente gradientes retropropagados pequenos. Agora imagine que em uma rede neural pode existir diversas camadas densas que usem a função sigmoide, se cada vez que o gradiente passar para a camada anterior ele diminuir, isso signica que na primeira camada, a última a ter seus pesos atualizados, o gradiente será tão pequeno que pode ser que não contribua para que a rede aprenda corretamente. É como se toda vez que passasse um valor muito extremo para a rede, o tamanho do passo que ela dá em direção a função procurada diminuísse. Assim, tem-se o problema do desaparecimento do gradiente.
+Ao passar valores muito extremos para uma função de ativação sigmoide, estamos prejudicando o aprendizado de uma rede neural, pois isso implica em derivadas com valores pequenos e consequentemente gradientes retropropagados pequenos. Agora imagine que em uma rede neural pode existir diversas camadas densas que usem a função sigmoide, se cada vez que o gradiente passar para a camada anterior ele diminuir, isso significa que na primeira camada, a última a ter seus pesos atualizados, o gradiente será tão pequeno que pode ser que não contribua para que a rede aprenda corretamente. É como se toda vez que passasse um valor muito extremo para a rede, o tamanho do passo que ela dá em direção a função procurada diminuísse. Assim, tem-se o problema do desaparecimento do gradiente.
 
 \begin{definicaomoderna}{\textbf{Definição:}}
 Quando o gradiente é muito pequeno em valor absoluto, ou até mesmo igual a zero, a atualização do gradiente apresenta quase nenhum impacto nos parâmetros de uma rede neural, fazendo com que não haja progresso nos parâmetros de aprendizado, dessa forma o \textbf{desaparecimento do gradiente} é quando esse fenômeno acontece repetidamente por várias pares de entrada e saída. \parencite{ActivationFunctionsLederer}.
@@ -991,9 +991,9 @@ Tendo visto diferentes funções de ativação sigmoidais, é possível compilá
 \textbf{Indo Além das Funções de Ativação Sigmoidais}
 \medskip
 
-Nesse capítulo foi visto um dos grandes grupos de função de ativação: as funções sigmoidais. Foi visto que elas estiveram presente em uma gama de redes neurais do século passado, fazendo parte da definição da retropopagação e também da rede de Elman, por exemplo. Contudo, a sua natureza saturante fazia com que a sua derivada atingisse valores muito pequenos, como 0.25. Isso atrapalhava a retropopagação do gradiente, que era constantemente multiplicado por escalares pequenos resultando no problema do desaparecimento do gradiente.
+Nesse capítulo foi visto um dos grandes grupos de função de ativação: as funções sigmoidais. Foi visto que elas estiveram presente em uma gama de redes neurais do século passado, fazendo parte da definição da retropropagação e também da rede de Elman, por exemplo. Contudo, a sua natureza saturante fazia com que a sua derivada atingisse valores muito pequenos, como 0.25. Isso atrapalhava a retropropagação do gradiente, que era constantemente multiplicado por escalares pequenos resultando no problema do desaparecimento do gradiente.
 
-Esse problema impedia a criação de redes neurais muito profundas, pois quando mais camadas densas fossem adicionadas, maior era a chance de que seriam adicionadas como função de ativação uma função sigmoidal, aumentando ainda mais o risco de gerar problemas com o gradiente. isso foi um problema sério e que precisava de uma solução, e ela veio de uma forma bem simples e elegante, que foi com o uso da unidade linear retificadora, ou \textit{ReLU}. A \textit{ReLU} e a sua família de funções retificadoras é o tema central do capítulo que sucede este, o Capítulo \ref{cap:ativacao-retificadoras}, ele segue a mesma estrutura deste capítulo, é apresentado o contexto em que essas funções surgiram e se popularizaram, bem como suas fórmulas e derivadas. Além disso, o Capítulo \ref{cap:ativacao-retificadoras} também explica algums problemas que essas funções acabaram causando com o gradiente na rede, sendo eles o \textit{dying ReLUs problem} e o problema do gradiente explosivo.
+Esse problema impedia a criação de redes neurais muito profundas, pois quando mais camadas densas fossem adicionadas, maior era a chance de que seriam adicionadas como função de ativação uma função sigmoidal, aumentando ainda mais o risco de gerar problemas com o gradiente. isso foi um problema sério e que precisava de uma solução, e ela veio de uma forma bem simples e elegante, que foi com o uso da unidade linear retificadora, ou \textit{ReLU}. A \textit{ReLU} e a sua família de funções retificadoras é o tema central do capítulo que sucede este, o Capítulo \ref{cap:ativacao-retificadoras}, ele segue a mesma estrutura deste capítulo, é apresentado o contexto em que essas funções surgiram e se popularizaram, bem como suas fórmulas e derivadas. Além disso, o Capítulo \ref{cap:ativacao-retificadoras} também explica alguns problemas que essas funções acabaram causando com o gradiente na rede, sendo eles o \textit{dying ReLUs problem} e o problema do gradiente explosivo.
 
 \medskip
 \begin{center}
