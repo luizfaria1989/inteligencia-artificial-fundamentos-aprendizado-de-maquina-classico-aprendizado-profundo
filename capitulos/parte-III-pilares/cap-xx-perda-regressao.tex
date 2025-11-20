@@ -19,7 +19,7 @@ Essa ideia de medir o quão próximo você está do resultado desejado utilizand
 
 \section{Características das Funções de Perda}
 
-Assim, antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa pode ter. Dito isso, em \textit{Loss Functions and Metrics in Deep Learning}, \textcite{LossesArticle} explicam algumas características desse grupo de funções. Para isso, os autores argumentam que algumas propriedades das funções de perda são: convexidade, diferenciabilidade, robustez, suavidade, esparsidade, monotocidade \parencite{LossesArticle}. Todas essas propriedades devem ser consideradas quando estiver escolhendo a função de perda ideal para resolver um determinado tipo de problema.
+Assim, antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa pode ter. Dito isso, em \textit{Loss Functions and Metrics in Deep Learning}, \textcite{LossesArticle} explicam algumas características desse grupo de funções. Para isso, os autores argumentam que algumas propriedades das funções de perda são: convexidade, diferenciabilidade, robustez, suavidade, esparsidade, monotonicidade \parencite{LossesArticle}. Todas essas propriedades devem ser consideradas quando estiver escolhendo a função de perda ideal para resolver um determinado tipo de problema.
 
 Para isso, cabe agora discutir essas propriedades.
 
@@ -55,7 +55,7 @@ Falando agora da suavidade, ela se relaciona com a questão da continuidade da f
 Uma função de perda que promova a esparsidade deve incentivar o modelo a produzir uma saída esparsa \parencite{LossesArticle}. \textit{LossesArticle} explicam que essa propriedade é útil ao trabalhar com dados de alta dimensão e quando o número de características importantes é pequeno.
 
 \medskip
-\textbf{Monotocidade}
+\textbf{Monotonicidade}
 \medskip
 
 Uma função de perda é monotônica se seu valor diminui à medida que a saída prevista se aproxima da saída verdadeira \parencite{LossesArticle}. Ao escolher uma função de perda que seja monotônica é possível garantir que o processo de otimização do modelo esteja caminhando em direção da solução correta.
@@ -82,11 +82,11 @@ Contudo, o trabalho de Legendre não foi o único responsável por popularizar o
 
 Para isso, Gauss define que o valor mais provável de uma quantidade de medidas de igual precisão é dado pela média aritmética dessas medidas \parencite{Gauss1809}. Com base nisso, \textcite{Gauss1809} se pergunta qual deve ser a lei de probabilidade dos erros para que a média aritmética seja sempre a estimativa mais provável, para resolver esse problema ele utiliza o princípio da máxima-verossimilhança das probabilidades de todos os erros, e com ele, Gauss consegue ser capaz de demonstrar matematicamente que a única função que satisfaz o seu postulado da média aritmética é a própria distribuição Normal.
 
-Sabendo disso, Gauss inverte a lógica: se a probabilidade de um conjunto de erros é maximizada quando a soma dos seus quadrados é minimizada, então o método dos mínimos quadrados é o método que dá a solução mais provável para a suposição de que os erros de medição são normalmente distribuídos \parencite{Gauss1809}. Dessa forma, o matemático foi capaz de adicionar mais embasamento matemático na técnica de Legedre, e com isso aumentando a popularização do \textit{MSE}.
+Sabendo disso, Gauss inverte a lógica: se a probabilidade de um conjunto de erros é maximizada quando a soma dos seus quadrados é minimizada, então o método dos mínimos quadrados é o método que dá a solução mais provável para a suposição de que os erros de medição são normalmente distribuídos \parencite{Gauss1809}. Dessa forma, o matemático foi capaz de adicionar mais embasamento matemático na técnica de Legendre, e com isso aumentando a popularização do \textit{MSE}.
 
 Passado quase 200 anos, o erro quadrático médio se torna uma das principais funções a ser utilizada para calcular o erro dos modelos. Caso você tenha lido o Capítulo~\ref{cap:retropropagacao-gradiente}, pode ter notado que ela foi uma das funções, junto com a sigmoide logística e a equação do neurônio, a ser utilizada para deduzir os cálculos das atualizações de pesos para o algoritmo da retropropagação \parencite{BackpropagationArticle}.
 
-Voltando para analogia do jogo dos dardos, é possível extendê-la para explicar o erro quadrático médio. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e que vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Assim, jogadores que são muito precisos, e com isso acertam dardos mais próximos do centro perdem poucos pontos, contudo, aqueles jogadores que são mais desleixados e acertam longe do centro acabam perdendo muitos pontos, porque seu além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
+Voltando para analogia do jogo dos dardos, é possível estendê-la para explicar o erro quadrático médio. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e que vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Assim, jogadores que são muito precisos, e com isso acertam dardos mais próximos do centro perdem poucos pontos, contudo, aqueles jogadores que são mais desleixados e acertam longe do centro acabam perdendo muitos pontos, porque seu além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
 
 Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do \textit{MSE}. Dito isso, agora cabe finalmente analisar essa função de fato, em primeiro lugar será analisada a sua fórmula, a qual está apresentada na Equação~\ref{eq:mse}.
 
@@ -105,7 +105,7 @@ Em que:
 
 Neste caso, o \textit{MSE} calcula o erro individualmente para cada uma das predições, soma esses valores e em seguida calcula a média.
 
-Tendo a sua equação, é possível também plotar o seu gráfico, para isso, ele pode ser visto na Figura~\ref{fig:mse}. Note que existem duas figuras, a primeira a esquerda, Figura~\ref{fig:mse-2d} mostra uma visão em duas dimensões dessa função de perda. Contudo, pelo fato do cálculo do erro ser uma função de duas variáveis, que apresenta como entradas o valor real para a saída ($y_j$) e o valor previsto pelo modelo ($\hat{y}_j$), a sua representação real deve ser feita com o uso de três dimensões, como mostrado na Figura~\ref{fig:mse-3d}. Dessa forma, é possível ver uma superfície para essa função de perda.
+Tendo a sua equação, é possível também plotar o seu gráfico, para isso, ele pode ser visto na Figura~\ref{fig:mse}. Note que existem duas figuras, a primeira à esquerda, Figura~\ref{fig:mse-2d} mostra uma visão em duas dimensões dessa função de perda. Contudo, pelo fato do cálculo do erro ser uma função de duas variáveis, que apresenta como entradas o valor real para a saída ($y_j$) e o valor previsto pelo modelo ($\hat{y}_j$), a sua representação real deve ser feita com o uso de três dimensões, como mostrado na Figura~\ref{fig:mse-3d}. Dessa forma, é possível ver uma superfície para essa função de perda.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -220,17 +220,14 @@ Note que diferente das funções de ativação em que era calculada a sua deriva
     \label{eq:vetor-gradiente-mse}
 \end{equation}
 
-Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível contruir gráficos como os da Figura~\ref{eq:mse-derivada} para a derivada parcial do \textit{MSE} em relação a $(\hat{y}_j)$. Note também que semelhante as representações do erro quadrático médio, a sua derivada também é apresentada em vistas em duas e três dimensões, isso será algo recorrente nas representações das funções desse capítulo.
+Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível construir gráficos como os da Figura~\ref{eq:mse-derivada} para a derivada parcial do \textit{MSE} em relação a $(\hat{y}_j)$. Note também que semelhante as representações do erro quadrático médio, a sua derivada também é apresentada em vistas em duas e três dimensões, isso será algo recorrente nas representações das funções desse capítulo.
 
 \begin{figure}[h!]
-    \centering % Centraliza a figura na página
-
-    % --- SUBFIGURA (a): Gráfico 2D da Derivada do MSE ---
+    \centering 
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Erro ($e = \hat{y} - y$)},
@@ -238,22 +235,19 @@ Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível co
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
-                xmin=-3.5, xmax=3.5,        % Limites do seu gráfico
-                ymin=-6.5, ymax=6.5,         % Limites do seu gráfico
+                xmin=-3.5, xmax=3.5,
+                ymin=-6.5, ymax=6.5,
                 legend pos=north west,
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-                % Gráfico da função 2*x
                 \addplot[
                     domain=-3:3, 
                     samples=100, 
                     color=red, 
                     very thick
                 ] {2*x};
-                
-                % Mantendo sua legenda (com o fator 1/N)
                 \addlegendentry{$\frac{\partial L}{\partial \hat{y}} = \frac{2}{N} \cdot e$}
             \end{axis}
         \end{tikzpicture}
@@ -265,7 +259,6 @@ Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível co
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões consistentes com o gráfico (a)
                 width=\linewidth,
                 height=7cm,
                 xlabel={$y$ (Real)},
@@ -400,9 +393,7 @@ Em que:
 Também vale a pena analisar o erro absoluto médio de forma gráfica. Para isso, suas representações em duas e três dimensões estão presentes na Figura~\ref{fig:mae} de forma semelhante ao que foi feito ao apresentar o \textit{MSE}.
 
 \begin{figure}[h!]
-    \centering % Centraliza a figura na página
-
-    % --- SUBFIGURA (a): Gráfico 2D do MAE ---
+    \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -516,9 +507,7 @@ Como foi destacado anteriormente, o \textit{MAE} não é derivável em zero. Ini
 Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atrapalha a plotagem do gráfico do \textit{MAE}, o qual está representado na Figura~\ref{fig:mae-derivada}. De forma semelhante ao que foi feito até agora, na figura da esquerda, a Figura~\ref{fig:mae-derivada-2d}, está a representação em duas dimensões dessa função, enquanto na figura da direta, a Figura~\ref{fig:mae-derivada-3d}.
 
 \begin{figure}[h!]
-    \centering % Centraliza a figura na página
-
-    % --- SUBFIGURA (a): Gráfico 2D da Derivada do MAE ---
+    \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -671,9 +660,7 @@ Em que:
 É possível também representar a perda de Huber utilizando gráficos, para isso, ela pode ser vista na Figura~\ref{fig:huber-loss}. Para isso, na Figura~\ref{fig:huber-2d} está representado a visualização em duas dimensões dessa função, enquanto na Figura~\ref{fig:huber-3d} está a representação no espaço da superfície, assim como o que vem sendo feito até agora. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
 
 \begin{figure}[h!]
-    \centering % Centraliza a figura na página
-
-    % --- SUBFIGURA (a): Gráfico 2D da Huber Loss ---
+    \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -759,7 +746,6 @@ Um ponto a ser destacado ao utilizar a perda de Huber é com relação a escolha
 
 \begin{figure}[h!]
     \centering
-    % Figura da Esquerda (Parecida com MAE)
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -983,7 +969,7 @@ Dito isso, vale citar os trabalhos:
 
 \begin{itemize}
     \item \textbf{Previsão de custos (Saúde):} Em \textit{A Huber loss-based super learner with applications to healthcare expenditures}, \textcite{HuberLossSuperLearner} desenvolvem um algoritmo de \textit{ensemble} chamado de \textit{Super Leaner} que tem como um dos objetivos fazer a previsão de custos para a área da saúde. Para isso, os autores usam uma série de outros métodos para compor o \textit{Super Leaner}, como máquinas de vetores de suporte e florestas aleatórias, além disso, para calcular a perda é feito uso da perda de Huber \parencite{HuberLossSuperLearner};
-    \item \textbf{Visão computacional de veículos autônomos (Automotiva):} Além disso, no trabalho \textit{Robust Aleatoric Modeling for Future Vehicle Localization},\textcite{RobustAleatoricModelingVehicleLocalization} apresentam uma rede \textit{feedfoward} para previsão robusta para fazer a localização de objetos com intuito de ser utilizada em veículos autônomos. Para fazer isso, os autores adotam a perda de Huber como função de perda para o modelo, como justificativa, eles explicam que ela apresenta a capacidade de treinar modelos de forma robusta contra caixas delimitadoras de referência (\textit{ground-truth}) anormais ou discrepantes;
+    \item \textbf{Visão computacional de veículos autônomos (Automotiva):} Além disso, no trabalho \textit{Robust Aleatoric Modeling for Future Vehicle Localization},\textcite{RobustAleatoricModelingVehicleLocalization} apresentam uma rede \textit{feedforward} para previsão robusta para fazer a localização de objetos com intuito de ser utilizada em veículos autônomos. Para fazer isso, os autores adotam a perda de Huber como função de perda para o modelo, como justificativa, eles explicam que ela apresenta a capacidade de treinar modelos de forma robusta contra caixas delimitadoras de referência (\textit{ground-truth}) anormais ou discrepantes;
     \item \textbf{Filtragem de tendências (Área):} Já no texto \textit{RobustTrend: A Huber Loss with a Combined First and Second Order Difference Regularization for Time Series Trend Filtering}, \textcite{RobustTrendHuberLoss} discutem um novo algoritmo de filtragem de tendências em séries temporais, de forma que o objetivo é extrair o sinal de tendência de uma série temporal mesmo quando houver \textit{outliers} ou variações abruptas na tendência. Com esse objetivo em mente, os autores utilizam a perda de Huber como a função de perda escolhida para ser otimizada \parencite{RobustTrendHuberLoss}. A escolha da perda de Huber é ideal para esse tipo de problema, dado que como os autores explicam, existe a presença de \textit{outliers} nos dados que estão sendo analisados;
     \item \textbf{Aplicação 4 (Área):} Por vim, vale citar o artigo \textit{Adaptive Huber Regression} dos pesquisadores \textcite{AdaptiveHuberRegression}, nele, é proposta uma mudança no parâmetro de robustificação da perda de Huber, o qual antes era fixo e agora passa a ser variável, considerando o tamanho da amostra, dimensão dos dados e outros parâmetros. Para testar essa nova forma de lidar com a perda de Huber, os autores utilizam o \textit{dataset} NCI-60, o qual possui 60 linhas de células de câncer humano \parencite{AdaptiveHuberRegression}.
 \end{itemize}
@@ -1127,9 +1113,7 @@ Visto essas diferentes propriedades dessa função, cabe agora analisar a sua de
 Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o qual está representado na Figura~\ref{eq:log-cosh-derivada}. Caso você leitor tenha lido o Capítulo~\ref{cap:ativacao-sigmoidais}, você não verá nada novo aqui, é apenas o gráfico característico em formato de ``S'' que as funções sigmoidais possuem. Um ponto interessante a ser destacado ao analisar a figura é que as saídas dessa função serão em um intervalo $[-1, 1]$, o que podem fazer com que o sinal do gradiente fique alternando, garantindo uma convergência mais rápida em alguns casos.
 
 \begin{figure}[h!]
-    \centering % Centraliza a figura na página
-
-    % --- SUBFIGURA (a): Gráfico 2D da Derivada da Log-Cosh ---
+    \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -1268,7 +1252,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-Com relação ao seu gráfico, ele pode visto na Figura~\ref{fig:msle-loss}. Na Figura~\ref{fig:msle-2d}, a esquerda, está a visão em duas dimensões dessa função, enquanto na Figura~\ref{fig:msle-3d}, a direita, está a visão em três dimensões. Perceba que a adição do logaritmo para essa função traz alguns benefícios como a continuidade em seus pontos além de garantir uma superfície suave e diferenciável. Contudo, a principal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
+Com relação ao seu gráfico, ele pode visto na Figura~\ref{fig:msle-loss}. Na Figura~\ref{fig:msle-2d}, à esquerda, está a visão em duas dimensões dessa função, enquanto na Figura~\ref{fig:msle-3d}, à direita, está a visão em três dimensões. Perceba que a adição do logaritmo para essa função traz alguns benefícios como a continuidade em seus pontos além de garantir uma superfície suave e diferenciável. Contudo, a principal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
 
 \begin{figure}[h!]
     \centering 
@@ -1378,7 +1362,7 @@ Cabe também discutir as derivadas do \textit{MSLE}, as quais serão úteis para
     \label{eq:msle-derivada}
 \end{equacaodestaque}
 
-Em seguida, é possível ver representação gráfica da derivada da Equação~\ref{eq:msle-derivada} na Figura~\ref{fig:msle-derivada}. Seguindo a mesma regra das outras figuras apresentadas até agora, na Figura~\ref{fig:msle-derivada-2d}, a esquerda, está a representação em duas dimensões, enquanto na Figura~\ref{fig:msle-derivada-3d}, a direita, está a representação da superfície no espaço.
+Em seguida, é possível ver representação gráfica da derivada da Equação~\ref{eq:msle-derivada} na Figura~\ref{fig:msle-derivada}. Seguindo a mesma regra das outras figuras apresentadas até agora, na Figura~\ref{fig:msle-derivada-2d}, à esquerda, está a representação em duas dimensões, enquanto na Figura~\ref{fig:msle-derivada-3d}, à direita, está a representação da superfície no espaço.
 
 \begin{figure}[h!]
     \centering 
@@ -1545,13 +1529,13 @@ Dito isso, vale destacar os trabalhos:
 \end{center}
 \medskip
 
-Visto o erro quadrático logarítimico médio, uma função de perda assimétrica que tem como principal caracterísitca a tendência de penalizar mais as subestimações feitas pelo modelo, o próximo passo é discutir agora uma função que possua a característica contrária, de penalizar mais as superestimações. Para isso, é preciso ir para a próxima seção dessa capítulo, que analisa funções de perda que calculam a perda levando em consideração outros cálculos, além da média, e nela estudar a perda quantílica, que pode ser ajustada de forma que possa penalizar mais as subestimações ou as superestimações, dependendo de como seus parâmetros são ajustados.
+Visto o erro quadrático logarítmico médio, uma função de perda assimétrica que tem como principal característica a tendência de penalizar mais as subestimações feitas pelo modelo, o próximo passo é discutir agora uma função que possua a característica contrária, de penalizar mais as superestimações. Para isso, é preciso ir para a próxima seção dessa capítulo, que analisa funções de perda que calculam a perda levando em consideração outros cálculos, além da média, e nela estudar a perda quantílica, que pode ser ajustada de forma que possa penalizar mais as subestimações ou as superestimações, dependendo de como seus parâmetros são ajustados.
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
 Até agora todas as funções de perda vistas possui um detalhe em comum: elas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Mas existem funções de perda que vão além do cálculo da média para calcular o erro de um modelo de regressão.
 
-Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana, mas e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para a esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para a direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
+Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana, mas e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
 
 \begin{figure}[h!]
     \centering 
@@ -2056,7 +2040,7 @@ Dito isso, vale citar os trabalhos:
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):} Em \textit{Mixed–frequency quantile regressions to forecast Value–at–Risk and Expected Shortfall}, \textcite{candila2023mixedfrequencyquantileregressionsforecast} utilizam da regressão quantílica como uma forma de prever o \textit{VaR} e o \textit{expected shortfall} (\textit{ES}), para isso, eles criam utilizam de uma técnica diferente, em que é feito o uso de regressões quantílicas de frequência mista. Para fazer isso, os autores combinam dados macroêconomicos de baixa frequência (que são mensais), com dados de mercado de alta frequência (os quais são diários) \parencite{candila2023mixedfrequencyquantileregressionsforecast}. Além disso, \textcite{candila2023mixedfrequencyquantileregressionsforecast} exploram esse novo modelo criado com dados reais, utilizando duas commodities energéticas chamadas Crude Oil and Gasoline futures;
     \item \textbf{Aplicação 2 (Área):} Outro trabalho que também faz uso da regressão quantílica é o \textit{CAViaR: Conditional Autoregressive Value at Risk by Regression Quantiles}, nele, \textcite{Engle2004CAViaR} apresenta o \textit{Conditional Autoregressive Value at Risk} ou \textit{CAViaR}. O \textit{CAViaR}, como os autores explicam no texto, propõe uma alternativa diferente para calcular o \textit{VaR}, ao invés de ser modelado toda a distribuição, com o \textit{CAViaR} é calculado apenas o quantil desejado, isso pode ser calculado com o uso da regressão quantílica, e consequentemente com a função de perda quantílica \parencite{Engle2004CAViaR};
-    \item \textbf{Aplicação 3 (Área):} Além disso, vale citar também o artigo \textit{Reforming health care: Evidence from quantile regressions for counts} de \textcite{WINKELMANN2006131}, nele, a regressão quantílica para contagens é utilizada para estimar o efeito de uma reforma na saúde sobre a frequência de consultas médicas inviduais. O autor justifica a escolha de ser feita uma regressão quantílica, e não uma técnica mais comum, como a dos mínimos quadrados, pois ele considera que esse é um problema em que os efeitos da reforma são diferentes em cada uma das partes da distribuição \parencite{WINKELMANN2006131}. Neste cenário, em que a distribuição de dados foge da distribuição normal, uma alternativa para lidar com isso é utilizar a perda quantílica\footnote{Além disso, caso você leitor esteja procurando funções de perdas para lidar com distribuições que não seguem a distribuição normal, vale a pena dar uma olhada na Seção~\ref{sec:perdas-baseadas-em-distribuicoes-de-dados}. Nela, são explicadas duas funções de perda que podem ser utilizadas nesse cenário: a perda de Poisson e a perda de Tweedie.}.
+    \item \textbf{Aplicação 3 (Área):} Além disso, vale citar também o artigo \textit{Reforming health care: Evidence from quantile regressions for counts} de \textcite{WINKELMANN2006131}, nele, a regressão quantílica para contagens é utilizada para estimar o efeito de uma reforma na saúde sobre a frequência de consultas médicas individuais. O autor justifica a escolha de ser feita uma regressão quantílica, e não uma técnica mais comum, como a dos mínimos quadrados, pois ele considera que esse é um problema em que os efeitos da reforma são diferentes em cada uma das partes da distribuição \parencite{WINKELMANN2006131}. Neste cenário, em que a distribuição de dados foge da distribuição normal, uma alternativa para lidar com isso é utilizar a perda quantílica\footnote{Além disso, caso você leitor esteja procurando funções de perdas para lidar com distribuições que não seguem a distribuição normal, vale a pena dar uma olhada na Seção~\ref{sec:perdas-baseadas-em-distribuicoes-de-dados}. Nela, são explicadas duas funções de perda que podem ser utilizadas nesse cenário: a perda de Poisson e a perda de Tweedie.}.
 \end{itemize}
 
 \medskip
@@ -2224,7 +2208,7 @@ Cabe agora discutir também o cálculo da derivada dessa função, que será út
     \label{eq:epsilon-insensitive-derivada}
 \end{equacaodestaque}
 
-Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfico, o qual pode ser visto na Figura~\ref{fig:epsilon-derivada-completa}. No gráfico da esquerda, na Figura~\ref{fig:epsilon-derivada-2d}, está a represetação de uma vista em duas dimensões da perda $\epsilon$-insensível. Já no gráfico da direta, na Figura~\ref{fig:epsilon-derivada-3d}, está a superfície da derivada parcial da perda em relação as predições $\hat{y}$ do modelo.
+Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfico, o qual pode ser visto na Figura~\ref{fig:epsilon-derivada-completa}. No gráfico da esquerda, na Figura~\ref{fig:epsilon-derivada-2d}, está a representação de uma vista em duas dimensões da perda $\epsilon$-insensível. Já no gráfico da direta, na Figura~\ref{fig:epsilon-derivada-3d}, está a superfície da derivada parcial da perda em relação as predições $\hat{y}$ do modelo.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura
@@ -2545,10 +2529,6 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
                 title={Superfície 3D (Valores Baixos)},
                 zmin=-2, zmax=5
             ]
-                % Superfície Poisson: y_hat - y_real * ln(y_hat)
-                % No pgfplots 3d: x é o eixo 1, y é o eixo 2.
-                % Vamos definir x = y (Real) e y = y_hat (Previsto)
-                % Formula: y - x * ln(y)
                 \addplot3[
                     mesh,           
                     color=purple,   % Cor consistente com o gráfico 2D
@@ -2732,7 +2712,7 @@ Com base nessa equação, o próximo passo é plotar o gráfico dessa derivada, 
     \fonte{O autor (2025).}
 \end{figure}
 
-Além disso, como foi visto anteriomente, a função exponencial é utilizada como uma link function para resolver o problema dos dados da saída do modelo $\hat{y}$ serem sempre positivos, de forma que é possível escrever uma nova expressão, e até mais simplificada para o cenário em que $\text{exp}$ é combinada com a perda de Poisson para servir como uma link function. Dessa forma, essa expressão pode ser vista na Equação xx.
+Além disso, como foi visto anteriormente, a função exponencial é utilizada como uma link function para resolver o problema dos dados da saída do modelo $\hat{y}$ serem sempre positivos, de forma que é possível escrever uma nova expressão, e até mais simplificada para o cenário em que $\text{exp}$ é combinada com a perda de Poisson para servir como uma link function. Dessa forma, essa expressão pode ser vista na Equação xx.
 
 \begin{equacaodestaque}{Derivada da Perda de Poisson Com exp como Link Function}
     \frac{\partial\Loss_{\text{Poisson}}}{\partial\hat{y}_j} = \hat{y}_j - y_j%
@@ -2757,8 +2737,8 @@ Dito isso, vale citar os trabalhos:
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):} Em \textit{Poisson regression in epidemiology}, \textcite{poisson-regression-in-epidemiology} faz uso da regressão de poisson para estimar os efeitos dos fatores de risco em incidência ou em taxas de mortalidade. Além disso, a regressão de Poisson também é utilizada no artigo para avaliar a relação dose-resposta para variáveis que representam níveis quantitativos de exposição \parencite{poisson-regression-in-epidemiology};
-    \item \textbf{Predição de taxas de crime (Área):} Já em \textit{Poisson-Based Regression Analysis of Aggregate Crime Rates} \textcite{poisson-regression-for-crime-rates} utiliza modelos baseados na regressão de Poisson para analisar taxas de crime agregadas. O autor explica que no cenário em que estava trabalhando, a técnica de regressão por mínimos quadrados (a qual faz uso do erro quadrático médio, visto no ínicio do capítulo), não é ideal, uma vez o tamanho da população de uma unidade agregada é pequeno quando comparado relativamente com a taxa de ofensas; de forma que as taxas de crime devem ser computadas a partir de um pequeno número de ofensas \parencite{poisson-regression-for-crime-rates};
-    \item \textbf{Predição de sinistros em planos de saúde privados (Área):} Por fim, no trabalho \textit{Poisson regression and Zero-inflated Poisson regression: application to private health insurance data} \textcite{poisson-regression-and-zero-inflated-poisson-regression} utilizam a regressão de Poisson e uma técnica de regressão conhecida como regressão de Poisson zero-inflada, que é útil para dados que possuem um excesso de zeros. Para comparar e entender melhor qual técnica de regressão é mais interessante, os autores trabalham com o número de sinistros em um plano de saúde privado, no caso dos pesquisadores, o número de sinistros apresenta sobredispersão devido a predominância de zeros no conjunto de dados, de forma que a regressão de Poisson zero-inflada provou ser mais eficente para lidar com esse tipo de problema \parencite{poisson-regression-and-zero-inflated-poisson-regression}.
+    \item \textbf{Predição de taxas de crime (Área):} Já em \textit{Poisson-Based Regression Analysis of Aggregate Crime Rates} \textcite{poisson-regression-for-crime-rates} utiliza modelos baseados na regressão de Poisson para analisar taxas de crime agregadas. O autor explica que no cenário em que estava trabalhando, a técnica de regressão por mínimos quadrados (a qual faz uso do erro quadrático médio, visto no início do capítulo), não é ideal, uma vez o tamanho da população de uma unidade agregada é pequeno quando comparado relativamente com a taxa de ofensas; de forma que as taxas de crime devem ser computadas a partir de um pequeno número de ofensas \parencite{poisson-regression-for-crime-rates};
+    \item \textbf{Predição de sinistros em planos de saúde privados (Área):} Por fim, no trabalho \textit{Poisson regression and Zero-inflated Poisson regression: application to private health insurance data} \textcite{poisson-regression-and-zero-inflated-poisson-regression} utilizam a regressão de Poisson e uma técnica de regressão conhecida como regressão de Poisson zero-inflada, que é útil para dados que possuem um excesso de zeros. Para comparar e entender melhor qual técnica de regressão é mais interessante, os autores trabalham com o número de sinistros em um plano de saúde privado, no caso dos pesquisadores, o número de sinistros apresenta sobredispersão devido a predominância de zeros no conjunto de dados, de forma que a regressão de Poisson zero-inflada provou ser mais eficiente para lidar com esse tipo de problema \parencite{poisson-regression-and-zero-inflated-poisson-regression}.
 \end{itemize}
 
 \subsection{Deviância Gamma (Gamma Devience)}%
@@ -3233,13 +3213,13 @@ Em que:
             \midrule
             Erro quadrático médio (\textit{MSE}) & -  \\
             \addlinespace
-            Erro asboluto médio (\textit{MAE}) & - \\
+            Erro absoluto médio (\textit{MAE}) & - \\
             \addlinespace
             Perda de Huber (\textit{Huber loss}) & - \\
             \addlinespace
             Perda log-cosh (\textit{Log-cosh loss}) & - \\
             \addlinespace
-            Erro quadrático logarítimico médio (\textit{MSLE}) & - \\
+            Erro quadrático logarítmico médio (\textit{MSLE}) & - \\
             \addlinespace
             Perda quantílica (\textit{Quantile loss}) & - \\
             \addlinespace
@@ -3274,9 +3254,9 @@ Em que:
 \textbf{Indo Além das Funções de Perda Para Regressão}
 \medskip
 
-Nesse capítulo foi visto uma série de funções de perdas que tinham uma característica em comum: são utilizadas para lidar com problemas de regressão. Contudo, esse não é o único conjunto de funções de perda que existe. Existem funções de perda que são ideais para problemas de classifição, seja ele com duas classes (binário), ou multi-classe, essas funções são o tópico central do Capítulo~\ref{cap:perda-classificacao}. Além disso, existem vários outros tipos de problemas, alguns bem mais específicos, como reconhecer objetos em uma foto, para isso, o Capítulo~\ref{cap:perdas-especificas} busca fazer uma coletânea de outras funções de perda para situações mais específicas ao se contruir um modelo de aprendizado de máquina.
+Nesse capítulo foi visto uma série de funções de perdas que tinham uma característica em comum: são utilizadas para lidar com problemas de regressão. Contudo, esse não é o único conjunto de funções de perda que existe. Existem funções de perda que são ideais para problemas de classificação, seja ele com duas classes (binário), ou multi-classe, essas funções são o tópico central do Capítulo~\ref{cap:perda-classificacao}. Além disso, existem vários outros tipos de problemas, alguns bem mais específicos, como reconhecer objetos em uma foto, para isso, o Capítulo~\ref{cap:perdas-especificas} busca fazer uma coletânea de outras funções de perda para situações mais específicas ao se construir um modelo de aprendizado de máquina.
 
-Contudo, foram vistas apenas as funções de perda, e foi visto também que algumas podem servir como métricas, indicando de forma mais simples e direta se o modelo está performando bem ou não. Assim, um complemento para esse capítulo agora que você leitor conhece as funções de perda para regressão, é ler também o capítulo seguinte a este, o Capítulo~\ref{cap:metricas-de-avaliacao-para-regressao}. Ele é dedicado a explicar diferentes métricas que podem ser utilizadas para avaliar um modelo de regressão. De forma que será possível conhecer não só a função de perda ideal, mas também o conjunto de métricas ideiais para avaliar o modelo desenvolvido.
+Contudo, foram vistas apenas as funções de perda, e foi visto também que algumas podem servir como métricas, indicando de forma mais simples e direta se o modelo está performando bem ou não. Assim, um complemento para esse capítulo agora que você leitor conhece as funções de perda para regressão, é ler também o capítulo seguinte a este, o Capítulo~\ref{cap:metricas-de-avaliacao-para-regressao}. Ele é dedicado a explicar diferentes métricas que podem ser utilizadas para avaliar um modelo de regressão. De forma que será possível conhecer não só a função de perda ideal, mas também o conjunto de métricas ideais para avaliar o modelo desenvolvido.
 
 \medskip
 \begin{center}
