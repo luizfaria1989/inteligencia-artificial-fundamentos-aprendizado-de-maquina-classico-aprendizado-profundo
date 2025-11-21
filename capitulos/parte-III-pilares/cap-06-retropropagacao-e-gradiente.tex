@@ -2,11 +2,11 @@
 % Arquivo: capitulos/parte-III-pilares/cap-06-retropropagacao-e-gradiente.tex
 % ===================================================================
 
-\chapter{O Algoritmo da Retropropagação e Os Otimizadores Baseados em Gradiente}
+\chapter{O Algoritmo da Retropropagação e Os Otimizadores Baseados em Gradiente}%
 \label{cap:retropropagacao-gradiente}
 
 \begin{flushright}
-\textit{"Pra lá é pra baixo? É. Então eu vou pra lá."} \\
+\textit{``Pra lá é pra baixo? É. Então eu vou pra lá.''} \\
 --- A filosofia de vida do gradiente descendente
 \end{flushright}
 
@@ -28,7 +28,8 @@ Conhecendo esses dois tópicos, é possível aprofundar em métodos mais elabora
 % Método do Gradiente Descendente
 % ===================================================================
 
-\section{O Método do Gradiente Descendente: O Motor da Retropropagação} \index{Otimizadores!Método do Gradiente}
+\section{O Método do Gradiente Descendente: O Motor da Retropropagação}%
+\index{Otimizadores!Método do Gradiente}
 
 O \gls{gradiente-descendente} faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em português) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
@@ -55,10 +56,10 @@ A bússola e o lago servem como uma analogia para entender como o método do gra
 
 \subsection{O Método em Si}
 
-A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \textit{Deep Learning}, \textcite{DeepLearningBook} explicam essa ferramenta através da Equação \ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
+A vantagem do método do gradiente é que ele é uma ferramenta matemática, e por isso pode ser representado utilizando notações mais formais e de forma enxuta. As notações utilizadas por Cauchy são diferentes das que são utilizadas hoje em dia, mas o seu significado não muda. Em \textit{Deep Learning}, \textcite{DeepLearningBook} explicam essa ferramenta através da Equação~\ref{eq:metodo-do-gradiente} que deve ser repetida por múltiplos passos até o modelo convergir, ou seja, encontrar o ponto de mínimo da função estudada.
 
 \begin{equacaodestaque}{Método do Gradiente Descendente}
-    \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t)
+    \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t)%
     \label{eq:metodo-do-gradiente}
 \end{equacaodestaque}
 
@@ -73,19 +74,19 @@ Em que:
 
 Note que assim como no método proposto por Cauchy, é pego como base o inverso do vetor gradiente. Isso ocorre pois o vetor gradiente é um vetor especial que tem como principal propriedade apontar para a direção de maior crescimento de uma função no ponto que está sendo calculada. Mas no método, o objetivo não é encontrar o ponto que irá gerar os maiores valores da função, e sim o contrário. Por isso, é tomado inverso do vetor gradiente, que, dessa forma, estará então apontando para a direção de menor crescimento de uma função.
 
-Um ponto a ser destacado nesse método é na hora de escolher uma taxa de aprendizado para ser utilizada no método. Uma taxa de aprendizado muito pequena significa que o passo que o modelo irá dar de um ponto para outro será menor, e com isso implica que ele levará mais passos para encontrar um ponto de mínimo (essa situação pode ser vista na ilustração da esquerda da figura \ref{fig:comparativo-tamanho-do-passo}). É como se você fosse comparar a quantidade de passos que você gasta para andar do seu quarto até a sua cozinha com a quantidade de passos dados por uma formiga até lá, ambos vão chegar no local, mas a formiga certamente irá demorar bem mais. Considerando isso, surge então a hipótese de que quanto maior for o passo, mais rápido será a convergência, mas isso também não funciona muito bem, pois um passo muito largo pode ultrapassar o ponto de mínimo indo parar em outro canto da função, e ficará tentando chegar até o mínimo mas não irá conseguir pois caminha uma distância muito grande de uma só vez, de forma que é possível ver isso acontecendo na ilustração da direita da figura \ref{fig:comparativo-tamanho-do-passo}.
+Um ponto a ser destacado nesse método é na hora de escolher uma taxa de aprendizado para ser utilizada no método. Uma taxa de aprendizado muito pequena significa que o passo que o modelo irá dar de um ponto para outro será menor, e com isso implica que ele levará mais passos para encontrar um ponto de mínimo (essa situação pode ser vista na ilustração da esquerda da Figura~\ref{fig:comparativo-tamanho-do-passo}). É como se você fosse comparar a quantidade de passos que você gasta para andar do seu quarto até a sua cozinha com a quantidade de passos dados por uma formiga até lá, ambos vão chegar no local, mas a formiga certamente irá demorar bem mais. Considerando isso, surge então a hipótese de que quanto maior for o passo, mais rápido será a convergência, mas isso também não funciona muito bem, pois um passo muito largo pode ultrapassar o ponto de mínimo indo parar em outro canto da função, e ficará tentando chegar até o mínimo mas não irá conseguir pois caminha uma distância muito grande de uma só vez, de forma que é possível ver isso acontecendo na ilustração da direita da Figura~\ref{fig:comparativo-tamanho-do-passo}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{../imagens/retropropagacao-gradiente/comparativo-de-passos.png}
-    \caption{Comparativo do tamanho de passos em uma função polinomial.}
+    \caption{Comparativo do tamanho de passos em uma função polinomial.}%
     \label{fig:comparativo-tamanho-do-passo}
     \fonte{O autor (2025).}
 \end{figure}
 
 Na prática, escolher o valor da taxa de aprendizado é uma tarefa que irá depender de modelo em modelo, também irá variar com os diferentes métodos de otimização além da topologia da rede neural que está sendo construída. É sempre recomendado então experimentar diferentes tamanhos de passo, de forma que seja encontrado um que melhor se ajusta ao cenário que está sendo trabalhado.
 
-Outro ponto que deve-se atentar é com relação as funções que estão sendo analisadas ao utilizar o método do gradiente mas também qualquer otimizador que seja baseado nele. Caso tenha uma função convexa (como a representada na ilustração da esquerda da Figura \ref{fig:funcao-convexa-nao-convexa}), em que seu formato lembra um funil, será bem mais fácil para o modelo encontrar o ponto de mínimo global daquela função. Mas se essa função for uma função não convexa (como a representada na ilustração da direita da Figura \ref{fig:funcao-convexa-nao-convexa}), cheia de ondas e com muitos pontos de mínimos locais e pontos de sela, a convergência do modelo será pior, pois existe a chance de que ele fique preso em um ponto de mínimo local ou em um ponto de sela. Isso irá afetar diretamente o desempenho da rede neural que estará sendo criada, fazendo com que ela tenha métricas piores. O problema é que muitas das vezes a função $f(x)$ que estaremos interessados para calcular o desempenho do modelo será não convexa, dificultando o seu aprendizado.
+Outro ponto que deve-se atentar é com relação as funções que estão sendo analisadas ao utilizar o método do gradiente mas também qualquer otimizador que seja baseado nele. Caso tenha uma função convexa (como a representada na ilustração da esquerda da Figura~\ref{fig:funcao-convexa-nao-convexa}), em que seu formato lembra um funil, será bem mais fácil para o modelo encontrar o ponto de mínimo global daquela função. Mas se essa função for uma função não convexa (como a representada na ilustração da direita da Figura~\ref{fig:funcao-convexa-nao-convexa}), cheia de ondas e com muitos pontos de mínimos locais e pontos de sela, a convergência do modelo será pior, pois existe a chance de que ele fique preso em um ponto de mínimo local ou em um ponto de sela. Isso irá afetar diretamente o desempenho da rede neural que estará sendo criada, fazendo com que ela tenha métricas piores. O problema é que muitas das vezes a função $f(x)$ que estaremos interessados para calcular o desempenho do modelo será não convexa, dificultando o seu aprendizado.
 
 \begin{figure}[h!]
 \centering
@@ -153,15 +154,15 @@ Outro ponto que deve-se atentar é com relação as funções que estão sendo a
         \label{fig-funcao-nao-convexa}
     \end{tikzpicture}
 \end{minipage}
-\caption{Comparação entre funções 3D convexas e não-convexas.}
+\caption{Comparação entre funções 3D convexas e não-convexas.}%
 \label{fig:funcao-convexa-nao-convexa}
 \fonte{O autor (2025).}
 \end{figure}
 
-Além de ser representado utilizando equações, o método do gradiente pode ser expresso também utilizando pseudocódigo para escrever o Algoritmo \ref{alg:metodo-do-gradiente}. Perceba que ele recebe como parâmetros de entrada uma taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_t$ e uma função de perda $f(\theta)$ a ser otimizada.
+Além de ser representado utilizando equações, o método do gradiente pode ser expresso também utilizando pseudocódigo para escrever o Algoritmo~\ref{alg:metodo-do-gradiente}. Perceba que ele recebe como parâmetros de entrada uma taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_t$ e uma função de perda $f(\theta)$ a ser otimizada.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-    \caption{O Método do Gradiente}
+    \caption{O Método do Gradiente}%
     \label{alg:metodo-do-gradiente}
     \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
 
@@ -184,7 +185,8 @@ Conhecendo o funcionamento do método do gradiente, é possível agora entender 
 % A Retropropagação
 % ===================================================================
 
-\section{A Retropropagação: Aprendendo com os Erros} \index{Retropropagação}
+\section{A Retropropagação: Aprendendo com os Erros}%
+\index{Retropropagação}
 
 Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de rede neural, existe uma ferramenta que trabalha justamente com esse processo, ela é a \gls{retropapagacao} ou \textit{backpropagation} em inglês.
 
@@ -194,10 +196,10 @@ A \textbf{retropropagação} é uma ferramenta que veio para permitir que redes 
 
 Essa ferramenta foi introduzida para a comunidade científica pelos pesquisadores \textcite{BackpropagationArticle} no texto \textit{Learning Representations by Back-Propagating Errors}, e será explicada nessa seção de forma detalhada. Para isso os autores começam introduzindo três diferentes funções que serão utilizadas ao longo do texto para deduzir o os conceitos da retropropagação do gradiente, sendo elas: a equação do neurônio, a função de ativação sigmoide e a função de custo do erro quadrático médio \parencite{BackpropagationArticle}.
 
-A primeira função, representada na Equação \ref{eq:neuronio-camada-densa}, explica como um neurônio de uma camada densa irá funcionar quando recebe determinadas entradas \footnote{Caso você leitor decida olhar o artigo original, verá que os autores utilizaram notações diferentes na fórmula do neurônio, eles utilizam algo na forma $x_i = \sum_i y_i \cdot w_{ji}$, sem o viés, mas na prática, eles adicionam o viés como um peso extra que terá valor fixo igual a 1, na prática, ele pode ser tratado com um peso normal, por isso a notação mais simplificada \parencite{BackpropagationArticle}.}.
+A primeira função, representada na Equação~\ref{eq:neuronio-camada-densa}, explica como um neurônio de uma camada densa irá funcionar quando recebe determinadas entradas\footnote{Caso você leitor decida olhar o artigo original, verá que os autores utilizaram notações diferentes na fórmula do neurônio, eles utilizam algo na forma $x_i = \sum_i y_i \cdot w_{ji}$, sem o viés, mas na prática, eles adicionam o viés como um peso extra que terá valor fixo igual a 1, na prática, ele pode ser tratado com um peso normal, por isso a notação mais simplificada \parencite{BackpropagationArticle}.}.
 
 \begin{equation}
-    x_j = (\sum_i y_i \cdot w_{ji}) + b_j
+    x_j = (\sum_i y_i \cdot w_{ji}) + b_j%
     \label{eq:neuronio-camada-densa}
 \end{equation}
 
@@ -210,19 +212,19 @@ Sendo que:
     \item $b_j$: representa o viés do neurônio $j$.
 \end{itemize}
 
-A segunda fórmula diz respeito a função de ativação que será utilizada, neste caso, \textcite{BackpropagationArticle} utilizam a sigmoide logística, representada na Equação \ref{eq:retropropagacao-sigmoide}, mas eles explicam que essa função pode variar conforme o problema, porém recomendam ter uma derivada limitada além de ser não linear, para que o modelo possa aprender de forma mais eficiente.
+A segunda fórmula diz respeito a função de ativação que será utilizada, neste caso, \textcite{BackpropagationArticle} utilizam a sigmoide logística, representada na Equação~\ref{eq:retropropagacao-sigmoide}, mas eles explicam que essa função pode variar conforme o problema, porém recomendam ter uma derivada limitada além de ser não linear, para que o modelo possa aprender de forma mais eficiente.
 
 \begin{equation}
-    y_j = \sigma(x_j) = \frac{1}{1 + e^{-x_j}}
+    y_j = \sigma(x_j) = \frac{1}{1 + e^{-x_j}}%
     \label{eq:retropropagacao-sigmoide}
 \end{equation}
 
 Assim, a sigmoide é a função que irá transformar a saída do neurônio $x_j$ em uma saída $y_j$ que vai ser passada para o neurônio da camada seguinte. Além das duas notações da equação do neurônio, existe uma terceira, que já embute a função de ativação na equação do neurônio, nesse livro, utilizaremos uma implementação de camadas, em que elas não possuem a função embutida, assim, caso decida que a saída da camada densa deva passar por uma função de ativação, ela deverá ser passada como uma camada separada, sendo algo da forma: camada densa, seguida de camada de ativação.
 
-Por fim, a última equação que os autores discutem para entender a retropropagação é a da função de custo, ou também chamada de erro. No texto, os autores utilizam a função do erro quadrático médio (\textit{MSE}) \parencite{BackpropagationArticle}. A qual calcula o erro entre a saída atual do modelo e o valor real desejado, depois ela eleva ao quadrado esse valor, e por último, divide pela metade. Ela é dada pela Equação \ref{eq:retropropagacao-mse}.
+Por fim, a última equação que os autores discutem para entender a retropropagação é a da função de custo, ou também chamada de erro. No texto, os autores utilizam a função do erro quadrático médio (\textit{MSE}) \parencite{BackpropagationArticle}. A qual calcula o erro entre a saída atual do modelo e o valor real desejado, depois ela eleva ao quadrado esse valor, e por último, divide pela metade. Ela é dada pela Equação~\ref{eq:retropropagacao-mse}.
 
 \begin{equation}
-    E = \frac{1}{2} \sum_{c} \sum_{j} (y_{j, c} - d_{j, c})^2 
+    E = \frac{1}{2} \sum_{c} \sum_{j} (y_{j, c} - d_{j, c})^2%
     \label{eq:retropropagacao-mse}
 \end{equation}
 
@@ -278,7 +280,7 @@ Assim, a primeira etapa é aplicar a regra da cadeia, pois, como a entrada do ne
     \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial x_j}
 \]
 
-Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é resultamente o primeiro, $\partial E / \partial y_j$ que foi calculado e desenvolvido na expressão na primeira parte dessa demonstração, de forma que é possível substituir esse termo na expressão por $y_j - d_j$. A segunda informação, é de que o termo $\partial y_i / \partial x_j$ é justamente a derivada da função de ativação em relação a sua entrada, ou seja, $\sigma'(x_j)$, assim, a derivada da sigmoide será dada por:
+Perceba duas coisas nessa expressão, a primeira é que o primeiro termo é justamente o primeiro, $\partial E / \partial y_j$ que foi calculado e desenvolvido na expressão na primeira parte dessa demonstração, de forma que é possível substituir esse termo na expressão por $y_j - d_j$. A segunda informação, é de que o termo $\partial y_i / \partial x_j$ é justamente a derivada da função de ativação em relação a sua entrada, ou seja, $\sigma'(x_j)$, assim, a derivada da sigmoide será dada por:
 
 \[
     \frac{d y_i}{d x_j} = y_j (1 - y_j)
@@ -294,7 +296,7 @@ Sendo assim, a expressão final fica:
 Note que é possível generalizar essa expressão, dessa forma o gradiente do erro da entrada de um neurônio é o gradiente do erro da saída do neurônio multiplicado pela derivada da função de ativação $\sigma'$ em relação a sua entrada $x_j$.
 
 \begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação à Entrada de um Neurônio}
-    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
+    \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)%
     \label{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}
 \end{equacaodestaque}
 
@@ -314,7 +316,7 @@ O próximo passo vai mais além ainda, agora, como \textcite{BackpropagationArti
     \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot \frac{\partial x_j}{\partial w_{ji}}
 \]
 
-Note que o primeiro termo da expressão é justamente o que foi calculado na Equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, portanto, é preciso calcular apenas o segundo termo, $\partial x_i / \partial w_{ji}$, ou seja, a derivada da entrada do do neurônio em relação a um peso específico. Obtendo então a expressão inicial:
+Note que o primeiro termo da expressão é justamente o que foi calculado na Equação~\ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, portanto, é preciso calcular apenas o segundo termo, $\partial x_i / \partial w_{ji}$, ou seja, a derivada da entrada do do neurônio em relação a um peso específico. Obtendo então a expressão inicial:
 
 \[
     \frac{\partial x_j}{\partial w_{ji}} = \frac{\partial}{\partial w_{ji}} \left[ \left( \sum_i y_i \cdot w_{ji} \right) + b_j\right]
@@ -345,10 +347,10 @@ Como $y_i$ é uma constante em relação a $w_{ji}$ a derivada final será dada 
     \frac{\partial x_j}{\partial w_{ji}} = y_i
 \]
 
-Agora é possível voltar para a expressão inicial, obtendo então a expressão final para o gradiente do erro em relação a um peso específico da rede neural, sendo ela dada então pelas equações \ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
+Agora é possível voltar para a expressão inicial, obtendo então a expressão final para o gradiente do erro em relação a um peso específico da rede neural, sendo ela dada então pelas equações~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
 
 \begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Peso de um Neurônio}
-    \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot y_i \quad \text{ou} \quad \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
+    \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot y_i \quad \text{ou} \quad \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i%
     \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}
 \end{equacaodestaque}
 
@@ -370,7 +372,7 @@ O próximo passo não está no artigo original, ele envolve entender como o erro
     \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \cdot \frac{\partial x_j}{\partial b_j}
 \]
 
-O primeiro termo, $\partial E / \partial x_j$, já foi calculado na Equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso focar apenas na segunda parte da expressão, $\partial x_j / \partial b_j$, que é responsável por avaliar como a saída do neurônio $x_j$ varia em relação ao viés $b_j$. Com base, nisso, é possível chegar na expressão:
+O primeiro termo, $\partial E / \partial x_j$, já foi calculado na Equação~\ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, assim, é preciso focar apenas na segunda parte da expressão, $\partial x_j / \partial b_j$, que é responsável por avaliar como a saída do neurônio $x_j$ varia em relação ao viés $b_j$. Com base, nisso, é possível chegar na expressão:
 
 \[
     \frac{\partial E}{\partial b_j} = \frac{\partial}{\partial b_j} \left[ \left( \sum_k y_k \cdot w{jk} \right) + b_j \right]
@@ -382,7 +384,7 @@ Note que os termos que não possuem o viés, como a parte que faz a soma da mult
         \frac{\partial E}{\partial b_j} = \frac{\partial}{\partial b_j} \left[ b_j \right]
 \]
 
-Com base nessa expressão, é possível concluir que a derivada da saída do neurônio em relação ao viés é igual a 1. Assim, voltando para a expressão inicial, temos que o gradiente do erro em relação ao viés de um neurônio específico é dado pelo gradiente do erro da entrada entrada total desse neurônio, ou seja, a Equação \ref{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}.
+Com base nessa expressão, é possível concluir que a derivada da saída do neurônio em relação ao viés é igual a 1. Assim, voltando para a expressão inicial, temos que o gradiente do erro em relação ao viés de um neurônio específico é dado pelo gradiente do erro da entrada entrada total desse neurônio, ou seja, a Equação~\ref{eq:gradiente-do-erro-em-relacao-a-um-vies-de-um-neuronio}.
 
 \begin{equacaodestaque}{Cálculo do Gradiente do Erro em Relação a um Viés de um Neurônio}
     \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial x_j} \quad \text{ou} \quad \frac{\partial E}{\partial b_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
@@ -402,11 +404,11 @@ Em que:
 
 Já que é possível calcular o gradiente do erro em relação a um peso específico de um neurônio, e também em relação a um viés específico de um neurônio, o próximo passo proposto pelos autores é utilizar o método do gradiente como uma forma de atualizar os pesos (e também os vieses no nosso caso) da rede neural, de forma a minimizar o valor do erro com pequenas atualizações em cada um desses parâmetros \parencite{BackpropagationArticle}.
 
-Note que o método do gradiente, explicado na seção anterior diz que para atualizar um parâmetros, é preciso pegar o valor atual do parâmetro, e subtrair dele o valor do gradiente multiplicado pelo tamanho do passo (ou taxa de aprendizado). Dessa forma, a regra de atualização para um peso específico é dada pela Equação \ref{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}
+Note que o método do gradiente, explicado na seção anterior diz que para atualizar um parâmetros, é preciso pegar o valor atual do parâmetro, e subtrair dele o valor do gradiente multiplicado pelo tamanho do passo (ou taxa de aprendizado). Dessa forma, a regra de atualização para um peso específico é dada pela Equação~\ref{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}
 
 
 \begin{equacaodestaque}{Regra de Atualização de um Peso Através do Método do Gradiente}
-    w_{t+1} = w_{t} - \eta \frac{\partial E}{\partial w}
+    w_{t+1} = w_{t} - \eta \frac{\partial E}{\partial w}%
     \label{eq:regra-de-atualizacao-de-um-peso-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
 
@@ -419,10 +421,10 @@ Em que:
     \item $\partial E / \partial w$ representa o gradiente do erro em relação ao peso.
 \end{itemize}
 
-Analogamente, a regra de atualização de um viés pelo método do gradiente é dada pela Equação \ref{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}
+Analogamente, a regra de atualização de um viés pelo método do gradiente é dada pela Equação~\ref{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}
 
 \begin{equacaodestaque}{Regra de Atualização de um Viés Através do Método do Gradiente}
-    b_{j, t+1} = b_{j, t} - \eta \frac{\partial E}{\partial b_j}
+    b_{j, t+1} = b_{j, t} - \eta \frac{\partial E}{\partial b_j}%
     \label{eq:regra-de-atualizacao-de-um-vies-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
 
@@ -433,10 +435,10 @@ Analogamente, a regra de atualização de um viés pelo método do gradiente é 
     \item $\partial E / \partial b_j$ representa o gradiente do erro em relação ao viés.
 \end{itemize}
 
-Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa de neurônios, você não irá lidar com um neurônio específico, e sim como uma conjunto inteiro deles. Dessa forma, eles estarão distribuídos de forma vetorizada, que que terá um vetor de vieses, uma matriz de pesos e um vetor de neurônios. Assim, as Equações \ref{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} e \ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}, resumem as regras de atualização de pesos e vieses, respectivamente, para casos em que estiver lidando com um conjunto de vetores ao invés de somente um dado.
+Um ponto a ser destacado, é que quando estiver trabalhando com uma camada densa de neurônios, você não irá lidar com um neurônio específico, e sim como uma conjunto inteiro deles. Dessa forma, eles estarão distribuídos de forma vetorizada, que que terá um vetor de vieses, uma matriz de pesos e um vetor de neurônios. Assim, as Equações~\ref{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} e~\ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}, resumem as regras de atualização de pesos e vieses, respectivamente, para casos em que estiver lidando com um conjunto de vetores ao invés de somente um dado.
 
 \begin{equacaodestaque}{Regra de Atualização do Vetor de Pesos Através do Método do Gradiente}
-    \mathbf{w}_{t+1} = \mathbf{w}_t - \eta \nabla_{\mathbf{w}} E
+    \mathbf{w}_{t+1} = \mathbf{w}_t - \eta \nabla_{\mathbf{w}} E%
     \label{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
 
@@ -450,7 +452,7 @@ Em que:
 \end{itemize}
 
 \begin{equacaodestaque}{Regra de Atualização do Vetor de Vieses Através do Método do Gradiente}
-    \mathbf{b}_{t+1} = \mathbf{b}_t - \eta \nabla_{\mathbf{b}} E
+    \mathbf{b}_{t+1} = \mathbf{b}_t - \eta \nabla_{\mathbf{b}} E%
     \label{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente}
 \end{equacaodestaque}
 
@@ -474,13 +476,13 @@ Por fim, com base no que foi explicado até agora, é possível entender melhor 
     \item \textbf{Camada 4 (Oculta 3):} Ela possui neurônios com o índice $l$;
 \end{itemize}
 
-O objetivo é calcular o gradiente de um peso da primeira camada de pesos, $w_{ji}$, ou seja, é um peso que conecta um neurônio da camada $i$ com um neurônio da camada $j$. Assim, o primeiro passo é utilizar a fórmula \ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}, que calcula o gradiente do erro em relação a um peso qualquer.
+O objetivo é calcular o gradiente de um peso da primeira camada de pesos, $w_{ji}$, ou seja, é um peso que conecta um neurônio da camada $i$ com um neurônio da camada $j$. Assim, o primeiro passo é utilizar a Equação~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio}, que calcula o gradiente do erro em relação a um peso qualquer.
 
 \[
     \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot y_i
 \]
 
-Para encontrar esse gradiente, é preciso desenvolver a expressão $\partial E / \partial x_j$, que representa o gradiente do erro da entrada de um neurônio $j$ da primeira camada oculta. Para isso, é possível utilizar como base a Equação \ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, obtendo então:
+Para encontrar esse gradiente, é preciso desenvolver a expressão $\partial E / \partial x_j$, que representa o gradiente do erro da entrada de um neurônio $j$ da primeira camada oculta. Para isso, é possível utilizar como base a Equação~\ref{eq:gradiente-do-erro-em-relacao-a-entrada-de-um-neuronio}, obtendo então:
 
 \[
     \frac{\partial E}{\partial x_j} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j)
@@ -518,10 +520,10 @@ Com base nessa expressão, é possível concluir que o gradiente de uma camada i
     \frac{\partial E}{\partial w_{\text{primeira camada}}} \propto (\text{gradiente da saída}) \cdot (w_{\text{camada 3}} \cdot \sigma'_{\text{camada 3}}) \cdot (w_{\text{camada 2}} \cdot \sigma'_{\text{camada 2}})
 \]
 
-Generalizando essa expressão, é possível concluir que o gradiente para uma camada é dado ela Equação \ref{eq:gradiente-para-n-camadas}.
+Generalizando essa expressão, é possível concluir que o gradiente para uma camada é dado ela Equação~\ref{eq:gradiente-para-n-camadas}.
 
 \begin{equacaodestaque}{Gradiente para N Camadas}
-    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma'(x^{(L)})
+    \delta^{(L)} = \left( \left( \textbf{W}^{(L+1)} \right)^T \delta^{(L+1)} \right)  \odot \sigma'(x^{(L)})%
     \label{eq:gradiente-para-n-camadas}
 \end{equacaodestaque}
 
@@ -538,13 +540,13 @@ Em que:
     \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
 \end{itemize}
 
-Assim, com base na Equação \ref{eq:gradiente-para-n-camadas}, é possível compreender como o gradiente irá se propagar ao longo de uma rede neural. Esse é um dos pontos mais importantes, pois, qualquer alteração que mude o fluxo do gradiente em uma rede irá afetar diretamente o treinamento da mesma. Existem certos tipos de função de ativação que afetam diretamente como o gradiente é passado de camada em camada, fazendo com que ao ser propagado pelo \textit{backward pass}, tenha seu valor reduzido consideravelmente, tornando um problema para as primeiras camadas da rede, as quais irão receber um gradiente muito pequeno e com isso as atualizações dos pesos e vieses serão mínimas, e com isso a rede sofra para aprender características mais básicas. 
+Assim, com base na Equação~\ref{eq:gradiente-para-n-camadas}, é possível compreender como o gradiente irá se propagar ao longo de uma rede neural. Esse é um dos pontos mais importantes, pois, qualquer alteração que mude o fluxo do gradiente em uma rede irá afetar diretamente o treinamento da mesma. Existem certos tipos de função de ativação que afetam diretamente como o gradiente é passado de camada em camada, fazendo com que ao ser propagado pelo \textit{backward pass}, tenha seu valor reduzido consideravelmente, tornando um problema para as primeiras camadas da rede, as quais irão receber um gradiente muito pequeno e com isso as atualizações dos pesos e vieses serão mínimas, e com isso a rede sofra para aprender características mais básicas. 
 
-Além disso, existem outras funções de ativação que possuem o efeito inverso, fazendo com que o gradiente "exploda", atrapalhando diretamente como os pesos e vieses serão atualizados no aprendizado da rede.
+Além disso, existem outras funções de ativação que possuem o efeito inverso, fazendo com que o gradiente ``exploda'', atrapalhando diretamente como os pesos e vieses serão atualizados no aprendizado da rede.
 
-Para isso, o Capítulo \ref{cap:ativacao-sigmoidais} foca em entender as principais funções sigmoidais, como a sigmoide e a tangente hiperbólica, e como essas possuem uma forte relação com o problema do desaparecimento de gradientes. Em seguida, o Capítulo \ref{cap:ativacao-retificadoras} busca introduzir as funções retificadoras, como a \textit{ReLU}, e como elas podem ser uma alternativa para contornar esse problema. Contudo, isso não as torna perfeitas, elas ainda são susceptíveis à outro tipo de problema: a explosão de gradientes; e, no caso da \textit{ReLU}: o problema dos \textit{ReLUs} agonizantes.
+Para isso, o Capítulo~\ref{cap:ativacao-sigmoidais} foca em entender as principais funções sigmoidais, como a sigmoide e a tangente hiperbólica, e como essas possuem uma forte relação com o problema do desaparecimento de gradientes. Em seguida, o Capítulo~\ref{cap:ativacao-retificadoras} busca introduzir as funções retificadoras, como a \textit{ReLU}, e como elas podem ser uma alternativa para contornar esse problema. Contudo, isso não as torna perfeitas, elas ainda são susceptíveis à outro tipo de problema: a explosão de gradientes; e, no caso da \textit{ReLU}: o problema dos \textit{ReLUs} agonizantes.
 
-Conhecendo como a retropropagação funciona é possível se aprofundar ainda mais em diferentes otimizadores baseados no gradiente. Os quais possuem a mesma ideia de utilizar o vetor gradiente como uma "bússola" indicando os pontos de mínimo da função, porém neste caso, esses outros métodos buscam acelerar o processo de otimização, garantindo uma quantidade menor de iterações para encontrar o mínimos.
+Conhecendo como a retropropagação funciona é possível se aprofundar ainda mais em diferentes otimizadores baseados no gradiente. Os quais possuem a mesma ideia de utilizar o vetor gradiente como uma ``bússola'' indicando os pontos de mínimo da função, porém neste caso, esses outros métodos buscam acelerar o processo de otimização, garantindo uma quantidade menor de iterações para encontrar o mínimos.
 
 % ===================================================================
 % Otimizadores Baseados em Gradiente
@@ -554,20 +556,21 @@ Conhecendo como a retropropagação funciona é possível se aprofundar ainda ma
 
 Como \textcite{BackpropagationArticle} explicam logo ao terminar a dedução do cálculo da atualização dos pesos utilizando o método do gradiente, esse processo pode ser bastante lento quando comparado com métodos que fazem uso de derivadas de segunda ordem, que certamente são mais caras para serem implementadas no computador. Assim, os autores recomendam uma variação do método do gradiente que faz uso de momento com intuito de acelerar a convergência a um custo computacional menor que o de implementar derivadas de segunda ordem \parencite{BackpropagationArticle}.
 
-Além disso, foram surgindo também outras variantes do método do gradiente, como a sua versão estocástica, trazendo uma natureza aleatória para as iterações do método, bem como o gradiente em \textit{mini-batch}, que permite separar os parâmetros do modelo em lotes, podendo ser treinados de forma incremental. Uma outra variante é o gradiente acelerado de Nesterov, ele se diferencia dos outros otimizadores por adicionar o conceito de "\textit{lookahead}", servindo de inspiração para uma variante do \textit{Adam}, um dos algoritmos de otimização modernos.
+Além disso, foram surgindo também outras variantes do método do gradiente, como a sua versão estocástica, trazendo uma natureza aleatória para as iterações do método, bem como o gradiente em \textit{mini-batch}, que permite separar os parâmetros do modelo em lotes, podendo ser treinados de forma incremental. Uma outra variante é o gradiente acelerado de Nesterov, ele se diferencia dos outros otimizadores por adicionar o conceito de ``\textit{lookahead}'', servindo de inspiração para uma variante do \textit{Adam}, um dos algoritmos de otimização modernos.
 
 Assim, essa seção busca introduzir esses novos métodos, de forma que sejam destacadas as suas diferenças ao método do gradiente tradicional, bem como quais as melhorias eles apresentam. Primeiro será visto o gradiente com momento.
 
-\subsection{Método do Gradiente com Momento} \index{Otimizadores!Método do Gradiente com Momento}
+\subsection{Método do Gradiente com Momento}%
+\index{Otimizadores!Método do Gradiente com Momento}
 
 Uma boa analogia para entender como o \gls{metodo-do-gradiente-com-momento} funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganhando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida com a pedra rolando morro abaixo.
 
-Da mesma forma que o método do gradiente não surgiu originalmente no contexto do aprendizado de máquina, a sua variante com momento não foi diferente. Um os artigos que trabalha com esse conceito de utilizar o momento para acelerar a velocidade do método do gradiente e com isso obter uma convergência mais rápida é o \textit{Some methods of speeding up the convergence of iteration methods}, do pesquisador da URSS \textcite{polyak1964}, nele o autor busca criar métodos iterativos mais rápidos para resolver equações funcionais. Para isso, ele introduz um método de "dois passos", que consiste na junção do método do gradiente com um segundo termo que dá inércia ao método, por último, ele justifica que esse método trás de fato uma convergência mais veloz quando comparado com métodos como o do gradiente.
+Da mesma forma que o método do gradiente não surgiu originalmente no contexto do aprendizado de máquina, a sua variante com momento não foi diferente. Um os artigos que trabalha com esse conceito de utilizar o momento para acelerar a velocidade do método do gradiente e com isso obter uma convergência mais rápida é o \textit{Some methods of speeding up the convergence of iteration methods}, do pesquisador da URSS \textcite{polyak1964}, nele o autor busca criar métodos iterativos mais rápidos para resolver equações funcionais. Para isso, ele introduz um método de ``dois passos'', que consiste na junção do método do gradiente com um segundo termo que dá inércia ao método, por último, ele justifica que esse método trás de fato uma convergência mais veloz quando comparado com métodos como o do gradiente.
 
-O método do gradiente com momento de Polyak pode ser visto na Equação \ref{eq:metodo-do-gradiente-com-momentum-de-polyak}.
+O método do gradiente com momento de Polyak pode ser visto na Equação~\ref{eq:metodo-do-gradiente-com-momentum-de-polyak}.
 
 \begin{equacaodestaque}{Método do Gradiente com Momentum de Polyak}
-        \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t) + \beta(\theta_t - \theta_{t-1})
+        \theta_{t+1} = \theta_t - \eta \nabla f(\theta_t) + \beta(\theta_t - \theta_{t-1})%
     \label{eq:metodo-do-gradiente-com-momentum-de-polyak}
 \end{equacaodestaque}
 
@@ -577,7 +580,7 @@ Em que:
     \item $\theta_{t+1}$: Representa as coordenadas do ponto após a iteração do método;
     \item $\theta_t$: Representa as coordenadas do ponto na iteração $n$;
     \item $\eta$: Representa a taxa de aprendizado / tamanho do passo
-    \item $\beta$: Representa a "inércia", controlando a influência do passo anterior no passo atual;
+    \item $\beta$: Representa a ``inércia'', controlando a influência do passo anterior no passo atual;
     \item $\theta_{t-1}$: Representa as coordenadas do ponto na iteração anterior.
 \end{itemize}
 
@@ -587,10 +590,10 @@ Para calcular $\beta$, \textcite{polyak1964} determina que será utilizada a exp
     \beta = \left( \frac{\sqrt{M} - \sqrt{m}}{\sqrt{M} + \sqrt{m}} \right)^2
 \]
 
-Em que $M$ representa o maior valor da matriz hessiana, enquanto $m$ é o menor valor da matriz hessiana, neste caso, ambos $M$ e $m$ são calculados no ponto de mínimo da função. Isso significa que esses valores não são conhecidos de antemão. Entretanto o maior problema da fórmula proposta por Polyak é que ela exige muitos cálculos, imagine ter que calcular a matriz hessiana de uma função de perda para uma rede que possui milhares ou até milhões de parâmetros, isso é muita coisa e também muito demorado. Assim, no artigo da retropropagação, \textcite{BackpropagationArticle}, apresentam uma fórmula diferente, com intuito diminuir a quantidade de cálculos a serem feitas, mas mantendo a principal característica do método do gradiente com momento: a inércia. Ela é dada pela Equação \ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
+Em que $M$ representa o maior valor da matriz hessiana, enquanto $m$ é o menor valor da matriz hessiana, neste caso, ambos $M$ e $m$ são calculados no ponto de mínimo da função. Isso significa que esses valores não são conhecidos de antemão. Entretanto o maior problema da fórmula proposta por Polyak é que ela exige muitos cálculos, imagine ter que calcular a matriz hessiana de uma função de perda para uma rede que possui milhares ou até milhões de parâmetros, isso é muita coisa e também muito demorado. Assim, no artigo da retropropagação, \textcite{BackpropagationArticle}, apresentam uma fórmula diferente, com intuito diminuir a quantidade de cálculos a serem feitas, mas mantendo a principal característica do método do gradiente com momento: a inércia. Ela é dada pela Equação~\ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
 
 \begin{equacaodestaque}{Método do Gradiente com Momentum de Rumelhart et. al.}
-        \Delta w (t) = \eta \nabla f(x) + \alpha \Delta w(t-1)
+        \Delta w (t) = \eta \nabla f(x) + \alpha \Delta w(t-1)%
     \label{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}
 \end{equacaodestaque}
 
@@ -603,7 +606,7 @@ Em que:
     \item $\alpha$: Representa um fator de decaimento exponencial entre 0 e 1 que determina a contribuição do gradiente passado para o gradiente futuro.
 \end{itemize}
 
-De forma semelhante ao método do gradiente, o método do gradiente com momento utilizando no artigo da retropropagação também pode ser expresso em forma de pseudocódigo como no Algoritmo \ref{alg:metodo-do-gradiente-com-momento}. Perceba que ele recebe como parâmetros os mesmos do método do gradiente, a taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda $f(\theta)$, mas também recebe o coeficiente de momento $\alpha$. Em seguida, calculá-se o vetor gradiente para o instante $t-1$ e com base nele é feita a atualização do vetor de parâmetros seguindo a Equação \ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}.
+De forma semelhante ao método do gradiente, o método do gradiente com momento utilizando no artigo da retropropagação também pode ser expresso em forma de pseudocódigo como no Algoritmo~\ref{alg:metodo-do-gradiente-com-momento}. Perceba que ele recebe como parâmetros os mesmos do método do gradiente, a taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda $f(\theta)$, mas também recebe o coeficiente de momento $\alpha$. Em seguida, calculá-se o vetor gradiente para o instante $t-1$ e com base nele é feita a atualização do vetor de parâmetros seguindo a Equação~\ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{O Método do Gradiente com Momento (versão de \parencite{BackpropagationArticle})}
@@ -634,12 +637,12 @@ Assim como o método do gradiente que faz uso do momento para acelerar a converg
 
 Contudo, apenas nos anos 60 métodos que se baseiam no cálculo de funções de erro com ruido passaram a aparecer no cenário de aprendizado de máquina, como foi o caso dos pesquisadores \textcite{Adeline} com \textit{ADALINE (Adaptive Linear Neuron)}. Nele, os autores buscam otimizar os valores dos pesos dos neurônios de uma rede em que ao calcular o erro do modelo, este era afetado por ruído \parencite{Adeline}
 
-Conforme o tempo foi passando, o \textit{SGD} provou ser uma excelente alternativa para encontrar pontos de mínimo em uma função de perda quando comparado com o método do gradiente tradicional. Isso se dá ao fato da sua natureza estocástica, que o permite "saltar" por pontos de mínimos locais e também por pontos de sela, contudo, ele pode não garantir uma convergência tão boa quando comparado ao método tradicional, podendo chegar muito próximo do ponto de mínimo, mas escapando dele, devido a suas propriedades aleatórias \parencite{MaosAObra}.
+Conforme o tempo foi passando, o \textit{SGD} provou ser uma excelente alternativa para encontrar pontos de mínimo em uma função de perda quando comparado com o método do gradiente tradicional. Isso se dá ao fato da sua natureza estocástica, que o permite ``saltar'' por pontos de mínimos locais e também por pontos de sela, contudo, ele pode não garantir uma convergência tão boa quando comparado ao método tradicional, podendo chegar muito próximo do ponto de mínimo, mas escapando dele, devido a suas propriedades aleatórias \parencite{MaosAObra}.
 
-O \textit{SGD} funciona da seguinte forma: ele seleciona uma instância aleatória do conjunto de treinamento a cada etapa, e com base nessa instância, ele calcula o gradiente \parencite{MaosAObra}. De tal forma que de um lado existe o gradiente descendente vetorizado, que foi visto nas Equações \ref{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} (para a regra de atualização de um vetor de pesos) e \ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente} (para a regra de atualização de um vetor de vises), fazendo as atualizações em todos os parâmetros de uma vez só, enquanto de de outro lado existe o método do gradiente estocástico que utiliza apenas um parâmetro por vez. O SGD certamente será mais rápido, pois precisa que menos parâmetros estejam na memória principal para que as atualizações possam ser feitas, mas por outro lado acaba adicionando aleatoriedade para o processo de otimização.
+O \textit{SGD} funciona da seguinte forma: ele seleciona uma instância aleatória do conjunto de treinamento a cada etapa, e com base nessa instância, ele calcula o gradiente \parencite{MaosAObra}. De tal forma que de um lado existe o gradiente descendente vetorizado, que foi visto nas Equações~\ref{eq:regra-de-atualizacao-do-vetor-de-pesos-atraves-do-metodo-do-gradiente} (para a regra de atualização de um vetor de pesos) e~\ref{eq:regra-de-atualizacao-do-vetor-de-vieses-atraves-do-metodo-do-gradiente} (para a regra de atualização de um vetor de vises), fazendo as atualizações em todos os parâmetros de uma vez só, enquanto de de outro lado existe o método do gradiente estocástico que utiliza apenas um parâmetro por vez. O SGD certamente será mais rápido, pois precisa que menos parâmetros estejam na memória principal para que as atualizações possam ser feitas, mas por outro lado acaba adicionando aleatoriedade para o processo de otimização.
 
 \begin{equacaodestaque}{Método do Gradiente Estocástico (SGD)}
-    \theta_{t+1} = \theta_t - \eta \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})
+    \theta_{t+1} = \theta_t - \eta \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})%
     \label{eq:metodo-do-gradiente-estocastico}
 \end{equacaodestaque}
 
@@ -652,7 +655,7 @@ Em que:
     \item $\nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})$: representa o gradiente da função de custo $J$ em relação aos parâmetros $\theta$. É calculado utilizando apenas uma única amostra $(x^{(i)}, y^{(i)})$ do conjunto de dados.
 \end{itemize}
 
-Por ser um método que depende da aleatoriedade para calcular os parâmetros a serem atualizados, o \textit{SGD} possui um comportamento mais imprevisível. Como pode ser visto na Figura \ref{fig:comparativo-gd-sgd}, enquanto o gradiente em \textit{batch} segue um caminho suave encontrar o ponto de mínimo global, o gradiente estocástico segue uma trajetória irregular, justamente pelo fato de não considerar todos os parâmetros de uma vez. Na prática, isso pode acabar afetando o desempenho do \textit{SGD}, o qual irá demorar mais para convergir, contudo, ele acaba compensando essa demora ao ser mais rápido para calcular as iterações do método.
+Por ser um método que depende da aleatoriedade para calcular os parâmetros a serem atualizados, o \textit{SGD} possui um comportamento mais imprevisível. Como pode ser visto na Figura~\ref{fig:comparativo-gd-sgd}, enquanto o gradiente em \textit{batch} segue um caminho suave encontrar o ponto de mínimo global, o gradiente estocástico segue uma trajetória irregular, justamente pelo fato de não considerar todos os parâmetros de uma vez. Na prática, isso pode acabar afetando o desempenho do \textit{SGD}, o qual irá demorar mais para convergir, contudo, ele acaba compensando essa demora ao ser mais rápido para calcular as iterações do método.
 
 \begin{figure}[h!]
     \centering
@@ -709,7 +712,7 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Comparação visual entre a trajetória suave do Gradiente em Batch e a trajetória ruidosa do Gradiente Estocástico (SGD) para encontrar o mínimo de uma função de custo.}
+    \caption{Comparação visual entre a trajetória suave do Gradiente em Batch e a trajetória ruidosa do Gradiente Estocástico (SGD) para encontrar o mínimo de uma função de custo.}%
     \label{fig:comparativo-gd-sgd}
     \fonte{O autor (2025).}
 \end{figure}
@@ -728,7 +731,7 @@ Uma outra variante do método do gradiente é o \gls{gradiente-acelerado-de-nest
 
 No texto, o autor trás a adição de um novo conceito para encontrar os pontos de mínimos, o chamado ponto de \textit{lookahead} (olhar para frente em português), o qual serve de base para os cálculos do gradiente \parencite{NAGMethod}. Assim o \textit{NAG} possui dois passos: o primeiro consiste no cálculo da predição futura (no ponto de \textit{lookahead}), dando um passo na direção do momento anterior, em seguida, com base nesse novo ponto calculado, é possível encontrar o valor do gradiente e com isso, atualizar os parâmetros da rede neural.
 
-A sua expressão é mostrada na Equação \ref{eq:gradiente-acelerado-de-nesterov}.
+A sua expressão é mostrada na Equação~\ref{eq:gradiente-acelerado-de-nesterov}.
 
 \begin{equacaodestaque}{Gradiente Acelerado de Nesterov (NAG)}
     \begin{aligned}
@@ -741,7 +744,7 @@ A sua expressão é mostrada na Equação \ref{eq:gradiente-acelerado-de-nestero
 Em que:
 
 \begin{itemize}
-    \item $\theta_{\text{lookahead}}$: Representa a posição futura estimada, que serve como ponto de "lookahead".
+    \item $\theta_{\text{lookahead}}$: Representa a posição futura estimada, que serve como ponto de ``lookahead''.
     \item $\theta_{t+1}$: Representa o vetor de parâmetros atualizado após o passo de otimização.
     \item $\theta_t$: Representa o vetor de parâmetros na iteração atual.
     \item $\theta_{t-1}$: Representa o vetor de parâmetros da iteração anterior, usado para calcular o momento.
@@ -752,7 +755,7 @@ Em que:
 
 Note, que o \textit{NAG} é também uma variante do método do gradiente que faz uso do momento ou inércia para atualizar os parâmetros do modelo que está sendo treinado. Essa ideia de utilizar o momento como facilitador, permitindo encontrar pontos de mínimo de forma mais rápida, é utilizada até hoje em alguns otimizadores, o \textit{NAdam}, uma variante do otimizador \textit{Adam}, busca justamente implementar conceitos do gradiente acelerado de Nesterov no \textit{Adam} e com isso conseguir alcançar convergências mais rápidas.
 
-Para melhor entender o funcionamento do ponto de \textit{lookahead} do \textit{NAG}, é possível visualizar a Figura \ref{fig:funcionamento-nag}. Perceba que primeiro o modelo dá um passo em direção ao \textit{lookahead} utilizando o momento, em seguida, é feita a correção da direção utilizando como base o vetor gradiente. Dessa forma, o gradiente acelerado de Nesterov, ao utilizar o momento, consegue acelerar a convergência e com isso, encontrar pontos de mínimo mais rapidamente.
+Para melhor entender o funcionamento do ponto de \textit{lookahead} do \textit{NAG}, é possível visualizar a Figura~\ref{fig:funcionamento-nag}. Perceba que primeiro o modelo dá um passo em direção ao \textit{lookahead} utilizando o momento, em seguida, é feita a correção da direção utilizando como base o vetor gradiente. Dessa forma, o gradiente acelerado de Nesterov, ao utilizar o momento, consegue acelerar a convergência e com isso, encontrar pontos de mínimo mais rapidamente.
 
 \begin{figure}[h!]
     \centering
@@ -788,12 +791,12 @@ Para melhor entender o funcionamento do ponto de \textit{lookahead} do \textit{N
         \node[point, label={[label distance=-1mm]below:$\theta_{t+1}$}] at (theta_t_plus_1) {};
 
     \end{tikzpicture}
-    \caption{Representação visual do funcionamento do gradiente acelerado de Nesterov. Em azul está representado o primeiro passo em direção ao ponto de \textit{lookahead} utilizando o momento. Em vermelho está o segundo passo, com a atualização utilizando o vetor gradiente para corrigir a direção.}
+    \caption{Representação visual do funcionamento do gradiente acelerado de Nesterov. Em azul está representado o primeiro passo em direção ao ponto de \textit{lookahead} utilizando o momento. Em vermelho está o segundo passo, com a atualização utilizando o vetor gradiente para corrigir a direção.}%
     \label{fig:funcionamento-nag}
     \fonte{O autor (2025).}
 \end{figure}
 
-Sabendo o funcionamento do \textit{NAG}, também é possível desenvolver o seu pseudocódigo como no Algoritmo \ref{alg:nag}. Ele irá receber como entradas uma taxa de aprendizado $\eta$, o coeficiente de momento $\mu$, o vetor contendo os parâmetros inicias $\theta_0$ e a função a ser otimizada $f(\theta)$. Com base nisso, se inicia o loop do gradiente acelerado de Nesterov, que começa calculando o vetor gradiente no ponto de \textit{lookahead}, que é seguido da atualização dos parâmetros $\textbf{m}_t$ os quais são utilizados para fazer a atualização do vetor de parâmetros $\theta$. Dessa forma, o loop termina após convergir para o ponto de mínimo, ou até atingir um número máximo de iterações.
+Sabendo o funcionamento do \textit{NAG}, também é possível desenvolver o seu pseudocódigo como no Algoritmo~\ref{alg:nag}. Ele irá receber como entradas uma taxa de aprendizado $\eta$, o coeficiente de momento $\mu$, o vetor contendo os parâmetros inicias $\theta_0$ e a função a ser otimizada $f(\theta)$. Com base nisso, se inicia o loop do gradiente acelerado de Nesterov, que começa calculando o vetor gradiente no ponto de \textit{lookahead}, que é seguido da atualização dos parâmetros $\textbf{m}_t$ os quais são utilizados para fazer a atualização do vetor de parâmetros $\theta$. Dessa forma, o loop termina após convergir para o ponto de mínimo, ou até atingir um número máximo de iterações.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
     \caption{Gradiente Acelerado de Nesterov (\textit{NAG})}
@@ -815,18 +818,16 @@ Sabendo o funcionamento do \textit{NAG}, também é possível desenvolver o seu 
     \end{algorithmic}
 \end{algorithm}
 
-\subsection{Comparativo de Otimizadores Clássicos} \index{Comparativos!Otimizadores Clássicos}
+\subsection{Comparativo de Otimizadores Clássicos}%
+\index{Comparativos!Otimizadores Clássicos}
 
-Por fim, é possível compilar as características desses otimizadores vistos na Tabela \ref{tab:comparativo-otimizadores-classicos}. Dessa forma, é destacado a principal característica do otimizador, bem como suas vantagens e desvantagens.
+Por fim, é possível compilar as características desses otimizadores vistos na Tabela~\ref{tab:comparativo-otimizadores-classicos}. Dessa forma, é destacado a principal característica do otimizador, bem como suas vantagens e desvantagens.
 
 \begin{table}[htbp]
     \centering
     \begin{threeparttable}
-        \caption{Comparativo de otimizadores clássicos}
+        \caption{Comparativo de otimizadores clássicos}%
         \label{tab:comparativo-otimizadores-classicos}
-        % p{3.2cm} define uma largura fixa para a primeira coluna.
-        % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
-        % >{\raggedright\arraybackslash} alinha o texto à esquerda para melhor leitura.
         \begin{tabularx}{\textwidth}{p{3.2cm} *{3}{>{\raggedright\arraybackslash}X}}
             \toprule
             \textbf{Otimizador} & \textbf{Característica principal} & \textbf{Vantagem} & \textbf{Desvantagem} \\
@@ -859,22 +860,23 @@ Conforme os anos foram passando, foram surgindo novos otimizadores, também insp
 
 Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com esses algoritmos apresentassem um desempenho maior. Pois, para características que apareciam menos dos \textit{datasets} era possível atribuir taxas de aprendizados mais altas, como uma forma do modelo prestar mais atenção nessas características. Ao mesmo tempo que atribuir taxas de aprendizado menores para características mais comuns, permitia uma melhor convergência.
 
-\subsection{Adadptive Gradient Algorithm (AdaGrad)} \index{Otimizadores!Adpative Gradient Algorithm (AdaGrad)}
+\subsection{Adadptive Gradient Algorithm (AdaGrad)}%
+\index{Otimizadores!Adpative Gradient Algorithm (AdaGrad)}
 
-Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \gls{adagrad}, foi descrito por \textcite{AdaGradMethod} como uma adaptação dos métodos iterativos baseados em gradiente, que nos permite encontrar "agulhas em palheiros" em forma de características muito preditivas, mas raramente vistas.
+Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \gls{adagrad}, foi descrito por \textcite{AdaGradMethod} como uma adaptação dos métodos iterativos baseados em gradiente, que nos permite encontrar ``agulhas em palheiros'' em forma de características muito preditivas, mas raramente vistas.
 
-O que os autores se referem ao ato de encontrar "agulhas em palheiros", está ligado diretamente na forma como o \textit{AdaGrad} atua para melhorar o desempenho de um modelo tanto para reconhecer características que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim características muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
+O que os autores se referem ao ato de encontrar ``agulhas em palheiros'', está ligado diretamente na forma como o \textit{AdaGrad} atua para melhorar o desempenho de um modelo tanto para reconhecer características que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim características muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
 
-Dessa forma, o modelo que está sendo treinado consegue garantir melhores métricas durante o seu aprendizado, pois estará aprendendo sobre aquilo que aparece muito nos dados de treino, mas, quando aparecer algo diferente e menos comum, ele irá "prestar mais atenção" devido à maior taxa de aprendizado nessas características.
+Dessa forma, o modelo que está sendo treinado consegue garantir melhores métricas durante o seu aprendizado, pois estará aprendendo sobre aquilo que aparece muito nos dados de treino, mas, quando aparecer algo diferente e menos comum, ele irá ``prestar mais atenção'' devido à maior taxa de aprendizado nessas características.
 
-O \textit{AdaGrad} veio como uma forma de aplicar técnicas de aprendizado-teórico para problemas online e aprendizado estocástico, focando concretamente no métodos de (sub)gradiente, de forma que a representação desse algoritmo pode ser vista no Algoritmo \ref{alg:adagrad}.
+O \textit{AdaGrad} veio como uma forma de aplicar técnicas de aprendizado-teórico para problemas online e aprendizado estocástico, focando concretamente no métodos de (sub)gradiente, de forma que a representação desse algoritmo pode ser vista no Algoritmo~\ref{alg:adagrad}.
 
 Esse algoritmo recebe como entradas uma taxa de aprendizado $\eta$, o vetor de parâmetros a serem atualizados $\theta_0$, a função a ser otimizada $f(\theta)$, e um parâmetros de estabilidade $\epsilon$, o qual é adicionado no denominador para evitar que divisões por zero ocorram. O primeiro passo feito pelo \textit{AdaGrad} é iniciar um vetor acumulador $\mathbf{n}_0$ que terá a mesma dimensão dos parâmetros $\theta_0$ e será responsável por armazenar a soma dos quadrados dos gradientes passados para cada parâmetro.
 
 Com isso feito, é então iniciado o loop do \textit{AdaGrad}, o qual irá terminar somente quando o modelo convergir. Primeiro, é calculado o vetor gradiente $\textbf{g}_t$ da função de custo $f$ em relação aos parâmetros atuais da rede, como ele é um vetor gradiente, cabe destacar que ele estará apontando para a direção de maior crescimento da mesma função de custo. Em seguida, é calculado o termo $t$ do vetor acumulador $\mathbf{n}_0$, para isso é somado o valor da interação anterior $\textbf{n}_{t-1}$ ao quadrado elemento a elemento do gradiente atual $\textbf{g}_t$. Por fim, o último passo do loop do \textit{AdaGrad} consiste em atualizar os parâmetros do vetor $\theta_t$, para isso é subtraído do parâmetros da iteração anterior $\theta_{t-1}$ a taxa de aprendizado $\eta$ multiplicada pela divisão do vetor acumulador pela raiz quadrada do acumulador $\textbf{n}_t$.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
-    \caption{AdaGrad}
+    \caption{AdaGrad}%
     \label{alg:adagrad}
     \begin{algorithmic}[1] % O [1] habilita a numeração das linhas
 
@@ -901,12 +903,12 @@ Para comprovar a eficácia do novo algoritmo desenvolvido, \textcite{AdaGradMeth
 
 Para a classificação de textos utilizando o \textit{Reuters RCV1}, foram comparados o \textit{AdaGrad-RDA}, o \textit{RDA}, o \textit{FB}, o \textit{AdaGrad-FB}, o \textit{PA} e o \textit{ARROW}; de forma que são analisadas as taxas de erro de cada um desses modelos após o treino, bem como a proporção não-nula, responsável por indicar a quantidade de parâmetros do modelo que são diferentes de zero no final do treinamento, sendo uma medida para avaliar a esparsidade do modelo (quanto menor o número, maior a esparsidade, e potencialmente mais simples é o modelo) \parencite{AdaGradMethod}. Analisando os resultados apresentados por \textcite{AdaGradMethod} é possível ver uma superioridade dos algoritmos \textit{AdaGrad} perante aos outros otimizadores avaliados, além disso, nota-se que o \textit{AdaGrad-RDA} produz modelos mais esparsos quando comparado com a variante \textit{AdaGrad-FB}.
 
-A tabela com as taxas de erro no conjunto de testes para o dataset \textit{Reuters RCV1}, apresentando as métricas encontradas pelos autores pode ser vista na Tabela \ref{tab:resultados-rcv1-adagrad}
+A tabela com as taxas de erro no conjunto de testes para o dataset \textit{Reuters RCV1}, apresentando as métricas encontradas pelos autores pode ser vista na Tabela~\ref{tab:resultados-rcv1-adagrad}
 
 \begin{table}[htbp]
     \centering
     \begin{threeparttable} % Inicia o ambiente para a tabela com notas
-        \caption{Taxas de erro no conjunto de teste e proporção de não-nulos (entre parênteses) no dataset \textit{Reuters RCV1}}
+        \caption{Taxas de erro no conjunto de teste e proporção de não-nulos (entre parênteses) no dataset \textit{Reuters RCV1}}%
         \label{tab:resultados-rcv1-adagrad}
         \begin{tabular}{l c c c c c c}
             \toprule
@@ -929,12 +931,12 @@ A tabela com as taxas de erro no conjunto de testes para o dataset \textit{Reute
 
 Já para o \textit{ImageNet}, foram escolhidos apenas 4 algoritmos: o \textit{AdaGrad-RDA}, o \textit{AROW}, o \textit{PA} e o \textit{RDA}, e para avaliar esses otimizadores, foi utilizada como métricas a precisão média (Avg. Prec.), P@K (precisão em k, indicando a porcentagem das vezes em que a resposta correta esteve entre as k primeiras previsões), e também a proporção não-nula \parencite{AdaGradMethod}. Com base nas análises feitas por \textcite{AdaGradMethod}, é possível tirar duas conclusões, a primeira delas é que o \textit{AdaGrad} é o melhor modelo em precisão média além de atingir uma maior esparsidade, contudo o \textit{AROW} ainda é uma melhor alternativa para as precisões em k, o que indica que ele é capaz de atingir as respostas corretas nas primeiras previsões.
 
-Para comparar a precisão dos modelos utilizando o dataset \textit{ImageNet} você pode analisar a Tabela \ref{tab:resultados-imagenet-adagrad}
+Para comparar a precisão dos modelos utilizando o dataset \textit{ImageNet} você pode analisar a Tabela~\ref{tab:resultados-imagenet-adagrad}
 
 \begin{table}[htbp]
     \centering
-    \begin{threeparttable} % Inicia o ambiente
-        \caption{Precisão no conjunto de teste para o \textit{ImageNet}}
+    \begin{threeparttable}
+        \caption{Precisão no conjunto de teste para o \textit{ImageNet}}%
         \label{tab:resultados-imagenet-adagrad}
         \begin{tabular}{l c c c c c c}
             \toprule
@@ -967,7 +969,7 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
         Curvas de aprendizado no \textit{dataset} MNIST.
         \newline % Cria uma nova linha para a fonte
         \small Fonte: \parencite{AdaGradMethod}.
-    }
+    }%
     \label{fig:curvas-de-aprendizado-adagrad-mnist}
 \end{figure}
 
@@ -977,7 +979,8 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais} \index{Aplicações práticas! Adpative Gradient Algorithm (AdaGrad)}
+\textbf{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais}%
+\index{Aplicações práticas! Adpative Gradient Algorithm (AdaGrad)}
 \vspace{1em}
 
 \begin{itemize}
@@ -995,7 +998,8 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
 
 O \textit{AdaGrad} simbolizou não somente um avanço para os algoritmos de otimização, como também introduziu o conceito de diferentes taxas de aprendizado, permitindo com que um modelo possa aprender bem tanto características muito frequentes como características mais incomuns. Dessa forma, um novo período de otimizadores surgiu, seguindo os conceitos do \textit{AdaGrad} mas buscando incrementar o seu algoritmo a fim de corrigir falhas que ficaram para trás. Ao longo dessa seção, serão vistos mais otimizadores que atuam de forma parecida ao \textit{AdaGrad}, adicionando melhorias para o seu desempenho.
 
-\subsection{Root Mean Square Propagation (RMSProp)} \index{Otimizadores!Root Mean Square Propagation (RMSProp)}
+\subsection{Root Mean Square Propagation (RMSProp)}%
+\index{Otimizadores!Root Mean Square Propagation (RMSProp)}
 
 Diferente dos outros métodos de otimização que surgiram em artigos, o \textit{RMSProp} tem uma concepção diferente, sendo apresentado por Geoffrey Hinton nas suas notas de aula do curso \textit{Neural Networks for Machine Learning} como um método que semelhante ao AdaGrad, dividia o gradiente \parencite{RMSPropMethod}. Para isso, o \textit{RMSProp} combina a ideia de somente usar o sinal do gradiente com a ideia de adaptar o tamanho do passo separadamente para diferentes pesos, de forma que para funcionar em \textit{mini-batches} é mantido uma média móvel do quadrado do gradiente para cada peso \parencite{RMSPropMethod}.
 
@@ -1068,7 +1072,7 @@ Seguindo adiante, deve-se calcular a correção do viés, para isso $\mathbf{\ha
 
 Por fim, é feita a incrementação dos parâmetros de $\theta_0$ de forma semelhante ao \textit{AdaGrad}, eles serão dados pela diferença do vetor de parâmetros na iteração anterior pela multiplicação da taxa de aprendizado $\eta$ com a divisão dos vetores do primeiro e segundo momento.
 
-Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
+Esse método pode ser visto no bloco de algoritmo~\ref{alg:adam}.
 
 \begin{algorithm}[H]
     \caption{Adaptive Moment Estimation (Adam)}
@@ -1107,7 +1111,7 @@ Esse método pode ser visto no bloco de algoritmo \ref{alg:adam}.
 
 Para testar esse novo algoritmo, os pesquisadores \textcite{AdamMethod} prepararam uma série de experimentos, sendo alguns deles envolvendo uma regressão logística, uma rede neural multi-camadas e uma rede convolucional.
 
-No primeiro dos experimentos, os autores avaliam esse otimizador utilizado uma regularização L2 criando uma regressão logística para analisar o \textit{dataset} de dígitos manuscritos \textit{MNIST} \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelerado de Nesterov (\textit{SGDNesterov}) e também como o \textit{AdaGrad}; de forma que eles foram capazes de concluir que o \textit{Adam} possui uma convergência similar ao \textit{SGDNesterov}, enquanto o \textit{AdaGrad} apresenta uma convergência mais demorada e com um maior custo de treino. Esse comparativo pode ser visto na Figura \ref{fig:comparativo-adam-mnist}.
+No primeiro dos experimentos, os autores avaliam esse otimizador utilizado uma regularização L2 criando uma regressão logística para analisar o \textit{dataset} de dígitos manuscritos \textit{MNIST} \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelerado de Nesterov (\textit{SGDNesterov}) e também como o \textit{AdaGrad}; de forma que eles foram capazes de concluir que o \textit{Adam} possui uma convergência similar ao \textit{SGDNesterov}, enquanto o \textit{AdaGrad} apresenta uma convergência mais demorada e com um maior custo de treino. Esse comparativo pode ser visto na Figura~\ref{fig:comparativo-adam-mnist}.
 
 \begin{figure}[h]
     \centering
@@ -1117,11 +1121,11 @@ No primeiro dos experimentos, os autores avaliam esse otimizador utilizado uma r
         Curvas de aprendizado no dataset MNIST.
         \newline
         \small Fonte: \parencite{AdamMethod}.
-    }
+    }%
     \label{fig:comparativo-adam-mnist}
 \end{figure}
 
-No segundo experimento, os cientistas foram capazes de descobrir que mesmo em redes neurais multi-camadas (as quais são modelos com funções objetivas não-convexas), mesmo a análise de convergência feita não se aplicando a problemas não-convexos, o \textit{Adam} foi capaz de performar melhor que outros métodos \parencite{AdamMethod}. Para o teste então, \textcite{AdamMethod} criaram uma rede neural com duas camadas totalmente conectadas com 1000 unidades de neuônio utilizando a função de atiavção \textit{ReLU} com \textit{mini-batch} de tamanho 128, com base nos testes, eles foram capazes de perceber que o \textit{Adam} consegui ser de 5 a 10 vezes mais rápido por iteração que o método \textit{SFO} (\textit{sum-of-functions}), o qual é um método \textit{quasi-Newton} que trabalha também com dados em \textit{mini-batches}. O comportamento desses diferentes otimizadores para uma rede neural multicamadas está retratado nos gráficos da Figura \ref{fig:comparativo-adam-multilayer}.
+No segundo experimento, os cientistas foram capazes de descobrir que mesmo em redes neurais multi-camadas (as quais são modelos com funções objetivas não-convexas), mesmo a análise de convergência feita não se aplicando a problemas não-convexos, o \textit{Adam} foi capaz de performar melhor que outros métodos \parencite{AdamMethod}. Para o teste então, \textcite{AdamMethod} criaram uma rede neural com duas camadas totalmente conectadas com 1000 unidades de neurônio utilizando a função de ativação \textit{ReLU} com \textit{mini-batch} de tamanho 128, com base nos testes, eles foram capazes de perceber que o \textit{Adam} consegui ser de 5 a 10 vezes mais rápido por iteração que o método \textit{SFO} (\textit{sum-of-functions}), o qual é um método \textit{quasi-Newton} que trabalha também com dados em \textit{mini-batches}. O comportamento desses diferentes otimizadores para uma rede neural multicamadas está retratado nos gráficos da Figura \ref{fig:comparativo-adam-multilayer}.
 
 \begin{figure}[h]
     \centering
@@ -1135,7 +1139,7 @@ No segundo experimento, os cientistas foram capazes de descobrir que mesmo em re
     \label{fig:comparativo-adam-multilayer}
 \end{figure}
 
-Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} com três camadas, a primeira com filtros de dimensões 5x5, seguida de uma camada de \textit{max pooling} de dimensões 3x3 com \textit{stride} 2 que se liga a uma camada totalmente conectada de 1000 unidades ocultas que faz uso da função de ativação \textit{ReLU}. Com base nas análises, os autores concluíram que tanto o \textit{Adam} quando o \textit{AdaGrad} fazem um progresso rápido no custo inicial do treino, em seguida, o \textit{Adam} e o \textit{SGD} convergem consideravelmente mais rápido que o \textit{AdaGrad} \parencite{AdamMethod}. É possível ver como o \textit{Adam} e os outros otimizadores performam nessa tarefa na Figura \ref{fig:comparativo-adam-convnet}.
+Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} com três camadas, a primeira com filtros de dimensões $5\times5$, seguida de uma camada de \textit{max pooling} de dimensões $3\times3$ com \textit{stride} 2 que se liga a uma camada totalmente conectada de 1000 unidades ocultas que faz uso da função de ativação \textit{ReLU}. Com base nas análises, os autores concluíram que tanto o \textit{Adam} quando o \textit{AdaGrad} fazem um progresso rápido no custo inicial do treino, em seguida, o \textit{Adam} e o \textit{SGD} convergem consideravelmente mais rápido que o \textit{AdaGrad} \parencite{AdamMethod}. É possível ver como o \textit{Adam} e os outros otimizadores performam nessa tarefa na Figura~\ref{fig:comparativo-adam-convnet}.
 
 \begin{figure}[h]
     \centering
@@ -1145,7 +1149,7 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} co
         Custo de treinamento de redes neurais convolucionais. À esquerda, o custo nas três primeiras épocas. À direita, o custo ao longo de 45 épocas.
         \newline
         \small Fonte: \parencite{AdamMethod}.
-    }
+    }%
     \label{fig:comparativo-adam-convnet}
 \end{figure}
 
@@ -1207,11 +1211,12 @@ A diferença do \textit{AdaMax} está na próxima etapa, em que é atualizada a 
     \end{algorithmic}
 \end{algorithm}
 
-\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)} \index{Otimizadores!Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+\subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}%
+\index{Otimizadores!Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
 
-Com o \textit{Nadam}, ou \textit{Nesterov-accelerated Adaptive Moment Estimation}, ocorreu a mesma ideia de incremento presente nos outros métodos de otimização vistos até o momento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidiu apresentar no trabaho \textit{Incorporating Nesterov Momentum Into Adam}, uma modificação do componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (\textit{NAG}). Ao fazer essa mudança, o autor conseguiu comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
+Com o \textit{Nadam}, ou \textit{Nesterov-accelerated Adaptive Moment Estimation}, ocorreu a mesma ideia de incremento presente nos outros métodos de otimização vistos até o momento, só que dessa vez incluindo uma técnica já conhecida. Neste caso, \textcite{NadamMethod}, decidiu apresentar no trabalho \textit{Incorporating Nesterov Momentum Into Adam}, uma modificação do componente de momento do Adam utilizando como base o método de otimização do gradiente acelerado de Nesterov (\textit{NAG}). Ao fazer essa mudança, o autor conseguiu comprovar que foi possível aumentar a velocidade de convergência, assim como a qualidade do aprendizado do modelo \parencite{NadamMethod}.
 
-O pseudocódigo que representa o otimizador \textit{Nadam} está representado no Algoritmo \ref{alg:nadam}
+O pseudocódigo que representa o otimizador \textit{Nadam} está representado no Algoritmo~\ref{alg:nadam}
 
 O \textit{Nadam} recebe como parâmetros de entrada uma taxa de aprendizado $\eta$, os coeficientes de decaimento $\mu$ e $\nu$, o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda que será utilizada para otimizar o modelo $f(\theta)$ e o parâmetro de estabilidade $\epsilon$ para evitar que divisões por zero ocorram. Em seguida, são inicializados os os vetores do primeiro $\mathbf{m}_0$ e segundo $\mathbf{v}_0$ momento junto com o passo de tempo $t$.
 
@@ -1220,7 +1225,7 @@ Com tudo isso feito, é possível começar o loop do \textit{Nadam} que irá ter
 O próximo passo do \textit{NAdam} consiste em corrigir o viés, é nessa parte que ele aplica o momento de Nesterov. O viés do primeiro momento $\mathbf{\hat{m}}_t$ recebe o produto do coeficiente de decaimento $\mu$ multiplicado com a estimativa do primeiro momento $\mathbf{h}_t$ que é dividida por $(1 - \mu^t)$ e então somada por $(1 - \mu)$ multiplicada pelo vetor gradiente $\mathbf{g}_t$ dividido por $(1 - \mu^t)$. Também é corrigido o viés do segundo momento $\mathbf{\hat{v}}_t$ que recebe a divisão do coeficiente de decaimento $\nu$ multiplicado pelo vetor do segundo momento com $1 - \nu^t$. A partir desses vetores, é feita por último a atualização do vetor de parâmetros $\theta$.
 
 \begin{algorithm}[H]
-    \caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
+    \caption{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}%
     \label{alg:nadam}
     \begin{algorithmic}[1]
 
@@ -1256,7 +1261,7 @@ O próximo passo do \textit{NAdam} consiste em corrigir o viés, é nessa parte 
     \end{algorithmic}
 \end{algorithm}
 
-Utilizando os otimizadores \textit{SGD}, \textit{Momentum}, \textit{Nesterov}, \textit{RMSProp}, \textit{Adam} e \textit{Nadam}, \textcite{NadamMethod} foi capaz de criar um \textit{autoencoder} convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do \textit{dataset MNIST} em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Assim, os resultados da pesquisa do autor podem ser vistos nos gráficos da Figura \ref{fig:comparativo-nadam-mnist}, note que comparando com o clássico gradiente estocástico, o \textit{NAdam} consegue uma vantagem de cerca de 0.010 de diferença na taxa de erro utilizando a \textit{MSE} para calcular o erro. Não somente isso, mas ele é o modelo que apresenta uma convergência mais acelerada quando comparado com os outros, perceba que que o decaimento da taxa de erro do \textit{NAdam} é consideravelmente maior nas primeiras épocas, enquanto a partir das 10 épocas ele já começa a se estabilizar.
+Utilizando os otimizadores \textit{SGD}, \textit{Momentum}, \textit{Nesterov}, \textit{RMSProp}, \textit{Adam} e \textit{Nadam}, \textcite{NadamMethod} foi capaz de criar um \textit{autoencoder} convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do \textit{dataset MNIST} em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Assim, os resultados da pesquisa do autor podem ser vistos nos gráficos da Figura~\ref{fig:comparativo-nadam-mnist}, note que comparando com o clássico gradiente estocástico, o \textit{NAdam} consegue uma vantagem de cerca de 0.010 de diferença na taxa de erro utilizando a \textit{MSE} para calcular o erro. Não somente isso, mas ele é o modelo que apresenta uma convergência mais acelerada quando comparado com os outros, perceba que que o decaimento da taxa de erro do \textit{NAdam} é consideravelmente maior nas primeiras épocas, enquanto a partir das 10 épocas ele já começa a se estabilizar.
 
 \begin{figure}[h]
     \centering
@@ -1266,7 +1271,7 @@ Utilizando os otimizadores \textit{SGD}, \textit{Momentum}, \textit{Nesterov}, \
         Perda de treinamento e validação de diferentes otimizadores no dataset \textit{MNIST}.
         \newline
         \small Fonte: \parencite{NadamMethod}.
-    }
+    }%
     \label{fig:comparativo-nadam-mnist}
 \end{figure}
  
@@ -1278,7 +1283,8 @@ Comparando com o \textit{Adam} tradicional, a principal diferença do \textit{NA
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do NAdam em Otimização de Redes Neurais} \index{Aplicações práticas! NAdam}
+\textbf{Algumas Aplicações do NAdam em Otimização de Redes Neurais}%
+\index{Aplicações práticas! NAdam}
 \vspace{1em}
 
 \begin{itemize}
@@ -1294,11 +1300,12 @@ Comparando com o \textit{Adam} tradicional, a principal diferença do \textit{NA
 \end{center}
 \medskip
 
-\subsection{Adam With Decoupled Weight Decay (AdamW)} \index{Otimizadores!Adam With Decoupled Weight Decay (AdamW)}
+\subsection{Adam With Decoupled Weight Decay (AdamW)}%
+\index{Otimizadores!Adam With Decoupled Weight Decay (AdamW)}
 
 Uma outra variante do \textit{Adam} tradicional é o \textit{AdamW}. Essa variante foi apresentada no trabalho \textit{Decoupled Weight Decay Regularization} dos pesquisadores \textcite{AdamWMethod}, em que eles propuseram uma forma diferente de corrigir como a regularização $L^2$, era feita no método original. Para isso, o \textit{AdamW} desacopla o decaimento do peso da atualização principal do do gradiente, e o aplica como um passo separado e final na atualização dos parâmetros \parencite{AdamWMethod}.
 
-Esse algoritmo pode ser visto no pseudocódigo apresentado no bloco \ref{alg:adamw}.
+Esse algoritmo pode ser visto no pseudocódigo apresentado no bloco~\ref{alg:adamw}.
 
 o \textit{AdamW} recebe como entradas a taxa de aprendizado $\eta$, os coeficientes de decaimento $\beta_1$ e $\beta_2$, o fato de decaimento de peso $\lambda$, o vetor contendo os parâmetros iniciais do modelo $\theta_0$, a função de perda a ser otimizada $f(\theta)$ e o parâmetro de estabilidade $\epsilon$. Semelhante ao \textit{Adam}, o \textit{AdamW} começa inicializando os vetores de primeiro $\mathbf{m}_0$ e segundo $\mathbf{v}_0$ momento bem como o passo de tempo $t$.
 
@@ -1309,7 +1316,7 @@ O próximo passo do \textit{AdamW} é a correção do viés. Começando com $\ma
 A diferença do \textit{AdamW} está nessa próxima parte, o cálculo dos parâmetros $\theta$ para a próxima iteração. Para isso, eles serão dados pela diferença dos parâmetros na iteração anterior $\theta_{t-1}$ com a multiplicação da taxa de aprendizado $\eta$ com a divisão do vetor do primeiro momento já corrigido pela raiz do vetor de segundo momento também já corrigido, isso é então somado ao produto do fator de decaimento de peso $\lambda$ pelos parâmetros da iteração anterior $\theta_{t-1}$.
 
 \begin{algorithm}[H]
-    \caption{Adam com Decaimento de Peso Desacoplado (AdamW)}
+    \caption{Adam com Decaimento de Peso Desacoplado (AdamW)}%
     \label{alg:adamw}
     \begin{algorithmic}[1]
 
@@ -1344,7 +1351,7 @@ A diferença do \textit{AdamW} está nessa próxima parte, o cálculo dos parâm
     \end{algorithmic}
 \end{algorithm}
 
-Para comparar a eficácia do desacoplamento de peso, \textcite{AdamWMethod} decidem avaliar o \textit{Adam} com regularização L2 com a nova variante \textit{AdamW} utilizando uma 26 2x64d \textit{ResNet} no \textit{CIFAR-10} medida depois de 100 épocas, além disso, os autores avaliam também o \textit{SGD} e sua variante com peso desacoplado, o \textit{SGDW}, de forma que os resultados podem ser vistos na Figura \ref{fig:comparativo-adamw-cifar-10}.
+Para comparar a eficácia do desacoplamento de peso, \textcite{AdamWMethod} decidem avaliar o \textit{Adam} com regularização L2 com a nova variante \textit{AdamW} utilizando uma 26 2x64d \textit{ResNet} no \textit{CIFAR-10} medida depois de 100 épocas, além disso, os autores avaliam também o \textit{SGD} e sua variante com peso desacoplado, o \textit{SGDW}, de forma que os resultados podem ser vistos na Figura~\ref{fig:comparativo-adamw-cifar-10}.
 
 \begin{figure}[h]
     \centering
@@ -1354,7 +1361,7 @@ Para comparar a eficácia do desacoplamento de peso, \textcite{AdamWMethod} deci
         Erro de teste Top-1 de uma ResNet 26 2x64d no CIFAR-10, medido após 100 épocas. Os métodos propostos SGDW e AdamW (coluna da direita) possuem um espaço de hiperparâmetros mais separável.
         \newline
         \small Fonte: \parencite{AdamWMethod}.
-    }
+    }%
     \label{fig:comparativo-adamw-cifar-10}
 \end{figure}
 
@@ -1364,7 +1371,7 @@ Note que ambas as variantes do gradiente estocástico apresentam partes azuis, n
 
 Por outro lado, no \textit{SGDW} a área azul é muito maior além de ser mais vertical, indicando que existe uma ampla variante de taxas de aprendizado que você pode escolher e ainda sim conseguir um modelo bem otimizado. De forma que a escola de um bom decaimento de peso e de uma taxa de aprendizado são mais independentes, e com isso o modelo pode ser mais fácil de otimizar.
 
-Quando comparamos agora as duas variantes do \textit{Adam} vemos um cenário diferente. Note que o resultado do \textit{Adam} é bem ruim, o gráfico é quase todo vermelho, o que mostra que o \textit{Adam} com a reguralização L2 falha em convergir para melhores pontos de mínimo para a maioria das taxas de aprendizado apresentadas.
+Quando comparamos agora as duas variantes do \textit{Adam} vemos um cenário diferente. Note que o resultado do \textit{Adam} é bem ruim, o gráfico é quase todo vermelho, o que mostra que o \textit{Adam} com a regularização L2 falha em convergir para melhores pontos de mínimo para a maioria das taxas de aprendizado apresentadas.
 
 Agora se analisar o \textit{AdamW} o resultado é bem mais positivo. Assim como o \textit{SGDW} existe uma linha vertical em azul no \textit{AdamW}, o que nos mostra que é possível escolher uma quantidade grande de taxas de aprendizado que permitam ao modelo uma boa convergência, além é claro dela ser mais independente com relação do decaimento de peso.
 
@@ -1376,7 +1383,8 @@ Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do ADamW em Otimização de Redes Neurais} \index{Aplicações práticas! ADamW}
+\textbf{Algumas Aplicações do ADamW em Otimização de Redes Neurais}%
+\index{Aplicações práticas! ADamW}
 \vspace{1em}
 
 \begin{itemize}
@@ -1392,18 +1400,16 @@ Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira 
 \end{center}
 \medskip
 
-\subsection{Comparativo dos Otimizadores Modernos} \index{Comparativos!Otimizadores Modernos}
+\subsection{Comparativo dos Otimizadores Modernos}%
+\index{Comparativos!Otimizadores Modernos}
 
-Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na seção de otimizadores clássicos, é possível fazer uma tabela contendo as suas principais características. Para isso, tem-se então a Tabela \ref{tab:comparativo-otimizadores-modernos}
+Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na seção de otimizadores clássicos, é possível fazer uma tabela contendo as suas principais características. Para isso, tem-se então a Tabela~\ref{tab:comparativo-otimizadores-modernos}
 
 \begin{table}[htbp]
     \centering
     \begin{threeparttable}
-        \caption{Comparativo de otimizadores modernos}
+        \caption{Comparativo de otimizadores modernos}%
         \label{tab:comparativo-otimizadores-modernos}
-        % p{3.2cm} define uma largura fixa para a primeira coluna.
-        % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
-        % >{\raggedright\arraybackslash} alinha o texto à esquerda para melhor leitura.
         \begin{tabularx}{\textwidth}{p{3.2cm} *{1}{>{\raggedright\arraybackslash}X}}
             \toprule
             \textbf{Otimizador} & \textbf{Inovação principal} \\
@@ -1431,11 +1437,13 @@ Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na
 
 \subsection{Outros Otimizadores}
 
-\textbf{Rectified Adam (RAdam)} \index{Otimizadores!Rectified Adam (RAdam)}
+\textbf{Rectified Adam (RAdam)}%
+\index{Otimizadores!Rectified Adam (RAdam)}
 
 Uma outra variante do \textit{Adam} que também busca melhorar o otimizador original é o \textit{Rectified Adam} ou \textit{RAdam}. Ele surgiu no trabalho \textit{On the Variance of the Adaptive Learning Rate and Beyond} dos autores \textcite{RAdamMethod} como uma atualização do Adam que buscava corrigir um problema identificado com a taxa de aprendizado adaptativa do otimizador: a sua variância é grande problemática nos primeiros estágios; de forma que eles propuseram o \textit{RAdam}, uma variante que introduz um termo para retificar a variância da taxa de aprendizado adaptava.
 
-\textbf{Lion} \index{Otimizadores!Lion}
+\textbf{Lion}%
+\index{Otimizadores!Lion}
 
 \section{Comparativo de Desempenho: Otimizadores}
 
