@@ -7,7 +7,7 @@
 
 Agora agora foi visto o funcionamento da retropropagação, e como ela faz uso dos otimizadores, os quais funcionam como um barco, percorrendo as ondas em busca dos pontos de mínimo. Além disso, foram vistas em seguida diversas funções de ativação, começando pelas sigmoidais, depois pelas retificadoras, e por fim uma coletânea de diferentes funções. Contudo, está na hora de entender um outro lado da retropropagação: as funções de perda, as quais são justamente as ondas que os otimizadores percorrem.
 
-Para isso, esse capítulo busca explicar algumas dos diferentes tipos de funções de perda, mais precisamente as funções de perda para tarefas de regressão. Assim, o capítulo pode ser dividido em quatro grandes partes: funções de perda para propósitos gerais, funções de perda para medir o erro relativo, funções que vão além do cálculo da média dos erros, por último funções que são utilizadas para problemas que seguem outros tipos de distribuição (como as distribuições de Poisson e de Tweedie).
+Para isso, esse capítulo busca explicar algumas dos diferentes tipos de funções de perda, mais precisamente as funções de perda para tarefas de regressão. Portanto, o capítulo pode ser dividido em quatro grandes partes: funções de perda para propósitos gerais, funções de perda para medir o erro relativo, funções que vão além do cálculo da média dos erros, por último funções que são utilizadas para problemas que seguem outros tipos de distribuição (como as distribuições de Poisson e de Tweedie).
 
 Para explicar cada uma das funções é apresentado as suas equações, os gráficos (contendo as vistas em duas e três dimensões), as derivadas parciais junto com os seus respectivos gráficos. Além disso, no final de cada explicação dessas funções, e selecionado uma série de artigos que exploram o uso dessas funções para resolver problemas variados de regressão. Já no final do capítulo, pode ser visto uma tabela resumo, explicando as principais características das funções e seus usos, também é possível ver uma seção que apresenta um diagrama, que serve de guia para escolher a função de perda ideal para um problema de regressão.
 
@@ -19,7 +19,7 @@ Essa ideia de medir o quão próximo você está do resultado desejado utilizand
 
 \section{Características das Funções de Perda}
 
-Assim, antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa pode ter. Dito isso, em \textit{Loss Functions and Metrics in Deep Learning}, \textcite{LossesArticle} explicam algumas características desse grupo de funções. Para isso, os autores argumentam que algumas propriedades das funções de perda são: convexidade, diferenciabilidade, robustez, suavidade, esparsidade, monotonicidade \parencite{LossesArticle}. Todas essas propriedades devem ser consideradas quando estiver escolhendo a função de perda ideal para resolver um determinado tipo de problema.
+Antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa pode ter. Dito isso, em \textit{Loss Functions and Metrics in Deep Learning}, \textcite{LossesArticle} explicam algumas características desse grupo de funções. Para isso, os autores argumentam que algumas propriedades das funções de perda são: convexidade, diferenciabilidade, robustez, suavidade, esparsidade, monotonicidade \parencite{LossesArticle}. Todas essas propriedades devem ser consideradas quando estiver escolhendo a função de perda ideal para resolver um determinado tipo de problema.
 
 Para isso, cabe agora discutir essas propriedades.
 
@@ -86,7 +86,7 @@ Sabendo disso, Gauss inverte a lógica: se a probabilidade de um conjunto de err
 
 Passado quase 200 anos, o erro quadrático médio se torna uma das principais funções a ser utilizada para calcular o erro dos modelos. Caso você tenha lido o Capítulo~\ref{cap:retropropagacao-gradiente}, pode ter notado que ela foi uma das funções, junto com a sigmoide logística e a equação do neurônio, a ser utilizada para deduzir os cálculos das atualizações de pesos para o algoritmo da retropropagação \parencite{BackpropagationArticle}.
 
-Voltando para analogia do jogo dos dardos, é possível estendê-la para explicar o erro quadrático médio. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e que vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Assim, jogadores que são muito precisos, e com isso acertam dardos mais próximos do centro perdem poucos pontos, contudo, aqueles jogadores que são mais desleixados e acertam longe do centro acabam perdendo muitos pontos, porque seu além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
+Voltando para analogia do jogo dos dardos, é possível estendê-la para explicar o erro quadrático médio. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e que vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Diante disso, jogadores que são muito precisos, e com isso acertam dardos mais próximos do centro perdem poucos pontos, contudo, aqueles jogadores que são mais desleixados e acertam longe do centro acabam perdendo muitos pontos, porque seu além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
 
 Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do \textit{MSE}. Dito isso, agora cabe finalmente analisar essa função de fato, em primeiro lugar será analisada a sua fórmula, a qual está apresentada na Equação~\ref{eq:mse}.
 
@@ -105,7 +105,7 @@ Em que:
 
 Neste caso, o \textit{MSE} calcula o erro individualmente para cada uma das predições, soma esses valores e em seguida calcula a média.
 
-Tendo a sua equação, é possível também plotar o seu gráfico, para isso, ele pode ser visto na Figura~\ref{fig:mse}. Note que existem duas figuras, a primeira à esquerda, Figura~\ref{fig:mse-2d} mostra uma visão em duas dimensões dessa função de perda. Contudo, pelo fato do cálculo do erro ser uma função de duas variáveis, que apresenta como entradas o valor real para a saída ($y_j$) e o valor previsto pelo modelo ($\hat{y}_j$), a sua representação real deve ser feita com o uso de três dimensões, como mostrado na Figura~\ref{fig:mse-3d}. Dessa forma, é possível ver uma superfície para essa função de perda.
+O gráfico do erro quadrático médio está representado na Figura~\ref{fig:mse}. Existem duas subfiguras, a primeira à esquerda, Figura~\ref{fig:mse-2d} mostra uma visão em duas dimensões dessa função de perda. Contudo, pelo fato do cálculo do erro ser uma função de duas variáveis, que apresenta como entradas o valor real para a saída ($y_j$) e o valor previsto pelo modelo ($\hat{y}_j$), a sua representação real deve ser feita com o uso de três dimensões, como é mostrado na Figura~\ref{fig:mse-3d}.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -190,7 +190,7 @@ Tendo a sua equação, é possível também plotar o seu gráfico, para isso, el
 \textbf{Características do Erro Quadrático Médio}
 \vspace{1em}
 
-Tendo os gráficos do erro quadrático médio além de sua equação, cabe agora discutir algumas das principais característica dessa função de perda.
+Cabe agora discutir algumas das principais característica dessa função de perda, destacando as suas vantagens e como ela pode ser útil ao ser utilizada na construção de um modelo de regressão.
 
 \begin{itemize}
     \item \textbf{Não-negatividade:} Como é visto nos gráficos da Figura~\ref{fig:mse}, o \textit{MSE} é uma função que retorna apenas valores positivos, isso se dá devido a diferença das entradas estar sendo calculada e logo em seguida elevada ao quadrado, impendido que valores negativos ocorram na saída;
@@ -206,21 +206,21 @@ Tendo os gráficos do erro quadrático médio além de sua equação, cabe agora
 \end{center}
 \medskip
 
-Além disso, cabe também destacar a derivada da função \textit{MSE}, a qual está presente na Equação~\ref{eq:mse-derivada}. A derivada de uma função de perda é de extrema utilizada para uma rede neural, pois é a partir dela que é calculado o primeiro vetor gradiente, e passa a ser retropropagado por toda a rede no sentido inverso, indo primeiro das últimas camadas para as camadas de entrada.
+A derivada do erro quadrático médio está presente na Equação~\ref{eq:mse-derivada}. A derivada de uma função de perda é de extrema utilizada para uma rede neural, pois é a partir dela que é calculado o primeiro vetor gradiente, e passa a ser retropropagado por toda a rede no sentido inverso, indo primeiro das últimas camadas para as camadas de entrada\footnote{Portanto, as derivadas das funções de perda serão discutidas sempre que possível para explicar as características de uma função neste capítulo.}.
 
-\begin{equacaodestaque}{Derivada Parcial do Erro Quadrático Médio (\textit{MSE}) em Relação a $\hat{y}_j$}
+\begin{equacaodestaque}{Derivada Parcial do Erro Quadrático Médio (\textit{MSE}) em Relação à Predição $\hat{y}_j$}
     \frac{\partial\Loss_{\text{MSE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = \frac{2}{N} (\hat{y}_j -y_j)%
     \label{eq:mse-derivada}
 \end{equacaodestaque}
 
-Note que diferente das funções de ativação em que era calculada a sua derivada ordinária, aqui é calculado as derivadas parciais das funções de perda para cada um dos seus componentes, a saída do modelo $\hat{y}_j$ e a saída esperada $y_j$. Com base nessas duas derivadas, é possível construir o vetor gradiente, como mostrado na Equação~\ref{eq:vetor-gradiente-mse}\footnote{Perceba então que para ter o vetor gradiente completo, deve-se calcular a derivada parcial do \textit{MSE} também em relação os valor real do rótulo ($y_j$). Neste livro será dado um foco maior em apresentar apenas uma das derivas, pois elas muitas vezes apresentarão grandes semelhanças.}.
+Diferente das funções de ativação em que era calculada a sua derivada ordinária, aqui é calculado as derivadas parciais das funções de perda para cada um dos seus componentes, a saída do modelo $\hat{y}_j$ e a saída esperada $y_j$. Com base nessas duas derivadas, constrói-se o vetor gradiente, mostrado na Equação~\ref{eq:vetor-gradiente-mse}\footnote{Perceba então que para ter o vetor gradiente completo, deve-se calcular a derivada parcial do \textit{MSE} também em relação os valor real do rótulo ($y_j$). Neste livro será dado um foco maior em apresentar apenas uma das derivadas, pois elas muitas vezes apresentarão grandes semelhanças.}.
 
 \begin{equation}
     \nabla (y_j, \hat{y}_j) = \left( \frac{\partial \Loss_{\text{MSE}}}{\partial y_j}, \frac{\partial \Loss_{\text{MSE}}}{\partial \hat{y}_j} \right)%
     \label{eq:vetor-gradiente-mse}
 \end{equation}
 
-Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível construir gráficos como os da Figura~\ref{eq:mse-derivada} para a derivada parcial do \textit{MSE} em relação a $(\hat{y}_j)$. Note também que semelhante as representações do erro quadrático médio, a sua derivada também é apresentada em vistas em duas e três dimensões, isso será algo recorrente nas representações das funções desse capítulo.
+Os gráficos da derivada do erro quadrático médio (mostrada na Equação~\ref{eq:mse-derivada}) estão presentes na Figura~\ref{eq:mse-derivada}. A sua derivada também é apresentada em vistas em duas e três dimensões, isso será algo recorrente nas representações das funções desse capítulo.
 
 \begin{figure}[h!]
     \centering 
@@ -292,7 +292,7 @@ Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível co
     \fonte{O autor (2025).}
 \end{figure}
 
-É possível perceber pelo gráfico da derivada da função de perda erro quadrático médio que o gradiente da perda é proporcional ao erro. Seguindo essa lógica, se o erro está alto, o gradiente também estará alto, como consequência as atualizações de pesos e vieses, as quais seguem o método do gradiente (visto nas Equações~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-regressao}) serão mais bruscas, dando maiores saltos no gráfico da função de perda. Enquanto em situações que o erro está pequeno em magnitude, o gradiente também será pequeno e o modelo fará pequenas atualizações nos seus parâmetros, garantindo um ajuste fino.
+Segundo os gráficos da Figura \ref{fig:mse-derivada}, a derivada do \textit{MSE} mostra que o gradiente da perda é proporcional ao erro. Seguindo essa lógica, se o erro está alto, o gradiente também estará alto, como consequência as atualizações de pesos e vieses, as quais seguem o método do gradiente (visto nas Equações~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-regressao}) serão mais bruscas, dando maiores saltos no gráfico da função de perda. Enquanto em situações que o erro está pequeno em magnitude, o gradiente também será pequeno e o modelo fará pequenas atualizações nos seus parâmetros, garantindo um ajuste fino.
 
 \begin{equation}
     \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot y_i \quad \text{ou} \quad \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
@@ -305,18 +305,18 @@ Considerando a derivada parcial da Equação~\ref{mse-derivada}, é possível co
 \end{center}
 \medskip
 
-Antes de discutir algumas aplicações do erro quadrático médio, é interessante introduzir uma função derivada dessa equação: ela é a raiz do erro quadrático médio (\textit{RMSE}). O \textit{RMSE}, como pode ser visto na Equação~\ref{eq:rmse-metric}, é basicamente a introdução de uma raiz quadrada no próprio cálculo do \textit{MSE}. 
+Cabe também discutir a raiz do erro quadrático médio, vista na Equação~\ref{eq:rmse-metric}. Ela é uma função derivada do \textit{MSE}, cuja a sua diferença é que é feito o cálculo de uma raiz com o resultado do erro quadrático médio.
 
 \begin{equacaodestaque}{Raíz do Erro Quadrático Médio (\textit{RMSE})}
     {RMSE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (y_j -\hat{y}_j)^2}%
     \label{eq:rmse-metric}
 \end{equacaodestaque}
 
-Essa função tem como objetivo servir de métrica para avaliar os modelos de regressão. O \textit{MSE} funciona como uma função de perda e também como uma métrica avaliativa. Mas como foi dito anteriormente, é difícil interpretar a primeira vista os seus resultados, uma vez que ele eleva ao quadrado o cálculo do erro. Com \textit{RMSE} é resolvido esse ``problema'' da interpretabilidade, dando um resultado mais tangível para entender como o modelo está se comportando. 
+Essa função tem como objetivo servir de métrica para avaliar os modelos de regressão. O \textit{MSE} funciona como uma função de perda e também como uma métrica avaliativa. Mas como foi dito anteriormente, é difícil interpretar a primeira vista os seus resultados, uma vez que ele eleva ao quadrado o cálculo do erro. Com \textit{RMSE} é resolvido esse ``problema'' da interpretabilidade, dando um resultado mais tangível para entender como o modelo está performando. 
 
 Além disso, pode-se pensar que o \textit{RMSE} funcionaria como uma função de perda, mas utilizá-lo nessa estratégia pode não fazer muito sentido, dado que ele tira a principal propriedade do erro quadrático médio: a sensibilidade para \textit{outliers}. 
 
-Dito isso, finalmente é possível discutir algumas aplicações dessas funções em algoritmos de aprendizado de máquina.
+Dito isso, finalmente será estudado algumas aplicações dessas funções em algoritmos de aprendizado de máquina.
 
 \medskip
 \begin{center}
@@ -328,7 +328,7 @@ Dito isso, finalmente é possível discutir algumas aplicações dessas funçõe
 \index{Aplicações práticas! Erro quadrático médio (MSE)}
 \vspace{1em}
 
-Além de estar presente nas deduções do algoritmo da retropropagação como uma função de perda, o erro quadrático médio acaba sendo uma função bem versátil para ser aplicada em problemas de regressão. Não somente isso, mas seu uso não se restringe a somente uma função de perda que será utilizada como ``mapa'' para a otimização do modelo, o \textit{MSE} também é uma ótima métrica para avaliar o desempenho de um modelo de regressão. E junto do \textit{MSE} está o \textit{RMSE}, cujo o cálculo é dado pela raiz quadrada do erro quadrático médio. Juntas, essas duas funções se tornam ótimas escolhas para medir como um modelo está performando.
+Além de estar presente nas deduções do algoritmo da retropropagação como uma função de perda, o erro quadrático médio acaba sendo uma função bem versátil para ser aplicada em problemas de regressão. Não somente isso, mas seu uso não se restringe a somente uma função de perda que será utilizada como guia para a otimização do modelo. O \textit{MSE} também é uma ótima métrica para avaliar o desempenho de um modelo de regressão. E, junto do \textit{MSE} está o \textit{RMSE}, juntas, essas duas funções se tornam ótimas escolhas para medir como um modelo está performando.
 
 Dito, isso, vale apenas destacar alguns desses cenários em que o erro quadrático médio é utilizado tanto como função de perda, quanto como métrica avaliativa. Além disso, é possível notar que muitas vezes ele irá aparecer indiretamente em formato de raiz do erro quadrático médio.
 
@@ -347,13 +347,13 @@ Assim, algumas aplicações do \textit{MSE} são:
 \end{center}
 \medskip
 
-Conhecendo a função de perda \textit{MSE}, é possível agora discutir uma outra abordagem para resolver problemas de regressão. Para isso, a próxima seção busca apresentar o erro absoluto médio, que é uma alternativa para o erro quadrático médio que tem como principal diferença o jeito que lida com \textit{outliers}.
+Conhecendo a função de perda \textit{MSE}, cabe discutir outras funções de perda que também são igualmente importantes. Para isso, a próxima seção apresenta o erro absoluto médio, que é uma alternativa para o erro quadrático médio, tendo como principal diferença o jeito que lida com \textit{outliers}.
 
 \subsection{Erro Absoluto Médio (MAE)}%
 \index{Funções de Perda!Erro Absoluto Médio (MAE)}%
 \label{sec:mae-loss}
 
-O \gls{mae-loss}, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Assim, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
+O \gls{mae-loss}, também chamado de perda L1, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada para tarefas de regressão. Neste caso o \textit{MAE} não possui uma origem definida que como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado a bastante tempo. Contudo, trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} fazem uso do erro absoluto médio para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE}, neste caso, essa função é apresentada com outro nome, \textit{Least-Absolute-Deviation} (\textit{LAD}), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. Neste caso, \textcite{GreedyFunctionApproximation} explica que esse algoritmo faz uso de uma árvore de regressão com a perda, de forma que para prever a pseudo-resposta que é o sinal dos resíduos atuais é utilizado o método dos mínimos quadrados. Como consequência, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
 Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-Image Translation with Conditional Adversarial Networks} \parencite{ImageToImage}. Nele, \textcite{ImageToImage} argumentam que preferiram trabalhar com a função de perda \textit{L1 distance} (um dos diferentes nomes utilizados para se referir ao \textit{MAE}) devido a essa função gerar imagens menos borradas. É possível ver essa comparação nas imagens da Figura~\ref{fig:comparativo-perdas-image-to-image}. Perceba que a perda que apresenta os resultados mais consistentes com a realidade é justamente a \textit{L1 + cGAN}, a qual possuí o \textit{MAE} em sua composição.
 
@@ -368,13 +368,11 @@ Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-
     \label{fig:comparativo-perdas-image-to-image}
 \end{figure}
 
-Além disso, vale a pena destacar como o erro absoluto médio se enquadra no exemplo ilustrativo do jogo dos dardos. Para isso, diferente do erro quadrático médio, em que quanto mais longe do centro, o número de pontos perdidos aumentava de forma quadrática, no \textit{MAE} a penalização com relação aos jogadores ruins é mais suave, sendo dada de forma linear. 
-
 Além disso, é interessante fazer uma outra analogia considerando o cenário em que o \textit{MAE} se encontra. Para isso, é preciso considerar que será feito um novo jogo de dardos com dez participantes, em que cada um tem direito de jogar apenas um dardo, e que no final os dez dardos serão somados e com base neles será dado o resultado da equipe. Se tivéssemos uma equipe muito ruim utilizando como métrica o \textit{MSE} para avaliar os pontos, o resultado seria péssimo, porque esses dardos estariam muito longes do centro, e como o erro é elevado ao quadrado, isso geraria uma pontuação muito baixa. 
 
-Contudo, se a métrica escolhida para avaliar o jogo fosse o \textit{MAE} o resultado seria bem melhor, visto que o erro cresce de forma linear. Saindo da alogia e voltando para o cenário de aprendizado de máquina, é possível associar os jogadores ruins com os \textit{outliers}, eles estão presentes nos dados e vão atrapalhar o aprendizado do seu modelo. Contudo, escolher uma função que não seja tão agressiva na medição desses \textit{outliers} pode ser uma excelente alternativa para trabalhar em cenários em que essa configuração será muito comum.
+Contudo, se a métrica escolhida para avaliar o jogo fosse o \textit{MAE} o resultado seria bem melhor, visto que o erro cresce de forma linear. Saindo da analogia e voltando para o cenário de aprendizado de máquina, é possível associar os jogadores ruins com os \textit{outliers}, eles estão presentes nos dados e vão atrapalhar o aprendizado do seu modelo. Contudo, escolher uma função que não seja tão agressiva na medição desses \textit{outliers} pode ser uma excelente alternativa para trabalhar em cenários em que essa configuração será muito comum.
 
-Visto esses diferentes cenários em que o erro absoluto médio foi utilizado para resolver problemas de regressão, além de como ele pode ser associado com o jogo dos dardos, é possível ver agora a sua definição matemática. Para isso, o \textit{MAE} está definido na Equação~\ref{eq:mae}. Perceba que ele é responsável por calcular a diferença entre os dois pontos, o valor real $\hat{y}_j$ e o valor predito $y_j$, para todos os $N$ casos analisados e a partir disso calcular a média dos resultados.
+O \textit{MAE} está definido na Equação~\ref{eq:mae}. Ele é responsável por calcular a diferença entre os dois pontos, o valor real $\hat{y}_j$ e o valor predito $y_j$, para todos os $N$ casos analisados e a partir disso calcular a média dos resultados.
 
 \begin{equacaodestaque}{Erro Absoluto Médio (\textit{MAE})}
     \Loss_{\text{MAE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} |y_j -\hat{y}_j|%
@@ -389,8 +387,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-
-Também vale a pena analisar o erro absoluto médio de forma gráfica. Para isso, suas representações em duas e três dimensões estão presentes na Figura~\ref{fig:mae} de forma semelhante ao que foi feito ao apresentar o \textit{MSE}.
+Já os gráficos do erro absoluto médio estão representados na Figura~\ref{fig:mae}. Seguindo a mesma lógica: na subfigura à esquerda, está a visão em duas dimensões, e na subfigura à direita, a superfície no espaço.
 
 \begin{figure}[h!]
     \centering
@@ -591,7 +588,7 @@ Contudo, mesmo possuindo esse detalhe de descontinuidade em zero, isso não atra
     \fonte{O autor (2025).}
 \end{figure}
 
-Perceba que a derivada do erro absoluto médio é representado em forma de uma função por partes, neste caso, ela é divida em duas diferentes retas, parecida com a função de ativação degrau unitário. Note também que existe um ``bico'' na união dessas duas retas, isso acontece devido a descontinuidade dessa função em zero, o que impede de ser derivada nesse ponto. Assim, a derivada do \textit{MAE} pode ser interpretada como a composição de duas retas constantes, a primeira constante em -1, e a segunda constante em 1.
+A derivada do erro absoluto médio é representada em forma de uma função por partes. Neste caso, ela é divida em duas diferentes retas, parecida com a função de ativação degrau unitário. Ademais, existe um ``bico'' na união dessas duas retas, isso acontece devido a descontinuidade dessa função em zero, o que impede de ser derivada nesse ponto. Assim, a derivada do \textit{MAE} pode ser interpretada como a composição de duas retas constantes, a primeira constante em -1, e a segunda constante em 1.
 
 \medskip
 \begin{center}
@@ -603,7 +600,7 @@ Perceba que a derivada do erro absoluto médio é representado em forma de uma f
 \index{Aplicações práticas! Erro absoluto médio (MAE)}
 \vspace{1em}
 
-Além dos casos discutidos no início da seção: o \texttt{LAD\_TreeBoost} e o artigo \textit{Image-to-Image Translation with Conditional Adversarial Networks}, o \textit{MAE} também está presente em uma série de trabalhos, atuando tanto como função de perda, quanto servindo como uma métrica de avaliação, indicando se o modelo desenvolvido está performando bem ou não. Dito isso, essa seção busca explorar algumas dessas aplicações do erro absoluto médio, semelhante ao que foi feito ao analisar o erro quadrático médio. 
+Além dos casos discutidos no início da seção: o \texttt{LAD\_TreeBoost} e o artigo \textit{Image-to-Image Translation with Conditional Adversarial Networks}, o \textit{MAE} também está presente em uma série de trabalhos, atuando tanto como função de perda, quanto servindo como uma métrica de avaliação, indicando se o modelo desenvolvido está performando bem ou não. Essa seção busca explorar algumas dessas aplicações do erro absoluto médio, semelhante ao que foi feito ao analisar o erro quadrático médio. 
 
 Dito isso, vale destacar os trabalhos:
 
@@ -620,7 +617,7 @@ Dito isso, vale destacar os trabalhos:
 \end{center}
 \medskip
 
-Visto o erro quadrático médio, que penaliza fortemente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não se preocupe tanto com os \textit{outliers}? Essa é a proposta da perda de Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela é o tópico principal da próxima seção.
+Visto o erro quadrático médio, que penaliza fortemente ou \textit{outliers}, e o erro absoluto médio, que não penaliza de forma agressiva os \textit{outliers}, surge uma pergunta: Existe alguma forma de ter uma função que penalize os erros gravemente até um certo ponto e depois desse, ela não penalize tanto com os \textit{outliers}? Essa é a proposta da perda de Huber, a qual busca unir os principais benefícios dessas duas funções de regressão. Ela é o tópico principal da próxima seção.
 
 \subsection{Perda de Huber (Huber Loss)}%
 \index{Funções de Perda!Perda de Huber (Huber Loss)}%
@@ -637,7 +634,9 @@ A \gls{huber-loss} recebe o seu nome devido ao seu criador, Peter J. Huber, que 
     \label{eq:huber-loss-do-huber}
 \end{equation}
 
-O que Huber estava querendo basicamente com a Equação~\ref{eq:huber-loss-do-huber} era uma função que se comportasse de forma quadrática para os casos em que $|t| < k$ e que se comportasse de forma linear para os casos em que $t \ge k$. Essa função criada pelo pesquisador é a função que está sendo estudada, a perda de Huber, a qual pode ser representada, agora com notações voltadas para o cenário de aprendizado de máquina, com a Equação~\ref{eq:huber-loss}.
+O que Huber estava querendo basicamente com a Equação~\ref{eq:huber-loss-do-huber} era uma função que se comportasse de forma quadrática para os casos em que $|t| < k$ e que se comportasse de forma linear para os casos em que $t \ge k$. Essa função criada pelo pesquisador é a função que está sendo estudada, a perda de Huber.
+
+A \textit{Huber Loss}, representada com as notações deste livro, está retratada na Equação~\ref{eq:huber-loss}.
 
 \begin{equacaodestaque}{Perda de Huber (Huber \textit{Loss})}
     \Loss_{\text{Huber}} (y, \hat{y}) = 
@@ -657,7 +656,7 @@ Em que:
     \item $\delta$ representa
 \end{itemize}
 
-É possível também representar a perda de Huber utilizando gráficos, para isso, ela pode ser vista na Figura~\ref{fig:huber-loss}. Para isso, na Figura~\ref{fig:huber-2d} está representado a visualização em duas dimensões dessa função, enquanto na Figura~\ref{fig:huber-3d} está a representação no espaço da superfície, assim como o que vem sendo feito até agora. Perceba que é como se ela fosse duas funções em uma, até um certo ponto do gráfico ela age parecido a uma função quadrática, contudo, após passar do limite de $\delta$ ela passa a ser uma função linear.
+Os gráficos da perda de Huber estão na Figura~\ref{fig:huber-loss}. Para isso, na Figura~\ref{fig:huber-2d} representa a visualização em duas dimensões dessa função, enquanto na Figura~\ref{fig:huber-3d} representa no espaço da superfície, assim como o que vem sendo feito até agora. A perda de Huber é como se fosse duas funções em uma, até um certo ponto do gráfico ela tem o comportamento de uma função quadrática. Contudo, após passar do limite de $\delta$, ela passa a ser uma função linear.
 
 \begin{figure}[h!]
     \centering
@@ -742,7 +741,7 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-Um ponto a ser destacado ao utilizar a perda de Huber é com relação a escolha de valores para o parâmetro $\delta$. Um valor muito pequeno para $\delta$ faz com que a função se comporte mais como o erro absoluto médio, é possível ver essa situação na Figura~\ref{fig:huber-comparacoes-mae}, já ao escolher um valor muito grande para $\delta$ faz com que a perda de Huber se assemelhe mais a função erro quadrático médio, essa situação está na Figura~\ref{fig:huber-comparacoes-mse}. \textcite{LossesArticle} explicam que a escolha de valores para $\delta$ pode ser feita de forma empírica, através de validação cruzada (\textit{cross-validation}). Assim, testes são recomendados a fim de escolher o melhor valor para $\delta$ no cenário em que está sendo trabalhado.
+Um ponto a ser destacado ao utilizar a perda de Huber é com relação a escolha de valores para o parâmetro $\delta$. Um valor muito pequeno para $\delta$ faz com que a função se comporte mais como o erro absoluto médio, essa situação está presente na Figura~\ref{fig:huber-comparacoes-mae}. Já ao escolher um valor muito grande para $\delta$,  a perda de Huber passa a se assemelhar mais a função erro quadrático médio, como mostra a Figura~\ref{fig:huber-comparacoes-mse}. \textcite{LossesArticle} explicam que a escolha de valores para $\delta$ pode ser feita de forma empírica, através de validação cruzada (\textit{cross-validation}). Logo, testes são recomendados a fim de escolher o melhor valor para $\delta$ no cenário em que está sendo trabalhado.
 
 \begin{figure}[h!]
     \centering
@@ -828,7 +827,7 @@ Assim, nota-se que ao utilizar a perda de Huber em um problema de regressão, é
 Conhecido o gráfico e sua equação, é possível agora discutir algumas das propriedades da perda de Huber, as quais são apresentadas a seguir:
 
 \begin{itemize}
-    \item \textbf{Robustez para \textit{outliers}:} Assim como o \textit{MAE}, a perda de Huber não penaliza de forma quadrática os erros como comparado com o erro quadrático médio, dessa forma, os \textit{outliers} não conseguem afetar drasticamente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle};
+    \item \textbf{Robustez para \textit{outliers}:} Assim como o \textit{MAE}, a perda de Huber não penaliza de forma quadrática os erros como comparado com o erro quadrático médio, portanto, os \textit{outliers} não conseguem afetar drasticamente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle};
     \item \textbf{Diferenciabilidade em $\delta$:} Um ponto a ser destacado ao se utilizar a perda Huber é que ela apresenta pontos de descontinuidade para o cenário em que $y - \hat{y} = \delta$, contudo a função é contínua em todo o resto, dessa forma, isso não a impede de ser utilizada em conjunto com otimizadores baseados em gradiente \parencite{LossesArticle};
     \item \textbf{Convexa:} Bem como as funções de perda vistas até agora, a perda de Huber também é uma função convexa. Isso pode ser visto nos gráficos da Figura~\ref{fig:huber-loss}, note que ela segue a forma clássica de uma funil, comum em funções convexas. Essa característica é uma vantagem para a perda de Huber, pois facilita com que os otimizadores encontrem os pontos de mínimo. Contudo, em redes neurais isso é mais complicado, devido as transformações não-lineares que ocorrem no modelo, fazendo com que a função de perda deixe de ser convexa.
 \end{itemize}
@@ -839,9 +838,9 @@ Conhecido o gráfico e sua equação, é possível agora discutir algumas das pr
 \end{center}
 \medskip
 
-Cabe também discutir a diferenciabilidade da perda de Huber, e como é dado o cálculo do seu gradiente. Dito isso, como explicam \textcite{LossesArticle}, o gradiente da perda de Huber deve ser calculado por partes, sendo que é possível utilizar a Equação~\ref{eq:huber-loss-derivada} como guia.
+Como explicam \textcite{LossesArticle}, o gradiente da perda de Huber deve ser calculado por partes, sendo que é possível utilizar a Equação~\ref{eq:huber-loss-derivada} como guia.
 
-\begin{equacaodestaque}{Derivada Parcial da Perda de Huber (Huber \textit{loss}) em Relação a $\hat{y}$}
+\begin{equacaodestaque}{Derivada Parcial da Perda de Huber (Huber \textit{loss}) em Relação à $\hat{y}$}
     \frac{\partial\Loss_{\delta}}{\partial\hat{y}} (y_j, \hat{y}_j) = 
     \begin{cases} 
         \hat{y} -y & \text{se } | y -\hat{y} | \le\delta\\
@@ -849,7 +848,7 @@ Cabe também discutir a diferenciabilidade da perda de Huber, e como é dado o c
     \label{eq:huber-loss-derivada}
 \end{equacaodestaque}
 
-Mesmo possuindo esse problema de descontinuidade da função em $y - \hat{y} = \delta$, como foi visto isso não atrapalha o cálculo do gradiente. De forma semelhante, também não atrapalha a construção do gráfico da sua derivada, o qual pode ser visto na Figura~\ref{fig:huber-derivada}, na Figura~\ref{fig:huber-derivada-2d} é possível ver a representação em duas dimensões, já na Figura~\ref{fig:huber-derivada-3d} está a representação da superfície no espaço.
+Os gráficos da derivada parcial da perda de Huber em relação à predição do modelo estão na Figura~\ref{fig:huber-derivada}. Na Figura~\ref{fig:huber-derivada-2d} está a representação no plano, já na Figura~\ref{fig:huber-derivada-3d} está a representação da superfície no espaço.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura na página
@@ -980,7 +979,7 @@ Dito isso, vale citar os trabalhos:
 \end{center}
 \medskip
 
-Com isso, foi possível ver que a perda de Huber é uma excelente alternativa para os casos em que deseja-se controlar os pontos em que o cálculo da perda deve atuar de forma severa (usando termos quadráticos, semelhante a perda L2) e a partir de quis casos esse cálculo pode ser menos punitivo (usando termos lineares, semelhante a perda L1). Contudo, foi visto que ela tem um problema, os pontos em que essas funções se juntam gera uma descontinuidade, atrapalhando a derivação dessas funções. Para resolver esse problema da descontinuidade, pode ser utilizada como alternativa a perda Log-Cosh, a qual será vista em seguida.
+Após a leitura dessa seção, foi possível ver que a perda de Huber é uma excelente alternativa para os casos em que deseja-se controlar os pontos em que o cálculo da perda deve atuar de forma severa (usando termos quadráticos, semelhante a perda L2). E a partir de quais casos esse cálculo pode ser menos punitivo (usando termos lineares, semelhante a perda L1). Contudo, foi visto que ela tem um problema, os pontos em que essas funções se juntam gera uma descontinuidade, atrapalhando a derivação dessa perda de Huber. Para resolver esse problema da descontinuidade, pode ser utilizada como alternativa a perda Log-Cosh, tópico principal da próxima seção.
 
 \subsection{Perda Log-Cosh (Log-Cosh Loss)}%
 \index{Funções de Perda!Perda Log-Cosh (Log-Cosh Loss)}%
@@ -1003,7 +1002,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-Já com relação ao gráfico dessa função, ele está presente na Figura~\ref{fig:log-cosh-loss}. Note que a perda log-cosh atua de forma parecida com a perda de Huber. Para valores em que a diferença da saída do modelo e o rótulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que lembra ao de uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh passa a assumir um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares. Com isso, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a \textit{Huber Loss}, mas ainda é desejável manter a variação no cálculo do erro do modelo.
+Já com relação ao gráfico dessa função, ele está presente na Figura~\ref{fig:log-cosh-loss}. Note que a perda log-cosh atua de forma parecida com a perda de Huber. Para valores em que a diferença da saída do modelo e o rótulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que lembra ao de uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh passa a assumir um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares. Consequentemente, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a \textit{Huber Loss}, mas ainda é desejável manter a variação no cálculo do erro do modelo.
 
 \begin{figure}[h!]
     \centering 
@@ -1094,7 +1093,7 @@ Seguindo adiante, é possível discutir agora algumas das propriedades dessa fun
 \begin{itemize}
     \item \textbf{Convexa:} É possível ver pelo gráfico da Figura~\ref{fig:log-cosh-loss} que ela é uma função convexa, apresentando um formato característico de funil, além de possuir um único ponto de mínimo global. Mas note que não é possível garantir essa propriedade em cenários em que ela está sendo aplicada em modelos de redes neurais densas, devido as transformações não-lineares que ocorrem;
     \item \textbf{Robustez para \textit{outliers}:} Assim como a perda de Huber e o erro absoluto médio, a perda log-cosh não pune de forma agressiva os erros cometidos pelo modelo ao ser treinado. Isso garante que essa função possa ser aplicada em cenários em que os dados possuem muitos \textit{outliers} sem afetar drasticamente o treinamento do modelo;
-    \item \textbf{Continuidade e diferenciabilidade:} Diferente de a perda de Huber, que possui pontos de descontinuidade na ligação da função linear com a quadrática, a perda log-cosh consegue ser contínua em todos os seus pontos. Além disso, isso também é uma vantagem sobre o erro absoluto médio, pois este também apresenta um ponto de descontinuidade em 0, o qual precisa do cálculo do subgradiente para garantir o aprendizado dos modelos que fazem uso de otimizadores baseados em gradiente. Dessa forma, além de ser contínua, a perda log-cosh pode ser derivada em todos os seus pontos, algo útil caso esteja sendo usados otimizadores que atuam com o uso do cálculo do gradiente.
+    \item \textbf{Continuidade e diferenciabilidade:} Diferente de a perda de Huber, que possui pontos de descontinuidade na ligação da função linear com a quadrática, a perda log-cosh consegue ser contínua em todos os seus pontos. Além disso, isso também é uma vantagem sobre o erro absoluto médio, pois este também apresenta um ponto de descontinuidade em 0, o qual precisa do cálculo do subgradiente para garantir o aprendizado dos modelos que fazem uso de otimizadores baseados em gradiente. Portanto, além de ser contínua, a perda log-cosh pode ser derivada em todos os seus pontos, algo útil caso esteja sendo usados otimizadores que atuam com o uso do cálculo do gradiente.
 \end{itemize}
 
 \medskip
@@ -1213,7 +1212,7 @@ Dito isso vale citar os trabalhos:
 \end{center}
 \medskip
 
-Vistas essas quatro funções: O erro quadrático médio (\textit{MSE}), o erro absoluto médio (\textit{MAE}), a perda de Huber e a perda log-cosh. Já é possível resolver a grande maioria dos problemas de regressão em aprendizado de máquina. Contudo, existem problemas que vão além dessas perdas, precisando de funções mais específicas para garantir uma melhor avaliação do erro e a partir dele, saber atualizar o gradiente e com isso o modelo aprender de fato.
+Vistas essas quatro funções: O erro quadrático médio (\textit{MSE}), o erro absoluto médio (\textit{MAE}), a perda de Huber e a perda log-cosh. Já é possível resolver a grande maioria dos problemas de regressão em aprendizado de máquina. Contudo, existem problemas que vão além dessas perdas, precisando de funções mais específicas para garantir uma melhor avaliação do erro e a partir dele, saber atualizar o gradiente e como consequência, o modelo pode aprender de fato.
 
 Para isso, as próximas seções buscam explorar diferentes cenários em que as funções de perda para regressão vistas até agora não são a melhor escolha. Assim, serão exploradas mais três seções, a primeira focada no erro relativo, a segunda focada em funções de erro que não calculam a média dos diversos erros, e a última para casos em são utilizas distribuições específicas para os valores.
 
@@ -1232,7 +1231,7 @@ Essa é uma forma de analisar o problema. Mas também pode ser visto de forma re
 
 O erro quadrático médio, e as outras três funções de perda vistas até agora tratam os erros dos cenários A e B como iguais. Mas e se você estivesse em uma situação em que o modelo subestimar os valores dos rótulos seja considerada muito negativa, e por isso deve ser evitada?
 
-Para isso, essa seção busca explicar a função de perda erro quadrático médio logarítmico, que possui uma tendência de penalizar mais as subestimação. Serão vistos seus gráficos, sua fórmula e aplicações, assim como nas outras funções vistas até o momento.
+Para isso, essa seção busca explicar a função de perda erro quadrático médio logarítmico, que possui uma tendência de penalizar mais as subestimação. Serão vistos seus gráficos, sua fórmula e aplicações, bem como nas outras funções vistas até o momento.
 
 \subsection{Erro Quadrático Médio Logarítmico (MSLE)}%
 \index{Funções de Perda!Erro Quadrático Médio Logarítimico (MSLE)}%
@@ -1344,7 +1343,7 @@ Com relação ao seu gráfico, ele pode visto na Figura~\ref{fig:msle-loss}. Na 
 Conhecendo a fórmula dessa função e suas representações gráficas, cabe agora discutir algumas das características dessa função:
 
 \begin{itemize}
-    \item \textbf{Foco no erro relativo (Percentual):} Quando o \textit{MSLE} é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Com isso, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
+    \item \textbf{Foco no erro relativo (Percentual):} Quando o \textit{MSLE} é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
     \item \textbf{Tendência de penalizar subestimações:} Como pode ser visto nos gráficos da Figura~\ref{fig:msle-loss}, a função \textit{MSLE} não forma uma curva convexa simétrica verticalmente, perceba que conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
     \item \textbf{Continuidade e Diferenciabilidade:} Ainda com relação aos seus gráficos é possível analisar a continuidade dessa função. Note que ela não apresenta nenhum ponto ``problema'' que poderia afetar o cálculo das derivadas e com isso atrapalhar o fluxo do gradiente. Além disso, o uso dos logaritmos para essa função permite que suas curvas sejam suaves, o que também ajuda na sua continuidade.
 \end{itemize}
@@ -1355,7 +1354,7 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 \end{center}
 \medskip
 
-Cabe também discutir as derivadas do \textit{MSLE}, as quais serão úteis para construir o vetor gradiente do erro. Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$
+Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$. Ela será útil para a retropropagação do modelo.
 
 \begin{equacaodestaque}{Derivada Parcial do Erro Quadrático Médio Logarítmico (\textit{MSLE}) em Relação a $\hat{y}_j$}
     \frac{\partial\Loss_{\text{MSLE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = -\frac{2}{N} \cdot \frac{\ln(y_j + 1) -\ln(\hat{y}_j + 1)}{\hat{y}_j + 1}%
@@ -1486,7 +1485,7 @@ Com isso, é possível ter uma ideia de que o erro quadrático logarítmico méd
 \end{center}
 \medskip
 
-Além disso, assim como o erro quadrático médio, que possui uma métrica derivada, o \textit{RMSE}. Com o erro quadrático logarítmico médio não é diferente. Assim, é possível também utilizar a métrica raiz do erro quadrático médio logarítmico (\textit{RMSLE}) que serve de métrica para avaliar modelos de aprendizado de máquina. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raiz quadrada da função de perda \textit{RMSE}.
+Além disso, bem como o erro quadrático médio, que possui uma métrica derivada, o \textit{RMSE}. Com o erro quadrático logarítmico médio não é diferente. Assim, é possível também utilizar a métrica raiz do erro quadrático médio logarítmico (\textit{RMSLE}) que serve de métrica para avaliar modelos de aprendizado de máquina. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raiz quadrada da função de perda \textit{RMSE}.
 
 \begin{equacaodestaque}{Raiz do Erro Quadrático Médio Logarítmico (\textit{RMSLE})}
     \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) -\log(\hat{y}_j + 1))^2}%
@@ -1501,7 +1500,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-Ao calcular a raiz quadrada do erro quadrático médio logarítmico é possível ter uma noção melhor da magnitude dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do \textit{RMSE}. Dessa forma, a equação da raiz do erro quadrático médio logarítmico consegue melhorar a interpretabilidade dos erros, servindo como uma métrica, a qual pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
+Ao calcular a raiz quadrada do erro quadrático médio logarítmico é possível ter uma noção melhor da magnitude dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do \textit{RMSE}. Diante disso, a equação da raiz do erro quadrático médio logarítmico consegue melhorar a interpretabilidade dos erros, servindo como uma métrica, a qual pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
 
 \medskip
 \begin{center}
@@ -1540,7 +1539,6 @@ Ao calcular a média dos erros, está sendo presumido que a tendência central �
 \begin{figure}[h!]
     \centering 
 
-    % --- SUBFIGURA (a): Distribuição Assimétrica à Direita ---
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
@@ -1650,7 +1648,7 @@ Existe uma função de perda que consegue lidar justamente com esse cenário, em
 
 Além disso, existe uma outra função de perda que também não trabalha com o cálculo da média dos erros, ela é a $\epsilon$-insensível, sendo uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Neste caso, ao utilizar essa função, é possível definir uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
 
-Dessa forma, é possível começar a seção explicando primeiro a perda quantílica.
+Visto isso, é possível começar a seção explicando primeiro a perda quantílica.
 
 \subsection{Perda Quantílica (Quantile Loss)}%
 \index{Funções de Perda!Perda Quantílica (\textit{Quantile Loss})}
@@ -2092,7 +2090,7 @@ Em que:
     \item $\epsilon$ ...
 \end{itemize}
 
-O objetivo de utilizar essa função de perda em máquinas de vetores de suporte para problemas de regressão é criar uma margem em que o erro do modelo não seja penalizado. O tamanho dessa margem é dado pelo termo $\epsilon$, além disso, fora desse intervalo o erro é penalizado de forma linear, assim como no erro absoluto médio. Isso pode ser visto de forma mais intuitiva nos gráficos da Figura~\ref{fig:epsilon-insensitive-loss}, no gráfico da esquerda (a Figura~\ref{fig:epsilon-2d}) é possível ver a representação em duas dimensões da perda, enquanto no gráfico da direta (a Figura~\ref{fig:epsilon-3d}) está representado a superfície dessa função no espaço.
+O objetivo de utilizar essa função de perda em máquinas de vetores de suporte para problemas de regressão é criar uma margem em que o erro do modelo não seja penalizado. O tamanho dessa margem é dado pelo termo $\epsilon$, além disso, fora desse intervalo o erro é penalizado de forma linear, semelhante ao erro absoluto médio. Isso pode ser visto de forma mais intuitiva nos gráficos da Figura~\ref{fig:epsilon-insensitive-loss}, no gráfico da esquerda (a Figura~\ref{fig:epsilon-2d}) é possível ver a representação em duas dimensões da perda, enquanto no gráfico da direta (a Figura~\ref{fig:epsilon-3d}) está representado a superfície dessa função no espaço.
 
 \begin{figure}[h!]
     \centering 
@@ -2365,7 +2363,7 @@ Imagine que você está procurando uma forma de modelar a quantidade de ligaçõ
 A distribuição de Poisson é dada pela Equação~\ref{eq:poisson-distribution-pmf}, em que o espaço amostral é conjunto de inteiros não-negativos. Outro detalhe dessa distribuição, como aponta xxx, é que ela não possui uma limite superior nos valores que podem ser observados. Isso é um ponto interessante, pois na distribuição normal isso não acontece, ela apresenta um limite superior para esses valores.
 
 \begin{equacaodestaque}{Distribuição de Poisson (PMF)}
-    P(y_j| \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}, \quad y_j \in {0, 1, 2, ...}%
+    P(y_j| \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}, \quad y_j \in {0, 1, 2, \ldots}%
     \label{eq:poisson-distribution-pmf}
 \end{equacaodestaque}
 
@@ -2375,7 +2373,7 @@ Em que:
     \item $\lambda$ representa a taxa de Poisson, ou seja, a contagem esperada
 \end{itemize}
 
-Essa distribuição possui diversas propriedades interessantes. Como explica xxx, a distribuição de Poisson segue a média, a variância e todos os cumulativos de Y que são igual a $\lambda$. Isso significa que a média e a variância dessa distribuição são iguais, e como consequência o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
+Essa distribuição possui diversas propriedades interessantes. Como explicam \textcite{GeneralizedLinearModels}, a distribuição de Poisson segue a média, a variância e todos os cumulativos de Y que são igual a $\lambda$. Isso significa que a média e a variância dessa distribuição são iguais, e como consequência o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
 
 É possível ver isso melhor nas plotagens dessa distribuição. Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele é baixo, o que significa que a média da distribuição é baixa, por isso a maioria dos dados está bem próximo de zero, mas além disso, a variância também é baixa, indicando que os dados são representados no gráfico de forma assimétrica. Já na Figura~\ref{fig:poisson-high-lambda} o cenário é o inverso, o $\lambda$ é alto, o que reflete em dados melhores distribuídos no gráfico, além de uma média maior, perceba como o gráfico passa a lembrar o de uma distribuição Normal, mas ainda sim, permanece discreto.
 
@@ -2448,7 +2446,7 @@ Além disso, vale a pena discutir também a função log-verossimilhança dessa 
     \label{eq:log-verossimilhanca-negativa-de-poisson}
 \end{equacaodestaque}
 
-Ainda em xxx, xxx explica algum cenários em que essa distribuição pode ser utilizada para descrever um problema, entre algum dos explicados pelo autor, vale a pena citar:
+Ainda no livro \textit{Generalized Linear Models}, \textcite{GeneralizedLinearModels} explicam algum cenários em que essa distribuição pode ser utilizada para descrever um problema, entre algum dos explicados pelo autor, vale a pena citar:
 
 \begin{itemize}
     \item \textbf{Um ensaio biológico sobre tuberculina:} A distribuição de poisson com a sua função de log-verossimilhança é utilizada para descrever os casos de tuberculina em população de bovinos;
@@ -2630,7 +2628,7 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
 \begin{itemize}
     \item \textbf{Convexa:} Umas das vantagens de se utilizar a perda de Poisson, está no fato dela ser uma função convexa, o que facilita para que os otimizadores baseados em gradiente consigam mais facilmente encontrar um ponto de mínimo global, ou chegar muito próximo dele, casos estejam configurados com os parâmetros ideais.
     \item \textbf{Continuidade e Suavidade:} Além de ser uma função convexa, a perda de Poisson também é uma função contínua e suave, isso se dá devido ao fato de não fazer o uso de cálculos que possam causar ``bicos'' nos seus gráficos, como o uso de módulos para calcular o valor absoluto. Se a função é suave e contínua, ela também se torna chamativa para ser utilizada em conjunto com otimizadores baseados em gradiente, pois estes não encontrarão dificuldades para percorrer a superfície da função.
-    \item \textbf{Não-negatividade e Link Functions:} \textcite{LossesArticle} explicam que como dados de contagem não podem ser negativos, deve-se atentar com os valores preditos pelo modelo $\hat{y}_j$, pois eles deverão estar restritos em $\hat{y}_j > 0$. Os autores explicam que em modelos lineares generalizados a função exponencial é comumente utilizada como uma link function para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Dessa forma é possível discutir uma versão alternativa para descrever a perda de Poisson considerando que $\text{exp}$ está sendo usada como uma link function.
+    \item \textbf{Não-negatividade e Link Functions:} \textcite{LossesArticle} explicam que como dados de contagem não podem ser negativos, deve-se atentar com os valores preditos pelo modelo $\hat{y}_j$, pois eles deverão estar restritos em $\hat{y}_j > 0$. Os autores explicam que em modelos lineares generalizados a função exponencial é comumente utilizada como uma link function para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Dito isso, é possível discutir uma versão alternativa para descrever a perda de Poisson considerando que $\text{exp}$ está sendo usada como uma link function.
     
     Sabemos que um modelo de aprendizado de máquina, geralmente retorna algo que segue o padrão mostrado na Equação xxx
  
@@ -2748,19 +2746,35 @@ Dito isso, vale citar os trabalhos:
 \subsection{Deviância Gamma (Gamma Devience)}%
 \index{Funções de Perda!Deviância Gamma (\textit{Gamma Devience})}
 
+Para falar da função de perda deviância gamma, antes é necessário compreender dois conceitos que se relacionam: a função gamma e a distribuição gamma. Para isso, eles serão explicados primeiro nesta seção.
+
 \textbf{A Função Gamma}%
 \index{Função Gamma}
 \vspace{1em}
+
+As origens da função gamma se remontam ao século XVIII, com a busca de vários matemáticos importantes daquele período em encontrar uma forma de extender a notação da função fatorial para além do conjunto dos números naturais. Nesse sentido, vale citar o trabalho \textit{De progressionibus transcendentibus seu quarum termini generales algebraice dari nequeunt} (Sobre progressões transcendentais, ou seja, aquelas cujos termos gerais não podem ser dados algebricamente em português) de Leonhard Euler, o qual hoje é reconhecido por introduzir o conceito de função gamma que existe atualmente. 
+
+No texto, Euler define esta função como sendo dada por
+
+\[
+\int_0^{\infty} \left(\ln \left(\frac{1}{t} \right) \right)^x
+\]
+
+contudo, esta notação sofreu várias mudanças até ser chegado em um consenso entre os matemáticos. A notação que prevaleu até os dias atuais foi a de Legendre, que em seu trabalho xxx, definiu que a função gamma era denotada pela Equação~\ref{eq:gamma-function}, foi ele inclusive que utilizou a letra grega $\Gamma$ para se referir a essa função.
 
 \begin{equacaodestaque}{Função Gamma}
     \Gamma(z) = \int_{0}^{\infty} t^{z-1} e^{-t} \, dt
     \label{eq:gamma-function}
 \end{equacaodestaque}
 
+Uma das maiores vantagens de se utilizar a função gamma é poder calcular a função fatorial para termos além do conjunto dos naturais, como está demonstrado na Equação~\ref{eq:factorial-with-gamma-function}. Dessa forma, a função gamma serviu como uma espécie de ``ponte'', unindo o a teoria dos números, que trabalha com conjuntos discretos, com o cálculo, que trabalha com conjuntos contínuos. 
+
 \begin{equacaodestaque}{Fatorial com a Função Gamma}
     n! = \Gamma(n+1)
     \label{eq:factorial-with-gamma-function}
 \end{equacaodestaque}
+
+Entretanto, a função gamma não serve só de utilidade para extender o fatorial para outros conjuntos numéricos. Com ela, também é possível descrever uma nova distribuição de valores: a distribuição gamma. Ela será tratada em seguida.
 
 \medskip
 \begin{center}
