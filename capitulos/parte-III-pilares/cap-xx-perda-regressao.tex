@@ -15,7 +15,7 @@ Para explicar cada uma das funções é apresentado as suas equações, os gráf
 
 Pense que você está jogando dardos com seus amigos e quer decidir quem está com mais pontos. Mas você não está satisfeito em considerar as marcações que estão no jogo, e decidiu inovar. Para isso, você pegou uma régua e passou a medir a distância que os dardos que você e seus amigos haviam jogado no centro. Quem chegasse mais próximo do centro, ganhava o jogo.
 
-Essa ideia de medir o quão próximo você está do resultado desejado utilizando a distância entre esses dois pontos como parâmetro, é justamente o motivador pela criação das funções de perda para regressão. Para isso, elas utilizam diferentes fórmulas, com todas com o mesmo intuito, medir a distância em que o ``chute'' dado pelo modelo está do ponto real (desejado).
+Essa ideia de medir o quão próximo você está do resultado desejado utilizando a distância entre esses dois pontos como parâmetro, é justamente o motivador pela criação das funções de perda para regressão. Para isso, elas utilizam diferentes fórmulas, com todas com o mesmo intuito, medir a distância em que a predição dado pelo modelo está do ponto real (desejado).
 
 \section{Características das Funções de Perda}
 
@@ -39,7 +39,7 @@ A questão da diferenciabilidade está relacionada também com a utilização de
 \textbf{Robustez}
 \medskip
 
-As funções de perda devem ser capazes de lidar com \textit{outliers} e não serem afetadas por um pequeno número de valores extremos \parencite{LossesArticle}. Os \textit{outliers} são valores que estão fora da padrão dos dados gerais, eles podem ter valores consideravelmente maiores ou menores que a distribuição geral. Eles são um dos principais problemas ao utilizar uma função de perda, pois, caso esta seja sensível a \textit{outliers}, esses dados irão ``bagunçar'' com o cálculo da perda e consequentemente atrapalhar o aprendizado por gradiente. Escolher uma função que seja robusta a \textit{outliers} é uma escolha ideal para resolver problemas em que esse tipo de dado estará presente, pois ele não irá conseguir afetar drasticamente o cálculo da perda.
+As funções de perda devem ser capazes de lidar com \textit{outliers} e não serem afetadas por um pequeno número de valores extremos \parencite{LossesArticle}. Os \textit{outliers} são valores que estão fora da padrão dos dados gerais, eles podem ter valores consideravelmente maiores ou menores que a distribuição geral. Eles são um dos principais problemas ao utilizar uma função de perda, pois, caso esta seja sensível a \textit{outliers}, esses dados irão enviesar com o cálculo da perda e consequentemente atrapalhar o aprendizado por gradiente. Escolher uma função que seja robusta a \textit{outliers} é uma escolha ideal para resolver problemas em que esse tipo de dado estará presente, pois ele não irá conseguir afetar drasticamente o cálculo da perda.
 
 
 \medskip
@@ -88,7 +88,7 @@ Passado quase 200 anos, o erro quadrático médio se torna uma das principais fu
 
 Voltando para analogia do jogo dos dardos, é possível estendê-la para explicar o erro quadrático médio. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e que vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Diante disso, jogadores que são muito precisos, e com isso acertam dardos mais próximos do centro perdem poucos pontos, contudo, aqueles jogadores que são mais desleixados e acertam longe do centro acabam perdendo muitos pontos, porque seu além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
 
-Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do \textit{MSE}. Dito isso, agora cabe finalmente analisar essa função de fato, em primeiro lugar será analisada a sua fórmula, a qual está apresentada na Equação~\ref{eq:mse}.
+Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do \textit{MSE}. Dito isso, agora cabe finalmente analisar essa função de fato, em primeiro lugar será vista a sua fórmula, a qual está apresentada na Equação~\ref{eq:mse}.
 
 \begin{equacaodestaque}{Erro Quadrático Médio (\textit{MSE})}
     \Loss_{\text{MSE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (y_j -\hat{y}_j)^2%
@@ -491,7 +491,7 @@ A partir do seu gráfico e de sua equação é possível retirar diferentes info
 
 Como foi destacado anteriormente, o \textit{MAE} não é derivável em zero. Inicialmente pode ter-se a ideia de que devido a isso, essa não seja uma função boa para ser utilizada em conjunto com otimizadores baseados em gradiente, porque pontos de descontinuidade como este podem acabar atrapalhando a forma como o modelo é otimizado. Contudo, \textcite{LossesArticle} argumentam, é possível resolver esse problema utilizado técnicas de subgradiente, sendo possível então escrever a derivada do \textit{MAE} com a Equação~\ref{eq:mae-derivada}.
 
-\begin{equacaodestaque}{Derivada Parcial do Erro Absoluto Médio (\textit{MAE}) em Relação a $\hat{y}_j$}
+\begin{equacaodestaque}{Derivada Parcial do Erro Absoluto Médio (\textit{MAE}) em Relação à $\hat{y}_j$}
     \frac{\partial\Loss_{\text{MAE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = 
     \begin{cases} 
       -1 & \text{se } \hat{y}_j > y_j \\
@@ -1102,14 +1102,14 @@ Seguindo adiante, é possível discutir agora algumas das propriedades dessa fun
 \end{center}
 \medskip
 
-Visto essas diferentes propriedades dessa função, cabe agora analisar a sua derivada, a qual será útil para a retropropagação e consequentemente o aprendizado do modelo. Para isso, ela pode ser vista na Equação~\ref{eq:log-cosh-derivada}. Perceba que a derivada da perda log-cosh envolve o cálculo da tangente hiperbólica, que coincidentemente, também é utilizada em aprendizado de máquina como uma função de ativação, tendo como objetivo introduzir a não-linearidade para as saídas de uma camada densa.
+A derivada da perda log-cosh está na Equação~\ref{eq:log-cosh-derivada}. Ela envolve o cálculo da tangente hiperbólica, que coincidentemente, também é utilizada em aprendizado de máquina como uma função de ativação, tendo como objetivo introduzir a não-linearidade para as saídas de uma camada densa.
 
-\begin{equacaodestaque}{Derivada Parcial da Perda Log-Cosh em Relação a $\hat{y}_j$}
+\begin{equacaodestaque}{Derivada Parcial da Perda Log-Cosh em Relação à Predição $\hat{y}_j$}
     \frac{\partial\Loss_{\text{Log-Cosh}}}{\partial\hat{y}_j} = \tanh(\hat{y}_j - y_j)%
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
 
-Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o qual está representado na Figura~\ref{eq:log-cosh-derivada}. Caso você leitor tenha lido o Capítulo~\ref{cap:ativacao-sigmoidais}, você não verá nada novo aqui, é apenas o gráfico característico em formato de ``S'' que as funções sigmoidais possuem. Um ponto interessante a ser destacado ao analisar a figura é que as saídas dessa função serão em um intervalo $[-1, 1]$, o que podem fazer com que o sinal do gradiente fique alternando, garantindo uma convergência mais rápida em alguns casos.
+Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gráficas da derivada da perda log-cosh para o caso em que ela é calculada em relação à predição. Caso você leitor tenha lido o Capítulo~\ref{cap:ativacao-sigmoidais}, você não verá nada novo aqui, é apenas o gráfico característico em formato de ``S'' que as funções sigmoidais possuem. Um ponto interessante a ser destacado na figura, é que as saídas dessa função serão em um intervalo $[-1, 1]$. Isso faz que podem fazer com que o sinal do gradiente fique alternando, garantindo uma convergência mais rápida em alguns casos.
 
 \begin{figure}[h!]
     \centering
@@ -1192,9 +1192,9 @@ Tendo a fórmula da sua derivada, o próximo passo é analisar o seu gráfico, o
 \end{center}
 \medskip
 
-Além das aplicações discutidas no início da seção sobre a perda Log-cosh, ela também está presente em várias outras pesquisas. Para isso, essa seção busca citar algumas aplicações dessa função de perda para resolver problemas no contexto de aprendizado de máquina.
+Além das aplicações discutidas no início da seção sobre a perda Log-cosh, ela também está presente em várias outras pesquisas. Para isso, essa seção explica algumas aplicações dessa função de perda para resolver problemas no contexto de aprendizado de máquina.
 
-Dito isso vale citar os trabalhos:
+Dito isso, vale citar os trabalhos:
 
 \textbf{Algumas Aplicações da Perda Log-Cosh em Problemas de Regressão}%
 \index{Aplicações práticas! Perda Log-Cosh}
@@ -1214,7 +1214,7 @@ Dito isso vale citar os trabalhos:
 
 Vistas essas quatro funções: O erro quadrático médio (\textit{MSE}), o erro absoluto médio (\textit{MAE}), a perda de Huber e a perda log-cosh. Já é possível resolver a grande maioria dos problemas de regressão em aprendizado de máquina. Contudo, existem problemas que vão além dessas perdas, precisando de funções mais específicas para garantir uma melhor avaliação do erro e a partir dele, saber atualizar o gradiente e como consequência, o modelo pode aprender de fato.
 
-Para isso, as próximas seções buscam explorar diferentes cenários em que as funções de perda para regressão vistas até agora não são a melhor escolha. Assim, serão exploradas mais três seções, a primeira focada no erro relativo, a segunda focada em funções de erro que não calculam a média dos diversos erros, e a última para casos em são utilizas distribuições específicas para os valores.
+Para isso, as próximas seções exploram diferentes cenários em que as funções de perda para regressão vistas até agora não são a melhor escolha. Assim, existem mais três seções, a primeira focada no erro relativo, a segunda focada em funções de erro que não calculam a média dos diversos erros, e a última para casos em são utilizas distribuições específicas para os valores.
 
 \section{Lidando com a Escala: Foco no Erro Relativo}
 
@@ -1231,12 +1231,12 @@ Essa é uma forma de analisar o problema. Mas também pode ser visto de forma re
 
 O erro quadrático médio, e as outras três funções de perda vistas até agora tratam os erros dos cenários A e B como iguais. Mas e se você estivesse em uma situação em que o modelo subestimar os valores dos rótulos seja considerada muito negativa, e por isso deve ser evitada?
 
-Para isso, essa seção busca explicar a função de perda erro quadrático médio logarítmico, que possui uma tendência de penalizar mais as subestimação. Serão vistos seus gráficos, sua fórmula e aplicações, bem como nas outras funções vistas até o momento.
+Para isso, essa seção explica a função de perda erro quadrático médio logarítmico, que tem a tendência de penalizar mais as subestimação. Serão vistos seus gráficos, sua fórmula e aplicações, bem como nas outras funções vistas até o momento.
 
 \subsection{Erro Quadrático Médio Logarítmico (MSLE)}%
 \index{Funções de Perda!Erro Quadrático Médio Logarítimico (MSLE)}%
 
-A primeira função a ser vista nessa nova categoria é o erro quadrático médio logarítmico, também chamado de \textit{Mean Squared Logarithmic Error} (\textit{MSLE}). A sua fórmula é dada pela Equação~\ref{eq:msle-loss}. Perceba que diferente das funções vistas até agora, ela faz o cálculo do logaritmo natural dos valores reais ($y_j$) e dos valores previstos pelo modelo ($\hat{y}_j$). Além disso, um ponto que vale a pena ser destacado é com relação ao valor de 1 que é somado aos valores antes do cálculo do logaritmo. Isso ocorre para evitar com que esse resultado possa ser negativo ou zero, gerando uma indeterminação ao calcular o logaritmo.
+O erro quadrático médio logarítmico, também chamado de \textit{Mean Squared Logarithmic Error} (\textit{MSLE}), é calculado pela Equação~\ref{eq:msle-loss}. Diferente das funções vistas até agora, ela faz o cálculo do logaritmo natural dos valores reais ($y_j$) e dos valores previstos pelo modelo ($\hat{y}_j$). Além disso, um ponto que vale a pena ser destacado é com relação ao valor de 1 que é somado aos valores antes do cálculo do logaritmo. Isso ocorre para evitar com que esse resultado possa ser negativo ou zero, gerando uma indeterminação ao calcular o logaritmo.
 
 \begin{equacaodestaque}{Erro Quadrático Médio Logarítmico (\textit{MSLE})}
     \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (\ln(y_j + 1) -\ln(\hat{y}_j + 1))^2%
@@ -1251,7 +1251,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-Com relação ao seu gráfico, ele pode visto na Figura~\ref{fig:msle-loss}. Na Figura~\ref{fig:msle-2d}, à esquerda, está a visão em duas dimensões dessa função, enquanto na Figura~\ref{fig:msle-3d}, à direita, está a visão em três dimensões. Perceba que a adição do logaritmo para essa função traz alguns benefícios como a continuidade em seus pontos além de garantir uma superfície suave e diferenciável. Contudo, a principal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
+O gráfico do erro quadrático logaritmo médio está presente na Figura~\ref{fig:msle-loss}. Na Figura~\ref{fig:msle-2d}, à esquerda, está a visão em duas dimensões dessa função, enquanto na Figura~\ref{fig:msle-3d}, à direita, está a visão em três dimensões. A adição do logaritmo para essa função traz alguns benefícios, como a continuidade em seus pontos, além de garantir uma superfície suave e diferenciável. Contudo, a principal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
 
 \begin{figure}[h!]
     \centering 
@@ -1344,8 +1344,8 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 
 \begin{itemize}
     \item \textbf{Foco no erro relativo (Percentual):} Quando o \textit{MSLE} é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
-    \item \textbf{Tendência de penalizar subestimações:} Como pode ser visto nos gráficos da Figura~\ref{fig:msle-loss}, a função \textit{MSLE} não forma uma curva convexa simétrica verticalmente, perceba que conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
-    \item \textbf{Continuidade e Diferenciabilidade:} Ainda com relação aos seus gráficos é possível analisar a continuidade dessa função. Note que ela não apresenta nenhum ponto ``problema'' que poderia afetar o cálculo das derivadas e com isso atrapalhar o fluxo do gradiente. Além disso, o uso dos logaritmos para essa função permite que suas curvas sejam suaves, o que também ajuda na sua continuidade.
+    \item \textbf{Tendência de penalizar subestimações:} Como mostram os gráficos da Figura~\ref{fig:msle-loss}, a função \textit{MSLE} não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
+    \item \textbf{Continuidade e Diferenciabilidade:} Ainda com relação aos seus gráficos é possível analisar a continuidade dessa função. Note que ela não apresenta nenhum ponto que atrapalhe a diferenciabilidade que poderia afetar o cálculo das derivadas, e, com isso atrapalhar o fluxo do gradiente. Além disso, o uso dos logaritmos para essa função permite que suas curvas sejam suaves, o que também ajuda na sua continuidade.
 \end{itemize}
 
 \medskip
@@ -1356,12 +1356,12 @@ Conhecendo a fórmula dessa função e suas representações gráficas, cabe ago
 
 Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$. Ela será útil para a retropropagação do modelo.
 
-\begin{equacaodestaque}{Derivada Parcial do Erro Quadrático Médio Logarítmico (\textit{MSLE}) em Relação a $\hat{y}_j$}
+\begin{equacaodestaque}{Derivada Parcial do Erro Quadrático Médio Logarítmico (\textit{MSLE}) em Relação à $\hat{y}_j$}
     \frac{\partial\Loss_{\text{MSLE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = -\frac{2}{N} \cdot \frac{\ln(y_j + 1) -\ln(\hat{y}_j + 1)}{\hat{y}_j + 1}%
     \label{eq:msle-derivada}
 \end{equacaodestaque}
 
-Em seguida, é possível ver representação gráfica da derivada da Equação~\ref{eq:msle-derivada} na Figura~\ref{fig:msle-derivada}. Seguindo a mesma regra das outras figuras apresentadas até agora, na Figura~\ref{fig:msle-derivada-2d}, à esquerda, está a representação em duas dimensões, enquanto na Figura~\ref{fig:msle-derivada-3d}, à direita, está a representação da superfície no espaço.
+Em seguida, está a representação gráfica da derivada da Equação~\ref{eq:msle-derivada} na Figura~\ref{fig:msle-derivada}. Seguindo a mesma regra das outras figuras apresentadas até agora, na Figura~\ref{fig:msle-derivada-2d}, à esquerda, está a representação em duas dimensões, enquanto na Figura~\ref{fig:msle-derivada-3d}, à direita, está a representação da superfície no espaço.
 
 \begin{figure}[h!]
     \centering 
@@ -1441,7 +1441,7 @@ Em seguida, é possível ver representação gráfica da derivada da Equação~\
     \fonte{O autor (2025).}
 \end{figure}
 
-Perceba que o uso dos logaritmos na função, fazem com que a superfície do \textit{MSLE} tenha uma superfície suave e contínua. Isso também é refletido na sua derivada, o que é de grande utilidade para os algoritmos de otimização que trabalham com o gradiente, de forma que eles não precisam ter que escapar de pontos de descontinuidade, como ocorriam em outras funções anteriores, como a perda de Huber e o \textit{MAE}.
+O uso dos logaritmos na função, fazem com que a superfície do \textit{MSLE} tenha uma superfície suave e contínua. Isso também é refletido na sua derivada. Ela é de grande utilidade para os algoritmos de otimização que trabalham com o gradiente, de forma que eles não precisam ter que escapar de pontos de descontinuidade, como ocorriam em outras funções anteriores, como a perda de Huber e o \textit{MAE}.
 
 \medskip
 \begin{center}
@@ -1449,7 +1449,7 @@ Perceba que o uso dos logaritmos na função, fazem com que a superfície do \te
 \end{center}
 \medskip
 
-Além disso, voltando para o exemplo anterior dos modelos prevendo preços de imóveis, é possível agora discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
+Além disso, voltando para o exemplo anterior dos modelos prevendo preços de imóveis. É possível agora discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
 
 Para isso, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenários vistos na seção anterior, e mostra qual foi o valor do erro calculado para essas situações.
 
@@ -1475,7 +1475,7 @@ Para isso, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenários vis
     \end{threeparttable} % Finaliza o ambiente
 \end{table}
 
-Perceba que o erro quadrático médio só se importa com a grandeza dos valores, a nos dois cenários o erro é o mesmo, e consequentemente a atualização do gradiente será a mesma, o modelo sabe que está errado e tem que melhorar nas predições, mas para ele os erros são de mesma magnitude. Contudo, olhando agora para os valores do \textit{MSLE}, é possível ver que o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
+O erro quadrático médio considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente será a mesma, o modelo sabe que está errado e tem que melhorar nas predições. Mas, para ele os erros são de mesma magnitude. Contudo, olhando agora para os valores do \textit{MSLE}, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
 
 Com isso, é possível ter uma ideia de que o erro quadrático logarítmico médio pode ser uma excelente alternativa para os casos em que as subestimações do modelo devem ser evitadas.
 
@@ -1512,7 +1512,7 @@ Ao calcular a raiz quadrada do erro quadrático médio logarítmico é possível
 \index{Aplicações práticas! Erro quadrático logarítimico médio}
 \vspace{1em}
 
-Visto o erro quadrático logarítmico médio e também o \textit{RMSLE}, cabe agora discutir alguns cenários em que essa função pode ser aplicada para resolver problemas de regressão. Você verá que essas duas funções podem aparecer tanto como métricas, avaliando o desempenho do modelo, mas também podem atuar como uma função de perda, servindo de guia para o cálculo do gradiente e consequentemente o ajuste dos parâmetros da rede.
+Visto o erro quadrático logarítmico médio e também o \textit{RMSLE}, agora será discutido alguns cenários em que essa função pode ser aplicada para resolver problemas de regressão. Essas duas funções podem aparecer tanto como métricas, avaliando o desempenho do modelo, mas também podem atuar como uma função de perda, servindo de guia para o cálculo do gradiente e consequentemente o ajuste dos parâmetros da rede.
 
 Dito isso, vale destacar os trabalhos:
 
@@ -1532,9 +1532,9 @@ Visto o erro quadrático logarítmico médio, uma função de perda assimétrica
 
 \section{Mudando o Objetivo da Previsão: Além da Média}
 
-Até agora todas as funções de perda vistas possui um detalhe em comum: elas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Mas existem funções de perda que vão além do cálculo da média para calcular o erro de um modelo de regressão.
+Até agora todas as funções de perda vistas possui um detalhe em comum: elas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Mas, existem funções de perda que vão além do cálculo da média para calcular o erro de um modelo de regressão.
 
-Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana, mas e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
+Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana. Contudo, e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
 
 \begin{figure}[h!]
     \centering 
@@ -1646,14 +1646,14 @@ Ao calcular a média dos erros, está sendo presumido que a tendência central �
 
 Existe uma função de perda que consegue lidar justamente com esse cenário, em que os dados seguem uma distribuição assimétrica, ela é a perda quantílica, que foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la é possível definir o quantil que será analisado, sendo possível escolher se ela irá funcionar de forma assimétrica, ou de forma parecida com o \textit{MAE}.
 
-Além disso, existe uma outra função de perda que também não trabalha com o cálculo da média dos erros, ela é a $\epsilon$-insensível, sendo uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Neste caso, ao utilizar essa função, é possível definir uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
+Também há uma outra função de perda que também não trabalha com o cálculo da média dos erros, ela é a $\epsilon$-insensível, sendo uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Neste caso, ao utilizar essa função, é possível definir uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
 
-Visto isso, é possível começar a seção explicando primeiro a perda quantílica.
+Visto isso, a seção seguinte explica a perda quantílica.
 
 \subsection{Perda Quantílica (Quantile Loss)}%
 \index{Funções de Perda!Perda Quantílica (\textit{Quantile Loss})}
 
-Antes de entender a perda quantílica de fato, será visto o conceito em que ela surgiu. No artigo \textit{Regression Quantiles} dos autores \textcite{regression-quantiles} estava sendo analisada uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação para esse estudo, os autores discutem a ideia de que ``todos acreditam a lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção que fogem da distribuição normal, e só técnicas mais conhecidas, como o \textit{MSE} para o cálculo dos erros com base na média, não são ideais para minimizar o erro de um modelo.
+Antes de entender a perda quantílica de fato, cabe ver o conceito em que ela surgiu. No artigo \textit{Regression Quantiles} dos autores \textcite{regression-quantiles} estava sendo analisada uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação para esse estudo, os autores discutem a ideia de que ``todos acreditam a lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o \textit{MSE} para o cálculo dos erros com base na média, não são ideais para minimizar o erro de um modelo.
 
 Tendo isso em mente, os pesquisadores discutem uma forma de minimizar a soma de perdas assimétricas, eles então definem a Equação~\ref{eq:soma-das-perdas-assimetricas}\footnote{Caso você leitor decida ler o artigo original dos pesquisadores, você verá um conjunto diferente de notações utilizadas, isso acontece pois neste livro elas foram adaptadas para condizer com as notações que já estavam sendo utilizadas anteriormente nos outros capítulos}.
 
@@ -1667,16 +1667,16 @@ Em que:
 \begin{itemize}
     \item $\tau$ representa o quantil;
     \item $w$ representa os parâmetros do modelo, neste caso os pesos;
-    \item $\hat{y}_j$ representa a predição do modelo;
+    \item $\hat{y}_j$ representa a predição do modelo.
 \end{itemize}
 
-A partir dessa expressão é possível analisar os casos, considerando a assimetria da perda
+A partir dessa expressão é possível analisar os casos, considerando a assimetria da perda.
 
 \textbf{Caso 1: O Valor real é maior que a previsão $(y_j > \hat{y}_j)$}
 
 \begin{itemize}
     \item \textbf{Condição:} $y_j > \hat{y}_j$, indicando que o resíduo $u = (y_j - \hat{y}_j)$ é positivo.
-    \item \textbf{Equação base:} A Equação~\ref{eq:soma-das-perdas-assimetricas} nos mostra que nesse caso é aplicado o termo $\tau|y_j - \hat{y}_j|$
+    \item \textbf{Equação base:} A Equação~\ref{eq:soma-das-perdas-assimetricas} mostra que nesse caso é aplicado o termo $\tau|y_j - \hat{y}_j|$
     \item \textbf{Dedução:}
           \begin{enumerate}
         \item Como o resíduo $(y_j - \hat{y}_j)$ já é positivo, o valor absoluto de $|y_j - \hat{y}_j|$ é dado pela expressão $(y_j - \hat{y}_j)$;
@@ -1688,7 +1688,7 @@ A partir dessa expressão é possível analisar os casos, considerando a assimet
 
 \begin{itemize}
     \item \textbf{Condição:} $y_j < \hat{y}_j$, o que significa que o resíduo $u = (y_j - \hat{y}_j)$ é negativo.
-    \item \textbf{Equação base:} Voltando para a Equação~\ref{eq:soma-das-perdas-assimetricas}, ela nos mostra que nesse caso é aplicado o termo $(1 - \tau)|y_j - \hat{y}_j|$
+    \item \textbf{Equação base:} Voltando para a Equação~\ref{eq:soma-das-perdas-assimetricas}, mostra que nesse caso é aplicado o termo $(1 - \tau)|y_j - \hat{y}_j|$
     \item \textbf{Dedução:}
           \begin{enumerate}
         \item Como o resíduo $(y_j - \hat{y}_j)$ é negativo, o valor absoluto de $|y_j - \hat{y}_j|$ é dado por $-(y_j - \hat{y}_j)$, que também pode ser reescrito como $(\hat{y}_j - y_j)$;
@@ -1714,7 +1714,7 @@ Em que:
     \item $\tau$ representa o quantil.
 \end{itemize}
 
-Além dessa expressão, existe também uma versão compacta utilizando a função $\max$ para definir a função por partes da \textit{quantile loss} em apenas uma linha. Essa versão pode ser vista na Equação~\ref{eq:quantile-loss-com-max}.
+Além dessa expressão, existe também uma versão compacta utilizando a função $\max$ para definir a função por partes da \textit{quantile loss} em apenas uma linha. Essa versão está presente na Equação~\ref{eq:quantile-loss-com-max}.
 
 \begin{equacaodestaque}{Perda Quantílica (\textit{Quantile Loss}) Reescrita Com a Função $\max$}
     \Loss_{\tau} (u)= \max(\tau u, (\tau-1 )u)%
@@ -1723,7 +1723,7 @@ Além dessa expressão, existe também uma versão compacta utilizando a funçã
 
 Considerando que $u = y - \hat{y}$, ou seja, o cálculo do resíduo.
 
-Além das equação da perda quantílica, é possível também fazer a plotagem dos seus gráficos. Para isso, a Figura~\ref{fig:quantile-loss-tau05} mostra a representação em duas dimensões dessa função, enquanto a Figura~\ref{fig:quantile-loss-tau05} mostra a superfície da perda quantílica. Ambas mostram um cenário em que o valor de tau é dado por 0.5.
+A Figura~\ref{fig:quantile-loss-tau05} mostra a representação em duas dimensões da perda quantílica, enquanto a Figura~\ref{fig:quantile-loss-tau05} mostra a superfície da perda quantílica. Ambas mostram um cenário em que o valor de tau é dado por 0.5.
 
 % --- FIGURA 1: FOCO NO TAU = 0.5 (MAE) ---
 \begin{figure}[h!]
@@ -1797,7 +1797,7 @@ Além das equação da perda quantílica, é possível também fazer a plotagem 
     \fonte{O autor (2025).}
 \end{figure}
 
-Note que nessas figuras, a função é idêntica ao erro absoluto médio, o gráfico tem o formato em ``V'' característico dessa função. Isso acontece porque ao considerar calcular a perda quantílica para o quantil 50\% (indicado por 0.5), está sendo calculado a média dos dados, algo que também é feito utilizando outra expressão, ao utilizar o \textit{MAE} como função de perda.
+Nessas figuras, a função é idêntica ao erro absoluto médio, o gráfico tem o formato em ``V'' característico dessa função. Isso acontece porque ao considerar calcular a perda quantílica para o quantil 50\% (indicado por 0.5), está sendo calculado a média dos dados, algo que também é feito utilizando o \textit{MAE} como função de perda.
 
 Mas esse não é o cenário ideal para se utilizar a perda quantílica. Essa função realmente brilha quando precisa ser utilizada em cenários em que a distribuição de dados é irregular, e não segue a distribuição normal. Essa função tem uma propriedade única que pode se ajustar para penalizar de forma assimétrica os erros que um modelo comete. 
 
@@ -1964,11 +1964,11 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
 \end{center}
 \medskip
 
-Vista o surgimento da perda quantílica, a sua definição matemática, os seus gráficos e algumas de suas propriedades, é possível agora discutir a sua derivada. Para isso, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y}_j = y_j$, dado que este é um ponto de descontinuidade dessa função.
+Para calcular a derivada da perda quantílica, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y}_j = y_j$, dado que este é um ponto de descontinuidade dessa função.
 
-Dessa forma, a derivada parcial da perda quantílica em relação a predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, você pode ver na equação que está sendo indicado os cenários de superestimação e subestimação, de forma a simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
+Dessa forma, a derivada parcial da perda quantílica em Relação à predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, você pode ver na equação que está sendo indicado os cenários de superestimação e subestimação, de forma a simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
 
-\begin{equacaodestaque}{Derivada Parcial da Perda Quantílica em Relação a Predição $\hat{y}_j$}
+\begin{equacaodestaque}{Derivada Parcial da Perda Quantílica em Relação à Predição $\hat{y}_j$}
     \frac{\partial\Loss_{\tau}}{\partial\hat{y}_j} = 
     \begin{cases} 
         -(1 - \tau) & \text{se } y_j < \hat{y}_j \text{ (superestimação)}\\
@@ -1977,7 +1977,7 @@ Dessa forma, a derivada parcial da perda quantílica em relação a predição f
     \label{eq:quantile-loss-derivada}
 \end{equacaodestaque}
 
-Além disso, cabe também ser a sua derivada, a qual está presente na Figura~\ref{fig:quantile-loss-derivada}, neste caso está sendo apresentado somente a sua visualização em duas dimensões. Perceba que o gráfico em que $\tau = 0.5$ é igual o gráfico da derivada do erro absoluto médio.
+Já o gráfico da derivada da perda quantílica está na Figura~\ref{fig:quantile-loss-derivada}, neste caso está sendo apresentado somente a sua visualização em duas dimensões. Perceba que o gráfico em que $\tau = 0.5$ é igual o gráfico da derivada do erro absoluto médio.
 
 \begin{figure}[h!]
     \centering
@@ -2019,7 +2019,7 @@ Além disso, cabe também ser a sua derivada, a qual está presente na Figura~\r
             \addplot[only marks, mark=o, color=red, mark size=2pt] coordinates {(0, -0.9) (0, 0.1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da Perda Quantílica (em relação ao erro).}%
+    \caption{Gráfico da derivada da Perda Quantílica (em Relação ào erro).}%
     \label{fig:quantile-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -2198,7 +2198,7 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
 \end{center}
 \medskip
 
-Cabe agora discutir também o cálculo da derivada dessa função, que será útil para criação do vetor gradiente e da retropropagação dos erros. Para calculá-la é preciso derivar as duas expressões da Equação~\ref{eq:epsilon-insensitive-loss}, contudo, assim como no erro absoluto médio que foi preciso fazer o cálculo da derivada com auxílio de subgradientes por conta dos pontos de não-diferenciabilidade, aqui o processo é semelhante. Com isso, é possível chegar na expressão da Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em relação a predição do modelo $\hat{y}$ para a perda $\epsilon$-insensível.
+Cabe agora discutir também o cálculo da derivada dessa função, que será útil para criação do vetor gradiente e da retropropagação dos erros. Para calculá-la é preciso derivar as duas expressões da Equação~\ref{eq:epsilon-insensitive-loss}, contudo, assim como no erro absoluto médio que foi preciso fazer o cálculo da derivada com auxílio de subgradientes por conta dos pontos de não-diferenciabilidade, aqui o processo é semelhante. Com isso, é possível chegar na expressão da Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em Relação à predição do modelo $\hat{y}$ para a perda $\epsilon$-insensível.
 
 \begin{equacaodestaque}{Derivada da Perda Epsilon-Insensível}
     \frac{\partial\Loss_{\epsilon}}{\partial\hat{y}} = 
@@ -2209,7 +2209,7 @@ Cabe agora discutir também o cálculo da derivada dessa função, que será út
     \label{eq:epsilon-insensitive-derivada}
 \end{equacaodestaque}
 
-Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfico, o qual pode ser visto na Figura~\ref{fig:epsilon-derivada-completa}. No gráfico da esquerda, na Figura~\ref{fig:epsilon-derivada-2d}, está a representação de uma vista em duas dimensões da perda $\epsilon$-insensível. Já no gráfico da direta, na Figura~\ref{fig:epsilon-derivada-3d}, está a superfície da derivada parcial da perda em relação as predições $\hat{y}$ do modelo.
+Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfico, o qual pode ser visto na Figura~\ref{fig:epsilon-derivada-completa}. No gráfico da esquerda, na Figura~\ref{fig:epsilon-derivada-2d}, está a representação de uma vista em duas dimensões da perda $\epsilon$-insensível. Já no gráfico da direta, na Figura~\ref{fig:epsilon-derivada-3d}, está a superfície da derivada parcial da perda em Relação às predições $\hat{y}$ do modelo.
 
 \begin{figure}[h!]
     \centering % Centraliza a figura
@@ -2668,7 +2668,7 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
 \end{center}
 \medskip
 
-Vistas algumas propriedades dessa função, cabe também discutir a sua derivada, que será útil para a retropropagação do gradiente e o aprendizado do modelo. Calculando a derivada da perda de Poisson em relação aos valores preditos pelo modelo, é possível chegar na Equação~\ref{eq:poisson-loss-derivada}.
+Vistas algumas propriedades dessa função, cabe também discutir a sua derivada, que será útil para a retropropagação do gradiente e o aprendizado do modelo. Calculando a derivada da perda de Poisson em Relação àos valores preditos pelo modelo, é possível chegar na Equação~\ref{eq:poisson-loss-derivada}.
 
 \begin{equacaodestaque}{Derivada da Perda de Poisson}
     \frac{\partial\Loss_{\text{Poisson}}}{\partial\hat{y}_j} = 1 -\frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j -y_j}{\hat{y}_j}%
