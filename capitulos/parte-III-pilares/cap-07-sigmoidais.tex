@@ -137,39 +137,27 @@ Visto um dos motivos de se utilizar funções de ativação em uma rede neural, 
 
 Dessa forma, é possível discutir elaborar pouco de cada uma dessas propriedades em seguida.
 
-\medskip
-\textbf{Não-linearidade}
-\medskip
+\subsubsection*{Não-linearidade}
 
 Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{perceptron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
 
-\medskip
-\textbf{Diferenciabilidade}
-\medskip
+\subsubsection*{Diferenciabilidade}
 
 O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrinsecamente ligado em como a retropropagação do erro. Como visto no Capítulo~\ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
 
-\medskip
-\textbf{Continuidade}
-\medskip
+\subsubsection*{Continuidade}
 
 A continuidade está ligada com a diferenciabilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descontinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja ``quinas'' no desenho da função e que o gráfico pode ser desenhado ``sem tirar o lápis do papel''. Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
 
-\medskip
-\textbf{Limitada}
-\medskip
+\subsubsection*{Limitada}
 
 Considerar que uma função de ativação seja limitada ao escolher uma função de ativação para construir uma rede neural está ligado com os problemas do gradiente. Neste caso, uma função que não é limitada pode sofrer do problema do gradiente explosivo, o qual é explicado com maiores detalhes no Capítulo~\ref{cap:ativacao-retificadoras}. Nesse sentido, o problema do gradiente explosivo o gradiente de uma rede neural começa a crescer de forma acelerada afetando o aprendizado da rede e as atualizações de pesos e vieses.
 
-\medskip
-\textbf{Centrada em zero}
-\medskip
+\subsubsection*{Centrada em zero}
 
 Uma função que não é centrada em zero, que é sempre positiva ou sempre negativa, afeta como a saída ocorre \parencite{PropriedadesFuncoesDeAtivacao}. Como explica \textcite{PropriedadesFuncoesDeAtivacao}, um cenário em que isso acontece, significa que a saída está sendo sempre movida para os valores positivos ou negativos, e como resultado, o vetor de pesos precisa de uma quantidade maior de iterações para ser melhor ajustado. Dessa forma, ao escolher uma função que é centrada em zero, é possível garantir um treinamento com menos iterações mas ainda assim garantir uma boa convergência do modelo que está sendo treinado.
 
-\medskip
-\textbf{Custo computacional}
-\medskip
+\subsubsection*{Custo computacional}
 
 Cabe considerar também o custo computacional de uma função de ativação. Funções mais simples, como a degrau unitário e a \textit{ReLU}, as quais fazem apenas comparações com o valor da entrada, apresentam um custo computacional bem menor quando comparadas com funções mais complexas, como aquelas que fazem uso de muitos exponenciais em sua fórmula. Com isso, ao utilizar uma função de ativação muito ``cara'' em termos computacionais, isso acaba por gerar um gargalo no tempo de treino do modelo em desenvolvimento.
 
@@ -317,8 +305,7 @@ O gráfico da sigmoide está presente na Figura~\ref{fig:sigmoide}, note que ele
 \end{center}
 \medskip
 
-\textbf{Características da Sigmoide Logística}
-\vspace{1em}
+\subsubsection*{Características da Sigmoide Logística}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -376,9 +363,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Sigmoide Logística em Redes Neurais}%
+\subsubsection*{Algumas Aplicações da Sigmoide Logística em Redes Neurais}%
 \index{Aplicações práticas! Sigmoide logística}
-\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -444,8 +430,7 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
 \end{center}
 \medskip
 
-\textbf{Características da Tangente Hiperbólica}
-\vspace{1em}
+\subsubsection*{Características da Tangente Hiperbólica}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -506,9 +491,8 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Tangente Hiperbólica em Redes Neurais}%
+\subsubsection*{Algumas Aplicações da Tangente Hiperbólica em Redes Neurais}%
 \index{Aplicações práticas! Tangente hiperbólica (tanh)}
-\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -572,8 +556,7 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
 \end{center}
 \medskip
 
-\textbf{Características da Softsign}
-\vspace{1em}
+\subsubsection*{Características da Softsign}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -626,9 +609,8 @@ Além disso, essa função também sofre do mesmo problema das outras duas funç
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Softsign em Redes Neurais}%
+\subsubsection*{Algumas Aplicações da Softsign em Redes Neurais}%
 \index{Aplicações práticas! Softsign}
-\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -699,8 +681,7 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
 \end{center}
 \medskip
 
-\textbf{Características da Hard Sigmoid}
-\vspace{1em}
+\subsubsection*{Características da Hard Sigmoid}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -799,8 +780,7 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
 \end{center}
 \medskip
 
-\textbf{Características da Hard Tanh}
-\vspace{1em}
+\subsubsection*{Características da Hard Tanh}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -859,10 +839,9 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações das Funções Hard Sigmoid e Hard Tanh em Redes Neurais}%
+\subsubsection*{Algumas Aplicações das Funções Hard Sigmoid e Hard Tanh em Redes Neurais}%
 \index{Aplicações práticas!Hard Tanh}%
 \index{Aplicações práticas! Hard Sigmoid}
-\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -997,8 +976,7 @@ Tendo visto diferentes funções de ativação sigmoidais, é possível compilá
 \end{center}
 \medskip
 
-\textbf{Indo Além das Funções de Ativação Sigmoidais}
-\medskip
+\subsubsection*{Indo Além das Funções de Ativação Sigmoidais}
 
 Nesse capítulo foi visto um dos grandes grupos de função de ativação: as funções sigmoidais. Foi visto que elas estiveram presente em uma gama de redes neurais do século passado, fazendo parte da definição da retropropagação e também da rede de Elman, por exemplo. Contudo, a sua natureza saturante fazia com que a sua derivada atingisse valores muito pequenos, como 0.25. Isso atrapalhava a retropropagação do gradiente, que era constantemente multiplicado por escalares pequenos resultando no problema do desaparecimento do gradiente.
 
