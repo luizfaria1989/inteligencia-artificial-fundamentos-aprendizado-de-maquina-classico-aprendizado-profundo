@@ -959,7 +959,7 @@ Para comparar a precisão dos modelos utilizando o dataset \textit{ImageNet} voc
 
 O último comparativo que será visto é com relação ao \textit{MNIST}, nele, \textcite{AdaGradMethod} escolheram cinco algoritmos: o \textit{PA}, o \textit{Ada RDA}, o \textit{RDA}, o \textit{Ada RDA l1/l2} e o \textit{RDA l1/l2}, sendo analisada a quantidade de erros pela quantidade de exemplos vistos. Nessa análise, os algoritmos que performaram melhor foram o PA seguido do Ada RDA, apresentando um comportamento parecido, enquanto isso, nota-se que utilizar as normalizações l1/l2 não trouxeram muitas vantagens para os algoritmos \parencite{AdaGradMethod}.
 
-As curvas de aprendizado dos diferentes modelos treinados pelos autores podem ser vistas na Figura \ref{fig:curvas-de-aprendizado-adagrad-mnist}, note que o \textit{Ada RNA} apresenta uma performance muito parecida com o \textit{PA}, apresentando pouco mais de 5.000 erros ao ser treinado com todo o \textit{dataset}.
+As curvas de aprendizado dos diferentes modelos treinados pelos autores podem ser vistas na Figura~\ref{fig:curvas-de-aprendizado-adagrad-mnist}, note que o \textit{Ada RNA} apresenta uma performance muito parecida com o \textit{PA}, apresentando pouco mais de 5.000 erros ao ser treinado com todo o \textit{dataset}.
 
 \begin{figure}[h]
     \centering
@@ -979,9 +979,8 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais}%
+\subsubsection*{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais}%
 \index{Aplicações práticas! Adpative Gradient Algorithm (AdaGrad)}
-\vspace{1em}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -1040,8 +1039,8 @@ Perceba que o \textit{RMSProp} consegue corrigir um dos problemas do \textit{Ada
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do RMSProp em Otimização de Redes Neurais} \index{Aplicações práticas! RMSProp}
-\vspace{1em}
+\subsubsection{Algumas Aplicações do RMSProp em Otimização de Redes Neurais}%
+\index{Aplicações práticas! RMSProp}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -1056,7 +1055,8 @@ Perceba que o \textit{RMSProp} consegue corrigir um dos problemas do \textit{Ada
 \end{center}
 \medskip
 
-\subsection{Adaptive Moment Estimation (Adam)} \index{Otimizadores!Adaptive Moment Estimation (Adam)}
+\subsection{Adaptive Moment Estimation (Adam)}%
+\index{Otimizadores!Adaptive Moment Estimation (Adam)}
 
 Uma evolução natural dos algoritmos de otimização \textit{AdaGrad} e \textit{RMSProp} é o \textit{Adam} ou \textit{Adaptive Moment Estimation}. Esse algoritmo foi apresentado pelos pesquisadores \textcite{AdamMethod}, no artigo \textit{Adam: A Method for Stochastic Optimization}, o qual veio para ser um método de otimização estocástica que requere apenas gradientes de primeira ordem com poucos requisitos de memória.
 
@@ -1159,8 +1159,8 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} co
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do Adam em Otimização de Redes Neurais} \index{Aplicações práticas! Adaptive Moment Esitmation (Adam)}
-\vspace{1em}
+\subsubsection{Algumas Aplicações do Adam em Otimização de Redes Neurais}%
+\index{Aplicações práticas! Adaptive Moment Esitmation (Adam)}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -1177,7 +1177,8 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma \textit{CNN} co
 
 Assim como os métodos \textit{AdaGrad} e \textit{RMSProp} foram grandes inspirações para o desenvolvimento do otimizador \textit{Adam}, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
-\subsection{AdaMax} \index{Otimizadores!AdaMax}
+\subsection{AdaMax}%
+\index{Otimizadores!AdaMax}
 
 Ainda em \textit{Adam: A Method for Stochastic Optimization}, os autores \textcite{AdamMethod}, além de apresentarem o \textit{Adam} como um novo otimizador, eles também apresentam uma variante dele, o \textit{AdaMax}, que ao invés de utilizar a norma $L^2$ para calcular o segundo momento, utilizam a norma $L^p$, em que $p \to \infty$, provando ser um algoritmo surpreendentemente simples e estável. Dessa forma, os autores foram chegaram no otimizador listado no Algoritmo \ref{alg:adamax}.
 
@@ -1283,7 +1284,7 @@ Comparando com o \textit{Adam} tradicional, a principal diferença do \textit{NA
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do NAdam em Otimização de Redes Neurais}%
+\subsubsection*{Algumas Aplicações do NAdam em Otimização de Redes Neurais}%
 \index{Aplicações práticas! NAdam}
 \vspace{1em}
 
@@ -1383,7 +1384,7 @@ Assim, utilizar o \textit{AdamW} pode ser uma excelente alternativa caso queira 
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações do ADamW em Otimização de Redes Neurais}%
+\subsubsection*{Algumas Aplicações do ADamW em Otimização de Redes Neurais}%
 \index{Aplicações práticas! ADamW}
 \vspace{1em}
 
@@ -1437,15 +1438,13 @@ Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na
 
 \subsection{Outros Otimizadores}
 
-\textbf{Rectified Adam (RAdam)}%
+\subsubsection*{Rectified Adam (RAdam)}%
 \index{Otimizadores!Rectified Adam (RAdam)}
 
 Uma outra variante do \textit{Adam} que também busca melhorar o otimizador original é o \textit{Rectified Adam} ou \textit{RAdam}. Ele surgiu no trabalho \textit{On the Variance of the Adaptive Learning Rate and Beyond} dos autores \textcite{RAdamMethod} como uma atualização do Adam que buscava corrigir um problema identificado com a taxa de aprendizado adaptativa do otimizador: a sua variância é grande problemática nos primeiros estágios; de forma que eles propuseram o \textit{RAdam}, uma variante que introduz um termo para retificar a variância da taxa de aprendizado adaptava.
 
-\textbf{Lion}%
+\subsubsection*{Lion}%
 \index{Otimizadores!Lion}
-
-\section{Comparativo de Desempenho: Otimizadores}
 
 % ===================================================================
 % Método de Newton
