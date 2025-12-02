@@ -79,8 +79,7 @@ Se sabemos a sua fórmula, podemos também plotar o seu gráfico, para isso temo
 \end{center}
 \medskip
 
-\textbf{Características da Guassian Error Linear Unit}
-\vspace{1em}
+\subsubsection*{Características da Guassian Error Linear Unit}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -142,8 +141,7 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Gaussian Error Linear Unit em Redes Neurais}
-\vspace{1em} 
+\subsubsection*{Algumas Aplicações da Gaussian Error Linear Unit em Redes Neurais}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -158,7 +156,8 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 \end{center}
 \medskip
 
-\subsection{Swish} \index{Funções de Ativação!Swish}
+\subsection{Swish}%
+\index{Funções de Ativação!Swish}
 
 \begin{equacaodestaque}{Swish}
     \mathcal{A}_{\text{Swish}}(x_j) = x_j \cdot \sigma(x_j) = x_j \frac{1}{1 + e^{-x_j}}
@@ -202,8 +201,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Características da Swish}
-\vspace{1em}
+\subsubsection*{Características da Swish}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -254,8 +252,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Swish em Redes Neurais}
-\vspace{1em}
+\subsubsection*{Algumas Aplicações da Swish em Redes Neurais}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -315,8 +312,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Características da Hard Swish}
-\vspace{1em}
+\subsubsection*{Características da Hard Swish}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -366,8 +362,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Hard Swish em Redes Neurais}
-\vspace{1em}
+\subsubsection*{Algumas Aplicações da Hard Swish em Redes Neurais}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
@@ -382,7 +377,8 @@ Em que:
 \end{center}
 \medskip
 
-\subsection{Mish} \index{Funções de Ativação!Mish}
+\subsection{Mish}%
+\index{Funções de Ativação!Mish}
 
 \begin{equacaodestaque}{Mish}
     \mathcal{A}_{\text{Mish}}(x_j) = x_j \cdot \tanh(\text{softplus}(x_j)) = x_j \cdot \tanh(\ln(1 + e^{x_j}))
@@ -426,7 +422,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Características da Mish}
+\subsubsection*{Características da Mish}
 \vspace{1em}
 
 \begin{itemize}
@@ -460,11 +456,6 @@ Em que:
             legend style={font=\scriptsize}
         ]
         
-        % Plota a derivada da função Mish
-        % Mish'(x) = tanh(sp(x)) + x * sigmoid(x) * sech^2(sp(x))
-        % sp(x) = ln(1 + exp(x))
-        % sigmoid(x) = 1 / (1 + exp(-x))
-        % sech^2(x) = (1 / cosh(x))^2
         \addplot[red, thick, domain=-5.5:5.5, samples=101, smooth] 
             { tanh(ln(1 + exp(x))) + x * (1 / (1 + exp(-x))) * (1 / cosh(ln(1 + exp(x))))^2 };
         \addlegendentry{$\text{Mish}'(x_j)$}
@@ -482,7 +473,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Mish em Redes Neurais}
+\subsubsection*{Algumas Aplicações da Mish em Redes Neurais}
 \vspace{1em}
 
 \begin{itemize}
@@ -542,8 +533,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Características da Hard Mish}
-\vspace{1em}
+\subsubsection*{Características da Hard Mish}
 
 \begin{itemize}
     \item \textbf{Continuidade, suavidade e diferenciabilidade:}
@@ -593,8 +583,7 @@ Em que:
 \end{center}
 \medskip
 
-\textbf{Algumas Aplicações da Hard Mish em Redes Neurais}
-\vspace{1em}
+\subsubsection*{Algumas Aplicações da Hard Mish em Redes Neurais}
 
 \begin{itemize}
     \item \textbf{Aplicação 1 (Área):}
