@@ -337,6 +337,21 @@
 
 \renewcommand*{\glossaryname}{Glossário}
 
+% Pacotes Essenciais para Matemática e Tabelas
+\usepackage{amsthm} % Para teoremas e provas
+\usepackage{booktabs} % Para tabelas profissionais
+\usepackage{xcolor} % Opcional, para realce
+
+% Configuração dos Ambientes (Teoremas, Proposições, Definições)
+% O estilo 'definition' deixa o texto normal (não itálico), o que é melhor para leitura longa.
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[chapter] % Reseta numeração por capítulo
+\newtheorem{proposition}{Proposição}[chapter]
+\newtheorem{lemma}{Lema}[chapter]
+
+% Personalização do símbolo QED (quadradinho preto ao final da prova)
+\renewcommand\qedsymbol{$\blacksquare$}
+
 % ===================================================================
 % FIM DO PREÂMBULO
 % ===================================================================
