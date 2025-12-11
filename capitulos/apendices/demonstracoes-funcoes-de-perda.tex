@@ -1,248 +1,305 @@
-\chapter{Propriedades Analíticas das Funções de Custo}
-\label{apendice:propriedades_analiticas}
+\chapter{Propriedades Analíticas das Funções de Perda}%
+\label{apendice:propriedades-analiticas-funcoes-de-perda}
 
-Este apêndice apresenta a análise rigorosa das propriedades de continuidade, diferenciabilidade, convexidade e robustez das funções de perda discutidas ao longo da obra.
+\section{Definições Preliminares e Notação}%
+\label{sec:definicoes}
 
-Para assegurar o rigor matemático, adotamos as seguintes definições, baseadas na literatura clássica de Otimização Convexa e Análise Real \cite{boyd2004convex, rudin1976principles}:
+Para assegurar a precisão matemática necessária, harmonizamos as definições clássicas de Análise Real com a notação moderna de Aprendizado Profundo.
 
-\begin{enumerate}
-    \item \textbf{Classes de Diferenciabilidade ($C^k$):} Uma função $f$ é de classe $C^0$ se for contínua. É de classe $C^1$ se sua derivada $f'$ existir e for contínua. É de classe $C^\infty$ se possuir derivadas contínuas de todas as ordens.
-    \item \textbf{Convexidade:} Uma função $f$ é convexa se $f''(x) \ge 0$ para todo $x$ em seu domínio. Se $f''(x) > 0$, ela é estritamente convexa.
-    \item \textbf{Robustez (Continuidade de Lipschitz):} Uma função de perda $L$ é considerada robusta a \textit{outliers} se for Lipschitz-contínua, ou seja, se a magnitude do seu gradiente for limitada globalmente: $\sup |L'(x)| < K$ para alguma constante $K$.
-\end{enumerate}
+\subsection{Classes de Diferenciabilidade}
 
-\section{Família das Perdas de Regressão Suaves}
-\textit{Funções abordadas: Erro Quadrático Médio (MSE), MSLE, Log-Cosh.}
+Embora a literatura clássica, como \textcite{rudin1976principles}, utilize a notação $\mathscr{C}'$ e $\mathscr{C}''$ para denotar espaços de funções continuamente diferenciáveis, adotamos a notação moderna $C^k$, comum em otimização, para facilitar a leitura.
 
-Nesta seção, analisamos funções definidas por composições de funções elementares diferenciáveis.
+\begin{definition}[Classes $C^k$]
+    Baseado em Rudin [Definições 9.20 e 9.39], dizemos que uma função $f: U \subset \mathbb{R}^n \to \mathbb{R}$ é de classe $C^k$ se suas derivadas parciais até a ordem $k$ existem e são contínuas em $U$.
+    \begin{itemize}
+        \item $C^0$: Funções contínuas.
+        \item $C^1$: Funções com gradiente contínuo (Rudin $\mathscr{C}'$).
+        \item $C^2$: Funções com Hessiana contínua (Rudin $\mathscr{C}''$).
+        \item $C^\infty$: Funções infinitamente diferenciáveis (Suaves).
+    \end{itemize}
+\end{definition}
 
-\begin{proposition}[Regularidade e Convexidade]
-As funções MSE, MSLE e Log-Cosh são de classe $C^\infty$ (infinitamente diferenciáveis) e são convexas em seus domínios de definição.
+\subsection{Robustez e Continuidade de Lipschitz}
+
+Em Deep Learning, a estabilidade do treinamento está ligada à limitação da taxa de variação da função de perda. Adotamos a definição vetorial encontrada em \textcite{DeepLearningBook}, adaptando a notação da constante para evitar ambiguidade com a função de perda $\Loss$.
+
+\begin{definition}[Continuidade de Lipschitz]
+    Uma função $f: \mathbb{R}^n \to \mathbb{R}$ é dita \textbf{Lipschitz-contínua} se existe uma constante $K \in \mathbb{R}^+$ (chamada constante de Lipschitz) tal que, para todos $\boldsymbol{x}, \boldsymbol{y}$ no domínio:
+    \begin{equation}
+        |f(\boldsymbol{x}) - f(\boldsymbol{y})| \le K \|\boldsymbol{x} - \boldsymbol{y}\|_2
+    \end{equation}
+    Onde $\|\cdot\|_2$ denota a norma Euclidiana ($L^2$).
+\end{definition}
+
+\begin{remark}[Interpretação Escalar]
+    Nas demonstrações deste apêndice, onde analisamos o erro $e \in \mathbb{R}$ (escalar), a norma Euclidiana reduz-se ao valor absoluto: $\|\boldsymbol{x} - \boldsymbol{y}\|_2 \to |x - y|$. A condição torna-se $|f(x) - f(y)| \le K |x - y|$.
+\end{remark}
+
+\subsection{Critérios de Verificação de Convexidade}
+
+Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente à definição geométrica, utilizaremos três teoremas fundamentais de operações que preservam a convexidade, conforme estabelecido em \textcite{boyd2004convex}\footnote{Apresentamos aqui as versões escalares dos teoremas de convexidade de \textcite{boyd2004convex}, simplificadas para o contexto de funções de perda unidimensionais. Para a formulação geral vetorial envolvendo Matrizes Hessianas, consulte o texto original, Capítulo 3.}.
+
+\begin{theorem}[Condição de Segunda Ordem]
+    Seja $f$ uma função duas vezes diferenciável. $f$ é convexa se, e somente se, sua segunda derivada for não-negativa em todo o domínio:
+    \[ f''(x) \ge 0, \quad \forall x \in \text{dom } f \]
+\end{theorem}
+
+\begin{theorem}[Preservação por Composição Afim]
+    Se $f: \mathbb{R} \to \mathbb{R}$ é convexa, então a composição $g(x) = f(ax + b)$ é convexa para quaisquer escalares $a, b$. Isso garante que provar a convexidade em relação ao erro $e$ implica convexidade em relação à predição $\hat{y}$.
+\end{theorem}
+
+\begin{theorem}[Convexidade de Normas e Máximos]
+    \begin{enumerate}
+        \item Se $f$ e $g$ são funções convexas, então $h(x) = \max(f(x), g(x))$ é convexa.
+        \item Qualquer norma $\|\cdot\|$ é convexa, consequência direta da Desigualdade Triangular: $\|x+y\| \le \|x\| + \|y\|$.
+    \end{enumerate}
+\end{theorem}
+
+\section{Perdas para regressão}
+
+\subsection{Erro quadrático médio (MSE)}%
+\label{ap:deducoes-mse}
+
+\begin{definition}
+    Seja $e = \hat{y} - y$ o resíduo entre a predição e o alvo. A função de perda erro quadrático médio é definida por $\Loss(e) = e^2$.
+\end{definition}
+
+\begin{proposition}[Regularidade]
+    A função erro quadrático médio pertence à classe $C^{\infty}$ (é infinitamente diferenciável).
 \end{proposition}
 
 \begin{proof}
-Analisamos cada função individualmente:
-\begin{itemize}
-    \item \textbf{MSLE:} Envolve a composição de funções logarítmicas e quadráticas. Como $\log(x)$ é $C^\infty$ para $x>0$, a função herda essa propriedade.
-    \item \textbf{Log-Cosh:} Definida por $L(y, \hat{y}) = \log(\cosh(\hat{y} - y))$. As funções $\log$ e $\cosh$ são $C^\infty$. A segunda derivada é $\text{sech}^2(x)$, que é sempre positiva (variando entre 0 e 1), garantindo a convexidade.
-\end{itemize}
+    Para provar que $\Loss \in C^{\infty}$ devemos demonstrar que existem derivadas contínuas de todas as ordens $k \in \mathbb{N}$.
+
+    Calculamos as derivadas sucessivas de $\Loss(e)$ em relação a $e$:
+
+    \begin{align*}
+        \Loss'(e) &= \frac{d}{de} (e^2) = 2e \\
+        \Loss''(e) &= \frac{d}{de} (2e) = 2 \\
+        \Loss^{(k)}(e) &= 0, \quad \forall k \ge 3
+    \end{align*}
+
+    Analisamos a continuidade das funções resultantes:
+
+    \begin{itemize}
+        \item $\Loss'(e) = 2e$, é polinômio linear, contínuo em todo $\mathbb{R}$.
+        \item $\Loss''(e) = 2$ e $\mathcal{L}^{(k)}(e) = 0$ são funções constantes, contínuas em todo $\mathbb{R}$.
+    \end{itemize}
+
+    Como $\Loss^{(k)}$ existe e é contínua para todo $k \ge 1$, conclui-se que $\mathcal{L} \in C^{\infty}$.
 \end{proof}
 
-\begin{proof}
-Seja $L(\hat{y}) = \frac{1}{2}(\hat{y} - y)^2$ a função de perda (o fator $1/2$ é adicionado por conveniência analítica e não altera as propriedades).
-\begin{enumerate}
-    \item \textbf{Convexidade:} Calculamos a primeira e a segunda derivada em relação à predição $\hat{y}$:
-    \[ L'(\hat{y}) = (\hat{y} - y) \]
-    \[ L''(\hat{y}) = 1 \]
-    Como $L''(\hat{y}) = 1 > 0$ para todo $\hat{y} \in \mathbb{R}$, a função possui curvatura positiva constante, sendo estritamente convexa.
+\begin{proposition}[Convexidade]
+    A função erro quadrático médio é estritamente convexa.
+\end{proposition}
 
-    \item \textbf{Robustez (Lipschitz):} Analisamos o comportamento do gradiente quando o erro tende ao infinito. Pela definição de continuidade de Lipschitz, deve existir $K$ tal que $|L'(\hat{y})| \le K$.
-    Entretanto:
-    \[ \lim_{\hat{y} \to \infty} |L'(\hat{y})| = \lim_{\hat{y} \to \infty} |\hat{y} - y| = \infty \]
-    Como o gradiente é ilimitado, a função \textbf{não} é Lipschitz-contínua. Isso demonstra matematicamente que outliers (grandes distâncias $\hat{y} - y$) exercem influência desproporcional na atualização dos pesos.
-\end{enumerate}
+\begin{proof}
+    Utilizamos o critério da segunda derivada. Uma função duas vezes diferenciável é estritamente convexa se, e somente se, sua segunda derivada for estritamente positiva em todo o domínio.
+    
+    Da proposição anterior, temos:
+    \[ \Loss''(e) = 2 \]
+
+    Observamos que $2 > 0$ para todo $e \in \mathbb{R}$. Portanto, a função possui curvatura positiva constante, satisfazendo a condição de convexidade estrita.
 \end{proof}
 
 \begin{proposition}[Robustez]
-O Log-Cosh é robusto (Lipschitz-contínuo), enquanto MSE e MSLE não são.
+    A função erro quadrático médio não é Lipschitz-contínua (não é robusta a \textit{outliers})
 \end{proposition}
 
 \begin{proof}
-Analisamos o limite da derivada primeira (gradiente) quando o erro tende ao infinito:
-\begin{enumerate}
-    \item Para o \textbf{MSE}: $\lim_{x \to \infty} 2x = \infty$. O gradiente cresce linearmente com o erro, penalizando severamente \textit{outliers}. Logo, não é robusta.
-    \item Para o \textbf{Log-Cosh}: A derivada é $\tanh(x)$. Como $|\tanh(x)| \le 1$ para todo $x \in \mathbb{R}$, a função é 1-Lipschitz. Logo, é robusta.
-\end{enumerate}
+    Uma função diferenciável é Lipschitz-contínua se existir uma constante $K \in \mathbb{R}$ tal que $\sup_{e} |\mathcal{L}'(e)| \le K$.
+    
+    Analisamos o comportamento assintótico da magnitude do gradiente:
+    \[ \lim_{e \to \infty} |\Loss'(e)| = \lim_{e \to \infty} |2e| = \infty \]
+
+    Como o gradiente cresce indefinidamente à medida que o erro aumenta, não existe uma constante $K$ que limite a derivada superiormente. Logo, a função não é Lipschitz-contínua.
 \end{proof}
 
-\section{Família das Perdas Lineares por Partes ($L_1$-Type)}
-\textit{Funções abordadas: Mean Absolute Error (MAE), Quantile Loss, $\epsilon$-Insensitive Loss.}
+\subsection{Erro absoluto médio (MAE)}%
+\label{ap:deducoes-mae}
 
-Esta família é caracterizada pela não-diferenciabilidade na origem (ou em uma vizinhança), possuindo propriedades ideais de robustez.
+\begin{definition}
+    Seja $e = \hat{y} - y$ o resíduo entre a predição e o alvo. A função de perda erro absoluto médio é definida por $\Loss(e) = |e|$.
+\end{definition}
 
-\begin{proposition}[Singularidade e Convexidade]
-As funções MAE, Quantile e $\epsilon$-Insensitive pertencem à classe $C^0$ (são contínuas), mas \textbf{não} pertencem à classe $C^1$. Todas são convexas.
+\begin{proposition}[Regularidade]
+    A função erro absoluto médio pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
 \end{proposition}
 
 \begin{proof}
-A falha na diferenciabilidade ocorre nos pontos de ``quina'':
-\begin{itemize}
-    \item \textbf{MAE e Quantile:} Em $x=0$, os limites laterais da derivada (subgradientes) são distintos (ex: $-1$ e $+1$ para MAE).
-    \item \textbf{$\epsilon$-Insensitive:} Nos pontos $x = \pm \epsilon$, a derivada salta de $0$ para $\pm 1$.
-\end{itemize}
-A convexidade é garantida pois todas podem ser expressas como o máximo de funções afins (funções lineares), e o supremo de funções convexas é convexo.
+    A função módulo é contínua por definição, logo $\Loss \in C^0$. Para verificar se é $C^1$, analisamos a derivada no ponto $e=0$.
+    Calculamos os limites laterais da derivada:
+    \begin{align*}
+        \lim_{e \to 0^+} \frac{d}{de}(e) &= 1 \\
+        \lim_{e \to 0^-} \frac{d}{de}(-e) &= -1
+    \end{align*}
+    Como os limites laterais são distintos ($1 \neq -1$), a derivada clássica não existe em $e=0$. Portanto, a função não é continuamente diferenciável em todo o domínio ($\mathcal{L} \notin C^1$).
 \end{proof}
 
-\begin{proposition}[Robustez Universal]
-Todas as funções desta família são globalmente Lipschitz-contínuas.
+\begin{proposition}[Convexidade]
+    A função Erro Absoluto Médio é convexa.
 \end{proposition}
 
 \begin{proof}
-Os subgradientes são limitados por constantes:
-\[ |L'_{\text{MAE}}| \le 1, \quad |L'_{\text{Quantile}}| \le \max(\tau, 1-\tau) < 1, \quad |L'_{\epsilon}| \le 1 \]
-Dessa forma, grandes erros não geram gradientes explosivos.
+    A função é definida por $\mathcal{L}(e) = |e|$, que constitui a norma $L_1$ no espaço unidimensional ($\mathbb{R}$).
+    
+    Conforme estabelecido no \textbf{Teorema de Convexidade de Normas} (Seção \ref{sec:definicoes}), toda norma é necessariamente uma função convexa. Portanto, a convexidade do MAE segue diretamente dessa propriedade, sem necessidade de demonstração algébrica adicional.
 \end{proof}
 
-\section{O Caso Híbrido: A Função de Huber}
-\textit{Função abordada: Huber Loss.}
-
-Definida por Huber \cite{huber1964robust}, esta função conecta o comportamento quadrático (perto da origem) ao linear (nas caudas).
-
-\begin{proposition}[Suavidade na Fronteira]
-A função de Huber é de classe $C^1$, mas não $C^2$. Ela é convexa e robusta.
+\begin{proposition}[Robustez]
+    A função erro absoluto médio é Lipschitz-contínua (é robusta a \textit{outliers}).
 \end{proposition}
 
 \begin{proof}
-Definimos o resíduo como $r = y - \hat{y}$. A função de Huber é definida por partes:
-\[
-L_\delta(r) = \begin{cases}
-\frac{1}{2}r^2 & \text{se } |r| \le \delta \\
-\delta|r| - \frac{1}{2}\delta^2 & \text{se } |r| > \delta
-\end{cases}
-\]
-
-\textbf{1. Diferenciabilidade ($C^1$):}
-Calculamos a derivada $L'(r)$ nas duas regiões:
-\begin{itemize}
-    \item Para $|r| < \delta$ (região quadrática): $L'(r) = r$.
-    \item Para $r > \delta$ (região linear positiva): $L'(r) = \delta$.
-    \item Para $r < -\delta$ (região linear negativa): $L'(r) = -\delta$.
-\end{itemize}
-Verificamos a continuidade nos pontos de junção $r = \delta$ e $r = -\delta$:
-\[ \lim_{r \to \delta^-} r = \delta \quad \text{e} \quad \lim_{r \to \delta^+} \delta = \delta \]
-Como os limites laterais coincidem, a função é diferenciável em todo o domínio ($C^1$).
-
-\textbf{2. Convexidade e Segunda Derivada ($C^2$?):}
-Derivando $L'(r)$:
-\[
-L''(r) = \begin{cases}
-1 & \text{se } |r| < \delta \\
-0 & \text{se } |r| > \delta
-\end{cases}
-\]
-Observe que $L''(r) \ge 0$ em todo o domínio, provando a convexidade.
-Porém, nos pontos $r = \pm \delta$, a segunda derivada salta de 1 para 0. Essa descontinuidade implica que Huber \textbf{não} é de classe $C^2$.
-
-\textbf{3. Robustez:}
-O valor absoluto da derivada é dado por:
-\[ |L'(r)| = \min(|r|, \delta) \]
-Portanto, $\sup |L'(r)| = \delta$. Sendo o gradiente limitado globalmente pela constante $\delta$, a função é Lipschitz-contínua e robusta a outliers.
+    Como a função não é diferenciável na origem, analisamos o seu subdiferencial $\partial \mathcal{L}(e)$. O subgradiente do valor absoluto é dado por:
+    \[
+    \partial |e| = \begin{cases} 
+    \{-1\} & \text{se } e < 0 \\
+    [-1, 1] & \text{se } e = 0 \\
+    \{1\} & \text{se } e > 0 
+    \end{cases}
+    \]
+    Para provar a robustez (Lipschitz), verificamos se o subgradiente é limitado. Observamos que para qualquer $g \in \partial \mathcal{L}(e)$:
+    \[ |g| \le 1, \quad \forall e \in \mathbb{R} \]
+    Como a magnitude da ``inclinação'' generalizada nunca excede 1, a função é 1-Lipschitz contínua.
 \end{proof}
 
-\section{Família Entrópica (Classificação Probabilística)}
-\textit{Funções abordadas: Binary Cross-Entropy (BCE), Categorical Cross-Entropy (CCE), Sparse CCE, Weighted CCE, Multilabel Loss.}
+\subsection{Perda de Huber (Huber loss)}%
+\label{ap:deducoes-huber-loss}
 
-Baseadas na Divergência de Kullback-Leibler e Máxima Verossimilhança \cite{goodfellow2016deep}. Note que \textit{Sparse CCE} e \textit{Weighted CCE} são variações algébricas da CCE e compartilham as mesmas propriedades analíticas fundamentais.
+\begin{definition}
+    Seja $\delta > 0$ um hiperparâmetro de transição. A função de perda de Huber é definida por partes:
+    \begin{equation}
+        \mathcal{L}_\delta(e) = \begin{cases} 
+        \frac{1}{2}e^2 & \text{se } |e| \le \delta \\
+        \delta(|e| - \frac{1}{2}\delta) & \text{se } |e| > \delta 
+        \end{cases}
+    \end{equation}
+\end{definition}
 
-\begin{proposition}[Convexidade e Suavidade]
-Todas as funções da família Entrópica são de classe $C^\infty$ e estritamente convexas em relação à probabilidade predita $p \in (0, 1)$.
+\begin{proposition}[Regularidade e Colagem Suave]
+    A função de Huber pertence à classe $C^1$ (continuamente diferenciável), mas não pertence à classe $C^2$.
 \end{proposition}
 
 \begin{proof}
-A função base é $-\log(p)$.
-\begin{itemize}
-    \item \textbf{Suavidade:} O logaritmo é infinitamente diferenciável em seu domínio positivo.
-    \item \textbf{Convexidade:} A segunda derivada de $-\log(p)$ é $1/p^2$, que é estritamente positiva para todo $p \ne 0$.
-\end{itemize}
+    A função é composta por polinômios ($C^\infty$) em cada região aberta. A regularidade global depende do comportamento nos pontos de transição $e = \pm \delta$.
+    
+    Calculamos a primeira derivada:
+    \[
+    \mathcal{L}'(e) = \begin{cases} 
+    e & \text{se } |e| \le \delta \\
+    \delta \cdot \text{sgn}(e) & \text{se } |e| > \delta 
+    \end{cases}
+    \]
+    Verificamos a continuidade da derivada em $e = \delta$:
+    \begin{align*}
+        \lim_{e \to \delta^-} \mathcal{L}'(e) &= \delta \\
+        \lim_{e \to \delta^+} \mathcal{L}'(e) &= \delta \cdot 1 = \delta
+    \end{align*}
+    Como os limites coincidem, $\mathcal{L}'$ é contínua em $\delta$ (e analogamente em $-\delta$). Logo, $\mathcal{L} \in C^1$.
+    
+    Para a segunda derivada:
+    \[
+    \mathcal{L}''(e) = \begin{cases} 
+    1 & \text{se } |e| < \delta \\
+    0 & \text{se } |e| > \delta 
+    \end{cases}
+    \]
+    Observa-se uma descontinuidade de salto nos pontos $\pm \delta$ (de 1 para 0). Portanto, a segunda derivada não é contínua, implicando $\mathcal{L} \notin C^2$.
 \end{proof}
 
-\begin{proof}
-Seja $L(p) = -[y \log p + (1-y) \log(1-p)]$, onde $y \in \{0, 1\}$ é fixo e $p \in (0, 1)$ é a variável.
-
-\textbf{1. Convexidade:}
-Calculamos a primeira derivada em relação a $p$:
-\[ \frac{\partial L}{\partial p} = -\frac{y}{p} + \frac{1-y}{1-p} = \frac{p-y}{p(1-p)} \]
-Calculamos a segunda derivada (Hessiana em 1D) aplicando a regra do quociente ou derivando os termos termo-a-termo:
-\[ \frac{\partial^2 L}{\partial p^2} = \frac{y}{p^2} + \frac{1-y}{(1-p)^2} \]
-Como $y \in \{0,1\}$ e $p \in (0,1)$, os termos $p^2$ e $(1-p)^2$ são estritamente positivos. Assim, $\frac{\partial^2 L}{\partial p^2} > 0$ sempre, provando a convexidade estrita.
-
-\textbf{2. Ausência de Robustez (Singularidade):}
-Analisamos o caso de um erro "confiante" (ex: $y=1$ mas o modelo prediz $p \to 0$). O gradiente torna-se:
-\[ \lim_{p \to 0^+} \left( -\frac{1}{p} \right) = -\infty \]
-A magnitude ilimitada do gradiente perto das fronteiras $0$ e $1$ viola a condição de Lipschitz. Matematicamente, isso justifica o fenômeno de instabilidade numérica e gradientes explosivos se a função de ativação não saturar (por isso geralmente combinamos Logits + Sigmoid num único passo numérico).
-\end{proof}
-
-\begin{proposition}[Não-Robustez]
-Funções entrópicas não são Lipschitz-contínuas.
+\begin{proposition}[Convexidade]
+    A função de Huber é convexa em todo o domínio $\mathbb{R}$.
 \end{proposition}
 
 \begin{proof}
-O gradiente de $-\log(p)$ é $-1/p$. Quando a predição $p$ se aproxima de 0 (erro confiante), o gradiente tende a $-\infty$. Isso torna a função instável na presença de dados rotulados incorretamente que contradizem predições fortes do modelo.
+    Utilizamos o \textbf{Critério de Segunda Ordem} (Teorema \ref{thm:segunda_ordem}). Analisamos o sinal da segunda derivada calculada anteriormente:
+    \begin{itemize}
+        \item Na região quadrática ($|e| < \delta$): $\mathcal{L}''(e) = 1 > 0$.
+        \item Na região linear ($|e| > \delta$): $\mathcal{L}''(e) = 0 \ge 0$.
+    \end{itemize}
+    Como $\mathcal{L}''(e) \ge 0$ em todos os pontos onde é definida (e a função é $C^1$), conclui-se que a função possui curvatura não-negativa globalmente, satisfazendo a condição de convexidade.
 \end{proof}
 
-\section{Família de Margem (SVM) e Dispersão Exponencial}
-
-\begin{proposition}[Família de Margem]
-A \textbf{Hinge Loss} é $C^0$ e Robusta (derivada limitada por 1), mas não diferenciável em $1-ty = 0$. A \textbf{Squared Hinge Loss} é $C^1$ (suaviza o ``cotovelo''), mas perde a robustez (Lipschitz) pois cresce quadraticamente para erros grandes.
-\end{proposition}
-
-\begin{proposition}[Família GLM]
-As perdas \textbf{Poisson, Gamma e Tweedie} ($1 < p < 2$) são convexas e $C^\infty$ dentro de seus domínios de definição ($y, \hat{y} > 0$). Elas não são robustas no sentido clássico de Lipschitz.
-\end{proposition}
-
-\section{Análise de Esparsidade (Zona Morta e Vetores de Suporte)}
-\label{sec:sparsity}
-
-Diferente da convexidade e suavidade, a propriedade de \textbf{esparsidade induzida pela perda} refere-se à existência de uma região no domínio onde o gradiente da função de custo é exatamente nulo. 
-
-Matematicamente, se $\nabla L(\hat{y}, y) = 0$ para um ponto $(x_i, y_i)$, este ponto não contribui para o vetor gradiente global durante a otimização. Em formulações duais (como SVM e SVR), isso implica que o multiplicador de Lagrange associado $\alpha_i$ é zero, tornando a representação do modelo esparsa (dependente apenas dos ``Vetores de Suporte'').
-
-\begin{proposition}[Critério da Zona Morta]
-Dentre as funções analisadas, apenas a \textbf{$\epsilon$-Insensitive Loss} e a \textbf{Hinge Loss} induzem esparsidade de dados (Vetores de Suporte). As funções MSE, Huber e Entrópicas são densas.
+\begin{proposition}[Robustez]
+    A função de Huber é Lipschitz-contínua com constante $K=\delta$, sendo robusta a \textit{outliers}.
 \end{proposition}
 
 \begin{proof}
-A prova consiste em identificar o conjunto de medida não-nula onde a derivada se anula.
-
-\textbf{1. O Caso da $\epsilon$-Insensitive (Regressão Esparsa):}
-Seja $L_\epsilon(r) = \max(0, |r| - \epsilon)$. Calculamos a derivada em relação ao resíduo $r$:
-\[
-L'_\epsilon(r) = \begin{cases} 
-0 & \text{se } |r| \le \epsilon \\
-\text{sgn}(r) & \text{se } |r| > \epsilon 
-\end{cases}
-\]
-Observe que para todo dado cujo erro de predição seja menor que $\epsilon$ ($|y - \hat{y}| \le \epsilon$), temos $L' = 0$.
-\textbf{Conclusão:} O modelo ignora pequenos erros. A solução final é construída apenas pelos pontos que violam a margem $\epsilon$ (os vetores de suporte).
-
-\textbf{2. O Caso da Hinge Loss (Classificação Esparsa):}
-Seja $L(z) = \max(0, 1 - z)$ onde $z = y \cdot \hat{y}$ é a margem funcional. A derivada é:
-\[
-L'(z) = \begin{cases} 
-0 & \text{se } z > 1 \\
--1 & \text{se } z < 1 
-\end{cases}
-\]
-Se o modelo classifica um exemplo corretamente e com confiança suficiente ($y \cdot \hat{y} > 1$), o gradiente é 0.
-\textbf{Conclusão:} O modelo não gasta capacidade ajustando exemplos "fáceis". A solução depende apenas dos exemplos na fronteira de decisão ou classificados incorretamente.
-
-\textbf{3. Contra-Exemplo (MSE e Entropia):}
-Para o MSE, $L'(r) = r$. O gradiente só é zero se $r=0$ (um único ponto, medida nula em dados contínuos).
-Para a Cross-Entropy, $L'(p) = -1/p$. O gradiente nunca é zero.
-Logo, todos os dados, mesmo os perfeitamente ajustados, contribuem infinitesimalmente para o gradiente final, gerando soluções densas.
+    Analisamos a magnitude do gradiente globalmente. A derivada primeira é dada pela função de corte (\textit{clip}):
+    \[ \mathcal{L}'(e) = \max(-\delta, \min(e, \delta)) \]
+    
+    Portanto, o valor absoluto da derivada é limitado superiormente pelo hiperparâmetro $\delta$:
+    \[ |\mathcal{L}'(e)| \le \delta, \quad \forall e \in \mathbb{R} \]
+    
+    Pelo critério do gradiente limitado (Seção \ref{sec:definicoes}), a função é Lipschitz-contínua. Diferente do MSE, onde o gradiente cresce indefinidamente, a Huber Loss satura a força da penalidade em $\delta$, garantindo estabilidade frente a grandes erros.
 \end{proof}
 
-\section{Quadro Resumo das Propriedades}
+\subsection{Perda log-cosh (log-cosh loss)}%
+\label{ap:deducoes-log-cosh}
 
-A Tabela \ref{tab:loss_properties} sumariza as propriedades demonstradas neste apêndice.
+\begin{definition}
+    Seja $e = \hat{y} - y$ o resíduo. A função de perda Log-Cosh é definida pelo logaritmo natural do cosseno hiperbólico do erro:
+    \begin{equation}
+        \mathcal{L}(e) = \log(\cosh(e))
+    \end{equation}
+\end{definition}
 
-\begin{table}[h]
-\centering
-\caption{Resumo das Propriedades Analíticas das Funções de Custo}
-\label{tab:loss_properties}
-\small
-\begin{tabular}{@{}llllll@{}}
-\toprule
-\textbf{Família} & \textbf{Função} & \textbf{Classe ($C^k$)} & \textbf{Convexa?} & \textbf{Robusta?} & \textbf{Obs. Principal} \\ \midrule
-Regressão & MSE & $C^\infty$ & Sim (Estrita) & Não & Sensível a outliers \\
- & MAE & $C^0$ & Sim & Sim & Mediana \\
- & Huber & $C^1$ & Sim & Sim & Híbrido \\
- & Log-Cosh & $C^\infty$ & Sim & Sim & Suave \\
- & Quantile & $C^0$ & Sim & Sim & Estima quantis \\
- & $\epsilon$-Insensitive & $C^0$ & Sim & Sim & Gera esparsidade (SVR) \\ \midrule
-Entrópica & BCE / CCE & $C^\infty$ & Sim & Não & Classificação Padrão \\ \midrule
-Margem & Hinge & $C^0$ & Sim & Sim & Margem Máxima \\
- & Sq. Hinge & $C^1$ & Sim & Não & Margem L2 \\ \midrule
-GLM & Poisson/Gamma & $C^\infty$ & Sim & Não & Contagens \\ \bottomrule
-\end{tabular}
-\end{table}
+\begin{proposition}[Regularidade e Suavidade]
+    A função Log-Cosh pertence à classe $C^\infty$ (é infinitamente diferenciável em todo o domínio).
+\end{proposition}
+
+\begin{proof}
+    A função é uma composição de funções elementares: $f(x) = \log(x)$ e $g(e) = \cosh(e)$.
+    Sabemos que $\cosh(e)$ é $C^\infty$ em $\mathbb{R}$ e que $\cosh(e) \ge 1$ para todo $e$. Como o logaritmo é $C^\infty$ em $(0, \infty)$, a composição $\log(\cosh(e))$ preserva a suavidade.
+    
+    Verificamos as primeiras derivadas:
+    \begin{align*}
+        \mathcal{L}'(e) &= \frac{d}{de} \log(\cosh(e)) = \frac{1}{\cosh(e)} \cdot \sinh(e) = \tanh(e) \\
+        \mathcal{L}''(e) &= \frac{d}{de} \tanh(e) = \text{sech}^2(e)
+    \end{align*}
+    Como $\tanh(e)$ e $\text{sech}(e)$ são funções suaves compostas por exponenciais, todas as derivadas de ordem superior existem e são contínuas. Portanto, $\mathcal{L} \in C^\infty$.
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A função Log-Cosh é estritamente convexa.
+\end{proposition}
+
+\begin{proof}
+    Utilizamos o critério da segunda derivada. Da demonstração anterior, temos:
+    \[ \Loss''(e) = \text{sech}^2(e) = \frac{1}{\cosh^2(e)} \]
+    
+    Sabemos que $\cosh(e) \ge 1$ para todo número real, o que implica $1 \le \cosh^2(e) < \infty$. Consequentemente, o inverso quadrado é estritamente positivo:
+    \[ 0 < \frac{1}{\cosh^2(e)} \le 1 \]
+    
+    Como $\mathcal{L}''(e) > 0$ em todo $\mathbb{R}$, a função é estritamente convexa.
+\end{proof}
+
+\begin{proposition}[Robustez]
+    A função Log-Cosh é Lipschitz-contínua e robusta a \textit{outliers}.
+\end{proposition}
+
+\begin{proof}
+    Analisamos a magnitude do gradiente $\mathcal{L}'(e) = \tanh(e)$.
+    Sabemos pelas propriedades da tangente hiperbólica que sua imagem é o intervalo aberto $(-1, 1)$. Portanto:
+    \[ |\mathcal{L}'(e)| = |\tanh(e)| < 1, \quad \forall e \in \mathbb{R} \]
+    
+    Como a derivada é limitada globalmente por $K=1$, a função é 1-Lipschitz contínua. 
+    
+    \textit{Observação:} Note que assintoticamente, quando $|e| \to \infty$, a derivada se aproxima de $\pm 1$ (comportamento do MAE), mas na origem ela se aproxima de $0$ linearmente (comportamento do MSE), combinando as melhores propriedades de ambas sem perder a diferenciabilidade.
+\end{proof}
+
+\subsection{Erro quadrático logarítmico médio (MSLE)}
+
+\subsection{Perda quantílica (quantile loss)}
+
+\subsection{Perda epsilon-insensível (epsilon-insensitive)}
+
+\subsection{Perda de Poisson (Poisson loss)}
+
+\subsection{Perda Gamma (Gamma loss)}
+
+\subsection{Perda de Tweedie (Tweedie loss)}
+
+\section{Perdas para classificação}
