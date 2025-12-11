@@ -23,7 +23,9 @@ Antes de discutir as funções de perda para tarefas de regressão, é important
 
 \subsubsection*{Convexidade}
 
-Uma função convexa é uma função na qual qual ponto de mínimo local é também o ponto de mínimo global \parencite{LossesArticle}. Uma forma fácil de identificar se uma função é convexa ou não, é verificar se ela possui o formato de um funil, ou um formato da letra ``V''. Funções convexas são ideais para serem utilizadas como funções de perda, porque facilitam a otimização utilizando métodos baseados em gradiente. Como foi visto no Capítulo~\ref{cap:retropropagacao-gradiente}, é bem mais intuitivo para o modelo encontrar pontos de mínimo em uma função que apresenta o formato de um funil do que em uma função não-convexa, cheia de ondas e com vários pontos de mínimo locais.
+Uma função convexa é uma função na qual qual ponto de mínimo local é também o ponto de mínimo global \parencite{LossesArticle}. Uma forma fácil de identificar se uma função é convexa ou não, é verificar se ela possui o formato de um funil, ou um formato da letra ``V''. Em \textit{Convex optimization}, \textcite{boyd2004convex} elaboram e discutem uma série de teoremas que buscam avaliar se uma função estudada é convexa ou não. Alguns desses teoremas são utilizados no Apêndice~\ref{apendice:propriedades-analiticas-funcoes-de-perda} (Propriedades Analíticas das Funções de Perda) para provar a convexidade das funções de perda analisadas durante este e outros capítulos.
+
+Funções convexas são ideais para serem utilizadas como funções de perda, porque facilitam a otimização utilizando métodos baseados em gradiente. Como foi visto no Capítulo~\ref{cap:retropropagacao-gradiente}, é bem mais intuitivo para o modelo encontrar pontos de mínimo em uma função que apresenta o formato de uma tigela do que em uma função não-convexa, cheia de ondas e com vários pontos de mínimo locais.
 
 \subsubsection*{Diferenciabilidade}
 
@@ -31,11 +33,27 @@ A questão da diferenciabilidade está relacionada também com a utilização de
 
 Utilizar uma função que não seja diferenciável ou que possuam muitos pontos de descontinuidade certamente irá afetar negativamente o algoritmo da retropropagação, atrapalhando o aprendizado com o uso do gradiente\footnote{Vale dizer também que mesmo que uma função apresente um ou outro ponto de descontinuidade, pode ser que isso não atrapalhe a otimização por gradiente, um exemplo disso é a função erro absoluto médio, que a apresenta um ponto de descontinuidade. Mas, é possível contornar esse ``problema'' utilizando o cálculo do subgradiente.}.
 
+Em \textit{Principles of Mathematical Analysis}, \textcite{rudin1976principles} discute a notação de classes de continuidade, chamadas neste livro por $C^k$, para descrever o comportamento de funções matemáticas. Uma função de classe $C^0$ é uma função contínua em todo o seu domínio, mas não é suave, de fato que sua derivada não será contínua. Uma função de classe $C^1$ é contínua e suave em todo o seu domínio, mas a derivada de sua derivada não é contínua. Por fim, uma função de classe $C^{\infty}$ (infinitamente diferenciável), tem todas as suas derivadas contínuas.
+
+A notação de classes de continuidade nos ajuda a entender de forma mais fácil as propriedades de uma função. Neste livro, para cada uma das funções de perda analisadas, é discutida a sua classe de continuidade. Suas provas matemáticas são encontradas no Apêndice~\ref{apendice:propriedades-analiticas-funcoes-de-perda}.
+
 \subsubsection*{Robustez}
 
 As funções de perda devem ser capazes de lidar com \textit{outliers} e não serem afetadas por um pequeno número de valores extremos \parencite{LossesArticle}. Os \textit{outliers} são valores que estão fora da padrão dos dados gerais, eles podem ter valores consideravelmente maiores ou menores que a distribuição geral. Eles são um dos principais problemas ao utilizar uma função de perda, pois, caso esta seja sensível a \textit{outliers}, esses dados irão enviesar com o cálculo da perda. Consequentemente, irão afetar negativamente o aprendizado por gradiente. 
 
-Escolher uma função que seja robusta a \textit{outliers} é uma escolha ideal para resolver problemas em que esse tipo de dado estará presente. Pois, os \textit{outliers} não irão conseguir afetar drasticamente o cálculo da perda.
+A definição de robustez está intrinsecamente ligada com o conceito de continuidade de Lipschitz.
+
+\begin{definition}[Continuidade de Lipschitz]
+    Uma função $f: \mathbb{R}^n \to \mathbb{R}$ é dita \textbf{Lipschitz-contínua} se existe uma constante $K \in \mathbb{R}^+$ (chamada constante de Lipschitz) tal que, para todos $\boldsymbol{x}, \boldsymbol{y}$ no domínio:
+    \begin{equation}
+        |f(\boldsymbol{x}) - f(\boldsymbol{y})| \le K \|\boldsymbol{x} - \boldsymbol{y}\|_2
+    \end{equation}
+    Onde $\|\cdot\|_2$ denota a norma Euclidiana ($L^2$).
+\end{definition}
+
+A continuidade de Lipschitz garante que se uma função segue essa propriedade, caso o modelo cometa um erro absurdamente grande, o resultado da função de perda não irá ``explodir'' para o infinito. Isso é importante, pois também se relaciona com o problema dos gradientes explosivos. Utilizar uma função que não seja robusta, pode aumentar as chances desse fenômeno durante o treino.
+
+Assim como as classes de continuidade e a convexidade, para cada função apresentada neste capítulo é provado se ela é robusta a \textit{outliers} ou não. Esses demonstrações estão no Apêndice~\ref{apendice:propriedades-analiticas-funcoes-de-perda}, onde é verificada a continuidade de Lipschitz das funções de perda. 
 
 \subsubsection*{Suavidade}
 
@@ -164,11 +182,11 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 \subsubsection*{Características do erro quadrático médio}
 
 \begin{itemize}
+    \item \textbf{Continuidade, suavidade e diferenciabilidade:} O erro quadrático médio é uma função de classe $C^{\infty}$, é infinitamente diferenciável (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o \textit{MSE} uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
+    \item \textbf{Sensibilidade a \textit{outliers} (não robusto):} O \textit{MSE} é uma função que não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mse}). Caso o erro do modelo treinado cresça exponencialmente, o valor numérico da perda será consideravelmente grande. Não somente isso, ele é sensível a \textit{outliers}, se um grupo de dados fora do padrão estiver presente no conjunto de dados, eles podem enviesar o cálculo da perda, e também na otimização em busca de pontos de mínimo.
+    \item \textbf{Convexidade:} O \textit{MSE} é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-mse}), representado pelos gráficos da Figura~\ref{fig:mse}, que apresentam uma função com formato de tigela. Dessa forma, essa característica torna-se uma vantagem se estiver sendo utilizados otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, \textcite{LossesArticle} argumentam que essa propriedade pode deixar de ser verdade em algoritmos de aprendizado profundo.
     \item \textbf{Não-negatividade:} Como gráficos da Figura~\ref{fig:mse} ilustram, o \textit{MSE} é retorna apenas valores positivos. Isso se dá devido à diferença das entradas estar sendo calculada, e, em seguida, elevada ao quadrado, impendido que valores negativos ocorram na saída;
-    \item \textbf{Sensibilidade a \textit{outliers}:} \textcite{LossesArticle} apontam que o erro quadrático médio possui a tendência de penalizar em maior força os erros que são originários de uma distância muito grande. O \textit{MSE} calcula a distância entre os pontos e depois eleva ela ao quadrado. Se essa distância for muito grande, o erro será maior ainda. Como consequência, se existe um conjunto grande de pontos que ficam fora da regressão, os \textit{outliers}, a função de perda irá constantemente retornar valores altos. Isso pode enviesar o aprendizado, dificultando a otimização do modelo. Mas, também pode ser uma vantagem em cenários em que os erros devem ser fortemente penalizados;
-    \item \textbf{Convexa (nas predições):} A Figura~\ref{fig:mse} também mostra que o \textit{MSE} é uma função convexa. O seu gráfico tem a típica forma de um funil, apresentando um único ponto de mínimo global. A convexidade ajuda na otimização dessa função, caso se esteja usando um otimizador baseado no gradiente descendente. Contudo, \textcite{LossesArticle} destacam que em redes neurais profundas essa função pode se tornar não-convexa, devido às transformações não-lineares que são feitas ao construir o modelo;
     \item \textbf{Baixa interpretabilidade:} O \textit{MSE} eleva o erro ao quadrado. Ao retornar o valor da perda, não é visto diretamente a distância entre os pontos reais e os pontos preditos pelo modelo. Essa cálculo dificulta saber, de forma rápida, quão bem ou mal o modelo está performando. Funções como a \textit{MAE}, em que o erro é dado pelo módulo da distância entre os dois pontos são mais diretas em mostrar a performance do modelo;
-    \item \textbf{Continuidade:} Os gráficos da Figura~\ref{fig:mse} mostram que o \textit{MSE} é uma função contínua em todo o seu domínio. Portanto, ao derivá-lo, não serão encontrados nenhum problema de descontinuidade.
 \end{itemize}
 
 \medskip
@@ -434,9 +452,10 @@ Em que:
 \subsubsection*{Características do erro absoluto médio}
 
 \begin{itemize}
+    \item \textbf{Continuidade, suavidade e diferenciabilidade:} O \textit{MAE} é uma função de classe $C^0$ (ver Apêndice~\ref{ap:deducoes-mae}). Ele é contínuo em todo o seu domínio, mas, devido ao ``bico'' quando o erro é zero, não pode ser totalmente derivado. Essa característica não impede que o erro absoluto médio seja utilizado em conjunto com otimizadores baseados em gradiente. Como será visto, é possível contornar esse problema com o cálculo do subgradiente.
+    \item \textbf{Convexidade:} O \textit{MAE} é convexo (ver Apêndice~\ref{ap:deducoes-mae}). Como o teorema de \textbf{Convexidade de Normas e Máximos} afirma, toda função modular é convexa como consequência da desigualdade triangular. Isso também está explicitado nos gráficos da Figura~\ref{fig:mae}, com o formato em ``V'' da função de perda.
+    \item \textbf{Robustez para \textit{outliers}:} O \textit{MAE} é uma função Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mae}). Mais precisamente, o maior valor que sua derivada pode assumir é 1. Como resultado, independente do tamanho do erro que o modelo possa cometer, isso se traduz para um valor limitado. Dessa forma, o \textit{MAE} e robusto a \textit{outliers} além de conseguir lidar com o problema dos gradientes explosivos. 
     \item \textbf{Não-negatividade:} Como é apontado na Figura~\ref{fig:mae}, o erro absoluto médio não retorna valores negativos para nenhum valor de entrada. A sua saída saída será sempre positiva ou zero, independente da entrada. Isso se dá, devido à propriedade do módulo, que não admite números negativos para sua saída;
-    \item \textbf{Robustez para \textit{outliers}}: \textcite{LossesArticle} explicam que o \textit{MAE} não penaliza os \textit{outliers} de forma severa como o erro quadrático médio. Diferente do \textit{MSE}, no qual o erro cresce de forma quadrática, no \textit{MAE}, ele cresce linearmente. Significando que diferente do \textit{MSE} que era sensível aos \textit{outliers}, o \textit{MAE} é robusto aos \textit{outliers};
-    \item \textbf{Convexa (nas predições):} Ainda na Figura~\ref{fig:mae}, ela mostra que o erro absoluto médio possui o formato de um funil, classificando-o como uma função convexa e com um só ponto de mínimo global. Contudo, \textcite{LossesArticle} advertem que para modelos de aprendizado profundo, o \textit{MAE} pode deixar de ser uma função convexa devido às muitas camadas e funções não-lineares;
     \item \textbf{Não-derivável em zero:} Esse ponto acontece devido à forma que a função módulo é representa graficamente, ela tem a forma de um ``bico'' em zero. Para contornar esse problema, pode ser utilizado o subgradiente.
     \item \textbf{Boa interpretabilidade:} Diferente do erro quadrático médio em que o erro total é elevado ao quadrado, no \textit{MAE} isso não ocorre. O erro é simplesmente a média das diferenças dos pontos. É intuitivo interpretar os resultados que essa função de perda retorna, considerando que não é preciso fazer nenhum cálculo adicional para ter uma noção precisa se as previsões feitas pelo modelo condizentes ou não dos valores reais.
 \end{itemize}
@@ -839,8 +858,9 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
 \subsubsection*{Características da perda de Huber}
 
 \begin{itemize}
-    \item \textbf{Robustez a \textit{outliers}:} A perda de Huber não penaliza erros grandes de forma quadrática quando comparada com o erro quadrático médio. Portanto, os \textit{outliers} não conseguem enviesar drasticamente o cálculo da perda dependendo do valor de $\delta$ escolhido \parencite{LossesArticle};
-    \item \textbf{Convexa:} A perda de Huber é uma função convexa. Isso é retratado na Figura~\ref{fig:huber-loss}, os seus gráficos seguem o formato de um funil, comum em funções convexas. Essa característica é uma vantagem para a perda de Huber, pois facilita com que os otimizadores encontrem os pontos de mínimo. Contudo, em redes neurais, devido às transformações não-lineares que ocorrem no modelo, a função de perda pode deixar de ser convexa;
+    \item \textbf{Continuidade, suavidade e diferenciabilidade:} Como dito anteriormente a perda de Huber é uma função de classe $C^1$ (ver Apêndice~\ref{ap:deducoes-huber-loss}). Isso implica em facilidades para encontrar as derivadas parciais e o vetor gradiente dessa função de perda.
+    \item \textbf{Convexidade} A perda de Huber é uma função convexa (ver Apêndice~\ref{ap:deducoes-huber-loss}). Ela apresenta o formato característico de um funil. Como resultado, é esperado que a busca por pontos de mínimo utilizando métodos baseados em gradiente seja feita sem muitos problemas de convergência dependendo do tamanho do passo escolhido. Assim como as outras funções, essa convexidade pode ser alterada caso seja utilizada em modelos de aprendizado profundo.
+    \item \textbf{Robustez a \textit{outliers}:} A perda de Huber é uma função Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-huber-loss}). Assim como o erro absoluto médio, o maior valor que a derivada da perda de Huber pode alcançar é 1, não existindo risco de ocorrer explosões do gradiente ao calcular o valor inicial da perda.
     \item \textbf{Hiperparâmetro $\delta$}: A perda de Huber adiciona um novo hiperparâmetro para a construção de um modelo de aprendizado. Ela dá a possibilidade de que seja controlado como os erros são calculados, contudo, $\delta$ não é ajustado automaticamente como os pesos e vieses na retropropagação. Um novo hiperparâmetro, significa ainda mais testes para encontrar seu valor ideal, isso costuma levar tempo, o que pode não ser ideal em certos casos.
 \end{itemize}
 
@@ -989,7 +1009,7 @@ A perda de Huber consegue unir o melhor dos dois mundos quando trata-se das perd
 
 A \textbf{perda log-cosh} é uma função de perda que vem ganhando popularidade entre os desenvolvedores. Em \textit{Statistical Properties of the log-cosh Loss Function Used in Machine Learning}, \textcite{StatisticalPropetiesLogCosh} explicam que ela aparece em cenários de \textit{autoencoders} variacionais, detecção de câncer, algoritmos de aprendizado baseados em árvores (como o XGBoost) e também em regressão quantílica (\textit{quantile regression}).
 
-A fórmula da perda log-cosh está na Equação~\ref{eq:log-cosh-loss}. Ela não adiciona nenhuma função nova, ela apenas faz a aplicação da função logaritmo que recebe como parâmetro de entrada a função cosseno hiperbólica. Essa combinação gera uma séries de propriedades interessantes, as quais serão discutidas depois de analisar o seu gráfico.
+A fórmula da perda log-cosh está na Equação~\ref{eq:log-cosh-loss}. Se considerarmos o erro como sendo a diferença do valor real $y_j$ com o valor predito $\hat{y}_j$, a perda log-cosh é dada então pelo logaritmo natural do cosseno hiperbólico do erro.
 
 \begin{equacaodestaque}{Perda log-cosh}
     \Loss_{\text{Log-Cosh}} (y_j, \hat{y}_j) = \sum_{j=1}^{N} \log(\cosh(y_j -\hat{y}_j))%
@@ -1004,7 +1024,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-Já com relação ao gráfico dessa função, ele está presente na Figura~\ref{fig:log-cosh-loss}. A perda log-cosh atua de forma parecida com a perda de Huber. Para valores em que a diferença da saída do modelo e o rótulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que lembra ao de uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh passa a assumir um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares. Consequentemente, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a perda de Huber, mas ainda é desejável manter a variação no cálculo do erro do modelo.
+A perda log-cosh atua de forma parecida com a perda de Huber, ilustrado no comportamento da função nos gráficos da Figura~\ref{fig:log-cosh-loss}. Para valores em que a diferença da saída do modelo e o rótulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que se assemelha à uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh assume um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares. Consequentemente, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a perda de Huber, mas ainda é desejável manter a variação no cálculo do erro do modelo.
 
 \begin{figure}[h!]
     \centering 
@@ -1090,9 +1110,9 @@ Já com relação ao gráfico dessa função, ele está presente na Figura~\ref{
 \subsubsection*{Características da perda log-cosh}
 
 \begin{itemize}
-    \item \textbf{Convexa:} Como os gráficos da Figura~\ref{fig:log-cosh-loss} apontam, a perda log-cosh é uma função convexa. Apresentando um formato característico de funil, além de possuir um único ponto de mínimo global. Contudo, não é possível garantir essa propriedade em cenários em que ela está sendo aplicada em modelos de redes neurais densas, devido às transformações não-lineares que ocorrem;
-    \item \textbf{Robustez a \textit{outliers}:} Assim como a perda de Huber e o erro absoluto médio, a perda log-cosh não pune de forma agressiva os erros cometidos pelo modelo ao ser treinado. Isso garante que essa função possa ser aplicada em cenários em que os dados possuem muitos \textit{outliers} sem afetar drasticamente o treinamento do modelo;
-    \item \textbf{Continuidade e diferenciabilidade:} Diferente de a perda de Huber, que possui pontos de descontinuidade na ligação da função linear com a quadrática, a perda log-cosh consegue ser contínua em todos os seus pontos. Além disso, isso também é uma vantagem sobre o erro absoluto médio, pois este também apresenta um ponto de descontinuidade em 0, o qual precisa do cálculo do subgradiente para garantir o aprendizado dos modelos que fazem uso de otimizadores baseados em gradiente. Portanto, além de ser contínua, a perda log-cosh pode ser derivada em todos os seus pontos. Algo útil caso esteja sendo usados otimizadores que atuam com o uso do cálculo do gradiente.
+    \item \textbf{Continuidade, suavidade e diferenciabilidade:} A perda log-cosh é uma função de classe $C^{\infty}$, infinitamente diferenciável, (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é uma vantagem quando comparada com a perda de Huber, que é de classe $C^1$. Como consequência, a derivada da perda log-cosh é contínua em todo seu domínio. Esse fato pode ser útil caso essa função seja trabalhada em métodos de otimização de segunda ordem, que dependem do cálculo da matriz hessiana.
+    \item \textbf{Convexidade:} A perda log-cosh é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é evidenciado ao calcular a segunda derivada dessa função, que tem como resultado $\frac{1}{\cosh^2(e)}$ que é estritamente positivo. Essa convexidade pode ser afetada ao trabalhar com modelos de aprendizado profundo, bem como as outras funções de perda.
+    \item \textbf{Robustez a \textit{outliers}:} A perda log-cosh é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso decorre de sua derivada, $\tanh(x)$, que tem limite em 1. Assim, também é dito que a perda log-cosh é 1-Lipschitz-contínua. Como consequência, essa função é robusta a \textit{outliers} e portanto, ajuda a minimizar problemas de gradientes explosivos.
 \end{itemize}
 
 \medskip
@@ -1110,7 +1130,7 @@ A derivada da perda log-cosh está na Equação~\ref{eq:log-cosh-derivada}. Ela 
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
 
-Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gráficas da derivada da perda log-cosh para o caso em que ela é calculada em relação à predição. Caso você leitor tenha lido o Capítulo~\ref{cap:ativacao-sigmoidais}, você não verá nada novo aqui, é apenas o gráfico característico em formato de ``S'' que as funções sigmoidais possuem. Um ponto interessante a ser destacado na figura, é que as saídas dessa função serão em um intervalo $[-1, 1]$. Isso faz que podem fazer com que o sinal do gradiente fique alternando, garantindo uma convergência mais rápida em alguns casos.
+Ao derivar a perda log-cosh, encontra-se o clássico gráfico de uma função sigmoidal, vista na Figura~\ref{eq:log-cosh-derivada}. O gráfico mostra como será o comportamento do gradiente conforme o erro aumenta, neste caso, ele é cíclico, estando em um intervalo $[-1, 1]$. Ao retornar valores positivos e negativos no gradiente, é possível garantir uma convergência mais rápida para os pontos de mínimo da função de perda (esse fato está evidenciado no Capítulo~\ref{cap:ativacao-sigmoidais}).
 
 \begin{figure}[h!]
     \centering
@@ -1118,7 +1138,6 @@ Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gr�
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Erro ($e = \hat{y} - y$)},
@@ -1126,15 +1145,14 @@ Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gr�
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
-                xmin=-4.5, xmax=4.5,        % Limites do seu gráfico
-                ymin=-1.5, ymax=1.5,         % Limites do seu gráfico
-                ytick={-1, -0.5, 0, 0.5, 1}, % Marcas no eixo y
+                xmin=-4.5, xmax=4.5,   
+                ymin=-1.5, ymax=1.5,       
+                ytick={-1, -0.5, 0, 0.5, 1},
                 legend pos=south east,
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-                % Gráfico da função tanh(x)
                 \addplot[
                     domain=-4:4, 
                     samples=101,
@@ -1145,7 +1163,7 @@ Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gr�
                 \addlegendentry{$L' = \tanh(e)$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Visão 2D (Gradiente vs. Erro).}%
+        \caption{Relação linear entre erro e gradiente da perda.}%
         \label{fig:log-cosh-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -1153,36 +1171,34 @@ Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gr�
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões consistentes com o gráfico (a)
                 width=\linewidth,
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
                 zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
                 grid=major,
-                view={150}{45}, % Mesmo ângulo de visão do seu template
-                zmin=-1.5, zmax=1.5, % Espelha o eixo Y do gráfico 2D
-                ztick={-1, 0, 1}, % Consistente com o 2D
+                view={150}{45}, 
+                zmin=-1.5, zmax=1.5, 
+                ztick={-1, 0, 1},
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-                % Gráfico da superfície do gradiente: tanh(y_hat - y)
                 \addplot3[
                     mesh,           
-                    color=red,     % Cor consistente com o gráfico 2D
+                    color=red,    
                     shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
-                ] { tanh(y - x) }; % A função da derivada: tanh(y_previsto - y_real)
+                    domain=-5:5,  
+                    domain y=-5:5, 
+                    samples=15   
+                ] { tanh(y - x) };
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D completa.}%
+        \caption{Superfície do gradiente no espaço.}%
         \label{fig:log-cosh-derivada-3d}
     \end{subfigure}
 
-    \caption{Visualizações da derivada (gradiente) da função de perda log-cosh.}%
+    \caption{Visualizações do gradiente da perda log-cosh em relação à predição.}%
     \label{fig:log-cosh-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1193,17 +1209,17 @@ Além disso, a Figura~\ref{eq:log-cosh-derivada} contém as representações gr�
 \end{center}
 \medskip
 
-Além das aplicações discutidas no início da seção sobre a perda Log-cosh, ela também está presente em várias outras pesquisas. Com esse intuito, essa seção explica algumas aplicações dessa função de perda para resolver problemas no contexto de aprendizado de máquina.
-
-Dito isso, vale citar os trabalhos:
-
 \subsubsection*{Aplicações da perda log-cosh em aprendizado de máquina}%
 \index{Aplicações práticas! Perda log-cosh}
 
+Além das aplicações discutidas no início da seção sobre a perda Log-cosh, ela também está presente em várias outras pesquisas.
+
+Algumas aplicações da perda log-cosh são:
+
 \begin{itemize}
-    \item \textbf{Previsão de índices do mercado financeiro (Economia):} Em \textit{Financial Market Forecasting using RNN, LSTM, BiLSTM, GRU and Transformer-Based Deep Learning Algorithms}, \textcite{FinantialMarketForecastingUsingRNN} estavam criando algoritmos de aprendizado de máquina para fazer a previsão de índices de ações globais (como o FTSE 100, S\&P 500 e HSI), para isso, eles constroem diferentes modelos, como uma rede neural recorrente. Além disso, eles utilizam diversas funções como métricas para avaliar os modelos construídos, Log-Cosh é uma dessas funções, junto com o erro absoluto médio (\textit{MAE}), erro quadrático médio (\textit{MSE}), a raiz do erro quadrático médio (\textit{RMSE}) e também a perda de Huber \parencite{FinantialMarketForecastingUsingRNN};
-    \item \textbf{Predição de bioatividade em moléculas (Farmácia):} Já em \textit{Siamese Recurrent Neural Network with a Self-Attention Mechanism for Bioactivity Prediction} \textcite{SiameseRecurrentNeuralNetwork} apresentam uma rede neural recorrente (\textit{RNN}) siamesa com o intuito de fazer a predição da biotividade de pequenas moléculas, um procedimento muito útil na descoberta de remédios. Os autores argumentam que a perda Log-Cosh foi uma função de perda ideal para ser aplicada nesse problema, pois apresentou o melhor desempenho das perdas que foram testadas: perda constrativa (\textit{constractive loss}), perda de Huber, perda L1 e perda L2 \parencite{SiameseRecurrentNeuralNetwork};
-    \item \textbf{Aplicação 3 (Área):} Por fim, no trabalho \textit{An Effective Method for Detecting Unknown Types of Attacks Based on Log-Cosh Variational Autoencoder}, \textcite{AnEffectiveMethodForDetectingUnknowTypes} propõem um modelo de \textit{deep learning} chamado de \textit{LVAE (Log-Cosh Variational Autoencoder)} com intuito detectar tipos desconhecidos de ataques em redes. A perda log-cosh é utilizada no modelo como a função de perda de reconstrução dentro do modelo \textit{variational autoencoder} \parencite{AnEffectiveMethodForDetectingUnknowTypes}.
+    \item \textbf{Previsão de índices do mercado financeiro (Economia):} Em \textit{Financial Market Forecasting using RNN, LSTM, BiLSTM, GRU and Transformer-Based Deep Learning Algorithms}, \textcite{FinantialMarketForecastingUsingRNN} criam algoritmos de aprendizado de máquina prever índices de ações globais (como o FTSE 100, S\&P 500 e HSI), construindo diferentes modelos, como uma rede neural recorrente. Eles utilizam diversas funções como métricas para avaliar os modelos construídos, Log-Cosh é uma dessas funções, junto com o erro absoluto médio (\textit{MAE}), erro quadrático médio (\textit{MSE}), a raiz do erro quadrático médio (\textit{RMSE}) e também a perda de Huber \parencite{FinantialMarketForecastingUsingRNN};
+    \item \textbf{Predição de bioatividade em moléculas (Farmácia):} Já em \textit{Siamese Recurrent Neural Network with a Self-Attention Mechanism for Bioactivity Prediction} \textcite{SiameseRecurrentNeuralNetwork} apresentam uma rede neural recorrente (\textit{RNN}) siamesa com o intuito de fazer a predição da bioatividade de pequenas moléculas, um procedimento muito útil na descoberta de remédios. Os autores argumentam que a perda Log-Cosh foi uma função de perda ideal para ser aplicada nesse problema, pois apresentou o melhor desempenho das perdas que foram testadas: perda constrativa (\textit{constractive loss}), perda de Huber, perda L1 e perda L2 \parencite{SiameseRecurrentNeuralNetwork};
+    \item \textbf{Aplicação 3 (Área):} No trabalho \textit{An Effective Method for Detecting Unknown Types of Attacks Based on Log-Cosh Variational Autoencoder}, \textcite{AnEffectiveMethodForDetectingUnknowTypes} propõem um modelo de \textit{deep learning} chamado de \textit{LVAE (Log-Cosh Variational Autoencoder)} com intuito detectar tipos desconhecidos de ataques em redes. A perda log-cosh é utilizada no modelo como a função de perda de reconstrução dentro do modelo \textit{variational autoencoder} \parencite{AnEffectiveMethodForDetectingUnknowTypes}.
 \end{itemize}
 
 \medskip
@@ -1212,7 +1228,7 @@ Dito isso, vale citar os trabalhos:
 \end{center}
 \medskip
 
-Com as quatro funções vistas até este momento, é possível resolver a grande maioria dos problemas de regressão. Contudo, vão existir cenários em que o objetivo será lidar com o erro relativo. Garantindo uma melhor análise se o modelo treinado está subestimando ou superestimando os rótulos nas suas predições. Uma das formas de lidar com modelos que estão subestimando os dados é utilizar o erro quadrático logarítmico médio como função de perda.
+Todas as funções vistas até o momento neste capítulo calculam o erro de forma absoluta. Elas não lidam com o erro de forma relativa. Como consequência, um erro de R\$ $50,00$ em uma conta de padaria tem o mesmo grau que um erro da mesma magnitude para validar o aluguel de uma casa. Vão existir cenários que será mais interessante, considerar o erro de forma relativa, punindo em maior peso as subestimações feitas pelo modelo. Para isso, uma solução é utilizar o erro quadrático logarítmico médio.
 
 \section{Lidando com a escala: foco no erro relativo}
 
