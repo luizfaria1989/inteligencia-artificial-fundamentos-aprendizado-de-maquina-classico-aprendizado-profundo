@@ -1024,7 +1024,9 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-A perda log-cosh atua de forma parecida com a perda de Huber, ilustrado no comportamento da função nos gráficos da Figura~\ref{fig:log-cosh-loss}. Para valores em que a diferença da saída do modelo e o rótulo real ($y_j - \hat{y}_j$) é pequena, ela tem um comportamento que se assemelha à uma função quadrática (como o \textit{MSE}). Além disso, conforme o resultado dessa diferença de valores aumenta, a perda log-cosh assume um comportamento parecido com o de uma função linear (como o \textit{MAE}). Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares. Consequentemente, ela pode ser uma alternativa a ser considerada caso sejam encontrados problemas ao utilizar a perda de Huber, mas ainda é desejável manter a variação no cálculo do erro do modelo.
+A elegância da perda log-cosh está na interação dessas duas funções. Para erros pequenos,  $\cosh (e) \approx 1 + e^2/2$, como $\log (1 +x) \approx x$, a função se aproxima de $e^2/2$. Ou seja, para erros pequenos, a função tem um comportamento quadrático, semelhante ao que acontece do erro quadrático médio. Já para erros grandes, $\cosh (e) \approx e^{\|e\|}/2$, ao ser aplicado o logaritmo, o resultado se simplifica para uma função linear, $\log e^{\|e\|} \approx e$. Isso garante uma função robusta a \textit{outliers} assim como o \textit{MAE}. Dessa forma, a perda log-cosh apresenta a mesma natureza híbrida, quadrática-linear, da perda de Huber, sendo uma alternativa que não necessita de hiperparâmetros adicionais. 
+
+Esse comportamento variável para calcular os erros também é evidenciado nas suas representações gráficas, como a Figura~\ref{fig:log-cosh-loss} aponta. Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares.
 
 \begin{figure}[h!]
     \centering 
@@ -1113,6 +1115,7 @@ A perda log-cosh atua de forma parecida com a perda de Huber, ilustrado no compo
     \item \textbf{Continuidade, suavidade e diferenciabilidade:} A perda log-cosh é uma função de classe $C^{\infty}$, infinitamente diferenciável, (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é uma vantagem quando comparada com a perda de Huber, que é de classe $C^1$. Como consequência, a derivada da perda log-cosh é contínua em todo seu domínio. Esse fato pode ser útil caso essa função seja trabalhada em métodos de otimização de segunda ordem, que dependem do cálculo da matriz hessiana.
     \item \textbf{Convexidade:} A perda log-cosh é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é evidenciado ao calcular a segunda derivada dessa função, que tem como resultado $\frac{1}{\cosh^2(e)}$ que é estritamente positivo. Essa convexidade pode ser afetada ao trabalhar com modelos de aprendizado profundo, bem como as outras funções de perda.
     \item \textbf{Robustez a \textit{outliers}:} A perda log-cosh é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso decorre de sua derivada, $\tanh(x)$, que tem limite em 1. Assim, também é dito que a perda log-cosh é 1-Lipschitz-contínua. Como consequência, essa função é robusta a \textit{outliers} e portanto, ajuda a minimizar problemas de gradientes explosivos.
+    \item \textbf{Alternativa para a perda de Huber:} Como dito anteriormente, a perda log-cosh é uma função híbrida assim como a perda de Huber. Ao escolher a perda log-cosh ao invés da perda de Huber para criar um algoritmo estamos priorizando a sua simplicidade, evitando o uso de hiperparâmetros que podem ser desnecessários e de difícil ajuste. Contudo, a perda de Huber ainda é essencial para aqueles casos em que queremos o controle total de como o erro será avaliado pela função de perda. Assim, chega-se em um dilema entre escolher a \textbf{simplicidade (perda log-cosh)} ou o \textbf{controle (perda de Huber)}.
 \end{itemize}
 
 \medskip
@@ -1123,14 +1126,24 @@ A perda log-cosh atua de forma parecida com a perda de Huber, ilustrado no compo
 
 \subsubsection*{Gradiente da perda de log-cosh}
 
-A derivada da perda log-cosh está na Equação~\ref{eq:log-cosh-derivada}. Ela envolve o cálculo da tangente hiperbólica, que coincidentemente, também é utilizada em aprendizado de máquina como uma função de ativação, tendo como objetivo introduzir a não-linearidade para as saídas de uma camada densa.
+A elegância da perda log-cosh não se restringe à sua função, estando presente também na sua derivada, a qual é dada pela tangente hiperbólica. Para encontrá-la, basta calcular a regra da cadeia dessa função de perda, de modo que seu resultado é
+
+\[
+    \frac{d}{de} \log(\cosh(e)) = \frac{1}{\cosh(e)} \cdot \sinh (e) 
+\]
+
+que se simplifica para o cálculo da tangente hiperbólica.
+
+Assim, expandindo o cálculo da derivada para o cenário em duas dimensões, chega-se na Equação~\ref{eq:log-cosh-derivada}.
 
 \begin{equacaodestaque}{Derivada parcial da perda log-cosh em relação à predição}
     \frac{\partial\Loss_{\text{log-cosh}}}{\partial\hat{y}_j} = \tanh(\hat{y}_j - y_j)%
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
 
-Ao derivar a perda log-cosh, encontra-se o clássico gráfico de uma função sigmoidal, vista na Figura~\ref{eq:log-cosh-derivada}. O gráfico mostra como será o comportamento do gradiente conforme o erro aumenta, neste caso, ele é cíclico, estando em um intervalo $[-1, 1]$. Ao retornar valores positivos e negativos no gradiente, é possível garantir uma convergência mais rápida para os pontos de mínimo da função de perda (esse fato está evidenciado no Capítulo~\ref{cap:ativacao-sigmoidais}).
+Caso você tenha lido o Capítulo~\ref{cap:ativacao-sigmoidais}, pode ter notado que a tangente hiperbólica passa a assumir um novo papel além de uma função de ativação. Neste caso, ela serve para calcular o gradiente inicial.
+
+Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log-cosh-derivada}, servem de referência para entender o porquê desta função de perda ser robusta a \textit{outliers}. Como a tangente hiperbólica é limitada em um intervalo $\pm 1$, mesmo que o erro do modelo seja muito grande em termos de valores, a ``correção'' (representada pelo gradiente) não irá aumentar drasticamente. Vale destacar também que como a tangente hiperbólica retorna tanto valores negativos quanto positivos, isso também ajuda a garantir uma convergência mais rápida para os pontos de mínimo\footnote{Esse fato está evidenciado no Capítulo~\ref{cap:ativacao-sigmoidais}.}.
 
 \begin{figure}[h!]
     \centering
@@ -1163,7 +1176,7 @@ Ao derivar a perda log-cosh, encontra-se o clássico gráfico de uma função si
                 \addlegendentry{$L' = \tanh(e)$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação linear entre erro e gradiente da perda.}%
+        \caption{Relação harmônica entre erro e gradiente da perda.}%
         \label{fig:log-cosh-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -1228,9 +1241,11 @@ Algumas aplicações da perda log-cosh são:
 \end{center}
 \medskip
 
-Todas as funções vistas até o momento neste capítulo calculam o erro de forma absoluta. Elas não lidam com o erro de forma relativa. Como consequência, um erro de R\$ $50,00$ em uma conta de padaria tem o mesmo grau que um erro da mesma magnitude para validar o aluguel de uma casa. Vão existir cenários que será mais interessante, considerar o erro de forma relativa, punindo em maior peso as subestimações feitas pelo modelo. Para isso, uma solução é utilizar o erro quadrático logarítmico médio.
+Todas as funções de perda vistas até o momento calculam o erro de forma absoluta. Elas não lidam com o erro de forma relativa. Como consequência, um erro de R\$ $50,00$ em uma conta de padaria tem o mesmo grau que um erro da mesma magnitude para validar o aluguel de uma casa. Vão existir cenários que será mais interessante, considerar o erro de forma relativa, punindo em maior peso as subestimações feitas pelo modelo. Para isso, uma solução é utilizar o erro quadrático logarítmico médio.
 
 \section{Lidando com a escala: foco no erro relativo}
+
+\subsubsection*{O problema dos imóveis}
 
 As funções de perda vistas até agora possuem um detalhe em comum: todas lidam com o erro de fazendo um cálculo absoluto. Para entender melhor essa frase é possível ilustrar isso com um exemplo. Considere que existem duas situações que está sendo previsto os valores de imóveis:
 
@@ -1461,6 +1476,8 @@ O uso dos logaritmos na função, fazem com que a superfície do \textit{MSLE} t
  * * *
 \end{center}
 \medskip
+
+\subsubsection*{O problema dos imóveis com o MSLE}
 
 Além disso, voltando para o exemplo anterior dos modelos prevendo preços de imóveis. Cabe discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
 
