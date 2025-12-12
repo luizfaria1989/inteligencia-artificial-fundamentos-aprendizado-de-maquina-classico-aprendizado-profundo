@@ -1349,7 +1349,7 @@ A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadráti
                 ] { (ln(x+1) - ln(y+1))^2 }; % A função MSLE 3D
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D completa.}%
+        \caption{Superfície da função de perda.}%
         \label{fig:msle-3d}
     \end{subfigure}
 
@@ -1556,9 +1556,7 @@ O erro quadrático médio logarítmico médio penaliza fortemente as subestimaç
 
 \section{Mudando o objetivo da previsão: além da média}
 
-Até agora todas as funções de perda vistas possui um detalhe em comum: elas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Mas, existem funções de perda que vão além do cálculo da média para calcular o erro de um modelo de regressão.
-
-Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana. Contudo, e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
+Até agora todas as funções de perda vistas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana. Contudo, e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
 
 \begin{figure}[h!]
     \centering 
@@ -1668,16 +1666,16 @@ Ao calcular a média dos erros, está sendo presumido que a tendência central �
     \fonte{O autor (2025).}
 \end{figure}
 
-Existe uma função de perda que consegue lidar justamente com esse cenário, em que os dados seguem uma distribuição assimétrica. Ela é a perda quantílica, que foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, de forma que é possível escolher se ela irá funcionar de forma assimétrica, ou de forma parecida com o \textit{MAE}.
+A perda quantílica consegue lidar com as situações em que a média e a medina são divergentes. Ela foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, escolhendo se ela irá funcionar de forma assimétrica, ou de forma parecida com o \textit{MAE}.
 
-Também há uma outra função de perda que também não trabalha com o cálculo da média dos erros, ela é a $\epsilon$-insensível. Sendo uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Neste caso, ao utilizar essa função, é definido uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
+A $\epsilon$-insensível também é outra função de perda que não faz o cálculo da média dos erros. Ela é uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Ao utilizá-la, é definido uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
 
 \subsection{Perda quantílica (quantile loss)}%
 \index{Funções de Perda!Perda quantílica (\textit{quantile loss})}
 
-No artigo \textit{Regression Quantiles} dos autores \textcite{regression-quantiles} estava sendo analisada uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação para esse estudo, os autores discutem a ideia de que ``todos acreditam a lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o \textit{MSE} para o cálculo dos erros com base na média, não são ideais para minimizar o erro de um modelo.
+No artigo \textit{Regression Quantiles} dos autores \textcite{regression-quantiles} analisaram uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação, os autores discutem a ideia de que ``todos acreditam a lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção, que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o \textit{MSE}, para o cálculo dos erros com base na média, não são ideais para servir de guia para a otimização do modelo.
 
-Tendo isso em mente, os pesquisadores discutem uma forma de minimizar a soma de perdas assimétricas, eles então definem a Equação~\ref{eq:soma-das-perdas-assimetricas}\footnote{Caso você leitor decida ler o artigo original dos pesquisadores, você verá um conjunto diferente de notações utilizadas, isso acontece pois neste livro elas foram adaptadas para condizer com as notações que já estavam sendo utilizadas anteriormente nos outros capítulos}.
+Tendo isso em mente, os pesquisadores apresentam uma forma de minimizar a soma de perdas assimétricas, eles então definem a Equação~\ref{eq:soma-das-perdas-assimetricas}\footnote{Caso você leitor decida ler o artigo original dos pesquisadores, você verá um conjunto diferente de notações utilizadas, isso acontece pois neste livro elas foram adaptadas para condizer com as notações que já estavam sendo utilizadas anteriormente nos outros capítulos}.
 
 \begin{equation}
     \Loss(w; \tau, y, X) = \sum_{j \text{ t.q. } y_j > \hat{y}_j} \tau |y_j -\hat{y}_j| + \sum_{j \text{ t.q. } y_j < \hat{y}_j} (1 -\tau) |y_j -\hat{y}_j|
@@ -1692,33 +1690,7 @@ Em que:
     \item $\hat{y}_j$ representa a predição do modelo.
 \end{itemize}
 
-A partir dessa expressão, cabe analisar os casos, considerando a assimetria da perda.
-
-\textbf{Caso 1: o Valor real é maior que a previsão $(y_j > \hat{y}_j)$}
-
-\begin{itemize}
-    \item \textbf{Condição:} $y_j > \hat{y}_j$, indicando que o resíduo $u = (y_j - \hat{y}_j)$ é positivo.
-    \item \textbf{Equação base:} A Equação~\ref{eq:soma-das-perdas-assimetricas} mostra que nesse caso é aplicado o termo $\tau|y_j - \hat{y}_j|$
-    \item \textbf{Dedução:}
-          \begin{enumerate}
-        \item Como o resíduo $(y_j - \hat{y}_j)$ já é positivo, o valor absoluto de $|y_j - \hat{y}_j|$ é dado pela expressão $(y_j - \hat{y}_j)$;
-        \item A perda se torna: $\tau (y_j - \hat{y}_j)$
-    \end{enumerate}
-\end{itemize}
-
-\textbf{Caso 2: o valor real é menor que a previsão $(y_j < \hat{y}_j)$}
-
-\begin{itemize}
-    \item \textbf{Condição:} $y_j < \hat{y}_j$, o que significa que o resíduo $u = (y_j - \hat{y}_j)$ é negativo.
-    \item \textbf{Equação base:} Voltando para a Equação~\ref{eq:soma-das-perdas-assimetricas}, mostra que nesse caso é aplicado o termo $(1 - \tau)|y_j - \hat{y}_j|$
-    \item \textbf{Dedução:}
-          \begin{enumerate}
-        \item Como o resíduo $(y_j - \hat{y}_j)$ é negativo, o valor absoluto de $|y_j - \hat{y}_j|$ é dado por $-(y_j - \hat{y}_j)$, que também pode ser reescrito como $(\hat{y}_j - y_j)$;
-        \item A perda se torna: $(1 - \tau)(\hat{y}_j - y_j)$
-    \end{enumerate}
-\end{itemize}
-
-Tendo esses dois casos, deriva-se a definição por partes da \textbf{perda quantílica}, também conhecida como \textbf{\textit{quantile loss}}. A expressão dessa função é dada pela Equação~\ref{eq:quantile-loss}. Neste caso, está sendo considerado que a situação $\hat{y} = y$ faz parte do primeiro caso estudado.
+A partir da Equação~\ref{eq:soma-das-perdas-assimetricas}, é possível derivá-la em dois casos distintos. O caso em que o valor real é maior que a previsão $(y_j > \hat{y}_j)$, ou seja, ocorre uma subestimação, é gerado um erro positivo. Assim, a perda é proporcional a $\tau$. Quando o valor real é menor que a previsão $(y_j < \hat{y}_j)$, o modelo superestimou o valor real, é aplicado o peso $(1 - \tau)$. Desses dois cenários, deriva-se a definição por partes da \textbf{perda quantílica}, também conhecida como \textbf{\textit{quantile loss}}, dada pela Equação~\ref{eq:quantile-loss}. Neste caso, está sendo considerado que a situação $\hat{y} = y$ faz parte do primeiro caso estudado.
 
 \begin{equacaodestaque}{Perda quantílica}
     \Loss_{\tau} (y_j, \hat{y}_j) = 
@@ -1736,16 +1708,16 @@ Em que:
     \item $\tau$ representa o quantil.
 \end{itemize}
 
-Além dessa expressão, existe também uma versão compacta utilizando a função $\max$ para definir a função por partes da \textit{quantile loss} em apenas uma linha. Essa versão está presente na Equação~\ref{eq:quantile-loss-com-max}.
+Existem também uma versão compacta da perda quantílica, presente na Equação~\ref{eq:quantile-loss-com-max}, ela utiliza a função $\max$ para definir a função por partes em apenas uma linha.
 
-\begin{equacaodestaque}{Perda quantílica reescrita com a função $\max$}
-    \Loss_{\tau} (u)= \max(\tau u, (\tau-1 )u)%
+\begin{equacaodestaque}{Perda quantílica com $\max$}
+    \Loss_{\tau} (e)= \max(\tau e, (\tau-1 )e)%
     \label{eq:quantile-loss-com-max}
 \end{equacaodestaque}
 
-Considerando que $u = y - \hat{y}$, ou seja, o cálculo do resíduo.
+Considerando que $e = y - \hat{y}$, ou seja, o cálculo do erro.
 
-A Figura~\ref{fig:quantile-loss-tau05} mostra a representação em duas dimensões da perda quantílica, enquanto a Figura~\ref{fig:quantile-loss-tau05} mostra a superfície da perda quantílica. Ambas mostram um cenário em que o valor de tau é dado por 0.5.
+A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-loss-tau05}. Os gráficos são semelhantes ao erro absoluto médio, porque o \textit{MAE} é uma função que analisa justamente o quantil 0,5. Assim, não faz muito sentido utilizar a perda quantílica para esse cenário em específico, considerando que já existe uma função com essa finalidade.
 
 % --- FIGURA 1: FOCO NO TAU = 0.5 (MAE) ---
 \begin{figure}[h!]
@@ -1768,13 +1740,11 @@ A Figura~\ref{fig:quantile-loss-tau05} mostra a representação em duas dimensõ
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Visão 2D (Perda vs. Erro)}
             ]
                 \addplot[domain=-4:4, samples=5, color=blue, very thick] {0.5*abs(x)};
-                \addlegendentry{$\tau=0.5$ (Mediana)}
             \end{axis}
         \end{tikzpicture}
-        \caption{Perda 2D para $\tau=0.5$.}%
+        \caption{Vista da função de perda em relação ao erro.}%
         \label{fig:quantile-2d-tau05}
     \end{subfigure}
     \hfill 
@@ -1794,7 +1764,6 @@ A Figura~\ref{fig:quantile-loss-tau05} mostra a representação em duas dimensõ
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Superfície 3D completa}
             ]
                 \addplot3[
                     mesh,           % Tipo de gráfico: superfície
@@ -1804,25 +1773,22 @@ A Figura~\ref{fig:quantile-loss-tau05} mostra a representação em duas dimensõ
                     domain y=-5:5,  % Domínio de y (y_previsto)
                     samples=15      % Resolução da malha
                 ] { 0.5*abs(x - y) };
-                \addlegendentry{$\tau=0.5$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D para $\tau=0.5$.}%
+        \caption{Superfície da função de perda.}%
         \label{fig:quantile-3d-tau05}
     \end{subfigure}
 
-    \caption{Visualizações da Perda Quantílica para $\tau=0.5$ (Erro Absoluto Médio).}%
+    \caption{Visualizações da função de perda quantílica em duas e em três dimensões (com $\tau=0.5$ (\textit{MAE})).}%
     \label{fig:quantile-loss-tau05}
     \fonte{O autor (2025).}
 \end{figure}
 
-Nessas figuras, a função é idêntica ao erro absoluto médio, o gráfico tem o formato em ``V'' característico dessa função. Isso acontece porque ao considerar calcular a perda quantílica para o quantil 50\% (indicado por 0.5), está sendo calculado a média dos dados, algo que também é feito utilizando o \textit{MAE} como função de perda.
+O diferencial dessa função é quando ela precisa ser utilizada em cenários em que a distribuição de dados é irregular, e não segue a distribuição normal. Essa função tem a propriedade de se ajustar para penalizar de forma assimétrica os erros que um modelo comete. 
 
-Mas esse não é o cenário ideal para se utilizar a perda quantílica. O diferencial dessa função é quando ela precisa ser utilizada em cenários em que a distribuição de dados é irregular, e não segue a distribuição normal. Essa função tem uma propriedade que pode ser ajustada para penalizar de forma assimétrica os erros que um modelo comete. 
+A perda quantílica com hiperparâmetro $\tau = 0,9$, presente na Figura~\ref{fig:quantile-loss-grid}, penaliza fortemente as subestimações feitas pelo modelo. Tem se essa noção inicial devido à sua assimetria, como os gráficos apontam. Quando está sendo analisado o 90º percentil, significa que queremos uma previsão $\hat{y}_j$ que seja maior que 90\% dos valores reais $y_j$. Se o modelo subestima, ou seja $y_j > \hat{y}_j$, ele está falhando o seu objetivo, e terá um erro bem maior.
 
-A Figura~\ref{fig:quantile-loss-grid} mostra esses diferentes cenários. Na Figura~\ref{fig:quantile-2d-tau09} e na Figura~\ref{fig:quantile-3d-tau09} é apresentado um caso em que $\tau = 0.9$, um cenário em que a perda quantílica irá penalizar fortemente as subestimações feitas pelo modelo. Isso acontece porque está sendo analisado o 90º percentil, o que significa que queremos uma previsão $\hat{y}$ que seja maior que 90\% dos valores reais $y$. Se o modelo subestima, ou seja $y > \hat{y}$, ele está falhando o seu objetivo, e terá um erro bem maior.
-
-Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01} está sendo apresentado o cenário contrário, é o quantil 10º que é analisado. Isso significa que queremos uma previsão que esteja abaixo dos 10\% dos valore reais, uma situação ideal para treinar o modelo a não superestimar os valores. Dado que ele será fortemente penalizado se ele fizer uma predição em que $y < \hat{y}$.
+Um cenário contrário, em que a perda é ajustada para penalizar as superestimações está na Figura~\ref{fig:quantile-loss-grid}. Neste caso, $\tau = 0,1$, ou seja, queremos uma previsão que esteja abaixo dos 10\% dos valores reais. Essa situação é ideal para treinar o modelo a não superestimar os valores, dado que ele será fortemente penalizado se ele fizer uma predição em que $y_j < \hat{y}_j$.
 
 \begin{figure}[h!]
     \centering
@@ -1844,14 +1810,11 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Visão 2D ($\tau=0.9$)}
             ]
-                % Tau = 0.9
                 \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.9*x) : ((1-0.9)*(-x))};
-                \addlegendentry{$\tau=0.9$ (Percentil 90)}
             \end{axis}
         \end{tikzpicture}
-        \caption{Perda 2D para $\tau=0.9$.}%
+        \caption{Vista da função de perda em relação ao erro ($\tau=0.9$).}%
         \label{fig:quantile-2d-tau09}
     \end{subfigure}
     \hfill
@@ -1871,21 +1834,18 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Superfície 3D ($\tau=0.9$)}
             ]
-                % Tau = 0.9 (Malha)
                 \addplot3[
-                    mesh,           % Tipo de gráfico: superfície
+                    mesh,          
                     color=blue,
-                    shader=interp,  % Suaviza as cores
-                    domain=-5:5,    % Domínio de x (y_real)
-                    domain y=-5:5,  % Domínio de y (y_previsto)
-                    samples=15      % Resolução da malha
+                    shader=interp, 
+                    domain=-5:5,   
+                    domain y=-5:5,  
+                    samples=15     
                 ] { (x - y >= 0) ? (0.9*(x - y)) : ((1-0.9)*(-(x - y))) };
-                \addlegendentry{$\tau=0.9$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D para $\tau=0.9$.}%
+        \caption{Superfície da função de perda ($\tau=0.9$).}%
         \label{fig:quantile-3d-tau09}
     \end{subfigure}
 
@@ -1908,14 +1868,11 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Visão 2D ($\tau=0.1$)}
             ]
-                % Tau = 0.1
                 \addplot[domain=-4:4, samples=5, color=blue, very thick] {(x >= 0) ? (0.1*x) : ((1-0.1)*(-x))};
-                \addlegendentry{$\tau=0.1$ (Percentil 10)}
             \end{axis}
         \end{tikzpicture}
-        \caption{Perda 2D para $\tau=0.1$.}%
+        \caption{Vista da função de perda em relação ao erro ($\tau=0.1$).}%
         \label{fig:quantile-2d-tau01}
     \end{subfigure}
     \hfill
@@ -1935,25 +1892,22 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Superfície 3D ($\tau=0.1$)}
             ]
-                % Tau = 0.1 (Malha)
                 \addplot3[
-                    mesh,           % Tipo de gráfico: superfície
+                    mesh,          
                     color=blue,
-                    shader=interp,  % Suaviza as cores
-                    domain=-5:5,    % Domínio de x (y_real)
-                    domain y=-5:5,  % Domínio de y (y_previsto)
-                    samples=15      % Resolução da malha
+                    shader=interp,  
+                    domain=-5:5,   
+                    domain y=-5:5,  
+                    samples=15     
                 ] { (x - y >= 0) ? (0.1*(x - y)) : ((1-0.1)*(-(x - y))) };
-                \addlegendentry{$\tau=0.1$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D para $\tau=0.1$.}%
+        \caption{Superfície da função de perda ($\tau=0.1$).}%
         \label{fig:quantile-3d-tau01}
     \end{subfigure}
 
-    \caption{Visualizações das Perdas Quantílicas para os percentis 90 ($\tau=0.9$) e 10 ($\tau=0.1$).}%
+    \caption{Visualizações das perdas quantílicas para os percentis 90 ($\tau=0.9$) e 10 ($\tau=0.1$).}%
     \label{fig:quantile-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1967,9 +1921,10 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
 \subsubsection*{Características da perda quantílica} 
 
 \begin{itemize}
-    \item \textbf{Convexa:} A perda quantílica é uma função convexa, dado que ela é o máximo de duas funções lineares (as quais são convexas). Isso significa que ela é uma função interessante para ser utilizada na otimização de redes neurais e outros modelos mais simples, pois será uma tarefa fácil encontrar um ponto de mínimo. Contudo, voltando para o cenário de redes neurais, isso não é necessariamente garantido, visto que devido a quantidade de camadas densas e de funções de ativação não-lineares pode fazer com que a perda quantílica se torne não convexa;
-    \item \textbf{Penalização assimétrica:} Como foi visto anteriormente, a \textit{quantile loss} é uma função assimétrica, exceto no caso em que $\tau = 0.5$, e como o parâmetro $\tau$ é definido ao treinar ao modelo, cabe a quem estiver treinado o modelo definir se ele quer que a função penalize mais as subestimações ou as superestimações, a depender do problema que está sendo considerado;
-    \item \textbf{Não diferenciabilidade no resíduo 0:} \textcite{LossesArticle} apontam que no cenário em que $\hat{y}_j = y_j$, semelhante ao \textit{MAE} essa função não é diferenciável, sendo necessárias técnicas como o cálculo do subgradiente para permitir a otimização nesse ponto. Essa não diferenciabilidade acontece pois neste ponto a função apresenta uma ``quina'', algo que afeta o cálculo das derivadas parciais, e consequentemente do vetor gradiente, nesse ponto.
+    \item \textbf{Continuidade, suavidade e diferenciabilidade:} A perda quantílica é de classe $C^0$, contínua, (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso acontece pelo mesmo motivo que o \textit{MAE} também é de classe $C^0$, essas duas funções apresentam um ``bico'' quando o erro é zero. Como resultado, deve-se analisar os limites laterais dessa função nesse ponto, chegando a conclusão que seus valores divergem. Ainda assim, o uso de subgradiente ajuda a contornar esse problema de suavidade.
+    \item \textbf{Convexidade:} A perda quantílica é convexa (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso é evidenciado também pelos seus gráficos, os quais apontam que essa função apresenta um formato semelhante a um funil. Consequentemente, essa propriedade ajuda os otimizadores baseados em gradiente. Vale destacar que otimizadores baseados em momento vão se comportar diferente conforme forem os valores de $\tau$. Inclinações diferentes podem resultar em otimizações com iterações diferentes.
+    \item \textbf{Robustez:} A perda quantílica é Lipschitz-contínua, e portanto, robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-quantile-loss}). As suas derivadas parciais quando o erro tende ao infinito são limitadas, garantindo que o gradiente não ``exploda'' quando ocorrem erros grandes.
+    \item \textbf{Hiperparâmetro $\tau$ (penalização assimétrica):} A perda quantílica é uma função assimétrica, exceto no caso em que $\tau = 0.5$. Como o parâmetro $\tau$ é definido ao treinar ao modelo, cabe a quem estiver treinando o modelo definir se quer que a função penalize mais as subestimações ou as superestimações, a depender do problema que está sendo considerado.
 \end{itemize}
 
 \medskip
@@ -1980,14 +1935,14 @@ Já na Figura~\ref{fig:quantile-2d-tau01} e na Figura~\ref{fig:quantile-3d-tau01
 
 \subsubsection*{Gradiente da perda quantílica}
 
-Para calcular a derivada da perda quantílica, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y}_j = y_j$, dado que este é um ponto de descontinuidade dessa função.
+Para calcular a derivada da perda quantílica, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso, está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y}_j = y_j$, dado que este é um ponto de descontinuidade dessa função.
 
 Dessa forma, a derivada parcial da perda quantílica em relação à predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, está sendo indicado os cenários de superestimação e subestimação, de forma a simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
 
 \begin{equacaodestaque}{Derivada parcial da perda quantílica em relação à predição}
     \frac{\partial\Loss_{\tau}}{\partial\hat{y}_j} = 
     \begin{cases} 
-        -(1 - \tau) & \text{se } y_j < \hat{y}_j \text{ (superestimação)}\\
+        (1 - \tau) & \text{se } y_j < \hat{y}_j \text{ (superestimação)}\\
         -\tau & \text{se } y_j > \hat{y}_j \text{ (subestimação)}
     \end{cases}%
     \label{eq:quantile-loss-derivada}
@@ -2049,7 +2004,7 @@ Já o gráfico da derivada da perda quantílica está na Figura~\ref{fig:quantil
 \subsubsection*{Aplicações da perda quantílica em aprendizado de máquina}%
 \index{Aplicações práticas! Perda quantílica}
 
-Agora que já é conhecida a perda quantílica, é possível discutir alguns cenários em que essa função é utilizada para servir de guia para a otimização de modelos. Uma situação que ela está muito presente é na análise do valor em risco ou \textit{value at risk} (\textit{VaR}) em inglês. O \textit{VaR} é uma medida de risco que estima a perda potencial máxima que pode acontecer um determinado portfólio durante um período de tempo definido, isso é estimado dentro de um nível de confiança especificado. Por exemplo, caso queira ser descoberto o \textit{VaR} a 99\%, é preciso calcular o 1º quantil da distribuição de perdas e ganhos. Esse é um dos cenários que está presente em alguns dos trabalhos apresentados nessa seção, em que os autores optam pela perda quantílica para resolver esse problema.
+Uma situação que a perda quantílica está muito presente é na análise do valor em risco ou \textit{value at risk} (\textit{VaR}). O \textit{VaR} é uma medida de risco que estima a perda potencial máxima que pode acontecer um determinado portfólio durante um período de tempo definido, isso é estimado dentro de um nível de confiança especificado. Por exemplo, caso queira ser descoberto o \textit{VaR} a 99\%, é preciso calcular o 1º quantil da distribuição de perdas e ganhos. Esse é um dos cenários que está presente em alguns dos trabalhos apresentados nessa seção, em que os autores optam pela perda quantílica para resolver esse problema.
 
 Dito isso, vale citar os trabalhos: 
 
