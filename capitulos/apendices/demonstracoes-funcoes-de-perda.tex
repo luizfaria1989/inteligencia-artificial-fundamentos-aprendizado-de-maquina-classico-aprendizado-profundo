@@ -291,6 +291,69 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \subsection{Erro quadrático logarítmico médio (MSLE)}
+\label{ap:deducoes-msle}
+
+\begin{definition}
+    Seja $y \ge 0$ o valor alvo e $\hat{y} \ge 0$ a predição (com a restrição de não-negatividade usual para dados log-normais). A função MSLE é definida por:
+    \begin{equation}
+        \mathcal{L}(y, \hat{y}) = (\log(1 + y) - \log(1 + \hat{y}))^2
+    \end{equation}
+    Para simplificar a notação nas demonstrações, definimos o termo constante $C = \log(1+y)$ e analisamos a função em relação à variável $\hat{y}$.
+\end{definition}
+
+\begin{proposition}[Regularidade]
+    A função MSLE pertence à classe $C^{\infty}$ no domínio $\hat{y} > -1$.
+\end{proposition}
+
+\begin{proof}
+    A função é uma composição de funções elementares: a função logarítmica (suave em $\mathbb{R}^+$), a função afim $1+\hat{y}$ e a função quadrática.
+    
+    Calculamos as derivadas em relação a $\hat{y}$:
+    \begin{align*}
+        \mathcal{L}'(\hat{y}) &= 2(\log(1+y) - \log(1+\hat{y})) \cdot \frac{d}{d\hat{y}}(-\log(1+\hat{y})) \\
+        &= -2 \frac{\log(1+y) - \log(1+\hat{y})}{1+\hat{y}}
+    \end{align*}
+    
+    Como o denominador $(1+\hat{y})$ nunca é zero para $\hat{y} \ge 0$ e o logaritmo é infinitamente diferenciável nesse domínio, todas as derivadas de ordem superior existem e são contínuas.
+\end{proof}
+
+\begin{proposition}[Convexidade no Espaço Logarítmico]
+    A função MSLE é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$.
+\end{proposition}
+
+\begin{proof}
+    A análise de convexidade direta em $\hat{y}$ revela que $\mathcal{L}''(\hat{y})$ pode assumir valores negativos para $\hat{y}$ muito grandes, violando a convexidade global no espaço original.
+    
+    No entanto, se considerarmos a transformação do espaço de saída para a escala logarítmica, definindo $z = \log(1+\hat{y})$ e $c = \log(1+y)$, a função se torna:
+    \[ G(z) = (c - z)^2 \]
+    
+    A derivada segunda em relação a $z$ é:
+    \[ G''(z) = 2 > 0 \]
+    
+    Portanto, a MSLE é estritamente convexa \textit{no espaço logarítmico}. Isso justifica seu uso em problemas onde a magnitude das variáveis varia exponencialmente, pois a otimização se comporta como um MSE sobre os expoentes.
+\end{proof}
+
+\begin{proposition}[Robustez e Continuidade de Lipschitz]
+    A função MSLE é Lipschitz-contínua (com constante $K > 0$) e seu gradiente tende a zero para erros extremos.
+\end{proposition}
+
+\begin{proof}
+    Para provar que a função é Lipschitz, precisamos mostrar que a magnitude da derivada é limitada superiormente em todo o domínio ($\sup |\mathcal{L}'| < \infty$).
+    
+    A derivada é dada por:
+    \[ \mathcal{L}'(\hat{y}) = -2 \frac{\log(1+y) - \log(1+\hat{y})}{1+\hat{y}} \]
+    
+    Observamos que:
+    \begin{enumerate}
+        \item A função $\mathcal{L}'$ é contínua no intervalo $[0, \infty)$.
+        \item No limite $\hat{y} \to \infty$, a derivada tende a 0.
+        \item No ponto $\hat{y} = y$ (erro zero), a derivada é 0.
+    \end{enumerate}
+    
+    Pelo Teorema de Weierstrass generalizado, uma função contínua que tende a zero no infinito é necessariamente limitada (possui um máximo e um mínimo globais finitos). 
+    
+    Portanto, existe uma constante máxima $K$ (o pico da derivada) tal que $|\mathcal{L}'(\hat{y})| \le K$ para todo $\hat{y}$. Isso classifica a MSLE como Lipschitz-contínua. Diferente do MAE (onde o gradiente trava em 1), na MSLE o gradiente diminui para erros muito grandes, o que pode ser visto como uma "super-robustez" ou um risco de o modelo parar de aprender se o erro inicial for absurdo.
+\end{proof}
 
 \subsection{Perda quantílica (quantile loss)}
 
