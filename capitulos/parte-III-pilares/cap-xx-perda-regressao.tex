@@ -1241,31 +1241,27 @@ Algumas aplicações da perda log-cosh são:
 \end{center}
 \medskip
 
-Todas as funções de perda vistas até o momento calculam o erro de forma absoluta. Elas não lidam com o erro de forma relativa. Como consequência, um erro de R\$ $50,00$ em uma conta de padaria tem o mesmo grau que um erro da mesma magnitude para validar o aluguel de uma casa. Vão existir cenários que será mais interessante, considerar o erro de forma relativa, punindo em maior peso as subestimações feitas pelo modelo. Para isso, uma solução é utilizar o erro quadrático logarítmico médio.
+Todas as funções de perda vistas até o momento calculam o erro de forma absoluta. Elas não lidam com o erro de forma relativa. Como consequência, um erro de R\$ $50,00$ em uma conta de padaria tem o mesmo grau que um erro da mesma magnitude para validar o aluguel de uma casa. Para os casos em que deve-se considerar o erro de forma relativa, cabe analisar outras funções, como o erro quadrático logarítmico médio ou a perda quantílica.
 
 \section{Lidando com a escala: foco no erro relativo}
 
 \subsubsection*{O problema dos imóveis}
 
-As funções de perda vistas até agora possuem um detalhe em comum: todas lidam com o erro de fazendo um cálculo absoluto. Para entender melhor essa frase é possível ilustrar isso com um exemplo. Considere que existem duas situações que está sendo previsto os valores de imóveis:
+Considere que existem duas situações que está sendo previsto os valores de imóveis:
 
 \begin{itemize}
     \item Cenário A: o modelo previu que uma casa vale 50.000 R\$. Enquanto no rótulo está que ela vale 100.000 R\$;
     \item Cenário B: o modelo previu que uma casa vale 950.000 R\$. Enquanto no rótulo está que ela vale 1.000.000 R\$.
 \end{itemize}
 
-Para fazer o trabalho dessa regressão foi utilizada a função de perda erro quadrático médio. Essa função calcula primeiro a diferença entre o valor previsto pelo modelo e o valor apresentado no rótulo. Com isso, essa diferença será a mesma para esses dois cenários, 50.000 R\$.
+Utilizando o \textit{MSE} para calcular a perda dessas funções encontramos que o erro será de $50.000$ e a perda de $250.00.000$, independentemente dos cenários. Para o cenário B, a previsão do modelo não foi tão ruim, foi uma previsão realista. Contudo, o modelo do cenário A previu que a casa valia apenas a metade do seu valor real, ele fez uma previsão subestimada.
 
-Essa é uma forma de analisar o problema. Mas também pode ser visto de forma relativa, veja que o modelo do cenário A previu que a casa vale apenas a metade do seu valor real, ele fez uma previsão subestimada. Por outro lado, o modelo do cenário B foi mais realista, ele sabe que a casa possui um valor alto, contudo, ainda sim ficou uma distância do valor real. 
-
-O erro quadrático médio, e as outras três funções de perda vistas até agora tratam os erros dos cenários A e B como iguais. Mas e se você estivesse em uma situação em que o modelo subestimar os valores dos rótulos seja considerada muito negativa, e por isso deve ser evitada?
-
-Uma possível solução para resolver esse problema é utilizar como função de perda o erro quadrático médio logarítmico.
+Neste caso, avaliar os modelos com uma função de perda que calcula o erro de forma absoluta (como o \textit{MSE} e o \textit{MAE}), pode não ser ideal. Para evitar esses problemas de subestimação, uma solução é o erro quadrático médio logarítmico.
 
 \subsection{Erro quadrático médio logarítmico (MSLE)}%
 \index{Funções de Perda!Erro quadrático médio logarítimico (MSLE)}%
 
-O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{\textit{MSLE}}), é calculado pela Equação~\ref{eq:msle-loss}. Diferente das funções vistas até agora, ela faz o cálculo do logaritmo natural dos valores reais ($y_j$) e dos valores previstos pelo modelo ($\hat{y}_j$). Além disso, um ponto que vale a pena ser destacado é com relação ao valor de 1 que é somado aos valores antes do cálculo do logaritmo. Isso ocorre para evitar com que esse resultado possa ser negativo ou zero, gerando uma indeterminação ao calcular o logaritmo.
+O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{\textit{MSLE}}), é calculado pela Equação~\ref{eq:msle-loss}. Ele calcula o erro como sendo a diferença dos logaritmos naturais do valor real $y_j$ com a predição $\hat{y}_j$ e depois faz a média dos erros das diferentes previsões.
 
 \begin{equacaodestaque}{Erro quadrático médio logarítmico}
     \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (\ln(y_j + 1) -\ln(\hat{y}_j + 1))^2%
@@ -1280,7 +1276,9 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-O gráfico do erro quadrático logaritmo médio está presente na Figura~\ref{fig:msle-loss}. Na Figura~\ref{fig:msle-2d}, à esquerda, está a visão em duas dimensões dessa função, enquanto na Figura~\ref{fig:msle-3d}, à direita, está a visão em três dimensões. A adição do logaritmo para essa função traz alguns benefícios, como a continuidade em seus pontos, além de garantir uma superfície suave e diferenciável. Contudo, a principal característica dessa função é que ela é uma função assimétrica com relação ao eixo $y$ e por consequência, ela apresenta uma tendência de penalizar mais as subestimações feitas pelo modelo.
+O valor $1$ que é somado junto com os valores de entrada no logaritmo serve como forma de evitar que seja calculado o logaritmo de zero, que não existe no conjunto dos reais. 
+
+A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadrático logarítmico. Para as situações em que a previsão $\hat{y}_j$ tem um valor muito pequeno quando comparada ao valor real $y_j$ a distância entre esses dois pontos é consideravelmente maior devido ao comportamento dos logaritmos. Dessa forma, para subestimações, o \textit{MSLE} gera erros maiores. Isso é útil para resolver o problema das contas de padaria e também de preços de imóveis vistos anteriormente. 
 
 \begin{figure}[h!]
     \centering 
@@ -1360,6 +1358,8 @@ O gráfico do erro quadrático logaritmo médio está presente na Figura~\ref{fi
     \fonte{O autor (2025).}
 \end{figure}
 
+Essa propriedade assimétrica dos logaritmos também é explorada ao descrever o comportamento da entropia cruzada binária e funções semelhantes (vistas com mais detalhes do Capítulo~\ref{cap:perda-classificacao}). Neste caso, a forma com que a função utiliza os logaritmos faz com que sejam punidas em maior peso as previsões confiantes que estão erradas.
+
 \medskip
 \begin{center}
  * * *
@@ -1369,9 +1369,12 @@ O gráfico do erro quadrático logaritmo médio está presente na Figura~\ref{fi
 \subsubsection*{Características do erro quadrático médio logarítmico}
 
 \begin{itemize}
-    \item \textbf{Foco no erro relativo (Percentual):} Quando o \textit{MSLE} é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
-    \item \textbf{Tendência de penalizar subestimações:} Como mostram os gráficos da Figura~\ref{fig:msle-loss}, a função \textit{MSLE} não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
-    \item \textbf{Continuidade e Diferenciabilidade:} Ainda com relação aos seus gráficos é possível analisar a continuidade dessa função. Note que ela não apresenta nenhum ponto que atrapalhe a diferenciabilidade que poderia afetar o cálculo das derivadas, e, com isso atrapalhar o fluxo do gradiente. Além disso, o uso dos logaritmos para essa função permite que suas curvas sejam suaves, o que também ajuda na sua continuidade.
+    \item \textbf{Continuidade, suavidade e diferenciabilidade:} O \textit{MSLE} é uma função de classe $C^{\infty}$ (infinitamente diferenciável) (ver Apêndice~\ref{ap:deducoes-msle}). Isso contribui para uma função de perda que pode ser facilmente utilizada em conjunto com otimizadores baseados em gradiente, dado que não serão encontrados problemas de continuidade ao derivar essa função.
+    \item \textbf{Convexidade:} A função \textit{MSLE} é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-msle}). 
+    \item \textbf{Robustez:} A função \textit{MSLE} é Lipschitz-contínua, portanto é robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-msle}). Diferente do erro absoluto médio, que quando o valor do erro ``explode'' para infinito o seu gradiente será 1, no \textit{MSLE} o seu gradiente tende a 0. Como resultado, para erros muito grandes o erro logarítmico médio gera uma correção irrisória, o que pode não ser útil em certos casos.
+    \item \textbf{Foco no erro relativo (percentual):} Quando o \textit{MSLE} é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
+    \item \textbf{Tendência de penalizar subestimações:} Como aponta a Figura~\ref{fig:msle-loss}, o \textit{MSLE} não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
+    \item \textbf{Restrição de domínio (não-negatividade):} Como os logaritmos são indeterminados para valores nulos ou negativos, o \textit{MSLE} exige que os valores de entrada sejam positivos ($y_j > 0$ e $\hat{y}_j > 0$). Caso os conjunto de dados contenha valores negativos (como lucro/prejuízo ou temperaturas), o \textit{MSLE} irá causar erros matemáticos. Para contornar esse problema, deve-se aplicar uma transformação nos dados, como somar uma constante para deslocar os valores negativos para positivos, ou ser utilizada outra função de perda.
 \end{itemize}
 
 \medskip
@@ -1382,14 +1385,14 @@ O gráfico do erro quadrático logaritmo médio está presente na Figura~\ref{fi
 
 \subsubsection*{Gradiente do erro quadrático médio logarítmico}
 
-Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$. Ela será útil para a retropropagação do modelo.
+Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$.
 
 \begin{equacaodestaque}{Derivada parcial do erro quadrático médio logarítmico em relação à predição}
     \frac{\partial\Loss_{\text{MSLE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = -\frac{2}{N} \cdot \frac{\ln(y_j + 1) -\ln(\hat{y}_j + 1)}{\hat{y}_j + 1}%
     \label{eq:msle-derivada}
 \end{equacaodestaque}
-
-Em seguida, está a representação gráfica da derivada da Equação~\ref{eq:msle-derivada} na Figura~\ref{fig:msle-derivada}. Seguindo a mesma regra das outras figuras apresentadas até agora, na Figura~\ref{fig:msle-derivada-2d}, à esquerda, está a representação em duas dimensões, enquanto na Figura~\ref{fig:msle-derivada-3d}, à direita, está a representação da superfície no espaço.
+ 
+O comportamento assimétrico do \textit{MSLE} também está presente nos gráficos da sua derivada vistos na Figura~\ref{fig:msle-derivada}. Eles mostram de forma intuitiva o tamanho da correção que será feita conforme o modelo vai errando durante suas predições. O canto esquerdo do gráfico da superfície da derivada mostra uma situação em que o modelo subestima os valores reais. Nesta parte, os valores do gradiente começam a subir de uma forma que lembra uma curva exponencial. 
 
 \begin{figure}[h!]
     \centering 
@@ -1398,7 +1401,6 @@ Em seguida, está a representação gráfica da derivada da Equação~\ref{eq:ms
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
@@ -1406,29 +1408,28 @@ Em seguida, está a representação gráfica da derivada da Equação~\ref{eq:ms
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
-                xmin=-1, xmax=25,        % Limites do seu gráfico
-                ymin=-1, ymax=5,         % Limites do seu gráfico
+                xmin=-1, xmax=25, 
+                ymin=-1, ymax=5,      
                 legend pos=north east,
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-                % Gráfico da derivada (fórmula corrigida para corresponder aos eixos)
+                
                 \addplot[
                     domain=0:25, 
                     samples=101,
                     color=red, 
                     very thick
-                ] {2 * (ln(10+1) - ln(x+1)) / (x+1)}; % Corrigido (removido o -)
+                ] {2 * (ln(10+1) - ln(x+1)) / (x+1)}; 
                 
                 \addlegendentry{$L' \text{ para } y=10$}
 
-                % Linha vertical para marcar o valor real
                 \draw[dashed, gray] (axis cs:10, -1) -- (axis cs:10, 5);
                 \node[above, gray!80, font=\tiny] at (axis cs:10, 5) {Valor Real};
             \end{axis}
         \end{tikzpicture}
-        \caption{Visão 2D (corte em $y=10$).}%
+        \caption{Relação assimétrica entre erro e gradiente da perda.}%
         \label{fig:msle-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -1436,40 +1437,36 @@ Em seguida, está a representação gráfica da derivada da Equação~\ref{eq:ms
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                % Dimensões consistentes com o gráfico (a)
                 width=\linewidth,
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
                 zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
                 grid=major,
-                view={150}{45}, % Mesmo ângulo de visão do seu template
-                zmin=-1.5, zmax=6.5, % Ajustado para o pico do gradiente
+                view={150}{45},
+                zmin=-1.5, zmax=6.5,
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-                % Gráfico da superfície da derivada da MSLE (fórmula corrigida)
                 \addplot3[
                     mesh,           
-                    color=red,   % Cor consistente com o gráfico 2D
+                    color=red,  
                     shader=interp,  
-                    domain=0:25,    % Domínio de x (y_real)
-                    domain y=0:25,  % Domínio de y (y_previsto)
-                    samples=15      % Mesma resolução da malha
-                ] { 2 * (ln(x+1) - ln(y+1)) / (y+1) }; % L' = 2(log(y+1)-log(y_hat+1))/(y_hat+1)
+                    domain=0:25,  
+                    domain y=0:25,  
+                    samples=15  
+                ] { 2 * (ln(x+1) - ln(y+1)) / (y+1) };
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D completa.}%
+        \caption{Superfície do gradiente no espaço.}%
         \label{fig:msle-derivada-3d}
     \end{subfigure}
 
-    \caption{Visualizações da derivada (gradiente) da função de perda erro quadrático médio logarítmico.}%
+    \caption{Visualizações do gradiente da perda log-cosh em relação à predição.}%
     \label{fig:msle-derivada}
     \fonte{O autor (2025).}
 \end{figure}
-
-O uso dos logaritmos na função, fazem com que a superfície do \textit{MSLE} tenha uma superfície suave e contínua. Isso também é refletido na sua derivada. Ela é de grande utilidade para os algoritmos de otimização que trabalham com o gradiente, de forma que eles não precisam ter que escapar de pontos de descontinuidade, como ocorriam em outras funções anteriores, como a perda de Huber e o \textit{MAE}.
 
 \medskip
 \begin{center}
@@ -1479,7 +1476,7 @@ O uso dos logaritmos na função, fazem com que a superfície do \textit{MSLE} t
 
 \subsubsection*{O problema dos imóveis com o MSLE}
 
-Além disso, voltando para o exemplo anterior dos modelos prevendo preços de imóveis. Cabe discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
+Voltando para o exemplo anterior dos modelos prevendo preços de imóveis. Cabe discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
 
 Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenários vistos na seção anterior, e mostra qual foi o valor do erro calculado para essas situações.
 
@@ -1497,17 +1494,15 @@ Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenár
             \bottomrule
         \end{tabular}
         
-        \begin{tablenotes}[para] % Inicia o ambiente das notas
-            \small % Define a fonte como menor, padrão ABNT para fontes
+        \begin{tablenotes}[para]
+            \small
             \item[] Fonte: O autor (2025).
         \end{tablenotes}
 
-    \end{threeparttable} % Finaliza o ambiente
+    \end{threeparttable}
 \end{table}
 
-O erro quadrático médio considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente será a mesma, o modelo sabe que está errado e tem que melhorar nas predições. Mas, para ele os erros são de mesma magnitude. Contudo, olhando agora para os valores do \textit{MSLE}, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
-
-Com isso, é possível ter uma ideia de que o erro quadrático logarítmico médio pode ser uma excelente alternativa para os casos em que as subestimações do modelo devem ser evitadas.
+O erro quadrático médio considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente, para o modelo os erros são de mesma magnitude. Contudo, olhando agora para os valores do \textit{MSLE}, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
 
 \medskip
 \begin{center}
@@ -1515,10 +1510,10 @@ Com isso, é possível ter uma ideia de que o erro quadrático logarítmico méd
 \end{center}
 \medskip
 
-Além disso, bem como o erro quadrático médio, que possui uma métrica derivada, o \textit{RMSE}. Com o erro quadrático logarítmico médio não é diferente. Assim, é possível também utilizar a métrica raiz do erro quadrático médio logarítmico (\textit{RMSLE}) que serve de métrica para avaliar modelos de aprendizado de máquina. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raiz quadrada da função de perda \textit{RMSE}.
+Do \textit{MSLE} é possível derivar a métrica raiz do erro quadrático médio logarítmico (\textit{RMSLE}) que também serve para avaliar problemas de predição. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raiz quadrada da função de perda \textit{RMSE}.
 
 \begin{equacaodestaque}{Raiz do erro quadrático médio logarítmico}
-    \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) -\log(\hat{y}_j + 1))^2}%
+    \textit{RMSLE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) -\log(\hat{y}_j + 1))^2}%
     \label{eq:rmsle-metric}
 \end{equacaodestaque}
 
@@ -1530,7 +1525,7 @@ Em que:
     \item $N$ representa o número de amostras.
 \end{itemize}
 
-Ao calcular a raiz quadrada do erro quadrático médio logarítmico é possível ter uma noção melhor da magnitude dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do \textit{RMSE}. Diante disso, a equação da raiz do erro quadrático médio logarítmico consegue melhorar a interpretabilidade dos erros, servindo como uma métrica, a qual pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
+Ao calcular a raiz quadrada do erro quadrático médio logarítmico tem-se uma noção melhor da magnitude dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do \textit{RMSE}. Diante disso, a equação da raiz do erro quadrático médio logarítmico consegue melhorar a interpretabilidade dos erros, servindo como uma métrica que pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
 
 \medskip
 \begin{center}
