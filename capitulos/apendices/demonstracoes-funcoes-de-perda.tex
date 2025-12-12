@@ -356,6 +356,71 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \subsection{Perda quantílica (quantile loss)}
+\label{ap:deducoes-quantile-loss}
+
+\begin{definition}
+    Seja $e = \hat{y} - y$ o resíduo e $\tau \in (0, 1)$ o parâmetro do quantil desejado. A função de perda quantílica é definida como o máximo entre duas funções lineares:
+    \begin{equation}
+        \mathcal{L}_\tau(e) = \max(\tau e, (\tau - 1)e)
+    \end{equation}
+    Ou, de forma explícita por partes:
+    \[
+    \mathcal{L}_\tau(e) = \begin{cases} 
+    \tau e & \text{se } e \ge 0 \\
+    (\tau - 1)e & \text{se } e < 0 
+    \end{cases}
+    \]
+\end{definition}
+
+\begin{proposition}[Singularidade]
+    A função Perda Quantílica pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
+\end{proposition}
+
+\begin{proof}
+    A continuidade ($C^0$) segue da composição de funções contínuas (funções lineares e máximo). Para a diferenciabilidade ($C^1$), analisamos a derivada no ponto de inflexão $e=0$.
+    
+    Calculamos os limites laterais da derivada:
+    \begin{align*}
+        \lim_{e \to 0^+} \mathcal{L}'_\tau(e) &= \frac{d}{de}(\tau e) = \tau \\
+        \lim_{e \to 0^-} \mathcal{L}'_\tau(e) &= \frac{d}{de}((\tau - 1)e) = \tau - 1
+    \end{align*}
+    
+    Como $\tau \in (0, 1)$, temos que $\tau \neq \tau - 1$. Sendo os limites laterais distintos, a derivada não existe na origem. Logo, $\mathcal{L}_\tau \notin C^1$.
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A função Perda Quantílica é convexa.
+\end{proposition}
+
+\begin{proof}
+    Utilizamos a propriedade de preservação de convexidade em operações de máximo (Teorema \ref{thm:convex_tools}).
+    
+    Definimos duas funções auxiliares:
+    \[ f_1(e) = \tau e \quad \text{e} \quad f_2(e) = (\tau - 1)e \]
+    
+    Ambas $f_1$ e $f_2$ são funções lineares (afins) e, portanto, convexas. Como a função de perda é definida por $\mathcal{L}_\tau(e) = \max(f_1(e), f_2(e))$, a convexidade é preservada.
+\end{proof}
+
+\begin{proposition}[Robustez via Subgradiente]
+    A função Perda Quantílica é Lipschitz-contínua e robusta a \textit{outliers}.
+\end{proposition}
+
+\begin{proof}
+    Analisamos o \textbf{Subdiferencial} na origem e as derivadas nas caudas. O subgradiente é dado por:
+    \[
+    \partial \mathcal{L}_\tau(e) = \begin{cases} 
+    \{\tau - 1\} & \text{se } e < 0 \\
+    [\tau - 1, \tau] & \text{se } e = 0 \\
+    \{\tau\} & \text{se } e > 0 
+    \end{cases}
+    \]
+    
+    Para verificar a condição de Lipschitz, buscamos um limite superior para a magnitude da inclinação. Definimos $K = \max(\tau, 1-\tau)$. Como $\tau \in (0,1)$, $K < 1$.
+    Observamos que:
+    \[ |g| \le K < 1, \quad \forall g \in \partial \mathcal{L}_\tau(e) \]
+    
+    Como a inclinação é globalmente limitada, a função é Lipschitz-contínua. Isso garante robustez similar ao MAE, penalizando erros linearmente, mas com pesos assimétricos para superestimação e subestimação.
+\end{proof}
 
 \subsection{Perda epsilon-insensível (epsilon-insensitive)}
 
