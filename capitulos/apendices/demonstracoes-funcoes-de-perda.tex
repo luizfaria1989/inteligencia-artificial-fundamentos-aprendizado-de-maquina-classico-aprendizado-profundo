@@ -423,6 +423,74 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \subsection{Perda epsilon-insensível (epsilon-insensitive)}
+\label{ap:deducoes-epsilon-insensitive}
+
+\begin{definition}
+    Seja $\epsilon > 0$ um limiar de tolerância. A função de perda $\epsilon$-Insensitive ignora erros cuja magnitude seja menor que $\epsilon$, penalizando linearmente o excedente. É definida por:
+    \begin{equation}
+        \mathcal{L}_\epsilon(e) = \max(0, |e| - \epsilon)
+    \end{equation}
+    Ou, explicitamente por partes:
+    \[
+    \mathcal{L}_\epsilon(e) = \begin{cases} 
+    0 & \text{se } |e| \le \epsilon \\
+    |e| - \epsilon & \text{se } |e| > \epsilon 
+    \end{cases}
+    \]
+\end{definition}
+
+\begin{proposition}[Singularidade]
+    A função $\epsilon$-Insensitive pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
+\end{proposition}
+
+\begin{proof}
+    A função é contínua, pois é composta por funções contínuas (máximo e módulo). A falha na diferenciabilidade ocorre nos pontos de transição da zona morta: $e = \epsilon$ e $e = -\epsilon$.
+    
+    Analisamos os limites laterais da derivada no ponto $e = \epsilon$:
+    \begin{align*}
+        \lim_{e \to \epsilon^-} \mathcal{L}'_\epsilon(e) &= \frac{d}{de}(0) = 0 \\
+        \lim_{e \to \epsilon^+} \mathcal{L}'_\epsilon(e) &= \frac{d}{de}(e - \epsilon) = 1
+    \end{align*}
+    
+    Como os limites laterais são distintos ($0 \neq 1$), a derivada não existe nesses pontos. Logo, $\mathcal{L}_\epsilon \notin C^1$.
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A função $\epsilon$-Insensitive é convexa (embora não estritamente convexa).
+\end{proposition}
+
+\begin{proof}
+    Utilizamos o \textbf{Teorema de Convexidade de Máximos} (Seção \ref{sec:definicoes}).
+    A função é definida como o máximo pontual entre duas funções:
+    \[ f_1(e) = 0 \quad \text{e} \quad f_2(e) = |e| - \epsilon \]
+    
+    \begin{enumerate}
+        \item $f_1(e) = 0$ é uma função constante, trivialmente convexa.
+        \item $f_2(e) = |e| - \epsilon$ é uma função convexa, pois é a norma $L_1$ deslocada por uma constante.
+    \end{enumerate}
+    
+    Como o máximo de funções convexas é convexo, $\mathcal{L}_\epsilon(e)$ é convexa em todo o domínio. Note que na região $|e| \le \epsilon$, a segunda derivada é nula, caracterizando convexidade não-estrita (fundo plano).
+\end{proof}
+
+\begin{proposition}[Robustez e Esparsidade]
+    A função é Lipschitz-contínua (robusta) e induz esparsidade no gradiente.
+\end{proposition}
+
+\begin{proof}
+    Analisamos o subdiferencial da função:
+    \[
+    \partial \mathcal{L}_\epsilon(e) = \begin{cases} 
+    \{0\} & \text{se } |e| < \epsilon \quad (\text{Zona Morta}) \\
+    [0, 1] & \text{se } e = \epsilon \\
+    \{1\} & \text{se } e > \epsilon \\
+    \dots & (\text{Simétrico para } e < 0)
+    \end{cases}
+    \]
+    
+    \textbf{1. Robustez:} O valor absoluto de qualquer subgradiente é limitado por 1 ($|g| \le 1$). Portanto, a função é 1-Lipschitz contínua, garantindo robustez a \textit{outliers}.
+    
+    \textbf{2. Esparsidade:} Diferente do MAE (cujo gradiente é quase sempre não-nulo), a $\epsilon$-Insensitive possui uma região de medida positiva ($[-\epsilon, \epsilon]$) onde o gradiente é exatamente zero. Isso significa que erros pequenos não provocam atualizações nos pesos, uma propriedade fundamental para a eficiência e generalização das Support Vector Machines (SVM).
+\end{proof}
 
 \subsection{Perda de Poisson (Poisson loss)}
 
