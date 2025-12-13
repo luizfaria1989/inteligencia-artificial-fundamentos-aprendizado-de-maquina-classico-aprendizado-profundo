@@ -98,7 +98,7 @@ Com base nessa função que encontramos, podemos desenhá-la junto ao gráfico d
             3.2 3 $P_3$
             4.3 4 $P_4$ 
         };
-        \addplot[blue, thick, domain=-8:8, samples=100] {0.8623(x) + 0.3011};
+        \addplot[black, thick, domain=-8:8, samples=100] {0.8623(x) + 0.3011};
         \end{axis}
     \end{tikzpicture}
     \caption{Conjunto de pontos dispostos no plano cartesiano.}%
@@ -129,29 +129,28 @@ Visto um dos motivos de se utilizar funções de ativação em uma rede neural, 
 
 Dessa forma, é possível discutir elaborar pouco de cada uma dessas propriedades em seguida.
 
-\subsubsection*{Não-linearidade}
+\begin{description}[style=unboxed, leftmargin=0cm, font=\bfseries]
+    
+    \item[Não-linearidade:] 
+    Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{perceptron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
+    
+    \item[Diferenciabilidade:] 
+    O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrinsecamente ligado em como a retropropagação do erro. Como visto no Capítulo~\ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
+    
+    \item[Continuidade:] 
+    A continuidade está ligada com a diferenciabilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descontinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja ``quinas'' no desenho da função e que o gráfico pode ser desenhado ``sem tirar o lápis do papel''. Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
+    
+    \item[Limitada:] 
+    Considerar que uma função de ativação seja limitada ao escolher uma função de ativação para construir uma rede neural está ligado com os problemas do gradiente. Neste caso, uma função que não é limitada pode sofrer do problema do gradiente explosivo, o qual é explicado com maiores detalhes no Capítulo~\ref{cap:ativacao-retificadoras}. Nesse sentido, o problema do gradiente explosivo o gradiente de uma rede neural começa a crescer de forma acelerada afetando o aprendizado da rede e as atualizações de pesos e vieses.
+    
+    \item[Centrada em zero:] 
+    Uma função que não é centrada em zero, que é sempre positiva ou sempre negativa, afeta como a saída ocorre \parencite{PropriedadesFuncoesDeAtivacao}. Como explica \textcite{PropriedadesFuncoesDeAtivacao}, um cenário em que isso acontece, significa que a saída está sendo sempre movida para os valores positivos ou negativos, e como resultado, o vetor de pesos precisa de uma quantidade maior de iterações para ser melhor ajustado. Dessa forma, ao escolher uma função que é centrada em zero, é possível garantir um treinamento com menos iterações mas ainda assim garantir uma boa convergência do modelo que está sendo treinado.
 
-Como foi visto na seção anterior, o principal objetivo de uma função de ativação ser não linear é justamente relacionado ao fato delas permitirem que um modelo seja capaz de aproximar diversos tipos de funções desde que sejam mensuradas por Borel. Além disso, \textcite{PropriedadesFuncoesDeAtivacao} justifica que caso tenha uma rede como um \textit{Perceptron} com múltiplas camadas ocultadas pode ser facilmente comprimido em um \textit{perceptron} de apenas uma camada. Isso acontece porque a várias transformações lineares (uma para cada camada) em cima de outras também lineares continuam formando uma transformação linear quando serem consideradas por inteiro. Com isso, o principal benefício de uma rede neural, que é a profundidade, acaba por não ter tanto efeito em casos em que são aplicadas funções de ativação lineares.
+    \item[Custo computacional:]
+    Cabe considerar também o custo computacional de uma função de ativação. Funções mais simples, como a degrau unitário e a \textit{ReLU}, as quais fazem apenas comparações com o valor da entrada, apresentam um custo computacional bem menor quando comparadas com funções mais complexas, como aquelas que fazem uso de muitos exponenciais em sua fórmula. Com isso, ao utilizar uma função de ativação muito ``cara'' em termos computacionais, isso acaba por gerar um gargalo no tempo de treino do modelo em desenvolvimento.
 
-\subsubsection*{Diferenciabilidade}
+\end{description}
 
-O principal motivo de considerar a diferenciabilidade ao se escolher uma função de ativação está intrinsecamente ligado em como a retropropagação do erro. Como visto no Capítulo~\ref{cap:retropropagacao-gradiente}, a retropropagação utiliza das derivadas parciais, do vetor gradiente e também da derivada da função de ativação para calcular o erro e com base neste, as atualizações dos pesos e vieses da rede. Perceba que escolher uma função que tenha uma derivada complexa ou não seja derivada em grande parte do seu domínio, acaba por atrasar o algoritmo da retropropagação, que levará mais tempo tendo que calcular a derivada da função de ativação ou terão que ser feitas adaptações na derivada da função original para adequá-la ao novo algoritmo.
-
-\subsubsection*{Continuidade}
-
-A continuidade está ligada com a diferenciabilidade. Pela definição de derivada, não é possível derivar uma função em pontos de descontinuidade. Dessa forma, é importante considerar como o a função é representada graficamente, garantindo que não haja ``quinas'' no desenho da função e que o gráfico pode ser desenhado ``sem tirar o lápis do papel''. Técnicas como essas ajudam a descobrir ao olhar o gráfico, se existem pontos de descontinuidade os quais podem afetar a derivada da função de ativação.
-
-\subsubsection*{Limitada}
-
-Considerar que uma função de ativação seja limitada ao escolher uma função de ativação para construir uma rede neural está ligado com os problemas do gradiente. Neste caso, uma função que não é limitada pode sofrer do problema do gradiente explosivo, o qual é explicado com maiores detalhes no Capítulo~\ref{cap:ativacao-retificadoras}. Nesse sentido, o problema do gradiente explosivo o gradiente de uma rede neural começa a crescer de forma acelerada afetando o aprendizado da rede e as atualizações de pesos e vieses.
-
-\subsubsection*{Centrada em zero}
-
-Uma função que não é centrada em zero, que é sempre positiva ou sempre negativa, afeta como a saída ocorre \parencite{PropriedadesFuncoesDeAtivacao}. Como explica \textcite{PropriedadesFuncoesDeAtivacao}, um cenário em que isso acontece, significa que a saída está sendo sempre movida para os valores positivos ou negativos, e como resultado, o vetor de pesos precisa de uma quantidade maior de iterações para ser melhor ajustado. Dessa forma, ao escolher uma função que é centrada em zero, é possível garantir um treinamento com menos iterações mas ainda assim garantir uma boa convergência do modelo que está sendo treinado.
-
-\subsubsection*{Custo computacional}
-
-Cabe considerar também o custo computacional de uma função de ativação. Funções mais simples, como a degrau unitário e a \textit{ReLU}, as quais fazem apenas comparações com o valor da entrada, apresentam um custo computacional bem menor quando comparadas com funções mais complexas, como aquelas que fazem uso de muitos exponenciais em sua fórmula. Com isso, ao utilizar uma função de ativação muito ``cara'' em termos computacionais, isso acaba por gerar um gargalo no tempo de treino do modelo em desenvolvimento.
 
 \medskip
 \begin{center}
@@ -213,7 +212,7 @@ Nessa equação, o parâmetro $a$ representa a inclinação, a qual foi ajustada
             % Define os parâmetros para a função
             /pgf/declare function={a=1.2; theta=2.8;}
             ]
-            \addplot[blue, thick, domain=-2:10, samples=150] {wilson_sigmoid(a, theta, x)};
+            \addplot[black, thick, domain=-2:10, samples=150] {wilson_sigmoid(a, theta, x)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da função sigmoide conforme proposta por Wilson e Cowan (1972), com parâmetros de exemplo $a=1.2$ e $\theta=2.8$.}%
@@ -245,9 +244,9 @@ Cabe destacar também que, as sigmoidais nao foram as primeiras funções de ati
 
         % Adiciona os marcadores para a descontinuidade em x=0
         % Círculo aberto em (0,0) para indicar que o ponto não pertence a essa parte
-        \addplot[only marks, mark=o, mark size=1.5pt, blue, fill=white] coordinates {(0,0)};
+        \addplot[only marks, mark=o, mark size=1.5pt, black, fill=white] coordinates {(0,0)};
         % Círculo fechado em (0,1) para indicar que o ponto pertence a essa parte
-        \addplot[only marks, mark=*, mark size=1.5pt, blue] coordinates {(0,1)};
+        \addplot[only marks, mark=*, mark size=1.5pt, black] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da função degrau unitário (\textit{heavside}).}
@@ -266,9 +265,9 @@ A função sigmoide é escrita com uma exponencial, como na Equação~\ref{eq:si
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 O gráfico da sigmoide está presente na Figura~\ref{fig:sigmoide}, note que ele possui o formato de um ``S'' deitado. Assim, também é possível dizer que a função sigmoide é uma função suave, contínua (o que a possibilita de ser derivável em todos os pontos) e também é não-linear. \textcite{ActivationFunctionsLederer} explica que uma das propriedades interessantes da sigmoide está no fato dela empurrar os valores de entrada para dois extremos, neste caso, 0 e 1. Essa propriedade de retornar valores em um intervalo de 0 a 1 é bem útil quando queremos fazer uma classificação binária, para isso, utilizamos a sigmoide aplicada na última camada densa de neurônios, limitando os intervalos, de forma que podemos interpretá-los como probabilidades, em que quanto mais próximo de 1, mais próximo aquele resultado está de uma classe A, por exemplo, já valores mais distantes pertenceriam a uma classe B.
 
@@ -283,7 +282,7 @@ O gráfico da sigmoide está presente na Figura~\ref{fig:sigmoide}, note que ele
             axis lines=middle,
             grid=major,
         ]
-        \addplot[blue, thick, domain=-8:8, samples=100] {1/(1+exp(-x))};
+        \addplot[black, thick, domain=-8:8, samples=100] {1/(1+exp(-x))};
     \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da função de ativação sigmoide logística.}%
@@ -291,26 +290,14 @@ O gráfico da sigmoide está presente na Figura~\ref{fig:sigmoide}, note que ele
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Sigmoide Logística}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-    \item \textbf{Limitada:}
-    \item \textbf{Saturante:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+    \item[Limitada:]  
+    \item[Saturante:] 
+\end{description}
 
 \subsubsection*{Gradiente da sigmoide logística}
 
@@ -343,7 +330,7 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
             axis lines=middle,
             grid=major,
         ]
-        \addplot[red, thick, domain=-8:8, samples=100] {exp(-x)/((1+exp(-x))^2)};
+        \addplot[black, thick, domain=-8:8, samples=100] {exp(-x)/((1+exp(-x))^2)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação sigmoide logística.}%
@@ -351,21 +338,14 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Sigmoide Logística em Redes Neurais}%
 \index{Aplicações práticas! Sigmoide logística}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \medskip
 \begin{center}
@@ -393,9 +373,9 @@ Passado mais de dois séculos, a tangente hiperbólica já estava sendo utilizad
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parecidas. Como afirma \textcite{ActivationFunctionsLederer}, a tangente hiperbólica é infinitamente diferenciável, sendo uma versão escalada e rotacionada da sigmoide logística. Assim, veja no gráfico da Figura~\ref{fig:tanh} que ela é uma função que está centrada em zero, e seus valores variam agora em um intervalo de -1 a 1, diferente da sigmoide, que varia somente de 0 a 1.
 
@@ -410,7 +390,7 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
             axis lines=middle,
             grid=major,
         ]
-        \addplot[blue, thick, domain=-5:5, samples=100] {tanh(x)};
+        \addplot[black, thick, domain=-5:5, samples=100] {tanh(x)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da função de ativação tangente hiperbólica (tanh).}%
@@ -418,21 +398,15 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Tangente Hiperbólica}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-    \item \textbf{Limitada:}
-    \item \textbf{Saturante:}
-    \item \textbf{Centrada em zero:}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+    \item[Limitada:]  
+    \item[Saturante:] 
+    \item[Centrada em zero:] 
+\end{description}
 
 \medskip
 \begin{center}
@@ -471,7 +445,7 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
             axis lines=middle,
             grid=major,
         ]
-        \addplot[red, thick, domain=-5:5, samples=100] {1-(tanh(x))^2};
+        \addplot[black, thick, domain=-5:5, samples=100] {1-(tanh(x))^2};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação tangente hiperbólica (tanh).}%
@@ -481,21 +455,14 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
 
 Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam de zero conforme aumentam ou diminuem na sua derivada. Eles atingem um pico de 1, e conforme as entradas se aproximam de $\pm 4$ a saída da derivada da tangente hiperbólica também fica próxima de zero. Mais uma vez, nota-se que a tangente hiperbólica não atinge valores muito altos em sua derivada, isso acaba por gerar um problema conhecido como desaparecimento do gradiente, o qual será explicado em seções futuras.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Tangente Hiperbólica em Redes Neurais}%
 \index{Aplicações práticas! Tangente hiperbólica (tanh)}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \medskip
 \begin{center}
@@ -519,9 +486,9 @@ A principal diferença da \textit{softsign} com as outras sigmoidais está na su
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 A \textit{softsign} também possui uma representação gráfica, como vista na Figura~\ref{fig:softsign}, ela possui o formato em ``S'' característico das sigmoidais além de ser centrada em zero como a tangente hiperbólica. Além disso, como \textcite{Softsign1998} destaca em seu texto, ela é uma função que é diferenciável em toda a reta possuindo também a mesma propriedade das outras sigmoidais de empurrar os valores de entrada para os seus extremos. Nota-se também pelo seu gráfico que ela também uma função contínua, suave e não-linear.
 
@@ -538,7 +505,7 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
             grid=major,
         ]
         % A função softsign(x) = x / (1 + abs(x))
-        \addplot[blue, thick, domain=-10:10, samples=101] {x / (1 + abs(x))};
+        \addplot[black, thick, domain=-10:10, samples=101] {x / (1 + abs(x))};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da função de ativação \textit{softsign}.}
@@ -546,27 +513,15 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Softsign}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-    \item \textbf{Limitada:}
-    \item \textbf{Saturante:}
-    \item \textbf{Centrada em zero:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+    \item[Limitada:]  
+    \item[Saturante:] 
+    \item[Centrada em zero:] 
+\end{description}
 
 \subsubsection*{Gradiente da softsign}
 
@@ -591,7 +546,7 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
             grid=major,
         ]
         % A derivada da softsign é 1 / (1 + |x|)^2
-        \addplot[red, thick, domain=-10:10, samples=101] {1/((1+abs(x))^2)};
+        \addplot[black, thick, domain=-10:10, samples=101] {1/((1+abs(x))^2)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{softsign}.}%
@@ -601,21 +556,15 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
 
 Além disso, essa função também sofre do mesmo problema das outras duas funções de ativação vistas até agora, o problema do desaparecimento do gradiente. Esse é um ponto que é corrigido com uma outra família de funções de ativação, as retificadoras, as quais são tema principal do Capítulo~\ref{cap:ativacao-retificadoras}.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Softsign em Redes Neurais}%
 \index{Aplicações práticas! Softsign}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
+
 
 \medskip
 \begin{center}
@@ -640,9 +589,9 @@ A primeira é a \textit{hard sigmoid}. Como pode ser visto na Equação~\ref{eq:
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico, o qual está representado na Figura~\ref{fig:hard-sigmoid}. Ele lembra uma função sigmoide logística, porém, sem todas as curvas suaves daquela função, apresentando no lugar um conjunto de três diferentes retas, a primeira constante em zero, a segunda a função identidade e a terceira também constante em um. 
 
@@ -661,7 +610,7 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
             restrict y to domain*=-0.2:1.2 % Keep plot within y limits
         ]
         % Define the piecewise function using if-else logic for plotting
-        \addplot[blue, thick] {
+        \addplot[black, thick] {
             (x < -3) * 0 +
             (x >= -3 && x <= 3) * (x/6 + 0.5) +
             (x > 3) * 1
@@ -673,25 +622,13 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Hard Sigmoid}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-    \item \textbf{Piecewise-linear:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+    \item[Piecewise-linear:]  
+\end{description}
 
 \subsubsection*{Gradiente da perda de hard-sigmoid}
 
@@ -723,8 +660,8 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
             (x > -3 && x < 3) * (1/6)
         };
         % Add lines for the jumps (optional, but makes it clearer)
-        \draw[dashed, blue] (axis cs:-3, 0) -- (axis cs:-3, 1/6);
-        \draw[dashed, blue] (axis cs:3, 0) -- (axis cs:3, 1/6);
+        \draw[dashed, black] (axis cs:-3, 0) -- (axis cs:-3, 1/6);
+        \draw[dashed, black] (axis cs:3, 0) -- (axis cs:3, 1/6);
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{hard sigmoid}.}%
@@ -747,9 +684,9 @@ Além disso, também existe a função \textit{hard tanh}, que apresenta a mesma
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é possível vez na Figura~\ref{fig:hard-tanh}, ele é composto por três retas, sendo duas delas constantes e uma terceira sendo a função identidade. Note que ele também possui ``bicos'', o que o impede essa função de ser derivada nesses pontos, uma vez que ela não é contínua nessas regiões.
 
@@ -780,25 +717,13 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Hard Tanh}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-    \item \textbf{Piecewise-linear:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+    \item[Piecewise-linear:]  
+\end{description}
 
 Perceba também que o gráfico, bem como sua equação, é bem mais simples que a tangente hiperbólica tradicional, isso faz com que a \textit{hard tanh} seja uma função mais barata para ser empregada ao desenvolver um modelo de rede neural. Isso significa que ela pode ser uma função ideal para ser utilizada naqueles sistemas que possuem recursos limitados, como uma quantidade pequena de memória ram, ou seu a possibilidade de utilizar uma placa gráfica dedicada para o processamento dos dados. O mesmo vale para a \textit{hard sigmoid}.
 
@@ -832,8 +757,8 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
             (x > -1 && x < 1) * 1
         };
         % Add lines for the jumps (optional, but makes it clearer)
-        \draw[dashed, blue] (axis cs:-1, 0) -- (axis cs:-1, 1);
-        \draw[dashed, blue] (axis cs:1, 0) -- (axis cs:1, 1);
+        \draw[dashed, black] (axis cs:-1, 0) -- (axis cs:-1, 1);
+        \draw[dashed, black] (axis cs:1, 0) -- (axis cs:1, 1);
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{hard-tanh}.}%
@@ -841,22 +766,15 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações das Funções Hard Sigmoid e Hard Tanh em Redes Neurais}%
 \index{Aplicações práticas!Hard Tanh}%
 \index{Aplicações práticas! Hard Sigmoid}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \medskip
 \begin{center}
@@ -883,16 +801,16 @@ Como foi visto no capítulo anterior, o gradiente retropropagado para camadas an
 
 Em que: 
 
-\begin{itemize}
-    \item $L$: Representa o índice de uma camada, podendo ser um valor entre $1$ (indicando que é uma camada de entrada) ou $n$ (indicando que é uma camada de saída);
-    \item $\textbf{W}^{(L)}$: Representa a matriz dde pesos que conecta a camada $L - 1$ à camada $L$;
-    \item $b^{(L)}$: Representa o vetor de viés da camada $L$;
-    \item $x^{(L)}$: Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
-    \item $y^{(L)}$: Representa o vetor de saídas da camada $L$
-    \item $\delta^{(L)}$: Representa o vetor do gradiente na camada $L$;
-    \item $\mathcal{A}'(x^{(L)})$: Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
-    \item $\odot$: O produto de Hadamard, que significa multiplicação elemento a elemento.
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$L$] Representa o índice de uma camada, podendo ser um valor entre $1$ (indicando que é uma camada de entrada) ou $n$ (indicando que é uma camada de saída);
+    \item[$\textbf{W}^{(L)}$] Representa a matriz dde pesos que conecta a camada $L - 1$ à camada $L$;
+    \item[$b^{(L)}$] Representa o vetor de viés da camada $L$;
+    \item[$x^{(L)}$] Representa o vetor de entradas totais para os neurônios da camada $L$ antes da ativação;
+    \item[$y^{(L)}$] Representa o vetor de saídas da camada $L$
+    \item[$\delta^{(L)}$] Representa o vetor do gradiente na camada $L$;
+    \item[$\mathcal{A}'(x^{(L)}$)] Representa o vetor contendo a derivada da função de ativação para cada neurônio da camada $L$;
+    \item[$\odot$] O produto de Hadamard, que significa multiplicação elemento a elemento.
+\end{description}
 
 Considerando isso, imagine que temos uma rede composta por quatro camadas densas e cada camada tem apenas um neurônio com pesos iguais a 1. Dessa forma, é possível simplificar a fórmula vista para a Equação~\ref{eq:gradiente-retropropagado-simplificado}.
 
@@ -978,20 +896,8 @@ Tendo visto diferentes funções de ativação sigmoidais, é possível compilá
     \end{threeparttable}
 \end{table}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Indo Além das Funções de Ativação Sigmoidais}
 
 Nesse capítulo foi visto um dos grandes grupos de função de ativação: as funções sigmoidais. Foi visto que elas estiveram presente em uma gama de redes neurais do século passado, fazendo parte da definição da retropropagação e também da rede de Elman, por exemplo. Contudo, a sua natureza saturante fazia com que a sua derivada atingisse valores muito pequenos, como 0.25. Isso atrapalhava a retropropagação do gradiente, que era constantemente multiplicado por escalares pequenos resultando no problema do desaparecimento do gradiente.
 
 Esse problema impedia a criação de redes neurais muito profundas, pois quando mais camadas densas fossem adicionadas, maior era a chance de que seriam adicionadas como função de ativação uma função sigmoidal, aumentando ainda mais o risco de gerar problemas com o gradiente. isso foi um problema sério e que precisava de uma solução, e ela veio de uma forma bem simples e elegante, que foi com o uso da unidade linear retificadora, ou \textit{ReLU}. A \textit{ReLU} e a sua família de funções retificadoras é o tema central do capítulo que sucede este, o Capítulo~\ref{cap:ativacao-retificadoras}, ele segue a mesma estrutura deste capítulo, é apresentado o contexto em que essas funções surgiram e se popularizaram, bem como suas fórmulas e derivadas. Além disso, o Capítulo~\ref{cap:ativacao-retificadoras} também explica alguns problemas que essas funções acabaram causando com o gradiente na rede, sendo eles o \textit{dying ReLUs problem} e o problema do gradiente explosivo.
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
