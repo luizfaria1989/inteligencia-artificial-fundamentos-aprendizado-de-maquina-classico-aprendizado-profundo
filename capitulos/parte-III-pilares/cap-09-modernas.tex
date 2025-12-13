@@ -28,9 +28,9 @@ Conhecendo um pouco como a GELU atua em uma rede neural, podemos agora conhecer 
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 Por apresentar cálculos mais complexos em sua composição, como o uso da função erro para encontrar o satrd gaussian cumative distribution function os autores também apresentam aproximações para a GELU, elas são dadas pelas equações \ref{eq:EquacaoGELUAprox} e \ref{eq:EquacaoGELUAprox2} \parencite{GELUArticle}. Essas aproximações facilitam não somente os cálculos mas também na hora de implementar essa função em Python, garantindo algoritmos mais curtos e fáceis de serem implementados.
 
@@ -62,7 +62,7 @@ Se sabemos a sua fórmula, podemos também plotar o seu gráfico, para isso temo
             legend style={font=\scriptsize}
         ]
         % Plota a APROXIMAÇÃO da função GELU(x) usando tanh
-        \addplot[red, thick, domain=-3.5:3.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-3.5:3.5, samples=100, smooth] 
             {0.5*x*(1 + tanh(sqrt(2/pi)*(x + 0.044715*x^3)))};
         \addlegendentry{GELU($x$) (Aproximação)}
         
@@ -73,24 +73,12 @@ Se sabemos a sua fórmula, podemos também plotar o seu gráfico, para isso temo
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Guassian Error Linear Unit}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+\end{description}
 
 Considerando as suas expressões e como a GELU se comporta, podemos também calcular a sua derivada para ser utilizada na retropropagação do modelo. Para isso, temos a expressão \ref{eq:gelu-derivada}, a qual pode ser expandida em uma equação mais completa, resultando então na fórmula da expressão \ref{eq:gelu-derivada-completa}.
 
@@ -122,7 +110,7 @@ Para plotarmos o gráfico de sua derivada podemos fazer uma aproximação utiliz
         
         % Plota a derivada usando uma aproximação para Phi(x)
         % Phi(x) ~= 1/(1+exp(-1.702*x))
-        \addplot[blue, thick, domain=-3.5:3.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-3.5:3.5, samples=100, smooth] 
             {(1/(1+exp(-1.702*x))) + x * (1/sqrt(2*pi)) * exp(-x^2/2)};
         \addlegendentry{Derivada: $\Phi(x) + x\phi(x)$}
         
@@ -135,26 +123,13 @@ Para plotarmos o gráfico de sua derivada podemos fazer uma aproximação utiliz
 
 Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discutem outras informações úteis da Gaussian Error Linear Unit para serem considerados ao construir uma rede neural com essa função de ativação, o primeiro deles é de que é recomendado o uso de um otimizador com momentum quando estiver treinando uma rede com a GELU \parencite{GELUArticle}. Em segundo lugar, \textcite{GELUArticle}, destacam que é importante utilizar uma aproximação próxima da distribuição acumulativa da distribuição gaussiana, entretanto, funções como a sigmoide, são uma aproximação acumulativa da distribuição normal, contudo, a SiLU mesmo performando pior que a GELU, ainda sim, é capaz de performar melhor que outras retificadoras como a ELU e a ReLU nos testes realizados pelos autores, assim, faz necessário o uso de novas aproximações, como as vistas nas expressões \ref{eq:gelu-aproximacoes} e \ref{eq:gelu-aproximacoes-sigmoide}.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Gaussian Error Linear Unit em Redes Neurais}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \subsection{Swish}%
 \index{Funções de Ativação!Swish}
@@ -166,9 +141,9 @@ Ainda no artigo \textit{Gaussian Error Linear Units (GELUs)}, os autores discute
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 \begin{figure}[htbp]
     \centering
@@ -184,7 +159,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         % Plota a função Swish: x * (1 / (1 + exp(-x)))
-        \addplot[blue, thick, domain=-5.5:5.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=100, smooth] 
             {x / (1 + exp(-x))};
         \addlegendentry{Swish($x_j$) = $x_j \cdot \sigma(x_j)$}
         
@@ -195,24 +170,12 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Swish}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+\end{description}
 
 \begin{equacaodestaque}{Derivada Swish}
     \frac{d}{dx_j} [\mathcal{A}_{\text{Swish}}](x_j) = \text{Swish}(x_j) + \sigma(x_j)(1 - \text{Swish}(x_j))
@@ -235,7 +198,7 @@ Em que:
         
         % Plota a derivada da função Swish
         % Swish'(x) = Swish(x) + sigmoid(x)*(1 - Swish(x))
-        \addplot[orange, thick, domain=-5.5:5.5, samples=101, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=101, smooth] 
             { (x / (1 + exp(-x))) + (1 / (1 + exp(-x))) * (1 - (x / (1 + exp(-x)))) };
         \addlegendentry{$\text{Swish}'(x_j) = \text{Swish}(x_j) + \sigma(x_j)(1-\text{Swish}(x_j))$}
         
@@ -246,26 +209,13 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Swish em Redes Neurais}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \subsection{Hard-Swish (h-swish)} \index{Funções de Ativação!Hard-Swish (h-swish)}
 
@@ -276,9 +226,9 @@ Em que:
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 \begin{figure}[htbp]
     \centering
@@ -295,7 +245,7 @@ Em que:
         ]
         % Plota a função Hard-Swish: x * ReLU6(x + 3) / 6
         % ReLU6(x) = min(max(0, x), 6)
-        \addplot[purple, thick, domain=-5.5:5.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=100, smooth] 
             {x * min(max(0, x + 3), 6) / 6};
         \addlegendentry{h-Swish($x_j$) = $x_j \cdot \frac{\text{ReLU6}(x_j + 3)}{6}$}
         
@@ -306,24 +256,16 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 \subsubsection*{Características da Hard Swish}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+\end{description}
 
 \begin{equacaodestaque}{Derivada Hard-Swish}
     \frac{d}{dx_j} [\mathcal{A}_{\text{h-Swish}}](x_j) = \begin{cases} 0 & \text{se } x_j \le -3 \\ \frac{2x_j + 3}{6} & \text{se } -3 < x_j < 3 \\ 1 & \text{se } x_j \ge 3 \end{cases}
@@ -345,7 +287,7 @@ Em que:
         ]
         
         % Plota a derivada da função Hard-Swish
-        \addplot[orange, thick, domain=-5.5:5.5, samples=101, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=101, smooth] 
             { (x <= -3) ? 0 : ((x >= 3) ? 1 : ( (2*x + 3) / 6 )) };
         \addlegendentry{$\text{h-Swish}'(x_j)$}
         
@@ -356,26 +298,13 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Hard Swish em Redes Neurais}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \subsection{Mish}%
 \index{Funções de Ativação!Mish}
@@ -387,9 +316,9 @@ Em que:
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 \begin{figure}[htbp]
     \centering
@@ -405,7 +334,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         % Plota a função Mish: x * tanh(ln(1 + exp(x)))
-        \addplot[purple, thick, domain=-5.5:5.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=100, smooth] 
             {x * tanh(ln(1 + exp(x)))};
         \addlegendentry{Mish($x_j$) = $x_j \cdot \tanh(\text{softplus}(x_j))$}
         
@@ -416,25 +345,13 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Mish}
-\vspace{1em}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+\end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 \begin{equacaodestaque}{Derivada Mish}
     \frac{d}{dx_j} [\mathcal{A}_{\text{Mish}}](x_j) = \tanh(\omega) + x_j \sigma(x_j) \text{sech}^2(\omega) \\
@@ -456,7 +373,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         
-        \addplot[red, thick, domain=-5.5:5.5, samples=101, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=101, smooth] 
             { tanh(ln(1 + exp(x))) + x * (1 / (1 + exp(-x))) * (1 / cosh(ln(1 + exp(x))))^2 };
         \addlegendentry{$\text{Mish}'(x_j)$}
         
@@ -467,27 +384,14 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Mish em Redes Neurais}
 \vspace{1em}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \subsection{Hard-Mish (h-mish)} \index{Funções de Ativação!Hard-Mish (h-mish)}
 
@@ -498,9 +402,9 @@ Em que:
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 \begin{figure}[htbp]
     \centering
@@ -516,7 +420,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         % Plota a função Hard-Mish: x/2 * min(max(x + 2, 0), 2)
-        \addplot[brown, thick, domain=-5.5:5.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=100, smooth] 
             {x * min(max(0, x + 2), 2) / 2};
         \addlegendentry{h-Mish($x_j$)}
         
@@ -527,24 +431,13 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Características da Hard Mish}
 
-\begin{itemize}
-    \item \textbf{Continuidade, suavidade e diferenciabilidade:}
-    \item \textbf{Não-linearidade:}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:]
+    \item[Não-linearidade:]
+\end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 \begin{equacaodestaque}{Derivada Hard-Mish}
     \frac{d}{dx_j} [\mathcal{A}_{\text{h-Mish}}](x_j) = \begin{cases} 0 & \text{se } x_j \le -2 \\ x_j + 1 & \text{se } -2 < x_j < 0 \\ 1 & \text{se } x_j \ge 0 \end{cases}
@@ -566,7 +459,7 @@ Em que:
         ]
         
         % Plota a derivada da função Hard-Mish
-        \addplot[red, thick, domain=-5.5:5.5, samples=101, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=101, smooth] 
             { (x <= -2) ? 0 : ((x >= 0) ? 1 : (x + 1)) };
         \addlegendentry{$\text{h-Mish}'(x_j)$}
         
@@ -577,26 +470,13 @@ Em que:
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Algumas Aplicações da Hard Mish em Redes Neurais}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \section{Funções Para Camadas de Saída}
 
@@ -609,9 +489,9 @@ Em que:
 
 Em que:
 
-\begin{itemize}
-    \item $x_j$ representa o valor da entrada da função de ativação
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$x_j$] representa o valor da entrada da função de ativação
+\end{description}
 
 \begin{equacaodestaque}{Derivada Softmax}
     \frac{\partial [\mathcal{A}_{\text{Softmax}}](x_j)}{\partial z_j} = 
@@ -643,7 +523,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         % Plota a função Identidade: y = x
-        \addplot[blue, thick, domain=-5.5:5.5, samples=10, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=10, smooth] 
             {x};
         \addlegendentry{Linear($x_j$) = $x_j$}
         
@@ -675,7 +555,7 @@ Em que:
         ]
         
         % Plota a derivada da função Linear: y = 1
-        \addplot[orange, thick, domain=-5.5:5.5, samples=10, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=10, smooth] 
             {1};
         \addlegendentry{$\text{Linear}'(x_j) = 1$}
         
@@ -707,7 +587,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         % Plota a função Softplus: ln(1 + exp(x))
-        \addplot[green, thick, domain=-5.5:5.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=100, smooth] 
             {ln(1 + exp(x))};
         \addlegendentry{Softplus($x_j$) = $\ln(1 + e^{x_j})$}
         
@@ -738,7 +618,7 @@ Em que:
         ]
         
         % Plota a derivada da função Softplus (função Sigmoide)
-        \addplot[teal, thick, domain=-5.5:5.5, samples=101, smooth] 
+        \addplot[black, thick, domain=-5.5:5.5, samples=101, smooth] 
             { 1 / (1 + exp(-x)) };
         \addlegendentry{$\text{Softplus}'(x_j) = \sigma(x_j)$}
         
@@ -770,7 +650,7 @@ Em que:
             legend style={font=\scriptsize}
         ]
         % Plota a função Exponencial: exp(x)
-        \addplot[red, thick, domain=-4.5:2.5, samples=100, smooth] 
+        \addplot[black, thick, domain=-4.5:2.5, samples=100, smooth] 
             {exp(x)};
         \addlegendentry{Exp($x_j$) = $e^{x_j}$}
         
@@ -801,7 +681,7 @@ Em que:
         ]
         
         % Plota a derivada da função Exponencial: exp(x)
-        \addplot[orange, thick, domain=-4.5:2.5, samples=101, smooth] 
+        \addplot[black, thick, domain=-4.5:2.5, samples=101, smooth] 
             {exp(x)};
         \addlegendentry{$\text{Exp}'(x_j) = e^{x_j}$}
         
