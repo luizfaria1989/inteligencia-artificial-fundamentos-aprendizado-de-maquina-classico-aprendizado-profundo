@@ -1616,11 +1616,11 @@ A partir da Equação~\ref{eq:soma-das-perdas-assimetricas}, é possível deriv�
 
 Em que:
 
-\begin{itemize}
-    \item $y_j$ representa o valor real da j-ésima amostra;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
-    \item $\tau$ representa o quantil.
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
+    \item[$y_j$] representa o valor real da j-ésima amostra;
+    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+    \item[$\tau$] representa o quantil.
+\end{description}
 
 Existem também uma versão compacta da perda quantílica, presente na Equação~\ref{eq:quantile-loss-com-max}, ela utiliza a função $\max$ para definir a função por partes em apenas uma linha.
 
@@ -1924,7 +1924,7 @@ O comportamento da derivada da perda quantílica também se assemelha com \texti
         \label{fig:quantile-deriv-3d-tau01}
     \end{subfigure}
 
-    \caption{Visualizações da perda quantílica (com $\tau = 0.1$) em relação à predição.}%
+    \caption{Visualizações do gradiente da perda quantílica em relação à predição (com $\tau = 0.1$).}%
     \label{fig:quantile-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1953,24 +1953,25 @@ Além da perda quantílica, que é usada nos problemas de regressão quantílica
 \subsection{Perda epsilon-insensível (epsilon-insensitive loss)}%
 \index{Funções de Perda!Perda Epsilon-Insensível}
 
-Para explicar a perda $\epsilon$-insensível é preciso antes entender o cenário em que essa função surgiu, e como ela está relacionada com os modelos de regressão para as \textit{SVMs}. Um do artigos que explica a criação desse modelo de aprendizado de máquina para a tarefa de regressão é o \textit{Support Vector Regression Machines} dos pesquisadores \textcite{SupportVectorRegressionMachines}, nele, os autores detalham um novo uso das máquinas de vetores desenvolvidas por Vapnik, as quais antes eram utilizadas para resolver problemas de classificação.
+A \textbf{perda epsilon-insensível}, também chamada \textbf{$\epsilon$-insensível} se relacionada diretamente com as máquinas de vetores de suporte, sendo essencial para possibilitar tarefas de regressão pelas \textit{SVMs}. Nesse sentido, o artigo \textit{Support Vector Regression Machines} dos pesquisadores \textcite{SupportVectorRegressionMachines} é um dos responsáveis por introduzir essa função de perda. Nele, os autores detalham um novo uso das máquinas de vetores desenvolvidas por Vapnik, as quais antes eram utilizadas para resolver problemas de classificação \parencite{SupportVectorRegressionMachines}.
 
-\textcite{SupportVectorRegressionMachines} começam o artigo explicando um problema, eles possuem uma função $G(x)$ (chamada de verdade), sendo uma função que recebe um vetor $x$ (chamado de espaço de entradas), esse vetor $x$ possui $d$ componentes, sendo do tipo $x^t = [x_1, x_2, ..., x_d]$. Além disso, existe também uma família de funções $F(x, w)$ parametrizadas por $w$ \parencite{SupportVectorRegressionMachines}. O Objeto dos autores é encontrar um parâmetro $\hat{w}$ que é uma estimativa de $w$ a partir de observar um conjunto de $N$ instâncias de treinamento \parencite{SupportVectorRegressionMachines}.
+\textcite{SupportVectorRegressionMachines} começam o artigo explicando um problema, eles possuem uma função $G(x)$ (chamada de verdade), que recebe um vetor $x$ (chamado de espaço de entradas), esse vetor $x$ possui $d$ componentes, sendo do tipo $x^t = [x_1, x_2, ..., x_d]$. Existe também uma família de funções $F(x, w)$ parametrizadas por $w$ \parencite{SupportVectorRegressionMachines}. O Objeto dos autores é encontrar um parâmetro $\hat{w}$ que é uma estimativa de $w$ a partir de observar um conjunto de $N$ instâncias de treinamento \parencite{SupportVectorRegressionMachines}.
 
-Uma das aproximações para resolver esse problema é dada Equação xx como explicam \textcite{SupportVectorRegressionMachines}.
+Uma das aproximações para resolver esse problema é dada Equação~\ref{eq:svms-para-regressao} como explicam \textcite{SupportVectorRegressionMachines}.
 
 \begin{equation}
     F = (x, \hat{[w]}) = \sum_{i = 1}^N (\alpha_i^*- \alpha_i)(v_i^tx + 1)^p + b
     \label{eq:svms-para-regressao}
 \end{equation}
 
-Além disso, eles possuem também a função objetiva que querem minimizar, ela é dada pela Equação xx
+Eles possuem também a função objetiva que querem minimizar, dada pela Equação~\ref{eq:funcao-objetiva-svsms-para-regressao}.
 
 \begin{equation}
     U \sum_{j = 1}^N L [y_j- F(v_j, \hat{w})] + ||\hat{w}||^2
+    \label{eq:funcao-objetiva-svsms-para-regressao}
 \end{equation}
 
-Note que essa função objetiva faz o uso de uma função de perda em sua fórmula, essa função é dada pela $\epsilon$-insensível, a qual pode ser vista na Equação~\ref{eq:epsilon-insensitive-loss}
+A função da Equação~\ref{eq:funcao-objetiva-svsms-para-regressao} utiliza uma função de perda, a $\epsilon$-insensível, vista na Equação~\ref{eq:epsilon-insensitive-loss}
 
 \begin{equacaodestaque}{Perda epsilon-insensível}
     \Loss_{\epsilon}(y,\hat{y}) = 
@@ -1982,13 +1983,13 @@ Note que essa função objetiva faz o uso de uma função de perda em sua fórmu
 
 Em que:
 
-\begin{itemize}
-    \item $y_j$ representa o valor real da j-ésima amostra;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
-    \item $\epsilon$ ...
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
+    \item[$y_j$] representa o valor real da j-ésima amostra;
+    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+    \item[$\epsilon$] representa o tamanho da zona de perda zero.
+\end{description}
 
-O objetivo de utilizar essa função de perda em máquinas de vetores de suporte para problemas de regressão é criar uma margem em que o erro do modelo não seja penalizado. O tamanho dessa margem é dado pelo termo $\epsilon$, além disso, fora desse intervalo o erro é penalizado de forma linear, semelhante ao erro absoluto médio. Isso pode ser visto de forma mais intuitiva nos gráficos da Figura~\ref{fig:epsilon-insensitive-loss}, no gráfico da esquerda (a Figura~\ref{fig:epsilon-2d}) é possível ver a representação em duas dimensões da perda, enquanto no gráfico da direta (a Figura~\ref{fig:epsilon-3d}) está representado a superfície dessa função no espaço.
+Como aponta a Figura~\ref{fig:epsilon-insensitive-loss} o seu gráfico lembra um trapézio sem a sua base. Ele possui uma ``zona morta'' de tamanho $\epsilon$, como resultado, se o erro do modelo é menor que o valor absoluto do hiperparâmetro $\epsilon$, o erro não é contabilizado (a função retorna zero). Quando o erro é maior que $\epsilon$ a função calcula a perda de forma linear, assim como o \textit{MAE}.
 
 \begin{figure}[h!]
     \centering 
@@ -2019,11 +2020,9 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
                 \addplot[
                     domain=-4:4, 
                     samples=101,
-                    color=blue, 
+                    color=black, 
                     very thick
                 ] {max(0, abs(x) - \epsilon)};
-                
-                \addlegendentry{$L_{\epsilon=1}(e)$}
 
                 % Linhas tracejadas para marcar a margem epsilon
                 \draw[dashed, gray] (axis cs:-\epsilon, -0.5) -- (axis cs:-\epsilon, 3.5);
@@ -2031,7 +2030,7 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
                 \node[above, gray!80, font=\tiny] at (axis cs:0, 2) {Zona de Perda Zero};
             \end{axis}
         \end{tikzpicture}
-        \caption{Visão 2D (Perda vs. Erro).}%
+        \caption{Vista da função de perda em relação ao erro.}%
         \label{fig:epsilon-2d}
     \end{subfigure}
     \hfill
@@ -2053,20 +2052,21 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
                 zmin=0, zmax=10.5, % Ajustado para max(0, abs(10) - 1) = 9
                 title style={font=\bfseries\small},
                 label style={font=\small},
-                tick label style={font=\scriptsize}
+                tick label style={font=\scriptsize},
+                colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.5)}
             ]
-                % Gráfico da superfície da Epsilon-Insensitive Loss
                 \addplot3[
-                    mesh,           % Tipo de gráfico: superfície
-                    color=blue,
-                    shader=interp,  % Suaviza as cores
-                    domain=-5:5,    % Domínio de x (y_real)
-                    domain y=-5:5,  % Domínio de y (y_previsto)
-                    samples=15      % Resolução da malha
-                ] { max(0, abs(x - y) - \epsilon) }; % A função Epsilon-Insensitive 3D
+                    surf,           
+                    shader=faceted,  
+                    faceted color=black!60, 
+                    domain=-5:5,    
+                    domain y=-5:5, 
+                    samples=20,
+                    z buffer=sort
+                ] { max(0, abs(x - y) - \epsilon) };
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D completa.}%
+        \caption{Superfície da função de perda.}%
         \label{fig:epsilon-3d}
     \end{subfigure}
 
@@ -2075,56 +2075,44 @@ O objetivo de utilizar essa função de perda em máquinas de vetores de suporte
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+Essa região em que o erro é ignorado, é chamada da literatura de Tubo-Epsilon (\textit{$\epsilon$-Tube}). Você pode imaginar um tubo de largura $2\epsilon$, que, qualquer ponto que caia dentro desse tubo não gere penalidade para o modelo.
 
 \subsubsection*{Características da perda epsilon-insensível}
 
-\begin{itemize}
-    \item \textbf{Robustez para \textit{outliers}:} Uma das características da perda $\epsilon$-insensível é a sua robustez para \textit{outliers}, isso acontece devido ao jeito que ela lida com esse tipo de dado. Diferente do erro quadrático médio, que penaliza fortemente as predições do modelo $\hat{y}$ que estão muito distantes do valor real $y$ e por isso, ao ser aplicada um conjunto que possui muitos \textit{outliers} o modelo que faz uso dessa perda não irá performar tão bem. Na perda $\epsilon$-insensível isso não acontece de forma tão drástica, uma vez que ela penaliza os erros de forma linear.
-    \item \textbf{Não-diferenciabilidade em erro $=$ $\epsilon$:} Note no gráfico dessa função de perda que existem duas ``quinas'' nos pontos em que o erro é igual a $\epsilon$, isso não impede a função de ser contínua nesse ponto, mas não permite que ela seja diferenciada, algo que pode atrapalhar ao ser combinada com otimizadores que fazem uso do cálculo do gradiente.
-    \item \textbf{Zona de perda zero:} Perceba pelo gráfico da perda $\epsilon$-insensível que diferente das outras perdas em que elas possuíam um único ponto de mínimo no qual a perda era zero, aqui isso não acontece, existe uma reta com tamanho definido por $\epsilon$ que mostra que a perda é zero, qualquer ponto que estiver dentro dessa reta estará no ponto de mínimo da função. Isso é propriedade interessante, pois significa que existem mais locais para pontos de mínimos, o que em teoria pode fazer com que a função seja mais fácil para ser otimizada.
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda $\epsilon$-insensível é uma função se classe $C^0$, contínua, (ver Apêndice~\ref{ap:deducoes-epsilon-insensitive}). Isso se dá devido ao fato dessa função não ser suave, ela apresenta dois ``bicos'' que conectam a faixa de ``zona morta'' com o crescimento linear do erro.
+    \item[Convexidade:] A perda $\epsilon$-insensível é convexa, embora não estritamente convexa (ver Apêndice~\ref{ap:deducoes-epsilon-insensitive}). A Figura~\ref{fig:epsilon-insensitive-loss} evidencia essa propriedade, a função apresenta um formato de tigela, possuindo uma faixa de pontos de mínimos globais.
+    \item[Robustez:] A perda $\epsilon$-insensível é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-epsilon-insensitive}). Ao calcular o seu subgradiente, vemos que seu valor é limitado superiormente por 1. Isso garante robustez a \textit{outliers} e ajuda a prevenir problemas de gradientes explosivos.
+    \item[Esparsidade:] A perda $\epsilon$-insensível promove a esparsidade no modelo que está sendo treinado. Pelo fato de existir uma faixa de valores do erro que a perda irá retornar zero como valor, essa função de perda ajuda a criar gradientes esparsos nos problemas de regressão de \textit{SVMs}.
+\end{description}
 
 \subsubsection*{Gradiente da perda epsilon-insensível}
 
-Cabe agora discutir também o cálculo da derivada dessa função, que será útil para criação do vetor gradiente e da retropropagação dos erros. Para calculá-la é preciso derivar as duas expressões da Equação~\ref{eq:epsilon-insensitive-loss}, contudo, assim como no erro absoluto médio que foi preciso fazer o cálculo da derivada com auxílio de subgradientes por conta dos pontos de não-diferenciabilidade, aqui o processo é semelhante. Com isso, é possível chegar na expressão da Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em Relação à predição do modelo $\hat{y}$ para a perda $\epsilon$-insensível.
+Para encontrar o gradiente da perda $\epsilon$-insensível deve-se utilizar do subgradiente, assim como no \textit{MAE}. O subgradiente consegue lidar com os pontos de não diferenciabilidade (quando erro é igual a epsilon), ao aplicar a técnica chegamos na Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em relação à predição.
 
-\begin{equacaodestaque}{Derivada da perda epsilon-insensível}
+\begin{equacaodestaque}{Derivada parcial da perda epsilon-insensível em relação à predição}
     \frac{\partial\Loss_{\epsilon}}{\partial\hat{y}} = 
     \begin{cases} 
-        -1 & \text{se } \hat{y} -y > \epsilon\\
+        1 & \text{se } \hat{y} -y > \epsilon\\
         0 & \text{se } |\hat{y} -y| \le\epsilon\\
-        1 & \text{se } \hat{y} -y < -\epsilon\end{cases}%
+        -1 & \text{se } \hat{y} -y < -\epsilon\end{cases}%
     \label{eq:epsilon-insensitive-derivada}
 \end{equacaodestaque}
 
-Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfico, o qual pode ser visto na Figura~\ref{fig:epsilon-derivada-completa}. No gráfico da esquerda, na Figura~\ref{fig:epsilon-derivada-2d}, está a representação de uma vista em duas dimensões da perda $\epsilon$-insensível. Já no gráfico da direta, na Figura~\ref{fig:epsilon-derivada-3d}, está a superfície da derivada parcial da perda em Relação às predições $\hat{y}$ do modelo.
+Os gráficos da derivada parcial da $\epsilon$-insensível ajudam a evidenciar as suas propriedades de esparsidade de robustez. Como a Figura~\ref{fig:epsilon-derivada-completa} essa função retorna zero para um conjunto de valores do gradiente, além de não existir nenhum ponto em que ela ultrapasse o valor de 1. Apenas os pontos que caem fora do tubo (onde o gradiente $\pm 1$) se tornam os chamados vetores de suporte. Como o modelo é esparso, ele ignora os dados fáceis (de erro pequeno, e que caem dentro do tubo), e foca apenas nos difíceis, os vetores de suporte.
+
 
 \begin{figure}[h!]
-    \centering % Centraliza a figura
-
-    % --- Define o valor de epsilon e o ponto de corte (y real) ---
+    \centering
     \def\epsilon{1.0}
-    \def\yreal{5.0} % Valor de y (Real) para o corte 2D
+    \def\yreal{5.0}
 
-    % --- SUBFIGURA (a): Gráfico 2D da Derivada (Corte em y=5) ---
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                title={Visão 2D (corte em $y=\yreal$)},
                 xlabel={Valor Previsto ($\hat{y}$)},
                 ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
                 axis lines=middle,
@@ -2139,34 +2127,24 @@ Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfi
                 tick label style={font=\scriptsize}
             ]
                 
-                % --- Gráfico da Derivada por partes (const plot) ---
-                % Baseado na Equação 10.23: L' = 1 se y_hat < y - eps
-                \addplot[const plot, color=blue, very thick, opacity=0.8] 
+                \addplot[const plot, color=black, very thick, opacity=0.8] 
                     coordinates { (0, 1) (\yreal - \epsilon, 1) };
-                \addlegendentry{$\hat{y} - y < -\epsilon \implies +1$}
                 
-                % L' = 0 se |y_hat - y| <= eps
                 \addplot[const plot, color=gray, very thick, opacity=0.8] 
                     coordinates { (\yreal - \epsilon, 0) (\yreal + \epsilon, 0) };
-                \addlegendentry{$|\hat{y} - y| \le \epsilon \implies 0$}
                 
-                % L' = -1 se y_hat - y > eps
-                \addplot[const plot, color=red, very thick, opacity=0.8] 
+                \addplot[const plot, color=black, very thick, opacity=0.8] 
                     coordinates { (\yreal + \epsilon, -1) (10, -1) };
-                \addlegendentry{$\hat{y} - y > \epsilon \implies -1$}
 
-                % --- Linhas de marcação ---
-                % Linha vertical para o valor real
                 \draw[dashed, gray] (axis cs:\yreal, -1.5) -- (axis cs:\yreal, 1.5);
                 \node[above, gray!80, font=\tiny] at (axis cs:\yreal, 1.5) {Valor Real};
                 
-                % Linhas verticais para a margem epsilon
                 \draw[dashed, black!60] (axis cs:\yreal-\epsilon, -1.5) -- (axis cs:\yreal-\epsilon, 1.5);
                 \draw[dashed, black!60] (axis cs:\yreal+\epsilon, -1.5) -- (axis cs:\yreal+\epsilon, 1.5);
 
             \end{axis}
         \end{tikzpicture}
-        \caption{Visão 2D (corte em $y=\yreal$).}%
+        \caption{Relação constante por partes entre erro e gradiente da perda.}%
         \label{fig:epsilon-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -2176,7 +2154,6 @@ Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfi
             \begin{axis}[
                 width=\linewidth,
                 height=7cm,
-                title={Superfície 3D completa},
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
                 zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
@@ -2187,50 +2164,36 @@ Tendo sua derivada calculada, o próximo passo é fazer a plotagem do seu gráfi
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                colormap/viridis % Mapa de cores do seu template
+                colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.5)}
             ]
-                % Gráfico da superfície da Derivada da Epsilon-Insensitive Loss
-                % x = y (Real), y = y_hat (Previsto)
-                % Fórmula (Equação 10.23):
-                % (y - x > epsilon) ? -1 : ( (y - x < -epsilon) ? 1 : 0 )
                 \addplot3[
-                    mesh,           
-                    color=red,   % Cor consistente com o gráfico 2D
-                    shader=interp,  
-                    domain=-5:5,    % Mesmo domínio do seu template
-                    domain y=-5:5,  % Mesmo domínio do seu template
-                    samples=15      % Mesma resolução da malha
+                    surf,           
+                    shader=faceted,  
+                    faceted color=black!60, 
+                    domain=-5:5,    
+                    domain y=-5:5, 
+                    samples=20,
+                    z buffer=sort
                 ] { (y - x > \epsilon) ? -1 : ( (y - x < -\epsilon) ? 1 : 0 ) }; 
             \end{axis}
         \end{tikzpicture}
-        \caption{Superfície 3D completa.}%
+        \caption{Superfície do gradiente no espaço.}%
         \label{fig:epsilon-derivada-3d}
     \end{subfigure}
 
-    \caption{Visualizações da derivada (gradiente) da função de perda epsilon-insensível (com $\epsilon=1$).}%
+    \caption{Visualizações do gradiente da perda $\epsilon$-insensível em relação à predição (com $\epsilon = 1$).}%
     \label{fig:epsilon-derivada-completa}
     \fonte{O autor (2025).}
 \end{figure}
 
-Perceba como as características da função refletem em sua derivada, nas retas definidas por $\epsilon$ em que a perda é zero, consequentemente a sua derivada também será zero, algo que pode ser visto no gráfico da Figura~\ref{fig:epsilon-derivada-2d}, existem uma lacuna onde a função também é zero. Além disso, note que nos pontos em que acontece o ``bico'' da função original, eles viram uma reta vertical na derivada, como a Figura~\ref{fig:epsilon-derivada-3d}. Isso é interessante pois nos mostra de forma mais direta, quais serão os pontos em que será difícil de calcular o gradiente e com isso ele irá nos causar problemas.
-
-Essa análise de descontinuidade pode ser feita também com o próprio gráfico da função, mas como o cálculo da derivada depende que a função seja contínua no ponto desejado, ao plotar os gráficos de uma função de perda, é possível ter uma noção mais explícita dos pontos ``problema'' de uma função de perda.
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
 \subsubsection*{Aplicações da perda epsilon-insensível em aprendizado de máquina}%
 \index{Aplicações práticas! Perda epsilon-insensível}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
 
 \section{Perdas baseadas em distribuições de dados}%
 \label{sec:perdas-baseadas-em-distribuicoes-de-dados}
