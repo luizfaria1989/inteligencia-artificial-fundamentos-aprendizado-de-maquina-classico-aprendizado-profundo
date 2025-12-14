@@ -67,25 +67,25 @@ Antes de discutir as funções de perda para tarefas de regressão, é important
 
 \section{Funções de perda para regressão para propósitos gerais}
 
-A primeira seção desse capítulo que explora as funções de perda busca focar nas funções de perda mais comuns, que geralmente são umas das primeiras alternativas para serem utilizadas ao construir um modelo de regressão. Entre elas, vale destacar a dupla de funções erro quadrático médio (também conhecido como perda L2) e o erro absoluto médio (que também recebe o nome de perda L1). Contudo, essa seção também apresenta outras alternativas, como a perda de Huber, uma função que tem como objetivo unir as principais características do \textit{MSE} e do \textit{MAE}. Além disso, também é apresentada uma alternativa para a perda de Huber: a perda log-cosh, que possui propriedades parecidas com essa outra função, mas que resolve os problemas de descontinuidade.
+A primeira seção desse capítulo que explora as funções de perda busca focar nas funções de perda mais comuns, que geralmente são umas das primeiras alternativas para serem utilizadas ao construir um modelo de regressão. Entre elas, vale destacar a dupla de funções erro quadrático médio (também conhecido como perda L2) e o erro absoluto médio (que também recebe o nome de perda L1). Contudo, essa seção também apresenta outras alternativas, como a perda de Huber, uma função que tem como objetivo unir as principais características do MSE e do MAE. Além disso, também é apresentada uma alternativa para a perda de Huber: a perda log-cosh, que possui propriedades parecidas com essa outra função, mas que resolve os problemas de descontinuidade.
 
 \subsection{Erro quadrático médio (MSE)}%
 \index{Funções de Perda!Erro quadrático médio (MSE)}%
 \label{sec:mse-loss}
 
-O \textbf{\gls{mse-loss}}, também conhecido como \textbf{\textit{mean squared error}} (\textbf{\textit{MSE}}) ou \textbf{perda L2}, tem suas origens no século XIX. Nessa época, estava em alta o estudo da astronomia, com os pesquisadores buscando entender o comportamento das estrelas e dos outros planetas. O \textit{MSE} surge nesse contexto, mais precisamente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas). Nele, \textcite{Legendre1805} introduz o método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros. Ou seja, minimizar o erro quadrático médio.
+O \textbf{\gls{mse-loss}}, também conhecido como \textbf{\textit{mean squared error}} (\textbf{MSE}) ou \textbf{perda L2}, tem suas origens no século XIX. Nessa época, estava em alta o estudo da astronomia, com os pesquisadores buscando entender o comportamento das estrelas e dos outros planetas. O MSE surge nesse contexto, mais precisamente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas). Nele, \textcite{Legendre1805} introduz o método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros. Ou seja, minimizar o erro quadrático médio.
 
 O trabalho de Legendre não foi o único responsável por popularizar o método dos mínimos quadrados. Em \textit{Theoria Motus Corporum Coelestium in Sectionibus Conicis Solem Ambientium} (Teoria do Movimento dos Corpos Celestes em Seções Cônicas ao Redor do Sol), \textcite{Gauss1809}, discute um problema que se inicia com um sistema de equações lineares com mais equações que incógnitas derivadas de observações astronômicas que possuem erros. Seu objetivo é encontrar o valor mais provável para essas incógnitas.
 
 É definido por Gauss que, o valor mais provável de uma quantidade de medidas de igual precisão é dado pela média aritmética dessas medidas \parencite{Gauss1809}. \textcite{Gauss1809} questiona qual deve ser a lei de probabilidade dos erros para que a média aritmética seja sempre a estimativa mais provável. Utilizando o princípio da máxima-verossimilhança das probabilidades de todos os erros, o matemático consegue ser capaz de demonstrar matematicamente que a única função que satisfaz o seu postulado da média aritmética é a própria distribuição Normal.
 
-Sabendo disso, Gauss inverte a lógica: se a probabilidade de um conjunto de erros é maximizada quando a soma dos seus quadrados é minimizada, então o método dos mínimos quadrados é o método que dá a solução mais provável para a suposição de que os erros de medição são normalmente distribuídos \parencite{Gauss1809}. O matemático adicionou mais embasamento teórico na técnica de Legendre, aumentando a confiabilidade do método dos mínimos quadrados, e também do \textit{MSE}.
+Sabendo disso, Gauss inverte a lógica: se a probabilidade de um conjunto de erros é maximizada quando a soma dos seus quadrados é minimizada, então o método dos mínimos quadrados é o método que dá a solução mais provável para a suposição de que os erros de medição são normalmente distribuídos \parencite{Gauss1809}. O matemático adicionou mais embasamento teórico na técnica de Legendre, aumentando a confiabilidade do método dos mínimos quadrados, e também do MSE.
 
 Passados quase 200 anos, o erro quadrático médio passa a ser uma das principais funções a ser utilizada para calcular o erro dos modelos. Caso você tenha lido o Capítulo~\ref{cap:retropropagacao-gradiente}, pode ter notado que ele foi uma das funções, junto com a sigmoide logística e a equação do neurônio, a ser utilizada para deduzir os cálculos das atualizações de pesos para o algoritmo da retropropagação.
 
 Voltando para analogia do jogo dos dardos. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e, vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Jogadores que acertam dardos mais próximos do centro, perdem poucos pontos. Entretanto, aqueles jogadores que são mais desleixados, que acertam longe do centro perdem muitos pontos. Porque além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
 
-Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do \textit{MSE}. A sua fórmula Equação~\ref{eq:mse}. O erro quadrático médio calcula a diferença do valor real $y_j$ com o valor predito pelo modelo $\hat{y}_j$, ou seja, o erro daquela predição. Tendo analisado todos os erros, o \textit{MSE} calcula a média dos erros, retornando o valor final da perda.
+Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do MSE. A sua fórmula Equação~\ref{eq:mse}. O erro quadrático médio calcula a diferença do valor real $y_j$ com o valor predito pelo modelo $\hat{y}_j$, ou seja, o erro daquela predição. Tendo analisado todos os erros, o MSE calcula a média dos erros, retornando o valor final da perda.
 
 \begin{equacaodestaque}{Erro quadrático médio}
     \Loss_{\text{MSE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (y_j -\hat{y}_j)^2%
@@ -100,7 +100,7 @@ Em que:
     \item[$N$] representa o número de amostras.
 \end{description}
 
-A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gráfico da esquerda mostra a vista em duas dimensões do \textit{MSE} com foco no erro, enquanto o gráfico da direita apresenta a superfície no espaço dessa função de perda. As funções de perda neste capítulo estão em sua maioria representadas dessa forma, uma vez que apresentar a vista bidimensional com relação ao erro ilustra como o erro cresce. Enquanto a vista em três dimensões garante uma melhor visualização de como a função de perda é representada de fato.
+A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gráfico da esquerda mostra a vista em duas dimensões do MSE com foco no erro, enquanto o gráfico da direita apresenta a superfície no espaço dessa função de perda. As funções de perda neste capítulo estão em sua maioria representadas dessa forma, uma vez que apresentar a vista bidimensional com relação ao erro ilustra como o erro cresce. Enquanto a vista em três dimensões garante uma melhor visualização de como a função de perda é representada de fato.
 
 \begin{figure}[h!]
     \centering 
@@ -177,11 +177,11 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]
     
-    \item[Continuidade e suavidade:] O erro quadrático médio é uma função de classe $C^{\infty}$, é infinitamente diferenciável (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o \textit{MSE} uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
-    \item[Sensibilidade a \textit{outliers}:] O \textit{MSE} é uma função que não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mse}). Caso o erro do modelo treinado cresça exponencialmente, o valor numérico da perda será consideravelmente grande. Não somente isso, ele é sensível a \textit{outliers}, se um grupo de dados fora do padrão estiver presente no conjunto de dados, eles podem enviesar o cálculo da perda, e também na otimização em busca de pontos de mínimo.
-    \item[Convexidade:] O \textit{MSE} é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-mse}), representado pelos gráficos da Figura~\ref{fig:mse}, que apresentam uma função com formato de tigela. Dessa forma, essa característica torna-se uma vantagem se estiver sendo utilizados otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, \textcite{LossesArticle} argumentam que essa propriedade pode deixar de ser verdade em algoritmos de aprendizado profundo.
-    \item[Não-negatividade:] omo gráficos da Figura~\ref{fig:mse} ilustram, o \textit{MSE} é retorna apenas valores positivos. Isso se dá devido à diferença das entradas estar sendo calculada, e, em seguida, elevada ao quadrado, impendido que valores negativos ocorram na saída.
-    \item[Baixa interpretabilidade:] O \textit{MSE} eleva o erro ao quadrado. Ao retornar o valor da perda, não é visto diretamente a distância entre os pontos reais e os pontos preditos pelo modelo. Essa cálculo dificulta saber, de forma rápida, quão bem ou mal o modelo está performando. Funções como a \textit{MAE}, em que o erro é dado pelo módulo da distância entre os dois pontos são mais diretas em mostrar a performance do modelo;
+    \item[Continuidade e suavidade:] O erro quadrático médio é uma função de classe $C^{\infty}$, é infinitamente diferenciável (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o MSE uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
+    \item[Sensibilidade a \textit{outliers}:] O MSE é uma função que não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mse}). Caso o erro do modelo treinado cresça exponencialmente, o valor numérico da perda será consideravelmente grande. Não somente isso, ele é sensível a \textit{outliers}, se um grupo de dados fora do padrão estiver presente no conjunto de dados, eles podem enviesar o cálculo da perda, e também na otimização em busca de pontos de mínimo.
+    \item[Convexidade:] O MSE é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-mse}), representado pelos gráficos da Figura~\ref{fig:mse}, que apresentam uma função com formato de tigela. Dessa forma, essa característica torna-se uma vantagem se estiver sendo utilizados otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, \textcite{LossesArticle} argumentam que essa propriedade pode deixar de ser verdade em algoritmos de aprendizado profundo.
+    \item[Não-negatividade:] omo gráficos da Figura~\ref{fig:mse} ilustram, o MSE é retorna apenas valores positivos. Isso se dá devido à diferença das entradas estar sendo calculada, e, em seguida, elevada ao quadrado, impendido que valores negativos ocorram na saída.
+    \item[Baixa interpretabilidade:] O MSE eleva o erro ao quadrado. Ao retornar o valor da perda, não é visto diretamente a distância entre os pontos reais e os pontos preditos pelo modelo. Essa cálculo dificulta saber, de forma rápida, quão bem ou mal o modelo está performando. Funções como a MAE, em que o erro é dado pelo módulo da distância entre os dois pontos são mais diretas em mostrar a performance do modelo;
     
 \end{description}
 
@@ -194,14 +194,14 @@ A derivada do erro quadrático médio está na Equação~\ref{eq:mse-derivada}. 
     \label{eq:mse-derivada}
 \end{equacaodestaque}
 
-A Equação~\ref{fig:mse-derivada} mostra a derivada parcial do erro quadrático médio em relação à predição feita pelo modelo $\hat{y}_j$. Mas existe também a derivada parcial em relação ao valor real $y_j$. Juntas, tem-se a Equação~\ref{eq:vetor-gradiente-mse}, que representa o vetor gradiente do \textit{MSE}. Neste livro será dado um foco maior em apresentar apenas uma das derivadas. Porque, elas muitas vezes apresentarão grandes semelhanças.
+A Equação~\ref{fig:mse-derivada} mostra a derivada parcial do erro quadrático médio em relação à predição feita pelo modelo $\hat{y}_j$. Mas existe também a derivada parcial em relação ao valor real $y_j$. Juntas, tem-se a Equação~\ref{eq:vetor-gradiente-mse}, que representa o vetor gradiente do MSE. Neste livro será dado um foco maior em apresentar apenas uma das derivadas. Porque, elas muitas vezes apresentarão grandes semelhanças.
 
 \begin{equation}
     \nabla (y_j, \hat{y}_j) = \left( \frac{\partial \Loss_{\text{MSE}}}{\partial y_j}, \frac{\partial \Loss_{\text{MSE}}}{\partial \hat{y}_j} \right)%
     \label{eq:vetor-gradiente-mse}
 \end{equation}
 
-Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na Figura~\ref{fig:mse-derivada}. A Figura~\ref{fig:mse-derivada-2d} mostra que o gradiente do \textit{MSE} é proporcional ao erro do modelo. Um erro alto, gera um gradiente alto, e vice-versa. Quando o modelo está nas primeiras épocas do treinamento, e ainda não se ajustou aos dados, seu erro será alto. Se nesse treinamento estiver sendo utilizado um algoritmo de otimização baseado em gradiente, o ajuste dos parâmetros do modelo será mais brusco. Dado que a variação dos valores dos parâmetros de uma iteração para outra é diretamente proporcional ao vetor gradiente (como explica a Equação~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-regressao}). Contudo, quando o modelo já tiver melhor se ajustado aos dados, o erro será menor, o gradiente também. Por conseguinte, a retropropagação irá garantir um ajuste fino nos pesos e vieses do modelo.
+Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na Figura~\ref{fig:mse-derivada}. A Figura~\ref{fig:mse-derivada-2d} mostra que o gradiente do MSE é proporcional ao erro do modelo. Um erro alto, gera um gradiente alto, e vice-versa. Quando o modelo está nas primeiras épocas do treinamento, e ainda não se ajustou aos dados, seu erro será alto. Se nesse treinamento estiver sendo utilizado um algoritmo de otimização baseado em gradiente, o ajuste dos parâmetros do modelo será mais brusco. Dado que a variação dos valores dos parâmetros de uma iteração para outra é diretamente proporcional ao vetor gradiente (como explica a Equação~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-regressao}). Contudo, quando o modelo já tiver melhor se ajustado aos dados, o erro será menor, o gradiente também. Por conseguinte, a retropropagação irá garantir um ajuste fino nos pesos e vieses do modelo.
 
 \begin{figure}[h!]
     \centering 
@@ -278,25 +278,25 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
     \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-perda-regressao}
 \end{equation}
 
-\subsubsection*{Raiz do erro quadrático médio (RSMLE)}
+\subsubsection*{Raiz do erro quadrático médio (RMSE)}
 
-Além disso, cabe discutir a \textbf{raiz do erro quadrático médio}, também chamada de \textbf{\textit{root mean squared error}} (\textbf{\textit{RMSE}}). Ela está na Equação~\ref{eq:rmse-metric}. Ela é uma função derivada do \textit{MSE}, cuja diferença está no cálculo de uma raiz quadrada a partir do resultado do \textit{MSE}.
+Além disso, cabe discutir a \textbf{raiz do erro quadrático médio}, também chamada de \textbf{\textit{root mean squared error}} (\textbf{RMSE}). Ela está na Equação~\ref{eq:rmse-metric}. Ela é uma função derivada do MSE, cuja diferença está no cálculo de uma raiz quadrada a partir do resultado do MSE.
 
 \begin{equacaodestaque}{Raiz do erro quadrático médio}
     {RMSE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (y_j -\hat{y}_j)^2}%
     \label{eq:rmse-metric}
 \end{equacaodestaque}
 
-A \textit{RMSE} serve de métrica para avaliar os modelos de regressão. O \textit{MSE} funciona como uma função de perda bem como uma métrica avaliativa. Mas, é difícil interpretar a primeira vista os seus resultados, uma vez que ele eleva ao quadrado o cálculo do erro. Com a \textit{RMSE} é resolvido esse ``problema'' da interpretabilidade, gerando um resultado mais tangível para entender como o modelo está performando.
+A RMSE serve de métrica para avaliar os modelos de regressão. O MSE funciona como uma função de perda bem como uma métrica avaliativa. Mas, é difícil interpretar a primeira vista os seus resultados, uma vez que ele eleva ao quadrado o cálculo do erro. Com a RMSE é resolvido esse ``problema'' da interpretabilidade, gerando um resultado mais tangível para entender como o modelo está performando.
 
 \subsubsection*{Aplicações do erro quadrático médio em aprendizado de máquina}%
 \index{Aplicações práticas! Erro quadrático médio (MSE)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Estimação de custos médicos (saúde):] Para fazer previsões de custos médicos \textcite{MedicalCostsEstimationUsingLR} utilizam técnicas de regressão, para avaliar os modelos criados, os autores utilizam o \textit{MSE}, \textit{MAE} e $R^2$ como métricas.
-    \item[Estimação de preços de imóveis (mercado imobiliário):] \textcite{OptimalHousePricePrediction} criam modelos de regressão (como regressão linear, florestas aleatórias e XGBoost) com intuito de prever valores de casas, eles fazem uso do \textit{MSE} e da \textit{RMSE} para avaliar o desempenho.
-    \item[Previsão da produção agrícola (agronomia):] \textcite{CouplingMachineLearningAndCropModeling} combinam aprendizado de máquina com modelagem de culturas para prever a produção das plantações na região do cinturão do milho nos Estados Unidos. Para avaliar as predições, eles utilizam a \textit{RMSE} como métrica \parencite{CouplingMachineLearningAndCropModeling}
-    \item[Previsão de demanda de energia (gestão energética):] \textcite{OptimizingFL} fazem uma adaptação do \textit{MSE} transformando-o no \textit{Exponentially Weighted Mean Squared Error} (\textit{EW-RSM}), essa adaptação é justificada como uma forma de enfatizar a acurácia em previsões de longo prazo atribuindo pesos exponencialmente crescentes aos erros em etapas de tempo posteriores.
+    \item[Estimação de custos médicos (saúde):] Para fazer previsões de custos médicos \textcite{MedicalCostsEstimationUsingLR} utilizam técnicas de regressão, para avaliar os modelos criados, os autores utilizam o MSE, MAE e $R^2$ como métricas.
+    \item[Estimação de preços de imóveis (mercado imobiliário):] \textcite{OptimalHousePricePrediction} criam modelos de regressão (como regressão linear, florestas aleatórias e XGBoost) com intuito de prever valores de casas, eles fazem uso do MSE e da RMSE para avaliar o desempenho.
+    \item[Previsão da produção agrícola (agronomia):] \textcite{CouplingMachineLearningAndCropModeling} combinam aprendizado de máquina com modelagem de culturas para prever a produção das plantações na região do cinturão do milho nos Estados Unidos. Para avaliar as predições, eles utilizam a RMSE como métrica \parencite{CouplingMachineLearningAndCropModeling}
+    \item[Previsão de demanda de energia (gestão energética):] \textcite{OptimizingFL} fazem uma adaptação do MSE transformando-o no \textit{Exponentially Weighted Mean Squared Error} (\textit{EW-RSM}), essa adaptação é justificada como uma forma de enfatizar a acurácia em previsões de longo prazo atribuindo pesos exponencialmente crescentes aos erros em etapas de tempo posteriores.
 \end{description}
 
 \medskip
@@ -307,11 +307,11 @@ O erro quadrático médio é ideal para ser utilizado em cenários que deve-se g
 \index{Funções de Perda!Erro absoluto médio (MAE)}%
 \label{sec:mae-loss}
 
-O \textbf{\gls{mae-loss}}, também chamado de \textbf{perda L1}, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada em tarefas de regressão. Ele não possui uma origem definida como o \textit{MSE}, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado há bastante tempo. 
+O \textbf{\gls{mae-loss}}, também chamado de \textbf{perda L1}, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada em tarefas de regressão. Ele não possui uma origem definida como o MSE, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado há bastante tempo. 
 
-Trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} utilizam essa função de perda para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o \textit{MAE} (o qual é apresentado com outro nome, \textbf{\textit{Least-Absolute-Deviation}} (\textbf{\textit{LAD}})), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. \textcite{GreedyFunctionApproximation} explica que esse algoritmo utiliza uma árvore de regressão com a perda, para prever a pseudo-resposta que é o sinal dos resíduos atuais. Como consequência, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
+Trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} utilizam essa função de perda para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o MAE (o qual é apresentado com outro nome, \textbf{\textit{Least-Absolute-Deviation}} (\textbf{LAD})), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. \textcite{GreedyFunctionApproximation} explica que esse algoritmo utiliza uma árvore de regressão com a perda, para prever a pseudo-resposta que é o sinal dos resíduos atuais. Como consequência, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
-Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-Image Translation with Conditional Adversarial Networks} \parencite{ImageToImage}. Nele, \textcite{ImageToImage} argumentam que preferiram trabalhar com a distância L1 (um dos diferentes nomes utilizados para se referir ao \textit{MAE}) devido à ela gerar imagens menos borradas. A comparação das funções de perda utilizadas na pesquisa está nas imagens da Figura~\ref{fig:comparativo-perdas-image-to-image}. A perda que apresenta os resultados mais consistentes com a realidade é a \textit{L1 + cGAN}, a qual possuí o \textit{MAE} em sua composição.
+Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-Image Translation with Conditional Adversarial Networks} \parencite{ImageToImage}. Nele, \textcite{ImageToImage} argumentam que preferiram trabalhar com a distância L1 (um dos diferentes nomes utilizados para se referir ao MAE) devido à ela gerar imagens menos borradas. A comparação das funções de perda utilizadas na pesquisa está nas imagens da Figura~\ref{fig:comparativo-perdas-image-to-image}. A perda que apresenta os resultados mais consistentes com a realidade é a L1 + cGAN, a qual possuí o MAE em sua composição.
 
 \begin{figure}[h]
     \centering
@@ -325,11 +325,11 @@ Um trabalho mais recente que explora o uso dessa função é o \textit{Image-to-
     \label{fig:comparativo-perdas-image-to-image}
 \end{figure}
 
-Voltando para a analogia dos dardos. Consideramos que será feito um novo jogo com dez participantes, no jogo, cada um tem direito de jogar apenas um dardo. No final, os dardos serão somados e será dado o resultado da equipe. Se tivéssemos uma equipe muito ruim utilizando como métrica o \textit{MSE} para avaliar os pontos, o resultado seria péssimo. Os dardos estariam muito longes do centro, e, como o erro é elevado ao quadrado, isso geraria uma pontuação ainda menor. 
+Voltando para a analogia dos dardos. Consideramos que será feito um novo jogo com dez participantes, no jogo, cada um tem direito de jogar apenas um dardo. No final, os dardos serão somados e será dado o resultado da equipe. Se tivéssemos uma equipe muito ruim utilizando como métrica o MSE para avaliar os pontos, o resultado seria péssimo. Os dardos estariam muito longes do centro, e, como o erro é elevado ao quadrado, isso geraria uma pontuação ainda menor. 
 
-Contudo, se a métrica escolhida para avaliar o jogo fosse o \textit{MAE} o resultado seria melhor. Visto que, o erro cresce de forma linear. No contexto de aprendizado de máquina, os jogadores ruins se comparam com os \textit{outliers}, eles estão presentes nos dados e vão enviesar o aprendizado do modelo. Entretanto, utilizar uma função que não seja tão sensível na medição desses valores extremos pode ser uma boa alternativa para cenários em que essa configuração será comum.
+Contudo, se a métrica escolhida para avaliar o jogo fosse o MAE o resultado seria melhor. Visto que, o erro cresce de forma linear. No contexto de aprendizado de máquina, os jogadores ruins se comparam com os \textit{outliers}, eles estão presentes nos dados e vão enviesar o aprendizado do modelo. Entretanto, utilizar uma função que não seja tão sensível na medição desses valores extremos pode ser uma boa alternativa para cenários em que essa configuração será comum.
 
-O \textit{MAE} está definido na Equação~\ref{eq:mae}. Essa função de perda avalia a diferença entre dois pontos: o valor real $y_j$ e o valor predito $\hat{y}_j$, para todos os $N$ casos analisados. A partir disso, calcula a média dos resultados, retornando o valor final para a perda do modelo.
+O MAE está definido na Equação~\ref{eq:mae}. Essa função de perda avalia a diferença entre dois pontos: o valor real $y_j$ e o valor predito $\hat{y}_j$, para todos os $N$ casos analisados. A partir disso, calcula a média dos resultados, retornando o valor final para a perda do modelo.
 
 \begin{equacaodestaque}{Erro absoluto médio}
     \Loss_{\text{MAE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} |y_j -\hat{y}_j|%
@@ -344,7 +344,7 @@ Em que:
     \item[$N$] representa o número de amostras.
 \end{description}
 
- Diferente do erro quadrático médio, o textit{MAE} cresce de forma linear, como é mostrado na Figura~\ref{fig:mae}. Isso garante para essa função de perda uma melhor capacidade de lidar com \textit{outliers}, dado que o erro não irá aumentar de forma exacerbada como acontecia no \textit{MSE}. O \textit{MAE} também apresenta uma ``quina'', nos pontos em que o cálculo do erro é nulo. Dessa forma, essa função não pode ser classificada como suave em todo o seu domínio.
+ Diferente do erro quadrático médio, o MAE cresce de forma linear, como é mostrado na Figura~\ref{fig:mae}. Isso garante para essa função de perda uma melhor capacidade de lidar com \textit{outliers}, dado que o erro não irá aumentar de forma exacerbada como acontecia no MSE. O MAE também apresenta uma ``quina'', nos pontos em que o cálculo do erro é nulo. Dessa forma, essa função não pode ser classificada como suave em todo o seu domínio.
 
 \begin{figure}[h!]
     \centering
@@ -420,16 +420,16 @@ Em que:
 \subsubsection*{Características do erro absoluto médio}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] O \textit{MAE} é uma função de classe $C^0$ (ver Apêndice~\ref{ap:deducoes-mae}). Ele é contínuo em todo o seu domínio, mas, devido ao ``bico'' quando o erro é zero, não pode ser totalmente derivado. Essa característica não impede que o erro absoluto médio seja utilizado em conjunto com otimizadores baseados em gradiente. Como será visto, é possível contornar esse problema com o cálculo do subgradiente.
-    \item[Convexidade:] O \textit{MAE} é convexo (ver Apêndice~\ref{ap:deducoes-mae}). Como o teorema de \textbf{Convexidade de Normas e Máximos} afirma, toda função modular é convexa como consequência da desigualdade triangular. Isso também está explicitado nos gráficos da Figura~\ref{fig:mae}, com o formato em ``V'' da função de perda.
+    \item[Continuidade, suavidade e diferenciabilidade:] O MAE é uma função de classe $C^0$ (ver Apêndice~\ref{ap:deducoes-mae}). Ele é contínuo em todo o seu domínio, mas, devido ao ``bico'' quando o erro é zero, não pode ser totalmente derivado. Essa característica não impede que o erro absoluto médio seja utilizado em conjunto com otimizadores baseados em gradiente. Como será visto, é possível contornar esse problema com o cálculo do subgradiente.
+    \item[Convexidade:] O MAE é convexo (ver Apêndice~\ref{ap:deducoes-mae}). Como o teorema de \textbf{Convexidade de Normas e Máximos} afirma, toda função modular é convexa como consequência da desigualdade triangular. Isso também está explicitado nos gráficos da Figura~\ref{fig:mae}, com o formato em ``V'' da função de perda.
     \item[Robustez para \textit{outliers}:] Como é apontado na Figura~\ref{fig:mae}, o erro absoluto médio não retorna valores negativos para nenhum valor de entrada. A sua saída saída será sempre positiva ou zero, independente da entrada. Isso se dá, devido à propriedade do módulo, que não admite números negativos para sua saída;
     \item[Não-derivável em zero:] Esse ponto acontece devido à forma que a função módulo é representa graficamente, ela tem a forma de um ``bico'' em zero. Para contornar esse problema, pode ser utilizado o subgradiente.
-    \item[Boa interpretabilidade:] Diferente do erro quadrático médio em que o erro total é elevado ao quadrado, no \textit{MAE} isso não ocorre. O erro é simplesmente a média das diferenças dos pontos. É intuitivo interpretar os resultados que essa função de perda retorna, considerando que não é preciso fazer nenhum cálculo adicional para ter uma noção precisa se as previsões feitas pelo modelo condizentes ou não dos valores reais.
+    \item[Boa interpretabilidade:] Diferente do erro quadrático médio em que o erro total é elevado ao quadrado, no MAE isso não ocorre. O erro é simplesmente a média das diferenças dos pontos. É intuitivo interpretar os resultados que essa função de perda retorna, considerando que não é preciso fazer nenhum cálculo adicional para ter uma noção precisa se as previsões feitas pelo modelo condizentes ou não dos valores reais.
 \end{description}
 
 \subsubsection*{Gradiente do erro absoluto médio}
 
-Como destacado anteriormente, o \textit{MAE} não é diferenciável em zero. Assim, pode-se ter a ideia de que devido a isso, essa não seja uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente. Contudo, existe uma forma de contornar esse problema da não-diferenciabilidade: o subgradiente.
+Como destacado anteriormente, o MAE não é diferenciável em zero. Assim, pode-se ter a ideia de que devido a isso, essa não seja uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente. Contudo, existe uma forma de contornar esse problema da não-diferenciabilidade: o subgradiente.
 
 O subgradiente é uma estratégia que generaliza a derivada para funções convexas não-diferenciáveis, um exemplo disso é a função módulo de $x$. Em vez de um único valor em um determinado ponto, o subgradiente retorna um conjunto de valores possíveis para a inclinação da reta tangente.
  
@@ -453,9 +453,9 @@ Ao utilizar o subgradiente para calcular a derivada parcial do erro absoluto mé
     \label{eq:mae-derivada}
 \end{equacaodestaque}
 
- Pelo fato do \textit{MAE} ser uma função que não é diferenciável em todos o seu domínio, isso reflete no jeito com que o gráficos da derivada são representados, os quais estão na Figura~\ref{fig:mae-derivada}. Existem, também na derivada, pontos de descontinuidade, fazendo com que o gráfico dessa função se assemelhe ao gráfico da função de ativação degrau unitário. Esses pontos de descontinuidade, estão exatamente em zero, assim como na função original.
+ Pelo fato do MAE ser uma função que não é diferenciável em todos o seu domínio, isso reflete no jeito com que o gráficos da derivada são representados, os quais estão na Figura~\ref{fig:mae-derivada}. Existem, também na derivada, pontos de descontinuidade, fazendo com que o gráfico dessa função se assemelhe ao gráfico da função de ativação degrau unitário. Esses pontos de descontinuidade, estão exatamente em zero, assim como na função original.
 
-Diferente do \textit{MSE} que é uma parábola, e portanto, ao ser derivado, gera o gráfico de uma reta que cresce de forma linear. O \textit{MAE} gera o gráfico de duas retas constantes, dado que a derivada de uma função linear é uma função constante.
+Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráfico de uma reta que cresce de forma linear. O MAE gera o gráfico de duas retas constantes, dado que a derivada de uma função linear é uma função constante.
 
 \begin{figure}[h!]
     \centering
@@ -539,10 +539,10 @@ Diferente do \textit{MSE} que é uma parábola, e portanto, ao ser derivado, ger
 \index{Aplicações práticas! Erro absoluto médio (MAE)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Avaliação de idade óssea e estimação do escore de cálcio na artéria coronária (Saúde):] \textcite{chao2022regressionmetriclosslearning} desenvolvem algoritmos de regressão para estimar escore de cálcio da artéria coronária além de um segundo algoritmo para avaliação da idade óssea. Como forma de avaliar as previsões \textcite{chao2022regressionmetriclosslearning} utilizam o \textit{MAE} em uma das métricas.
-    \item[Restauração de imagens (Engenharia):] \textcite{Noise2Noise} estavam buscando uma maneira ideal de remover textos de imagens, de forma que o \textit{MAE}, por ser uma função de perda robusta, conseguiu atingir bons resultados nessa tarefa.
-    \item[Previsão da produção de energia eólica (Setor energético):] \textcite{MinimumOpenDataSubsetForWindPowerPrediction} utilizam um modelo de florestas aleatórias para prever a produção de energia eólica. Os autores avaliam o desempenho com as funções \textit{MAE}  e \textit{RMSE} \parencite{MinimumOpenDataSubsetForWindPowerPrediction}.
-    \item[Previsão de poluição do ar (Setor ambiental):] \textcite{nedungadi2025aircastimprovingairpollution} buscam formas de melhorar a previsão da poluição do ar, os pesquisadores utilizam uma função inspirada pelo \textit{MAE}, o \textit{Frequency-weighted Mean Absolute Error} (\textit{fMAE}), tendo como principal vantagem lidar com variáveis que apresentam uma distribuição de cauda pesada.
+    \item[Avaliação de idade óssea e estimação do escore de cálcio na artéria coronária (Saúde):] \textcite{chao2022regressionmetriclosslearning} desenvolvem algoritmos de regressão para estimar escore de cálcio da artéria coronária além de um segundo algoritmo para avaliação da idade óssea. Como forma de avaliar as previsões \textcite{chao2022regressionmetriclosslearning} utilizam o MAE em uma das métricas.
+    \item[Restauração de imagens (Engenharia):] \textcite{Noise2Noise} estavam buscando uma maneira ideal de remover textos de imagens, de forma que o MAE, por ser uma função de perda robusta, conseguiu atingir bons resultados nessa tarefa.
+    \item[Previsão da produção de energia eólica (Setor energético):] \textcite{MinimumOpenDataSubsetForWindPowerPrediction} utilizam um modelo de florestas aleatórias para prever a produção de energia eólica. Os autores avaliam o desempenho com as funções MAE  e RMSE \parencite{MinimumOpenDataSubsetForWindPowerPrediction}.
+    \item[Previsão de poluição do ar (Setor ambiental):] \textcite{nedungadi2025aircastimprovingairpollution} buscam formas de melhorar a previsão da poluição do ar, os pesquisadores utilizam uma função inspirada pelo MAE, o \textit{Frequency-weighted Mean Absolute Error} (\textit{fMAE}), tendo como principal vantagem lidar com variáveis que apresentam uma distribuição de cauda pesada.
 \end{description}
 
 \medskip
@@ -564,7 +564,7 @@ Proposta por Peter J. Huber, a \gls{huber-loss}, também chamada de \textit{\tex
     \label{eq:huber-loss-do-huber}
 \end{equation}
 
-Ao desenvolver a Equação~\ref{eq:huber-loss-do-huber}, Huber cria uma função que comportava de forma quadrática, semelhante ao \textit{MSE} para os casos em que $|t| < k$. Já para os casos em que $t \ge k$, a função cresce linearmente, como o \textit{MAE}. Essa função criada pelo pesquisador é a perda de Huber, que, representada com as notações deste livro, está na Equação~\ref{eq:huber-loss}.
+Ao desenvolver a Equação~\ref{eq:huber-loss-do-huber}, Huber cria uma função que comportava de forma quadrática, semelhante ao MSE para os casos em que $|t| < k$. Já para os casos em que $t \ge k$, a função cresce linearmente, como o MAE. Essa função criada pelo pesquisador é a perda de Huber, que, representada com as notações deste livro, está na Equação~\ref{eq:huber-loss}.
 
 \begin{equacaodestaque}{Perda de Huber}
     \Loss_{\text{Huber}} (y, \hat{y}) = 
@@ -932,7 +932,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
 
 \medskip
 
-A perda de Huber consegue unir o melhor dos dois mundos quando trata-se das perdas \textit{MSE} e \textit{MAE}. É uma função que atua de forma quadrática até certo ponto e depois, de forma linear. Ela garante ser robusta a \textit{outliers}, uma excelente vantagem para essa função. Entretanto, ao utilizar um parâmetro $\delta$ para definir o comportamento da função, a perda de Huber aumenta a complexidade do modelo criado. Esse fato pode ser um empecilho, gerando mais hiperparâmetro para ser otimizado empiricamente, levando mais tempo de pesquisa. Uma solução para manter o comportamento híbrido da perda, mas, ainda diminuir o hiperparâmetro de robustez, é a perda log-cosh.
+A perda de Huber consegue unir o melhor dos dois mundos quando trata-se das perdas MSE e MAE. É uma função que atua de forma quadrática até certo ponto e depois, de forma linear. Ela garante ser robusta a \textit{outliers}, uma excelente vantagem para essa função. Entretanto, ao utilizar um parâmetro $\delta$ para definir o comportamento da função, a perda de Huber aumenta a complexidade do modelo criado. Esse fato pode ser um empecilho, gerando mais hiperparâmetro para ser otimizado empiricamente, levando mais tempo de pesquisa. Uma solução para manter o comportamento híbrido da perda, mas, ainda diminuir o hiperparâmetro de robustez, é a perda log-cosh.
 
 \subsection{Perda log-cosh (log-cosh loss)}%
 \index{Funções de Perda!Perda log-cosh (log-cosh loss)}%
@@ -955,7 +955,7 @@ Em que:
     \item[$N$] representa o número de amostras.
 \end{description}
 
-A elegância da perda log-cosh está na interação dessas duas funções. Para erros pequenos,  $\cosh (e) \approx 1 + e^2/2$, como $\log (1 +x) \approx x$, a função se aproxima de $e^2/2$. Ou seja, para erros pequenos, a função tem um comportamento quadrático, semelhante ao que acontece do erro quadrático médio. Já para erros grandes, $\cosh (e) \approx e^{\|e\|}/2$, ao ser aplicado o logaritmo, o resultado se simplifica para uma função linear, $\log e^{\|e\|} \approx e$. Isso garante uma função robusta a \textit{outliers} assim como o \textit{MAE}. Dessa forma, a perda log-cosh apresenta a mesma natureza híbrida, quadrática-linear, da perda de Huber, sendo uma alternativa que não necessita de hiperparâmetros adicionais. 
+A elegância da perda log-cosh está na interação dessas duas funções. Para erros pequenos,  $\cosh (e) \approx 1 + e^2/2$, como $\log (1 +x) \approx x$, a função se aproxima de $e^2/2$. Ou seja, para erros pequenos, a função tem um comportamento quadrático, semelhante ao que acontece do erro quadrático médio. Já para erros grandes, $\cosh (e) \approx e^{\|e\|}/2$, ao ser aplicado o logaritmo, o resultado se simplifica para uma função linear, $\log e^{\|e\|} \approx e$. Isso garante uma função robusta a \textit{outliers} assim como o MAE. Dessa forma, a perda log-cosh apresenta a mesma natureza híbrida, quadrática-linear, da perda de Huber, sendo uma alternativa que não necessita de hiperparâmetros adicionais. 
 
 Esse comportamento variável para calcular os erros também é evidenciado nas suas representações gráficas, como a Figura~\ref{fig:log-cosh-loss} aponta. Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares.
 
@@ -1139,7 +1139,7 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
 \index{Aplicações práticas! Perda log-cosh}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Previsão de índices do mercado financeiro (Economia):] \textcite{FinantialMarketForecastingUsingRNN} criam algoritmos de aprendizado de máquina prever índices de ações globais (como o FTSE 100, S\&P 500 e HSI), construindo diferentes modelos, como uma rede neural recorrente. Eles utilizam a perda Log-Cosh junto com o \textit{MAE}, o \textit{MSE}, a \textit{RMSE} e também a perda de Huber \parencite{FinantialMarketForecastingUsingRNN}.
+    \item[Previsão de índices do mercado financeiro (Economia):] \textcite{FinantialMarketForecastingUsingRNN} criam algoritmos de aprendizado de máquina prever índices de ações globais (como o FTSE 100, S\&P 500 e HSI), construindo diferentes modelos, como uma rede neural recorrente. Eles utilizam a perda Log-Cosh junto com o MAE, o MSE, a RMSE e também a perda de Huber \parencite{FinantialMarketForecastingUsingRNN}.
     \item[Predição de bioatividade em moléculas (Farmácia):] \textcite{SiameseRecurrentNeuralNetwork} apresentam uma rede neural recorrente siamesa com o intuito de prever a bioatividade de pequenas moléculas. Os autores argumentam que a perda Log-Cosh foi uma função de perda ideal para ser aplicada nesse problema, pois apresentou o melhor desempenho das perdas que foram testadas: perda constrativa (\textit{constractive loss}), perda de Huber, perda L1 e perda L2 \parencite{SiameseRecurrentNeuralNetwork};
     \item[Aplicação 3 (Área):] \textcite{AnEffectiveMethodForDetectingUnknowTypes} propõem um modelo de \textit{deep learning} chamado de \textit{LVAE (Log-Cosh Variational Autoencoder)} com intuito detectar tipos desconhecidos de ataques em redes. A perda log-cosh é utilizada como a função de perda de reconstrução dentro do modelo \textit{variational autoencoder} \parencite{AnEffectiveMethodForDetectingUnknowTypes}.
 \end{description}
@@ -1159,14 +1159,14 @@ Considere que existem duas situações que está sendo previsto os valores de im
     \item[Cenário B:] o modelo previu que uma casa vale 950.000 R\$. Enquanto no rótulo está que ela vale 1.000.000 R\$..
 \end{description}
 
-Utilizando o \textit{MSE} para calcular a perda dessas funções encontramos que o erro será de $50.000$ e a perda de $250.00.000$, independentemente dos cenários. Para o cenário B, a previsão do modelo não foi tão ruim, foi uma previsão realista. Contudo, o modelo do cenário A previu que a casa valia apenas a metade do seu valor real, ele fez uma previsão subestimada.
+Utilizando o MSE para calcular a perda dessas funções encontramos que o erro será de $50.000$ e a perda de $250.00.000$, independentemente dos cenários. Para o cenário B, a previsão do modelo não foi tão ruim, foi uma previsão realista. Contudo, o modelo do cenário A previu que a casa valia apenas a metade do seu valor real, ele fez uma previsão subestimada.
 
-Neste caso, avaliar os modelos com uma função de perda que calcula o erro de forma absoluta (como o \textit{MSE} e o \textit{MAE}), pode não ser ideal. Para evitar esses problemas de subestimação, uma solução é o erro quadrático médio logarítmico.
+Neste caso, avaliar os modelos com uma função de perda que calcula o erro de forma absoluta (como o MSE e o MAE), pode não ser ideal. Para evitar esses problemas de subestimação, uma solução é o erro quadrático médio logarítmico.
 
 \subsection{Erro quadrático médio logarítmico (MSLE)}%
 \index{Funções de Perda!Erro quadrático médio logarítimico (MSLE)}%
 
-O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{\textit{MSLE}}), é calculado pela Equação~\ref{eq:msle-loss}. Ele calcula o erro como sendo a diferença dos logaritmos naturais do valor real $y_j$ com a predição $\hat{y}_j$ e depois faz a média dos erros das diferentes previsões.
+O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{MSLE}), é calculado pela Equação~\ref{eq:msle-loss}. Ele calcula o erro como sendo a diferença dos logaritmos naturais do valor real $y_j$ com a predição $\hat{y}_j$ e depois faz a média dos erros das diferentes previsões.
 
 \begin{equacaodestaque}{Erro quadrático médio logarítmico}
     \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (\ln(y_j + 1) -\ln(\hat{y}_j + 1))^2%
@@ -1183,7 +1183,7 @@ Em que:
 
 O valor $1$ que é somado junto com os valores de entrada no logaritmo serve como forma de evitar que seja calculado o logaritmo de zero, que não existe no conjunto dos reais. 
 
-A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadrático logarítmico. Para as situações em que a previsão $\hat{y}_j$ tem um valor muito pequeno quando comparada ao valor real $y_j$ a distância entre esses dois pontos é consideravelmente maior devido ao comportamento dos logaritmos. Dessa forma, para subestimações, o \textit{MSLE} gera erros maiores. Isso é útil para resolver o problema das contas de padaria e também de preços de imóveis vistos anteriormente. 
+A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadrático logarítmico. Para as situações em que a previsão $\hat{y}_j$ tem um valor muito pequeno quando comparada ao valor real $y_j$ a distância entre esses dois pontos é consideravelmente maior devido ao comportamento dos logaritmos. Dessa forma, para subestimações, o MSLE gera erros maiores. Isso é útil para resolver o problema das contas de padaria e também de preços de imóveis vistos anteriormente. 
 
 \begin{figure}[h!]
     \centering 
@@ -1270,12 +1270,12 @@ Essa propriedade assimétrica dos logaritmos também é explorada ao descrever o
 \subsubsection*{Características do erro quadrático médio logarítmico}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] O \textit{MSLE} é uma função de classe $C^{\infty}$ (infinitamente diferenciável) (ver Apêndice~\ref{ap:deducoes-msle}). Isso contribui para uma função de perda que pode ser facilmente utilizada em conjunto com otimizadores baseados em gradiente, dado que não serão encontrados problemas de continuidade ao derivar essa função.
-    \item[Convexidade:] JA função \textit{MSLE} é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-msle}). 
-    \item[Robustez:] A função \textit{MSLE} é Lipschitz-contínua, portanto é robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-msle}). Diferente do erro absoluto médio, que quando o valor do erro ``explode'' para infinito o seu gradiente será 1, no \textit{MSLE} o seu gradiente tende a 0. Como resultado, para erros muito grandes o erro logarítmico médio gera uma correção irrisória, o que pode não ser útil em certos casos.
-    \item[Foco no erro relativo (percentual):] Quando o \textit{MSLE} é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
-    \item[Tendência de penalizar subestimações:] Como aponta a Figura~\ref{fig:msle-loss}, o \textit{MSLE} não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
-    \item[Restrição de domínio (não-negatividade):] Como os logaritmos são indeterminados para valores nulos ou negativos, o \textit{MSLE} exige que os valores de entrada sejam positivos ($y_j > 0$ e $\hat{y}_j > 0$). Caso os conjunto de dados contenha valores negativos (como lucro/prejuízo ou temperaturas), o \textit{MSLE} irá causar erros matemáticos. Para contornar esse problema, deve-se aplicar uma transformação nos dados, como somar uma constante para deslocar os valores negativos para positivos, ou ser utilizada outra função de perda.
+    \item[Continuidade, suavidade e diferenciabilidade:] O MSLE é uma função de classe $C^{\infty}$ (infinitamente diferenciável) (ver Apêndice~\ref{ap:deducoes-msle}). Isso contribui para uma função de perda que pode ser facilmente utilizada em conjunto com otimizadores baseados em gradiente, dado que não serão encontrados problemas de continuidade ao derivar essa função.
+    \item[Convexidade:] A função MSLE é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-msle}). 
+    \item[Robustez:] A função MSLE é Lipschitz-contínua, portanto é robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-msle}). Diferente do erro absoluto médio, que quando o valor do erro ``explode'' para infinito o seu gradiente será 1, no MSLE o seu gradiente tende a 0. Como resultado, para erros muito grandes o erro logarítmico médio gera uma correção irrisória, o que pode não ser útil em certos casos.
+    \item[Foco no erro relativo (percentual):] Quando o MSLE é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
+    \item[Tendência de penalizar subestimações:] Como aponta a Figura~\ref{fig:msle-loss}, o MSLE não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
+    \item[Restrição de domínio (não-negatividade):] Como os logaritmos são indeterminados para valores nulos ou negativos, o MSLE exige que os valores de entrada sejam positivos ($y_j > 0$ e $\hat{y}_j > 0$). Caso os conjunto de dados contenha valores negativos (como lucro/prejuízo ou temperaturas), o MSLE irá causar erros matemáticos. Para contornar esse problema, deve-se aplicar uma transformação nos dados, como somar uma constante para deslocar os valores negativos para positivos, ou ser utilizada outra função de perda.
 \end{description}
 
 \subsubsection*{Gradiente do erro quadrático médio logarítmico}
@@ -1287,7 +1287,7 @@ Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio 
     \label{eq:msle-derivada}
 \end{equacaodestaque}
  
-O comportamento assimétrico do \textit{MSLE} também está presente nos gráficos da sua derivada vistos na Figura~\ref{fig:msle-derivada}. Eles mostram de forma intuitiva o tamanho da correção que será feita conforme o modelo vai errando durante suas predições. O canto esquerdo do gráfico da superfície da derivada mostra uma situação em que o modelo subestima os valores reais. Nesta parte, os valores do gradiente começam a subir de uma forma que lembra uma curva exponencial. 
+O comportamento assimétrico do MSLE também está presente nos gráficos da sua derivada vistos na Figura~\ref{fig:msle-derivada}. Eles mostram de forma intuitiva o tamanho da correção que será feita conforme o modelo vai errando durante suas predições. O canto esquerdo do gráfico da superfície da derivada mostra uma situação em que o modelo subestima os valores reais. Nesta parte, os valores do gradiente começam a subir de uma forma que lembra uma curva exponencial. 
 
 \begin{figure}[h!]
     \centering 
@@ -1367,18 +1367,18 @@ O comportamento assimétrico do \textit{MSLE} também está presente nos gráfic
 
 \subsubsection*{O problema dos imóveis com o MSLE}
 
-Voltando para o exemplo anterior dos modelos prevendo preços de imóveis. Cabe discutir como o \textit{MSLE} se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
+Voltando para o exemplo anterior dos modelos prevendo preços de imóveis. Cabe discutir como o MSLE se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
 
 Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenários vistos na seção anterior, e mostra qual foi o valor do erro calculado para essas situações.
 
 \begin{table}[htbp]
     \centering
     \begin{threeparttable}
-        \caption{Comparativo das funções de perda \textit{MSE} e \textit{MSLE}}%
+        \caption{Comparativo das funções de perda MSE e MSLE}%
         \label{tab:comparativo-mse-msle}
         \begin{tabular}{l c c c c }
             \toprule
-            Cenário & $y_j$ (real) & $\hat{y}_j$ (predito) & \textit{MSE} & \textit{MSLE} \\
+            Cenário & $y_j$ (real) & $\hat{y}_j$ (predito) & MSE & MSLE \\
             \midrule
             Cenário A & $100.000$ & $50.000$ & $2.500.000.000$ & $0,4804$ \\
             Cenário B & $1.000.000$ & $950.000$ & $2.500.000.000$ & $0,0026$ \\
@@ -1393,14 +1393,14 @@ Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenár
     \end{threeparttable}
 \end{table}
 
-O erro quadrático médio considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente, para o modelo os erros são de mesma magnitude. Contudo, olhando agora para os valores do \textit{MSLE}, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
+O erro quadrático médio considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente, para o modelo os erros são de mesma magnitude. Contudo, olhando agora para os valores do MSLE, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
 
-\subsubsection*{Raiz do erro quadrático médio logarítmico (RSMLE)}
+\subsubsection*{Raiz do erro quadrático médio logarítmico (RMSLE)}
 
-Do \textit{MSLE} é possível derivar a métrica raiz do erro quadrático médio logarítmico (\textit{RMSLE}) que também serve para avaliar problemas de predição. Neste caso, o \textit{RMSLE} é dado pelo cálculo da raiz quadrada da função de perda \textit{RMSE}.
+Do MSLE é possível derivar a métrica raiz do erro quadrático médio logarítmico (RMSLE) que também serve para avaliar problemas de predição. Neste caso, o RMSLE é dado pelo cálculo da raiz quadrada da função de perda RMSE.
 
 \begin{equacaodestaque}{Raiz do erro quadrático médio logarítmico}
-    \textit{RMSLE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) -\log(\hat{y}_j + 1))^2}%
+    \text{RMSLE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) -\log(\hat{y}_j + 1))^2}%
     \label{eq:rmsle-metric}
 \end{equacaodestaque}
 
@@ -1412,15 +1412,15 @@ Em que:
     \item[$N$] representa o número de amostras.
 \end{description}
 
-Ao calcular a raiz quadrada do erro quadrático médio logarítmico tem-se uma noção melhor da magnitude dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do \textit{RMSLE}. Diante disso, a equação da raiz do erro quadrático médio logarítmico consegue melhorar a interpretabilidade dos erros, servindo como uma métrica que pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
+Ao calcular a raiz quadrada do erro quadrático médio logarítmico tem-se uma noção melhor da magnitude dos erros, dado que eles são mascarados ao serem elevados ao quadrado pela expressão do RMSLE. Diante disso, a equação da raiz do erro quadrático médio logarítmico consegue melhorar a interpretabilidade dos erros, servindo como uma métrica que pode ser aplicada para problemas em que as subestimações devem ser mais penalizadas.
 
 \subsubsection*{Aplicações do erro quadrático logarítmico médio em aprendizado de máquina}%
 \index{Aplicações práticas! Erro quadrático logarítimico médio}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Predição do preço de casas (Mercado imobiliário):] \textcite{SunKim-NetOverYourHead} desenvolvem uma rede neural para fazer a previsão do preço de casas. Eles utilizam como métrica o \textit{RMSLE}, como justificativa, os autores explicam que o \textit{dataset} que está sendo utilizado apresenta casas que têm ordem de magnitude de diferença de preço, e com isso uma previsão ruim para uma casa de alto valor terá mais peso que uma previsão ruim para uma casa de baixo valor; ao usar o \textit{RMSLE} é possível capturar as ordens de magnitude dos preços das casas, algo que não acontece com o \textit{RMSE} \parencite{SunKim-NetOverYourHead};
-    \item[Predição no tempo de internação de pacientes (Saúde):] \textcite{Winter2023PredictingLOS} analisam maneiras de prever o tempo de internação de um paciente qualquer após receber alta no pronto-socorro e sua transferência para a próxima unidade hospitalar. Os autores usam um modelo de regressão de \textit{gradient boosting} com arquitetura \textit{CatBoost}, para a função de perda, os autores escolhem duas, a primeira sendo o \textit{RMSE} e a segunda o \textit{RMSLE}, como justificativa, os autores apontam que o \textit{RMSLE} penaliza erros proporcionais e é menos afetado por \textit{outliers};
-    \item[Previsão de séries temporais (Área):] \textcite{Jadon2022ComprehensiveSurvey} analisam uma série de funções de perda que são comumente utilizadas na previsão de séries temporais, sendo uma delas o \textit{MSLE}. Os autores apontam que o \textit{MSLE} reduz o efeito punitivo de diferenças significativas em grandes valores previsos; sendo apropriado quando o modelo prevê quantidades não escalonadas diretamente \parencite{Jadon2022ComprehensiveSurvey}. \textcite{Jadon2022ComprehensiveSurvey} analisam também o \textit{RMSLE}, explicando que ele pode ser uma função de perda para ser utilizada em cenários em que a subestimação dos valores reais não é aceitável, mas a superestimações do modelo não são consideradas um problema.
+    \item[Predição do preço de casas (Mercado imobiliário):] \textcite{SunKim-NetOverYourHead} desenvolvem uma rede neural para fazer a previsão do preço de casas. Eles utilizam como métrica o RMSLE, como justificativa, os autores explicam que o \textit{dataset} que está sendo utilizado apresenta casas que têm ordem de magnitude de diferença de preço, e com isso uma previsão ruim para uma casa de alto valor terá mais peso que uma previsão ruim para uma casa de baixo valor; ao usar o RMSLE é possível capturar as ordens de magnitude dos preços das casas, algo que não acontece com o RMSE \parencite{SunKim-NetOverYourHead};
+    \item[Predição no tempo de internação de pacientes (Saúde):] \textcite{Winter2023PredictingLOS} analisam maneiras de prever o tempo de internação de um paciente qualquer após receber alta no pronto-socorro e sua transferência para a próxima unidade hospitalar. Os autores usam um modelo de regressão de \textit{gradient boosting} com arquitetura \textit{CatBoost}, para a função de perda, os autores escolhem duas, a primeira sendo o RMSE e a segunda o RMSLE, como justificativa, os autores apontam que o RMSLE penaliza erros proporcionais e é menos afetado por \textit{outliers};
+    \item[Previsão de séries temporais (Área):] \textcite{Jadon2022ComprehensiveSurvey} analisam uma série de funções de perda que são comumente utilizadas na previsão de séries temporais, sendo uma delas o MSLE. Os autores apontam que o MSLE reduz o efeito punitivo de diferenças significativas em grandes valores previsos; sendo apropriado quando o modelo prevê quantidades não escalonadas diretamente \parencite{Jadon2022ComprehensiveSurvey}. \textcite{Jadon2022ComprehensiveSurvey} analisam também o RMSLE, explicando que ele pode ser uma função de perda para ser utilizada em cenários em que a subestimação dos valores reais não é aceitável, mas a superestimações do modelo não são consideradas um problema.
 \end{description}
 
 \medskip
@@ -1539,14 +1539,14 @@ Até agora todas as funções de perda vistas calculavam o erro para um conjunto
     \fonte{O autor (2025).}
 \end{figure}
 
-A perda quantílica consegue lidar com as situações em que a média e a medina são divergentes. Ela foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, escolhendo se ela irá funcionar de forma assimétrica, ou de forma parecida com o \textit{MAE}.
+A perda quantílica consegue lidar com as situações em que a média e a medina são divergentes. Ela foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, escolhendo se ela irá funcionar de forma assimétrica, ou de forma parecida com o MAE.
 
 A $\epsilon$-insensível também é outra função de perda que não faz o cálculo da média dos erros. Ela é uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Ao utilizá-la, é definido uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
 
 \subsection{Perda quantílica (quantile loss)}%
 \index{Funções de Perda!Perda quantílica (\textit{quantile loss})}
 
-No artigo \textit{Regression Quantiles} dos autores \textcite{regression-quantiles} analisaram uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação, os autores discutem a ideia de que ``todos acreditam na lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção, que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o \textit{MSE}, para o cálculo dos erros com base na média, não são ideais para servir de guia para a otimização do modelo.
+No artigo \textit{Regression Quantiles} dos autores \textcite{regression-quantiles} analisaram uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação, os autores discutem a ideia de que ``todos acreditam na lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção, que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o MSE, para o cálculo dos erros com base na média, não são ideais para servir de guia para a otimização do modelo.
 
 Tendo isso em mente, os pesquisadores apresentam uma forma de minimizar a soma de perdas assimétricas, eles então definem a Equação~\ref{eq:soma-das-perdas-assimetricas}\footnote{Caso você leitor decida ler o artigo original dos pesquisadores, você verá um conjunto diferente de notações utilizadas, isso acontece pois neste livro elas foram adaptadas para condizer com as notações que já estavam sendo utilizadas anteriormente nos outros capítulos}.
 
@@ -1591,7 +1591,7 @@ Existem também uma versão compacta da perda quantílica, presente na Equação
 
 Considerando que $e = y - \hat{y}$, ou seja, o cálculo do erro.
 
-A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-loss-tau05}. Os gráficos são semelhantes ao erro absoluto médio, porque o \textit{MAE} é uma função que analisa justamente o quantil 0,5. Assim, não faz muito sentido utilizar a perda quantílica para esse cenário em específico, considerando que já existe uma função com essa finalidade.
+A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-loss-tau05}. Os gráficos são semelhantes ao erro absoluto médio, porque o MAE é uma função que analisa justamente o quantil 0,5. Assim, não faz muito sentido utilizar a perda quantílica para esse cenário em específico, considerando que já existe uma função com essa finalidade.
 
 \begin{figure}[h!]
     \centering 
@@ -1654,7 +1654,7 @@ A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-lo
         \label{fig:quantile-3d-tau05}
     \end{subfigure}
 
-    \caption{Visualizações da função de perda quantílica em duas e em três dimensões (com $\tau=0.5$ (\textit{MAE})).}%
+    \caption{Visualizações da função de perda quantílica em duas e em três dimensões (com $\tau=0.5$ (MAE)).}%
     \label{fig:quantile-loss-tau05}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1794,7 +1794,7 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
 \subsubsection*{Características da perda quantílica} 
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda quantílica é de classe $C^0$, contínua, (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso acontece pelo mesmo motivo que o \textit{MAE} também é de classe $C^0$, essas duas funções apresentam um ``bico'' quando o erro é zero. Como resultado, deve-se analisar os limites laterais dessa função nesse ponto, chegando a conclusão que seus valores divergem. Ainda assim, o uso de subgradiente ajuda a contornar esse problema de suavidade.
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda quantílica é de classe $C^0$, contínua, (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso acontece pelo mesmo motivo que o MAE também é de classe $C^0$, essas duas funções apresentam um ``bico'' quando o erro é zero. Como resultado, deve-se analisar os limites laterais dessa função nesse ponto, chegando a conclusão que seus valores divergem. Ainda assim, o uso de subgradiente ajuda a contornar esse problema de suavidade.
     \item[Convexidade:] A perda quantílica é convexa (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso é evidenciado também pelos seus gráficos, os quais apontam que essa função apresenta um formato semelhante a um funil. Consequentemente, essa propriedade ajuda os otimizadores baseados em gradiente. Vale destacar que otimizadores baseados em momento vão se comportar diferente conforme forem os valores de $\tau$. Inclinações diferentes podem resultar em otimizações com iterações diferentes.
     \item[Robustez:] A perda quantílica é Lipschitz-contínua, e portanto, robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-quantile-loss}). As suas derivadas parciais quando o erro tende ao infinito são limitadas, garantindo que o gradiente não ``exploda'' quando ocorrem erros grandes.
     \item[Hiperparâmetro $\tau$ (penalização assimétrica):] A perda quantílica é uma função assimétrica, exceto no caso em que $\tau = 0.5$. Como o parâmetro $\tau$ é definido ao treinar ao modelo, cabe a quem estiver treinando o modelo definir se quer que a função penalize mais as subestimações ou as superestimações, a depender do problema que está sendo considerado.
@@ -1815,7 +1815,7 @@ Dessa forma, a derivada parcial da perda quantílica em relação à predição 
     \label{eq:quantile-loss-derivada}
 \end{equacaodestaque}
 
-O comportamento da derivada da perda quantílica também se assemelha com \textit{MAE}. Como a Figura~\ref{fig:quantile-loss-derivada} aponta, a sua derivada é uma função linear por partes, isso ajuda a entender também o porquê da perda quantílica ser robusta a \textit{outliers}. Independente dos valores que o erro pode alcançar, a perda nunca ira crescer descontroladamente para o infinito causando problemas de gradientes explosivos. Diferente do \textit{MAE} que é 1-Lipschitz-contínua, a perda quantílica tem seus limites modificados conforme o valor do hiperparâmetro $\tau$ é configurado, mas ainda assim, ela é Lipschitz-contínua.
+O comportamento da derivada da perda quantílica também se assemelha com MAE. Como a Figura~\ref{fig:quantile-loss-derivada} aponta, a sua derivada é uma função linear por partes, isso ajuda a entender também o porquê da perda quantílica ser robusta a \textit{outliers}. Independente dos valores que o erro pode alcançar, a perda nunca ira crescer descontroladamente para o infinito causando problemas de gradientes explosivos. Diferente do MAE que é 1-Lipschitz-contínua, a perda quantílica tem seus limites modificados conforme o valor do hiperparâmetro $\tau$ é configurado, mas ainda assim, ela é Lipschitz-contínua.
 
 \begin{figure}[h!]
     \centering 
@@ -1892,13 +1892,13 @@ O comportamento da derivada da perda quantílica também se assemelha com \texti
 \subsubsection*{Aplicações da perda quantílica em aprendizado de máquina}%
 \index{Aplicações práticas! Perda quantílica}
 
-Uma situação que a perda quantílica está muito presente é na análise do valor em risco ou \textit{value at risk} (\textit{VaR}). O \textit{VaR} é uma medida de risco que estima a perda potencial máxima que pode acontecer um determinado portfólio durante um período de tempo definido, isso é estimado dentro de um nível de confiança especificado. Por exemplo, caso queira ser descoberto o \textit{VaR} a 99\%, é preciso calcular o 1º quantil da distribuição de perdas e ganhos. Esse é um dos cenários que está presente em alguns dos trabalhos apresentados nessa seção, em que os autores optam pela perda quantílica para resolver esse problema.
+Uma situação que a perda quantílica está muito presente é na análise do valor em risco ou \textit{value at risk} (VaR). O VaR é uma medida de risco que estima a perda potencial máxima que pode acontecer um determinado portfólio durante um período de tempo definido, isso é estimado dentro de um nível de confiança especificado. Por exemplo, caso queira ser descoberto o VaR a 99\%, é preciso calcular o 1º quantil da distribuição de perdas e ganhos. Esse é um dos cenários que está presente em alguns dos trabalhos apresentados nessa seção, em que os autores optam pela perda quantílica para resolver esse problema.
 
 Dito isso, vale citar os trabalhos: 
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):] Em \textit{Mixed–frequency quantile regressions to forecast Value–at–Risk and Expected Shortfall}, \textcite{candila2023mixedfrequencyquantileregressionsforecast} utilizam da regressão quantílica como uma forma de prever o \textit{VaR} e o \textit{expected shortfall} (\textit{ES}), para isso, eles criam utilizam de uma técnica diferente, em que é feito o uso de regressões quantílicas de frequência mista. Para fazer isso, os autores combinam dados macroêconomicos de baixa frequência (que são mensais), com dados de mercado de alta frequência (os quais são diários) \parencite{candila2023mixedfrequencyquantileregressionsforecast}. Além disso, \textcite{candila2023mixedfrequencyquantileregressionsforecast} exploram esse novo modelo criado com dados reais, utilizando duas commodities energéticas chamadas Crude Oil and Gasoline futures;
-    \item[Aplicação 2 (Área):] Outro trabalho que também faz uso da regressão quantílica é o \textit{CAViaR: Conditional Autoregressive Value at Risk by Regression Quantiles}, nele, \textcite{Engle2004CAViaR} apresenta o \textit{Conditional Autoregressive Value at Risk} ou \textit{CAViaR}. O \textit{CAViaR}, como os autores explicam no texto, propõe uma alternativa diferente para calcular o \textit{VaR}, ao invés de ser modelado toda a distribuição, com o \textit{CAViaR} é calculado apenas o quantil desejado, isso pode ser calculado com o uso da regressão quantílica, e consequentemente com a função de perda quantílica \parencite{Engle2004CAViaR};
+    \item[Aplicação 1 (Área):] Em \textit{Mixed–frequency quantile regressions to forecast Value–at–Risk and Expected Shortfall}, \textcite{candila2023mixedfrequencyquantileregressionsforecast} utilizam da regressão quantílica como uma forma de prever o VaR e o \textit{expected shortfall} (ES), para isso, eles criam utilizam de uma técnica diferente, em que é feito o uso de regressões quantílicas de frequência mista. Para fazer isso, os autores combinam dados macroêconomicos de baixa frequência (que são mensais), com dados de mercado de alta frequência (os quais são diários) \parencite{candila2023mixedfrequencyquantileregressionsforecast}. Além disso, \textcite{candila2023mixedfrequencyquantileregressionsforecast} exploram esse novo modelo criado com dados reais, utilizando duas commodities energéticas chamadas Crude Oil and Gasoline futures;
+    \item[Aplicação 2 (Área):] Outro trabalho que também faz uso da regressão quantílica é o \textit{CAViaR: Conditional Autoregressive Value at Risk by Regression Quantiles}, nele, \textcite{Engle2004CAViaR} apresenta o \textit{Conditional Autoregressive Value at Risk} ou CAVIaR. O CAVIaR, como os autores explicam no texto, propõe uma alternativa diferente para calcular o VaR, ao invés de ser modelado toda a distribuição, com o CAVIaR é calculado apenas o quantil desejado, isso pode ser calculado com o uso da regressão quantílica, e consequentemente com a função de perda quantílica \parencite{Engle2004CAViaR};
     \item[Aplicação 3 (Área):] Além disso, vale citar também o artigo \textit{Reforming health care: Evidence from quantile regressions for counts} de \textcite{WINKELMANN2006131}, nele, a regressão quantílica para contagens é utilizada para estimar o efeito de uma reforma na saúde sobre a frequência de consultas médicas individuais. O autor justifica a escolha de ser feita uma regressão quantílica, e não uma técnica mais comum, como a dos mínimos quadrados, pois ele considera que esse é um problema em que os efeitos da reforma são diferentes em cada uma das partes da distribuição \parencite{WINKELMANN2006131}. Neste cenário, em que a distribuição de dados foge da distribuição normal, uma alternativa para lidar com isso é utilizar a perda quantílica\footnote{Além disso, caso você leitor esteja procurando funções de perdas para lidar com distribuições que não seguem a distribuição normal, vale a pena dar uma olhada na Seção~\ref{sec:perdas-baseadas-em-distribuicoes-de-dados}. Nela, são explicadas duas funções de perda que podem ser utilizadas nesse cenário: a perda de Poisson e a perda de Tweedie.}.
 \end{description}
 
@@ -1908,12 +1908,12 @@ Dito isso, vale citar os trabalhos:
 \end{center}
 \medskip
 
-Além da perda quantílica, que é usada nos problemas de regressão quantílica, e que faz o cálculo dos erros considerando uma distribuição irregular dos dados, e por isso não faz o uso da média dos erros para encontrar a perda, existem outras funções que possuem essa mesma característica. Uma dessas funções é a epsilon-insensível, que é essencial para resolver os problemas de regressão para modelos de máquinas de vetores de suporte (\textit{SVMs}). Ela será explicada em seguida.
+Além da perda quantílica, que é usada nos problemas de regressão quantílica, e que faz o cálculo dos erros considerando uma distribuição irregular dos dados, e por isso não faz o uso da média dos erros para encontrar a perda, existem outras funções que possuem essa mesma característica. Uma dessas funções é a epsilon-insensível, que é essencial para resolver os problemas de regressão para modelos de máquinas de vetores de suporte (SVMs). Ela será explicada em seguida.
 
 \subsection{Perda epsilon-insensível (epsilon-insensitive loss)}%
 \index{Funções de Perda!Perda Epsilon-Insensível}
 
-A \textbf{perda epsilon-insensível}, também chamada \textbf{$\epsilon$-insensível} se relacionada diretamente com as máquinas de vetores de suporte, sendo essencial para possibilitar tarefas de regressão pelas \textit{SVMs}. Nesse sentido, o artigo \textit{Support Vector Regression Machines} dos pesquisadores \textcite{SupportVectorRegressionMachines} é um dos responsáveis por introduzir essa função de perda. Nele, os autores detalham um novo uso das máquinas de vetores desenvolvidas por Vapnik, as quais antes eram utilizadas para resolver problemas de classificação \parencite{SupportVectorRegressionMachines}.
+A \textbf{perda epsilon-insensível}, também chamada \textbf{$\epsilon$-insensível} se relacionada diretamente com as máquinas de vetores de suporte, sendo essencial para possibilitar tarefas de regressão pelas SVMs. Nesse sentido, o artigo \textit{Support Vector Regression Machines} dos pesquisadores \textcite{SupportVectorRegressionMachines} é um dos responsáveis por introduzir essa função de perda. Nele, os autores detalham um novo uso das máquinas de vetores desenvolvidas por Vapnik, as quais antes eram utilizadas para resolver problemas de classificação \parencite{SupportVectorRegressionMachines}.
 
 \textcite{SupportVectorRegressionMachines} começam o artigo explicando um problema, eles possuem uma função $G(x)$ (chamada de verdade), que recebe um vetor $x$ (chamado de espaço de entradas), esse vetor $x$ possui $d$ componentes, sendo do tipo $x^t = [x_1, x_2, ..., x_d]$. Existe também uma família de funções $F(x, w)$ parametrizadas por $w$ \parencite{SupportVectorRegressionMachines}. O Objeto dos autores é encontrar um parâmetro $\hat{w}$ que é uma estimativa de $w$ a partir de observar um conjunto de $N$ instâncias de treinamento \parencite{SupportVectorRegressionMachines}.
 
@@ -1949,7 +1949,7 @@ Em que:
     \item[$\epsilon$] representa o tamanho da zona de perda zero.
 \end{description}
 
-Como aponta a Figura~\ref{fig:epsilon-insensitive-loss} o seu gráfico lembra um trapézio sem a sua base. Ele possui uma ``zona morta'' de tamanho $\epsilon$, como resultado, se o erro do modelo é menor que o valor absoluto do hiperparâmetro $\epsilon$, o erro não é contabilizado (a função retorna zero). Quando o erro é maior que $\epsilon$ a função calcula a perda de forma linear, assim como o \textit{MAE}.
+Como aponta a Figura~\ref{fig:epsilon-insensitive-loss} o seu gráfico lembra um trapézio sem a sua base. Ele possui uma ``zona morta'' de tamanho $\epsilon$, como resultado, se o erro do modelo é menor que o valor absoluto do hiperparâmetro $\epsilon$, o erro não é contabilizado (a função retorna zero). Quando o erro é maior que $\epsilon$ a função calcula a perda de forma linear, assim como o MAE.
 
 \begin{figure}[h!]
     \centering 
@@ -2043,12 +2043,12 @@ Essa região em que o erro é ignorado, é chamada da literatura de Tubo-Epsilon
     \item[Continuidade, suavidade e diferenciabilidade:] A perda $\epsilon$-insensível é uma função se classe $C^0$, contínua, (ver Apêndice~\ref{ap:deducoes-epsilon-insensitive}). Isso se dá devido ao fato dessa função não ser suave, ela apresenta dois ``bicos'' que conectam a faixa de ``zona morta'' com o crescimento linear do erro.
     \item[Convexidade:] A perda $\epsilon$-insensível é convexa, embora não estritamente convexa (ver Apêndice~\ref{ap:deducoes-epsilon-insensitive}). A Figura~\ref{fig:epsilon-insensitive-loss} evidencia essa propriedade, a função apresenta um formato de tigela, possuindo uma faixa de pontos de mínimos globais.
     \item[Robustez:] A perda $\epsilon$-insensível é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-epsilon-insensitive}). Ao calcular o seu subgradiente, vemos que seu valor é limitado superiormente por 1. Isso garante robustez a \textit{outliers} e ajuda a prevenir problemas de gradientes explosivos.
-    \item[Esparsidade:] A perda $\epsilon$-insensível promove a esparsidade no modelo que está sendo treinado. Pelo fato de existir uma faixa de valores do erro que a perda irá retornar zero como valor, essa função de perda ajuda a criar gradientes esparsos nos problemas de regressão de \textit{SVMs}.
+    \item[Esparsidade:] A perda $\epsilon$-insensível promove a esparsidade no modelo que está sendo treinado. Pelo fato de existir uma faixa de valores do erro que a perda irá retornar zero como valor, essa função de perda ajuda a criar gradientes esparsos nos problemas de regressão de SVMs.
 \end{description}
 
 \subsubsection*{Gradiente da perda epsilon-insensível}
 
-Para encontrar o gradiente da perda $\epsilon$-insensível deve-se utilizar do subgradiente, assim como no \textit{MAE}. O subgradiente consegue lidar com os pontos de não diferenciabilidade (quando erro é igual a epsilon), ao aplicar a técnica chegamos na Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em relação à predição.
+Para encontrar o gradiente da perda $\epsilon$-insensível deve-se utilizar do subgradiente, assim como no MAE. O subgradiente consegue lidar com os pontos de não diferenciabilidade (quando erro é igual a epsilon), ao aplicar a técnica chegamos na Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em relação à predição.
 
 \begin{equacaodestaque}{Derivada parcial da perda epsilon-insensível em relação à predição}
     \frac{\partial\Loss_{\epsilon}}{\partial\hat{y}} = 
@@ -2977,15 +2977,15 @@ Em que:
             \toprule
             \textbf{Função} & \textbf{Principais características} \\
             \midrule
-            Erro quadrático médio (\textit{MSE}) & -  \\
+            Erro quadrático médio (MSE) & -  \\
             \addlinespace
-            Erro absoluto médio (\textit{MAE}) & - \\
+            Erro absoluto médio (MAE) & - \\
             \addlinespace
             Perda de Huber (\textit{Huber loss}) & - \\
             \addlinespace
             Perda log-cosh (\textit{Log-cosh loss}) & - \\
             \addlinespace
-            Erro quadrático logarítmico médio (\textit{MSLE}) & - \\
+            Erro quadrático logarítmico médio (MSLE) & - \\
             \addlinespace
             Perda quantílica (\textit{Quantile loss}) & - \\
             \addlinespace
