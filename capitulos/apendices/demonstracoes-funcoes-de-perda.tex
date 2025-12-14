@@ -493,6 +493,65 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \subsection{Perda de Poisson (Poisson loss)}
+\label{ap:deducoes-poisson-loss}
+
+\begin{definition}
+    Seja $y \in \mathbb{N}_0$ o alvo (número de contagens) e $\hat{y} \in \mathbb{R}^+$ a predição (taxa esperada). A função de perda é derivada da verossimilhança negativa da distribuição de Poisson. Descartando o termo $\log(y!)$ que independe do modelo, definimos:
+    \begin{equation}
+        \mathcal{L}(\hat{y}) = \hat{y} - y\log(\hat{y})
+    \end{equation}
+    Nota: O domínio da função é restrito a $\hat{y} > 0$.
+\end{definition}
+
+\begin{proposition}[Regularidade]
+    A função Poisson Loss pertence à classe $C^\infty$ (suave) em seu domínio de definição $(0, \infty)$.
+\end{proposition}
+
+\begin{proof}
+    A função é composta por uma função linear ($\hat{y}$) e uma função logarítmica ($y\log\hat{y}$). Sendo o logaritmo infinitamente diferenciável para argumentos estritamente positivos, a função herda essa propriedade.
+    
+    Calculamos as derivadas sucessivas em relação a $\hat{y}$:
+    \begin{align*}
+        \mathcal{L}'(\hat{y}) &= \frac{d}{d\hat{y}}(\hat{y} - y\log\hat{y}) = 1 - \frac{y}{\hat{y}} \\
+        \mathcal{L}''(\hat{y}) &= \frac{d}{d\hat{y}}\left(1 - y\hat{y}^{-1}\right) = \frac{y}{\hat{y}^2} \\
+        \mathcal{L}'''(\hat{y}) &= -2\frac{y}{\hat{y}^3}
+    \end{align*}
+    
+    De forma geral, para $k \ge 2$, a derivada é proporcional a $\hat{y}^{-k}$. Como $\hat{y} \neq 0$ (por definição do domínio), todas as derivadas existem e são contínuas.
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A função Poisson Loss é convexa (e estritamente convexa se $y > 0$).
+\end{proposition}
+
+\begin{proof}
+    Utilizamos o Critério de Segunda Ordem (Teorema \ref{thm:segunda_ordem}). Analisamos o sinal da segunda derivada:
+    \[ \mathcal{L}''(\hat{y}) = \frac{y}{\hat{y}^2} \]
+    
+    Considerando que o alvo $y$ é uma contagem não-negativa ($y \ge 0$) e o quadrado da predição é estritamente positivo ($\hat{y}^2 > 0$):
+    \begin{itemize}
+        \item Se $y=0$, $\mathcal{L}''(\hat{y}) = 0$ (Convexa).
+        \item Se $y>0$, $\mathcal{L}''(\hat{y}) > 0$ (Estritamente Convexa).
+    \end{itemize}
+    
+    Portanto, a função é globalmente convexa, garantindo a unicidade do ótimo durante o treinamento de Modelos Lineares Generalizados (GLM).
+\end{proof}
+
+\begin{proposition}[Não-Robustez na Origem]
+    A função Poisson Loss não é Lipschitz-contínua globalmente devido à singularidade na origem.
+\end{proposition}
+
+\begin{proof}
+    Para ser Lipschitz-contínua, o gradiente deve ser limitado. Analisamos o comportamento da derivada $\mathcal{L}'(\hat{y}) = 1 - \frac{y}{\hat{y}}$ nos limites do domínio.
+    
+    \begin{enumerate}
+        \item \textbf{No infinito:} $\lim_{\hat{y} \to \infty} (1 - \frac{y}{\hat{y}}) = 1$. (Comportamento estável, similar ao MAE).
+        \item \textbf{Na origem:} Supondo que existe um alvo real $y > 0$, analisamos o caso onde o modelo prevê um valor próximo de zero:
+        \[ \lim_{\hat{y} \to 0^+} \left( 1 - \frac{y}{\hat{y}} \right) = -\infty \]
+    \end{enumerate}
+    
+    Como o gradiente explode negativamente quando a predição se aproxima de zero (contradizendo a evidência $y$), não existe uma constante $K$ que limite a derivada. Portanto, a função não é Lipschitz-contínua. Isso exige cuidado numérico (como adicionar um $\epsilon$ de estabilidade ou usar a função de ativação Softplus) para evitar instabilidade numérica.
+\end{proof}
 
 \subsection{Perda Gamma (Gamma loss)}
 
