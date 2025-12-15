@@ -151,14 +151,9 @@ Dessa forma, é possível discutir elaborar pouco de cada uma dessas propriedade
 
 \end{description}
 
-
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
-Vale destacar também que muitas dessas propriedades não estão presentes em todas as funções de ativação. A sigmoide por exemplo é uma função que não está centrada em zero, possuindo apenas saídas positivas. Já a \textit{ReLU} apresenta um ponto de descontinuidade na origem, mas isso não atrapalha essas funções de ativação de serem utilizadas ao construir uma rede neural. As propriedades servem mais como um guia, destacando vantagens que se pode ter ao utilizar determinada função de ativação.
+Vale destacar também que muitas dessas propriedades não estão presentes em todas as funções de ativação. A sigmoide por exemplo é uma função que não está centrada em zero, possuindo apenas saídas positivas. Já a ReLU apresenta um ponto de descontinuidade na origem, mas isso não atrapalha essas funções de ativação de serem utilizadas ao construir uma rede neural. As propriedades servem mais como um guia, destacando vantagens que se pode ter ao utilizar determinada função de ativação.
 
 Considerando isso, é possível finalmente entrar no tópico principal desse capítulo: as funções sigmoidais. Para isso, será explicado antes um exemplo ilustrativo destacando como essas funções atuam ao receberem suas entradas.
 
@@ -229,23 +224,24 @@ Cabe destacar também que, as sigmoidais nao foram as primeiras funções de ati
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            ytick={0,1}, % Define os ticks no eixo y para 0 e 1
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x$},
             ylabel={$H(x)$},
-            xmin=-8.5, xmax=8.5,
-            ymin=-0.3, ymax=1.1,
             axis lines=middle,
             grid=major,
-            ytick={0,1}, % Define os ticks no eixo y para 0 e 1
+            grid style={dashed, gray!40},
+            xmin=-8.5, xmax=8.5,
+            ymin=-0.3, ymax=1.1,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        % Desenha a parte da função para x < 0
-        \addplot[blue, thick, domain=-8:0] {0};
-        % Desenha a parte da função para x >= 0
-        \addplot[blue, thick, domain=0:8] {1};
-
-        % Adiciona os marcadores para a descontinuidade em x=0
-        % Círculo aberto em (0,0) para indicar que o ponto não pertence a essa parte
+        \addplot[black, thick, domain=-8:0] {0};
+        \addplot[black, thick, domain=0:8] {1};
         \addplot[only marks, mark=o, mark size=1.5pt, black, fill=white] coordinates {(0,0)};
-        % Círculo fechado em (0,1) para indicar que o ponto pertence a essa parte
         \addplot[only marks, mark=*, mark size=1.5pt, black] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
@@ -275,17 +271,24 @@ O gráfico da sigmoide está presente na Figura~\ref{fig:sigmoide}, note que ele
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\sigma(x_j)$},
-            xmin=-8.5, xmax=8.5,
-            ymin=-0.3, ymax=1.1,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-8.5, xmax=8.5,
+            ymin=-0.3, ymax=1.1,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-8:8, samples=100] {1/(1+exp(-x))};
+        \addplot[black, very thick, domain=-8:8, samples=100] {1/(1+exp(-x))};
     \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação sigmoide logística.}%
+    \caption{Função de ativação sigmoide logística.}%
     \label{fig:sigmoide}
     \fonte{O autor (2025).}
 \end{figure}
@@ -323,22 +326,29 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\sigma'(x_j)$},
-            xmin=-8.3, xmax=8.3,
-            ymin=-0.05, ymax=0.35,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-8.5, xmax=8.5,
+            ymin=-0.3, ymax=0.5,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-8:8, samples=100] {exp(-x)/((1+exp(-x))^2)};
+        \addplot[black, very thick, domain=-8:8, samples=100] {exp(-x)/((1+exp(-x))^2)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação sigmoide logística.}%
+    \caption{Derivada da função de ativação sigmoide logística.}%
     \label{fig:sigmoide-derivada}
     \fonte{O autor (2025).}
 \end{figure}
 
-\subsubsection*{Algumas Aplicações da Sigmoide Logística em Redes Neurais}%
+\subsubsection*{Aplicações da Sigmoide Logística}%
 \index{Aplicações práticas! Sigmoide logística}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -347,10 +357,6 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
     \item[Aplicação 3 (Área):] 
 \end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
 Conhecendo a sigmoide logística, a função que dá nome a essa família de funções de ativação, é possível conhecer agora outras funções dessa mesma família. Essas funções apresentam propriedades semelhantes com a sigmoide, como a característica curva em ``S'' mas com algumas variações em sua estrutura ou fórmula, as quais podem ser úteis em alguns cenários.
@@ -383,17 +389,24 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\tanh(x_j)$},
-            xmin=-5, xmax=5,
-            ymin=-1.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-5, xmax=5,
+            ymin=-1.2, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-5:5, samples=100] {tanh(x)};
+        \addplot[black, very thick, domain=-5:5, samples=100] {tanh(x)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação tangente hiperbólica (tanh).}%
+    \caption{Função de ativação tangente hiperbólica (tanh).}%
     \label{fig:tanh}
     \fonte{O autor (2025).}
 \end{figure}
@@ -408,10 +421,6 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \item[Centrada em zero:] 
 \end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
 \subsubsection*{Gradiente da tangente hiperbólica}
@@ -438,17 +447,24 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\tanh'(x_j)$},
-            xmin=-5, xmax=5,
-            ymin=-0.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-5, xmax=5,
+            ymin=-0.5, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-5:5, samples=100] {1-(tanh(x))^2};
+        \addplot[black, very thick, domain=-5:5, samples=100] {1-(tanh(x))^2};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação tangente hiperbólica (tanh).}%
+    \caption{Derivada da função de ativação tangente hiperbólica (tanh).}%
     \label{fig:tanh-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -464,10 +480,6 @@ Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam 
     \item[Aplicação 3 (Área):] 
 \end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
 Por fim, perceba que a tanto a tangente hiperbólica quando a sigmoide logística são funções de ativação ``caras'', por utilizarem exponenciais em sua composição. Assim, a próxima função a ser vista busca justamente corrigir esse problema, possuindo a mesma proposta das sigmoidais, porém, sendo mais ``barata'' em termos de custo computacional.
@@ -497,15 +509,21 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
     % Gráfico da função Softsign usando PGFPlots
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{softsign}(x_j)$},
-            xmin=-15, xmax=15,
-            ymin=-1.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-15, xmax=15,
+            ymin=-1.2, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        % A função softsign(x) = x / (1 + abs(x))
-        \addplot[black, thick, domain=-10:10, samples=101] {x / (1 + abs(x))};
+        \addplot[black, very thick, domain=-14:14, samples=101] {x / (1 + abs(x))};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da função de ativação \textit{softsign}.}
@@ -538,15 +556,21 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{softsign}'(x_j)$},
-            xmin=-10, xmax=10,
-            ymin=-0.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-15, xmax=15,
+            ymin=-0.5, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        % A derivada da softsign é 1 / (1 + |x|)^2
-        \addplot[black, thick, domain=-10:10, samples=101] {1/((1+abs(x))^2)};
+        \addplot[black, very thick, domain=-14:14, samples=101] {1/((1+abs(x))^2)};
         \end{axis}
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{softsign}.}%
@@ -566,10 +590,6 @@ Além disso, essa função também sofre do mesmo problema das outras duas funç
 \end{description}
 
 
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
 Seguindo na proposta de ver funções sigmoidais que são mais ``baratas'', a próxima seção busca explorar isso com outras duas funções: a \textit{hard sigmoid} e a \textit{hard tanh}. Essas funções tem como intuito imitar o comportamento das sigmoidais porém, escrito em forma de retas, dessa forma, elas sacrificam a suavidade das sigmoidais para garantir um menor custo computacional.
@@ -599,18 +619,21 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{hard sigmoid}(x_j)$},
-            xmin=-5, xmax=5,
-            ymin=-0.2, ymax=1.2,
             axis lines=middle,
             grid=major,
-            domain=-5:5,
-            samples=200, % More samples for a smoother piecewise look
-            restrict y to domain*=-0.2:1.2 % Keep plot within y limits
+            grid style={dashed, gray!40},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize},
         ]
-        % Define the piecewise function using if-else logic for plotting
-        \addplot[black, thick] {
+        \addplot[color = black, very thick, domain=-5:5, samples=100] {
             (x < -3) * 0 +
             (x >= -3 && x <= 3) * (x/6 + 0.5) +
             (x > 3) * 1
@@ -645,21 +668,24 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{hard sigmoid}'(x_j)$},
-            xmin=-5, xmax=5,
-            ymin=-0.2, ymax=0.8,
             axis lines=middle,
             grid=major,
-            domain=-5:5,
-            samples=200, % More samples to show step clearly
-            restrict y to domain*=-0.2:0.8
+            grid style={dashed, gray!40},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=0.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize},
+            restrict y to domain*=-0.2:1.2
         ]
-        % Plot the derivative: 1/6 between -3 and 3, 0 otherwise
-        \addplot[red, thick] {
+        \addplot[color = black, very thick, domain=-5:5, samples=100,] {
             (x > -3 && x < 3) * (1/6)
         };
-        % Add lines for the jumps (optional, but makes it clearer)
         \draw[dashed, black] (axis cs:-3, 0) -- (axis cs:-3, 1/6);
         \draw[dashed, black] (axis cs:3, 0) -- (axis cs:3, 1/6);
         \end{axis}
@@ -669,10 +695,6 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
 Além disso, também existe a função \textit{hard tanh}, que apresenta a mesma proposta da \textit{hard sigmoid}, mas, nesse sentido, busca imitar o comportamento da função de ativação tangente hiperbólica. Para isso, ela segue uma ideia parecida com a da equação da \textit{hard sigmoid}, escrevendo a sua equação em forma de condicionais, mas ajustando os seus valores para corresponder ao funcionamento da tanh. Essa função está expressa na Equação~\ref{eq:hard-tanh}.
@@ -694,18 +716,26 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{hard tanh}(x_j)$},
-            xmin=-5, xmax=5,
-            ymin=-1.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-5, xmax=5,
+            ymin=-1.2, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize},
+            grid=major,
             domain=-5:5,
-            samples=200, % More samples for clarity
-            restrict y to domain*=-1.2:1.2 % Keep plot within y limits
+            samples=200,
+            restrict y to domain*=-1.2:1.2 
         ]
         % Define the piecewise function for plotting
-        \addplot[blue, thick] {
+        \addplot[black, very thick] {
             (x < -1) * -1 +
             (x >= -1 && x <= 1) * x +
             (x > 1) * 1
@@ -742,18 +772,26 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{hard tanh}'(x_j)$},
-            xmin=-5, xmax=5,
-            ymin=-0.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-5, xmax=5,
+            ymin=-0.2, ymax=1.2,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize},
+            grid=major,
             domain=-5:5,
-            samples=200, % More samples to show step clearly
-            restrict y to domain*=-0.2:1.2
+            samples=200,
+            restrict y to domain*=-1.2:1.2 
         ]
         % Plot the derivative: 1 between -1 and 1, 0 otherwise
-        \addplot[red, thick] {
+        \addplot[black, very thick] {
             (x > -1 && x < 1) * 1
         };
         % Add lines for the jumps (optional, but makes it clearer)
@@ -776,10 +814,6 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
     \item[Aplicação 3 (Área):] 
 \end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
 \medskip
 
 Conhecendo todas essas diferentes funções de ativação, é possível finalmente entender o que é o problema do desaparecimento de gradientes e como ele ocorre em uma rede neural, além de relacionar a atuação das funções sigmoidais com o aparecimento desse fenômeno. Para isso, é possível ver essas explicações na seção a seguir.
