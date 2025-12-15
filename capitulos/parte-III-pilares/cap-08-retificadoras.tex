@@ -133,17 +133,24 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{ReLU}(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.8, ymax=2.3,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.8, ymax=2.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-2:2] {max(0, x)};
+        \addplot[black, very thick, domain=-2:2] {max(0, x)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Rectified Linear Unit} (ReLU).}%
+    \caption{Função de ativação \textit{Rectified Linear Unit} (ReLU).}%
     \label{fig:relu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -178,20 +185,27 @@ Além da sua representação em forma de equação, é possível fazer também o
     \centering % Centraliza o gráfico na página
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{ReLU}'(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.8, ymax=1.8,
             axis lines=middle,
-            grid=major
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.8, ymax=2.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-2:0] {0};
-        \addplot[black, thick, domain=0:2] {1};
+        \addplot[black, very thick, domain=-2:0] {0};
+        \addplot[black, very thick, domain=0:2] {1};
         \addplot[black, only marks, mark=o, mark size=1.5pt] coordinates {(0,0)};
         \addplot[black, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
-        \caption{Gráfico da derivada da função de ativação Rectified Linear Unit (ReLU).}%
+        \caption{Derivada da função de ativação Rectified Linear Unit (ReLU).}%
     \label{fig:relu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -255,18 +269,25 @@ Já para a sua representação gráfica, ela está presente na Figura~\ref{fig:l
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{LReLU}(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.8, ymax=2.3,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.8, ymax=2.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
         % \leakyalpha é o comando que você definiu no preâmbulo (0.1)
-        \addplot[black, thick, domain=-2:2] {x > 0 ? x : 0.1*x};
+        \addplot[black, very thick, domain=-2:2] {x > 0 ? x : 0.1*x};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Leaky ReLU} (LReLU) com $\alpha = 0.1$.}
+    \caption{Função de ativação \textit{Leaky} ReLU (LReLU) com $\alpha = 0.1$.}
     \label{fig:leaky-relu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -295,22 +316,29 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{LReLU}'(x_j)$},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
-            axis lines=middle,
-            grid=major
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
         \def\alphaVal{0.1} % Define alpha for the derivative graph
 
-        \addplot[black, thick, domain=-2:0] {\alphaVal};
-        \addplot[black, thick, domain=0:2] {1};
+        \addplot[black, very thick, domain=-2:0] {\alphaVal};
+        \addplot[black, very thick, domain=0:2] {1};
         \addplot[black, only marks, mark=o, mark size=1.5pt] coordinates {(0,\alphaVal)};
         \addplot[black, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação \textit{Leaky ReLU} (LReLU) com $\alpha = 0.1$.}%
+    \caption{Derivada da função de ativação \textit{Leaky} ReLU (LReLU) com $\alpha = 0.1$.}%
     \label{fig:leaky-relu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -398,19 +426,25 @@ Com base em sua equação, tem-se o gráfico da PReLU na Figura~\ref{fig:prelu},
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{PReLU}(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.5, ymax=2.3,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.5, ymax=2.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        % Define um valor exemplo de alpha para o gráfico
         \def\alphaVal{0.2} 
-        \addplot[black, thick, domain=-2:2] {x >= 0 ? x : \alphaVal*x};
+        \addplot[black, very thick, domain=-2:2] {x >= 0 ? x : \alphaVal*x};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Parametric ReLU} (PReLU) com $\alpha=0.2$.}%
+    \caption{Função de ativação \textit{Parametric} ReLU (PReLU) com $\alpha=0.2$.}%
     \label{fig:prelu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -439,23 +473,30 @@ Sabendo a fórmula da derivada da PReLU, é possível plotar o seu gráfico, o q
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{PReLU}'(x_j)$},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
-            axis lines=middle,
-            grid=major
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
         % Define um valor exemplo de alpha para o gráfico
         \def\alphaVal{0.2}
 
-        \addplot[black, thick, domain=-2:0] {\alphaVal};
-        \addplot[black, thick, domain=0:2] {1};
+        \addplot[black, very thick, domain=-2:0] {\alphaVal};
+        \addplot[black, very thick, domain=0:2] {1};
         \addplot[black, only marks, mark=o, mark size=1.5pt] coordinates {(0,\alphaVal)};
         \addplot[black, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação \textit{Parametric ReLU} (PReLU) com $\alpha=0.2$.}%
+    \caption{Derivada da função de ativação \textit{Parametric} ReLU (PReLU) com $\alpha=0.2$.}%
     \label{fig:prelu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -600,22 +641,27 @@ O gráfico da RReLU está presente na Figura~\ref{fig:rrelu}. Na representação
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{RReLU}(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.8, ymax=2.3,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.8, ymax=2.3,
             legend pos=north west,
-            legend style={font=\tiny}
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}        
         ]
-        \addplot[blue, thick, domain=0:2.3] {x};
-        \addplot[red, dashed, domain=-2.3:0, samples=2] {0.1*x};
-        \addplot[red, dashed, domain=-2.3:0, samples=2] {0.25*x};
-        \addplot[red, dashed, domain=-2.3:0, samples=2] {0.4*x};
+        \addplot[black, very thick, domain=0:2.3] {x};
+        \addplot[gray, dashed, domain=-2.3:0, samples=2] {0.1*x};
+        \addplot[gray, dashed, domain=-2.3:0, samples=2] {0.25*x};
+        \addplot[gray, dashed, domain=-2.3:0, samples=2] {0.4*x};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Randomized Leaky ReLU} (RReLU) com diferentes inclinações aleatórias para a parte negativa.}%
+    \caption{Função de ativação \textit{Randomized Leaky} ReLU (RReLU) com diferentes inclinações aleatórias para a parte negativa.}%
     \label{fig:rrelu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -646,39 +692,44 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{RReLU}'(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.2, ymax=1.2,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.2, ymax=1.2,
             legend pos=north west,
-            legend style={font=\scriptsize}
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}  
         ]
         % Define l e u para a distribuição uniforme U(l,u)
         \def\lVal{0.1}
         \def\uVal{0.3}
 
         % Plota a derivada para z > 0
-        \addplot[red, thick, domain=0:2.1] {1};
+        \addplot[black, very thick, domain=0:2.1] {1};
         \addlegendentry{$f'(x_j) = 1$}
 
         % Plota a região hachurada para z < 0
         \addplot[
             pattern=north east lines, 
-            pattern color=blue!50,
+            pattern color=gray!50,
             draw=none
         ] coordinates {(-2.1, \lVal) (0, \lVal) (0, \uVal) (-2.1, \uVal)} -- cycle;
         \addlegendentry{$\alpha_i \sim U(l,u)$}
 
         % Marcadores na descontinuidade
-        \addplot[blue, only marks, mark=o, mark size=1.5pt, forget plot] coordinates {(0,\lVal)};
-        \addplot[blue, only marks, mark=o, mark size=1.5pt, forget plot] coordinates {(0,\uVal)};
-        \addplot[red, only marks, mark=*, mark size=1.5pt, forget plot] coordinates {(0,1)};
+        \addplot[black, only marks, mark=o, mark size=1.5pt, forget plot] coordinates {(0,\lVal)};
+        \addplot[black, only marks, mark=o, mark size=1.5pt, forget plot] coordinates {(0,\uVal)};
+        \addplot[black, only marks, mark=*, mark size=1.5pt, forget plot] coordinates {(0,1)};
         
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação \textit{Randomized Leaky ReLU} (RReLU) com $l=0.1, u=0.3$.}%
+    \caption{Derivada da função de ativação \textit{Randomized Leaky} ReLU (RReLU) com $l=0.1, u=0.3$.}%
     \label{fig:rrelu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -838,19 +889,26 @@ Conhecendo como é a fórmula da ELU, é possível também plotar o seu gráfico
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{ELU}(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-1.2, ymax=2.3,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-1.2, ymax=2.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}  
         ]
         % Define alpha para o gráfico. O valor comum para ELU é 1.
         \def\alphaVal{1} 
-        \addplot[black, thick, domain=-2:2] {x >= 0 ? x : \alphaVal*(exp(x) - 1)};
+        \addplot[black, very thick, domain=-2:2] {x >= 0 ? x : \alphaVal*(exp(x) - 1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Exponential Linear Unit} (ELU) com $\alpha=1$.}%
+    \caption{Função de ativação \textit{Exponential Linear Unit} (ELU) com $\alpha=1$.}%
     \label{fig:elu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -878,22 +936,29 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{ELU}'(x_j)$},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
             xmin=-2.3, xmax=2.3,
             ymin=-0.2, ymax=1.2,
-            axis lines=middle,
-            grid=major
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}  
         ]
         % Define alpha para o gráfico
         \def\alphaVal{1} 
 
         % Plota a derivada usando uma única expressão condicional
-        \addplot[black, thick, domain=-2.3:2.3, samples=100] {x > 0 ? 1 : \alphaVal*exp(x)};
+        \addplot[black, very thick, domain=-2.3:2.3, samples=100] {x > 0 ? 1 : \alphaVal*exp(x)};
         
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação \textit{Exponential Linear Unit} (ELU) com $\alpha=1$.}%
+    \caption{Derivada da função de ativação \textit{Exponential Linear Unit} (ELU) com $\alpha=1$.}%
     \label{fig:elu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -975,20 +1040,27 @@ Pelo fato da SELU ter um comportamento que também retorna valores para a saída
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{SELU}(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-2, ymax=2.5,
             axis lines=middle,
             grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-2, ymax=2.5,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}  
         ]
         % Define as constantes da SELU para o gráfico
         \def\alphaVal{1.67326}
         \def\lambdaVal{1.0507}
-        \addplot[black, thick, domain=-2:2, samples=100] {x > 0 ? \lambdaVal*x : \lambdaVal*\alphaVal*(exp(x) - 1)};
+        \addplot[black, very thick, domain=-2:2, samples=100] {x > 0 ? \lambdaVal*x : \lambdaVal*\alphaVal*(exp(x) - 1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Scaled Exponential Linear Unit} (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$.}%
+    \caption{Função de ativação \textit{Scaled Exponential Linear Unit} (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$.}%
     \label{fig:selu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1018,21 +1090,28 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{SELU}'(x_j)$},
-            xmin=-2.3, xmax=2.3,
-            ymin=-0.2, ymax=2.0, % Ajustado para lambda > 1
             axis lines=middle,
-            grid=major
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-2.3, xmax=2.3,
+            ymin=-0.2, ymax=2.0,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize} 
         ]
         % Define as constantes da SELU para o gráfico
         \def\alphaVal{1.67326}
         \def\lambdaVal{1.0507}
 
-        \addplot[black, thick, domain=-2:2, samples=100] {x > 0 ? \lambdaVal*1 : \lambdaVal*\alphaVal*exp(x)};
+        \addplot[black, very thick, domain=-2:2, samples=100] {x > 0 ? \lambdaVal*1 : \lambdaVal*\alphaVal*exp(x)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da função de ativação Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$.}%
+    \caption{Derivada da função de ativação Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$.}%
     \label{fig:selu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1069,7 +1148,7 @@ No texto da introdução da SELU, \textcite{SELUArticle}, comparam as redes neur
     \end{threeparttable}
 \end{table}
 
-Para analisar essa tabela, pode-se primeiro olhar o ranking médio de cada uma desses modelos, que é dado pela média de como esses modelos performaram nos diferentes datasets, considerando isso, note que as redes que fazem uso da SELU em sua composição, as \textit{SNNs}, são as melhores, por uma diferença de 1.4 pontos quando comparadas com o segundo colocado, isso indica que a SELU pode ser uma ótima alternativa quando ainda não se sabe exatamente qual será o conjunto de dados que será trabalhado, se ele será de conceitos como física ou geologia, assim, elas garantem uma maior versatilidade para encarar diversos problemas. Além disso, ao olhar também o seu \textit{p-value}, que vem de um teste de Wilcoxon pareado para verificar se a diferença em relação ao melhor colocado é significativa, percebe-se que as \textit{SNNs} continuam se destacando, com o \textit{p-value} mais alto, indicando que existe uma diferença que não é estatisticamente significativa quando ela é comparada com o modelo \textit{SVM}, mostrando que podemos considerar as \textit{SNNs} como se tivessem empatadas com o campeão.
+Para analisar essa tabela, pode-se primeiro olhar o ranking médio de cada uma desses modelos, que é dado pela média de como esses modelos performaram nos diferentes datasets, considerando isso, note que as redes que fazem uso da SELU em sua composição, as SNNs, são as melhores, por uma diferença de 1.4 pontos quando comparadas com o segundo colocado, isso indica que a SELU pode ser uma ótima alternativa quando ainda não se sabe exatamente qual será o conjunto de dados que será trabalhado, se ele será de conceitos como física ou geologia, assim, elas garantem uma maior versatilidade para encarar diversos problemas. Além disso, ao olhar também o seu \textit{p-value}, que vem de um teste de Wilcoxon pareado para verificar se a diferença em relação ao melhor colocado é significativa, percebe-se que as SNNs continuam se destacando, com o \textit{p-value} mais alto, indicando que existe uma diferença que não é estatisticamente significativa quando ela é comparada com o modelo \textit{SVM}, mostrando que podemos considerar as SNNs como se tivessem empatadas com o campeão.
 
 O interessante dessa comparação é analisar ela considerando aquelas redes que fazem uso de técnicas de normalização para conseguir uma maior desempenho, como a \textit{BatchNorm} e a \textit{LayerNorm}, cada uma delas utiliza uma técnica de normalização diferente de forma a garantir que que problemas como os gradientes explosivos e desaparecimento do gradiente não ocorra com tanta frequência e com isso permitindo um melhor convergência do modelo que está sendo treinado. Ao olhar por essa ótica, pode-se chegar a conclusão que criar uma rede neural utilizando a SELU não só irá garantir uma maior versatilidade para a resolução de problemas, como também você não terá que se preocupar em aplicar técnicas de normalização ao construir essa rede.
 
@@ -1134,24 +1213,31 @@ A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsá
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            samples=200, 
+            domain=-4:4,
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x$},
             ylabel={$p(x)$}, % p(x) é a densidade de probabilidade
-            xmin=-4, xmax=4,
-            ymin=0, ymax=0.5,
             axis lines=middle,
             grid=major,
-            samples=200, % Aumenta o número de pontos para uma curva mais suave
-            domain=-4:4,
+            grid style={dashed, gray!40},
+            xmin=-4, xmax=4,
+            ymin=0, ymax=0.5,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize} 
         ]
         
         % Declara a função da distribuição normal para facilitar o uso
         \def\normaldist#1#2{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}
         
         % Adiciona a área sombreada para +/- 1 desvio padrão
-        \addplot[fill=blue!20, draw=none, domain=-1:1] {\normaldist{0}{1}} \closedcycle;
+        \addplot[fill=gray!20, draw=none, domain=-1:1] {\normaldist{0}{1}} \closedcycle;
 
         % Plota a curva da distribuição normal padrão (mu=0, sigma=1)
-        \addplot[blue, thick] {\normaldist{0}{1}};
+        \addplot[black, very thick] {\normaldist{0}{1}};
 
         % Adiciona linhas verticais para marcar a média e os desvios padrão
         \draw[dashed, gray] (axis cs:0, 0) -- (axis cs:0, 0.45);
@@ -1176,21 +1262,28 @@ Entendendo a estrutura e como funciona a \textit{Noisy ReLU}, é possível plota
     \centering
     \begin{tikzpicture}
         \begin{axis}[
+            domain=-0.999:2, 
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{NReLU}(x_j)$},
-            xmin=-1.3, xmax=2.3,
-            ymin=-2.3, ymax=2.3,
             axis lines=middle,
             grid=major,
-            domain=-0.999:2, % Domínio para evitar o log de zero ou negativo
+            grid style={dashed, gray!40},
+            xmin=-1.3, xmax=2.3,
+            ymin=-2.3, ymax=2.3,
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
         % A função ln(1+x) está definida para x > -1
-        \addplot[black, thick] {x >= 0 ? x : ln(1+x)};
+        \addplot[black, very thick] {x >= 0 ? x : ln(1+x)};
         % Linha vertical para mostrar a assíntota em z = -1
         \draw[dashed, gray] (axis cs:-1, -2.3) -- (axis cs:-1, 2.3);
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função de ativação \textit{Noisy ReLU} (NReLU).}%
+    \caption{Função de ativação \textit{Noisy} ReLU (NReLU).}%
     \label{fig:nrelu}
     \fonte{O autor (2025).}
 \end{figure}
@@ -1221,20 +1314,27 @@ Se a função da \textit{Noisy ReLU} no \textit{backward pass} será a mesma que
     \centering % Centraliza o gráfico na página
     \begin{tikzpicture}
         \begin{axis}[
+            width=\linewidth,  
+            height=7cm,
             xlabel={$x_j$},
             ylabel={$\text{NReLU}'(x_j)$},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
             xmin=-2.3, xmax=2.3,
             ymin=-0.8, ymax=1.8,
-            axis lines=middle,
-            grid=major
+            legend pos=north west,
+            title style={font=\bfseries\small},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
         ]
-        \addplot[black, thick, domain=-2:0] {0};
-        \addplot[black, thick, domain=0:2] {1};
+        \addplot[black, very thick, domain=-2:0] {0};
+        \addplot[black, very thick, domain=0:2] {1};
         \addplot[black, only marks, mark=o, mark size=1.5pt] coordinates {(0,0)};
         \addplot[black, only marks, mark=*, mark size=1.5pt] coordinates {(0,1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da função \textit{Backward Pass} da função de ativação \textit{Noisy ReLU}.}%
+    \caption{Função \textit{Backward Pass} da função de ativação \textit{Noisy} ReLU.}%
     \label{fig:nrelu-derivada}
     \fonte{O autor (2025).}
 \end{figure}
