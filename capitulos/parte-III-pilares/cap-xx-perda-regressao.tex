@@ -2156,14 +2156,16 @@ Contudo, mesmo a distribuição normal sendo a mais comum para modelar os difere
 \subsection{Perda de Poisson (Poisson loss)}%
 \index{Funções de Perda!Perda de Poisson (\textit{Poisson loss})}
 
-Imagine que você está procurando uma forma de modelar a quantidade de ligações que você pode receber em seu telefone por dia. Primeiro, você pensou que essa quantidade seguiria uma distribuição normal, mas encontrou um problema, a distribuição normal é contínua, e não tem como você receber $2,5$ ligações em um período. Além disso, você decidiu que precisava dividir o tempo em um conjunto de intervalos discretos, assim, todas as ligações que você receber das 14:00 as 14:59 ficarão no mesmo intervalo. Esse problema possui ainda uma terceira particularidade, não existe um limite de ligações que você pode receber, pode ser que das 13:00 as 13:59 você receba duas ligações, mas também pode ser que você receba 314 ligações naquele horário. Foi então que procurando mais sobre o assunto, você descobriu sobre uma distribuição diferente, que parece cumprir todos os requisitos para modelar esse seu problema, essa é a distribuição de Poisson.
+Imagine que você está procurando uma forma de modelar a quantidade de ligações que você pode receber em seu telefone por dia. Primeiro, você pensou que essa quantidade seguiria uma distribuição normal, mas encontrou um problema, a distribuição normal é contínua, e não tem como você receber $2,5$ ligações em um período. Além disso, você decidiu que precisava dividir o tempo em um conjunto de intervalos discretos, assim, todas as ligações que você receber das 14:00 as 14:59 ficarão no mesmo intervalo. Esse problema possui ainda uma terceira particularidade, não existe um limite de ligações que você pode receber, pode ser que das 13:00 as 13:59 você receba duas ligações, mas também pode ser que você receba 314 ligações naquele horário. Quando temos uma situação parecida com essa, nós estaremos trabalhando com o que os estatísticos chamam de \textbf{dados de contagem}. 
+
+Nessas situações, a distribuição normal não irá ser efetiva, sendo necessárias distribuições como a de Poisson.
 
 \subsubsection*{A distribuição de Poisson}%
 \index{Distribuição de Poisson}
 
-A função densidade de probabilidade da distribuição de Poisson é dada pela Equação~\ref{eq:poisson-distribution-pmf}, onde o espaço amostral é conjunto de inteiros não-negativos. \textcite{GeneralizedLinearModels} aponta que essa distribuição não possui uma limite superior nos valores que podem ser observados, diferente da distribuição Normal.
+A função densidade de probabilidade da distribuição de Poisson é dada pela Equação~\ref{eq:poisson-distribution-pmf}, onde o espaço amostral é conjunto de inteiros não-negativos. Em \textit{Generalized Linear Models}, \textcite{GeneralizedLinearModels} aponta que essa distribuição não possui uma limite superior nos valores que podem ser observados, diferente da distribuição Normal.
 
-\begin{equacaodestaque}{Distribuição de Poisson (FDP)}
+\begin{equacaodestaque}{Distribuição de Poisson (FMP)}
     P(y_j| \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}, \quad y_j \in {0, 1, 2, \ldots}%
     \label{eq:poisson-distribution-pmf}
 \end{equacaodestaque}
@@ -2176,7 +2178,9 @@ Em que
 
 A distribuição de Poisson segue a média, a variância e todos os cumulativos de $Y$ que são iguais a $\lambda$ \parencite{GeneralizedLinearModels}. Isso significa que a média e a variância dessa distribuição são iguais, consequentemente, o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
 
-Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele é baixo. Portanto, a média da distribuição é baixa, de forma que a maioria dos dados está próxima de zero. A variância também é baixa, indicando que os dados são representados no gráfico de forma assimétrica. Já na Figura~\ref{fig:poisson-high-lambda} o cenário é o inverso, o $\lambda$ é alto. Com isso, os dados ficam melhores distribuídos no gráfico, além de uma média maior. O gráfico passa a lembrar o de uma distribuição Normal, mas ainda assim, permanece discreto.
+Quando utilizamos o MSE como função de perda, estamos supondo que os dados seguem a distribuição normal, e portanto a variância é constante em toda a distribuição. Se fazemos uso dessa função de perda para um cenário em que temos dados de contagem que seguem a distribuição de Poisson, o MSE irá penalizar excessivamente os erros em contagem alta (na qual o ruído é maior) e insuficientemente em contagem baixa. A perda de Poisson consegue corrigir esse problema, dado que ela leva em consideração a definição da função log-verossimilhança da distribuição de Poisson.
+
+Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele é baixo. Portanto, a média da distribuição é baixa, de forma que a maioria dos dados está próxima de zero. A variância também é baixa, indicando que os dados são representados no gráfico de forma assimétrica. Já na Figura~\ref{fig:poisson-high-lambda} o cenário é o inverso, o $\lambda$ é alto. Com isso, os dados ficam melhores distribuídos no gráfico, além de uma média maior. O gráfico passa a lembrar o de uma distribuição Normal, mas ainda assim, permanece discreto. Além disso, o parâmetro $\lambda$ é responsável por definir também a assimetria dos gráficos da distribuição, conforme seu valor aumenta, a assimetria diminui.
 
 \begin{figure}[h!]
     \centering 
@@ -2240,13 +2244,6 @@ Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele 
     \fonte{O autor (2025).}
 \end{figure}
 
-A função log-verossimilhança para a distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição da perda de Poisson.
-
-\begin{equacaodestaque}{Log-verossimilhança para a distribuição de Poisson}
-    l_j (\lambda_j) =  y_j \log(\lambda_j) - \lambda_j \approx y_j \log(y_j) - y_j - 9y^{1/3}_j (\lambda_j^{1/3} - y_j^{1/3})^2/2 %
-    \label{eq:log-verossimilhanca-negativa-de-poisson}
-\end{equacaodestaque}
-
 Ainda em \textit{Generalized Linear Models}, \textcite{GeneralizedLinearModels} explicam algum cenários em que essa distribuição é utilizada para descrever um problema, entre algum dos explicados pelo autor, vale a pena citar:
 
 \begin{itemize}
@@ -2260,13 +2257,21 @@ Na prática um bom indicativo para considerar utilizar a distribuição de poiss
 
 \subsubsection*{Perda de Poisson}
 
-Da função log verossimilhança da distribuição de Poisson, Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, tomamos a sua aproximação, ou seja
+Para chegar na definição da perda de Poisson, devemos começar com função log-verossimilhança da distribuição. Ela é dada por
+
+A função log-verossimilhança para a distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição da perda de Poisson.
 
 \[
-    y_j \log(\lambda_j) - \lambda_j
+    \log (P(y_j|\lambda)) =  -\lambda + y_j \log(\lambda_j) - \log(y_j!)
 \]
 
-Dela, multiplicamos toda a expressão por $-1$. Assim, encontramos a Equação~\ref{eq:poisson-loss}, referente ao cálculo da perda de poisson. Neste caso, o termo $\lambda_j$ é dado pelo valor predito pelo modelo $\hat{y}_j$.
+O termo $\log(y_j !)$ é constante em relação ao modelo, dado que o modelo não controla o valor real $y_j$, só a previsão $\lambda$. Então escrevemos
+
+\[
+      -\lambda + y_j \log(\lambda_j)
+\]
+
+Como nosso intuito é minimizar a perda, devemos multiplicá-la por $-1$. Feito isso, encontramos que a perda de Poisson é dada pela Equação~\ref{eq:poisson-loss}. Neste caso, o termo $\lambda_j$ é dado pelo valor predito pelo modelo $\hat{y}_j$.
 
 \begin{equacaodestaque}{Perda de Poisson}
     \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \hat{y}_j -y_j \log(\hat{y}_j)%
@@ -2281,7 +2286,7 @@ Em que:
     \item[$N$] representa o número de amostras.
 \end{description}
 
-Considerando a fórmula da perda de Poisson, é possível também discutir os seus gráficos, os quais estão presentes na Figura~\ref{fig:poisson-loss-grid}, é interessante notar como os seus gráficos variam conforme os valores reais $y$ mudam. Quando o valor real é um valor pequeno, como está retratado na Figura~\ref{fig:poisson-2d-low} (para a visão em duas dimensões da função) e na Figura~\ref{fig:poisson-3d-low} (para a vista da superfície da função no espaço), a perda de Poisson possui uma convexidade mais ``apertada''. Já nos cenários da Figura~\ref{fig:poisson-2d-high} (visão em duas dimensões) e na Figura~\ref{fig:poisson-3d-high} (visão em três dimensões), o valor de $y$ é grande, o que resulta em uma função que é mais ``larga''.
+Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variando de iteração para iteração, vão existir diferentes gráficos de perda, isso está evidenciado na Figura~\ref{fig:poisson-comparison}. Quando o valor real é pequeno, a perda de Poisson possui uma convexidade mais ``apertada''. Já quando o valor real é grande, isso resulta em uma função mais ``larga''.
 
 \begin{figure}[h!]
     \centering
@@ -2428,30 +2433,30 @@ Considerando a fórmula da perda de Poisson, é possível também discutir os se
 \subsubsection*{Características da perda de Poisson}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda de Poisson pertence à classe $C^\infty$ (infinitamente diferenciável) em seu domínio de definição $(0, \infty)$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}).
-    \item[Convexidade:] A perda de Poisson é convexa, e estritamente convexa se $y > 0$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}).  
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda de Poisson pertence à classe $C^\infty$ (infinitamente diferenciável) em seu domínio de definição $(0, \infty)$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Isso garante para essa função a possibilidade de ser utilizada tanto em métodos de otimização baseados em gradiente (que utilizam a primeira derivada) quanto em métodos de segunda ordem (que utilizam a segunda derivada).
+    \item[Convexidade:] A perda de Poisson é convexa, e estritamente convexa se $y > 0$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Esse fato está evidenciado nos gráficos da Figura~\ref{fig:poisson-comparison}, independentemente dos valores reais $y_j$, a perda segue um comportamento de uma função convexa, com o gráfico semelhante a um ``funil''.
     \item[Robustez:] A perda de Poisson não é Lipschitz-contínua globalmente devido à singularidade na origem (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Para uma função ser Lipschitz-contínua, o seu gradiente deve ser limitado, algo que não acontece quando a predição aproxima de zero. Desse modo, ao utilizar essa função de perda, tenha em mente que o modelo criado estará susceptível a gradientes explosivos.
-    \item[Não-negatividade e link functions:] \textcite{LossesArticle} explicam que como dados de contagem não podem ser negativos, deve-se atentar com os valores preditos pelo modelo $\hat{y}_j$, pois eles deverão estar restritos em $\hat{y}_j > 0$. Em modelos lineares generalizados a função exponencial é comumente utilizada como uma link function para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Dito isso, é possível discutir uma versão alternativa para descrever a perda de Poisson considerando que $\text{exp}$ está sendo usada como uma link function.
-    
-    Sabemos que um modelo de aprendizado de máquina, geralmente retorna algo que segue o padrão mostrado na Equação xxx
- 
-    \begin{equation}
-        \hat{y}_j = \textbf{W}^T x_j + b
-    \end{equation}
+    \item[Não-negatividade e funções de conexão:] Ao definir a perda de Poisson é utilizado o logaritmo, isso implica que o termo $\log(\hat{y}_j)$ deve ser sempre positivo. Esse fato também é exposto ao definir a própria distribuição de Poisson, os dados de contagem não devem ser negativos. Em modelos lineares generalizados a função exponencial é comumente utilizada como uma função de conexão (\textit{link function}) para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Assim, cabe discutir uma definição alternativa para a perda de Poisson, em que consideramos a exponencial como uma função de conexão:
 
-    Esse valor pode ser negativo e queremos que ele fique em um intervalo $\hat{y} > 0$. Então como \textcite{LossesArticle} sugerem, uma das soluções é utilizar a função exponencial como uma link function, então escrevemos
+    Sabemos que um modelo de aprendizado de máquina, geralmente retorna algo que segue o padrão
+ 
+    \[
+        \hat{y}_j = \textbf{W}^T x_j + b
+    \]
+
+    Esse valor pode ser negativo e queremos que ele fique em um intervalo $\hat{y} > 0$. Uma das soluções é utilizar a função exponencial como uma função de conexão, então escrevemos
 
     \[
         \hat{y}_j = \text{exp}(\textbf{W}^T x_j + b)
     \]
 
-    Ao substituir essa expressão na Equação~\ref{eq:poisson-loss}, que mostra a função de perda de Poisson, é possível chegar Em
+    Ao substituir essa expressão na Equação~\ref{eq:poisson-loss} chegamos nos termos
 
     \[
         \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j \log(\text{exp}(\textbf{W}^T x_j + b))
     \]
 
-    É possível simplificar os cálculos do logaritmo, resultando na expressão
+    Simplificando os cálculos do logaritmo, encontramos
 
     \[
         \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j  (\text{exp}(\textbf{W}^T x_j + b))
