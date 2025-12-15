@@ -73,7 +73,7 @@ A primeira seção desse capítulo que explora as funções de perda busca focar
 \index{Funções de Perda!Erro quadrático médio (MSE)}%
 \label{sec:mse-loss}
 
-O \textbf{\gls{mse-loss}}, também conhecido como \textbf{\textit{mean squared error}} (\textbf{MSE}) ou \textbf{perda L2}, tem suas origens no século XIX. Nessa época, estava em alta o estudo da astronomia, com os pesquisadores buscando entender o comportamento das estrelas e dos outros planetas. O MSE surge nesse contexto, mais precisamente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas). Nele, \textcite{Legendre1805} introduz o método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros. Ou seja, minimizar o erro quadrático médio.
+O \textbf{erro quadrático médio}, também conhecido como \textbf{\textit{mean squared error}} (\textbf{MSE}) ou \textbf{perda L2}, tem suas origens no século XIX. Nessa época, estava em alta o estudo da astronomia, com os pesquisadores buscando entender o comportamento das estrelas e dos outros planetas. O MSE surge nesse contexto, mais precisamente no trabalho \textit{Nouvelles méthodes pour la détermination des orbites des comètes} (Novos métodos para determinar as órbitas dos cometas). Nele, \textcite{Legendre1805} introduz o método dos mínimos quadrados, o qual tem como objetivo minimizar a soma dos quadrados dos erros. Ou seja, minimizar o erro quadrático médio.
 
 O trabalho de Legendre não foi o único responsável por popularizar o método dos mínimos quadrados. Em \textit{Theoria Motus Corporum Coelestium in Sectionibus Conicis Solem Ambientium} (Teoria do Movimento dos Corpos Celestes em Seções Cônicas ao Redor do Sol), \textcite{Gauss1809}, discute um problema que se inicia com um sistema de equações lineares com mais equações que incógnitas derivadas de observações astronômicas que possuem erros. Seu objetivo é encontrar o valor mais provável para essas incógnitas.
 
@@ -92,7 +92,7 @@ Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o c�
     \label{eq:mse}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
     \item[$y_j$] representa o valor real da j-ésima amostra;
@@ -132,7 +132,7 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro.}%
+        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:mse-2d}
     \end{subfigure}
     \hfill 
@@ -177,7 +177,7 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]
     
-    \item[Continuidade e suavidade:] O erro quadrático médio é uma função de classe $C^{\infty}$, é infinitamente diferenciável (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o MSE uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
+    \item[Continuidade e suavidade:] O MSE é uma função de classe $C^{\infty}$, é infinitamente diferenciável (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o MSE uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
     \item[Sensibilidade a \textit{outliers}:] O MSE é uma função que não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mse}). Caso o erro do modelo treinado cresça exponencialmente, o valor numérico da perda será consideravelmente grande. Não somente isso, ele é sensível a \textit{outliers}, se um grupo de dados fora do padrão estiver presente no conjunto de dados, eles podem enviesar o cálculo da perda, e também na otimização em busca de pontos de mínimo.
     \item[Convexidade:] O MSE é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-mse}), representado pelos gráficos da Figura~\ref{fig:mse}, que apresentam uma função com formato de tigela. Dessa forma, essa característica torna-se uma vantagem se estiver sendo utilizados otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, \textcite{LossesArticle} argumentam que essa propriedade pode deixar de ser verdade em algoritmos de aprendizado profundo.
     \item[Não-negatividade:] omo gráficos da Figura~\ref{fig:mse} ilustram, o MSE é retorna apenas valores positivos. Isso se dá devido à diferença das entradas estar sendo calculada, e, em seguida, elevada ao quadrado, impendido que valores negativos ocorram na saída.
@@ -211,7 +211,7 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = \hat{y} - y$)},
+                xlabel={Erro},
                 ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
                 axis lines=middle,
                 grid=major,
@@ -232,7 +232,7 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
                 \addlegendentry{$\frac{\partial L}{\partial \hat{y}} = \frac{2}{N} \cdot e$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação linear entre erro e gradiente da perda.}%
+        \caption{Relação linear entre erro e gradiente da perda ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:mse-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -307,7 +307,7 @@ O erro quadrático médio é ideal para ser utilizado em cenários que deve-se g
 \index{Funções de Perda!Erro absoluto médio (MAE)}%
 \label{sec:mae-loss}
 
-O \textbf{\gls{mae-loss}}, também chamado de \textbf{perda L1}, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada em tarefas de regressão. Ele não possui uma origem definida como o MSE, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado há bastante tempo. 
+O \textbf{erro absoluto médio}, também chamado de \textbf{perda L1}, é uma função que tem o mesmo propósito do erro quadrático médio, ser utilizada em tarefas de regressão. Ele não possui uma origem definida como o MSE, esse conceito de minimizar a diferença de um resultado pelo seu valor real já havia sendo utilizado há bastante tempo. 
 
 Trabalhos como \textit{Greedy function approximation: A gradient boosting machine} de \textcite{GreedyFunctionApproximation} utilizam essa função de perda para resolver problemas de aprendizado de máquina. No texto, o autor desenvolve um algoritmo de \textit{boosting} específico para o MAE (o qual é apresentado com outro nome, \textbf{\textit{Least-Absolute-Deviation}} (\textbf{LAD})), sendo responsável por dar nome ao algoritmo criado, o \texttt{LAD\_TreeBoost} \parencite{GreedyFunctionApproximation}. \textcite{GreedyFunctionApproximation} explica que esse algoritmo utiliza uma árvore de regressão com a perda, para prever a pseudo-resposta que é o sinal dos resíduos atuais. Como consequência, o modelo é atualizado adicionando em cada nó terminal da nova árvore criada a mediana dos resíduos daquela região específica.
 
@@ -354,8 +354,8 @@ Em que:
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro},
+                ylabel={Perda},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -372,11 +372,9 @@ Em que:
                     color=black, 
                     very thick
                 ] {abs(x)};
-                
-                \addlegendentry{$L = |e|$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro.}%
+        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:mae-2d}
     \end{subfigure}
     \hfill
@@ -465,7 +463,7 @@ Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráf
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = \hat{y} - y$)},
+                xlabel={Erro},
                 ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
                 axis lines=middle,
                 grid=major,
@@ -493,7 +491,7 @@ Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráf
                 \addplot[only marks, mark=o, color=black, mark size=2pt] coordinates {(0,-1) (0,1)};
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação constante por partes entre erro e gradiente da perda.}%
+        \caption{Relação constante por partes entre erro e gradiente da perda ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:mae-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -553,7 +551,7 @@ O erro quadrático médio penaliza em maior grau os \textit{outliers}, enquanto 
 \index{Funções de Perda!Perda de Huber (Huber loss)}%
 \label{sec:huber-loss}
 
-Proposta por Peter J. Huber, a \gls{huber-loss}, também chamada de \textit{\textbf{Huber loss}} foi apresentada no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. \textcite{HuberLoss} estudava maneiras de fazer uma estimação robusta de um parâmetro de localização (como a média o mediana de um conjunto de dados) quando a distribuição dos dados é aproximadamente conhecida. Para solucionar esse problema, o autor define um estimador robusto $p$ que segue a Equação~\ref{eq:huber-loss-do-huber} \parencite{HuberLoss}.
+Proposta por Peter J. Huber, a \textbf{perda de Huber}, também chamada de \textit{\textbf{Huber loss}} foi apresentada no trabalho \textit{Robust Estimation of a Location Parameter} \parencite{HuberLoss}. \textcite{HuberLoss} estudava maneiras de fazer uma estimação robusta de um parâmetro de localização (como a média o mediana de um conjunto de dados) quando a distribuição dos dados é aproximadamente conhecida. Para solucionar esse problema, o autor define um estimador robusto $p$ que segue a Equação~\ref{eq:huber-loss-do-huber} \parencite{HuberLoss}.
 
 \begin{equation}
     \rho(t) = 
@@ -596,8 +594,8 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro},
+                ylabel={Perda},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -619,7 +617,7 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
                 \draw[dashed, gray] (axis cs:\delta, 0) -- (axis cs:\delta, {\delta*(\delta-0.5*\delta)});
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro.}%
+        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:huber-2d}
     \end{subfigure}
     \hfill 
@@ -663,7 +661,7 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
     \fonte{O autor (2025).}
 \end{figure}
 
-O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber. Um valor muito alto, como demonstrado na Figura~\ref{fig:huber-2d-d40}, torna a função muito sensível ao erro e também a \textit{outliers}. Ela também se assemelha com os gráficos do erro quadrático médio, dado que para grande parte de seu domínio, ela calcula o erro de forma quadrática. Um valor muito pequeno para $\delta$, como na Figura~\ref{fig:huber-2d-d05}, faz com que a parábola da perda de Huber seja curta. Com isso, a função apresenta uma melhor robustez a \textit{outliers}, se assemelhando com o erro absoluto médio.
+O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber. Um valor muito alto, demonstrado na Figura~\ref{fig:huber-2d-d40}, torna a função muito sensível ao erro e também a \textit{outliers}. Ela também se assemelha com os gráficos do erro quadrático médio, dado que para grande parte de seu domínio, ela calcula o erro de forma quadrática. Um valor muito pequeno para $\delta$, como na Figura~\ref{fig:huber-2d-d05}, faz com que a parábola da perda de Huber seja curta. Com isso, a função apresenta uma melhor robustez a \textit{outliers}, se assemelhando com o erro absoluto médio.
 
 \begin{figure}[h!]
     \centering
@@ -675,7 +673,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
                 width=\linewidth,
                 height=7cm,
                 xlabel={Erro ($\hat{y} - y$)},
-                ylabel={Perda Calculada},
+                ylabel={Perda},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -742,7 +740,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
                 width=\linewidth,
                 height=7cm,
                 xlabel={Erro ($\hat{y} - y$)},
-                ylabel={Perda Calculada},
+                ylabel={Perda},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -841,7 +839,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
                 % Dimensões ajustadas para caber lado a lado
                 width=\linewidth, 
                 height=7cm,
-                xlabel={Erro ($e = \hat{y} - y$)},
+                xlabel={Erro},
                 ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
                 axis lines=middle,
                 grid=major,
@@ -877,7 +875,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
                 \addplot[only marks, mark=*, color=black, mark size=2pt] coordinates {(-1,-1) (1,1)};
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação híbrida entre erro e gradiente da perda.}%
+        \caption{Relação híbrida entre erro e gradiente da perda ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:huber-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -969,8 +967,8 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
                 % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro},
+                ylabel={Perda},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -990,7 +988,7 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
                 ] {ln(cosh(x))};
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro.}%
+        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
         \label{fig:log-cosh-2d}
     \end{subfigure}
     \hfill 
@@ -2163,20 +2161,20 @@ Imagine que você está procurando uma forma de modelar a quantidade de ligaçõ
 \subsubsection*{A distribuição de Poisson}%
 \index{Distribuição de Poisson}
 
-A distribuição de Poisson é dada pela Equação~\ref{eq:poisson-distribution-pmf}, onde o espaço amostral é conjunto de inteiros não-negativos. \textcite{GeneralizedLinearModels} aponta que essa distribuição não possui uma limite superior nos valores que podem ser observados, diferente da distribuição Normal.
+A função densidade de probabilidade da distribuição de Poisson é dada pela Equação~\ref{eq:poisson-distribution-pmf}, onde o espaço amostral é conjunto de inteiros não-negativos. \textcite{GeneralizedLinearModels} aponta que essa distribuição não possui uma limite superior nos valores que podem ser observados, diferente da distribuição Normal.
 
-\begin{equacaodestaque}{Distribuição de Poisson (PMF)}
+\begin{equacaodestaque}{Distribuição de Poisson (FDP)}
     P(y_j| \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}, \quad y_j \in {0, 1, 2, \ldots}%
     \label{eq:poisson-distribution-pmf}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
 \begin{itemize}
     \item $\lambda$ representa a taxa de Poisson, ou seja, a contagem esperada.
 \end{itemize}
 
-A distribuição de Poisson segue a média, a variância e todos os cumulativos de $Y$ que são igual a $\lambda$ \parencite{GeneralizedLinearModels}. Isso significa que a média e a variância dessa distribuição são iguais, consequentemente, o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
+A distribuição de Poisson segue a média, a variância e todos os cumulativos de $Y$ que são iguais a $\lambda$ \parencite{GeneralizedLinearModels}. Isso significa que a média e a variância dessa distribuição são iguais, consequentemente, o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
 
 Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele é baixo. Portanto, a média da distribuição é baixa, de forma que a maioria dos dados está próxima de zero. A variância também é baixa, indicando que os dados são representados no gráfico de forma assimétrica. Já na Figura~\ref{fig:poisson-high-lambda} o cenário é o inverso, o $\lambda$ é alto. Com isso, os dados ficam melhores distribuídos no gráfico, além de uma média maior. O gráfico passa a lembrar o de uma distribuição Normal, mas ainda assim, permanece discreto.
 
@@ -2201,7 +2199,7 @@ Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele 
                 xmax=20,
                 x post scale=1.4
                 ]
-                \addplot+[ycomb,black,thick] {poisson(1)};
+                \addplot[ycomb,black,thick] {poisson(1)};
                 \addlegendentry{$\lambda = 1$}
             \end{axis}
         \end{tikzpicture}
@@ -2228,7 +2226,7 @@ Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele 
                 xmax=20,
                 x post scale=1.4
                 ]
-                \addplot+[ycomb,black,thick] {poisson(9)};
+                \addplot[ycomb,black,thick] {poisson(9)};
                  \addlegendentry{$\lambda = 9$};
             \end{axis}
         \end{tikzpicture}
@@ -2242,9 +2240,9 @@ Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele 
     \fonte{O autor (2025).}
 \end{figure}
 
-A log-verossimilhança da perda da distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição da perda de Poisson.
+A função log-verossimilhança para a distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição da perda de Poisson.
 
-\begin{equacaodestaque}{Log-verossimilhança negativa para a distribuição de Poisson}
+\begin{equacaodestaque}{Log-verossimilhança para a distribuição de Poisson}
     l_j (\lambda_j) =  y_j \log(\lambda_j) - \lambda_j \approx y_j \log(y_j) - y_j - 9y^{1/3}_j (\lambda_j^{1/3} - y_j^{1/3})^2/2 %
     \label{eq:log-verossimilhanca-negativa-de-poisson}
 \end{equacaodestaque}
