@@ -554,6 +554,72 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \subsection{Perda Gamma (Gamma loss)}
+\label{ap:deducoes-gamma-loss}
+
+\begin{definition}
+    Seja $y > 0$ o valor alvo e $\hat{y} > 0$ a predição. A função de perda Gamma deriva da \textit{Negative Log-Likelihood} da distribuição Gamma. Ignorando termos constantes que dependem apenas de $y$, a forma canônica para minimização é:
+    \begin{equation}
+        \mathcal{L}(y, \hat{y}) = \frac{y}{\hat{y}} + \log(\hat{y})
+    \end{equation}
+    O domínio é restrito estritamente aos reais positivos ($(0, \infty)$), pois a distribuição Gamma não admite valores nulos ou negativos.
+\end{definition}
+
+\begin{proposition}[Regularidade]
+    A função Gamma Loss pertence à classe $C^\infty$ (suave) em seu domínio $(0, \infty)$.
+\end{proposition}
+
+\begin{proof}
+    A função é composta pela soma de uma função racional ($y/\hat{y}$) e uma função logarítmica ($\log \hat{y}$). Ambas são $C^\infty$ em $\mathbb{R}^+$.
+    
+    Calculamos as derivadas sucessivas:
+    \begin{align*}
+        \mathcal{L}'(\hat{y}) &= -\frac{y}{\hat{y}^2} + \frac{1}{\hat{y}} = \frac{\hat{y} - y}{\hat{y}^2} \\
+        \mathcal{L}''(\hat{y}) &= \frac{2y}{\hat{y}^3} - \frac{1}{\hat{y}^2} = \frac{2y - \hat{y}}{\hat{y}^3}
+    \end{align*}
+    
+    Como o denominador $\hat{y}^k$ nunca é zero no domínio definido, todas as derivadas existem e são contínuas.
+\end{proof}
+
+\begin{proposition}[Não-Convexidade Global]
+    A função Gamma Loss \textbf{não é convexa} em relação à predição $\hat{y}$ globalmente, tornando-se côncava para grandes superestimativas.
+\end{proposition}
+
+\begin{proof}
+    Pelo critério da segunda derivada, para haver convexidade, exige-se $\mathcal{L}''(\hat{y}) \ge 0$ em todo o domínio. Retomando a expressão derivada anteriormente:
+    \[ \mathcal{L}''(\hat{y}) = \frac{2y - \hat{y}}{\hat{y}^3} \]
+    
+    Como o denominador $\hat{y}^3$ é sempre positivo, o sinal depende do numerador:
+    \begin{itemize}
+        \item Se $\hat{y} < 2y$ (erro pequeno ou subestimação), $\mathcal{L}'' > 0$ (Convexa).
+        \item Se $\hat{y} > 2y$ (erro grave de superestimação), $\mathcal{L}'' < 0$ (Côncava).
+    \end{itemize}
+    
+    A mudança de curvatura quando a predição excede o dobro do alvo indica que a otimização direta em $\hat{y}$ pode ser instável para métodos de segunda ordem (como Newton-Raphson).
+\end{proof}
+
+\begin{remark}[Convexidade no Espaço Logarítmico]
+    Em Deep Learning e GLMs, contornamos a não-convexidade modelando o logaritmo da média ($z = \log \hat{y}$). Substituindo $\hat{y} = e^z$, a função torna-se $G(z) = y e^{-z} + z$. Sua segunda derivada é $G''(z) = y e^{-z}$, que é estritamente positiva para todo $z$. Portanto, a Gamma Loss é canonicamente usada com uma função de ligação logarítmica.
+\end{remark}
+
+\begin{proposition}[Assimetria de Robustez]
+    A função Gamma Loss não é Lipschitz-contínua devido à singularidade na origem, mas possui gradientes que tendem a zero no infinito.
+\end{proposition}
+
+\begin{proof}
+    Analisamos o comportamento do gradiente $\mathcal{L}'(\hat{y}) = \frac{\hat{y} - y}{\hat{y}^2}$ nas bordas do domínio:
+    
+    \begin{enumerate}
+        \item \textbf{Subestimação Extrema ($\hat{y} \to 0^+$):}
+        \[ \lim_{\hat{y} \to 0^+} \left( \frac{1}{\hat{y}} - \frac{y}{\hat{y}^2} \right) = -\infty \]
+        O gradiente explode negativamente (o termo quadrático no denominador domina), forçando o modelo a corrigir subestimações agressivamente. Não é Lipschitz.
+        
+        \item \textbf{Superestimação Extrema ($\hat{y} \to \infty$):}
+        \[ \lim_{\hat{y} \to \infty} \frac{\hat{y} - y}{\hat{y}^2} \approx \lim_{\hat{y} \to \infty} \frac{1}{\hat{y}} = 0 \]
+        Para predições muito altas, o gradiente desaparece.
+    \end{enumerate}
+    
+    Conclui-se que a função penaliza severamente erros onde $\hat{y} \ll y$, mas é leniente (robusta) com erros onde $\hat{y} \gg y$.
+\end{proof}
 
 \subsection{Perda de Tweedie (Tweedie loss)}
 
