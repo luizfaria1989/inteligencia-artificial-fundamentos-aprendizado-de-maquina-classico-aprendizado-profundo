@@ -2538,15 +2538,15 @@ Como foi visto anteriormente, a função exponencial é utilizada como uma funç
     \item[Predição de sinistros em planos de saúde privados (Área):] \textcite{poisson-regression-and-zero-inflated-poisson-regression} utilizam a regressão de Poisson e uma técnica de regressão conhecida como regressão de Poisson zero-inflada, que é útil para dados que possuem um excesso de zeros. Para comparar e entender melhor qual técnica de regressão é mais interessante, os autores trabalham com o número de sinistros em um plano de saúde privado, no caso dos pesquisadores, o número de sinistros apresenta sobredispersão devido a predominância de zeros no conjunto de dados, de forma que a regressão de Poisson zero-inflada provou ser mais eficiente para lidar com esse tipo de problema \parencite{poisson-regression-and-zero-inflated-poisson-regression}.
 \end{description}
 
-\subsection{Deviância Gamma (Gamma Devience)}%
-\index{Funções de Perda!Deviância Gamma (\textit{Gamma Devience})}
+\subsection{Perda Gamma (Gamma Deviance)}%
+\index{Funções de Perda!Deviância Gamma (\textit{Gamma Deviance})}
 
-Para falar da função de perda deviância gamma, antes é necessário compreender dois conceitos que se relacionam: a função gamma e a distribuição gamma. Para isso, eles serão explicados primeiro nesta seção.
+Para falar da função de perda Gamma, é necessário compreender dois conceitos que se relacionam: a função Gamma e a distribuição Gamma.
 
 \subsubsection*{A Função Gamma}%
 \index{Função Gamma}
 
-As origens da função gamma se remontam ao século XVIII, com a busca de vários matemáticos importantes daquele período em encontrar uma forma de extender a notação da função fatorial para além do conjunto dos números naturais. Nesse sentido, vale citar o trabalho \textit{De progressionibus transcendentibus seu quarum termini generales algebraice dari nequeunt} (Sobre progressões transcendentais, ou seja, aquelas cujos termos gerais não podem ser dados algebricamente em português) de Leonhard Euler, o qual hoje é reconhecido por introduzir o conceito de função gamma que existe atualmente. 
+As origens da função gamma se remontam ao século XVIII, com a busca de vários matemáticos em encontrar uma forma de extender a notação da função fatorial para além do conjunto dos números naturais. Em trabalho \textit{De progressionibus transcendentibus seu quarum termini generales algebraice dari nequeunt} (Sobre progressões transcendentais, ou seja, aquelas cujos termos gerais não podem ser dados algebricamente em português) Leonhard Euler introduz o conceito de função gamma que existe atualmente. 
 
 No texto, Euler define esta função como sendo dada por
 
@@ -2554,7 +2554,7 @@ No texto, Euler define esta função como sendo dada por
 \int_0^{\infty} \left(\ln \left(\frac{1}{t} \right) \right)^x
 \]
 
-contudo, esta notação sofreu várias mudanças até ser chegado em um consenso entre os matemáticos. A notação que prevaleu até os dias atuais foi a de Legendre, que em seu trabalho xxx, definiu que a função gamma era denotada pela Equação~\ref{eq:gamma-function}, foi ele inclusive que utilizou a letra grega $\Gamma$ para se referir a essa função.
+Contudo, esta notação sofreu várias mudanças até ser chegado em um consenso entre os matemáticos. A notação que prevaleu até os dias atuais foi a de Legendre, que definiu a função gamma como sendo dada pela Equação~\ref{eq:gamma-function}, foi ele que utilizou a letra grega $\Gamma$ para se referir a essa função.
 
 \begin{equacaodestaque}{Função gamma}
     \Gamma(z) = \int_{0}^{\infty} t^{z-1} e^{-t} \, dt
@@ -2568,27 +2568,36 @@ Uma das maiores vantagens de se utilizar a função gamma é poder calcular a fu
     \label{eq:factorial-with-gamma-function}
 \end{equacaodestaque}
 
-Entretanto, a função gamma não serve só de utilidade para extender o fatorial para outros conjuntos numéricos. Com ela, também é possível descrever uma nova distribuição de valores: a distribuição gamma. Ela será tratada em seguida.
+Entretanto, a função gamma não serve só de utilidade para estender o fatorial para outros conjuntos numéricos. Com ela, descrevemos a distribuição Gamma.
 
 \subsubsection*{A distribuição gamma}%
 \index{Distribuição Gamma}
 
-\begin{equacaodestaque}{Distribuição gamma (PDF)}
-    f(y_j; k, \theta) = \frac{y_j^{k-1} e^{-y_j/\theta}}{\theta^k\Gamma(k)}%
+A função densidade de probabilidade da distribuição Gamma está na Equação~\ref{eq:gamma-distribution-pdf}.
+
+\begin{equacaodestaque}{Distribuição gamma (FDP)}
+    f(y_j; \alpha, \beta) = \frac{\beta^{\alpha} y_j^{\alpha-1} e^{-\beta y_j}}{\Gamma(\alpha)}%
     \label{eq:gamma-distribution-pdf}
 \end{equacaodestaque}
 
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
+    \item[$y_j$] representa uma variável aleatória;
+    \item[$\alpha$] representa o parâmetro de forma;
+    \item[$\beta$] representa o parâmetro de escala;
+    \item[$\Gamma$] representa a função Gamma;
+\end{description}
+
+Os parâmetros $\alpha$ e $\beta$ da FDP da distribuição gamma são responsáveis por definir como será o comportamento da curva. Quando $\alpha \le 1$ decai exponencialmente (representada na Figura~\ref{fig:gamma-low-alpha}),já quando $\alpha > 1$ lembra um sino deformado assimétrico à direita, (como na Figura~\ref{fig:gamma-high-alpha}). Por outro lado, o parâmetro de escala $\beta$ define quão ``esticada'' será a curva. Além disso, a Figura~\ref{fig:gamma-comparison} é indica também outras propriedades a distribuição Gamma, sendo uma distribuição assimétrica (diferente da Normal) e contínua (diferente da Poisson).
+
 \begin{figure}[h!]
-    \centering % Centraliza a figura inteira
-    
-    % --- GRÁFICO 1: Forma Baixa (k=1) ---
+    \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                title={Distribuição Gamma ($k=1, \theta=2$)},
+                title={Distribuição Gamma ($\alpha=1, \theta=2$)},
                 xlabel={$x$ (valor contínuo)},
-                ylabel={$f(x; k, \theta)$},
+                ylabel={$f(x; \alpha, \theta)$},
                 smooth, % Linha contínua suave
                 ymin=0,
                 xmin=0, xmax=15,
@@ -2597,25 +2606,21 @@ Entretanto, a função gamma não serve só de utilidade para extender o fatoria
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-            % Com k=1, theta=2: (x^0 * exp(-x/2)) / (2^1 * gamma(1)) = 0.5 * exp(-x/2)
-            
-            % <--- MUDANÇA AQUI ---
-            % Substituindo a fórmula complexa pela sua função definida:
-            \addplot[domain=0.01:15, samples=101, color=blue, thick] 
+            \addplot[domain=0.01:15, samples=101, color=black, very thick] 
                 { gamma_pdf(x, 1, 2) };
             \end{axis}
         \end{tikzpicture}
         \caption{Com forma $k=1$, a distribuição é uma exponencial decrescente.}%
-        \label{fig:gamma-low-k}
+        \label{fig:gamma-low-alpha}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}
             \begin{axis}[
-                title={Distribuição Gamma ($k=3, \theta=2$)},
+                title={Distribuição Gamma ($\alpha=3, \theta=2$)},
                 xlabel={$x$ (valor contínuo)},
-                ylabel={$f(x; k, \theta)$},
+                ylabel={$f(x; \alpha, \theta)$},
                 smooth,
                 ymin=0,
                 xmin=0, xmax=20, % Range maior para ver a cauda
@@ -2624,37 +2629,61 @@ Entretanto, a função gamma não serve só de utilidade para extender o fatoria
                 label style={font=\small},
                 tick label style={font=\scriptsize}
             ]
-            % Com k=3, theta=2: (x^2 * exp(-x/2)) / (2^3 * gamma(3)) = (x^2 * exp(-x/2)) / 16
-            
-            % <--- MUDANÇA AQUI ---
-            % Substituindo a fórmula complexa pela sua função definida:
-            \addplot[domain=0.01:20, samples=101, color=red, thick] 
+            \addplot[domain=0.01:20, samples=101, color=black, very thick] 
                 { gamma_pdf(x, 3, 2) };
         
-            % Média da Gamma = k * theta = 3 * 2 = 6
-            % A altura do pico (0.166) foi calculada
             \draw[dashed, red!70] (axis cs:6, 0) -- (axis cs:6, 0.166); 
             \node[above, font=\tiny] at (axis cs:6, 0.166) {Média ($\mu=6$)};
 
             \end{axis}
         \end{tikzpicture}
         \caption{Com forma $k=3$, a distribuição tem um pico claro e uma cauda longa à direita (assimétrica).}%
-        \label{fig:gamma-high-k}
+        \label{fig:gamma-high-alpha}
     \end{subfigure}
     
-    \caption{Comparação visual da Distribuição Gamma variando o parâmetro de forma $k$.}%
+    \caption{Comparação visual da Distribuição Gamma variando o parâmetro de forma $\alpha$.}%
     \label{fig:gamma-comparison}
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Perda Gamma}
 
-\begin{equacaodestaque}{Perda gamma (\textit{gamma loss})}
-    \Loss_{\text{Gamma}}(y_j, \hat{y}_j) = \log\left(\frac{\hat{y}_j}{y_j}\right) + \frac{y_j}{\hat{y}_j} -1%
+Para encontramos a perda Gamma, devemos derivá-la da FDP da distribuição Gamma. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos escrever a função em termos da média esperada $\hat{y}_j$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
+
+\[
+    \hat{y}_j = E[y_j] = \frac{\alpha}{\beta}
+\]
+
+Com isso, podemos substituir o parâmetro $\beta$ pela predição $\beta = \alpha/\hat{y}_j$
+
+Tendo isso em mente, aplicamos o logaritmo natural na Equação~\ref{eq:gamma-distribution-pdf}, encontrando
+
+\[
+    \ln f(y_j) = \alpha \ln \beta + (\alpha - 1) \ln y_j - \beta y_j - \ln \Gamma(\alpha)
+\]
+
+Então, substituímos $\beta = \alpha/\hat{y}_j$
+
+\[
+    \ln f(y_j) = \alpha \ln \left( \frac{\alpha}{\hat{y}_j} \right) + (\alpha -1) \ln y_j - \frac{\alpha y_j}{\hat{y}_j} \Gamma(\alpha)
+\]
+
+Todos os termos que não são relacionados com o valor predito $y_j$ são constantes em relação ao modelo, de forma que podem ser descartados, assim, escrevemos 
+
+\[
+    \ln f(y_j) \varpropto -\alpha \ln \hat{y}_j - \frac{\alpha y_j}{\hat{y}_j}
+\]
+
+Nós queremos minimizar a perda, então multiplicados por $-1$ a expressão chegando em 
+
+\[
+    \ln f(y_j) \varpropto \ln \hat{y}_j + \frac{y_j}{\hat{y}_j}
+\]
+
+Para finalizar, queremos que a perda seja zero quando a predição for perfeita ($y_j = \hat{y}_j$). Se substituirmos $\hat{y}_j$ por $y_j$ na equação anterior teremos $\ln y_j + 1$. Então subtraímos esse valor do numerador da fórmula, obtemos a Equação~\ref{eq:gamma-loss} para calcular a perda Gamma.
+
+\begin{equacaodestaque}{Perda Gamma}
+    \Loss_{\text{Gamma}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \log\left(\frac{\hat{y}_j}{y_j}\right) + \frac{y_j}{\hat{y}_j} -1%
     \label{eq:gamma-loss}
 \end{equacaodestaque}
 
