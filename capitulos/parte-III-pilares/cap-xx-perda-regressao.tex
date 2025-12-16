@@ -2308,7 +2308,6 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Visão 2D (Alvo $y=2$)}
             ]
                 % Perda Poisson: x - y*ln(x) -> Aqui x é y_hat, y fixo em 2
                 \addplot[domain=0.1:10, samples=100, color=black, very thick] {x - 2*ln(x)};
@@ -2338,7 +2337,6 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Superfície 3D (Valores Baixos)},
                 zmin=-2, zmax=5,
                 colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.5)}
             ]
@@ -2377,7 +2375,6 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Visão 2D (Alvo $y=10$)}
             ]
                 % Perda Poisson para y=10
                 \addplot[domain=1:25, samples=100, color=black, very thick] {x - 10*ln(x)};
@@ -2406,7 +2403,6 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
                 title style={font=\bfseries\small},
                 label style={font=\small},
                 tick label style={font=\scriptsize},
-                title={Superfície 3D (Valores Altos)},
                 colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.5)}
             ]
                 % Formula: y - x * ln(y) (x=Real, y=Previsto)
@@ -2425,7 +2421,7 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
         \label{fig:poisson-3d-high}
     \end{subfigure}
 
-    \caption{Comparação da perda de Poisson ($L = \hat{y} - y \ln \hat{y}$) para diferentes magnitudes de $y$. Observe como a convexidade é mais ``apertada'' para valores pequenos e se alarga para valores grandes.}%
+    \caption{Comparação da perda de Poisson para diferentes magnitudes de $y$.}%
     \label{fig:poisson-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
@@ -2462,7 +2458,7 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
         \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j  (\text{exp}(\textbf{W}^T x_j + b))
     \]
 
-    A qual pode ser reescrita uma última vez como 
+    Que pode ser reescrita uma última vez como 
 
     \[
         \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\hat{y}_j) - y_j  (\text{exp}(\hat{y}_j))
@@ -2471,14 +2467,14 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
 
 \subsubsection*{Gradiente da perda de Poisson}
 
-Vistas algumas propriedades dessa função, cabe também discutir a sua derivada, que será útil para a retropropagação do gradiente e o aprendizado do modelo. Calculando a derivada da perda de Poisson em Relação àos valores preditos pelo modelo, é possível chegar na Equação~\ref{eq:poisson-loss-derivada}.
+A derivada parcial da perda de Poisson em relação à predição $\hat{y}_j$ feita pelo modelo está representada na Equação~\ref{eq:poisson-loss-derivada}.
 
-\begin{equacaodestaque}{Derivada da perda de poisson}
+\begin{equacaodestaque}{Derivada parcial da perda de Poisson em relação à predição}
     \frac{\partial\Loss_{\text{Poisson}}}{\partial\hat{y}_j} = 1 -\frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j -y_j}{\hat{y}_j}%
     \label{eq:poisson-loss-derivada}
 \end{equacaodestaque}
 
-Com base nessa equação, o próximo passo é plotar o gráfico dessa derivada, o qual pode ser visto na Figura~\ref{fig:poisson-loss-derivada}. Perceba que o gráfico foge do padrão visto até agora, é apenas a vista em duas dimensões da derivada, além disso, ele também apresenta curvas diferentes, para demonstrar como a função varia conforme os valores reais $y_j$ variam. Note que com a variação dos valores reais a curva da derivada começa a deslocar pelo plano do gráfico, para valores menores, como $y = 10$, são mais presentes no quarto quadrante, já em valores mais altos, $y = 2$ por exemplo, vão se aproximando mais do eixo das ordenadas.
+Conforme os valores reais $y_j$ variam, a curva do gráfico da derivada da perda de Poisson também varia. A Figura~\ref{fig:poisson-loss-derivada} aponta que quanto maior é o valor de $y_j$ mais próximo do eixo das abscissas fica a curva da perda. Dessa forma, o gradiente é zero quando $\hat{y}_j = y_j$ e é assintótico quando $\hat{y}_j \to \infty$.
 
 \begin{figure}[h!]
     \centering
@@ -2492,41 +2488,48 @@ Com base nessa equação, o próximo passo é plotar o gráfico dessa derivada, 
             xmin=-1, xmax=20,
             ymin=-4, ymax=1.5,
             legend pos=south east,
-            width=12cm,
-            height=9cm,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
         ]
-            % Curva para y=2
-            \addplot[domain=0.5:20, samples=101, color=red, thick] {1 - 2/x};
+
+            % Linha de referência (Zero) - Opcional, mas ajuda visualmente
+            \addplot[gray, thin] coordinates {(0,0) (20,0)};
+
+            % Curva para y=2 (Linha Sólida)
+            \addplot[domain=0.5:20, samples=101, color=black, thick] {1 - 2/x};
             \addlegendentry{$y=2$}
             
-            % Curva para y=5
-            \addplot[domain=0.5:20, samples=101, color=blue, thick] {1 - 5/x};
+            % Curva para y=5 (Linha Tracejada Longa)
+            \addplot[domain=0.5:20, samples=101, color=black, thick, dashed] {1 - 5/x};
             \addlegendentry{$y=5$}
 
-            % Curva para y=10
-            \addplot[domain=0.5:20, samples=101, color=green, thick] {1 - 10/x};
+            % Curva para y=10 (Linha Pontilhada/Densa)
+            \addplot[domain=0.5:20, samples=101, color=black, thick, densely dotted] {1 - 10/x};
             \addlegendentry{$y=10$}
+            
+            % Adicionei nós (nodes) para destacar onde o gradiente cruza zero (Convergência)
+            \node[circle,fill=black,inner sep=1.5pt] at (axis cs:2,0) {};
+            \node[circle,fill=black,inner sep=1.5pt] at (axis cs:5,0) {};
+            \node[circle,fill=black,inner sep=1.5pt] at (axis cs:10,0) {};
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da perda de Poisson. O gradiente é zero quando $\hat{y}=y$ e assintótico a 1 para $\hat{y} \to \infty$.}%
+    \caption{Visualização da derivada da perda de Poisson para diferentes valores de $y_j$.}%
     \label{fig:poisson-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
 
-Além disso, como foi visto anteriormente, a função exponencial é utilizada como uma link function para resolver o problema dos dados da saída do modelo $\hat{y}$ serem sempre positivos, de forma que é possível escrever uma nova expressão, e até mais simplificada para o cenário em que $\text{exp}$ é combinada com a perda de Poisson para servir como uma link function. Dessa forma, essa expressão pode ser vista na Equação xx.
+Como foi visto anteriormente, a função exponencial é utilizada como uma função de conexão para evitar com entradas negativas para a função logaritmo. Dessa forma, ao utilizá-la em conjunto com a perda de Poisson nós chegamos em uma derivada parcial ainda mais simples, apenas a diferença do valor predito $\hat{y}_j$ para o valor real $y_j$. Essa derivada está explicitada na Equação~\ref{eq:poisson-loss-com-link-function-derivada}.
 
-\begin{equacaodestaque}{Derivada da perda de Poisson com exp como link function}
+\begin{equacaodestaque}{Derivada parcial da perda de Poisson em relação à predição com exp como função de conexão}
     \frac{\partial\Loss_{\text{Poisson}}}{\partial\hat{y}_j} = \hat{y}_j - y_j%
     \label{eq:poisson-loss-com-link-function-derivada}
 \end{equacaodestaque}
 
-Dessa forma, a derivada passa ser a diferença entre o valor predito pelo modelo $\hat{y}_j$ com o valor real $y$.
-
-\subsubsection*{Aplicações da perda de Poisson em aprendizado de máquina}%
+\subsubsection*{Aplicações da perda de Poisson}%
 \index{Aplicações práticas! Perda de Poisson}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
