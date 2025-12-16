@@ -2172,9 +2172,9 @@ A função densidade de probabilidade da distribuição de Poisson é dada pela 
 
 Em que
 
-\begin{itemize}
-    \item $\lambda$ representa a taxa de Poisson, ou seja, a contagem esperada.
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
+    \item[$\lambda$] representa a taxa de Poisson, ou seja, a contagem esperada.
+\end{description}
 
 A distribuição de Poisson segue a média, a variância e todos os cumulativos de $Y$ que são iguais a $\lambda$ \parencite{GeneralizedLinearModels}. Isso significa que a média e a variância dessa distribuição são iguais, consequentemente, o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
 
@@ -2246,10 +2246,10 @@ Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele 
 
 Ainda em \textit{Generalized Linear Models}, \textcite{GeneralizedLinearModels} explicam algum cenários em que essa distribuição é utilizada para descrever um problema, entre algum dos explicados pelo autor, vale a pena citar:
 
-\begin{itemize}
-    \item \textbf{Um ensaio biológico sobre tuberculina:} A distribuição de poisson com a sua função de log-verossimilhança é utilizada para descrever os casos de tuberculina em população de bovinos;
-    \item \textbf{Um estudo sobre o dano das ondas em navios cargueiros:} xxx utilizam a distribuição de poisson assim como o cálculo da log-verossimilhança para estimar o dano das ondas em navios cargueiros.
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
+    \item[Um ensaio biológico sobre tuberculina:] rA distribuição de poisson com a sua função de log-verossimilhança é utilizada para descrever os casos de tuberculina em população de bovinos;
+    \item[Um estudo sobre o dano das ondas em navios cargueiros:] xxx utilizam a distribuição de poisson assim como o cálculo da log-verossimilhança para estimar o dano das ondas em navios cargueiros.
+\end{description}
 
 Na prática um bom indicativo para considerar utilizar a distribuição de poisson e a perda de Poisson, é considerar as próprias características dessa distribuição. Ao analisar um problema e perceber que os dados seguem uma distribuição discreta, são inteiros não negativos e que a média dos dados é igual a variância, talvez valha a pena ver se a distribuição de Poisson pode ser aplicada.
 
@@ -2573,7 +2573,7 @@ Entretanto, a função gamma não serve só de utilidade para estender o fatoria
 \subsubsection*{A distribuição gamma}%
 \index{Distribuição Gamma}
 
-A função densidade de probabilidade da distribuição Gamma está na Equação~\ref{eq:gamma-distribution-pdf}.
+A função densidade de probabilidade da distribuição Gamma está na Equação~\ref{eq:gamma-distribution-pdf}. \textcite{GeneralizedLinearModels} explica que a distribuição Gamma apresenta uma curva contínua e estritamente positiva, diferente da distribuição Normal, que também pode assumir valores negativos. Além disso, a principal característica dessa distribuição é o coeficiente de variação constante, na Gamma aumenta conforme a média também aumenta, mais precisamente $V(\mu) \varpropto \mu^2$ \parencite{GeneralizedLinearModels}. Como resultado, o coeficiente de variação, desvio padrão divido pela média, é aproximadamente constante.
 
 \begin{equacaodestaque}{Distribuição gamma (FDP)}
     f(y_j; \alpha, \beta) = \frac{\beta^{\alpha} y_j^{\alpha-1} e^{-\beta y_j}}{\Gamma(\alpha)}%
@@ -2587,7 +2587,7 @@ A função densidade de probabilidade da distribuição Gamma está na Equação
     \item[$\Gamma$] representa a função Gamma;
 \end{description}
 
-Os parâmetros $\alpha$ e $\beta$ da FDP da distribuição gamma são responsáveis por definir como será o comportamento da curva. Quando $\alpha \le 1$ decai exponencialmente (representada na Figura~\ref{fig:gamma-low-alpha}),já quando $\alpha > 1$ lembra um sino deformado assimétrico à direita, (como na Figura~\ref{fig:gamma-high-alpha}). Por outro lado, o parâmetro de escala $\beta$ define quão ``esticada'' será a curva. Além disso, a Figura~\ref{fig:gamma-comparison} é indica também outras propriedades a distribuição Gamma, sendo uma distribuição assimétrica (diferente da Normal) e contínua (diferente da Poisson).
+Os parâmetros $\alpha$ e $\beta$ da FDP da distribuição gamma são responsáveis por definir como será o comportamento da curva. Quando $\alpha \le 1$ decai exponencialmente (representada na Figura~\ref{fig:gamma-low-alpha}),já quando $\alpha > 1$ lembra um sino deformado assimétrico à direita, (como na Figura~\ref{fig:gamma-high-alpha}). Por outro lado, o parâmetro de escala $\beta$ define quão ``esticada'' será a curva. Além disso, a Figura~\ref{fig:gamma-comparison} é indica também outras propriedades a distribuição Gamma, sendo uma distribuição assimétrica com cauda longa à direita.
 
 \begin{figure}[h!]
     \centering
@@ -2646,9 +2646,18 @@ Os parâmetros $\alpha$ e $\beta$ da FDP da distribuição gamma são responsáv
     \fonte{O autor (2025).}
 \end{figure}
 
+Em \textit{Generalized Linear Models} \textcite{GeneralizedLinearModels} cita alguns exemplos em que essa distribuição pode ser aplicada:
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
+    \item[Reivindicações de seguro de carro:] 
+    \item[Tempos de coágulo do sangue:] 
+    \item[Modelando dados de chuvas usando dois modelos lineares generalizados:] 
+    \item[Taxa de desenvolvimento de Drosophila melanogaster:] 
+\end{description}
+
 \subsubsection*{Perda Gamma}
 
-Para encontramos a perda Gamma, devemos derivá-la da FDP da distribuição Gamma. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos escrever a função em termos da média esperada $\hat{y}_j$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
+Para encontramos a perda Gamma, devemos derivá-la da FDP da sua respectiva distribuição. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos ter a função em termos da média esperada $\hat{y}_j$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
 
 \[
     \hat{y}_j = E[y_j] = \frac{\alpha}{\beta}
@@ -2697,60 +2706,162 @@ Em que:
 
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=20,
-            ymin=-1, ymax=6,  % Ajustado para melhor visualização da Gamma
-            legend pos=north east, % Movido para um local melhor
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Fórmula: ln(x/y) + (y/x) - 1
-            
-            % Curva para y=2
-            \addplot[domain=0.2:20, samples=101, color=red, thick] {ln(x/2) + (2/x) - 1};
-            \addlegendentry{$y=2$}
-            % Mínimo em y=2, perda=0
-            \draw[dashed, red!50] (axis cs:2, -1) -- (axis cs:2, 0);
 
-            % Curva para y=5
-            \addplot[domain=0.5:20, samples=101, color=blue, thick] {ln(x/5) + (5/x) - 1};
-            \addlegendentry{$y=5$}
-            % Mínimo em y=5, perda=0
-            \draw[dashed, blue!50] (axis cs:5, -1) -- (axis cs:5, 0);
+    % --- (a) 2D Baixo Valor (y=2) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=10,
+                ymin=-0.5, ymax=4, % Ajustado para focar na curva
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+            ]
+                % Fórmula Gamma: ln(y_hat/y) + y/y_hat - 1
+                % Aqui: x é y_hat, y fixo em 2 -> ln(x/2) + 2/x - 1
+                \addplot[domain=0.4:10, samples=100, color=black, very thick] {ln(x/2) + 2/x - 1};
+                \addlegendentry{$y=2$}
+                
+                % Linha pontilhada no mínimo (Zero)
+                \draw[dashed, black!60] (axis cs:2, 0) -- (axis cs:2, 2.5);
+                \node[anchor=north, font=\tiny, text=black] at (axis cs:2, -0.1) {Mínimo em $\hat{y}=2$};
+                
+                % Destaque visual da assimetria
+                \node[font=\tiny, text=black!70, anchor=west] at (axis cs:0.5, 3) {Punição Severa ($\hat{y} \to 0$)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Assimetria para valor real baixo ($y=2$).}%
+        \label{fig:gamma-2d-low}
+    \end{subfigure}
+    \hfill
+    % --- (b) 3D Superfície Baixa ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Loss},
+                grid=major,
+                view={140}{40}, % Melhor ângulo para ver o vale
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                zmin=0, zmax=3, % Corta o pico infinito
+                colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.4)}
+            ]
+                % Fórmula: ln(y_hat/y_real) + y_real/y_hat - 1
+                % No PGFPlots: x=Real, y=Previsto -> ln(y/x) + x/y - 1
+                \addplot3[
+                   surf,           
+                    shader=faceted,  
+                    faceted color=black!60, 
+                    domain=1:5,     % IMPORTANTE: Apenas positivos
+                    domain y=1:5, 
+                    samples=25,
+                    z buffer=sort
+                ] { ln(y/x) + x/y - 1 };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície local (Região $1 \le y \le 5$).}%
+        \label{fig:gamma-3d-low}
+    \end{subfigure}
 
-            % Curva para y=10
-            \addplot[domain=1:20, samples=101, color=green, thick] {ln(x/10) + (10/x) - 1};
-            \addlegendentry{$y=10$}
-            % Mínimo em y=10, perda=0
-            \draw[dashed, green!50] (axis cs:10, -1) -- (axis cs:10, 0);
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da Perda Gamma para diferentes valores reais de $y$. O mínimo de cada curva (Perda = 0) ocorre em $\hat{y}=y$.}%
-    \label{fig:gamma-loss}
+    \vspace{0.5cm} 
+
+    % --- (c) 2D Alto Valor (y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=30,
+                ymin=-0.5, ymax=4, 
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+            ]
+                % Gamma para y=10 -> ln(x/10) + 10/x - 1
+                \addplot[domain=2:30, samples=100, color=black, very thick] {ln(x/10) + 10/x - 1};
+                \addlegendentry{$y=10$}
+                
+                % Linha pontilhada no mínimo
+                \draw[dashed, black!60] (axis cs:10, 0) -- (axis cs:10, 2.5);
+                \node[anchor=north, font=\tiny, text=black] at (axis cs:10, -0.1) {Mínimo em $\hat{y}=10$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Comportamento para valor real alto ($y=10$).}%
+        \label{fig:gamma-2d-high}
+    \end{subfigure}
+    \hfill
+    % --- (d) 3D Superfície Alta ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Loss},
+                grid=major,
+                view={140}{40},
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                zmin=0, zmax=3,
+                colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.4)}
+            ]
+                % Mesma fórmula, domínio deslocado para valores mais altos
+                \addplot3[
+                   surf,           
+                    shader=faceted,  
+                    faceted color=black!60, 
+                    domain=5:15,    
+                    domain y=5:15, 
+                    samples=25,
+                    z buffer=sort
+                ] { ln(y/x) + x/y - 1 };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície local (Região $5 \le y \le 15$).}%
+        \label{fig:gamma-3d-high}
+    \end{subfigure}
+
+    \caption{Visualização da Perda Gamma. Note a penalidade assimétrica: a curva sobe abruptamente à esquerda (subestimativa) e suavemente à direita (superestimativa).}%
+    \label{fig:gamma-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
 
 \subsubsection*{Características da perda gamma}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Característica 1] 
-    \item[característica 2] 
-    \item[Característica 3] 
+    \item[Continuidade, suavidade e diferenciabilidade:] (ver Apêndice~\ref{ap:deducoes-gamma-loss})
+    \item[Convexidade:] (ver Apêndice~\ref{ap:deducoes-gamma-loss})
+    \item[Robustez:] (ver Apêndice~\ref{ap:deducoes-gamma-loss})
 \end{description}
 
 \subsubsection*{Gradiente da perda Gamma}
 
-\begin{equacaodestaque}{Derivada da perda gamma}
+\begin{equacaodestaque}{Derivada da perda Gamma}
     \frac{\partial\Loss_{\text{Gamma}}}{\partial\hat{y}_j} = \frac{1}{\hat{y}_j} -\frac{y_j}{\hat{y}_j^2} = \frac{\hat{y}_j -y_j}{\hat{y}_j^2}%
     \label{eq:gamma-loss-derivada}
 \end{equacaodestaque}
