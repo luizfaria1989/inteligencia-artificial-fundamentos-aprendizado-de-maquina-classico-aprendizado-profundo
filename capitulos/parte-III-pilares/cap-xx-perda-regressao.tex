@@ -2154,7 +2154,8 @@ Exceto pela perda $\epsilon$-insensível que trabalha com distribuições que n�
 Contudo, mesmo a distribuição normal sendo a mais comum para modelar os diferentes problemas que envolvem regressão, existem outras distribuições que são igualmente importantes. Essa seção foca em explicar três funções de perda que são utilizadas para trabalhar com distribuições específicas, são elas: a perda de Poisson, a perda Gamma e a perda de Tweedie.
 
 \subsection{Perda de Poisson (Poisson loss)}%
-\index{Funções de Perda!Perda de Poisson (\textit{Poisson loss})}
+\index{Funções de Perda!Perda de Poisson (\textit{Poisson loss})}%
+\label{sec:poisson-loss}
 
 Imagine que você está procurando uma forma de modelar a quantidade de ligações que você pode receber em seu telefone por dia. Primeiro, você pensou que essa quantidade seguiria uma distribuição normal, mas encontrou um problema, a distribuição normal é contínua, e não tem como você receber $2,5$ ligações em um período. Além disso, você decidiu que precisava dividir o tempo em um conjunto de intervalos discretos, assim, todas as ligações que você receber das 14:00 as 14:59 ficarão no mesmo intervalo. Esse problema possui ainda uma terceira particularidade, não existe um limite de ligações que você pode receber, pode ser que das 13:00 as 13:59 você receba duas ligações, mas também pode ser que você receba 314 ligações naquele horário. Quando temos uma situação parecida com essa, nós estaremos trabalhando com o que os estatísticos chamam de \textbf{dados de contagem}. 
 
@@ -2539,7 +2540,8 @@ Como foi visto anteriormente, a função exponencial é utilizada como uma funç
 \end{description}
 
 \subsection{Perda Gamma (Gamma Deviance)}%
-\index{Funções de Perda!Deviância Gamma (\textit{Gamma Deviance})}
+\index{Funções de Perda!Deviância Gamma (\textit{Gamma Deviance})}%
+\label{sec:gamma-loss}
 
 Para falar da função de perda Gamma, é necessário compreender dois conceitos que se relacionam: a função Gamma e a distribuição Gamma.
 
@@ -2971,60 +2973,40 @@ Em que:
     \item[$p$] representa 
 \end{description}
 
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,
-            grid=major,
-            grid style={dashed, gray!40},
-            xmin=-1, xmax=15,
-            ymin=0, ymax=15,
-            legend pos=north west,
-            width=12cm,
-            height=9cm,
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
-        ]
-            % Definição do parâmetro p
-            \def\p{1.5}
-
-            % Curva para y=1
-            \addplot[domain=0.1:15, samples=101, color=red, thick] 
-                { -1*x^(1-\p)/(1-\p) + x^(2-\p)/(2-\p) };
-            \addlegendentry{$y=1$}
-            \draw[dashed, red!50] (axis cs:1, 0) -- (axis cs:1, {-1*1^(1-\p)/(1-\p) + 1^(2-\p)/(2-\p)});
-
-            % Curva para y=4
-            \addplot[domain=0.1:15, samples=101, color=blue, thick] 
-                { -4*x^(1-\p)/(1-\p) + x^(2-\p)/(2-\p) };
-            \addlegendentry{$y=4$}
-            \draw[dashed, blue!50] (axis cs:4, 0) -- (axis cs:4, {-4*4^(1-\p)/(1-\p) + 4^(2-\p)/(2-\p)});
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Gráfico da Perda de Tweedie para $p=1.5$. O mínimo de cada curva ocorre em $\hat{y}=y$.}%
-    \label{fig:tweedie-loss}
-    \fonte{O autor (2025).}
-\end{figure}
-
 \subsubsection*{Características da Perda de Tweedie}
 
+Nessa seção será analisado os casos em que $1 < p < 2$ para a perda de Tweedie, configurando-a para a distribuição Poisson-Gamma. Para a situação em que $p = 1$ (perda de Poisson), veja a Seção~\ref{sec:poisson-loss}. Já para a situação em que $p = 2$ (perda Gamma), veja a Seção~\ref{sec:gamma-loss}.
+
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Característica 1:] 
-    \item[Característica 2:] 
-    \item[Característica 3:] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda de Tweedie pertence à classe $C^\infty$, \textbf{infinitamente diferenciável}, no domínio $\hat{y} \in (0, \infty)$ para $p \in (1, 2)$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Dessa forma, as derivadas parciais existem e são contínuas, evitando o uso de técnicas como o subgradiente para poder calcular as derivadas.
+    \item[Convexidade:] A perda de Tweedie \textbf{não é globalmente convexa} em relação a $\hat{y}_j$ para $1 < p < 2$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}).  A função é convexa apenas localmente, quando a predição não está muito longe do alvo. Se o modelo superestimar grosseiramente o valor ($\hat{y} > \frac{p}{p-1}y$), a função entra em uma região côncava.
+    \item[Robustez:] A perda de Tweedie não é Lipschitz-contínua, portanto, \textbf{Não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Contudo, assim como a perda Gamma, quando o valor da predição $\hat{y}_j \to \infty$ temos que o gradiente tende a zero. Indicando que superestimações não serão fortemente penalizadas.
+    \item[$\log$ como função de ligação]: Semelhante à perda Gamma, podemos utilizar a função logaritmo para lidar com o problema da não-convexidade da perda de Tweedie em $1 < p < 2$. Substituindo essa relação na Equação \ref{eq:tweedie-loss}, obtemos a perda em função do \textit{logit} $z$:
+
+    \begin{equation}
+        L(z_j) = -y_j \frac{e^{z_j(1-p)}}{1-p} + \frac{e^{z_j(2-p)}}{2-p}
+    \end{equation}
+
+Essa transformação torna a função estritamente convexa para valores de $p$ no intervalo $(1, 2)$, garantindo a convergência para um mínimo global.
 \end{description}
 
 \subsubsection*{Gradiente da perda de Tweedie}
 
-\begin{equacaodestaque}{Derivada da Perda de Tweedie}
+A derivada da parcial da perda de Tweedie em relação à predição está representada na Equação~\ref{eq:tweedie-loss-derivada}. 
+
+\begin{equacaodestaque}{Derivada parcial da perda de Tweedie em relação à predição}
     \frac{\partial\Loss_{\text{Tweedie}}}{\partial\hat{y}_j} = \hat{y}_j^{-p}(\hat{y}_j -y_j)%
     \label{eq:tweedie-loss-derivada}
 \end{equacaodestaque}
+
+Contudo, a forma mais comum que está presente nas bibliotecas de aprendizado de máquina é a derivada em relação ao logit. Ela usa o logaritmo como função de ligação para lidar com a convexidade da função, ela está na Equação~\ref{eq:tweedie-loss-derivada-logit}. Neste caso, essa derivada se relaciona com as equações já vistas para o gradiente da perda de Poisson (na Equação~\ref{eq:poisson-loss-com-link-function-derivada}) e para a perda Gamma (na Equação~\ref{eq:gradiente-gamma-link}).
+
+\begin{equacaodestaque}{Derivada parcial da Perda de Tweedie em relação ao logit}
+    \frac{\partial L}{\partial z_j} = \hat{y}_j^{1-p} (\hat{y}_j - y_j)%
+    \label{eq:tweedie-loss-derivada-logit}
+\end{equacaodestaque}
+
+Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y_j$ indica não só o ponto de mínimo da perda, mas também para qual direação a assimetria da função irá se deslocar.
 
 \begin{figure}[h!]
     \centering
@@ -3035,11 +3017,11 @@ Em que:
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
-            xmin=-1, xmax=15,
-            ymin=-2, ymax=1.5,
+            xmin=-1, xmax=20,
+            ymin=-4, ymax=1.5,
             legend pos=south east,
-            width=12cm,
-            height=9cm,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -3048,22 +3030,22 @@ Em que:
             \def\p{1.5}
             
             % Curva para y=1
-            \addplot[domain=0.2:15, samples=101, color=red, thick] 
+            \addplot[domain=0.2:15, samples=101, color=black, very thick] 
                 {x^(-\p)*(x-1)};
             \addlegendentry{$y=1$}
             
             % Curva para y=4
-            \addplot[domain=0.2:15, samples=101, color=blue, thick] 
+            \addplot[domain=0.2:15, samples=101, color=black, very thick, dashed] 
                 {x^(-\p)*(x-4)};
             \addlegendentry{$y=4$}
 
             % Linhas verticais onde o gradiente é zero
-            \draw[dashed, red!50] (axis cs:1, -2) -- (axis cs:1, 1.5);
-            \draw[dashed, blue!50] (axis cs:4, -2) -- (axis cs:4, 1.5);
+            \draw[dashed, gray!50] (axis cs:1, -2) -- (axis cs:1, 1.5);
+            \draw[dashed, gray!50] (axis cs:4, -2) -- (axis cs:4, 1.5);
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da Perda de Tweedie para $p=1.5$. O gradiente é zero quando a previsão é igual ao valor real.}%
+    \caption{Visualizações da derivada da Perda de Tweedie para $p=1.5$ no plano.}%
     \label{fig:tweedie-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -3089,25 +3071,25 @@ Em que:
             \toprule
             \textbf{Função} & \textbf{Principais características} \\
             \midrule
-            Erro quadrático médio (MSE) & -  \\
+            Erro quadrático médio (MSE) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, estritamente convexa,  \\
             \addlinespace
-            Erro absoluto médio (MAE) & - \\
+            Erro absoluto médio (MAE) & Contínua ($C^0$), robusta a \textit{outliers}, convexa \\
             \addlinespace
-            Perda de Huber (\textit{Huber loss}) & - \\
+            Perda de Huber (\textit{Huber loss}) & Continuamente diferenciável ($C^1$), robusta a \textit{outliers}, convexa, \\
             \addlinespace
-            Perda log-cosh (\textit{Log-cosh loss}) & - \\
+            Perda log-cosh (\textit{Log-cosh loss}) & Infinitamente diferenciável ($C^{\infty}$), robusta a \textit{outliers}, estritamente convexa, \\
             \addlinespace
-            Erro quadrático logarítmico médio (MSLE) & - \\
+            Erro quadrático logarítmico médio (MSLE) & Infinitamente diferenciável ($C^{\infty}$), robusta a \textit{outliers}, estritamente convexa no espaço logaritmo \\
             \addlinespace
-            Perda quantílica (\textit{Quantile loss}) & - \\
+            Perda quantílica (\textit{Quantile loss}) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, \\
             \addlinespace
             Perda epsilon-insensível (\textit{$\epsilon$-insentive}) & - \\
             \addlinespace
-            Perda de Poisson (\textit{Poisson loss}) & - \\
+            Perda de Poisson (\textit{Poisson deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, convexa (e estritamente convexa se $y > 0$), \\
             \addlinespace
-            Deviância Gamma (\textit{Poisson loss}) & - \\
+            Perda Gamma (\textit{Gamma deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), \\
             \addlinespace
-            Perda de Tweedie (\textit{Tweedie loss}) & - \\
+            Perda de Tweedie (\textit{Tweedie deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação),  \\
             \addlinespace
         \end{tabularx}
         
