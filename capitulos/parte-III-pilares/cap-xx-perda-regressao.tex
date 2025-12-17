@@ -189,7 +189,7 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
 A derivada do erro quadrático médio está na Equação~\ref{eq:mse-derivada}. As derivadas parciais de uma função de perda são de extrema importância para uma rede neural. É partir delas que é calculado o primeiro vetor gradiente, que passa a ser retropropagado por toda a rede no sentido inverso. Indo primeiro das últimas camadas para as camadas de entrada\footnote{Portanto, as derivadas das funções de perda serão discutidas sempre que possível para explicar as características de uma função neste capítulo.}.
 
-\begin{equacaodestaque}{Derivada parcial do erro quadrático médio em relação à predição}
+\begin{equacaodestaque}{Gradiente do erro quadrático médio em relação à predição}
     \frac{\partial\Loss_{\text{MSE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = \frac{2}{N} (\hat{y}_j -y_j)%
     \label{eq:mse-derivada}
 \end{equacaodestaque}
@@ -197,7 +197,7 @@ A derivada do erro quadrático médio está na Equação~\ref{eq:mse-derivada}. 
 A Equação~\ref{fig:mse-derivada} mostra a derivada parcial do erro quadrático médio em relação à predição feita pelo modelo $\hat{y}_j$. Mas existe também a derivada parcial em relação ao valor real $y_j$. Juntas, tem-se a Equação~\ref{eq:vetor-gradiente-mse}, que representa o vetor gradiente do MSE. Neste livro será dado um foco maior em apresentar apenas uma das derivadas. Porque, elas muitas vezes apresentarão grandes semelhanças.
 
 \begin{equation}
-    \nabla (y_j, \hat{y}_j) = \left( \frac{\partial \Loss_{\text{MSE}}}{\partial y_j}, \frac{\partial \Loss_{\text{MSE}}}{\partial \hat{y}_j} \right)%
+    \nabla_{\hat{y}_j} \Loss_{\text{mse}} (y_j, \hat{y}_j) = \left( \frac{\partial \Loss_{\text{MSE}}}{\partial y_j}, \frac{\partial \Loss_{\text{MSE}}}{\partial \hat{y}_j} \right)%
     \label{eq:vetor-gradiente-mse}
 \end{equation}
 
@@ -441,8 +441,8 @@ Matematicamente, a derivada da função módulo com o subgradiente é dada por:
 
 Ao utilizar o subgradiente para calcular a derivada parcial do erro absoluto médio em relação à predição $\hat{y}_j$ é encontrada a Equação~\ref{eq:mae-derivada}.
 
-\begin{equacaodestaque}{Derivada parcial do erro absoluto médio em Relação à predição}
-    \frac{\partial\Loss_{\text{MAE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = 
+\begin{equacaodestaque}{Gradiente do erro absoluto médio em Relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\text{MAE}}(y_j, \hat{y}_j) = 
     \begin{cases} 
       -1 & \text{se } \hat{y}_j > y_j \\
       +1 & \text{se } \hat{y}_j < y_j \\
@@ -817,8 +817,8 @@ Dado que a perda de Huber é uma função por partes, a suas derivadas devem lev
 
 A derivada da parcial da perda de Huber em relação à predição é dada pela Equação~\ref{eq:huber-loss-derivada}.
 
-\begin{equacaodestaque}{Derivada parcial da perda de Huber em relação à predição}
-    \frac{\partial\Loss_{\delta}}{\partial\hat{y}} (y_j, \hat{y}_j) = 
+\begin{equacaodestaque}{Gradiente da perda de Huber em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\delta} (y_j, \hat{y}_j) = 
     \begin{cases} 
         \hat{y} -y & \text{se } | y -\hat{y} | \le\delta\\
         \delta\cdot \text{sgn} (\hat{y} -y) & \text{se } | y -\hat{y} | > \delta\end{cases}%
@@ -1051,8 +1051,8 @@ que se simplifica para o cálculo da tangente hiperbólica.
 
 Assim, expandindo o cálculo da derivada para o cenário em duas dimensões, chega-se na Equação~\ref{eq:log-cosh-derivada}.
 
-\begin{equacaodestaque}{Derivada parcial da perda log-cosh em relação à predição}
-    \frac{\partial\Loss_{\text{log-cosh}}}{\partial\hat{y}_j} = \tanh(\hat{y}_j - y_j)%
+\begin{equacaodestaque}{Gradiente da perda log-cosh em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\text{log-cosh}} = \tanh(\hat{y}_j - y_j)%
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
 
@@ -1280,8 +1280,8 @@ Essa propriedade assimétrica dos logaritmos também é explorada ao descrever o
 
 Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$.
 
-\begin{equacaodestaque}{Derivada parcial do erro quadrático médio logarítmico em relação à predição}
-    \frac{\partial\Loss_{\text{MSLE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = -\frac{2}{N} \cdot \frac{\ln(y_j + 1) -\ln(\hat{y}_j + 1)}{\hat{y}_j + 1}%
+\begin{equacaodestaque}{Gradiente do erro quadrático médio logarítmico em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\text{MSLE}} (y_j, \hat{y}_j) = -\frac{2}{N} \cdot \frac{\ln(y_j + 1) -\ln(\hat{y}_j + 1)}{\hat{y}_j + 1}%
     \label{eq:msle-derivada}
 \end{equacaodestaque}
  
@@ -1804,8 +1804,8 @@ Para calcular a derivada da perda quantílica, deve-se derivar as duas expressõ
 
 Dessa forma, a derivada parcial da perda quantílica em relação à predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, está sendo indicado os cenários de superestimação e subestimação, de forma a simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
 
-\begin{equacaodestaque}{Derivada parcial da perda quantílica em relação à predição}
-    \frac{\partial\Loss_{\tau}}{\partial\hat{y}_j} = 
+\begin{equacaodestaque}{Gradiente da perda quantílica em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\tau} = 
     \begin{cases} 
         (1 - \tau) & \text{se } y_j < \hat{y}_j \text{ (superestimação)}\\
         -\tau & \text{se } y_j > \hat{y}_j \text{ (subestimação)}
@@ -2041,8 +2041,8 @@ Essa região em que o erro é ignorado, é chamada da literatura de Tubo-Epsilon
 
 Para encontrar o gradiente da perda $\epsilon$-insensível deve-se utilizar do subgradiente, assim como no MAE. O subgradiente consegue lidar com os pontos de não diferenciabilidade (quando erro é igual a epsilon), ao aplicar a técnica chegamos na Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em relação à predição.
 
-\begin{equacaodestaque}{Derivada parcial da perda epsilon-insensível em relação à predição}
-    \frac{\partial\Loss_{\epsilon}}{\partial\hat{y}} = 
+\begin{equacaodestaque}{Gradiente da perda epsilon-insensível em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\epsilon} = 
     \begin{cases} 
         1 & \text{se } \hat{y} -y > \epsilon\\
         0 & \text{se } |\hat{y} -y| \le\epsilon\\
@@ -2470,8 +2470,8 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
 
 A derivada parcial da perda de Poisson em relação à predição $\hat{y}_j$ feita pelo modelo está representada na Equação~\ref{eq:poisson-loss-derivada}.
 
-\begin{equacaodestaque}{Derivada parcial da perda de Poisson em relação à predição}
-    \frac{\partial\Loss_{\text{Poisson}}}{\partial\hat{y}_j} = 1 -\frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j -y_j}{\hat{y}_j}%
+\begin{equacaodestaque}{Gradiente da perda de Poisson em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\text{Poisson}} = 1 -\frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j -y_j}{\hat{y}_j}%
     \label{eq:poisson-loss-derivada}
 \end{equacaodestaque}
 
@@ -2525,8 +2525,8 @@ Conforme os valores reais $y_j$ variam, a curva do gráfico da derivada da perda
 
 Como foi visto anteriormente, a função exponencial é utilizada como uma função de conexão para evitar com entradas negativas para a função logaritmo. Dessa forma, ao utilizá-la em conjunto com a perda de Poisson nós chegamos em uma derivada parcial ainda mais simples, apenas a diferença do valor predito $\hat{y}_j$ para o valor real $y_j$. Essa derivada está explicitada na Equação~\ref{eq:poisson-loss-com-link-function-derivada}.
 
-\begin{equacaodestaque}{Derivada parcial da perda de Poisson em relação à predição com exp como função de conexão}
-    \frac{\partial\Loss_{\text{Poisson}}}{\partial\hat{y}_j} = \hat{y}_j - y_j%
+\begin{equacaodestaque}{Gradiente da perda de Poisson em relação à predição com exp como função de conexão}
+    \nabla_{\hat{y}_j}\Loss_{\text{Poisson}} = \hat{y}_j - y_j%
     \label{eq:poisson-loss-com-link-function-derivada}
 \end{equacaodestaque}
 
@@ -2872,16 +2872,16 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
 
 Uma das formas de encontrar a derivada da perda Gamma é aplicar as técnicas tradicionais de derivação na função de perda, encontrando a Equação~\ref{eq:gamma-loss-derivada}.
 
-\begin{equacaodestaque}{Derivada parcial da perda Gamma em relação à predição}
-    \frac{\partial\Loss_{\text{Gamma}}}{\partial\hat{y}_j} = \frac{1}{\hat{y}_j} -\frac{y_j}{\hat{y}_j^2} = \frac{\hat{y}_j -y_j}{\hat{y}_j^2}%
+\begin{equacaodestaque}{Gradiente da perda Gamma em relação à predição}
+    \nabla_{\hat{y}_j}\Loss_{\text{Gamma}} = \frac{1}{\hat{y}_j} -\frac{y_j}{\hat{y}_j^2} = \frac{\hat{y}_j -y_j}{\hat{y}_j^2}%
     \label{eq:gamma-loss-derivada}
 \end{equacaodestaque}
 
 Entretanto, também podemos considerar a derivação para o cenário em que a perda Gamma é aplicada em conjunto com a função logaritmo, neste caso, temos a Equação~\ref{eq:gradiente-gamma-link}. A derivada, é simplesmente a diferença relativa entre 1 e a razão entre o valor real $y_j$ e o previsto $\hat{y}_j$
 
 
-\begin{equacaodestaque}{Derivada parcial da perda Gamma em relação à predição com $\log$ como função de ligação}
-    \frac{\partial \Loss}{\partial z_j} = 1 - \frac{y_j}{\hat{y}_j}%
+\begin{equacaodestaque}{Gradiente da perda Gamma em relação à predição com $\log$ como função de ligação}
+    \nabla_{z_j} \Loss = 1 - \frac{y_j}{\hat{y}_j}%
     \label{eq:gradiente-gamma-link}
 \end{equacaodestaque}
 
@@ -2994,19 +2994,19 @@ Essa transformação torna a função estritamente convexa para valores de $p$ n
 
 A derivada da parcial da perda de Tweedie em relação à predição está representada na Equação~\ref{eq:tweedie-loss-derivada}. 
 
-\begin{equacaodestaque}{Derivada parcial da perda de Tweedie em relação à predição}
-    \frac{\partial\Loss_{\text{Tweedie}}}{\partial\hat{y}_j} = \hat{y}_j^{-p}(\hat{y}_j -y_j)%
+\begin{equacaodestaque}{Gradiente da perda de Tweedie em relação à predição}
+    \nabla_{\hat{y}_j} \Loss_{\text{Tweedie}} = \hat{y}_j^{-p}(\hat{y}_j -y_j)%
     \label{eq:tweedie-loss-derivada}
 \end{equacaodestaque}
 
 Contudo, a forma mais comum que está presente nas bibliotecas de aprendizado de máquina é a derivada em relação ao logit. Ela usa o logaritmo como função de ligação para lidar com a convexidade da função, ela está na Equação~\ref{eq:tweedie-loss-derivada-logit}. Neste caso, essa derivada se relaciona com as equações já vistas para o gradiente da perda de Poisson (na Equação~\ref{eq:poisson-loss-com-link-function-derivada}) e para a perda Gamma (na Equação~\ref{eq:gradiente-gamma-link}).
 
-\begin{equacaodestaque}{Derivada parcial da Perda de Tweedie em relação ao logit}
-    \frac{\partial L}{\partial z_j} = \hat{y}_j^{1-p} (\hat{y}_j - y_j)%
+\begin{equacaodestaque}{Gradiente da perda de Tweedie em relação ao logit}
+    \nabla_{z_j} \Loss_{\text{Tweedie}} = \hat{y}_j^{1-p} (\hat{y}_j - y_j)%
     \label{eq:tweedie-loss-derivada-logit}
 \end{equacaodestaque}
 
-Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y_j$ indica não só o ponto de mínimo da perda, mas também para qual direação a assimetria da função irá se deslocar.
+Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y_j$ indica não só o ponto de mínimo da perda, mas também para qual direção a assimetria da função irá se deslocar.
 
 \begin{figure}[h!]
     \centering
@@ -3071,9 +3071,9 @@ Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Twee
             \toprule
             \textbf{Função} & \textbf{Principais características} \\
             \midrule
-            Erro quadrático médio (MSE) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, estritamente convexa, baixa interpretabilidade dos valores numéricos (solução: utilizar a RMSE em conjunto como métrica), \\
+            Erro quadrático médio (MSE) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, estritamente convexa, saída sempre positiva ou nula, baixa interpretabilidade dos valores numéricos (solução: utilizar a RMSE em conjunto como métrica), \\
             \addlinespace
-            Erro absoluto médio (MAE) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, boa interpretabilidade,\\
+            Erro absoluto médio (MAE) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, saída sempre positiva ou nula, boa interpretabilidade,\\
             \addlinespace
             Perda de Huber (\textit{Huber loss}) & Continuamente diferenciável ($C^1$), robusta a \textit{outliers}, convexa, pode ter a sua sensibilidade ajustada pelo hiperparâmetro $\delta$  \\
             \addlinespace
