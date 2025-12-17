@@ -623,4 +623,70 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 
 \subsection{Perda de Tweedie (Tweedie loss)}
 
+\begin{definition}
+    Seja $y \ge 0$ o alvo e $\hat{y} > 0$ a predição. A família de perdas Tweedie é indexada pelo parâmetro de potência de variância $p$. Para o caso de interesse em dados com excesso de zeros (Composta Poisson-Gamma), onde $1 < p < 2$, a função é definida por:
+    \begin{equation}
+        \mathcal{L}_p(y, \hat{y}) = -y \frac{\hat{y}^{1-p}}{1-p} + \frac{\hat{y}^{2-p}}{2-p}
+    \end{equation}
+    Esta fórmula deriva da \textit{Deviance} dos Modelos Lineares Generalizados (GLM) sob a suposição $\text{Var}(Y) \propto \mu^p$.
+\end{definition}
+
+\begin{proposition}[Regularidade]
+    Para $p \in (1, 2)$, a função Tweedie Loss pertence à classe $C^\infty$ no domínio $\hat{y} \in (0, \infty)$.
+\end{proposition}
+
+\begin{proof}
+    A função é uma combinação linear de funções potência ($\hat{y}^\alpha$). Como as potências $1-p$ e $2-p$ são números reais e o domínio restringe $\hat{y}$ a valores estritamente positivos, não ocorrem singularidades de divisão por zero ou raízes complexas.
+    
+    Calculamos a primeira derivada em relação a $\hat{y}$:
+    \begin{align*}
+        \mathcal{L}'(\hat{y}) &= -y \frac{(1-p)\hat{y}^{-p}}{1-p} + \frac{(2-p)\hat{y}^{1-p}}{2-p} \\
+        &= -y\hat{y}^{-p} + \hat{y}^{1-p} \\
+        &= \frac{\hat{y} - y}{\hat{y}^p}
+    \end{align*}
+    
+    Observa-se que a derivada tem uma forma canônica elegante: o resíduo simples normalizado pela variância esperada ($\hat{y}^p$). Como $\hat{y} \neq 0$, todas as derivadas de ordem superior existem e são contínuas.
+\end{proof}
+
+\begin{proposition}[Não-Convexidade Global]
+    Para $1 < p < 2$, a função Tweedie Loss \textbf{não é globalmente convexa} em relação a $\hat{y}$.
+\end{proposition}
+
+\begin{proof}
+    Analisamos a segunda derivada:
+    \[ \mathcal{L}''(\hat{y}) = \frac{d}{d\hat{y}} \left( \hat{y}^{1-p} - y\hat{y}^{-p} \right) \]
+    \[ \mathcal{L}''(\hat{y}) = (1-p)\hat{y}^{-p} - (-p)y\hat{y}^{-p-1} \]
+    \[ \mathcal{L}''(\hat{y}) = \hat{y}^{-p-1} \left[ (1-p)\hat{y} + py \right] \]
+    
+    Para garantir convexidade, precisamos que $\mathcal{L}''(\hat{y}) \ge 0$. Analisando o termo entre colchetes (já que $\hat{y}^{-p-1} > 0$):
+    \[ py - (p-1)\hat{y} \ge 0 \implies \hat{y} \le \frac{p}{p-1}y \]
+    
+    Note que como $1 < p < 2$, o termo $(p-1)$ é positivo. A desigualdade mostra que a função é convexa apenas localmente (quando a predição não está muito longe do alvo). Se o modelo superestimar grosseiramente o valor ($\hat{y} > \frac{p}{p-1}y$), a função entra em uma região côncava.
+\end{proof}
+
+\begin{remark}
+    Assim como na Perda Gamma, a não-convexidade é resolvida na prática modelando o logaritmo da média. A Tweedie Loss é estritamente convexa em relação a $z = \log(\hat{y})$.
+\end{remark}
+
+\begin{proposition}[Robustez Assimétrica]
+    A função não é Lipschitz-contínua na origem, mas apresenta gradientes evanescentes no infinito.
+\end{proposition}
+
+\begin{proof}
+    A robustez é determinada pelos limites da magnitude do gradiente $|\mathcal{L}'(\hat{y})| = |\hat{y}^{1-p} - y\hat{y}^{-p}|$.
+    
+    \begin{enumerate}
+        \item \textbf{Limite na Origem ($\hat{y} \to 0^+$):}
+        O termo dominante é $y\hat{y}^{-p}$. Como $p > 1$, $\hat{y}^{-p} \to \infty$.
+        \[ \lim_{\hat{y} \to 0^+} |\mathcal{L}'(\hat{y})| = \infty \quad (\text{se } y > 0) \]
+        Isso indica extrema sensibilidade a subestimativas (prever zero quando existe valor).
+        
+        \item \textbf{Limite no Infinito ($\hat{y} \to \infty$):}
+        O termo dominante é $\hat{y}^{1-p}$. Como $1 < p < 2$, o expoente $1-p$ é negativo (entre $-1$ e $0$).
+        \[ \lim_{\hat{y} \to \infty} |\mathcal{L}'(\hat{y})| = 0 \]
+    \end{enumerate}
+    
+    A função exibe o comportamento clássico de perdas geradas por famílias exponenciais: pune severamente o erro "impossível" (prever 0 para alvo positivo) e é robusta/indulgente com erros de magnitude na cauda direita.
+\end{proof}
+
 \section{Perdas para classificação}
