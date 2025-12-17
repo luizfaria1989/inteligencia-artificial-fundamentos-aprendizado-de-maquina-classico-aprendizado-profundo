@@ -2704,6 +2704,8 @@ Em que:
     \item[$N$] representa o número de amostras.
 \end{description}
 
+Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na Figura~\ref{fig:gamma-loss-grid}, analisamos as curvas/superfícies da perda considerando diferentes valores reais fixos $y_j$. Conforme o valor real se aproxima de zero, a função se aproxima do eixo das ordenadas, além disso, é a partir dos valores reais que é definido onde será o mínimo da função de perda. A penalidade da perda Gamma também é assimétrica, semelhante ao MSLE, a curva sobe de forma abrupta à esquerda e de forma suave à direita. Dessa forma, ela apresenta a tendência de penalizar em maior grau as subestimações feitas pelo modelo.
+
 \begin{figure}[h!]
     \centering
 
@@ -2729,14 +2731,12 @@ Em que:
                 % Fórmula Gamma: ln(y_hat/y) + y/y_hat - 1
                 % Aqui: x é y_hat, y fixo em 2 -> ln(x/2) + 2/x - 1
                 \addplot[domain=0.4:10, samples=100, color=black, very thick] {ln(x/2) + 2/x - 1};
-                \addlegendentry{$y=2$}
                 
                 % Linha pontilhada no mínimo (Zero)
                 \draw[dashed, black!60] (axis cs:2, 0) -- (axis cs:2, 2.5);
-                \node[anchor=north, font=\tiny, text=black] at (axis cs:2, -0.1) {Mínimo em $\hat{y}=2$};
                 
                 % Destaque visual da assimetria
-                \node[font=\tiny, text=black!70, anchor=west] at (axis cs:0.5, 3) {Punição Severa ($\hat{y} \to 0$)};
+                \node[font=\tiny, text=black!70, anchor=west] at (axis cs:0.5, 3) {Mínimo em $\hat{y}=2$};
             \end{axis}
         \end{tikzpicture}
         \caption{Assimetria para valor real baixo ($y=2$).}%
@@ -2801,11 +2801,10 @@ Em que:
             ]
                 % Gamma para y=10 -> ln(x/10) + 10/x - 1
                 \addplot[domain=2:30, samples=100, color=black, very thick] {ln(x/10) + 10/x - 1};
-                \addlegendentry{$y=10$}
                 
                 % Linha pontilhada no mínimo
                 \draw[dashed, black!60] (axis cs:10, 0) -- (axis cs:10, 2.5);
-                \node[anchor=north, font=\tiny, text=black] at (axis cs:10, -0.1) {Mínimo em $\hat{y}=10$};
+                \node[anchor=north, font=\tiny, text=black] at (axis cs:7.5, 2.5) {Mínimo em $\hat{y}=10$};
             \end{axis}
         \end{tikzpicture}
         \caption{Comportamento para valor real alto ($y=10$).}%
@@ -2846,7 +2845,7 @@ Em que:
         \label{fig:gamma-3d-high}
     \end{subfigure}
 
-    \caption{Visualização da Perda Gamma. Note a penalidade assimétrica: a curva sobe abruptamente à esquerda (subestimativa) e suavemente à direita (superestimativa).}%
+    \caption{Visualização da perda Gamma para diferentes valores reais $y_j$.}%
     \label{fig:gamma-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
@@ -2854,17 +2853,43 @@ Em que:
 \subsubsection*{Características da perda gamma}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] (ver Apêndice~\ref{ap:deducoes-gamma-loss})
-    \item[Convexidade:] (ver Apêndice~\ref{ap:deducoes-gamma-loss})
-    \item[Robustez:] (ver Apêndice~\ref{ap:deducoes-gamma-loss})
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda Gamma é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Essa propriedade garante para a perda a possibilidade de ser utilizada em conjunto com otimizadores baseados em gradiente sem ocorrer muitos problemas, dado que as suas derivadas também serão contínuas.
+    \item[Convexidade:] A perda Gamma \textbf{não é convexa} em relação à predição $\hat{y}$ globalmente, tornando-se côncava para grandes superestimativas (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Mais precisamente, existe uma mudança de curvatura quando a predição excede o dobro do alvo, indicando que a otimização direta em $\hat{y}$ pode ser instável para métodos de segunda ordem (como Newton-Raphson).
+    \item[Robustez:] A perda Gamma não é Lipschitz-contínua devido à singularidade na origem, portanto, \textbf{não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Contudo, o seu gradiente tende a zero no infinito, de forma que ela é robusta para erros onde $\hat{y} \gg y$.
+    \item[$\log$ como função de ligação:] Para contornar o problema da não convexidade, podemos utilizar o logaritmo como uma função de ligação. Para isso, modelamos o logaritmo da média ($z = \log \hat{y}$). Substituindo $\hat{y} = e^z$, a função torna-se $G(z) = y e^{-z} + z$. Sua segunda derivada é $G''(z) = y e^{-z}$, que é estritamente positiva para todo $z$. 
+    Substituindo essa relação na Equação \ref{eq:gamma-loss} e removendo as constantes que não dependem de $z$, obtemos a função de perda transformada $L(z)$:
+
+    \begin{equation}
+        L(z_j) = \frac{y_j}{e^{z_j}} + z_j
+    \end{equation}
+
+    A grande vantagem dessa transformação é a convexidade. A segunda derivada dessa função é $L''(z) = y_j e^{-z_j}$, que é estritamente positiva para todo $y_j > 0$, garantindo um único mínimo global.
 \end{description}
 
 \subsubsection*{Gradiente da perda Gamma}
 
-\begin{equacaodestaque}{Derivada da perda Gamma}
+Uma das formas de encontrar a derivada da perda Gamma é aplicar as técnicas tradicionais de derivação na função de perda, encontrando a Equação~\ref{eq:gamma-loss-derivada}.
+
+\begin{equacaodestaque}{Derivada parcial da perda Gamma em relação à predição}
     \frac{\partial\Loss_{\text{Gamma}}}{\partial\hat{y}_j} = \frac{1}{\hat{y}_j} -\frac{y_j}{\hat{y}_j^2} = \frac{\hat{y}_j -y_j}{\hat{y}_j^2}%
     \label{eq:gamma-loss-derivada}
 \end{equacaodestaque}
+
+Entretanto, também podemos considerar a derivação para o cenário em que a perda Gamma é aplicada em conjunto com a função logaritmo, neste caso, temos a Equação~\ref{eq:gradiente-gamma-link}. A derivada, é simplesmente a diferença relativa entre 1 e a razão entre o valor real $y_j$ e o previsto $\hat{y}_j$
+
+
+\begin{equacaodestaque}{Derivada parcial da perda Gamma em relação à predição com $\log$ como função de ligação}
+    \frac{\partial \Loss}{\partial z_j} = 1 - \frac{y_j}{\hat{y}_j}%
+    \label{eq:gradiente-gamma-link}
+\end{equacaodestaque}
+
+\begin{itemize}
+    \item Se $\hat{y} = y$, o gradiente é $1 - 1 = 0$ (convergência).
+    \item Se $\hat{y} < y$ (subestimação), o termo $y/\hat{y} > 1$, gerando gradiente negativo, o que aumenta $z$.
+    \item Se $\hat{y} > y$ (superestimação), o termo $y/\hat{y} < 1$, gerando gradiente positivo, o que diminui $z$.
+\end{itemize}
+
+A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme os valores reais são alterados. Ao aproximar o valor real de zero, o gráfico se desloca à esquerda. Além disso, ela justifica algumas das propriedades da perda Gamma, como a sua assimetria (penalização maior para as subestimações), continuidade, e também como o gradiente tende a zero quando o $\hat{y}_j \to \infty$.
 
 \begin{figure}[h!]
     \centering
@@ -2875,11 +2900,11 @@ Em que:
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
-            xmin=0, xmax=20,  % Ajustado para a derivada da Gamma
-            ymin=-4, ymax=0.5,   % Ajustado para a derivada da Gamma
-            legend pos=north east, % Movido para um local melhor
-            width=12cm,
-            height=9cm,
+            xmin=-1, xmax=20,
+            ymin=-4, ymax=1.5,
+            legend pos=south east,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -2887,15 +2912,15 @@ Em que:
             % Fórmula: (x - y) / (x^2)
             
             % Curva para y=2
-            \addplot[domain=1.2:20, samples=101, color=red, thick] {(x - 2) / (x^2)};
+            \addplot[domain=1.2:20, samples=101, color=black, very thick] {(x - 2) / (x^2)};
             \addlegendentry{$y=2$}
             
             % Curva para y=5
-            \addplot[domain=1.2:20, samples=101, color=blue, thick] {(x - 5) / (x^2)};
+            \addplot[domain=1.2:20, samples=101, color=black, very thick, dashed] {(x - 5) / (x^2)};
             \addlegendentry{$y=5$}
 
             % Curva para y=10
-            \addplot[domain=1.2:20, samples=101, color=green, thick] {(x - 10) / (x^2)};
+            \addplot[domain=1.2:20, samples=101, color=black, very thick, densely dotted] {(x - 10) / (x^2)};
             \addlegendentry{$y=10$}
             
         \end{axis}
@@ -2917,6 +2942,21 @@ Em que:
 \subsection{Perda de Tweedie (Tweedie Loss)}%
 \index{Funções de Perda!Perda de Tweedie (\textit{Tweedie Loss})}
 
+Estudadas por Maurice C. K. Tweedie nos anos 80, as distribuições de Tweedie são uma família de distribuições de probabilidade que incluem: a distribuição Normal, Poisson, Gamma, Poisson-Gamma, e Gaussiana Puramente Inversa. Essas distribuições são unidas pela relação da variância elevada a um índice $p$, como na Equação-xxx
+
+\begin{equation}
+    \text{Var}(y) = \phi \cdot \mu^p
+\end{equation}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Quando $p =0$] temos a distribuição Normal (a variância é constante); 
+    \item[Quando $p =1$] temos a distribuição de Poisson (a variância é linear);
+    \item[Quando $p =2$] temos a distribuição Gamma (a variância é quadrática);
+    \item[Quando $1 < p < 2$] temos a distribuição Poisson-Gamma. Neste caso, a Tweedie modela os dados que são uma mistura de zeros (como na Poisson) e também contínuos (como na Gamma).  
+\end{description}
+
+Da distribuição de Tweedie derivamos a sua perda, vista na Equação~\ref{eq:tweedie-loss}\footnote{Perceba que neste caso, não derivamos a perda de Tweedie de sua FDP nem de sua log-verossimilhança. Isso acontece porque a FDP da distribuição de Tweedie não apresenta uma fórmula fechada simples, como nos outros dois cenários anteriores.}. A perda de Tweedie une as outras duas distribuições que vimos anteriormente, pois dela, podemos escrever a perda Gamma e também a perda de Poisson com uma simples mudança no índice do parâmetro $p$.
+
 \begin{equacaodestaque}{Perda de Tweedie (\textit{Tweedie Loss})}
     \Loss_{\text{Tweedie}}(y_j, \hat{y}_j; p) = -\frac{y_j \cdot \hat{y}_j^{1-p}}{1-p} + \frac{\hat{y}_j^{2-p}}{2-p}%
     \label{eq:tweedie-loss}
@@ -2928,6 +2968,7 @@ Em que:
     \item[$y_j$] representa o valor real da j-ésima amostra;
     \item[$\hat{y}_j$] representa o valor predito pelo modelo;
     \item[$N$] representa o número de amostras.
+    \item[$p$] representa 
 \end{description}
 
 \begin{figure}[h!]
