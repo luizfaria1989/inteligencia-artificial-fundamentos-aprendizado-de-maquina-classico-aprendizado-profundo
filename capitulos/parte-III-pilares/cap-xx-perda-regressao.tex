@@ -5,11 +5,11 @@
 \chapter{Funções de perda para regressão}%
 \label{cap:perda-regressao}
 
-Agora agora vimos o funcionamento da retropropagação, e como ela faz uso dos otimizadores, os quais funcionam como um barco, percorrendo as ondas em busca dos pontos de mínimo. Além disso, foram vistas em seguida diversas funções de ativação, começando pelas sigmoidais. Depois pelas retificadoras, e por fim uma coletânea de diferentes funções. Contudo, está na hora de entender um outro lado da retropropagação: as funções de perda, as quais são justamente as ondas que os otimizadores percorrem.
+Para garantir o funcionamento do algoritmo da retropropagação é necessário utilizar uma função de perda em conjunto. As funções de perda são responsáveis por definir a superfície que o modelo deverá percorrer ao ser otimizado na busca por pontos de mínimo. Elas se dividem em finalidades, existindo funções de perda específicas para lidar com tarefas de regressão (quando querem prever qual será um determinado valor com base um conjunto de dados), para tarefas de classificação (binária ou multi-classe), e para outros tipos de tarefas. 
 
-Esse capítulo explica alguns dos diferentes tipos de funções de perda, mais precisamente as funções de perda para tarefas de regressão. Portanto, o capítulo pode ser dividido em quatro grandes partes: funções de perda para propósitos gerais, funções de perda para medir o erro relativo, funções que vão além do cálculo da média dos erros. Por último, funções que são utilizadas para problemas que seguem outros tipos de distribuição (como as distribuições de Poisson e Gamma).
+Este capítulo tem foco em explicar as diferentes funções de perda que podem ser utilizadas em problemas de regressão. Ele apresenta quatro seções principais. A primeira explica funções de perda padrão, que são utilizadas quando os dados seguem a distribuição Normal. Em seguida, é dedicada uma seção para explicar perdas assimétricas, para casos em que queremos penalizar em maior grau as subestimações ou as superestimações.
 
-Para explicar cada uma das funções é apresentado as suas equações, os gráficos (contendo as vistas em duas e três dimensões), as derivadas parciais junto com os seus respectivos gráficos. Além disso, ao final de cada explicação dessas funções, é selecionado uma série de artigos que exploram o uso dessas funções para resolver problemas variados em aprendizado de máquina. Já no final do capítulo, está uma tabela resumo, explicando as principais características das funções e seus usos. Também é dedicada uma seção que apresenta um diagrama, que serve de guia para escolher a função de perda ideal para um problema de regressão.
+A terceira seção explica a perda $\epsilon$-insensível, a função de perda para máquinas de vetores de suporte de classificação. A última seção aborda três funções de perda que são utilizadas nos casos que não seguem a distribuição Normal, são elas: a perda de Poisson, perda Gamma e perda de Tweedie. Por fim, é apresentada uma tabela, destacando as principais características das perdas apresentadas neste capítulo.
 
 \section{Exemplo ilustrativo: jogando dardos}
 
@@ -67,7 +67,7 @@ Antes de discutir as funções de perda para tarefas de regressão, é important
 
 \section{Funções de perda para regressão para propósitos gerais}
 
-A primeira seção desse capítulo que explora as funções de perda busca focar nas funções de perda mais comuns, que geralmente são umas das primeiras alternativas para serem utilizadas ao construir um modelo de regressão. Entre elas, vale destacar a dupla de funções erro quadrático médio (também conhecido como perda L2) e o erro absoluto médio (que também recebe o nome de perda L1). Contudo, essa seção também apresenta outras alternativas, como a perda de Huber, uma função que tem como objetivo unir as principais características do MSE e do MAE. Além disso, também é apresentada uma alternativa para a perda de Huber: a perda log-cosh, que possui propriedades parecidas com essa outra função, mas que resolve os problemas de descontinuidade.
+Nesta primeira seção são apresentadas quatro diferentes funções de perda, começando com o erro quadrático médio e o erro absoluto médio. Elas são as mais comuns de serem utilizadas, dado que, assumem que os dados seguem uma distribuição Normal. Em seguida, é explicada a perda de Huber, que busca unir o melhor dessas duas perdas vistas anteriormente. Por último, a perda log-cosh é discutida como uma alternativa mais simples para a perda de Huber.
 
 \subsection{Erro quadrático médio (MSE)}%
 \index{Funções de Perda!Erro quadrático médio (MSE)}%
@@ -177,10 +177,10 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]
     
-    \item[Continuidade e suavidade:] O MSE é uma função de classe $C^{\infty}$, é infinitamente diferenciável (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o MSE uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
-    \item[Sensibilidade a \textit{outliers}:] O MSE é uma função que não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mse}). Caso o erro do modelo treinado cresça exponencialmente, o valor numérico da perda será consideravelmente grande. Não somente isso, ele é sensível a \textit{outliers}, se um grupo de dados fora do padrão estiver presente no conjunto de dados, eles podem enviesar o cálculo da perda, e também na otimização em busca de pontos de mínimo.
-    \item[Convexidade:] O MSE é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-mse}), representado pelos gráficos da Figura~\ref{fig:mse}, que apresentam uma função com formato de tigela. Dessa forma, essa característica torna-se uma vantagem se estiver sendo utilizados otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, \textcite{LossesArticle} argumentam que essa propriedade pode deixar de ser verdade em algoritmos de aprendizado profundo.
-    \item[Não-negatividade:] omo gráficos da Figura~\ref{fig:mse} ilustram, o MSE é retorna apenas valores positivos. Isso se dá devido à diferença das entradas estar sendo calculada, e, em seguida, elevada ao quadrado, impendido que valores negativos ocorram na saída.
+    \item[Continuidade, suavidade e diferenciabilidade:] O MSE é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} (ver Apêndice~\ref{ap:deducoes-mse}). Como consequência, não são encontrados problemas para derivar essa função e também o cálculo do vetor gradiente. Isso torna o MSE uma boa função para ser utilizada em conjunto com otimizadores baseados em gradiente.
+    \item[Convexidade:] O MSE é uma função \textbf{estritamente convexa} (ver Apêndice~\ref{ap:deducoes-mse}), representado pelos gráficos da Figura~\ref{fig:mse}, que apresentam uma função com formato de tigela. Dessa forma, essa característica torna-se uma vantagem se estiver sendo utilizados otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, \textcite{LossesArticle} argumentam que essa propriedade pode deixar de ser verdade em algoritmos de aprendizado profundo.
+    \item[Sensibilidade a \textit{outliers}:] O MSE é uma função que não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-mse}), portanto, \textbf{sensível a \textit{outliers}.} Caso o erro do modelo treinado cresça exponencialmente, o valor numérico da perda será consideravelmente grande. Se um grupo de dados fora do padrão estiver presente no conjunto de dados, eles podem enviesar o cálculo da perda, e também na otimização em busca de pontos de mínimo.
+    \item[Não-negatividade:] Como gráficos da Figura~\ref{fig:mse} ilustram, o MSE é retorna apenas valores positivos. Isso se dá devido à diferença das entradas estar sendo calculada, e, em seguida, elevada ao quadrado, impendido que valores negativos ocorram na saída.
     \item[Baixa interpretabilidade:] O MSE eleva o erro ao quadrado. Ao retornar o valor da perda, não é visto diretamente a distância entre os pontos reais e os pontos preditos pelo modelo. Essa cálculo dificulta saber, de forma rápida, quão bem ou mal o modelo está performando. Funções como a MAE, em que o erro é dado pelo módulo da distância entre os dois pontos são mais diretas em mostrar a performance do modelo;
     
 \end{description}
@@ -336,7 +336,7 @@ O MAE está definido na Equação~\ref{eq:mae}. Essa função de perda avalia a 
     \label{eq:mae}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
     \item[$y_j$] representa o valor real da j-ésima amostra;
@@ -418,11 +418,11 @@ Em que:
 \subsubsection*{Características do erro absoluto médio}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] O MAE é uma função de classe $C^0$ (ver Apêndice~\ref{ap:deducoes-mae}). Ele é contínuo em todo o seu domínio, mas, devido ao ``bico'' quando o erro é zero, não pode ser totalmente derivado. Essa característica não impede que o erro absoluto médio seja utilizado em conjunto com otimizadores baseados em gradiente. Como será visto, é possível contornar esse problema com o cálculo do subgradiente.
-    \item[Convexidade:] O MAE é convexo (ver Apêndice~\ref{ap:deducoes-mae}). Como o teorema de \textbf{Convexidade de Normas e Máximos} afirma, toda função modular é convexa como consequência da desigualdade triangular. Isso também está explicitado nos gráficos da Figura~\ref{fig:mae}, com o formato em ``V'' da função de perda.
-    \item[Robustez para \textit{outliers}:] Como é apontado na Figura~\ref{fig:mae}, o erro absoluto médio não retorna valores negativos para nenhum valor de entrada. A sua saída saída será sempre positiva ou zero, independente da entrada. Isso se dá, devido à propriedade do módulo, que não admite números negativos para sua saída;
-    \item[Não-derivável em zero:] Esse ponto acontece devido à forma que a função módulo é representa graficamente, ela tem a forma de um ``bico'' em zero. Para contornar esse problema, pode ser utilizado o subgradiente.
-    \item[Boa interpretabilidade:] Diferente do erro quadrático médio em que o erro total é elevado ao quadrado, no MAE isso não ocorre. O erro é simplesmente a média das diferenças dos pontos. É intuitivo interpretar os resultados que essa função de perda retorna, considerando que não é preciso fazer nenhum cálculo adicional para ter uma noção precisa se as previsões feitas pelo modelo condizentes ou não dos valores reais.
+    \item[Continuidade, suavidade e diferenciabilidade:] O MAE é uma função de classe $C^0$ (ver Apêndice~\ref{ap:deducoes-mae}), \textbf{contínua}. Ele é contínuo em todo o seu domínio, mas, devido ao ``bico'' quando o erro é zero, não pode ser totalmente derivado. Essa característica não impede que o erro absoluto médio seja utilizado em conjunto com otimizadores baseados em gradiente. Como será visto, contornamos esse problema com o cálculo do subgradiente.
+    \item[Convexidade:] O MAE é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-mae}). Como o teorema de \textbf{Convexidade de Normas e Máximos} afirma, toda função modular é convexa como consequência da desigualdade triangular. Isso também está explicitado nos gráficos da Figura~\ref{fig:mae}, com o formato em ``V'' da função de perda.
+    \item[Robustez:] O MAE é uma função Lipschitz-contínua, portanto, \textbf{robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-mae}). Isso se dá pois o seu gradiente nunca excede o valor de 1, o que contribui para evitar problemas de gradientes explosivos e enviesar as atualizações dos parâmetros do modelo.
+    \item[Não-negatividade] Como é apontado na Figura~\ref{fig:mae}, o erro absoluto médio não retorna valores negativos para nenhum valor de entrada. A sua saída saída será sempre positiva ou zero, independente da entrada. Isso se dá, devido à propriedade do módulo, que não admite números negativos para sua saída;
+    \item[Boa interpretabilidade:] Diferente do MSE em que o erro total é elevado ao quadrado, no MAE isso não ocorre. O erro é simplesmente a média das diferenças dos pontos. É intuitivo interpretar os resultados que essa função de perda retorna, considerando que não é preciso fazer nenhum cálculo adicional para ter uma noção precisa se as previsões feitas pelo modelo condizentes ou não dos valores reais.
 \end{description}
 
 \subsubsection*{Gradiente do erro absoluto médio}
@@ -1541,7 +1541,7 @@ A perda quantílica consegue lidar com as situações em que a média e a medina
 
 A $\epsilon$-insensível também é outra função de perda que não faz o cálculo da média dos erros. Ela é uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Ao utilizá-la, é definido uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
 
-\subsection{Perda quantílica (quantile loss)}%
+\subsection{Perda quantílica (quantile/pinball loss)}%
 \index{Funções de Perda!Perda quantílica (\textit{quantile loss})}
 
 Em \textit{Regression Quantiles}, \textcite{regression-quantiles} analisaram uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação, os autores discutem a ideia de que ``todos acreditam na lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção, que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o MSE, para o cálculo dos erros com base na média, não são ideais para servir de guia para a otimização do modelo.
@@ -3071,25 +3071,25 @@ Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Twee
             \toprule
             \textbf{Função} & \textbf{Principais características} \\
             \midrule
-            Erro quadrático médio (MSE) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, estritamente convexa,  \\
+            Erro quadrático médio (MSE) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, estritamente convexa, baixa interpretabilidade dos valores numéricos (solução: utilizar a RMSE em conjunto como métrica), \\
             \addlinespace
-            Erro absoluto médio (MAE) & Contínua ($C^0$), robusta a \textit{outliers}, convexa \\
+            Erro absoluto médio (MAE) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, boa interpretabilidade,\\
             \addlinespace
-            Perda de Huber (\textit{Huber loss}) & Continuamente diferenciável ($C^1$), robusta a \textit{outliers}, convexa, \\
+            Perda de Huber (\textit{Huber loss}) & Continuamente diferenciável ($C^1$), robusta a \textit{outliers}, convexa, pode ter a sua sensibilidade ajustada pelo hiperparâmetro $\delta$  \\
             \addlinespace
-            Perda log-cosh (\textit{Log-cosh loss}) & Infinitamente diferenciável ($C^{\infty}$), robusta a \textit{outliers}, estritamente convexa, \\
+            Perda log-cosh (\textit{Log-cosh loss}) & Infinitamente diferenciável ($C^{\infty}$), robusta a \textit{outliers}, estritamente convexa, alternativa sem hiperparâmetro para a perda de Huber, \\
             \addlinespace
-            Erro quadrático logarítmico médio (MSLE) & Infinitamente diferenciável ($C^{\infty}$), robusta a \textit{outliers}, estritamente convexa no espaço logaritmo \\
+            Erro quadrático logarítmico médio (MSLE) & Infinitamente diferenciável ($C^{\infty}$), robusta a \textit{outliers}, estritamente convexa no espaço logaritmo, assimétrica à esquerda (penaliza em maior grau as subestimações), \\
             \addlinespace
-            Perda quantílica (\textit{Quantile loss}) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, \\
+            Perda quantílica (\textit{Quantile loss}) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, pode ter a sua assimetria ajustada pelo hiperparâmetro $\tau$, \\
             \addlinespace
-            Perda epsilon-insensível (\textit{$\epsilon$-insentive}) & - \\
+            Perda epsilon-insensível (\textit{$\epsilon$-insentive}) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, promove gradientes esparsos, pode ter o tamanho do tubo $\epsilon$ ao ajustar o hiperparâmetro $\epsilon$, \\
             \addlinespace
-            Perda de Poisson (\textit{Poisson deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, convexa (e estritamente convexa se $y > 0$), \\
+            Perda de Poisson (\textit{Poisson deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, convexa (e estritamente convexa se $y > 0$), utilizada quando os dados seguem a distribuição de Poisson, \\
             \addlinespace
-            Perda Gamma (\textit{Gamma deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), \\
+            Perda Gamma (\textit{Gamma deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), utilizada quando os dados seguem a distribuição Gamma, \\
             \addlinespace
-            Perda de Tweedie (\textit{Tweedie deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação),  \\
+            Perda de Tweedie (\textit{Tweedie deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), utilizada para substituir as perdas de Poisson e Gamma, utilizada quando os dados seguem a distribuição Poisson-Gamma, \\
             \addlinespace
         \end{tabularx}
         
