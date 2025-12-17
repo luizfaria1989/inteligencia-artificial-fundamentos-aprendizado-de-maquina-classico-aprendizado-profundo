@@ -621,7 +621,8 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     Conclui-se que a função penaliza severamente erros onde $\hat{y} \ll y$, mas é leniente (robusta) com erros onde $\hat{y} \gg y$.
 \end{proof}
 
-\subsection{Perda de Tweedie (Tweedie loss)}
+\subsection{Perda de Tweedie (Tweedie loss)}%
+\label{ap:deducoes-tweedie-loss}
 
 \begin{definition}
     Seja $y \ge 0$ o alvo e $\hat{y} > 0$ a predição. A família de perdas Tweedie é indexada pelo parâmetro de potência de variância $p$. Para o caso de interesse em dados com excesso de zeros (Composta Poisson-Gamma), onde $1 < p < 2$, a função é definida por:
