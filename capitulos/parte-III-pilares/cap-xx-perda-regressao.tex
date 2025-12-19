@@ -5,21 +5,21 @@
 \chapter{Funções de perda para regressão}%
 \label{cap:perda-regressao}
 
-Para garantir o funcionamento do algoritmo da retropropagação é necessário utilizar uma função de perda em conjunto. As funções de perda são responsáveis por definir a superfície que o modelo deverá percorrer ao ser otimizado na busca por pontos de mínimo. Elas se dividem em finalidades, existindo funções de perda específicas para lidar com tarefas de regressão (quando querem prever qual será um determinado valor com base um conjunto de dados), para tarefas de classificação (binária ou multi-classe), e para outros tipos de tarefas. 
+Para garantir o funcionamento do algoritmo da retropropagação é necessário utilizar uma função de perda em conjunto. As funções de perda são responsáveis por definir a superfície que o modelo deverá percorrer ao ser otimizado na busca por pontos de mínimo. Elas se dividem em finalidades, existindo funções de perda específicas para lidar com tarefas de regressão (quando querem prever qual será um determinado valor com base um conjunto de dados), para tarefas de classificação (binária ou multi-classe), e entre outros. 
 
-Este capítulo tem foco em explicar as diferentes funções de perda que podem ser utilizadas em problemas de regressão. Ele apresenta quatro seções principais. A primeira explica funções de perda padrão, que são utilizadas quando os dados seguem a distribuição Normal. Em seguida, é dedicada uma seção para explicar perdas assimétricas, para casos em que queremos penalizar em maior grau as subestimações ou as superestimações.
+Este capítulo tem foco em explicar as funções de perda utilizadas em problemas de regressão. Ele apresenta quatro seções principais. A primeira explica as funções de perda padrão, que são utilizadas quando os dados seguem a distribuição Normal. Em seguida, é dedicada uma seção para explicar perdas assimétricas, para casos em que queremos penalizar em maior grau as subestimações ou as superestimações.
 
-A terceira seção explica a perda $\epsilon$-insensível, a função de perda para máquinas de vetores de suporte de classificação. A última seção aborda três funções de perda que são utilizadas nos casos que não seguem a distribuição Normal, são elas: a perda de Poisson, perda Gamma e perda de Tweedie. Por fim, é apresentada uma tabela, destacando as principais características das perdas apresentadas neste capítulo.
+A terceira seção explica a perda $\epsilon$-insensível, a função de perda para máquinas de vetores de suporte de regressão. A última seção aborda três funções de perda para outras distribuições de dados, são elas: a perda de Poisson, perda Gamma e perda de Tweedie. Por fim, o conteúdo é resumido em uma tabela, destacando as principais características das perdas apresentadas neste capítulo.
 
 \section{Exemplo ilustrativo: jogando dardos}
 
-Pense que você está jogando dardos com seus amigos, e, quer decidir quem está com mais pontos. Mas, você não está satisfeito em considerar as marcações que estão no jogo, e, decidiu inovar. Assim, você pegou uma régua e passou a medir a distância que os dardos que você e seus amigos haviam jogado no centro. Quem chegasse mais próximo do centro, ganhava o jogo.
+Pense que você está jogando dardos com seus amigos, e, quer decidir quem está com mais pontos. Mas, você está insatisfeito em considerar as marcações que estão no jogo, e, decidiu inovar. Assim, você pegou uma régua e passou a medir a distância que seus dardos e de seus amigos estavam do centro. Quem chegasse mais próximo do centro, ganhava o jogo.
 
-Essa ideia de medir o quão próximo você está do resultado desejado utilizando a distância entre esses dois pontos como parâmetro, é o motivador pela criação das funções de perda para regressão. Essas funções utilizam diferentes fórmulas, com todas com o mesmo intuito, medir a distância em que a predição dado pelo modelo está do ponto real (desejado).
+Essa ideia de medir o quão próximo você está do resultado desejado utilizando a distância entre esses dois pontos, é o motivador pela criação das funções de perda para regressão. Essas funções utilizam diferentes fórmulas, com o intuito de medir a distância em que a predição dado pelo modelo está do ponto real (desejado).
 
 \section{Características das funções de perda}
 
-Antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa. Em \textit{Loss Functions and Metrics in Deep Learning}, \textcite{LossesArticle} explicam algumas características desse grupo de funções. Os autores argumentam que algumas propriedades das funções de perda são: \textbf{convexidade}, \textbf{diferenciabilidade}, \textbf{robustez}, \textbf{suavidade}, \textbf{esparsidade} e \textbf{monotonicidade} \parencite{LossesArticle}. Todas essas propriedades devem ser consideradas ao escolher a função de perda ideal para resolver um determinado tipo de problema.
+Antes de discutir as funções de perda para tarefas de regressão, é importante citar as principais propriedades que uma função de perda, seja ela para tarefas de regressão ou para outros tipos de tarefa. \textcite{LossesArticle} argumentam que algumas propriedades das funções de perda são: \textbf{convexidade}, \textbf{diferenciabilidade}, \textbf{robustez}, \textbf{suavidade}, \textbf{esparsidade} e \textbf{monotonicidade}. Todas essas propriedades devem ser consideradas ao escolher a função de perda ideal para resolver um determinado tipo de problema.
 
 \begin{description}[style=unboxed, leftmargin=0cm, font=\bfseries]
     
@@ -55,10 +55,10 @@ Antes de discutir as funções de perda para tarefas de regressão, é important
     Assim como as classes de continuidade e a convexidade, para cada função apresentada neste capítulo é provado se ela é robusta a \textit{outliers} ou não. Esses demonstrações estão no Apêndice~\ref{apendice:propriedades-analiticas-funcoes-de-perda}, onde é verificada a continuidade de Lipschitz das funções de perda. 
     
     \item[Suavidade:] 
-    A suavidade se relaciona com a questão da continuidade da função. Uma função que não é suave, que apresenta pontos de descontinuidade, como ``bicos'' ou transições bruscas entre um pedaço e outro da função afeta diretamente o cálculo da derivada, e, portanto, do gradiente. Esses pontos de descontinuidade, são um empecilho para o cálculo da derivada. Pois uma função não pode ser derivada em um ponto no qual não é contínua. Considerar se uma função é suave ou não é ideal, uma vez que também irá refletir no cálculo do gradiente dessa função de perda.
+    A suavidade se relaciona com a questão da continuidade da função. Uma função que não é suave, que apresenta pontos de não-diferenciabilidade, como ``bicos'' ou transições bruscas entre um pedaço e outro da função afeta diretamente o cálculo da derivada, e, portanto, do gradiente. Os pontos de não-diferenciabilidade, são um empecilho para o cálculo da derivada. Pois uma função não pode ser derivada em um ponto no qual não é derivável. Considerar se uma função é suave ou não é ideal, uma vez que também irá refletir no cálculo do gradiente dessa função de perda.
     
     \item[Esparsidade:] 
-    Uma função de perda que promova a esparsidade deve incentivar o modelo a produzir uma saída esparsa \parencite{LossesArticle}. \textit{LossesArticle} explicam que essa propriedade é útil ao trabalhar com dados de alta dimensão e quando o número de características importantes é pequeno.
+    Uma função de perda que promova a esparsidade deve incentivar o modelo a produzir uma saída esparsa \parencite{LossesArticle}. \textcite{LossesArticle} explicam que essa propriedade é útil ao trabalhar com dados de alta dimensão e quando o número de características importantes é pequeno.
 
     \item[Monotonicidade:]
     Uma função de perda é monotônica se seu valor diminui à medida que a saída prevista se aproxima da saída verdadeira \parencite{LossesArticle}. Ao escolher uma função de perda que seja monotônica é possível garantir que o processo de otimização do modelo esteja caminhando em direção da solução correta.
@@ -85,20 +85,28 @@ Passados quase 200 anos, o erro quadrático médio passa a ser uma das principai
 
 Voltando para analogia do jogo dos dardos. Imagine que no jogo de dardos todos os jogadores começam com 1.000 pontos, e, vão perdendo conforme vão errando os lançamentos. Além disso, você definiu uma regra que diz que o erro (ou débito dos pontos totais) será dado pelo quadrado da distância entre o centro até o dardo jogado. Jogadores que acertam dardos mais próximos do centro, perdem poucos pontos. Entretanto, aqueles jogadores que são mais desleixados, que acertam longe do centro perdem muitos pontos. Porque além de já perderem muitos pontos por estarem longe do centro, essa distância ainda será elevada ao quadrado.
 
-Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do MSE. A sua fórmula Equação~\ref{eq:mse}. O erro quadrático médio calcula a diferença do valor real $y_j$ com o valor predito pelo modelo $\hat{y}_j$, ou seja, o erro daquela predição. Tendo analisado todos os erros, o MSE calcula a média dos erros, retornando o valor final da perda.
+Essa ideia de elevar o erro ao quadrado é o grande motivador para entender o cálculo do MSE, sendo calculado pela Equação~\ref{eq:mse}.
 
 \begin{equacaodestaque}{Erro quadrático médio}
-    \Loss_{\text{MSE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (y_j -\hat{y}_j)^2%
+    \mathcal{L}_{\text{mse}} (y, \hat{y}) = (y - \hat{y})^2%
     \label{eq:mse}
 \end{equacaodestaque}
 
 Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra;
-    \item[$N$] representa o número de amostras.
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra;  
 \end{description}
+
+A Equação~\ref{eq:mse} descreve o cálculo do MSE para um único conjunto de valores (real e predito), assim como a grande maioria das perdas deste capítulo. Contudo, para um conjunto maior de valores escrevemos algo da forma
+
+\[
+\mathcal{L}_{mse} (y_i, \hat{y}_i) = \frac{1}{N} 
+\sum_{i = 0}^N (y_i - \hat{y}_i)^2
+\]
+
+como visto no Capítulo~\ref{cap:retropropagacao-gradiente}. As definições que calculam a média das perdas para todo o \textit{batch} também são chamadas de funções de custo, como explica xxx. Nesta obra, trataremos esses termos intercambiavelmente.
 
 A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gráfico da esquerda mostra a vista em duas dimensões do MSE com foco no erro, enquanto o gráfico da direita apresenta a superfície no espaço dessa função de perda. As funções de perda neste capítulo estão em sua maioria representadas dessa forma, uma vez que apresentar a vista bidimensional com relação ao erro ilustra como o erro cresce. Enquanto a vista em três dimensões garante uma melhor visualização de como a função de perda é representada de fato.
 
@@ -111,8 +119,8 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Perda},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -132,7 +140,7 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Vista da função de perda em relação ao erro.}%
         \label{fig:mse-2d}
     \end{subfigure}
     \hfill 
@@ -144,7 +152,7 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45}, 
                 zmin=0, zmax=35, 
@@ -187,21 +195,21 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
 \subsubsection*{Gradiente do erro quadrático médio}
 
-A derivada do erro quadrático médio está na Equação~\ref{eq:mse-derivada}. As derivadas parciais de uma função de perda são de extrema importância para uma rede neural. É partir delas que é calculado o primeiro vetor gradiente, que passa a ser retropropagado por toda a rede no sentido inverso. Indo primeiro das últimas camadas para as camadas de entrada\footnote{Portanto, as derivadas das funções de perda serão discutidas sempre que possível para explicar as características de uma função neste capítulo.}.
+A derivada do erro quadrático médio está na Equação~\ref{eq:mse-derivada}. As derivadas parciais de uma função de perda são de extrema importância para uma rede neural. É partir delas que é calculado o primeiro vetor gradiente, que passa a ser retropropagado por toda a rede no sentido inverso. Indo primeiro das últimas camadas para as camadas de entrada.
 
 \begin{equacaodestaque}{Gradiente do erro quadrático médio em relação à predição}
-    \frac{\partial\Loss_{\text{MSE}}}{\partial\hat{y}_j} (y_j, \hat{y}_j) = \frac{2}{N} (\hat{y}_j -y_j)%
+    \nabla_{\hat{y}} \mathcal{L}_{\text{mse}} (y, \hat{y}) = 2(\hat{y} - y)%
     \label{eq:mse-derivada}
 \end{equacaodestaque}
 
-A Equação~\ref{fig:mse-derivada} mostra a derivada parcial do erro quadrático médio em relação à predição feita pelo modelo $\hat{y}_j$. Mas existe também a derivada parcial em relação ao valor real $y_j$. Juntas, tem-se a Equação~\ref{eq:vetor-gradiente-mse}, que representa o vetor gradiente do MSE. Neste livro será dado um foco maior em apresentar apenas uma das derivadas. Porque, elas muitas vezes apresentarão grandes semelhanças.
+A Equação~\ref{fig:mse-derivada} mostra a derivada parcial do erro quadrático médio em relação à predição feita pelo modelo $\hat{y}$. Mas existe também a derivada parcial em relação ao valor real $y$. Juntas, tem-se a Equação~\ref{eq:vetor-gradiente-mse}, que representa o vetor gradiente do MSE. Nesta obra será dado um foco maior em apresentar apenas uma das derivadas. Porque, elas muitas vezes apresentarão grandes semelhanças.
 
 \begin{equation}
-    \nabla_{\hat{y}_j} \Loss_{\text{mse}} (y_j, \hat{y}_j) = \left( \frac{\partial \Loss_{\text{MSE}}}{\partial y_j}, \frac{\partial \Loss_{\text{MSE}}}{\partial \hat{y}_j} \right)%
+    \nabla \mathcal{L}_{\text{mse}} (y, \hat{y}) = \left( \frac{\partial \mathcal{L}_{\text{mse}}}{\partial \hat{y}}, \frac{\partial \mathcal{L}_{\text{mse}}}{\partial y} \right)%
     \label{eq:vetor-gradiente-mse}
 \end{equation}
 
-Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na Figura~\ref{fig:mse-derivada}. A Figura~\ref{fig:mse-derivada-2d} mostra que o gradiente do MSE é proporcional ao erro do modelo. Um erro alto, gera um gradiente alto, e vice-versa. Quando o modelo está nas primeiras épocas do treinamento, e ainda não se ajustou aos dados, seu erro será alto. Se nesse treinamento estiver sendo utilizado um algoritmo de otimização baseado em gradiente, o ajuste dos parâmetros do modelo será mais brusco. Dado que a variação dos valores dos parâmetros de uma iteração para outra é diretamente proporcional ao vetor gradiente (como explica a Equação~\ref{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-regressao}). Contudo, quando o modelo já tiver melhor se ajustado aos dados, o erro será menor, o gradiente também. Por conseguinte, a retropropagação irá garantir um ajuste fino nos pesos e vieses do modelo.
+Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na Figura~\ref{fig:mse-derivada}. A Figura~\ref{fig:mse-derivada-2d} mostra que o gradiente do MSE é proporcional ao erro do modelo. Um erro alto, gera um gradiente alto, e vice-versa. Quando o modelo está nas primeiras épocas do treinamento, e ainda não se ajustou aos dados, seu erro será alto. Se nesse treinamento estiver sendo utilizado um algoritmo de otimização baseado em gradiente, o ajuste dos parâmetros do modelo será mais brusco. Dado que a variação dos valores dos parâmetros de uma iteração para outra é diretamente proporcional ao vetor gradiente. Contudo, quando o modelo já tiver melhor se ajustado aos dados, o erro será menor, o gradiente também. Por conseguinte, a retropropagação irá garantir um ajuste fino nos pesos e vieses do modelo.
 
 \begin{figure}[h!]
     \centering 
@@ -211,8 +219,8 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -229,10 +237,9 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
                     color=black, 
                     very thick
                 ] {2*x};
-                \addlegendentry{$\frac{\partial L}{\partial \hat{y}} = \frac{2}{N} \cdot e$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação linear entre erro e gradiente da perda ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Relação linear entre erro e gradiente da perda.}%
         \label{fig:mse-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -244,7 +251,7 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                zlabel={Gradiente ($nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=-20.5, zmax=20.5,
@@ -273,17 +280,12 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
     \fonte{O autor (2025).}
 \end{figure}
 
-\begin{equation}
-    \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial x_j} \cdot y_i \quad \text{ou} \quad \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial y_j} \cdot \sigma'(x_j) \cdot y_i
-    \label{eq:gradiente-do-erro-em-relacao-a-um-peso-de-um-neuronio-perda-regressao}
-\end{equation}
-
 \subsubsection*{Raiz do erro quadrático médio (RMSE)}
 
 Além disso, cabe discutir a \textbf{raiz do erro quadrático médio}, também chamada de \textbf{\textit{root mean squared error}} (\textbf{RMSE}). Ela está na Equação~\ref{eq:rmse-metric}. Ela é uma função derivada do MSE, cuja diferença está no cálculo de uma raiz quadrada a partir do resultado do MSE.
 
 \begin{equacaodestaque}{Raiz do erro quadrático médio}
-    {RMSE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (y_j -\hat{y}_j)^2}%
+    \text{RMSE} (y_i, \hat{y}_i) = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}%
     \label{eq:rmse-metric}
 \end{equacaodestaque}
 
@@ -329,19 +331,18 @@ Voltando para a analogia dos dardos. Consideramos que será feito um novo jogo c
 
 Contudo, se a métrica escolhida para avaliar o jogo fosse o MAE o resultado seria melhor. Visto que, o erro cresce de forma linear. No contexto de aprendizado de máquina, os jogadores ruins se comparam com os \textit{outliers}, eles estão presentes nos dados e vão enviesar o aprendizado do modelo. Entretanto, utilizar uma função que não seja tão sensível na medição desses valores extremos pode ser uma boa alternativa para cenários em que essa configuração será comum.
 
-O MAE está definido na Equação~\ref{eq:mae}. Essa função de perda avalia a diferença entre dois pontos: o valor real $y_j$ e o valor predito $\hat{y}_j$, para todos os $N$ casos analisados. A partir disso, calcula a média dos resultados, retornando o valor final para a perda do modelo.
+O MAE está definido na Equação~\ref{eq:mae}. Essa função de perda avalia a diferença entre dois pontos: o valor real $y$ e o valor predito $\hat{y}$.
 
 \begin{equacaodestaque}{Erro absoluto médio}
-    \Loss_{\text{MAE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} |y_j -\hat{y}_j|%
+    \mathcal{L}_{\text{mae}} (y, \hat{y}) =  |y - \hat{y}|%
     \label{eq:mae}
 \end{equacaodestaque}
 
 Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra;
-    \item[$N$] representa o número de amostras.
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra.
 \end{description}
 
  Diferente do erro quadrático médio, o MAE cresce de forma linear, como é mostrado na Figura~\ref{fig:mae}. Isso garante para essa função de perda uma melhor capacidade de lidar com \textit{outliers}, dado que o erro não irá aumentar de forma exacerbada como acontecia no MSE. O MAE também apresenta uma ``quina'', nos pontos em que o cálculo do erro é nulo. Dessa forma, essa função não pode ser classificada como suave em todo o seu domínio.
@@ -354,8 +355,8 @@ Em que
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Perda},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -372,9 +373,10 @@ Em que
                     color=black, 
                     very thick
                 ] {abs(x)};
+                \addlegendentry{$e = y - \hat{y}$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Vista da função de perda em relação ao erro.}%
         \label{fig:mae-2d}
     \end{subfigure}
     \hfill
@@ -386,7 +388,7 @@ Em que
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45}, 
                 zmin=0, zmax=10.5, 
@@ -439,14 +441,14 @@ Matematicamente, a derivada da função módulo com o subgradiente é dada por:
     \item Para $x = 0$: O subgradiente é o intervalo de todas as inclinações possíveis entre $-1$ e $1$.
 \end{enumerate}
 
-Ao utilizar o subgradiente para calcular a derivada parcial do erro absoluto médio em relação à predição $\hat{y}_j$ é encontrada a Equação~\ref{eq:mae-derivada}.
+Ao utilizar o subgradiente para calcular a derivada parcial do erro absoluto médio em relação à predição $\hat{y}$ é encontrada a Equação~\ref{eq:mae-derivada}.
 
 \begin{equacaodestaque}{Gradiente do erro absoluto médio em Relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\text{MAE}}(y_j, \hat{y}_j) = 
+    \nabla_{\hat{y}}\mathcal{L}_{\text{mae}}(y, \hat{y}) = 
     \begin{cases} 
-      -1 & \text{se } \hat{y}_j > y_j \\
-      +1 & \text{se } \hat{y}_j < y_j \\
-      [-1, +1] & \text{se } \hat{y}_j = y_j
+      -1 & \text{se } \hat{y} > y \\
+      +1 & \text{se } \hat{y} < y \\
+      [-1, +1] & \text{se } \hat{y} = y
     \end{cases}%
     \label{eq:mae-derivada}
 \end{equacaodestaque}
@@ -463,8 +465,8 @@ Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráf
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -491,7 +493,7 @@ Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráf
                 \addplot[only marks, mark=o, color=black, mark size=2pt] coordinates {(0,-1) (0,1)};
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação constante por partes entre erro e gradiente da perda ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Relação constante por partes entre erro e gradiente da perda.}%
         \label{fig:mae-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -503,7 +505,7 @@ Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráf
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                zlabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=-1.5, zmax=1.5, 
@@ -565,7 +567,7 @@ Proposta por Peter J. Huber, a \textbf{perda de Huber}, também chamada de \text
 Ao desenvolver a Equação~\ref{eq:huber-loss-do-huber}, Huber cria uma função que comportava de forma quadrática, semelhante ao MSE para os casos em que $|t| < k$. Já para os casos em que $t \ge k$, a função cresce linearmente, como o MAE. Essa função criada pelo pesquisador é a perda de Huber, que, representada com as notações deste livro, está na Equação~\ref{eq:huber-loss}.
 
 \begin{equacaodestaque}{Perda de Huber}
-    \Loss_{\text{Huber}} (y, \hat{y}) = 
+    \mathcal{L}_{\text{huber}} (y, \hat{y}) = 
     \begin{cases} 
       \frac{1}{2} (y -\hat{y})^2 & \text{para } |y -\hat{y}| \le\delta\\
       \delta(|y -\hat{y}| -\frac{1}{2}\delta) & \text{caso contrário}
@@ -573,13 +575,11 @@ Ao desenvolver a Equação~\ref{eq:huber-loss-do-huber}, Huber cria uma função
     \label{eq:huber-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra;
-    \item[$N$] representa o número de amostras;
-    \item[$\delta$] representa o parâmetro de sensibilidade. 
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra;  
 \end{description}
 
 Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função ``híbrida'', apresentando dois comportamentos distintos. Até o valor em que o erro é menor que o parâmetro $\delta$, a perda segue o formato de uma parábola. Quando o erro torna-se maior que $\delta$, a perda passa a ser linear. Pode-se pensar que nessas junções, em que o erro é igual a $\delta$, seriam formados ``bicos'' afetando a suavidade da função. Contudo, a perda de Huber é uma função de classe $\mathbb{C}^1$, o que significa que ela é suave, contínua e diferenciável em todo o seu domínio para a primeira derivada. Isso pode ser um problema para aqueles otimizadores que são de segunda ordem, como o método de Newton-Raphson, neste caso, eles dependem que a função seja de classe $\mathbb{C}^2$ para conseguir encontrar pontos de mínimo.
@@ -594,8 +594,8 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Perda},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -615,9 +615,10 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
 
                 \draw[dashed, gray] (axis cs:-\delta, 0) -- (axis cs:-\delta, {\delta*(\delta-0.5*\delta)});
                 \draw[dashed, gray] (axis cs:\delta, 0) -- (axis cs:\delta, {\delta*(\delta-0.5*\delta)});
+                \addlegendentry{$e = y - \hat{y}$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Vista da função de perda em relação ao erro.}%
         \label{fig:huber-2d}
     \end{subfigure}
     \hfill 
@@ -632,7 +633,7 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=0, zmax=10.5,
@@ -673,7 +674,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
                 width=\linewidth,
                 height=7cm,
                 xlabel={Erro ($\hat{y} - y$)},
-                ylabel={Perda},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -705,7 +706,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 legend pos=north east,
@@ -740,7 +741,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
                 width=\linewidth,
                 height=7cm,
                 xlabel={Erro ($\hat{y} - y$)},
-                ylabel={Perda},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -772,7 +773,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 legend pos=north east,
@@ -818,10 +819,10 @@ Dado que a perda de Huber é uma função por partes, a suas derivadas devem lev
 A derivada da parcial da perda de Huber em relação à predição é dada pela Equação~\ref{eq:huber-loss-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda de Huber em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\delta} (y_j, \hat{y}_j) = 
+    \nabla_{\hat{y}}\mathcal{L}_{\text{huber}} (y, \hat{y}) = 
     \begin{cases} 
         \hat{y} -y & \text{se } | y -\hat{y} | \le\delta\\
-        \delta\cdot \text{sgn} (\hat{y} -y) & \text{se } | y -\hat{y} | > \delta\end{cases}%
+        \delta\cdot \text{sgn} (\hat{y} -y) & \text{caso contrário} \end{cases}%
     \label{eq:huber-loss-derivada}
 \end{equacaodestaque}
 
@@ -839,8 +840,8 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
                 % Dimensões ajustadas para caber lado a lado
                 width=\linewidth, 
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -875,7 +876,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
                 \addplot[only marks, mark=*, color=black, mark size=2pt] coordinates {(-1,-1) (1,1)};
             \end{axis}
         \end{tikzpicture}
-        \caption{Relação híbrida entre erro e gradiente da perda ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Relação híbrida entre erro e gradiente da perda.}%
         \label{fig:huber-derivada-2d}
     \end{subfigure}
     \hfill 
@@ -888,7 +889,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                zlabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={150}{45}, % Mesmo ângulo de visão do seu template
                 zmin=-1.5, zmax=1.5, % Espelha o eixo Y do gráfico 2D
@@ -938,19 +939,18 @@ A perda de Huber consegue unir o melhor dos dois mundos quando trata-se das perd
 
 A \textbf{perda log-cosh} é uma função de perda que vem ganhando popularidade entre os desenvolvedores. Em \textit{Statistical Properties of the log-cosh Loss Function Used in Machine Learning}, \textcite{StatisticalPropetiesLogCosh} explicam que ela aparece em cenários de \textit{autoencoders} variacionais, detecção de câncer, algoritmos de aprendizado baseados em árvores (como o XGBoost) e também em regressão quantílica (\textit{quantile regression}).
 
-A fórmula da perda log-cosh está na Equação~\ref{eq:log-cosh-loss}. Se considerarmos o erro como sendo a diferença do valor real $y_j$ com o valor predito $\hat{y}_j$, a perda log-cosh é dada então pelo logaritmo natural do cosseno hiperbólico do erro.
+A fórmula da perda log-cosh está na Equação~\ref{eq:log-cosh-loss}. Se considerarmos o erro como sendo a diferença do valor real $y$ com o valor predito $\hat{y}$, a perda log-cosh é dada então pelo logaritmo natural do cosseno hiperbólico do erro.
 
 \begin{equacaodestaque}{Perda log-cosh}
-    \Loss_{\text{Log-Cosh}} (y_j, \hat{y}_j) = \sum_{j=1}^{N} \log(\cosh(y_j -\hat{y}_j))%
+    \mathcal{L}_{\text{log-cosh}} (y, \hat{y}) =  \log(\cosh(y -\hat{y}))%
     \label{eq:log-cosh-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra;
-    \item[$N$] representa o número de amostras.
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra;  
 \end{description}
 
 A elegância da perda log-cosh está na interação dessas duas funções. Para erros pequenos,  $\cosh (e) \approx 1 + e^2/2$, como $\log (1 +x) \approx x$, a função se aproxima de $e^2/2$. Ou seja, para erros pequenos, a função tem um comportamento quadrático, semelhante ao que acontece do erro quadrático médio. Já para erros grandes, $\cosh (e) \approx e^{\|e\|}/2$, ao ser aplicado o logaritmo, o resultado se simplifica para uma função linear, $\log e^{\|e\|} \approx e$. Isso garante uma função robusta a \textit{outliers} assim como o MAE. Dessa forma, a perda log-cosh apresenta a mesma natureza híbrida, quadrática-linear, da perda de Huber, sendo uma alternativa que não necessita de hiperparâmetros adicionais. 
@@ -967,8 +967,8 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
                 % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro},
-                ylabel={Perda},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -988,7 +988,7 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
                 ] {ln(cosh(x))};
             \end{axis}
         \end{tikzpicture}
-        \caption{Vista da função de perda em relação ao erro ($\text{Erro} =  y_j - \hat{y}_j$).}%
+        \caption{Vista da função de perda em relação ao erro.}%
         \label{fig:log-cosh-2d}
     \end{subfigure}
     \hfill 
@@ -1000,7 +1000,7 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45}, 
                 zmin=0, zmax=10.5,
@@ -1049,10 +1049,10 @@ A elegância da perda log-cosh não se restringe à sua função, estando presen
 
 que se simplifica para o cálculo da tangente hiperbólica.
 
-Assim, expandindo o cálculo da derivada para o cenário em duas dimensões, chega-se na Equação~\ref{eq:log-cosh-derivada}.
+Expandindo o cálculo da derivada para o cenário em duas dimensões, chega-se na Equação~\ref{eq:log-cosh-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda log-cosh em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\text{log-cosh}} = \tanh(\hat{y}_j - y_j)%
+    \nabla_{\hat{y}}\mathcal{L}_{\text{log-cosh}} = \tanh(y - \hat{y})%
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
 
@@ -1068,8 +1068,8 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = \hat{y} - y$)},
-                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1087,8 +1087,6 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
                     color=black, 
                     very thick
                 ] {tanh(x)};
-                
-                \addlegendentry{$L' = \tanh(e)$}
             \end{axis}
         \end{tikzpicture}
         \caption{Relação harmônica entre erro e gradiente da perda.}%
@@ -1103,7 +1101,7 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                zlabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={150}{45}, 
                 zmin=-1.5, zmax=1.5, 
@@ -1164,24 +1162,23 @@ Neste caso, avaliar os modelos com uma função de perda que calcula o erro de f
 \subsection{Erro quadrático médio logarítmico (MSLE)}%
 \index{Funções de Perda!Erro quadrático médio logarítimico (MSLE)}%
 
-O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{MSLE}), é calculado pela Equação~\ref{eq:msle-loss}. Ele calcula o erro como sendo a diferença dos logaritmos naturais do valor real $y_j$ com a predição $\hat{y}_j$ e depois faz a média dos erros das diferentes previsões.
+O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{MSLE}), é calculado pela Equação~\ref{eq:msle-loss}. Ele calcula o erro como sendo a diferença dos logaritmos naturais do valor real $y$ com a predição $\hat{y}$ e depois faz a média dos erros das diferentes previsões.
 
 \begin{equacaodestaque}{Erro quadrático médio logarítmico}
-    \Loss_{\text{MSLE}} (y_j, \hat{y}_j) = \frac{1}{N} \sum_{j=1}^{N} (\ln(y_j + 1) -\ln(\hat{y}_j + 1))^2%
+    \mathcal{L}_{\text{msle}} (y, \hat{y}) = (\ln(y + 1) -\ln(\hat{y} + 1))^2%
     \label{eq:msle-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra;
-    \item[$N$] representa o número de amostras.
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra.  
 \end{description}
 
 O valor $1$ que é somado junto com os valores de entrada no logaritmo serve como forma de evitar que seja calculado o logaritmo de zero, que não existe no conjunto dos reais. 
 
-A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadrático logarítmico. Para as situações em que a previsão $\hat{y}_j$ tem um valor muito pequeno quando comparada ao valor real $y_j$ a distância entre esses dois pontos é consideravelmente maior devido ao comportamento dos logaritmos. Dessa forma, para subestimações, o MSLE gera erros maiores. Isso é útil para resolver o problema das contas de padaria e também de preços de imóveis vistos anteriormente. 
+A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadrático logarítmico. Para as situações em que a previsão $\hat{y}$ tem um valor muito pequeno quando comparada ao valor real $y$ a distância entre esses dois pontos é consideravelmente maior devido ao comportamento dos logaritmos. Dessa forma, para subestimações, o MSLE gera erros maiores. Isso é útil para resolver o problema das contas de padaria e também de preços de imóveis vistos anteriormente. 
 
 \begin{figure}[h!]
     \centering 
@@ -1194,7 +1191,7 @@ A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadráti
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda Calculada},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1233,7 +1230,7 @@ A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadráti
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45}, % Mesmo ângulo de visão do seu template
                 zmin=0, zmax=12, % Ajustado para (ln(26)-ln(1))^2
@@ -1272,16 +1269,16 @@ Essa propriedade assimétrica dos logaritmos também é explorada ao descrever o
     \item[Convexidade:] A função MSLE é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-msle}). 
     \item[Robustez:] A função MSLE é Lipschitz-contínua, portanto é robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-msle}). Diferente do erro absoluto médio, que quando o valor do erro ``explode'' para infinito o seu gradiente será 1, no MSLE o seu gradiente tende a 0. Como resultado, para erros muito grandes o erro logarítmico médio gera uma correção irrisória, o que pode não ser útil em certos casos.
     \item[Foco no erro relativo (percentual):] Quando o MSLE é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
-    \item[Tendência de penalizar subestimações:] Como aponta a Figura~\ref{fig:msle-loss}, o MSLE não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}_j$ e o valor real $y_j$, existe uma tendência de que a perda será maior;
-    \item[Restrição de domínio (não-negatividade):] Como os logaritmos são indeterminados para valores nulos ou negativos, o MSLE exige que os valores de entrada sejam positivos ($y_j > 0$ e $\hat{y}_j > 0$). Caso os conjunto de dados contenha valores negativos (como lucro/prejuízo ou temperaturas), o MSLE irá causar erros matemáticos. Para contornar esse problema, deve-se aplicar uma transformação nos dados, como somar uma constante para deslocar os valores negativos para positivos, ou ser utilizada outra função de perda.
+    \item[Tendência de penalizar subestimações:] Como aponta a Figura~\ref{fig:msle-loss}, o MSLE não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}$ e o valor real $y$, existe uma tendência de que a perda será maior;
+    \item[Restrição de domínio (não-negatividade):] Como os logaritmos são indeterminados para valores nulos ou negativos, o MSLE exige que os valores de entrada sejam positivos ($y > 0$ e $\hat{y} > 0$). Caso os conjunto de dados contenha valores negativos (como lucro/prejuízo ou temperaturas), o MSLE irá causar erros matemáticos. Para contornar esse problema, deve-se aplicar uma transformação nos dados, como somar uma constante para deslocar os valores negativos para positivos, ou ser utilizada outra função de perda.
 \end{description}
 
 \subsubsection*{Gradiente do erro quadrático médio logarítmico}
 
-Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}_j$.
+Na equação~\ref{eq:msle-derivada} está a derivada do erro quadrático médio logarítmico em relação os valores preditos pelo modelo $\hat{y}$.
 
 \begin{equacaodestaque}{Gradiente do erro quadrático médio logarítmico em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\text{MSLE}} (y_j, \hat{y}_j) = -\frac{2}{N} \cdot \frac{\ln(y_j + 1) -\ln(\hat{y}_j + 1)}{\hat{y}_j + 1}%
+    \nabla_{\hat{y}}\mathcal{L}_{\text{msle}} (y, \hat{y}) =  -\frac{\ln(y + 1) -\ln(\hat{y} + 1)}{\hat{y} + 1}%
     \label{eq:msle-derivada}
 \end{equacaodestaque}
  
@@ -1297,7 +1294,7 @@ O comportamento assimétrico do MSLE também está presente nos gráficos da sua
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1334,7 +1331,7 @@ O comportamento assimétrico do MSLE também está presente nos gráficos da sua
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                zlabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=-1.5, zmax=6.5,
@@ -1376,7 +1373,7 @@ Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenár
         \label{tab:comparativo-mse-msle}
         \begin{tabular}{l c c c c }
             \toprule
-            Cenário & $y_j$ (real) & $\hat{y}_j$ (predito) & MSE & MSLE \\
+            Cenário & $y$ (real) & $\hat{y}$ (predito) & MSE & MSLE \\
             \midrule
             Cenário A & $100.000$ & $50.000$ & $2.500.000.000$ & $0,4804$ \\
             Cenário B & $1.000.000$ & $950.000$ & $2.500.000.000$ & $0,0026$ \\
@@ -1398,15 +1395,15 @@ O erro quadrático médio considera a grandeza dos valores, nos dois cenários o
 Do MSLE é possível derivar a métrica raiz do erro quadrático médio logarítmico (RMSLE) que também serve para avaliar problemas de predição. Neste caso, o RMSLE é dado pelo cálculo da raiz quadrada da função de perda RMSE.
 
 \begin{equacaodestaque}{Raiz do erro quadrático médio logarítmico}
-    \text{RMSLE} (y_j, \hat{y}_j) = \sqrt{\frac{1}{N} \sum_{j=1}^{N} (\log(y_j + 1) -\log(\hat{y}_j + 1))^2}%
+    \text{RMSLE} (\hat{y}_i, y_i) = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (\log(y_i + 1) -\log(\hat{y}_i + 1))^2}%
     \label{eq:rmsle-metric}
 \end{equacaodestaque}
 
 Em que:
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra;
+    \item[$y$] representa o valor real da j-ésima amostra;
+    \item[ $\hat{y}$] representa o valor predito pelo modelo para a j-ésima amostra;
     \item[$N$] representa o número de amostras.
 \end{description}
 
@@ -1549,7 +1546,7 @@ Em \textit{Regression Quantiles}, \textcite{regression-quantiles} analisaram uma
 Tendo isso em mente, os pesquisadores apresentam uma forma de minimizar a soma de perdas assimétricas, definindo a Equação~\ref{eq:soma-das-perdas-assimetricas}\footnote{Caso você leitor decida ler o artigo original dos pesquisadores, você verá um conjunto diferente de notações utilizadas, isso acontece pois neste livro elas foram adaptadas para condizer com as notações que já estavam sendo utilizadas anteriormente nos outros capítulos}.
 
 \begin{equation}
-    \Loss(w; \tau, y, X) = \sum_{j \text{ t.q. } y_j > \hat{y}_j} \tau |y_j -\hat{y}_j| + \sum_{j \text{ t.q. } y_j < \hat{y}_j} (1 -\tau) |y_j -\hat{y}_j|
+    \mathcal{L}(w; \tau, y, X) = \sum_{j \text{ t.q. } y > \hat{y}} \tau |y -\hat{y}| + \sum_{j \text{ t.q. } y < \hat{y}} (1 -\tau) |y -\hat{y}|
     \label{eq:soma-das-perdas-assimetricas}
 \end{equation}
 
@@ -1558,32 +1555,32 @@ Em que:
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
     \item[$\tau$] representa o quantil;
     \item[ $w$] representa os parâmetros do modelo, neste caso, os pesos;
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[ $\hat{y}_j$] representa o valor predito pelo modelo para a j-ésima amostra.
+    \item[$y$] representa o valor real da j-ésima amostra;
+    \item[ $\hat{y}$] representa o valor predito pelo modelo para a j-ésima amostra.
 \end{description}
 
-A partir da Equação~\ref{eq:soma-das-perdas-assimetricas}, é possível derivá-la em dois casos distintos. O caso em que o valor real é maior que a previsão $(y_j > \hat{y}_j)$, ou seja, ocorre uma subestimação, é gerado um erro positivo. Assim, a perda é proporcional a $\tau$. Quando o valor real é menor que a previsão $(y_j < \hat{y}_j)$, o modelo superestimou o valor real, é aplicado o peso $(1 - \tau)$. Desses dois cenários, deriva-se a definição por partes da \textbf{perda quantílica}, também conhecida como \textbf{\textit{quantile loss}}, dada pela Equação~\ref{eq:quantile-loss}. Neste caso, está sendo considerado que a situação $\hat{y} = y$ faz parte do primeiro caso estudado.
+A partir da Equação~\ref{eq:soma-das-perdas-assimetricas}, é possível derivá-la em dois casos distintos. O caso em que o valor real é maior que a previsão $(y > \hat{y})$, ou seja, ocorre uma subestimação, é gerado um erro positivo. Assim, a perda é proporcional a $\tau$. Quando o valor real é menor que a previsão $(y < \hat{y})$, o modelo superestimou o valor real, é aplicado o peso $(1 - \tau)$. Desses dois cenários, deriva-se a definição por partes da \textbf{perda quantílica}, também conhecida como \textbf{\textit{quantile loss}}, dada pela Equação~\ref{eq:quantile-loss}. Neste caso, está sendo considerado que a situação $\hat{y} = y$ faz parte do primeiro caso estudado.
 
 \begin{equacaodestaque}{Perda quantílica}
-    \Loss_{\tau} (y_j, \hat{y}_j) = 
+    \mathcal{L}_{\tau} (y, \hat{y}) = 
     \begin{cases} 
-        \tau(y_j -\hat{y}_j) & \text{se } y_j \ge \hat{y}_j\\
-        (1 -\tau) (\hat{y}_j -y_j) & \text{se } y_j < \hat{y}_j\end{cases}%
+        \tau(y -\hat{y}) & \text{se } y \ge \hat{y}\\
+        (1 -\tau) (\hat{y} -y) & \text{se } y < \hat{y}\end{cases}%
     \label{eq:quantile-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra;
     \item[$\tau$] representa o quantil.
 \end{description}
 
 Existem também uma versão compacta da perda quantílica, presente na Equação~\ref{eq:quantile-loss-com-max}, ela utiliza a função $\max$ para definir a função por partes em apenas uma linha.
 
 \begin{equacaodestaque}{Perda quantílica com $\max$}
-    \Loss_{\tau} (e)= \max(\tau e, (\tau-1 )e)%
+    \mathcal{L}_{\tau} (e)= \max(\tau e, (\tau-1 )e)%
     \label{eq:quantile-loss-com-max}
 \end{equacaodestaque}
 
@@ -1600,8 +1597,8 @@ A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-lo
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1627,7 +1624,7 @@ A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-lo
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=0, zmax=10.5,
@@ -1659,9 +1656,9 @@ A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-lo
 
 O diferencial dessa função é quando ela precisa ser utilizada em cenários em que a distribuição de dados é irregular, e não segue a distribuição normal. Essa função tem a propriedade de se ajustar para penalizar de forma assimétrica os erros que um modelo comete. 
 
-A perda quantílica com hiperparâmetro $\tau = 0,9$, presente na Figura~\ref{fig:quantile-loss-grid}, penaliza fortemente as subestimações feitas pelo modelo. Tem se essa noção inicial devido à sua assimetria, como os gráficos apontam. Quando está sendo analisado o 90º percentil, significa que queremos uma previsão $\hat{y}_j$ que seja maior que 90\% dos valores reais $y_j$. Se o modelo subestima, ou seja $y_j > \hat{y}_j$, ele está falhando o seu objetivo, e terá um erro bem maior.
+A perda quantílica com hiperparâmetro $\tau = 0,9$, presente na Figura~\ref{fig:quantile-loss-grid}, penaliza fortemente as subestimações feitas pelo modelo. Tem se essa noção inicial devido à sua assimetria, como os gráficos apontam. Quando está sendo analisado o 90º percentil, significa que queremos uma previsão $\hat{y}$ que seja maior que 90\% dos valores reais $y$. Se o modelo subestima, ou seja $y > \hat{y}$, ele está falhando o seu objetivo, e terá um erro bem maior.
 
-Um cenário contrário, em que a perda é ajustada para penalizar as superestimações está na Figura~\ref{fig:quantile-loss-grid}. Neste caso, $\tau = 0,1$, ou seja, queremos uma previsão que esteja abaixo dos 10\% dos valores reais. Essa situação é ideal para treinar o modelo a não superestimar os valores, dado que ele será fortemente penalizado se ele fizer uma predição em que $y_j < \hat{y}_j$.
+Um cenário contrário, em que a perda é ajustada para penalizar as superestimações está na Figura~\ref{fig:quantile-loss-grid}. Neste caso, $\tau = 0,1$, ou seja, queremos uma previsão que esteja abaixo dos 10\% dos valores reais. Essa situação é ideal para treinar o modelo a não superestimar os valores, dado que ele será fortemente penalizado se ele fizer uma predição em que $y < \hat{y}$.
 
 \begin{figure}[h!]
     \centering
@@ -1672,8 +1669,8 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1699,7 +1696,7 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=0, zmax=10.5,
@@ -1732,8 +1729,8 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1759,7 +1756,7 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45},
                 zmin=0, zmax=10.5,
@@ -1800,15 +1797,15 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
 
 \subsubsection*{Gradiente da perda quantílica}
 
-Para calcular a derivada da perda quantílica, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso, está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y}_j = y_j$, dado que este é um ponto de descontinuidade dessa função.
+Para calcular a derivada da perda quantílica, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso, está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y} = y$, dado que este é um ponto de descontinuidade dessa função.
 
 Dessa forma, a derivada parcial da perda quantílica em relação à predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, está sendo indicado os cenários de superestimação e subestimação, de forma a simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
 
 \begin{equacaodestaque}{Gradiente da perda quantílica em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\tau} = 
+    \nabla_{\hat{y}}\mathcal{L}_{\tau} (y, \hat{y}) = 
     \begin{cases} 
-        (1 - \tau) & \text{se } y_j < \hat{y}_j \text{ (superestimação)}\\
-        -\tau & \text{se } y_j > \hat{y}_j \text{ (subestimação)}
+        (1 - \tau) & \text{se } y < \hat{y} \text{ (superestimação)}\\
+        -\tau & \text{se } y > \hat{y} \text{ (subestimação)}
     \end{cases}%
     \label{eq:quantile-loss-derivada}
 \end{equacaodestaque}
@@ -1824,8 +1821,8 @@ O comportamento da derivada da perda quantílica também se assemelha com MAE. C
             \begin{axis}[
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Gradiente ($\partial L / \partial \hat{y}$)},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1842,6 +1839,8 @@ O comportamento da derivada da perda quantílica também se assemelha com MAE. C
                 \addplot[domain=0.05:4.5, samples=2, color=black, very thick] {-0.1};
 
                 \draw[dotted, thick] (axis cs:0,-0.1) -- (axis cs:0,0.9);
+
+                \addlegendentry{$e = y - \hat{y}$};
                 
             \end{axis}
         \end{tikzpicture}
@@ -1857,7 +1856,7 @@ O comportamento da derivada da perda quantílica também se assemelha com MAE. C
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente},
+                zlabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={140}{25}, 
                 zmin=-1, zmax=1.5,
@@ -1918,25 +1917,23 @@ Uma das aproximações para resolver esse problema é a Equação~\ref{eq:svms-p
 Eles possuem também a função objetiva que querem minimizar, dada pela Equação~\ref{eq:funcao-objetiva-svsms-para-regressao}.
 
 \begin{equation}
-    U \sum_{j = 1}^N L [y_j- F(v_j, \hat{w})] + ||\hat{w}||^2
+    U \sum_{j = 1}^N L [y- F(v_j, \hat{w})] + ||\hat{w}||^2
     \label{eq:funcao-objetiva-svsms-para-regressao}
 \end{equation}
 
 A função da Equação~\ref{eq:funcao-objetiva-svsms-para-regressao} utiliza uma função de perda, a $\epsilon$-insensível, vista na Equação~\ref{eq:epsilon-insensitive-loss}
 
 \begin{equacaodestaque}{Perda epsilon-insensível}
-    \Loss_{\epsilon}(y,\hat{y}) = 
+    \mathcal{L}_{\epsilon}(y, \hat{y}) = 
     \begin{cases} 
         0 & \text{se } |y -\hat{y}| < \epsilon\\
         |y -\hat{y}| -\epsilon& \text{se } |y -\hat{y}| \ge\epsilon\end{cases}%
     \label{eq:epsilon-insensitive-loss}
 \end{equacaodestaque}
 
-Em que:
-
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra; 
     \item[$\epsilon$] representa o tamanho da zona de perda zero.
 \end{description}
 
@@ -1955,8 +1952,8 @@ Como aponta a Figura~\ref{fig:epsilon-insensitive-loss} o seu gráfico lembra um
                 % Dimensões ajustadas para caber lado a lado
                 width=\linewidth,  
                 height=7cm,
-                xlabel={Erro ($e = y - \hat{y}$)},
-                ylabel={Perda Calculada},
+                xlabel={Erro ($y - \hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -1997,7 +1994,7 @@ Como aponta a Figura~\ref{fig:epsilon-insensitive-loss} o seu gráfico lembra um
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda},
+                zlabel={Perda ($\mathcal{L}$)},
                 grid=major,
                 view={150}{45}, % Mesmo ângulo de visão do seu template
                 zmin=0, zmax=10.5, % Ajustado para max(0, abs(10) - 1) = 9
@@ -2042,7 +2039,7 @@ Essa região em que o erro é ignorado, é chamada da literatura de Tubo-Epsilon
 Para encontrar o gradiente da perda $\epsilon$-insensível deve-se utilizar do subgradiente, assim como no MAE. O subgradiente consegue lidar com os pontos de não diferenciabilidade (quando erro é igual a epsilon), ao aplicar a técnica chegamos na Equação~\ref{eq:epsilon-insensitive-derivada} para a derivada parcial em relação à predição.
 
 \begin{equacaodestaque}{Gradiente da perda epsilon-insensível em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\epsilon} = 
+    \nabla_{\hat{y}}\mathcal{L}_{\epsilon} (y, \hat{y}) = 
     \begin{cases} 
         1 & \text{se } \hat{y} -y > \epsilon\\
         0 & \text{se } |\hat{y} -y| \le\epsilon\\
@@ -2065,7 +2062,7 @@ Os gráficos da derivada parcial da $\epsilon$-insensível ajudam a evidenciar a
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2107,7 +2104,7 @@ Os gráficos da derivada parcial da $\epsilon$-insensível ajudam a evidenciar a
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Gradiente ($\frac{\partial L}{\partial \hat{y}}$)},
+                zlabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 grid=major,
                 view={150}{45}, % Mesmo ângulo de visão do seu template
                 zmin=-1.5, zmax=1.5,
@@ -2167,7 +2164,7 @@ Nessas situações, a distribuição normal não irá ser efetiva, sendo necess�
 A função densidade de probabilidade da distribuição de Poisson é dada pela Equação~\ref{eq:poisson-distribution-pmf}, onde o espaço amostral é conjunto de inteiros não-negativos. Em \textit{Generalized Linear Models}, \textcite{GeneralizedLinearModels} aponta que essa distribuição não possui uma limite superior nos valores que podem ser observados, diferente da distribuição Normal.
 
 \begin{equacaodestaque}{Distribuição de Poisson (FMP)}
-    P(y_j| \lambda) = \frac{\lambda^{y_j} e^{-\lambda}}{y_j!}, \quad y_j \in {0, 1, 2, \ldots}%
+    P(y| \lambda) = \frac{\lambda^{y} e^{-\lambda}}{y!}, \quad y \in {0, 1, 2, \ldots}%
     \label{eq:poisson-distribution-pmf}
 \end{equacaodestaque}
 
@@ -2263,31 +2260,30 @@ Para chegar na definição da perda de Poisson, devemos começar com função lo
 A função log-verossimilhança para a distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição da perda de Poisson.
 
 \[
-    \log (P(y_j|\lambda)) =  -\lambda + y_j \log(\lambda_j) - \log(y_j!)
+    \log (P(y|\lambda)) =  -\lambda + y \log(\lambda) - \log(y!)
 \]
 
-O termo $\log(y_j !)$ é constante em relação ao modelo, dado que o modelo não controla o valor real $y_j$, só a previsão $\lambda$. Então escrevemos
+O termo $\log(y !)$ é constante em relação ao modelo, dado que o modelo não controla o valor real $y$, só a previsão $\lambda$. Então escrevemos
 
 \[
-      -\lambda + y_j \log(\lambda_j)
+      -\lambda + y \log(\lambda)
 \]
 
-Como nosso intuito é minimizar a perda, devemos multiplicá-la por $-1$. Feito isso, encontramos que a perda de Poisson é dada pela Equação~\ref{eq:poisson-loss}. Neste caso, o termo $\lambda_j$ é dado pelo valor predito pelo modelo $\hat{y}_j$.
+Como nosso intuito é minimizar a perda, devemos multiplicá-la por $-1$. Feito isso, encontramos que a perda de Poisson é dada pela Equação~\ref{eq:poisson-loss}. Neste caso, o termo $\lambda$ é dado pelo valor predito pelo modelo $\hat{y}$.
 
 \begin{equacaodestaque}{Perda de Poisson}
-    \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \hat{y}_j -y_j \log(\hat{y}_j)%
+    \mathcal{L}_{\text{poisson}}(y, \hat{y}) =  \hat{y} -y \log(\hat{y})%
     \label{eq:poisson-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
-    \item[$N$] representa o número de amostras.
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra.  
 \end{description}
 
-Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variando de iteração para iteração, vão existir diferentes gráficos de perda, isso está evidenciado na Figura~\ref{fig:poisson-comparison}. Quando o valor real é pequeno, a perda de Poisson possui uma convexidade mais ``apertada''. Já quando o valor real é grande, isso resulta em uma função mais ``larga''.
+Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando de iteração para iteração, vão existir diferentes gráficos de perda, isso está evidenciado na Figura~\ref{fig:poisson-comparison}. Quando o valor real é pequeno, a perda de Poisson possui uma convexidade mais ``apertada''. Já quando o valor real é grande, isso resulta em uma função mais ``larga''.
 
 \begin{figure}[h!]
     \centering
@@ -2299,7 +2295,7 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2365,7 +2361,7 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2431,58 +2427,58 @@ Como o valor real $y_j$ não é controlado pelo modelo, conforme ele for variand
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Continuidade, suavidade e diferenciabilidade:] A perda de Poisson pertence à classe $C^\infty$ (infinitamente diferenciável) em seu domínio de definição $(0, \infty)$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Isso garante para essa função a possibilidade de ser utilizada tanto em métodos de otimização baseados em gradiente (que utilizam a primeira derivada) quanto em métodos de segunda ordem (que utilizam a segunda derivada).
-    \item[Convexidade:] A perda de Poisson é convexa, e estritamente convexa se $y > 0$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Esse fato está evidenciado nos gráficos da Figura~\ref{fig:poisson-comparison}, independentemente dos valores reais $y_j$, a perda segue um comportamento de uma função convexa, com o gráfico semelhante a um ``funil''.
+    \item[Convexidade:] A perda de Poisson é convexa, e estritamente convexa se $y > 0$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Esse fato está evidenciado nos gráficos da Figura~\ref{fig:poisson-comparison}, independentemente dos valores reais $y$, a perda segue um comportamento de uma função convexa, com o gráfico semelhante a um ``funil''.
     \item[Robustez:] A perda de Poisson não é Lipschitz-contínua globalmente devido à singularidade na origem (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Para uma função ser Lipschitz-contínua, o seu gradiente deve ser limitado, algo que não acontece quando a predição aproxima de zero. Desse modo, ao utilizar essa função de perda, tenha em mente que o modelo criado estará susceptível a gradientes explosivos.
-    \item[Não-negatividade e funções de conexão:] Ao definir a perda de Poisson é utilizado o logaritmo, isso implica que o termo $\log(\hat{y}_j)$ deve ser sempre positivo. Esse fato também é exposto ao definir a própria distribuição de Poisson, os dados de contagem não devem ser negativos. Em modelos lineares generalizados a função exponencial é comumente utilizada como uma função de conexão (\textit{link function}) para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Assim, cabe discutir uma definição alternativa para a perda de Poisson, em que consideramos a exponencial como uma função de conexão:
+    \item[Não-negatividade e funções de conexão:] Ao definir a perda de Poisson é utilizado o logaritmo, isso implica que o termo $\log(\hat{y})$ deve ser sempre positivo. Esse fato também é exposto ao definir a própria distribuição de Poisson, os dados de contagem não devem ser negativos. Em modelos lineares generalizados a função exponencial é comumente utilizada como uma função de conexão (\textit{link function}) para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Assim, cabe discutir uma definição alternativa para a perda de Poisson, em que consideramos a exponencial como uma função de conexão:
 
     Sabemos que um modelo de aprendizado de máquina, geralmente retorna algo que segue o padrão
  
     \[
-        \hat{y}_j = \textbf{W}^T x_j + b
+        \hat{y} = \textbf{W}^T x_j + b
     \]
 
     Esse valor pode ser negativo e queremos que ele fique em um intervalo $\hat{y} > 0$. Uma das soluções é utilizar a função exponencial como uma função de conexão, então escrevemos
 
     \[
-        \hat{y}_j = \text{exp}(\textbf{W}^T x_j + b)
+        \hat{y} = \text{exp}(\textbf{W}^T x_j + b)
     \]
 
     Ao substituir essa expressão na Equação~\ref{eq:poisson-loss} chegamos nos termos
 
     \[
-        \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j \log(\text{exp}(\textbf{W}^T x_j + b))
+        \mathcal{L}_{\text{Poisson}}(y, \hat{y}) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y \log(\text{exp}(\textbf{W}^T x_j + b))
     \]
 
     Simplificando os cálculos do logaritmo, encontramos
 
     \[
-        \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y_j  (\text{exp}(\textbf{W}^T x_j + b))
+        \mathcal{L}_{\text{Poisson}}(y, \hat{y}) = \sum_{j = 0}^N \text{exp}(\textbf{W}^T x_j + b) - y  (\text{exp}(\textbf{W}^T x_j + b))
     \]
 
     Que pode ser reescrita uma última vez como 
 
     \[
-        \Loss_{\text{Poisson}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \text{exp}(\hat{y}_j) - y_j  (\text{exp}(\hat{y}_j))
+        \mathcal{L}_{\text{Poisson}}(y, \hat{y}) = \sum_{j = 0}^N \text{exp}(\hat{y}) - y  (\text{exp}(\hat{y}))
     \]
 \end{description}
 
 \subsubsection*{Gradiente da perda de Poisson}
 
-A derivada parcial da perda de Poisson em relação à predição $\hat{y}_j$ feita pelo modelo está representada na Equação~\ref{eq:poisson-loss-derivada}.
+A derivada parcial da perda de Poisson em relação à predição $\hat{y}$ feita pelo modelo está representada na Equação~\ref{eq:poisson-loss-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda de Poisson em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\text{Poisson}} = 1 -\frac{y_j}{\hat{y}_j} = \frac{\hat{y}_j -y_j}{\hat{y}_j}%
+    \nabla_{\hat{y}}\mathcal{L}_{\text{poisson}} (y, \hat{y}) = 1 -\frac{y}{\hat{y}} = \frac{\hat{y} -y}{\hat{y}}%
     \label{eq:poisson-loss-derivada}
 \end{equacaodestaque}
 
-Conforme os valores reais $y_j$ variam, a curva do gráfico da derivada da perda de Poisson também varia. A Figura~\ref{fig:poisson-loss-derivada} aponta que quanto maior é o valor de $y_j$ mais próximo do eixo das abscissas fica a curva da perda. Dessa forma, o gradiente é zero quando $\hat{y}_j = y_j$ e é assintótico quando $\hat{y}_j \to \infty$.
+Conforme os valores reais $y$ variam, a curva do gráfico da derivada da perda de Poisson também varia. A Figura~\ref{fig:poisson-loss-derivada} aponta que quanto maior é o valor de $y$ mais próximo do eixo das abscissas fica a curva da perda. Dessa forma, o gradiente é zero quando $\hat{y} = y$ e é assintótico quando $\hat{y} \to \infty$.
 
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            ylabel={Gradiente ($\nabla_{\hat{y}}\mathcal{L}$)},
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
@@ -2518,15 +2514,15 @@ Conforme os valores reais $y_j$ variam, a curva do gráfico da derivada da perda
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Visualização da derivada da perda de Poisson para diferentes valores de $y_j$.}%
+    \caption{Visualização da derivada da perda de Poisson para diferentes valores de $y$.}%
     \label{fig:poisson-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
 
-Como foi visto anteriormente, a função exponencial é utilizada como uma função de conexão para evitar com entradas negativas para a função logaritmo. Dessa forma, ao utilizá-la em conjunto com a perda de Poisson nós chegamos em uma derivada parcial ainda mais simples, apenas a diferença do valor predito $\hat{y}_j$ para o valor real $y_j$. Essa derivada está explicitada na Equação~\ref{eq:poisson-loss-com-link-function-derivada}.
+Como foi visto anteriormente, a função exponencial é utilizada como uma função de conexão para evitar com entradas negativas para a função logaritmo. Dessa forma, ao utilizá-la em conjunto com a perda de Poisson nós chegamos em uma derivada parcial ainda mais simples, apenas a diferença do valor predito $\hat{y}$ para o valor real $y$. Essa derivada está explicitada na Equação~\ref{eq:poisson-loss-com-link-function-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda de Poisson em relação à predição com exp como função de conexão}
-    \nabla_{\hat{y}_j}\Loss_{\text{Poisson}} = \hat{y}_j - y_j%
+    \nabla_{\hat{y}}\mathcal{L}_{\text{poisson}} (y, \hat{y}) = \hat{y} - y%
     \label{eq:poisson-loss-com-link-function-derivada}
 \end{equacaodestaque}
 
@@ -2578,12 +2574,12 @@ Entretanto, a função gamma não serve só de utilidade para estender o fatoria
 A função densidade de probabilidade da distribuição Gamma está na Equação~\ref{eq:gamma-distribution-pdf}. \textcite{GeneralizedLinearModels} explica que a distribuição Gamma apresenta uma curva contínua e estritamente positiva, diferente da distribuição Normal, que também pode assumir valores negativos. Além disso, a principal característica dessa distribuição é o coeficiente de variação constante, na Gamma aumenta conforme a média também aumenta, mais precisamente $V(\mu) \varpropto \mu^2$ \parencite{GeneralizedLinearModels}. Como resultado, o coeficiente de variação, desvio padrão divido pela média, é aproximadamente constante.
 
 \begin{equacaodestaque}{Distribuição gamma (FDP)}
-    f(y_j; \alpha, \beta) = \frac{\beta^{\alpha} y_j^{\alpha-1} e^{-\beta y_j}}{\Gamma(\alpha)}%
+    f(y; \alpha, \beta) = \frac{\beta^{\alpha} y^{\alpha-1} e^{-\beta y}}{\Gamma(\alpha)}%
     \label{eq:gamma-distribution-pdf}
 \end{equacaodestaque}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa uma variável aleatória;
+    \item[$y$] representa uma variável aleatória;
     \item[$\alpha$] representa o parâmetro de forma;
     \item[$\beta$] representa o parâmetro de escala;
     \item[$\Gamma$] representa a função Gamma;
@@ -2659,54 +2655,53 @@ Em \textit{Generalized Linear Models} \textcite{GeneralizedLinearModels} cita al
 
 \subsubsection*{Perda Gamma}
 
-Para encontramos a perda Gamma, devemos derivá-la da FDP da sua respectiva distribuição. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos ter a função em termos da média esperada $\hat{y}_j$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
+Para encontramos a perda Gamma, devemos derivá-la da FDP da sua respectiva distribuição. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos ter a função em termos da média esperada $\hat{y}$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
 
 \[
-    \hat{y}_j = E[y_j] = \frac{\alpha}{\beta}
+    \hat{y} = E[y] = \frac{\alpha}{\beta}
 \]
 
-Com isso, podemos substituir o parâmetro $\beta$ pela predição $\beta = \alpha/\hat{y}_j$
+Com isso, podemos substituir o parâmetro $\beta$ pela predição $\beta = \alpha/\hat{y}$
 
 Tendo isso em mente, aplicamos o logaritmo natural na Equação~\ref{eq:gamma-distribution-pdf}, encontrando
 
 \[
-    \ln f(y_j) = \alpha \ln \beta + (\alpha - 1) \ln y_j - \beta y_j - \ln \Gamma(\alpha)
+    \ln f(y) = \alpha \ln \beta + (\alpha - 1) \ln y - \beta y - \ln \Gamma(\alpha)
 \]
 
-Então, substituímos $\beta = \alpha/\hat{y}_j$
+Então, substituímos $\beta = \alpha/\hat{y}$
 
 \[
-    \ln f(y_j) = \alpha \ln \left( \frac{\alpha}{\hat{y}_j} \right) + (\alpha -1) \ln y_j - \frac{\alpha y_j}{\hat{y}_j} \Gamma(\alpha)
+    \ln f(y) = \alpha \ln \left( \frac{\alpha}{\hat{y}} \right) + (\alpha -1) \ln y - \frac{\alpha y}{\hat{y}} \Gamma(\alpha)
 \]
 
-Todos os termos que não são relacionados com o valor predito $y_j$ são constantes em relação ao modelo, de forma que podem ser descartados, assim, escrevemos 
+Todos os termos que não são relacionados com o valor predito $y$ são constantes em relação ao modelo, de forma que podem ser descartados, assim, escrevemos 
 
 \[
-    \ln f(y_j) \varpropto -\alpha \ln \hat{y}_j - \frac{\alpha y_j}{\hat{y}_j}
+    \ln f(y) \varpropto -\alpha \ln \hat{y} - \frac{\alpha y}{\hat{y}}
 \]
 
 Nós queremos minimizar a perda, então multiplicados por $-1$ a expressão chegando em 
 
 \[
-    \ln f(y_j) \varpropto \ln \hat{y}_j + \frac{y_j}{\hat{y}_j}
+    \ln f(y) \varpropto \ln \hat{y} + \frac{y}{\hat{y}}
 \]
 
-Para finalizar, queremos que a perda seja zero quando a predição for perfeita ($y_j = \hat{y}_j$). Se substituirmos $\hat{y}_j$ por $y_j$ na equação anterior teremos $\ln y_j + 1$. Então subtraímos esse valor do numerador da fórmula, obtemos a Equação~\ref{eq:gamma-loss} para calcular a perda Gamma.
+Para finalizar, queremos que a perda seja zero quando a predição for perfeita ($y = \hat{y}$). Se substituirmos $\hat{y}$ por $y$ na equação anterior teremos $\ln y + 1$. Então subtraímos esse valor do numerador da fórmula, obtemos a Equação~\ref{eq:gamma-loss} para calcular a perda Gamma.
 
 \begin{equacaodestaque}{Perda Gamma}
-    \Loss_{\text{Gamma}}(y_j, \hat{y}_j) = \sum_{j = 0}^N \log\left(\frac{\hat{y}_j}{y_j}\right) + \frac{y_j}{\hat{y}_j} -1%
+    \mathcal{L}_{\text{gamma}}(y, \hat{y}) =  \log\left(\frac{\hat{y}}{y}\right) + \frac{y}{\hat{y}} -1%
     \label{eq:gamma-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
-    \item[$N$] representa o número de amostras.
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra.  
 \end{description}
 
-Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na Figura~\ref{fig:gamma-loss-grid}, analisamos as curvas/superfícies da perda considerando diferentes valores reais fixos $y_j$. Conforme o valor real se aproxima de zero, a função se aproxima do eixo das ordenadas, além disso, é a partir dos valores reais que é definido onde será o mínimo da função de perda. A penalidade da perda Gamma também é assimétrica, semelhante ao MSLE, a curva sobe de forma abrupta à esquerda e de forma suave à direita. Dessa forma, ela apresenta a tendência de penalizar em maior grau as subestimações feitas pelo modelo.
+Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na Figura~\ref{fig:gamma-loss-grid}, analisamos as curvas/superfícies da perda considerando diferentes valores reais fixos $y$. Conforme o valor real se aproxima de zero, a função se aproxima do eixo das ordenadas, além disso, é a partir dos valores reais que é definido onde será o mínimo da função de perda. A penalidade da perda Gamma também é assimétrica, semelhante ao MSLE, a curva sobe de forma abrupta à esquerda e de forma suave à direita. Dessa forma, ela apresenta a tendência de penalizar em maior grau as subestimações feitas pelo modelo.
 
 \begin{figure}[h!]
     \centering
@@ -2719,7 +2714,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2790,7 +2785,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda},
+                ylabel={Perda ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2847,7 +2842,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
         \label{fig:gamma-3d-high}
     \end{subfigure}
 
-    \caption{Visualização da perda Gamma para diferentes valores reais $y_j$.}%
+    \caption{Visualização da perda Gamma para diferentes valores reais $y$.}%
     \label{fig:gamma-loss-grid}
     \fonte{O autor (2025).}
 \end{figure}
@@ -2862,10 +2857,10 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
     Substituindo essa relação na Equação \ref{eq:gamma-loss} e removendo as constantes que não dependem de $z$, obtemos a função de perda transformada $L(z)$:
 
     \begin{equation}
-        L(z_j) = \frac{y_j}{e^{z_j}} + z_j
+        L(z_j) = \frac{y}{e^{z_j}} + z_j
     \end{equation}
 
-    A grande vantagem dessa transformação é a convexidade. A segunda derivada dessa função é $L''(z) = y_j e^{-z_j}$, que é estritamente positiva para todo $y_j > 0$, garantindo um único mínimo global.
+    A grande vantagem dessa transformação é a convexidade. A segunda derivada dessa função é $L''(z) = y e^{-z_j}$, que é estritamente positiva para todo $y > 0$, garantindo um único mínimo global.
 \end{description}
 
 \subsubsection*{Gradiente da perda Gamma}
@@ -2873,15 +2868,15 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
 Uma das formas de encontrar a derivada da perda Gamma é aplicar as técnicas tradicionais de derivação na função de perda, encontrando a Equação~\ref{eq:gamma-loss-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda Gamma em relação à predição}
-    \nabla_{\hat{y}_j}\Loss_{\text{Gamma}} = \frac{1}{\hat{y}_j} -\frac{y_j}{\hat{y}_j^2} = \frac{\hat{y}_j -y_j}{\hat{y}_j^2}%
+    \nabla_{\hat{y}}\mathcal{L}_{\text{gamma}} (y, \hat{y}) = \frac{1}{\hat{y}} -\frac{y}{\hat{y}^2} = \frac{\hat{y} -y}{\hat{y}^2}%
     \label{eq:gamma-loss-derivada}
 \end{equacaodestaque}
 
-Entretanto, também podemos considerar a derivação para o cenário em que a perda Gamma é aplicada em conjunto com a função logaritmo, neste caso, temos a Equação~\ref{eq:gradiente-gamma-link}. A derivada, é simplesmente a diferença relativa entre 1 e a razão entre o valor real $y_j$ e o previsto $\hat{y}_j$
+Entretanto, também podemos considerar a derivação para o cenário em que a perda Gamma é aplicada em conjunto com a função logaritmo, neste caso, temos a Equação~\ref{eq:gradiente-gamma-link}. A derivada, é simplesmente a diferença relativa entre 1 e a razão entre o valor real $y$ e o previsto $\hat{y}$
 
 
 \begin{equacaodestaque}{Gradiente da perda Gamma em relação à predição com $\log$ como função de ligação}
-    \nabla_{z_j} \Loss = 1 - \frac{y_j}{\hat{y}_j}%
+    \nabla_{z_j} \mathcal{L} (y, \hat{y}) = 1 - \frac{y}{\hat{y}}%
     \label{eq:gradiente-gamma-link}
 \end{equacaodestaque}
 
@@ -2891,14 +2886,14 @@ Entretanto, também podemos considerar a derivação para o cenário em que a pe
     \item Se $\hat{y} > y$ (superestimação), o termo $y/\hat{y} < 1$, gerando gradiente positivo, o que diminui $z$.
 \end{itemize}
 
-A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme os valores reais são alterados. Ao aproximar o valor real de zero, o gráfico se desloca à esquerda. Além disso, ela justifica algumas das propriedades da perda Gamma, como a sua assimetria (penalização maior para as subestimações), continuidade, e também como o gradiente tende a zero quando o $\hat{y}_j \to \infty$.
+A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme os valores reais são alterados. Ao aproximar o valor real de zero, o gráfico se desloca à esquerda. Além disso, ela justifica algumas das propriedades da perda Gamma, como a sua assimetria (penalização maior para as subestimações), continuidade, e também como o gradiente tende a zero quando o $\hat{y} \to \infty$.
 
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            ylabel={Gradiente ($\nabla_{\hat{y}}\mathcal{L}$)},
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
@@ -2927,7 +2922,7 @@ A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme 
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da Perda Gamma. O gradiente é zero quando $\hat{y}=y$ e assintótico a 0 para $\hat{y} \to \infty$.}%
+    \caption{Gráfico da derivada da perda Gamma. O gradiente é zero quando $\hat{y}=y$ e assintótico a 0 para $\hat{y} \to \infty$.}%
     \label{fig:gamma-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -2959,16 +2954,16 @@ Estudadas por Maurice C. K. Tweedie nos anos 80, as distribuições de Tweedie s
 
 Da distribuição de Tweedie derivamos a sua perda, vista na Equação~\ref{eq:tweedie-loss}\footnote{Perceba que neste caso, não derivamos a perda de Tweedie de sua FDP nem de sua log-verossimilhança. Isso acontece porque a FDP da distribuição de Tweedie não apresenta uma fórmula fechada simples, como nos outros dois cenários anteriores.}. A perda de Tweedie une as outras duas distribuições que vimos anteriormente, pois dela, podemos escrever a perda Gamma e também a perda de Poisson com uma simples mudança no índice do parâmetro $p$.
 
-\begin{equacaodestaque}{Perda de Tweedie (\textit{Tweedie Loss})}
-    \Loss_{\text{Tweedie}}(y_j, \hat{y}_j; p) = -\frac{y_j \cdot \hat{y}_j^{1-p}}{1-p} + \frac{\hat{y}_j^{2-p}}{2-p}%
+\begin{equacaodestaque}{Perda de Tweedie}
+    \mathcal{L}_{\text{tweedie}}(y, \hat{y}) = -\frac{y \cdot \hat{y}^{1-p}}{1-p} + \frac{\hat{y}^{2-p}}{2-p}%
     \label{eq:tweedie-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa o valor real da amostra;
+    \item[$\hat{y}$] representa o valor predito para a amostra
     \item[$N$] representa o número de amostras.
     \item[$p$] representa 
 \end{description}
@@ -2979,12 +2974,12 @@ Nessa seção será analisado os casos em que $1 < p < 2$ para a perda de Tweedi
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Continuidade, suavidade e diferenciabilidade:] A perda de Tweedie pertence à classe $C^\infty$, \textbf{infinitamente diferenciável}, no domínio $\hat{y} \in (0, \infty)$ para $p \in (1, 2)$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Dessa forma, as derivadas parciais existem e são contínuas, evitando o uso de técnicas como o subgradiente para poder calcular as derivadas.
-    \item[Convexidade:] A perda de Tweedie \textbf{não é globalmente convexa} em relação a $\hat{y}_j$ para $1 < p < 2$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}).  A função é convexa apenas localmente, quando a predição não está muito longe do alvo. Se o modelo superestimar grosseiramente o valor ($\hat{y} > \frac{p}{p-1}y$), a função entra em uma região côncava.
-    \item[Robustez:] A perda de Tweedie não é Lipschitz-contínua, portanto, \textbf{Não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Contudo, assim como a perda Gamma, quando o valor da predição $\hat{y}_j \to \infty$ temos que o gradiente tende a zero. Indicando que superestimações não serão fortemente penalizadas.
+    \item[Convexidade:] A perda de Tweedie \textbf{não é globalmente convexa} em relação a $\hat{y}$ para $1 < p < 2$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}).  A função é convexa apenas localmente, quando a predição não está muito longe do alvo. Se o modelo superestimar grosseiramente o valor ($\hat{y} > \frac{p}{p-1}y$), a função entra em uma região côncava.
+    \item[Robustez:] A perda de Tweedie não é Lipschitz-contínua, portanto, \textbf{Não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Contudo, assim como a perda Gamma, quando o valor da predição $\hat{y} \to \infty$ temos que o gradiente tende a zero. Indicando que superestimações não serão fortemente penalizadas.
     \item[$\log$ como função de ligação]: Semelhante à perda Gamma, podemos utilizar a função logaritmo para lidar com o problema da não-convexidade da perda de Tweedie em $1 < p < 2$. Substituindo essa relação na Equação \ref{eq:tweedie-loss}, obtemos a perda em função do \textit{logit} $z$:
 
     \begin{equation}
-        L(z_j) = -y_j \frac{e^{z_j(1-p)}}{1-p} + \frac{e^{z_j(2-p)}}{2-p}
+        L(z_j) = -y \frac{e^{z_j(1-p)}}{1-p} + \frac{e^{z_j(2-p)}}{2-p}
     \end{equation}
 
 Essa transformação torna a função estritamente convexa para valores de $p$ no intervalo $(1, 2)$, garantindo a convergência para um mínimo global.
@@ -2995,25 +2990,25 @@ Essa transformação torna a função estritamente convexa para valores de $p$ n
 A derivada da parcial da perda de Tweedie em relação à predição está representada na Equação~\ref{eq:tweedie-loss-derivada}. 
 
 \begin{equacaodestaque}{Gradiente da perda de Tweedie em relação à predição}
-    \nabla_{\hat{y}_j} \Loss_{\text{Tweedie}} = \hat{y}_j^{-p}(\hat{y}_j -y_j)%
+    \nabla_{\hat{y}} \mathcal{L}_{\text{tweedie}} (y, \hat{y}) = \hat{y}^{-p}(\hat{y} -y)%
     \label{eq:tweedie-loss-derivada}
 \end{equacaodestaque}
 
 Contudo, a forma mais comum que está presente nas bibliotecas de aprendizado de máquina é a derivada em relação ao logit. Ela usa o logaritmo como função de ligação para lidar com a convexidade da função, ela está na Equação~\ref{eq:tweedie-loss-derivada-logit}. Neste caso, essa derivada se relaciona com as equações já vistas para o gradiente da perda de Poisson (na Equação~\ref{eq:poisson-loss-com-link-function-derivada}) e para a perda Gamma (na Equação~\ref{eq:gradiente-gamma-link}).
 
 \begin{equacaodestaque}{Gradiente da perda de Tweedie em relação ao logit}
-    \nabla_{z_j} \Loss_{\text{Tweedie}} = \hat{y}_j^{1-p} (\hat{y}_j - y_j)%
+    \nabla_{z_j} \mathcal{L}_{\text{tweedie}} (y, \hat{y}) = \hat{y}^{1-p} (\hat{y} - y)%
     \label{eq:tweedie-loss-derivada-logit}
 \end{equacaodestaque}
 
-Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y_j$ indica não só o ponto de mínimo da perda, mas também para qual direção a assimetria da função irá se deslocar.
+Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y$ indica não só o ponto de mínimo da perda, mas também para qual direção a assimetria da função irá se deslocar.
 
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={Valor Previsto ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
