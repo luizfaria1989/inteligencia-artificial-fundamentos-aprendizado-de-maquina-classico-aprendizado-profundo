@@ -2637,15 +2637,6 @@ Os parâmetros $\alpha$ e $\beta$ da FDP da distribuição gamma são responsáv
     \fonte{O autor (2025).}
 \end{figure}
 
-Em \textit{Generalized Linear Models} \textcite{GeneralizedLinearModels} cita alguns exemplos em que essa distribuição pode ser aplicada:
-
-\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[Reivindicações de seguro de carro:] 
-    \item[Tempos de coágulo do sangue:] 
-    \item[Modelando dados de chuvas usando dois modelos lineares generalizados:] 
-    \item[Taxa de desenvolvimento de Drosophila melanogaster:] 
-\end{description}
-
 \subsubsection*{Perda Gamma}
 
 Para encontramos a perda Gamma, devemos derivá-la da FDP da sua respectiva distribuição. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos ter a função em termos da média esperada $\hat{y}$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
@@ -2924,9 +2915,9 @@ A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme 
 \index{Aplicações práticas! Deviância Gamma}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):] 
-    \item[Aplicação 2 (Área):] 
-    \item[Aplicação 3 (Área):] 
+    \item[Previsão de chuvas (Metereologia):] \textcite{yang2019predictive} combinam regressão logística com regressão Gamma para prever ocorrência e quantidade de chuvas no pacífico tropical. 
+    \item[Previsão de reivindicações de seguros (Área):] \textcite{davoudikakhki2018analyzing} utilizam modelos lineares gerais GLMs com a distribuição Gamma em um \textit{dataset} de reivindicações de seguros de uma empresa de especializada em seguros para indústrias \textit{agrobusiness} encontrando o maior índice preditivo ($R^2 = 0.79$) dentre as alternativas analisadas.
+    \item[Previsão de custos de planos de saúde (Saúde):] Em um relatório técnico divulgado por \textcite{herc_cost_data}, foi discutido que os custos de planos de saúde não são normalmente distribuídos, de forma que uma maneira de fazer a previsão desses valores é utilizando GLMs com a perda Gamma e $\log$ como função de ligação.
 \end{description}
 
 \subsection{Perda de Tweedie (Tweedie Loss)}%
