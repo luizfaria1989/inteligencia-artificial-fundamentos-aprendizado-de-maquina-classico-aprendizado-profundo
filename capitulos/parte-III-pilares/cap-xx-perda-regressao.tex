@@ -938,7 +938,7 @@ A perda de Huber consegue unir o melhor dos dois mundos quando trata-se das perd
 
 A \textbf{perda log-cosh} é uma função de perda que vem ganhando popularidade entre os desenvolvedores. Em \textit{Statistical Properties of the log-cosh Loss Function Used in Machine Learning}, \textcite{StatisticalPropetiesLogCosh} explicam que ela aparece em cenários de \textit{autoencoders} variacionais, detecção de câncer, algoritmos de aprendizado baseados em árvores (como o XGBoost) e também em regressão quantílica (\textit{quantile regression}).
 
-A fórmula da perda log-cosh está na Equação~\ref{eq:log-cosh-loss}. Se considerarmos o erro como sendo a diferença do valor real $y$ com o valor predito $\hat{y}$, a perda log-cosh é dada então pelo logaritmo natural do cosseno hiperbólico do erro.
+Sua fórmula está na Equação~\ref{eq:log-cosh-loss}. Se considerarmos o erro como sendo a diferença do valor real $y$ com o valor predito $\hat{y}$, a perda log-cosh é dada então pelo logaritmo natural do cosseno hiperbólico do erro.
 
 \begin{equacaodestaque}{Perda log-cosh}
     \mathcal{L}_{\text{log-cosh}} (y, \hat{y}) =  \log(\cosh(y -\hat{y}))%
@@ -952,7 +952,7 @@ Em que
     \item[$\hat{y}$] representa o valor predito para a amostra;  
 \end{description}
 
-A elegância da perda log-cosh está na interação dessas duas funções. Para erros pequenos,  $\cosh (e) \approx 1 + e^2/2$, como $\log (1 +x) \approx x$, a função se aproxima de $e^2/2$. Ou seja, para erros pequenos, a função tem um comportamento quadrático, semelhante ao que acontece do erro quadrático médio. Já para erros grandes, $\cosh (e) \approx e^{\|e\|}/2$, ao ser aplicado o logaritmo, o resultado se simplifica para uma função linear, $\log e^{\|e\|} \approx e$. Isso garante uma função robusta a \textit{outliers} assim como o MAE. Dessa forma, a perda log-cosh apresenta a mesma natureza híbrida, quadrática-linear, da perda de Huber, sendo uma alternativa que não necessita de hiperparâmetros adicionais. 
+A elegância da perda log-cosh está na interação dessas duas funções. Para erros pequenos,  $\cosh (e) \approx 1 + e^2/2$, como $\log (1 +x) \approx x$, a função se aproxima de $e^2/2$. Ou seja, a função tem um comportamento quadrático, semelhante ao MSE. Para erros grandes, $\cosh (e) \approx e^{\|e\|}/2$, ao ser aplicado o logaritmo, o resultado se simplifica para uma função linear, $\log e^{\|e\|} \approx e$. Isso garante uma função robusta a \textit{outliers} como o MAE. Dessa forma, a perda log-cosh apresenta a mesma natureza híbrida, quadrática-linear, da perda de Huber, sendo uma alternativa que não necessita de hiperparâmetros adicionais. 
 
 Esse comportamento variável para calcular os erros também é evidenciado nas suas representações gráficas, como a Figura~\ref{fig:log-cosh-loss} aponta. Em testes realizados por \textcite{StatisticalPropetiesLogCosh}, a perda log-cosh foi comparada com a perda de Huber, e foi verificado que as estimativas dessas funções bem como os erros padrões apresentam resultados similares.
 
@@ -1032,23 +1032,23 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
 \subsubsection*{Características da perda log-cosh}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda log-cosh é uma função de classe $C^{\infty}$, infinitamente diferenciável, (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é uma vantagem quando comparada com a perda de Huber, que é de classe $C^1$. Como consequência, a derivada da perda log-cosh é contínua em todo seu domínio. Esse fato pode ser útil caso essa função seja trabalhada em métodos de otimização de segunda ordem, que dependem do cálculo da matriz hessiana.
-    \item[Convexidade:] A perda log-cosh é uma função estritamente convexa (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é evidenciado ao calcular a segunda derivada dessa função, que tem como resultado $\frac{1}{\cosh^2(e)}$ que é estritamente positivo. Essa convexidade pode ser afetada ao trabalhar com modelos de aprendizado profundo, bem como as outras funções de perda.
-    \item[Robustez a \textit{outliers}:] NA perda log-cosh é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso decorre de sua derivada, $\tanh(x)$, que tem limite em 1. Assim, também é dito que a perda log-cosh é 1-Lipschitz-contínua. Como consequência, essa função é robusta a \textit{outliers} e portanto, ajuda a minimizar problemas de gradientes explosivos.
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda log-cosh é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável}, (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é uma vantagem quando comparada com a perda de Huber, que é de classe $C^1$. Como consequência, a derivada da perda log-cosh é contínua em todo seu domínio. Esse fato pode ser útil caso essa função seja trabalhada em métodos de otimização de segunda ordem, que dependem do cálculo da matriz hessiana.
+    \item[Convexidade:] A perda log-cosh é uma função \textbf{estritamente convexa} (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso é evidenciado ao calcular a segunda derivada dessa função, que tem como resultado $\frac{1}{\cosh^2(e)}$ que é estritamente positivo. Essa convexidade pode ser afetada ao trabalhar com modelos de aprendizado profundo, bem como as outras funções de perda.
+    \item[Robustez:] A perda log-cosh é 1-Lipschitz-contínua, portanto, é \textbf{robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-log-cosh}). Isso decorre de sua derivada, $\tanh(x)$, que é limitada em 1. Como consequência, essa função ajuda a minimizar problemas de gradientes explosivos.
     \item[Alternativa para a perda de Huber:] Como dito anteriormente, a perda log-cosh é uma função híbrida assim como a perda de Huber. Ao escolher a perda log-cosh ao invés da perda de Huber para criar um algoritmo estamos priorizando a sua simplicidade, evitando o uso de hiperparâmetros que podem ser desnecessários e de difícil ajuste. Contudo, a perda de Huber ainda é essencial para aqueles casos em que queremos o controle total de como o erro será avaliado pela função de perda. Assim, chega-se em um dilema entre escolher a \textbf{simplicidade (perda log-cosh)} ou o \textbf{controle (perda de Huber)}.
 \end{description}
 
 \subsubsection*{Gradiente da perda de log-cosh}
 
-A elegância da perda log-cosh não se restringe à sua função, estando presente também na sua derivada, a qual é dada pela tangente hiperbólica. Para encontrá-la, basta calcular a regra da cadeia dessa função de perda, de modo que seu resultado é
+A elegância da perda log-cosh não se restringe à sua função, estando presente também na sua derivada, dada pela tangente hiperbólica. Para encontrá-la, basta calcular a regra da cadeia dessa função de perda, de modo que seu resultado é
 
 \[
-    \frac{d}{de} \log(\cosh(e)) = \frac{1}{\cosh(e)} \cdot \sinh (e) 
+    \frac{d}{de} \log(\cosh(e)) = \frac{1}{\cosh(e)} \cdot \sinh (e) \quad \text{com} e = \hat{y} - y
 \]
 
-que se simplifica para o cálculo da tangente hiperbólica.
+que se simplifica para o cálculo da tangente hiperbólica $\tanh(e)$.
 
-Expandindo o cálculo da derivada para o cenário em duas dimensões, chega-se na Equação~\ref{eq:log-cosh-derivada}.
+Expandindo o cálculo da derivada para o cenário de duas dimensões, chegamos na Equação~\ref{eq:log-cosh-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda log-cosh em relação à predição}
     \nabla_{\hat{y}}\mathcal{L}_{\text{log-cosh}} = \tanh(y - \hat{y})%
@@ -1057,7 +1057,7 @@ Expandindo o cálculo da derivada para o cenário em duas dimensões, chega-se n
 
 Caso você tenha lido o Capítulo~\ref{cap:ativacao-sigmoidais}, pode ter notado que a tangente hiperbólica passa a assumir um novo papel além de uma função de ativação. Neste caso, ela serve para calcular o gradiente inicial.
 
-Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log-cosh-derivada}, servem de referência para entender o porquê desta função de perda ser robusta a \textit{outliers}. Como a tangente hiperbólica é limitada em um intervalo $\pm 1$, mesmo que o erro do modelo seja muito grande em termos de valores, a ``correção'' (representada pelo gradiente) não irá aumentar drasticamente. Vale destacar também que como a tangente hiperbólica retorna tanto valores negativos quanto positivos, isso também ajuda a garantir uma convergência mais rápida para os pontos de mínimo\footnote{Esse fato está evidenciado no Capítulo~\ref{cap:ativacao-sigmoidais}.}.
+Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log-cosh-derivada}, servem de referência para entender o porquê desta função ser robusta a \textit{outliers}. Como a tangente hiperbólica é limitada em um intervalo $\pm 1$, mesmo que o erro do modelo seja muito grande em termos de valor absoluto, a ``correção'' (representada pelo gradiente) não irá aumentar drasticamente. Vale destacar que como a tangente hiperbólica retorna tanto valores negativos quanto positivos, ajudando a garantir uma convergência mais rápida para os pontos de mínimo\footnote{Esse fato está evidenciado no Capítulo~\ref{cap:ativacao-sigmoidais}.}.
 
 \begin{figure}[h!]
     \centering
@@ -1135,8 +1135,8 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Previsão de índices do mercado financeiro (Economia):] \textcite{FinantialMarketForecastingUsingRNN} criam algoritmos de aprendizado de máquina prever índices de ações globais (como o FTSE 100, S\&P 500 e HSI), construindo diferentes modelos, como uma rede neural recorrente. Eles utilizam a perda Log-Cosh junto com o MAE, o MSE, a RMSE e também a perda de Huber \parencite{FinantialMarketForecastingUsingRNN}.
-    \item[Predição de bioatividade em moléculas (Farmácia):] \textcite{SiameseRecurrentNeuralNetwork} apresentam uma rede neural recorrente siamesa com o intuito de prever a bioatividade de pequenas moléculas. Os autores argumentam que a perda Log-Cosh foi uma função de perda ideal para ser aplicada nesse problema, pois apresentou o melhor desempenho das perdas que foram testadas: perda constrativa (\textit{constractive loss}), perda de Huber, perda L1 e perda L2 \parencite{SiameseRecurrentNeuralNetwork};
-    \item[Aplicação 3 (Área):] \textcite{AnEffectiveMethodForDetectingUnknowTypes} propõem um modelo de \textit{deep learning} chamado de \textit{LVAE (Log-Cosh Variational Autoencoder)} com intuito detectar tipos desconhecidos de ataques em redes. A perda log-cosh é utilizada como a função de perda de reconstrução dentro do modelo \textit{variational autoencoder} \parencite{AnEffectiveMethodForDetectingUnknowTypes}.
+    \item[Predição de bioatividade em moléculas (Farmácia):] \textcite{SiameseRecurrentNeuralNetwork} apresentam uma rede neural recorrente siamesa para prever a bioatividade de pequenas moléculas. Os autores argumentam que a perda Log-Cosh foi a função de perda ideal para ser aplicada nesse problema, pois apresentou o melhor desempenho das perdas que foram testadas: perda constrativa (\textit{constractive loss}), perda de Huber, perda L1 e perda L2 \parencite{SiameseRecurrentNeuralNetwork};
+    \item[Aplicação 3 (Área):] \textcite{AnEffectiveMethodForDetectingUnknowTypes} propõem um modelo de \textit{deep learning} chamado de \textit{LVAE (Log-Cosh Variational Autoencoder)} para detectar tipos desconhecidos de ataques em redes. A perda log-cosh é utilizada como a função de perda de reconstrução dentro do modelo \textit{variational autoencoder} \parencite{AnEffectiveMethodForDetectingUnknowTypes}.
 \end{description}
 
 \medskip
@@ -1144,6 +1144,9 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
 Todas as funções de perda vistas até o momento calculam o erro de forma absoluta. Elas não lidam com o erro de forma relativa. Como consequência, um erro de R\$ $50,00$ em uma conta de padaria tem o mesmo grau que um erro da mesma magnitude para validar o aluguel de uma casa. Para os casos em que deve-se considerar o erro de forma relativa, cabe analisar outras funções, como o erro quadrático logarítmico médio ou a perda quantílica.
 
 \section{Lidando com a escala: foco no erro relativo}
+
+\subsection{Erro quadrático médio logarítmico (MSLE)}%
+\index{Funções de Perda!Erro quadrático médio logarítimico (MSLE)}%
 
 \subsubsection*{O problema dos imóveis}
 
@@ -1158,10 +1161,9 @@ Utilizando o MSE para calcular a perda dessas funções encontramos que o erro s
 
 Neste caso, avaliar os modelos com uma função de perda que calcula o erro de forma absoluta (como o MSE e o MAE), pode não ser ideal. Para evitar esses problemas de subestimação, uma solução é o erro quadrático médio logarítmico.
 
-\subsection{Erro quadrático médio logarítmico (MSLE)}%
-\index{Funções de Perda!Erro quadrático médio logarítimico (MSLE)}%
+\subsection*{Erro quadrático médio logarítmico (MSLE)}%
 
-O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{MSLE}), é calculado pela Equação~\ref{eq:msle-loss}. Ele calcula o erro como sendo a diferença dos logaritmos naturais do valor real $y$ com a predição $\hat{y}$ e depois faz a média dos erros das diferentes previsões.
+O \textbf{erro quadrático médio logarítmico}, também chamado de \textbf{\textit{mean squared logarithmic error}} (\textbf{MSLE}), é calculado pela Equação~\ref{eq:msle-loss}. Ele avalia o erro como sendo a diferença dos logaritmos naturais do valor real $y$ com a predição $\hat{y}$.
 
 \begin{equacaodestaque}{Erro quadrático médio logarítmico}
     \mathcal{L}_{\text{msle}} (y, \hat{y}) = (\ln(y + 1) -\ln(\hat{y} + 1))^2%
@@ -1264,11 +1266,11 @@ Essa propriedade assimétrica dos logaritmos também é explorada ao descrever o
 \subsubsection*{Características do erro quadrático médio logarítmico}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] O MSLE é uma função de classe $C^{\infty}$ (infinitamente diferenciável) (ver Apêndice~\ref{ap:deducoes-msle}). Isso contribui para uma função de perda que pode ser facilmente utilizada em conjunto com otimizadores baseados em gradiente, dado que não serão encontrados problemas de continuidade ao derivar essa função.
+    \item[Continuidade, suavidade e diferenciabilidade:] O MSLE é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} (ver Apêndice~\ref{ap:deducoes-msle}). Isso contribui para uma função de perda que pode ser facilmente utilizada em conjunto com otimizadores baseados em gradiente, dado que não serão encontrados problemas de continuidade ao derivar essa função.
     \item[Convexidade:] A função MSLE é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-msle}). 
-    \item[Robustez:] A função MSLE é Lipschitz-contínua, portanto é robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-msle}). Diferente do erro absoluto médio, que quando o valor do erro ``explode'' para infinito o seu gradiente será 1, no MSLE o seu gradiente tende a 0. Como resultado, para erros muito grandes o erro logarítmico médio gera uma correção irrisória, o que pode não ser útil em certos casos.
-    \item[Foco no erro relativo (percentual):] Quando o MSLE é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o erro quadrático logarítmico médio mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor;
-    \item[Tendência de penalizar subestimações:] Como aponta a Figura~\ref{fig:msle-loss}, o MSLE não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}$ e o valor real $y$, existe uma tendência de que a perda será maior;
+    \item[Robustez:] A função MSLE é Lipschitz-contínua, portanto é \textbf{robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-msle}). Diferente do erro absoluto médio, que quando o valor do erro ``explode'' para infinito o seu gradiente será 1, no MSLE o seu gradiente tende a 0. Como resultado, para erros muito grandes o erro logarítmico médio gera uma correção irrisória, o que pode não ser útil em certos casos.
+    \item[Foco no erro relativo (percentual):] Quando o MSLE é utilizado como função de perda, diferente das outras vistas até agora que medem o erro absoluto, o MSLE mede o erro percentual/relativo. Isso acontece por conta dos uso dos logaritmos dessa função, que são responsáveis por comprimir a escala dos dados. Portanto, erros em que o valor predito é 50\% menor que o real são mais penalizados em que cenários nos quais o valor predito é 5\% menor.
+    \item[Tendência de penalizar subestimações:] Como aponta a Figura~\ref{fig:msle-loss}, o MSLE não forma uma curva convexa simétrica verticalmente, conforme os valores vão diminuindo, a perda aumenta consideravelmente. Enquanto isso, conforme os valores aumentam, a perda também aumenta, mas não de forma tão agressiva quanto no sentido inverso. Isso significa que quanto maior for a diferença entre o valor previsto $\hat{y}$ e o valor real $y$, existe uma tendência de que a perda será maior.
     \item[Restrição de domínio (não-negatividade):] Como os logaritmos são indeterminados para valores nulos ou negativos, o MSLE exige que os valores de entrada sejam positivos ($y > 0$ e $\hat{y} > 0$). Caso os conjunto de dados contenha valores negativos (como lucro/prejuízo ou temperaturas), o MSLE irá causar erros matemáticos. Para contornar esse problema, deve-se aplicar uma transformação nos dados, como somar uma constante para deslocar os valores negativos para positivos, ou ser utilizada outra função de perda.
 \end{description}
 
@@ -1361,7 +1363,7 @@ O comportamento assimétrico do MSLE também está presente nos gráficos da sua
 
 \subsubsection*{O problema dos imóveis com o MSLE}
 
-Voltando para o exemplo anterior dos modelos prevendo preços de imóveis. Cabe discutir como o MSLE se compara ao erro quadrático médio, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
+Voltando para o exemplo dos modelos prevendo preços de imóveis. Cabe discutir como o MSLE se compara ao MSE, e como ele pode ser uma alternativa para função de perda em cenários em que é preciso garantir que as subestimações sejam mais penalizadas.
 
 Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenários vistos na seção anterior, e mostra qual foi o valor do erro calculado para essas situações.
 
@@ -1387,7 +1389,7 @@ Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenár
     \end{threeparttable}
 \end{table}
 
-O erro quadrático médio considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente, para o modelo os erros são de mesma magnitude. Contudo, olhando agora para os valores do MSLE, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
+O MSe considera a grandeza dos valores, nos dois cenários o erro é o mesmo. Consequentemente a atualização do gradiente, para o modelo os erros são de mesma magnitude. Contudo, olhando agora para os valores do MSLE, o cenário A, em que o modelo subestimou o valor do imóvel, é cerca de 185 vezes pior que o do cenário B. Neste caso, como no cenário A o erro foi maior, as atualizações nos parâmetros do modelo também serão maiores, enquanto no cenário B ainda irá ocorrer atualizações, mas como apontado, os valores dos parâmetros irão ter uma variação menor de uma época para a próxima.
 
 \subsubsection*{Raiz do erro quadrático médio logarítmico (RMSLE)}
 
@@ -1412,18 +1414,19 @@ Ao calcular a raiz quadrada do erro quadrático médio logarítmico tem-se uma n
 \index{Aplicações práticas! Erro quadrático logarítimico médio}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Predição do preço de casas (Mercado imobiliário):] \textcite{SunKim-NetOverYourHead} desenvolvem uma rede neural para fazer a previsão do preço de casas. Eles utilizam como métrica o RMSLE, como justificativa, os autores explicam que o \textit{dataset} que está sendo utilizado apresenta casas que têm ordem de magnitude de diferença de preço, e com isso uma previsão ruim para uma casa de alto valor terá mais peso que uma previsão ruim para uma casa de baixo valor; ao usar o RMSLE é possível capturar as ordens de magnitude dos preços das casas, algo que não acontece com o RMSE \parencite{SunKim-NetOverYourHead};
-    \item[Predição no tempo de internação de pacientes (Saúde):] \textcite{Winter2023PredictingLOS} analisam maneiras de prever o tempo de internação de um paciente qualquer após receber alta no pronto-socorro e sua transferência para a próxima unidade hospitalar. Os autores usam um modelo de regressão de \textit{gradient boosting} com arquitetura \textit{CatBoost}, para a função de perda, os autores escolhem duas, a primeira sendo o RMSE e a segunda o RMSLE, como justificativa, os autores apontam que o RMSLE penaliza erros proporcionais e é menos afetado por \textit{outliers};
-    \item[Previsão de séries temporais (Área):] \textcite{Jadon2022ComprehensiveSurvey} analisam uma série de funções de perda que são comumente utilizadas na previsão de séries temporais, sendo uma delas o MSLE. Os autores apontam que o MSLE reduz o efeito punitivo de diferenças significativas em grandes valores previsos; sendo apropriado quando o modelo prevê quantidades não escalonadas diretamente \parencite{Jadon2022ComprehensiveSurvey}. \textcite{Jadon2022ComprehensiveSurvey} analisam também o RMSLE, explicando que ele pode ser uma função de perda para ser utilizada em cenários em que a subestimação dos valores reais não é aceitável, mas a superestimações do modelo não são consideradas um problema.
+    \item[Predição do preço de casas (Mercado imobiliário):] \textcite{SunKim-NetOverYourHead} desenvolvem uma rede neural para fazer a previsão do preço de casas. Eles utilizam como métrica a RMSLE, como justificativa, os autores explicam que o \textit{dataset} utilizado apresenta casas que têm ordem de magnitude de diferença de preço, e com isso uma previsão ruim para uma casa de alto valor terá mais peso que uma previsão ruim para uma casa de baixo valor; ao usar o RMSLE é possível capturar as ordens de magnitude dos preços das casas, algo que não acontece com o RMSE \parencite{SunKim-NetOverYourHead};
+    \item[Predição no tempo de internação de pacientes (Saúde):] \textcite{Winter2023PredictingLOS} analisam maneiras de prever o tempo de internação de um paciente qualquer após receber alta no pronto-socorro e sua transferência para a próxima unidade hospitalar. Os autores usam um modelo de regressão de \textit{gradient boosting} com arquitetura \textit{CatBoost}, para a função de perda, os autores escolhem duas, a RMSE e a RMSLE, como justificativa, eles apontam que a RMSLE penaliza erros proporcionais e é menos afetada por \textit{outliers};
+    \item[Previsão de séries temporais (Área):] \textcite{Jadon2022ComprehensiveSurvey} analisam uma série de funções de perda que são comumente utilizadas na previsão de séries temporais, sendo uma delas o MSLE. Os autores apontam que o MSLE reduz o efeito punitivo de diferenças significativas em grandes valores previsos; sendo apropriado quando o modelo prevê quantidades não escalonadas diretamente \parencite{Jadon2022ComprehensiveSurvey}. \textcite{Jadon2022ComprehensiveSurvey} analisam também a RMSLE, explicando que ela pode ser uma função de perda para ser utilizada em cenários em que a subestimação dos valores reais não é aceitável, mas a superestimações do modelo não são consideradas um problema.
 \end{description}
 
 \medskip
 
 O erro quadrático médio logarítmico médio penaliza fortemente as subestimações feitas pelo modelo. Entretanto, pode ser necessário uma função que tenha a característica contrária: penalizar em maior grau as superestimações. Dessa forma, uma solução é utilizar a perda quantílica.
 
-\section{Mudando o objetivo da previsão: além da média}
+\subsection{Perda quantílica (quantile/pinball loss)}%
+\index{Funções de Perda!Perda quantílica (\textit{quantile loss})}
 
-Até agora todas as funções de perda vistas calculavam o erro para um conjunto $m$ de instâncias, e a partir disso aplicavam o cálculo da média dos erros. Ao calcular a média dos erros, está sendo presumido que a tendência central é a característica mais informativa daquela distribuição de dados, seguindo a clássica distribuição Gaussiana. Contudo, e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita da distribuição (como na Figura~\ref{fig:dist-skew-direita})?
+Até agora todas as funções de perda presumiam que os dados seguiam a distribuição Normal, com a característica mais informativa estando no centro da distribuição. Contudo, e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita (como na Figura~\ref{fig:dist-skew-direita})?
 
 \begin{figure}[h!]
     \centering 
@@ -1528,19 +1531,14 @@ Até agora todas as funções de perda vistas calculavam o erro para um conjunto
         \label{fig:dist-skew-esquerda}
     \end{subfigure}
 
-    \caption{Exemplos de distribuições assimétricas (desenhadas) onde a média (vermelho) e a mediana (verde) divergem, justificando o uso da Perda Quantílica.}%
+    \caption{Exemplos de distribuições assimétricas (desenhadas) onde a média (vermelho) e a mediana (verde) divergem.}%
     \label{fig:distribuicoes-assimetricas}
     \fonte{O autor (2025).}
 \end{figure}
 
-A perda quantílica consegue lidar com as situações em que a média e a medina são divergentes. Ela foca em estudar como a perda acontece em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, escolhendo se ela irá funcionar de forma assimétrica, ou de forma parecida com o MAE.
+Nestes casos, podemos utilizar a perda quantílica, pois ela consegue lidar com as situações em que a média e a mediana são divergentes. Com foco em estudar como a perda é calculada em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, escolhendo se ela irá funcionar de forma assimétrica, ou de forma parecida com o MAE.
 
-A $\epsilon$-insensível também é outra função de perda que não faz o cálculo da média dos erros. Ela é uma função essencial para a tarefas de regressão para máquinas de vetores de suporte. Ao utilizá-la, é definido uma ``margem de tolerância'' em que caso o erro esteja dentro dessa média, a perda não irá penalizar o modelo.
-
-\subsection{Perda quantílica (quantile/pinball loss)}%
-\index{Funções de Perda!Perda quantílica (\textit{quantile loss})}
-
-Em \textit{Regression Quantiles}, \textcite{regression-quantiles} analisaram uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação, os autores discutem a ideia de que ``todos acreditam na lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Contudo, isso não é uma verdade absoluta, existem casos, como os vistos na introdução dessa seção, que fogem da distribuição normal. Como consequência, técnicas mais conhecidas, como o MSE, para o cálculo dos erros com base na média, não são ideais para servir de guia para a otimização do modelo.
+A origem da perda quantílica está relacionada com o artigo \textit{Regression Quantiles}. No texto, \textcite{regression-quantiles} analisaram uma nova técnica de regressão que se baseava nos quantis de uma distribuição. Como motivação, os autores discutem a ideia de que ``todos acreditam na lei de Gauss para os erros, porque eles acreditam que é um teorema matemático, e os matemáticos acreditam porque é um fato experimental'' \parencite{regression-quantiles}. Entretanto, isso não é uma verdade absoluta, existem casos, como os vistos na introdução desta seção, que fogem da distribuição normal padrão. Como consequência, técnicas mais conhecidas, como o MSE, para o cálculo dos erros com base na média, não são ideais otimizar o modelo.
 
 Tendo isso em mente, os pesquisadores apresentam uma forma de minimizar a soma de perdas assimétricas, definindo a Equação~\ref{eq:soma-das-perdas-assimetricas}\footnote{Caso você leitor decida ler o artigo original dos pesquisadores, você verá um conjunto diferente de notações utilizadas, isso acontece pois neste livro elas foram adaptadas para condizer com as notações que já estavam sendo utilizadas anteriormente nos outros capítulos}.
 
@@ -1558,7 +1556,7 @@ Em que:
     \item[ $\hat{y}$] representa o valor predito pelo modelo para a j-ésima amostra.
 \end{description}
 
-A partir da Equação~\ref{eq:soma-das-perdas-assimetricas}, é possível derivá-la em dois casos distintos. O caso em que o valor real é maior que a previsão $(y > \hat{y})$, ou seja, ocorre uma subestimação, é gerado um erro positivo. Assim, a perda é proporcional a $\tau$. Quando o valor real é menor que a previsão $(y < \hat{y})$, o modelo superestimou o valor real, é aplicado o peso $(1 - \tau)$. Desses dois cenários, deriva-se a definição por partes da \textbf{perda quantílica}, também conhecida como \textbf{\textit{quantile loss}}, dada pela Equação~\ref{eq:quantile-loss}. Neste caso, está sendo considerado que a situação $\hat{y} = y$ faz parte do primeiro caso estudado.
+A partir da Equação~\ref{eq:soma-das-perdas-assimetricas}, podemos derivá-la em dois casos distintos. O caso em que o valor real é maior que a previsão $(y > \hat{y})$, ou seja, ocorre uma subestimação, é gerado um erro positivo. Assim, a perda é proporcional a $\tau$. Quando o valor real é menor que a previsão $(y < \hat{y})$, o modelo superestimou o valor real, é aplicado o peso $(1 - \tau)$. Desses dois cenários, deriva-se a definição por partes da \textbf{perda quantílica}, ou como \textbf{\textit{quantile loss}} em inglês, dada pela Equação~\ref{eq:quantile-loss}. Neste caso, consideramos que a situação $\hat{y} = y$ faz parte do primeiro caso estudado.
 
 \begin{equacaodestaque}{Perda quantílica}
     \mathcal{L}_{\tau} (y, \hat{y}) = 
@@ -1788,17 +1786,17 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
 \subsubsection*{Características da perda quantílica} 
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda quantílica é de classe $C^0$, contínua, (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso acontece pelo mesmo motivo que o MAE também é de classe $C^0$, essas duas funções apresentam um ``bico'' quando o erro é zero. Como resultado, deve-se analisar os limites laterais dessa função nesse ponto, chegando a conclusão que seus valores divergem. Ainda assim, o uso de subgradiente ajuda a contornar esse problema de suavidade.
-    \item[Convexidade:] A perda quantílica é convexa (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso é evidenciado também pelos seus gráficos, os quais apontam que essa função apresenta um formato semelhante a um funil. Consequentemente, essa propriedade ajuda os otimizadores baseados em gradiente. Vale destacar que otimizadores baseados em momento vão se comportar diferente conforme forem os valores de $\tau$. Inclinações diferentes podem resultar em otimizações com iterações diferentes.
-    \item[Robustez:] A perda quantílica é Lipschitz-contínua, e portanto, robusta a \textit{outliers} (ver Apêndice~\ref{ap:deducoes-quantile-loss}). As suas derivadas parciais quando o erro tende ao infinito são limitadas, garantindo que o gradiente não ``exploda'' quando ocorrem erros grandes.
-    \item[Hiperparâmetro $\tau$ (penalização assimétrica):] A perda quantílica é uma função assimétrica, exceto no caso em que $\tau = 0.5$. Como o parâmetro $\tau$ é definido ao treinar ao modelo, cabe a quem estiver treinando o modelo definir se quer que a função penalize mais as subestimações ou as superestimações, a depender do problema que está sendo considerado.
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda quantílica é de classe $C^0$, \textbf{contínua} (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso acontece pelo mesmo motivo que o MAE também é de classe $C^0$, essas duas funções apresentam um ``bico'' quando o erro é zero. Como resultado, deve-se analisar os limites laterais dessa função nesse ponto, chegando a conclusão que seus valores divergem. Ainda assim, o uso de subgradiente ajuda a contornar esse problema de suavidade.
+    \item[Convexidade:] A perda quantílica é \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-quantile-loss}). Isso é evidenciado também pelos seus gráficos, os quais apontam que essa função apresenta um formato semelhante a um funil. Consequentemente, essa propriedade ajuda os otimizadores baseados em gradiente. Vale destacar que otimizadores baseados em momento vão se comportar diferente conforme forem os valores de $\tau$. Inclinações diferentes podem resultar em otimizações com iterações diferentes.
+    \item[Robustez:] A perda quantílica é Lipschitz-contínua, e portanto, \textbf{robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-quantile-loss}). As suas derivadas parciais quando o erro tende ao infinito são limitadas, garantindo que o gradiente não ``exploda'' quando ocorrem erros grandes.
+    \item[Hiperparâmetro $\tau$ (penalização assimétrica):] A perda quantílica é uma função assimétrica (exceto no caso em que $\tau = 0.5$). Como o parâmetro $\tau$ é definido ao treinar ao modelo, cabe a quem estiver treinando o modelo definir se quer que a função penalize mais as subestimações ou as superestimações, a depender do problema estudado.
 \end{description}
 
 \subsubsection*{Gradiente da perda quantílica}
 
-Para calcular a derivada da perda quantílica, deve-se derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso, está sendo considerado que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y} = y$, dado que este é um ponto de descontinuidade dessa função.
+Para calcular a derivada da perda quantílica, devemos derivar as duas expressões da Equação~\ref{eq:quantile-loss} e escrever o seu resultado em uma função por partes. Neste caso, consideramos que não existe um valor para o cenário em que a predição é igual ao valor real, ou seja, $\hat{y} = y$, dado que este é um ponto de descontinuidade da função.
 
-Dessa forma, a derivada parcial da perda quantílica em relação à predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, está sendo indicado os cenários de superestimação e subestimação, de forma a simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
+Dessa forma, a derivada parcial da perda quantílica em relação à predição feita pelo modelo é dada pela Equação~\ref{eq:quantile-loss-derivada}. Além disso, a equação também indica os cenários de superestimação e subestimação para simplificar como os erros do modelo serão corrigidos ao retropropagar o gradiente para as camadas.
 
 \begin{equacaodestaque}{Gradiente da perda quantílica em relação à predição}
     \nabla_{\hat{y}}\mathcal{L}_{\tau} (y, \hat{y}) = 
@@ -1890,16 +1888,12 @@ O comportamento da derivada da perda quantílica também se assemelha com MAE. C
 
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):] \textcite{candila2023mixedfrequencyquantileregressionsforecast} utilizam a regressão quantílica para prever o VaR (\textit{Value at Risk}) e o \textit{expected shortfall} (ES), para isso, eles criam utilizam de uma técnica diferente, em que é feito o uso de regressões quantílicas de frequência mista. Para fazer isso, os autores combinam dados macroêconomicos de baixa frequência (que são mensais), com dados de mercado de alta frequência (os quais são diários) \parencite{candila2023mixedfrequencyquantileregressionsforecast}.
-    \item[Aplicação 2 (Área):] \textcite{Engle2004CAViaR} utilizando a regressão quantílica, apresentam o \textit{Conditional Autoregressive Value at Risk} ou CAVIaR. O CAVIaR propõe uma alternativa diferente para calcular o VaR, ao invés de ser modelado toda a distribuição, com o CAVIaR é calculado apenas o quantil desejado, isso pode ser calculado com o uso da regressão quantílica, e consequentemente com a função de perda quantílica \parencite{Engle2004CAViaR};
-    \item[Aplicação 3 (Área):]  \textcite{WINKELMANN2006131} usam a regressão quantílica para contagens para estimar o efeito de uma reforma na saúde sobre a frequência de consultas médicas individuais. O autor justifica a escolha de ser feita uma regressão quantílica, e não uma técnica mais comum, como a dos mínimos quadrados, pois ele considera que esse é um problema em que os efeitos da reforma são diferentes em cada uma das partes da distribuição \parencite{WINKELMANN2006131}.
+    \item[Aplicação 1 (Área):] \textcite{candila2023mixedfrequencyquantileregressionsforecast} utilizam a regressão quantílica para prever o VaR (\textit{Value at Risk}) e o \textit{expected shortfall} (ES), para isso, eles criam utilizam de uma técnica diferente, utilizando regressões quantílicas de frequência mista. Os autores combinam dados macroêconomicos de baixa frequência (que são mensais), com dados de mercado de alta frequência (os quais são diários) \parencite{candila2023mixedfrequencyquantileregressionsforecast}.
+    \item[Aplicação 2 (Área):] \textcite{Engle2004CAViaR} utilizando a regressão quantílica, apresentam o \textit{Conditional Autoregressive Value at Risk} ou CAVIaR. O CAVIaR propõe uma alternativa diferente para calcular o VaR, ao invés de ser modelado toda a distribuição, com o CAVIaR é calculado apenas o quantil desejado\parencite{Engle2004CAViaR};
+    \item[Aplicação 3 (Área):]  \textcite{WINKELMANN2006131} usa regressão quantílica para contagens para estimar o efeito de uma reforma na saúde sobre a frequência de consultas médicas individuais. O autor justifica a escolha da regressão quantílica, e não uma técnica mais comum, como a dos mínimos quadrados, pois ele considera que esse é um problema em que os efeitos da reforma são diferentes em cada uma das partes da distribuição \parencite{WINKELMANN2006131}.
 \end{description}
 
-\medskip
-
-Além da perda quantílica, que é usada nos problemas de regressão quantílica, e que faz o cálculo dos erros considerando uma distribuição irregular dos dados, e por isso não faz o uso da média dos erros para encontrar a perda, existem outras funções que possuem essa mesma característica. Uma dessas funções é a epsilon-insensível, que é essencial para resolver os problemas de regressão para modelos de máquinas de vetores de suporte (SVMs). Ela será explicada em seguida.
-
-\subsection{Perda epsilon-insensível (epsilon-insensitive loss)}%
+\section{Perda epsilon-insensível (epsilon-insensitive loss): A perda para SVMs de regressão}%
 \index{Funções de Perda!Perda Epsilon-Insensível}
 
 A \textbf{perda epsilon-insensível}, também chamada \textbf{$\epsilon$-insensível} se relacionada diretamente com as máquinas de vetores de suporte, sendo essencial para possibilitar tarefas de regressão pelas SVMs. O trabalho \textit{Support Vector Regression Machines} dos pesquisadores \textcite{SupportVectorRegressionMachines} é um dos responsáveis por introduzir essa função de perda. Nele, os autores detalham um novo uso das máquinas de vetores desenvolvidas por Vapnik, as quais antes eram utilizadas para resolver problemas de classificação \parencite{SupportVectorRegressionMachines}.
