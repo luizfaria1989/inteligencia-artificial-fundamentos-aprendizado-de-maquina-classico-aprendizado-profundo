@@ -2894,6 +2894,152 @@ Em que
     \item[$p$] representa o parâmetro de ajuste da perda.
 \end{description}
 
+\begin{figure}[h!]
+    \centering
+
+    % --- (a) 2D Baixo Valor (y=2) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda ($\mathcal{L}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=10,
+                ymin=-0.5, ymax=4, 
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+            ]
+                % Fórmula Tweedie (p=1.5) para y=2: 
+                % 2*sqrt(x) + (2*2)/sqrt(x) - 4*sqrt(2)
+                \addplot[domain=0.4:10, samples=100, color=black, very thick] {2*sqrt(x) + 4/sqrt(x) - 4*sqrt(2)};
+                
+                % Linha pontilhada no mínimo (Zero)
+                \draw[dashed, black!60] (axis cs:2, 0) -- (axis cs:2, 2.5);
+                
+                % Destaque visual
+                \node[font=\tiny, text=black!70, anchor=west] at (axis cs:0.5, 3) {Mínimo em $\hat{y}=2$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Assimetria Tweedie ($p=1.5$) para $y=2$.}%
+        \label{fig:tweedie-2d-low}
+    \end{subfigure}
+    \hfill
+    % --- (b) 3D Superfície Baixa ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda ($\mathcal{L}$)},
+                grid=major,
+                view={140}{40}, 
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                zmin=0, zmax=3, 
+                colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.4)}
+            ]
+                % Fórmula Tweedie 3D (p=1.5):
+                % x=Real, y=Previsto
+                % 2*sqrt(y) + 2*x/sqrt(y) - 4*sqrt(x)
+                \addplot3[
+                   surf,           
+                    shader=faceted,  
+                    faceted color=black!60, 
+                    domain=1:5,     
+                    domain y=1:5, 
+                    samples=25,
+                    z buffer=sort
+                ] { 2*sqrt(y) + 2*x/sqrt(y) - 4*sqrt(x) };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície local (Região $1 \le y \le 5$).}%
+        \label{fig:tweedie-3d-low}
+    \end{subfigure}
+
+    \vspace{0.5cm} 
+
+    % --- (c) 2D Alto Valor (y=10) ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,  
+                height=7cm,
+                xlabel={Valor Previsto ($\hat{y}$)},
+                ylabel={Perda( $\mathcal{L}$)},
+                axis lines=middle,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=30,
+                ymin=-0.5, ymax=4, 
+                legend pos=north west,
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+            ]
+                % Fórmula Tweedie (p=1.5) para y=10:
+                % 2*sqrt(x) + (2*10)/sqrt(x) - 4*sqrt(10)
+                \addplot[domain=2:30, samples=100, color=black, very thick] {2*sqrt(x) + 20/sqrt(x) - 4*sqrt(10)};
+                
+                % Linha pontilhada no mínimo
+                \draw[dashed, black!60] (axis cs:10, 0) -- (axis cs:10, 2.5);
+                \node[anchor=north, font=\tiny, text=black] at (axis cs:7.5, 2.5) {Mínimo em $\hat{y}=10$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Comportamento para valor real alto ($y=10$).}%
+        \label{fig:tweedie-2d-high}
+    \end{subfigure}
+    \hfill
+    % --- (d) 3D Superfície Alta ---
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth,
+                height=7cm,
+                xlabel={$y$ (Real)},
+                ylabel={$\hat{y}$ (Previsto)},
+                zlabel={Perda( $\mathcal{L}$)},
+                grid=major,
+                view={140}{40},
+                title style={font=\bfseries\small},
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                zmin=0, zmax=3,
+                colormap={bw}{gray(0cm)=(0.9); gray(1cm)=(0.4)}
+            ]
+                % Mesma fórmula 3D, domínio deslocado
+                \addplot3[
+                   surf,           
+                    shader=faceted,  
+                    faceted color=black!60, 
+                    domain=5:15,    
+                    domain y=5:15, 
+                    samples=25,
+                    z buffer=sort
+                ] { 2*sqrt(y) + 2*x/sqrt(y) - 4*sqrt(x) };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Superfície local (Região $5 \le y \le 15$).}%
+        \label{fig:tweedie-3d-high}
+    \end{subfigure}
+
+    \caption{Visualização da perda Tweedie ($p=1.5$) para diferentes valores reais $y$.}%
+    \label{fig:tweedie-loss-grid}
+    \fonte{O autor (2025).}
+\end{figure}
+
 \subsubsection*{Características da Perda de Tweedie}
 
 Nessa seção será analisado os casos em que $1 < p < 2$ para a perda de Tweedie, configurando-a para a distribuição Poisson-Gamma. Para a situação em que $p = 1$ (perda de Poisson), veja a Seção~\ref{sec:poisson-loss}. Já para a situação em que $p = 2$ (perda Gamma), veja a Seção~\ref{sec:gamma-loss}.
