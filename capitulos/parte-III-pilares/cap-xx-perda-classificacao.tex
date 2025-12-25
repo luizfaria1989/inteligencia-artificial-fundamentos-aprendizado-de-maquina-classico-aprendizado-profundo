@@ -2,198 +2,197 @@
 % Arquivo: capitulos/parte-III-pilares/cap-10-perda-binaria.tex
 % ===================================================================
 
-\chapter{Funções de Perda para Classificação}
+\chapter{Funções de perda para classificação}%
 \label{cap:perda-classificacao}
 
-\section{Exemplo Ilustrativo:}
+\section{Exemplo ilustrativo:}
 
-\section{Funções de Perda para Classificação Binária}
+\section{Funções de perda para classificação binária}
 
-\subsection{Entropia Cruzada Binária (Binary Cross-Entropy - BCE): A função de perda padrão} \index{Funções de Perda!Entropia Cruzada Binária (BCE)}
+\subsection{Entropia-cruzada binária (BCE)}%
+\index{Funções de Perda!Entropia-cruzada binária (BCE)}%
 \label{sec:binary-cross-entropy}
 
-Para entender a função de perda \textit{Binary Cross Entropy} (\textit{BCE}) é importante antes conhecer o conceito de Entropia, o qual é fundamental para o cálculo dessa função. Em \textit{A Matematical Theory of Comunication}, \textcite{EntropyShannon} estava estudando sobre formas eficientes de comunicação, para isso, em um dos momentos do artigo ele define o conceito de Entropia, sendo uma medida de incerteza, ou da "escolha", associada a um conjunto de eventos com determinada probabilidades. Essa fórmula pode ser vista na Equação \ref{eq:entropia-de-shannon}.
+Para entender a função de perda \textbf{entropia-cruzada binária}, também chamada de \textbf{\textit{binary cross-entropy}} (\textbf{BCE}), é importante conhecer o conceito de Entropia, fundamental para o cálculo da BCE. Em \textit{A Matematical Theory of Comunication}, \textcite{EntropyShannon} estudava sobre formas eficientes de comunicação, em um dos momentos do artigo ele define o conceito de Entropia, como uma medida de incerteza, ou da ``escolha'', associada a um conjunto de eventos com determinada probabilidades. Essa fórmula está na Equação~\ref{eq:entropia-de-shannon}.
 
 \begin{equacaodestaque}{Entropia de Shannon}
-    H(p) = - k \sum_{i = 1}^{n} p_i \log pi
+    H(p) = - k \sum_{i = 1}^{n} p_i \log pi%
     \label{eq:entropia-de-shannon}
 \end{equacaodestaque}
 
-Passado alguns anos, outros autores já estavam trabalhando com esse conceito introduzido por Shannon. Um desses casos é o de \textcite{KullbackLeiblerDivergence}, que em \textit{On Information and Sufficiency} expandem o conceito de Entropia para lidar também com casos contínuos, mas, mais que isso, introduzem uma media para comparar duas distribuições de probabilidades $p$ e $q$, chamando-a de informação para discriminação. Essa medida futuramente passa a ser conhecida com divergência de Kullback-Leibler (\textit{KL Divergence}), ela está representada na Equação \ref{eq:kl-divergence}
+Passado alguns anos, outros autores já estavam trabalhando com o conceito de entropia de Shannon. Um desses casos é o de \textcite{KullbackLeiblerDivergence}, que em \textit{On Information and Sufficiency} expandem o conceito de entropia para lidar com casos contínuos, além disso, introduzem uma medida para comparar duas distribuições de probabilidades $p$ e $q$, chamando-a de informação para discriminação. Essa medida futuramente, representada na Equação~\ref{eq:kl-divergence},  passou a ser conhecida com divergência de Kullback-Leibler (\textit{KL Divergence}).
 
 \begin{equacaodestaque}{Divergência de Kullback-Leibler}
-    I(1:2) = I_{1:2}(X) = \int f_1 (x) \log \frac{f_1(x)}{f_2 (x)} d \lambda (x)
+    I(1:2) = I_{1:2}(X) = \int f_1 (x) \log \frac{f_1(x)}{f_2 (x)} d \lambda (x)%
     \label{eq:kl-divergence}
 \end{equacaodestaque}
 
-Essa função tem como principal objetivo medir a "perda" ou o "excesso" de informação quando é utilizada uma distribuição $q$ para aproximar a distribuição real $q$. Além disso, é a partir dessa fórmula que é possível chegar na definição de Entropia-Cruzada (\textit{Cross-Entropy}), para isso, o primeiro passo, é utilizar as propriedades do logaritmo para reescrever da divergência KL, assim, tem-se:
+A divergência KL mede a ``perda'' ou o ``excesso'' de informação quando é utilizada uma distribuição $q$ para aproximar a distribuição real $q$. A partir dessa fórmula chegaremos na definição de entropia-cruzada. Primeiro, utilizamos as propriedades do logaritmo para reescrever da divergência KL em
 
 \[
     I(1:2) = I_{1:2}(X) = \int f_1 (x) (\log f_1 (x) - \log f_2 (x)) d\lambda (x)
 \]
 
-Em seguida, deve-se expandir a equação, utilizando a propriedade distributiva, encontrando então:
+Em seguida, utilizando a propriedade distributiva, nós expandimos a equação, encontrando
 
 \[
     I(1:2) = I_{1:2}(X) = \int f_1 (x) \log f_1 (x) - f_1 (x) \log f_2 (x) d \lambda (x)
 \]
 
-A partir dessa nova equação, o próximo passo é separar a integral em duas diferentes, chegando na expressão:
+A partir dessa nova equação, separamos a integral em duas diferentes, chegando na expressão
 
 \[
     I(1:2) = \int f_1 (x) \log f_1 (x) d\lambda (x) - \int f_1 (x) \log f_2 (x) d\lambda(x)
 \]
 
-Note que o primeiro termo é quase igual a fórmula proposta por Shannon para a Entropia, exceto por um sinal de menos, assim, o primeiro termo pode ser reescrito como $-H(f_1)$. Já o segundo termo é a própria definição de Entropia-Cruzada entre $f_1$ e $f_2$, portanto $H(f_1, f_2)$, o qual pode ser visto separadamente na Equação \ref{eq:cross-entropy}.
+O primeiro termo é quase igual a fórmula proposta por Shannon para a entropia, exceto por um sinal de menos, assim, o primeiro termo pode ser reescrito como $-H(f_1)$. Já o segundo termo é a própria definição de entropia-cruzada entre $f_1$ e $f_2$, portanto $H(f_1, f_2)$. A definição de entropia-cruzada está descrita na Equação~\ref{eq:cross-entropy}.
 
-\begin{equacaodestaque}{Entropia-Cruzada (\textit{Cross-Entropy})}
-    H(f_1, f_2) = \int f_1 (x) \log f_2 (x) d\lambda(x)
+\begin{equacaodestaque}{Entropia-cruzada}
+    H(f_1, f_2) = \int f_1 (x) \log f_2 (x) d\lambda(x)%
     \label{eq:cross-entropy}
 \end{equacaodestaque}
 
-Com base nesses dois termos, o da Entropia-Cruzada, e o da Entropia de Shannon, é possível mais uma vez reescrever a definição de xx agora utilizando os termos resumidos:
+Com base nesses dois termos, o da entropia-cruzada, e o da entropia de Shannon, reescrevemos mais uma vez a definição da Equação~\ref{eq:kl-divergence}, agora utilizando os termos resumidos. Temos então
 
 \[
     I(1:2) = H(f_1, f_2) - H(f_2)
 \]
 
-Ou também pode ser escrita como:
+que também pode ser escrita como
 
 \[
     D_{KL} (f_1 || f_2) = H(f_1, f_2) - H(f_1)
 \]
 
-Portanto, é possível dizer que a Divergência de Kullback-Leibler é a diferença entre a Entropia-Cruzada e a Entropia de Shannon. Reescrevendo a equação mais uma vez é possível chegar em:
+Dessa forma, dizemos que a divergência de Kullback-Leibler é a diferença entre a entropia-cruzada e a entropia de Shannon. Reescrevendo a equação mais uma vez é encontramos
 
 \[
     H(f_1, f_2) = H(f_1) + I(1:2)
 \]
 
-Essa equação nos diz que o custo real de codificar os dados usando um modelo imperfeito $H(f_1, f_2)$ é igual ao custo de codificar usando um modelo perfeito $H(f_1)$ mais uma penalidade extra pela diferença entre o modelo perfeito e imperfeito. Assim, é possível concluir que ao minimizar a Divergência KL, é o mesmo que minimizar a Entropia-Cruzada em cenários de aprendizado de máquina. Isso se dá pois como a Entropia dos dados reais é uma constante, ao reduzir a Entropia-Cruzada, é ao mesmo tempo forçar a redução da Divergência KL, isso aproxima mais o modelo dos dados da realidade.
+Essa equação nos diz que o custo real de codificar os dados usando um modelo imperfeito $H(f_1, f_2)$ é igual ao custo de codificar usando um modelo perfeito $H(f_1)$ mais uma penalidade extra pela diferença entre o modelo perfeito e imperfeito. Concluímos que minimizar a divergência KL, é o mesmo que minimizar a entropia-cruzada em cenários de aprendizado de máquina. Isso se dá pois como a Entropia dos dados reais é uma constante, ao reduzir a entropia-cruzada, é ao mesmo tempo forçar a redução da divergência KL, aproximando mais o modelo dos dados da realidade.
 
-A partir desses dois conceitos é possível conhecer melhor a função de perda \textit{Binary-Cross-Entropy}. Ela é dada pela Equação \ref{eq:binary-cross-entropy}. Note, que a definição da \textit{BCE} apresente grandes similaridades com Entropia-Cruzada, principalmente pelos primeiros termos $y \log (\hat{y})$, que é justamente a definição de Entropia-Cruzada.
+A partir desses dois conceitos chegamos finalmente na entropia-cruzada binária, o tópico principal desta seção. A BCE é dada pela Equação \ref{eq:binary-cross-entropy}. A sua fórmula calcula a perda de forma elegante, aplicando o cálculo de duas entropias cruzadas. A primeira, $y \log(\hat{y})$, calcula a distância de uma classe 0 com o retorno do modelo $\hat{y}$. A segunda, $(1 - y) \log(1 - \hat{y})$, calcula a distância para os casos em que está sendo analisada a classe 1. Dessa forma, em um cenário em que o resultado é a classe 0, a primeira entropia-cruzada é toda multiplicado por zero, sendo eliminada da fórmula. O mesmo vale para quando o resultado é a classe 1, em que a segunda entropia-cruzada passa a ser zero.
 
-\begin{equacaodestaque}{Entropia Cruzada Binária (\textit{BCE}) para um par de Amostras}
-    \Loss(y_j, \hat{y}_j) = -[y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y_j})]
+\begin{equacaodestaque}{Entropia-cruzada binária}
+    \mathcal{L}_{\text{BCE}} (y, \hat{y}) = -[y \log(\hat{y}) + (1 - y) \log(1 - \hat{y})]%
     \label{eq:binary-cross-entropy}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
 \begin{itemize}
-    \item $y_j$ representa o valor real para a saída;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
+    \item $y$ representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item $\hat{y}$ representa a probabilidade prevista para a amostra.
 \end{itemize}
 
-Perceba que a fórmula da entropia cruzada binária faz um uso muito inteligente para calcular a perda, ela aplica o cálculo de duas entropias cruzadas. Para isso, a primeira entropia cruzada $y_j \log(\hat{y}_j)$ calcula a distância de uma classe 0 com o retorno do modelo $\hat{y}_j$. A segunda entropia cruzada $(1 - y_j) \log(1 - \hat{y_j})$ faz o cálculo da distância para os casos em que está sendo analisada a classe 1. Dessa forma, em um cenário em que o resultado é a classe 0, a primeira entropia cruzada é toda multiplicado por zero, sendo eliminado da fórmula, o mesmo vale para quando o resultado é a classe 1, em que a segunda entropia cruzada passa a ser zero.
+Assim como visto no Capítulo~\ref{cap:perda-regressao}, neste capítulo representaremos as perdas para uma única predição. Contudo, no cenário de aprendizado de máquina, também podemos representar as perdas como a média do cálculo individual das perdas, como em
 
-\begin{equacaodestaque}{Entropia Cruzada Binária (\textit{BCE}) para $N$ Amostras}
-    \Loss_{BCE} = \frac{1}{N} \sum_{j=1}^{N} \Loss_{BCE} (y_j, \hat{y}_j)
-    \label{eq:binary-cross-entropy-para-n-amostras}
-\end{equacaodestaque}
+\[
+    \mathcal{L}_{\text{BCE}} = \frac{1}{N} \sum_{j=1}^{N} \mathcal{L}_{\text{BCE}} (y_j, \hat{y}_j)
+\]
 
-Em que:
+A BCE é utilizada em de aprendizado de máquina há um bom tempo. Um dos trabalhos que cita o uso dessa função para ser utilizada classificação binária é o \textit{Connectionist Learning Procedures}, nele, \textcite{HintonConnectionist} explica que ao minimizar a entropia-cruzada binária para as distribuições do resultado desejado e o atual resultado era semelhante a maximizar a a verossimilhança do modelo gerar as saídas corretas.
 
-\begin{itemize}
-    \item $y_j$ representa o valor real da j-ésima amostra;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
-    \item $N$ representa o número de amostras.
-\end{itemize}
-
-Além disso, a \textit{BCE} já vem sendo utilizada no contexto de aprendizado de máquina a um bom tempo. Um dos trabalhos que cita o uso dessa função para ser utilizada em cenários de classificação binária é o \textit{Connectionist Learning Procedures} de \textcite{HintonConnectionist}, em que o autor cita que ao minimizar a Entropia-Cruzada-Binária para as distribuições do resultado desejado e o atual resultado era semelhante a maximizar a a verossimilhança do modelo gerar as saídas corretas.
-
-Dito isso, o próximo passo para entender a \textit{BCE} é conhecer a sua representação gráfica, a qual está presente na Figura \ref{fig:binary-cross-entropy}. Note que o gráfico apresenta duas curvas, uma para a distribuição para a classe real, e outra para a distribuição para a classe de saídas do modelo. Perceba que o ponto de mínimo do gráfico é aquele em que as duas curvas se encontram, e com isso a distância entre as duas é mínima, e consequentemente a perda também será.
+O gráfico da entropia-cruzada binária apresenta duas curvas distintas, como evidenciado pela Figura~\ref{fig:binary-cross-entropy}. A primeira curva é responsável por indicar a probabilidade prevista pelo modelo para a classe zero. Enquanto a segunda, é referente à probabilidade prevista para a classe um. Elas são dependentes uma da outra, dado que a probabilidade para uma determinada classe será sempre 1 menos a probabilidade prevista para a outra classe.
 
 \begin{figure}
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={Probabilidade Prevista ($\hat{y}$)},
-            ylabel={Perda Calculada},
-            axis lines=left,              % Eixos no canto inferior esquerdo
-            grid=major,                   % Adiciona uma grade principal
-            grid style={dashed, gray!40},   % Estilo da grade
-            xmin=0, xmax=1,               % Limites do eixo x
-            ymin=0, ymax=5,               % Limites do eixo y
-            legend pos=north west,      % Posição da legenda
-            width=12cm,                   % Largura do gráfico
-            height=9cm,                   % Altura do gráfico
+            ylabel={Perda ($\mathcal{L}$)},
+            axis lines=left,            
+            grid=major,                
+            grid style={dashed, gray!40},  
+            xmin=0, xmax=1,             
+            ymin=0, ymax=5,             
+            legend pos=north west,     
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
         ]
-            % Curva para a classe real y=1
             \addplot[
-                domain=0.01:0.999, % Domínio para evitar log(0)
+                domain=0.01:0.999,
                 samples=100,
-                color=blue,
+                color=black,
                 very thick
             ] {-ln(x)};
-            \addlegendentry{Classe Real = 1 ($L = -\log(\hat{y})$)}
+            \addlegendentry{Classe 1 ($\mathcal{L} = -\log(\hat{y})$)}
 
-            % Curva para a classe real y=0
             \addplot[
-                domain=0.001:0.99, % Domínio para evitar log(0)
+                domain=0.001:0.99,
                 samples=100,
-                color=red,
-                very thick
+                color=black,
+                dashed
             ] {-ln(1-x)};
-            \addlegendentry{Classe Real = 0 ($L = -\log(1-\hat{y})$)}
+            \addlegendentry{Classe 0 ($\mathcal{L} = -\log(1-\hat{y})$)}
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Representação gráfica da função de perda Entropia-Cruzada-Binária (\textit{Binary-Cross-Entropy}).}
+    \caption{Visualizações da função de perda entropia-cruzada binária no plano.}
     \label{fig:binary-cross-entropy}
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características da entropia-cruzada binária}
 
-\subsubsection*{Características da Entropia Cruzada Binária}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A BCE é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y} \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Podemos garantir que a saída do modelo esteja em um intervalo $(0,1)$ utilizando a função de ativação sigmoide logística na última camada. Fazendo isso, asseguramos a diferenciabilidade da perda, facilitando a otimização por gradiente.
+    \item[Convexidade:] A BCE é \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Sendo uma função convexa, a perda apresentará apenas um ponto de mínimo global, com formato favorável a utilização de otimizadores baseados em gradiente. Contudo, não é possível garantir que a BCE continuará sendo convexa em modelos de aprendizado profundo, devido às transformações não-lineares que ocorrem nas camadas.
+    \item[Robustez:] A BCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Diferente das perdas para regressão, que podem ser sensível a \textit{outliers}, as perdas de classificação podem ser sensíveis a erros confiantes. Dado que a BCE possui a tendência de punir agressivamente erros confiantes, isso gera gradientes grandes em magnitude, podendo ocasionar explosões de gradientes.
+    \item[Origem na teoria da informação:] Como foi visto no início da seção a BCE está estritamente ligada com o conceito de Entropia de Shannon. \textcite{LossesArticle} explicam que essa função mede a distância entre duas distribuições de Bernoulli, a distribuição real $P(y)$ e a distribuição de predições $Q(y)$.
+    \item[Pune erros confiantes:] Quando $\hat{y}$ é perto de 1, mas o valor real é o oposto, neste caso, $y = 0$, o termo logarítmico $\log(\hat{y})$ ou $\log(1 - \hat{y})$ fica grande em magnitude, penalizando muito os erros confiantes. Essa relação também vale para o contrário, em que $\hat{y}$ é perto de 0, mas $y = 1$.
+    \item[Desbalanceamento de classes:] Em cenários que uma classe é significativamente mais presente que outra, a BCE pode gerar modelos enviesados \parencite{LossesArticle}. Como solução, é possível utilizar a função de perda entropia-cruzada binária ponderada (ver Seção~\ref{sec:binary-weighted-cross-entropy}), essa função busca resolver o problema do desbalanceamento de classes aplicando pesos para as diferentes classes do problema estudado.
+\end{description}
 
-Conhecendo como funcionam os princípios por trás da entropia-cruzada binária, além das suas fórmulas e gráficos, o próximo passo é discutir propriedades interessantes dessa função de perda. 
+\subsubsection*{Gradiente da entropia-cruzada binária}
 
-\begin{itemize}
-    \item \textbf{Origem na teoria da informação:} Como foi visto no início da seção a \textit{BCE} está estritamente ligada com o conceito de Entropia de Shannon. Além disso, como explicam \textcite{LossesArticle}, essa função é responsável por medir a distância entre duas distribuições de Bernoulli, a distribuição real $P(y)$ e a distribuição de predições $Q(y)$.
-    \item \textbf{Diferenciabilidade:} A \textit{BCE} é diferenciável em relação à $\hat{y}_j \in (0,1)$ \parencite{LossesArticle}. Assim, faz-se necessário utilizar na saída do modelo uma função que retorne valores apenas nesse intervalo. Aí entra a sigmoide logística como uma função ideal para resolver esse tipo de problema, pois sua saída está justamente nesse intervalo de diferenciabilidade da \textit{BCE}. 
-    \item \textbf{Pune erros confiantes:} \textcite{LossesArticle} explicam que quando $\hat{y}_j$ é perto de 1, mas o valor real é o oposto, neste caso, $y_j = 0$, o termo logarítmico $\log(\hat{y}j)$ ou $\log(1 - \hat{y}_j)$ fica grande em magnitude, penalizando muito os erros confiantes. Essa relação também vale para o contrário, em que $\hat{y}_j$ é perto de 0, mas $y_j = 1$.
-    \item \textbf{Desbalanceamento de classes:} Um último ponto que vale ser destacado sobre a função de perda \textit{binary cross-entropy} é que em cenários em que uma classe é significativamente mais presente que outra, a \textit{BCE} pode gerar modelos enviesados \footnote{Como uma possível solução para esse problema, é possível utilizar a função de perda \textit{binary weighted cross-entropy} (a qual está explica na Seção \ref{sec:binary-weighted-cross-entropy}), essa função busca resolver o problema do desbalanceamento de classes aplicando pesos para as diferentes classes do problema estudado.} \parencite{LossesArticle}.
-\end{itemize}
+A derivada parcial da entropia-cruzada em relação à predição está na Equação~\ref{eq:binary-cross-entropy-derivada}. É a partir dela que é formado o vetor gradiente, que será retropropagado por toda a rede, da camada de saída até a camada de entrada, ajustando os parâmetros do modelo.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-Sabendo dessas propriedades e caraterísticas da \textit{BCE}, é possível agora discutir a sua derivada. As derivadas das funções de perda são muito úteis para aqueles modelos que aprendem por meio da descida do gradiente. Pois, o primeiro gradiente a ser calculado, é o gradiente da perda para a camada de saída do modelo. Esse gradiente é então propagado para trás, no chamado \textit{backward-pass}, atualizando os pesos e vieses do modelo.
-
-A derivada da entropia cruzada binária pode ser vista na Equação \ref{eq:binary-cross-entropy-derivada}. Note que nessa expressão está sendo calculada a derivada com relação os valores preditos pelo modelo $\hat{y}_j$, mas também é calculada a derivada para os valores reais $y_j$, de forma que juntas, essas duas derivadas compõem o vetor gradiente.
-
-\begin{equacaodestaque}{Entropia Cruzada Binária (\textit{BCE}) Derivada}
-    \frac{\partial \Loss}{\partial \hat{y}_j} = \frac{\hat{y}_j - y_j}{\hat{y}_j(1 - \hat{y})_j}
+\begin{equacaodestaque}{Gradiente da entropia-cruzada binária em relação à predição}
+    \nabla_{\hat{y}} \mathcal{L}_{\text{BCE}} (y, \hat{y}) = \frac{\hat{y} - y}{\hat{y}(1 - \hat{y})}
     \label{eq:binary-cross-entropy-derivada}
 \end{equacaodestaque}
 
-Também vale a pena discutir o gráfico da derivada da entropia cruzada binária, para isso, ele está representado na Figura \ref{fig:binary-cross-entropy-derivada}.
+Essa equação explicita o motivo da BCE não ser Lipschitz-contínua, pois quando $\hat{y}$ for um valor muito pequeno e $y = 1$ temos
+
+\[
+    \lim_{\hat{y} \to 0} \frac{\hat{y} - 1}{\hat{y}(1 - \hat{y})} = - \infty
+\]
+
+Analogamente, quando $\hat{y}$ for um valor próximo de 1 e $y = 0$ temos
+
+\[
+    \lim_{\hat{y} \to 0} \frac{1}{(1 - \hat{y})} = + \infty
+\]
+
+Assim, uma maneira de tratar a explosão do gradiente ao calcular a derivada da perda é utilizar a sigmoide na camada de saída. Visto que a sigmoide irá garantir que as saídas do modelo estejam no intervalo $[0, 1]$, além disso, ao combinar essa função de ativação com a BCE é garantido um cálculo mais simples para o gradiente. Essa nova derivada está representada na Equação~\ref{eq:bce-derivada-com-sigmoide}, o gradiente torna-se a diferença da predição com o valor real.
+
+\begin{equacaodestaque}{Gradiente da entropia-cruzada binária em relação à predição com sigmoide logística}
+    \nabla_{\hat{y}} \mathcal{L}_{\text{BCE}} (y, \hat{y}) = \hat{y} - y
+    \label{eq:bce-derivada-com-sigmoide}
+\end{equacaodestaque}
+
+Esse gradiente será sempre limitado, pois $\hat{y}$ está entre 0 e 1 e $y$ é 1 ou 0, de forma que o gradiente estará no intervalo $[-1, 1]$.
+
+Essa situação na qual ocorre a explosão do gradiente está apresentada na Figura~\ref{fig:binary-cross-entropy}. Existem duas assíntotas verticais em 0 e 1 no gráfico, indicando que o gradiente cresce indefinidamente quando se aproxima desses pontos.
 
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={Probabilidade Prevista ($\hat{y}$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial \hat{y}}$)},
+            ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
             xmin=-0.1, xmax=1.1,
-            ymin=-15, ymax=15, % Aumentar o range do y para ver a assíntota
+            ymin=-30, ymax=30, % Aumentar o range do y para ver a assíntota
             legend pos=outer north east,
-            width=12cm,
-            height=9cm,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -201,79 +200,66 @@ Também vale a pena discutir o gráfico da derivada da entropia cruzada binária
             % Derivada para a classe real y=1
             % Fórmula: (y_hat - 1) / (y_hat * (1 - y_hat)) = -1 / y_hat
             \addplot[
-                domain=0.05:1, % Domínio para evitar divisão por zero
+                domain=0.005:1, % Domínio para evitar divisão por zero
                 samples=100,
-                color=blue,
+                color=black,
                 very thick
             ] {-1/x};
-            \addlegendentry{Classe Real = 1 ($\frac{\hat{y}-1}{\hat{y}(1-\hat{y})}$)}
+            \addlegendentry{Classe 1}
 
             % Derivada para a classe real y=0
             % Fórmula: (y_hat - 0) / (y_hat * (1 - y_hat)) = 1 / (1 - y_hat)
             \addplot[
-                domain=0:0.95, % Domínio para evitar divisão por zero
+                domain=0:0.99, % Domínio para evitar divisão por zero
                 samples=100,
-                color=red,
-                very thick
+                color=black,
+                dashed
             ] {1/(1-x)};
-            \addlegendentry{Classe Real = 0 ($\frac{\hat{y}}{\hat{y}(1-\hat{y})}$)}
+            \addlegendentry{Classe 0}
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Representação gráfica da derivada da função de perda Entropia-Cruzada-Binária.}
+    \caption{Visualização do gradiente de perda entropia-cruzada binária.}
     \label{fig:binary-cross-entropy-derivada}
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações da Entropia-Cruzada Binária em Problemas de Classificação Binária}%
+\subsubsection*{Aplicações da entropia-cruzada binária}%
 \index{Aplicações práticas! Entropia Cruzada Binária}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-Visto a entropia cruzada binária, agora pode ser discutido uma variante dessa função, a \textit{binary weighted cross-entropy} (\textit(WCE)), que busca corrigir um dos pontos fracos da \textit{BCE} original: o desbalanceamento de classes.
+\medskip
 
-\subsection{Entropia Cruzada Ponderada Binária (Binary Weighted Cross-Entropy -WCE)}%
-\index{Funções de Perda!Entropia Cruzada Ponderada Binária (WCE)}%
+Como dito na seção de propriedades da perda BCE, ela apresenta a tendência de enviesar o aprendizado do modelo em cenários em que um classe é mais comum que a outra. Nestes casos, uma solução é utilizar a sua versão ponderada, a entropia-cruzada binária ponderada.
+
+\subsection{Entropia-cruzada binária ponderada (WBCE)}%
+\index{Funções de Perda!Entropia-cruzada binária ponderada (WBCE)}%
 \label{sec:binary-weighted-cross-entropy}
 
-Uma variante da entropia-cruzada binária é a entropia cruzada ponderada binária (\textit{WCE}), ela tem como principal objetivo ser utilizada em casos em que uma classe é mais presente que outra \parencite{LossesArticle}. Para isso, essa função atribui pesos para as diferentes classes, assim, a classe que é menos presente é possui um peso maior, dessa forma, o modelo que está sendo treinado consegue "prestar mais atenção" nas classes menos frequentes. \textcite{LossesArticle} explicam que essa é uma função utilizada em cenários em que os erros são caros e críticos.
+A \textbf{entropia-cruzada binária ponderada}, também chamada de \textbf{\textit{weighted binary cross-entropy}} (\textbf{WBCE}), é uma função de perda para classificação binária que tem como objetivo ser utilizada em casos de desbalanceamento de classes nos dados. Para fazer isso, a BCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-weighted-cross-entropy}. A classe menos presente recebe um peso maior, consequentemente seu gradiente também será maior em magnitude, forçando o modelo a aprender mais sobre os detalhes da classe em minoria. textcite{LossesArticle} explicam que a WBCE é utilizada em casos que os erros são caros e críticos.
 
-Dessa forma, é possível escrever a \textit{binary weighted cross-entropy} como a Equação \ref{eq:binary-weighted-cross-entropy}.
-
-\begin{equacaodestaque}{Entropia Cruzada Ponderada Binária (\textit{WCE})}
-    \Loss_{WCE} (y_j, \hat{y}_j) = - [\alpha_1 y_j \log (\hat{y}_j) + \alpha_0 (1 - y_j) \log (1 - \hat{y}_j)]
+\begin{equacaodestaque}{Entropia-cruzada binária ponderada}
+    \mathcal{L}_{\text{WBCE}} (y, \hat{y}) = - [\alpha_1 y \log (\hat{y}) + \alpha_0 (1 - y) \log (1 - \hat{y})]
     \label{eq:binary-weighted-cross-entropy}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{itemize}
-    \item $y_j$ representa o valor real da j-ésima amostra;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
-    \item $N$ representa o número de amostras.
-    \item $\alpha_1$
-    \item $\alpha_2$
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item $y$ representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item $\hat{y}$ representa a probabilidade prevista para a amostra.
+    \item[$N$] representa o número de amostras;
+    \item[$\alpha_0$] representa o peso para a classe 0;
+    \item[$\alpha_1$] representa o peso para a classe 1.
+\end{description}
 
-Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuídos para cada uma das classes, dessa forma, a perda geral é obtida ao calcular a média com base de $N$ amostras, assim, é possível escrever como na Equação \ref{eq:binary-weighted-cross-entropy-para-n-amostras}.
 
-\begin{equacaodestaque}{Entropia Cruzada Ponderada Binária  (\textit{WCE}) para $N$ Amostras}
-    \Loss_{WCE} = \frac{1}{N} \sum_{j = 1}^{N} \Loss_{WCE} (y_j, \hat{y}_j)
-    \label{eq:binary-weighted-cross-entropy-para-n-amostras}
-\end{equacaodestaque}
-
-É possível ver o gráfico da \textit{binary weighted cross-entropy} na Figura \ref{fig:comparativo-entropia-cruzada-ponderada-binaria}. Na Figura \ref{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-1} é mostrada uma situação em que o valor de $\alpha_0$ é consideravelmente maior que o de $\alpha_1$, resultando em um gráfico parecido com o da \textit{BCE} original, mas neste caso com o ponto de mínimo deslocado para à esquerda. Já na Figura \ref{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-0}, é possível ver a situação inversa $\alpha_0 \gg \alpha_1$, nesse caso, o ponto de mínimo está deslocado para a direta do gráfico, indicando que provavelmente está sendo trabalhado com mais elementos da classe 0.
+Conforme são ajustados os hiperparâmetros $\alpha_0$ e $\alpha_1$, o gráfico que antes era simétrico, passa a apresentar uma curva maior que a outra. Como a Figura~\ref{fig:comparativo-entropia-cruzada-ponderada-binaria} mostra, a curva que atinge uma menor altura é a que apresenta um baixo valor para o peso $\alpha$, e vice-versa. Essa característica é essencial para permitir um gradiente em maior magnitude e com isso um melhor aprendizado da classe em desvatagem numérica.
 
 \begin{figure}[h!]
     \centering
@@ -284,9 +270,8 @@ Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuíd
             \def\alphaZero{5.0} % Peso alto para a classe 0
             \def\alphaUm{1.0}   % Peso normal para a classe 1
             \begin{axis}[
-                title={WCE com $\alpha_0=5.0, \alpha_1=1.0$},
                 xlabel={Probabilidade Prevista ($\hat{y}$)},
-                ylabel={Perda Calculada},
+                ylabel={Perda $\mathcal{L}$},
                 axis lines=left,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -300,18 +285,18 @@ Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuíd
             ]
                 % Curva para y=1
                 \addplot[
-                    domain=0.01:0.999, samples=100, color=blue, thick
+                    domain=0.01:0.999, samples=100, color=black, very thick
                 ] {-\alphaUm*ln(x)};
-                \addlegendentry{$y=1$ ($L = -1.0 \cdot \log(\hat{y})$)}
+                \addlegendentry{$y=1$}
 
                 % Curva para y=0
                 \addplot[
-                    domain=0.001:0.99, samples=100, color=red, very thick
+                    domain=0.001:0.99, samples=100, color=black, dashed
                 ] {-\alphaZero*ln(1-x)};
-                \addlegendentry{$y=0$ ($L = -5.0 \cdot \log(1-\hat{y})$)}
+                \addlegendentry{$y=0$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Alto peso para a classe 0.}
+        \caption{Alto peso para a classe 0 ($\alpha_0=5.0, \alpha_1=1.0$).}
         \label{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-0}
     \end{subfigure}
     \hfill 
@@ -321,9 +306,8 @@ Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuíd
             \def\alphaZero{1.0} % Peso normal para a classe 0
             \def\alphaUm{5.0}   % Peso alto para a classe 1
             \begin{axis}[
-                title={WCE com $\alpha_0=1.0, \alpha_1=5.0$},
                 xlabel={Probabilidade Prevista ($\hat{y}$)},
-                ylabel={Perda Calculada},
+                ylabel={Perda $\mathcal{L}$},
                 axis lines=left,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -337,47 +321,55 @@ Neste caso, os valores de $\alpha_1$ e $\alpha_0$ representam os pesos atribuíd
             ]
                 % Curva para y=1
                 \addplot[
-                    domain=0.01:0.999, samples=100, color=blue, very thick
+                    domain=0.01:0.999, samples=100, color=black, very thick
                 ] {-\alphaUm*ln(x)};
-                \addlegendentry{$y=1$ ($L = -5.0 \cdot \log(\hat{y})$)}
+                \addlegendentry{$y=1$}
 
                 % Curva para y=0
                 \addplot[
-                    domain=0.001:0.99, samples=100, color=red, thick
+                    domain=0.001:0.99, samples=100, color=black, dashed
                 ] {-\alphaZero*ln(1-x)};
-                \addlegendentry{$y=0$ ($L = -1.0 \cdot \log(1-\hat{y})$)}
+                \addlegendentry{$y=0$}
             \end{axis}
         \end{tikzpicture}
-        \caption{Alto peso para a classe 1.}
+        \caption{Alto peso para a classe 1 ($\alpha_0=1.0, \alpha_1=5.0$).}
         \label{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-1}
     \end{subfigure}
     
-    \caption{Comparação da Entropia Cruzada Ponderada (\textit{WCE}) alterando os pesos $\alpha_0$ e $\alpha_1$.}
+    \caption{Visualizações da função de perda entropia-cruda binária ponderada para diferentes valores de $\alpha_0$ e $\alpha_1$ }
     \label{fig:comparativo-entropia-cruzada-ponderada-binaria}
 \end{figure}
+\subsubsection*{Características da entropia-cruzada binária ponderada}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+Por ser uma variante da BCE, a entropia-cruzada binária ponderada herda suas características da função primária. 
 
-\subsubsection*{Características da Entropia Cruzada Binária Ponderada}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A WBCE é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Dessa forma, ao utilizar a WBCE tanto com otimizadores baseados em gradiente, quanto em otimizadores de segunda ordem, não serão encontrados problemas de não-diferenciabilidade, facilitando a aplicação desses métodos.
+    \item[Convexidade:] A WBCE é uma função \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Esta é uma vantagem para a WBCE caso seja combinada com otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, sua convexidade pode ser afetada caso seja utilizada em redes neurais.
+    \item[Robustez:] A WBCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Assim como BCE, erros confiantes do modelo podem enviesar o treinamento, gerando explosões de gradientes e o mal ajuste dos parâmetros da rede.
+\end{description}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Gradiente da entropia-cruzada binária ponderada}
 
-Também cabe analisar a derivada da entropia cruzada ponderada binária, a qual é dada pela Equação \ref{eq:binary-cross-entropy-derivada}. Perceba que o resultado é parecido com o da entropia cruzada binária, mas neste caso, adicionando os pesos $\alpha_0$ e $\alpha_1$.
+A derivada parcial da WBCE em relação à predição é calculada através da Equação~\ref{eq:binary-weighted-cross-entropy-derivada}. Sua fórmula é semelhante à da BCE com a adição dos hiperparâmetros $\alpha$ que são tratados como constantes na diferenciação da Equação~\ref{eq:binary-weighted-cross-entropy}.
 
-\begin{equacaodestaque}{Entropia Cruzada Ponderada Binária (\textit{WCE}) Derivada}
-    \frac{\partial \Loss_{WCE}}{\partial \hat{y}_j} = \frac{\alpha_0(1-y_j)\hat{y}_j - \alpha_1 y_j(1-\hat{y}_j)}{\hat{y}_j(1-\hat{y}_j)}
+\begin{equacaodestaque}{Gradiente da entropia-cruzada binária ponderada em relação à predição}
+    \nabla_{\hat{y}} \mathcal{L}_{\text{WBCE}} = \frac{\alpha_0(1-y)\hat{y} - \alpha_1 y(1-\hat{y})}{\hat{y}(1-\hat{y})}
     \label{eq:binary-weighted-cross-entropy-derivada}
 \end{equacaodestaque}
 
-Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, dado pela Figura \ref{fig:binary-weighted-cross-entropy-derivada-comparacao}, neste caso, é a partir do gráfico da derivada que é possível ter uma ideia de qual é o tamanho da correção que deve ser feita para que o modelo atinja métricas melhores. Na Figura \ref{fig:binary-weighted-cross-entropy-derivada-comparacao}, é possível ver dois gráficos diferentes, começando pelo da esquerda, a Figura \ref{fig:wce-derivada-alpha0}, é mostrado o gráfico de uma função \textit{WCE} em que há uma maior presença de itens da classe 1, e como consequência $\alpha_0 > \alpha_1$, isso gera um deslocamento da curva de erros da classe 1 mais próxima do eixo das abscissas. Já na Figura \ref{fig:wce-derivada-alpha1}, ocorre o contrário, há mais itens da classe 0, e consequentemente $\alpha_1 > \alpha_0$, assim, a curva de erros da classe 0 fica mais próxima do eixo $x$.
+De forma semelhante à BCE, a WBCE pode ser aplicada em conjunto com a sigmoide logística garantir a saída do modelo no intervalo $[0,1]$ e com isso, evitar o problema dos gradientes explosivos. Essa variante da derivada está na Equação~\ref{eq:wbce-gradiente-com-simgoide}.
+
+\begin{equacaodestaque}{Gradiente da entropia-cruzada binária ponderada em relação à predição}
+    \frac{\nabla}{\nabla \hat{y}} \mathcal{L}_{\text{WBCE}} = 
+        \begin{cases}
+            \alpha_0 \cdot \hat{y} & \text{se} \quad y = 0 \\
+            \alpha_1 \cdot (\hat{y} - 1) & \text{se} \quad y = 1 \\
+        \end{cases}
+    \label{eq:wbce-gradiente-com-simgoide}
+\end{equacaodestaque}
+
+Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} apresenta, as curvas do gradiente da WBCE também são assimétricas. A curva mais alta, é que possui o maior valor de $\alpha$. Ao gerar um gradiente em maior magnitude para a classe em minoria, a WBCE permite uma variação maior na atualização dos parâmetros para esse classe. A classe em maioria aparece mais, e consequentemente gera mais atualizações nos pesos e vieses. Ao adicionar pesos, a WBCE garante que as duas classes recebam o mesmo grau de importância. Essa ideia é parecida com a dos otimizadores baseados em gradientes adaptativos, como o AdaGrad, vistos no Capítulo~\ref{cap:retropropagacao-gradiente}.
 
 \begin{figure}[h!]
     \centering
@@ -389,7 +381,7 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
             \begin{axis}[
                 title={Derivada da WCE com $\alpha_0=5.0, \alpha_1=1.0$},
                 xlabel={Probabilidade Prevista ($\hat{y}$)},
-                ylabel={Gradiente da Perda},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -403,15 +395,15 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
             ]
                 % Derivada para y=1
                 \addplot[
-                    domain=0.02:1, samples=100, color=blue, thick
+                    domain=0.02:1, samples=100, color=black, very thick
                 ] {-\alphaUm/x};
-                \addlegendentry{$y=1$ ($-\frac{1.0}{\hat{y}}$)}
+                \addlegendentry{$y=1$}
 
                 % Derivada para y=0
                 \addplot[
-                    domain=0:0.98, samples=100, color=red, very thick
+                    domain=0:0.98, samples=100, color=black, dashed
                 ] {\alphaZero/(1-x)};
-                \addlegendentry{$y=0$ ($\frac{5.0}{1-\hat{y}}$)}
+                \addlegendentry{$y=0$}
             \end{axis}
         \end{tikzpicture}
         \caption{Gradiente amplificado para erros na classe 0.}
@@ -426,7 +418,7 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
             \begin{axis}[
                 title={Derivada da WCE com $\alpha_0=1.0, \alpha_1=5.0$},
                 xlabel={Probabilidade Prevista ($\hat{y}$)},
-                ylabel={Gradiente da Perda},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -440,47 +432,38 @@ Tendo a derivada da (\textit{WCE}) o próximo passo é conhecer o seu gráfico, 
             ]
                 % Derivada para y=1
                 \addplot[
-                    domain=0.02:1, samples=100, color=blue, very thick
+                    domain=0.02:1, samples=100, color=black, very thick
                 ] {-\alphaUm/x};
-                \addlegendentry{$y=1$ ($-\frac{5.0}{\hat{y}}$)}
+                \addlegendentry{$y=1$}
 
                 % Derivada para y=0
                 \addplot[
-                    domain=0:0.98, samples=100, color=red, thick
+                    domain=0:0.98, samples=100, color=black, dashed
                 ] {\alphaZero/(1-x)};
-                \addlegendentry{$y=0$ ($\frac{1.0}{1-\hat{y}}$)}
+                \addlegendentry{$y=0$}
             \end{axis}
         \end{tikzpicture}
         \caption{Gradiente amplificado para erros na classe 1.}
         \label{fig:wce-derivada-alpha1}
     \end{subfigure}
     
-    \caption{Comparação da derivada da Entropia Cruzada Ponderada (\textit{WCE}).}
+    \caption{Comparação do gradiente da entropia-cruzada ponderada para diferentes valores de $\alpha_0$ e $\alpha_1$.}
     \label{fig:binary-weighted-cross-entropy-derivada-comparacao}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Aplicações da entropia-cruzada binária ponderada}%
+\index{Aplicações práticas! Entropia-cruzada binária ponderada}
 
-\subsubsection*{Algumas Aplicações da Entropia-Cruzada Ponderada Binária em Problemas de Classificação Binária}%
-\index{Aplicações práticas! Entropia Cruzada Ponderada Binária}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\subsection{Perda Hinge (Hinge loss)}%
+\index{Funções de Perda!Perda hinge}
 
-\subsection{Perda Hinge (Hinge Loss)}%
-\index{Funções de Perda!Perda Hinge}
-
-A Hinge Loss é uma função de perda que está relacionada com o uso de máquinas de vetores de suporte (\textit{SVMs}), ela aparece pela primeira vez no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. É possível fazer a sua dedução para entender melhor o problema que os pesquisadores estavam analisando ao desenvolver o trabalho. No artigo \textcite{HingeLoss} começam introduzindo um problema em que analisam dados que não podem ser separados sem erros, de forma que eles querem então separar esses dados gerando a menor quantidade possível de erros. Para isso, os autores introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$. 
-
-Assim, \textcite{HingeLoss} querem minimizar uma função da forma:
+A \textbf{perda \textit{hinge}} é função de perda para de máquinas de vetores de suporte de classificação, sendo proposta no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. No trabalho, \textcite{HingeLoss} introduzem um problema os dados analisados podem ser separados sem erros, de forma que os autores querem então separar esses dados gerando a menor quantidade possível de erros. Para isso, \textcite{HingeLoss} introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$, e também a função que querem minimizar, denotada por
 
 \[
     `\Phi ' = \sum_{i = 1}^l \xi_i^{\sigma}
@@ -496,44 +479,43 @@ Para $\sigma > 0$, são sujeitas as restrições:
     \xi \ge 0, i = 1, 2, \cdots, l
 \]
 
-Perceba então que para que $\xi$ siga as restrições propostas, ele deve ser maior ou igual as restrições, e como ele deve ser o menor possível para minimizar o erro, o menor que ele pode ser é o máximo entre 0 e $1 - y(\textbf{w} \cdot \textbf{x}_i + b)$. É possível então escrever algo da forma:
+Para que $\xi$ siga as restrições propostas, ele deve ser maior ou igual às restrições. Como ele deve ser o menor possível para minimizar o erro, seu menor tamanho é o máximo entre 0 e $1 - y(\textbf{w} \cdot \textbf{x}_i + b)$. Escrevemos algo da forma
 
 \[
     \xi = \max (0, 1 - y(\textbf{w} \cdot \textbf{x}_i + b))
 \]
 
-Essa função encontrada ao buscar o mínimo entre esses dois termos, é justamente a Hinge Loss, que agora pode ser expressa com as notações do livro na Equação \ref{eq:hinge-loss}.
+Essa função encontrada ao buscar o mínimo entre esses dois termos, ficou conhecida como \textbf{\textit{hinge loss}}. A Equação~\ref{eq:hinge-loss} descreve essa função com as notações desta obra.
 
-\begin{equacaodestaque}{Hinge Loss}
-    \Loss_{\text{Hinge}}(y, f(x)) = \max(0, 1 - y \cdot f(x))
+\begin{equacaodestaque}{Perda hinge}
+    \mathcal{L}_{\text{hinge}} (y, f(x)) = \max(0, 1 - y \cdot f(x))
     \label{eq:hinge-loss}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{itemize}
-    \item $y$ representa os rótulos dos dados, e também segue o formato $y \in {-1, +1}$
-    \item $f(x)$ representa a saída bruta do modelo ou a função de decisão (geralmente the signed distance da barreira de decisão)
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item[$f(x)$] representa a saída bruta do modelo ou a função de decisão (geralmente the signed distance da barreira de decisão)
+\end{description}
 
 \textcite{LossesArticle} explicam que para calcular a margem para uma amostra $x$, deve ser calculado o produto $yf(x)$, uma classificação correta com uma margem suficiente gera um resultado positivo para esse produto, reduzindo a perda para zero.
 
-Cabe também discutir o gráfico dessa função de perda, o qual é dado pela Figura \ref{fig:hinge-loss}. Perceba que diferente do gráfico da \textit{binary cross-entropy} que fazia uso de logaritmos e por isso apresentava curvas suaves, a \textit{hinge loss} utilizada a função $\max$ e equação da reta, como consequência, o seu gráfico é composto por duas retas que se cruzam no ponto de mínimo.
+Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos logaritmos, a Figura~\ref{fig:hinge-loss} evidencia que a perda \textit{hinge} é composta por retas.
 
 \begin{figure}
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função de Perda: Hinge Loss},
             xlabel={Saída Bruta do Modelo ($f(x)$)},
-            ylabel={Perda Calculada},
-            axis lines=middle,          % Eixos centrados em (0,0)
-            grid=major,                 % Adiciona uma grade principal
-            grid style={dashed, gray!40}, % Estilo da grade
-            xmin=-3.5, xmax=3.5,        % Limites do eixo x
-            ymin=-0.5, ymax=4.5,         % Limites do eixo y
-            legend pos=north west,      % Posição da legenda
-            width=12cm,                 % Largura do gráfico
-            height=9cm,                 % Altura do gráfico
+            ylabel={Perda ($\mathcal{L}$)},
+            axis lines=middle,    
+            grid=major,             
+            grid style={dashed, gray!40},
+            xmin=-3.5, xmax=3.5,      
+            ymin=-0.5, ymax=4.5,       
+            legend pos=north west,    
+            width=\linewidth,
+            height=7cm,             
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -542,19 +524,19 @@ Cabe também discutir o gráfico dessa função de perda, o qual é dado pela Fi
             \addplot[
                 domain=-3:3, 
                 samples=100, 
-                color=blue, 
+                color=black, 
                 very thick
             ] {max(0, 1-x)};
-            \addlegendentry{Classe Real = 1 ($L=\max(0, 1-f(x))$)}
+            \addlegendentry{Classe Real = 1}
 
             % Curva para a classe real y=-1
             \addplot[
                 domain=-3:3, 
                 samples=100, 
-                color=red, 
-                very thick
+                color=black, 
+                dashed
             ] {max(0, 1+x)};
-            \addlegendentry{Classe Real = -1 ($L=\max(0, 1+f(x))$)}
+            \addlegendentry{Classe Real = -1}
             
             % Opcional: Linhas tracejadas para marcar as margens
             \draw[dashed, gray!70] (axis cs:1, 0) -- (axis cs:1, 4.5);
@@ -564,81 +546,133 @@ Cabe também discutir o gráfico dessa função de perda, o qual é dado pela Fi
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Representação gráfica da função de perda Hinge Loss.}
+    \caption{Visualização da função de perda \textit{hinge} no plano.}
     \label{fig:hinge-loss}
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características da perda hinge}
 
-\subsubsection*{Características da \textit{Hinge Loss}}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda \textit{hinge} é uma função de classe $C^0$, \textbf{contínua} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Por utilizar a função $\max$ em sua fórmula, essa função de perda apresenta uma ``quinas'' em seu relevo, fazendo com que a perda \textit{hinge} não seja totalmente suave. Um fato que pode dificultar a otimização utilizando métodos de segunda ordem.
+    \item[Convexidade:] A perda \textit{hinge} é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). A função $\max$ une duas funções convexas, garantindo como resultado uma função também convexa. Ao utilizar a perda \textit{hinge} em máquinas de vetores de suporte, é possível garantir um único ponto de mínimo.
+    \item[Robustez:] A perda Hinge é uma função 1-Lipschitz-contínua, portanto, é \textbf{robusta a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Ao derivar a perda \textit{hinge} e calcular o seu gradiente no infinito, é visto que ele não cresce indefinidamente. Pelo contrário, ele fica constante em 1.
+    \item[Esparsidade:] Semelhante a perda $\epsilon$-insensível (ver Seção-xx) a perda \textit{hinge} promove gradientes esparsos (ver Apêndice-xx). Isso se dá devido à uma zona de perda zero que ocorre com o objetivo  
+\end{description}
 
-Visto como surgiu a \textit{hinge loss}, sua equação e seu gráfico, é possível agora discutir algumas propriedades dessa função de perda:
+\subsubsection*{Gradiente da perda Hinge}
 
-\begin{itemize}
-    \item \textbf{Maximização de margem:} Como explicam \textcite{LossesArticle}, a \textit{hinge loss} força que a predição esteja correta ($\text{sign} (f(x)) = y$) mas também que a margem $[f(x)]$ seja pelo menos 1, uma predição correta mas com uma margem menor que 1 continua gerando uma perda positiva.
-    \item \textbf{Penalidade linear:} Perceba pelo gráfico da Figura \ref{fig:hinge-loss} que essa função é composta por duas retas. Quando o cálculo dos termos $yf(x)$ é menor que 1, a \textit{hinge loss} aumenta de forma linear com a distância $1-yf(x)$, essa penalidade linear geralmente é responsável por gerar gradientes mais esparsos \parencite{LossesArticle}.
-\end{itemize}
+Da perda \textit{hinge} calculamos o seu gradiente em relação à saída bruta do modelo $f(x)$, o qual é dado através de uma função por partes. Como essa função apresenta um ponto de não-diferenciabilidade no caso $y \cdot f(x) = 1$ utilizamos o subgradiente para definir o intervalo de resultados possíveis para a derivada neste ponto. Essa derivada está na Equação~\ref{eq:hinge-loss-derivada}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-Também cabe destacar a derivada dessa função de perda, para calculá-la deve-se derivar as duas funções, as quais vão gerar uma função escrita através de chaves, como a mostrada na Equação \ref{eq:hinge-loss-derivada}.
-
-\begin{equacaodestaque}{Derivada da Hinge Loss}
-    \frac{\partial \Loss}{\partial f(x)} = 
+\begin{equacaodestaque}{Gradiente da perda Hinge em relação à saída bruta do modelo}
+    \nabla_{f(x)} \mathcal{L} = 
     \begin{cases} 
       -y & \text{se } y \cdot f(x) < 1 \\
-      0 & \text{se } y \cdot f(x) \ge 1
+      0 & \text{se } y \cdot f(x) > 1 \\
+      [-y, 0] & \text{se } y \cdot f(x) = 1
     \end{cases}
     \label{eq:hinge-loss-derivada}
 \end{equacaodestaque}
 
-Além da \textit{hinge loss} tradicional, existe uma variante que faz uso de um expoente ao quadrado para calcular a perda. Dessa forma, a perda consegue crescer de forma mais rápida e com isso aumentar a penalização dos erros. Essa é a \textit{squared hinge loss}, a qual está apresentada na seção seguinte.
+Na prática, as bibliotecas tratam esses pontos de não-diferenciabilidade escolhendo um dos dois lados para garantir um valor definido. Isso pode ser visto em xx 
 
-\subsubsection*{Algumas Aplicações da Hinge Loss em Problemas de Classificação Binária}%
-\index{Aplicações práticas! Hinge Loss}
-
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
-
-\subsection{Squared Hinge Loss}
-
-A fórmula da \textit{squared hinge loss} não difere muito da \textit{hinge loss} tradicional, neste caso, essa variante eleva ao quadrado todo o resultado da perda calculada pela \textit{hinge loss}. Ela pode ser vista na Equação \ref{eq:squared-hinge-loss}.
-
-\begin{equacaodestaque}{Squared Hinge Loss}
-    \Loss_{\text{Squared Hinge}}(y, f(x)) = (\max(0, 1 - y \cdot f(x)))^2
-    \label{eq:squared-hinge-loss}
-\end{equacaodestaque}
-
-Por utilizar um termo ao quadrado para calcular a perda, o seu gráfico também muda. Como pode ser visto na Figura \ref{fig:squared-hinge-loss}, ele agora apresenta um comportamento mais suave, além disso, os seus valores agora crescem de forma mais rápida que a \textit{hinge loss} tradicional, fazendo com que ela lide com os erros de forma mais severa que sua versão tradicional.
+Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade de Lipschitz, a Figura~\ref{fig:hinge-loss-derivada-grafico} trás essa propriedade de forma gráfica. Na derivada, a perda \textit{hinge} deixa de ser duas retas conectas e torna-se uma espécie de degrau unitário para o cálculo do gradiente.
 
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função de Perda: Squared Hinge Loss},
+            width=\linewidth,  
+            height=7cm,
             xlabel={Saída Bruta do Modelo ($f(x)$)},
-            ylabel={Perda Calculada},
+            ylabel={Gradiente ($\nabla_{f(x)} \mathcal{L}$)},
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
             xmin=-3.5, xmax=3.5,
-            ymin=-0.5, ymax=9.5,         % Aumentei o ymax para acomodar as parábolas
+            ymin=-1.5, ymax=1.5, % Ajustado para mostrar valores negativos e positivos
+            ytick={-1, 0, 1},    % Mostra apenas os valores relevantes no eixo Y
             legend pos=north west,
-            width=12cm,
-            height=9cm,
+            title style={font=\bfseries},
+            label style={font=\small},
+            tick label style={font=\scriptsize}
+        ]
+        
+            % --- CASO 1: Classe Real y = +1 ---
+            % Se f(x) < 1, gradiente é -1. Se f(x) > 1, gradiente é 0.
+            \addplot[
+                domain=-3.5:3.5, 
+                samples=200, 
+                color=black, 
+                very thick
+            ] {
+                (x < 1) * -1 + (x >= 1) * 0
+            };
+            \addlegendentry{Para $y = 1$}
+
+            % --- CASO 2: Classe Real y = -1 ---
+            % Se f(x) > -1, o erro cresce com x, logo gradiente é +1.
+            % Se f(x) < -1, o erro é 0, logo gradiente é 0.
+            \addplot[
+                domain=-3.5:3.5, 
+                samples=200, 
+                color=black, 
+                dashed,
+                thick
+            ] {
+                (x > -1) * 1 + (x <= -1) * 0
+            };
+            \addlegendentry{Para $y = -1$}
+
+            % Linhas verticais de guia para as margens (opcional, ajuda a leitura)
+            \draw[dotted, gray] (axis cs:1, -1.5) -- (axis cs:1, 1.5);
+            \draw[dotted, gray] (axis cs:-1, -1.5) -- (axis cs:-1, 1.5);
+            
+            % Labels pequenos para indicar onde a margem "quebra"
+            \node[below, gray, font=\tiny] at (axis cs:1, 0) {Margem (+1)};
+            \node[below, gray, font=\tiny] at (axis cs:-1, 0) {Margem (-1)};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Relação linear por partes do gradiente da função de perda \textit{hinge}.}
+    \label{fig:hinge-loss-derivada-grafico}
+    \fonte{O autor (2025).}
+\end{figure}
+
+\subsubsection*{Aplicações da perda hinge}%
+\index{Aplicações práticas! Perda hinge}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
+
+\subsection{Perda hinge quadrática}
+
+A fórmula da perda Hinge quadrática não difere muito da perda Hinge tradicional, neste caso, essa variante eleva ao quadrado todo o resultado da perda calculada pela perda Hinge. Ela pode ser vista na Equação \ref{eq:squared-hinge-loss}.
+
+\begin{equacaodestaque}{Perda hinge quadrática}
+    \mathcal{L}_{\text{squared hinge}}(y, f(x)) = (\max(0, 1 - y \cdot f(x)))^2
+    \label{eq:squared-hinge-loss}
+\end{equacaodestaque}
+
+Por utilizar um termo ao quadrado para calcular a perda, o seu gráfico também muda. Como pode ser visto na Figura \ref{fig:squared-hinge-loss}, ele agora apresenta um comportamento mais suave, além disso, os seus valores agora crescem de forma mais rápida que a perda Hinge tradicional, fazendo com que ela lide com os erros de forma mais severa que sua versão tradicional.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Saída Bruta do Modelo ($f(x)$)},
+            ylabel={Perda ($\mathcal{L}$)},
+            axis lines=middle,
+            grid=major,
+            grid style={dashed, gray!40},
+            xmin=-3.5, xmax=3.5,
+            ymin=-0.5, ymax=9.5,       
+            legend pos=north west,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -647,7 +681,7 @@ Por utilizar um termo ao quadrado para calcular a perda, o seu gráfico também 
             \addplot[
                 domain=-3:3, 
                 samples=201, % Aumentei os samples para uma curva mais suave
-                color=blue, 
+                color=black, 
                 very thick
             ] {(max(0, 1-x))^2}; % Adicionado o ^2
             \addlegendentry{Classe Real = 1 ($L=(\max(0, 1-f(x)))^2$)}
@@ -656,8 +690,8 @@ Por utilizar um termo ao quadrado para calcular a perda, o seu gráfico também 
             \addplot[
                 domain=-3:3, 
                 samples=201, 
-                color=red, 
-                very thick
+                color=black, 
+                dashed
             ] {(max(0, 1+x))^2}; % Adicionado o ^2
             \addlegendentry{Classe Real = -1 ($L=(\max(0, 1+f(x)))^2$)}
             
@@ -669,35 +703,25 @@ Por utilizar um termo ao quadrado para calcular a perda, o seu gráfico também 
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Representação gráfica da função de perda Squared Hinge Loss.}
+    \caption{Visualização da função perda hinge quadrática no plano.}
     \label{fig:squared-hinge-loss}
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características da perda hinge quadrática}
 
-\subsubsection*{Características da \textit{Hinge Loss}}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda Hinge quadrática é uma função de classe $C^1$, \textbf{suave} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}).
+    \item[Convexidade:] A perda Hinge quadrática é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}).
+    \item[Robustez:] A perda Hinge quadrática não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica})..
+\end{description}
 
-\begin{itemize}
-    \item \textbf{Característica 1:}
-    \item \textbf{Característica 2:}
-    \item \textbf{Característica 3:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Gradiente da perda hinge quadrática}
 
 Para calcular a sua derivada deve-se aplicar a regra da cadeia, separando então termo ao quadrado da função perda hinge tradicional. De forma que ao fazer isso é possível encontrar a Equação \ref{eq:squared-hinge-loss-derivada}.
 
-\begin{equacaodestaque}{Derivada da Squared Hinge Loss}
-    \frac{\partial \Loss{\text{Squared Hinge}}}{\partial f(x)} = 
+\begin{equacaodestaque}{Gradiente da perda hinge quadrática}
+    \nabla_{f(x)} \mathcal{L}_{\text{squared hinge}} = 
     \begin{cases} 
         -2y(1 - y \cdot f(x)) & \text{se } y \cdot f(x) < 1 \\
         0 & \text{se } y \cdot f(x) \ge 1
@@ -705,23 +729,22 @@ Para calcular a sua derivada deve-se aplicar a regra da cadeia, separando então
     \label{eq:squared-hinge-loss-derivada}
 \end{equacaodestaque}
 
-De forma semelhante ao que foi feito com as outras funções até agora, é possível plotar o gráfico da derivada da \textit{hinge loss}. Ele está representado na Figura \ref{fig:squared-hinge-loss-derivada}. Note, que diferente do gráfico da \textit{hinge loss} em que a correção a ser feita é dada de forma constante, a derivada da \textit{squared hinge loss} é calculada de forma linear.
+De forma semelhante ao que foi feito com as outras funções até agora, é possível plotar o gráfico da derivada da perda Hinge. Ele está representado na Figura \ref{fig:squared-hinge-loss-derivada}. Note, que diferente do gráfico da perda Hinge em que a correção a ser feita é dada de forma constante, a derivada da perda Hinge quadrática é calculada de forma linear.
 
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Squared Hinge Loss},
             xlabel={Saída Bruta do Modelo ($f(x)$)},
-            ylabel={Gradiente da Perda ($\frac{\partial L}{\partial f(x)}$)},
+            ylabel={Gradiente da Perda ($\nabla_{f(x)} \mathcal{L}$)},
             axis lines=middle,
             grid=major,
             grid style={dashed, gray!40},
             xmin=-3.5, xmax=3.5,
             ymin=-8.5, ymax=8.5,         % Ajustar o y para a escala linear da derivada
             legend pos=north west,
-            width=12cm,
-            height=9cm,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -731,7 +754,7 @@ De forma semelhante ao que foi feito com as outras funções até agora, é poss
             \addplot[
                 domain=-3:3, 
                 samples=10, 
-                color=blue, 
+                color=black, 
                 very thick
             ] {(x < 1) ? (2*(x-1)) : 0};
             \addlegendentry{Classe Real = 1}
@@ -741,8 +764,8 @@ De forma semelhante ao que foi feito com as outras funções até agora, é poss
             \addplot[
                 domain=-3:3, 
                 samples=10, 
-                color=red, 
-                very thick
+                color=black, 
+                dashed
             ] {(x > -1) ? (2*(x+1)) : 0};
             \addlegendentry{Classe Real = -1}
             
@@ -759,60 +782,45 @@ De forma semelhante ao que foi feito com as outras funções até agora, é poss
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Aplicações da perda hinge quadrática}%
+\index{Aplicações práticas! Perda hinge quadrática}
 
-\subsubsection*{Algumas Aplicações da Perda Hinge Quadrática em Problemas de Classificação Binária}%
-\index{Aplicações práticas! Squared Hinge Loss}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\section{Funções de perda para classificação multi-classe}
 
-\section{Funções de Perda para Classificação Multi-Classe}
+\subsection{Exemplo ilustrativo:}
 
-\subsection{Exemplo Ilustrativo:}
+\subsection{Entropia-cruzada categórica (CCE)}%
+\index{Funções de Perda!Entropia-cruzada categórica (CCE)}
 
-\subsection{Entropia Cruzada Categórica (Categorical Cross-Entropy - CCE)}%
-\index{Funções de Perda!Entropia Cruzada Categórica (CCE)}
-
-Entendido os conceitos de entropia cruzada binária, o próximo passo é conhecer a entropia cruzada categórica, uma das funções de perda que se é utilizada para resolver problemas de classificação multi-classe. Para isso, a \textit{CCE} estende o conceito da \textit{BCE} para lidar com $y_i \in {0,1}^C$ em uma representação \textit{one-hot} entre $C$ diferentes classes \parencite{LossesArticle}. Dessa forma, diferente da entropia cruzada binária em que haviam dois cálculos de entropia-cruzada que eram então subtraídos para chegar na perda para um conjunto $(y_j, \hat{y}_j)$, a \textit{CCE} faz uso de múltiplas entropias-cruzadas, uma para cada classe, as quais são somadas chegando então na perda.
+Entendido os conceitos de entropia cruzada binária, o próximo passo é conhecer a entropia cruzada categórica, uma das funções de perda que se é utilizada para resolver problemas de classificação multi-classe. Para isso, a CCE estende o conceito da BCE para lidar com $y_i \in {0,1}^C$ em uma representação \textit{one-hot} entre $C$ diferentes classes \parencite{LossesArticle}. Dessa forma, diferente da entropia cruzada binária em que haviam dois cálculos de entropia-cruzada que eram então subtraídos para chegar na perda para um conjunto $(y_j, \hat{y}_j)$, a CCE faz uso de múltiplas entropias-cruzadas, uma para cada classe, as quais são somadas chegando então na perda.
 
 Considerando um conjunto $\hat{y}_j = [\hat{y}_{j,1}, \dots, \hat{y}_{j,C}]$ que se refere a distribuição de probabilidade para uma amostra $j$, a entropia cruzada categórica por amostra é dada então pela Equação \ref{eq:categorical-cross-entropy-per-sample}.
 
-\begin{equacaodestaque}{Entropia Cruzada Categórica (\textit{CCE}) para uma Amostra $j$}
-    \Loss_{CCE}(y_j, \hat{y}_j) = - \sum_{c=1}^{C} y_{j,c} \log(\hat{y}_{j,c})
+\begin{equacaodestaque}{Entropia-cruzada categórica}
+    \mathcal{L}_{CCE} (y, \hat{y}) = - \sum_{c=1}^{C} y_c \log(\hat{y}_c)
     \label{eq:categorical-cross-entropy-per-sample}
 \end{equacaodestaque}
 
-Em que:
+Em que
 
-\begin{itemize}
-    \item $y_j$ representa o valor real da j-ésima amostra;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
-    \item $N$ representa o número de amostras.
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y_j$] representa o valor real da j-ésima amostra;
+    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+    \item[$N$] representa o número de amostras.
+\end{description}
 
-De forma que ao calcular a média sobre $n$ amostras é possível chegar na Equação \ref{eq:categorical-cross-entropy-per-n-samples}, que representa a perda entropia cruzada categórica para $n$ amostras.
-
-\begin{equacaodestaque}{Entropia Cruzada Categórica (\textit{CCE}) para $n$ Amostras}
-    \Loss_{CCE}(\theta) = - \frac{1}{n} \sum_{i = 1}^n \sum_{c=1}^C y_{j, c} \log(\hat{y}_{j,c})
-    \label{eq:categorical-cross-entropy-per-n-samples}
-\end{equacaodestaque}
-
-Considerando essas duas fórmulas, é possível também analisar o gráfico da entropia cruzada categórica, o qual está representado na Figura \ref{fig:categorical-cross-entropy}. Neste caso, está sendo representado o gráfico de apenas uma das funções $-\log(\hat{y}_k)$, mas o gráfico real da \textit{CCE} é mais complexo, pois seria o resultado da soma de um conjunto de funções $-\log(\hat{y}_k)$, impendido a plotagem do gráfico real.
+Considerando essas duas fórmulas, é possível também analisar o gráfico da entropia cruzada categórica, o qual está representado na Figura \ref{fig:categorical-cross-entropy}. Neste caso, está sendo representado o gráfico de apenas uma das funções $-\log(\hat{y}_k)$, mas o gráfico real da CCE é mais complexo, pois seria o resultado da soma de um conjunto de funções $-\log(\hat{y}_k)$, impendido a plotagem do gráfico real.
 
 \begin{figure}
 
     \begin{tikzpicture}
         \begin{axis}[
-            title={Função de Perda: Entropia Cruzada Categórica},
             xlabel={Probabilidade Prevista para a Classe Correta ($\hat{y}_k$)},
             ylabel={Perda Calculada},
             axis lines=left,              % Eixos no canto inferior esquerdo
@@ -821,8 +829,8 @@ Considerando essas duas fórmulas, é possível também analisar o gráfico da e
             xmin=0, xmax=1.05,            % Limites do eixo x
             ymin=0, ymax=5,               % Limites do eixo y
             legend pos=north east,        % Posição da legenda
-            width=12cm,                   % Largura do gráfico
-            height=9cm,                   % Altura do gráfico
+            width=\linewidth,
+            height=7cm,           
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -831,7 +839,7 @@ Considerando essas duas fórmulas, é possível também analisar o gráfico da e
             \addplot[
                 domain=0.01:1, % Domínio para evitar log(0)
                 samples=100,
-                color=purple,
+                color=black,
                 very thick
             ] {-ln(x)};
             
@@ -840,40 +848,31 @@ Considerando essas duas fórmulas, é possível também analisar o gráfico da e
         \end{axis}
     \end{tikzpicture}
 
-    \caption{Representação gráfica da função de perda Entropia Cruzada Categórica (\textit{Categorical Cross Entropy}).}
+    \caption{Visualização da função de perda entropia-cruzada categórica no plano.}
     \label{fig:categorical-cross-entropy}
     \fonte{O autor (2025).}
 
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características da entropia-cruzada categórica}
 
-\subsubsection*{Características da Entropia Cruzada Categórica}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A CCE é de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Convexidade:] A CCE é \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Robustez:] A CCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Saída softmax:] Semelhante a função de entropia cruzada binária, a qual aceitava valores entre 0 e 1 e por isso precisava de ser utilizada junto com funções como a sigmoide logística, a entropia cruzada categórica também tem seus requisitos. Como um modelo de rede neural geralmente retorna como saída \textit{logits} $z_i \in \mathbb{R}^C$, ao utilizar uma função \textit{softmax} é possível garantir que a $\sum_{j} \hat{p}_{i,j} = 1$, ou seja, que xxxx \parencite{LossesArticle}.
+    \item[Penalização alta para erros confiantes:] Como \textcite{LossesArticle} explicam, a entropia cruzada categórica segue a mesma ideia da entropia cruzada binária, de forma que essa função também tem como propriedade punir os erros confiantes de forma mais elevada.
+    \item[Requisitos \textit{one-hot}] Como dito anteriormente a CCE aceita um vetor em formato \textit{one-hot}, isso significa que os valores tanto para $y_j$ quanto para $\hat{y}_j$ devem estar em formato de probabilidade, estando em valores entre zero e um \footnote{Para trabalhar com valores em que os rótulos estão organizados com valores inteiros é possível utilizar uma variante da \textit{categorical cross-entropy}: a \textit{sparse cross-entropy}. Essa função está melhor explicada na Seção \ref{sec:sparse-cross-entropy}}.
+\end{description}
 
-Considerando esses cenários, agora cabe destacar algumas características dessa função de perda:
-
-\begin{itemize}
-    \item \textbf{Saída softmax:} Semelhante a função de entropia cruzada binária, a qual aceitava valores entre 0 e 1 e por isso precisava de ser utilizada junto com funções como a sigmoide logística, a entropia cruzada categórica também tem seus requisitos. Como um modelo de rede neural geralmente retorna como saída \textit{logits} $z_i \in \mathbb{R}^C$, ao utilizar uma função \textit{softmax} é possível garantir que a $\sum_{j} \hat{p}_{i,j} = 1$, ou seja, que xxxx \parencite{LossesArticle}.
-    \item \textbf{Penalização alta para erros confiantes:} Como \textcite{LossesArticle} explicam, a entropia cruzada categórica segue a mesma ideia da entropia cruzada binária, de forma que essa função também tem como propriedade punir os erros confiantes de forma mais elevada.
-    \item \textbf{Requisitos \textit{one-hot}}: Como dito anteriormente a \textit{CCE} aceita um vetor em formato \textit{one-hot}, isso significa que os valores tanto para $y_j$ quanto para $\hat{y}_j$ devem estar em formato de probabilidade, estando em valores entre zero e um \footnote{Para trabalhar com valores em que os rótulos estão organizados com valores inteiros é possível utilizar uma variante da \textit{categorical cross-entropy}: a \textit{sparse cross-entropy}. Essa função está melhor explicada na Seção \ref{sec:sparse-cross-entropy}}.
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Gradiente da entropia-cruzada categórica}
 
 É possível também discutir a derivada da entropia cruzada categórica, pois ela trás uma discussão interessante. Como dito anteriormente, na maioria das vezes a saída da última camada de um modelo de classificação multi-classe é adicionada a função de ativação \textit{softmax}, permitindo que os valores da saída se enquadrem no intervalo ${0, 1}$, como consequência, é possível simplificar o cálculo do gradiente para essa função. 
 
 Antes é lembrar da fórmula da \textit{softmax}, a qual é dada pela Equação \ref{eq:perdas-softmax}.
 
 \begin{equation}
-    \text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
+    \mathcal{A}_{\text{softmax}}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
     \label{eq:perdas-softmax}
 \end{equation}
 
@@ -969,10 +968,10 @@ Aplicando a distributiva:
     -y_i + y_i \hat{y}_i + \hat{y}_i - y_i \hat{y}_i
  \]
 
- Perceba que os termos $y_i \hat{y}_i $ e $y_i \hat{y}_i$ se cancelam, então é possível chegar na expressão \ref{eq:category-cross-entropy-derivada}. A qual representa a derivada da \textit{categorical cross-entropy} para um cenário em que o último componente do modelo é a função de ativação softmax. Note que ao invés de ser uma derivada complexa como nos outros casos vistos até agora, a derivada da \textit{CCE} passa a ser apenas o cálculo da diferença entre os valores preditos e os valores reais.
+ Perceba que os termos $y_i \hat{y}_i $ e $y_i \hat{y}_i$ se cancelam, então é possível chegar na expressão \ref{eq:category-cross-entropy-derivada}. A qual representa a derivada da \textit{categorical cross-entropy} para um cenário em que o último componente do modelo é a função de ativação softmax. Note que ao invés de ser uma derivada complexa como nos outros casos vistos até agora, a derivada da CCE passa a ser apenas o cálculo da diferença entre os valores preditos e os valores reais.
 
-\begin{equacaodestaque}{Derivada da Entropia Cruzada Categórica para a Softmax}
-    \frac{\partial \Loss}{\partial z_i} = \hat{y}_i - y_i
+\begin{equacaodestaque}{Gradiente entropia-cruzada categórica para a Softmax}
+    \nabla_{z_i} \mathcal{L} (y, \hat{y}) = \hat{y}_i - y_i
     \label{eq:category-cross-entropy-derivada}
 \end{equacaodestaque}
 
@@ -982,7 +981,6 @@ Note também que a que essa simplificação dos cálculos para a derivada na ent
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Derivada da Entropia Cruzada Categórica com Softmax},
             xlabel={Probabilidade Prevista para a Classe $i$ ($\hat{y}_i$)},
             ylabel={Gradiente da Perda ($\frac{\partial L}{\partial z_i}$)},
             axis lines=middle,             % Eixos centrados em (0,0)
@@ -991,8 +989,8 @@ Note também que a que essa simplificação dos cálculos para a derivada na ent
             xmin=-0.1, xmax=1.1,           % Limites do eixo x
             ymin=-1.1, ymax=1.1,           % Limites do eixo y
             legend pos=north west,         % Posição da legenda
-            width=12cm,                    % Largura do gráfico
-            height=9cm,                    % Altura do gráfico
+            width=\linewidth,
+            height=7cm,                   % Altura do gráfico
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
@@ -1002,7 +1000,7 @@ Note também que a que essa simplificação dos cálculos para a derivada na ent
             \addplot[
                 domain=0:1,
                 samples=10,
-                color=blue,
+                color=black,
                 very thick
             ] {x - 1};
             \addlegendentry{Classe Correta ($y_i=1 \implies \hat{y}_i - 1$)}
@@ -1012,8 +1010,8 @@ Note também que a que essa simplificação dos cálculos para a derivada na ent
             \addplot[
                 domain=0:1,
                 samples=10,
-                color=red,
-                very thick
+                color=black,
+                dashed
             ] {x};
             \addlegendentry{Classe Incorreta ($y_i=0 \implies \hat{y}_i - 0$)}
             
@@ -1026,136 +1024,98 @@ Note também que a que essa simplificação dos cálculos para a derivada na ent
 
 Caso a \textit{categorical cross entropy} não seja utilizada em conjunto com a função de ativação \textit{softmax} na saída do modelo, a sua derivada passa a ser um pouco mais complexa, sendo representada pela Equação \ref{eq:categorical-cross-entropy-derivada}.
 
-\begin{equacaodestaque}{Derivada da Entropia Cruzada Categórica (em relação à previsão)}
-    \frac{\partial \Loss}{\partial \hat{y}_i} = -\frac{y_i}{\hat{y}_i}
+\begin{equacaodestaque}{Gradiente da entropia-cruzada categórica em relação à predição}
+    \nabla_{\hat{y}_i} \mathcal{L}_{\text{CCE}} = -\frac{y_i}{\hat{y}_i}
     \label{eq:categorical-cross-entropy-derivada}
 \end{equacaodestaque}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações da Entropia-Cruzada Categórica em Problemas de Classificação Multi-Classe}%
+\subsubsection*{Aplicações da entropia-cruzada categórica}%
 \index{Aplicações práticas! Entropia Cruzada Categórica}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-Conhecida a \textit{CCE}, uma das principais funções de perda para ser utilizada para problemas de classificação multi-classe, é possível se perguntar: O que acontece se os dados não estiverem codificados em formato \textit{one-hot}? Para contornar esse problema, uma solução é utilizar a \textit{sparse categorical cross-entropy}, a qual será explicada em sequência.
+Conhecida a CCE, uma das principais funções de perda para ser utilizada para problemas de classificação multi-classe, é possível se perguntar: O que acontece se os dados não estiverem codificados em formato \textit{one-hot}? Para contornar esse problema, uma solução é utilizar a \textit{sparse categorical cross-entropy}, a qual será explicada em sequência.
 
-\subsection{Entropia Cruzada Categórica Esparsa (Sparse Categorical Cross-Entropy)}%
-\index{Funções de Perda!Entropia Cruzada Categórica Esparsa (Sparese CCE)}%
+\subsection{Entropia-cruzada categórica esparsa (Sparse CCE)}%
+\index{Funções de Perda!Entropia-cruzada categórica esparsa (Sparse CCE)}%
 \label{sec:sparse-cross-entropy}
 
 A entropia cruzada categórica esparsa é utilizada para os cenários em que os rótulos das classes são dados em inteiros $y_j \in {1, 2, \cdots C}$ \parencite{LossesArticle}. A \textit{sparse CCE} para um conjunto de individual de predição é dada pela Equação \ref{eq:sparse-categorical-cross-entropy-per-sample}
 
-\begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa (\textit{Esparse CCE}) para uma Amostra $j$}
-    \Loss_{\text{sparse CCE}}(y_j, \hat{y}_j) = - \sum_{c=1}^{C} y_{j,c} \log(\hat{y}_{j,c})
+\begin{equacaodestaque}{Entropia-cruzada categórica esparsa para uma amostra $j$}
+    \mathcal{L}_{\text{sparse CCE}}(y, \hat{y}) = - \sum_{c=1}^{C} y_c \log(\hat{y}_c)
     \label{eq:sparse-categorical-cross-entropy-per-sample}
-\end{equacaodestaque}
-
-Já para um conjunto maior de amostras, o cálculo da perda é dado de forma semelhante à \textit{CCE}, calculando as médias das perdas, como na Equação \ref{eq:sparse-categorical-cross-entropy-per-n-samples}
-
-\begin{equacaodestaque}{Entropia Cruzada Categórica Esparsa (Sparse \textit{CCE}) para $n$ Amostras}
-    \Loss_{\text{sparse CCE}}(\theta) = - \frac{1}{n} \sum_{i = 1}^n \sum_{c=1}^C y_{j, c} \log(\hat{y}_{j,c})
-    \label{eq:sparse-categorical-cross-entropy-per-n-samples}
 \end{equacaodestaque}
 
 Perceba que as fórmulas da \textit{sparse categorical cross entropy} são iguais as da sua versão para rótulos codificados para formato \textit{one-hot}, por isso os seus gráficos também serão iguais, assim, o próximo passo é discutir algumas das características dessa função de perda.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características da entropia-cruzada categórica esparsa}
 
-\subsubsection*{Características da Entropia Cruzada Categórica Esparsa}
-
-\begin{itemize}
-    \item \textbf{Eficiência:} \textcite{LossesArticle} explicam que em problemas de classificação com um grande número de classes, a codificação \textit{one-hot} pode ser memória-intensiva, ao utilizar a \textit{sparse CCE}, os seus indexes que já apontam diretamente para a probabilidade conseguem escapar de trabalhar com dados em formato \textit{one-hot}.
-    \item \textbf{Similaridades com a \textit{CCE}:} A \textit{sparse CCE} possui grandes similaridades com a \textit{CCE} original, isso significa que vantagens como a diferenciabilidade e a penalização de erros muito confiantes que são características da \textit{categorical cross entropy}, também estão presentes na sua versão esparsa.
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A CCE esparsa é de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Convexidade:] A CCE esparsa é \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Robustez:] A CCE esparsa não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Eficiência:] \textcite{LossesArticle} explicam que em problemas de classificação com um grande número de classes, a codificação \textit{one-hot} pode ser memória-intensiva, ao utilizar a \textit{sparse CCE}, os seus indexes que já apontam diretamente para a probabilidade conseguem escapar de trabalhar com dados em formato \textit{one-hot}.
+    \item[Similaridades com a CCE:]  A \textit{sparse CCE} possui grandes similaridades com a CCE original, isso significa que vantagens como a diferenciabilidade e a penalização de erros muito confiantes que são características da \textit{categorical cross entropy}, também estão presentes na sua versão esparsa.
+\end{description}
 
 Além dessa variante, a \textit{categorical cross-entropy} possui uma versão que faz uso de pesos para as classes, buscando trabalhar com casos em que existe uma presença maior de algumas classes do que de outras. Essa é a \textit{weighted categorical cross-entropy}, que será vista em seguida.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações da Entropia-Cruzada Categórica Esparsa em Problemas de Classificação Multi-Classe}%
+\subsubsection*{Aplicações da Entropia-Cruzada Categórica Esparsa}%
 \index{Aplicações práticas! Entropia Cruzada Categórica Esparsa}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-\subsection{Weighted Categorical Cross-Entropy (WCCE)}%
-\index{Funções de Perda!Wighted Categorical Cross-Entropy (WCCE)}
+\subsection{Entropia-cruzada categórica ponderada (WCCE)}%
+\index{Funções de Perda!Entropia-cruzada categórica ponderada (WCCE)}
 
 A fórmula da \textit{weighted categorical cross-entropy} lembra bastante a fórmula da \textit{weighted binary cross-entropy}, pois sua única diferença com a variante original é a adição de um peso multiplicando o erro para aquela classe. Essa função de perda para uma amostra $j$ é dada pela Equação \ref{eq:weighted-categorical-cross-entropy-per-sample}.
 
-\begin{equacaodestaque}{Entropia Cruzada Categórica Ponderada (\textit{WCCE}) para uma Amostra $j$}
-    \Loss_{\text{WCCE}}(y_j, \hat{y}_j) = - \sum_{c=1}^{C} \alpha y_{j,c} \log(\hat{y}_{j,c})
+\begin{equacaodestaque}{Entropia-cruzada categórica Ponderada}
+    \mathcal{L}_{\text{WCCE}}(y, \hat{y}) = - \sum_{c=1}^{C} \alpha y_c \log(\hat{y}_c)
     \label{eq:weighted-categorical-cross-entropy-per-sample}
 \end{equacaodestaque}
 
-De forma semelhante as outras funções, é possível expandir essa fórmula para calcular a perda para um conjunto $n$ de amostras, para isso, é feito o cálculo da média das perdas individuais, como é mostrado na Equação \ref{eq:weighted-categorical-cross-entropy}.
+Em que
 
-\begin{equacaodestaque}{Entropia Cruzada Categórica Ponderada (\textit{CWCE}) para $n$ Amostras}
-    \Loss_{\text{WCCE}}(\theta) = - \frac{1}{n} \sum_{i = 1}^n \sum_{c=1}^C \alpha_n y_{j, c} \log(\hat{y}_{j,c})
-    \label{eq:weighted-categorical-cross-entropy}
-\end{equacaodestaque}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y_j$] representa o valor real da j-ésima amostra;
+    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
+    \item[$N$] representa o número de amostras.
+\end{description}
 
-Em que:
+\subsubsection*{Características da entropia-cruzada categórica ponderada}
 
-\begin{itemize}
-    \item $y_j$ representa o valor real da j-ésima amostra;
-    \item $\hat{y}_j$ representa o valor predito pelo modelo;
-    \item $N$ representa o número de amostras.
-\end{itemize}
-
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A WCCE é de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Convexidade:] A WCCE é \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Robustez:] A WCCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+\end{description}
 
 Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possível utilizar a sua variante multi-classe para ser trabalhada em cenários em que uma classe, ou um grupo de classes aparece de forma mais frequente que outro.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações da Entropia-Cruzada Categórica Ponderada em Problemas de Classificação Multi-Classe}%
+\subsubsection*{Aplicações da Entropia-Cruzada Categórica Ponderada}%
 \index{Aplicações práticas! Entropia Cruzada Categórica Ponderada}
-\vspace{1em}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-\section{Multilabel Loss}%
+\section{Perda multi-rótulo (multilabel loss)}%
 \index{Funções de Perda!Multilabel Loss}
 
-\begin{equacaodestaque}{Perda para Classificação Multirrótulo}
-    \Loss_{\text{Multilabel}} = - \sum_{j=1}^{q} [y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y}_j)]
+\begin{equacaodestaque}{Perda multi-rótulo}
+    \mathcal{L}_{\text{multilabel}} = - \sum_{j=1}^{q} [y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y}_j)]
     \label{eq:multilabel-loss}
 \end{equacaodestaque}
 
@@ -1172,53 +1132,43 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
             xmin=0, xmax=1,
             ymin=0, ymax=5,
             legend pos=north west,
-            width=12cm,
-            height=9cm,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
         ]
             % Curva para quando o rótulo está presente (y_j = 1)
             \addplot[
-                domain=0.01:0.999, samples=100, color=blue, very thick
+                domain=0.01:0.999, samples=100, color=black, very thick
             ] {-ln(x)};
             \addlegendentry{Rótulo Presente ($y_j=1$)}
 
             % Curva para quando o rótulo está ausente (y_j = 0)
             \addplot[
-                domain=0.001:0.99, samples=100, color=red, very thick
+                domain=0.001:0.99, samples=100, color=black, dashed
             ] {-ln(1-x)};
             \addlegendentry{Rótulo Ausente ($y_j=0$)}
             
         \end{axis}
     \end{tikzpicture}
-    \caption{A perda multirrótulo é a soma das contribuições de cada rótulo individual, que se comportam como a BCE.}
+    \caption{A perda multi-rótulo é a soma das contribuições de cada rótulo individual, que se comportam como a BCE.}
     \label{fig:multilabel-loss}
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características da perda multi-rótulo}
 
-\subsubsection*{Características da Perda Multirotulo}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda multi-rótulo uma função de classe $C^\infty$, \textbf{infinitamente diferenciável}, no hipercubo aberto $(0, 1)^q$ (ver Apêndice~\ref{ap:deducoes-multilabel-loss}).
+    \item[Convexidade:] A perda multi-rótulo é uma função \textbf{convexa} em relação ao vetor de predições $\mathbf{\hat{y}}$ (ver Apêndice~\ref{ap:deducoes-multilabel-loss}).
+    \item[Robustez:] A perda multi-rótulo não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-multilabel-loss}).
+\end{description}
 
-\begin{itemize}
-    \item \textbf{Característica 1:}
-    \item \textbf{Característica 2:}
-    \item \textbf{Característica 3:}
-\end{itemize}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Gradiente da perda multi-rótulo}
 
 \begin{equacaodestaque}{Derivada da Perda Multirrótulo}
-    \frac{\partial \Loss_{\text{Multilabel}}}{\partial z_i} = \hat{y}_i - y_i
+    \nabla_{z_i} \mathcal{L}_{\text{Multilabel}}= \hat{y}_i - y_i
     \label{eq:multilabel-loss-derivada}
 \end{equacaodestaque}
 
@@ -1235,18 +1185,18 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
             xmin=-0.1, xmax=1.1,
             ymin=-1.1, ymax=1.1,
             legend pos=north west,
-            width=12cm,
-            height=9cm,
+            width=\linewidth,
+            height=7cm,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
         ]
             % Curva para rótulo presente (y_i = 1)
-            \addplot[domain=0:1, samples=10, color=blue, very thick] {x - 1};
+            \addplot[domain=0:1, samples=10, color=black, very thick] {x - 1};
             \addlegendentry{Rótulo Presente ($y_i=1$)}
 
             % Curva para rótulo ausente (y_i = 0)
-            \addplot[domain=0:1, samples=10, color=red, very thick] {x};
+            \addplot[domain=0:1, samples=10, color=black, dashed] {x};
             \addlegendentry{Rótulo Ausente ($y_i=0$)}
             
         \end{axis}
@@ -1256,23 +1206,16 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
     \fonte{O autor (2025).}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações da Perda Multirótulo em Problemas de Classificação Multi-Label}%
+\subsubsection*{Aplicações da perda multi-rótulo}%
 \index{Aplicações práticas! Multi-label}
 
-\begin{itemize}
-    \item \textbf{Aplicação 1 (Área):}
-    \item \textbf{Aplicação 2 (Área):}
-    \item \textbf{Aplicação 3 (Área):}
-    \item \textbf{Aplicação 4 (Área):}
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):]
+    \item[Aplicação 2 (Área):]
+    \item[Aplicação 3 (Área):]
+\end{description}
 
-\section{Comparativo: Funções de Perda para Classificação}
+\section{Comparativo: funções de perda para classificação}
 
 \begin{table}[htbp]
     \centering
@@ -1286,13 +1229,13 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
             \toprule
             \textbf{Função} & \textbf{Principais Características} \\
             \midrule
-            Entropia Cruzada Binária (\textit{BCE}) & - \\
+            Entropia Cruzada Binária (BCE) & - \\
             \addlinespace
-            Entropia Cruzada Ponderada Binária (\textit{WBCE}) & - \\
+            entropia cruzada binária ponderada (\textit{WBCE}) & - \\
             \addlinespace
-            Perda de Hinge (\textit{Hinge Loss}) & - \\
+            Perda Hinge (\textit{Hinge Loss}) & - \\
             \addlinespace
-            Entropia Cruzada Categórica (\textit{CCE}) & -  \\
+            Entropia Cruzada Categórica (CCE) & -  \\
             \addlinespace
             Entropia Cruzada categórica Esparsa (\textit{Sparse CCE}) & - \\
             \addlinespace
