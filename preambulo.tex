@@ -75,11 +75,11 @@
 % A classe abntex2 já define margens padrão ABNT, use para sobrescrever se necessário.
 \usepackage{geometry}
 \geometry{
-    a4paper,
-    left=2.5cm,
-    right=1.5cm,
-    top=2cm,
-    bottom=2cm
+  a4paper,
+  left=3cm,
+  right=2cm,
+  top=3cm,
+  bottom=2cm
 }
 
 % --- CONFIGURAÇÃO DO HYPERREF ---
@@ -289,48 +289,9 @@
 % --- Definição da Cor ---
 % Vamos definir uma cor "tech". Um azul ou cinza escuro funciona bem.
 % (Valores RGB de 0 a 255)
-\definecolor{ChapterTechBlue}{RGB}{0, 82, 155} 
 
 \usepackage{titlesec}
 \usepackage{xcolor} % Para definir as cores
-
-\definecolor{black}{RGB}{0, 0, 0} 
-
-% --- Formatação do Capítulo ---
-\titleformat{\chapter}[display]
-  {\normalfont\sffamily\bfseries}
-  {}
-  {0pt}
-  {
-    \fontsize{70}{70}\selectfont
-    \color{black!30}
-    \thechapter
-    \vspace{-25pt}
-    \color{black}
-    \Huge
-  }
-  [\vspace{20pt}]
-
-% --- Formatação da Seção (Corrigido) ---
-% O \Large foi movido para o primeiro argumento { }
-\titleformat{\section}
-  {\normalfont\sffamily\bfseries\color{black}\Large}
-  {\thesection} 
-  {0.7em} 
-  {}
-
-% --- Formatação da Subseção (Corrigido) ---
-% O \large foi movido para o primeiro argumento { }
-\titleformat{\subsection}
-  {\normalfont\sffamily\bfseries\color{black}\large}
-  {\thesubsection}
-  {0.7em}
-  {}
-
-% --- Espaçamento ---
-% Ajusta o espaço ANTES e DEPOIS dos títulos
-\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \renewcommand*{\glossaryname}{Glossário}
 
