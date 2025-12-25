@@ -691,3 +691,290 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \section{Perdas para classificação}
+
+\subsection{Unificação das Perdas de Classificação derivadas da divergência KL}%
+\label{ap:deducoes-perdas-derivadas-da-kl-divergence}
+
+Observamos que Binary Cross-Entropy (BCE), Categorical Cross-Entropy (CCE) e suas variantes ponderadas (WBCE, WCCE, ECCE) compartilham a mesma estrutura algébrica fundamental. Elas são instâncias da \textit{Entropia Cruzada Generalizada}.
+
+Para evitar repetições, definimos uma forma canônica e demonstramos as propriedades de regularidade, convexidade e robustez para toda a família de uma só vez.
+
+\begin{definition}[Entropia Cruzada Ponderada Generalizada]
+    Seja $\mathbf{y} \in [0, 1]^C$ o vetor de distribuição de probabilidade alvo (frequentemente \textit{one-hot}) e $\mathbf{\hat{y}} \in (0, 1)^C$ o vetor de probabilidades preditas pelo modelo, tal que $\sum \hat{y}_i = 1$.
+    
+    Definimos a função de perda generalizada como a soma ponderada das log-verossimilhanças negativas:
+    \begin{equation}
+        \mathcal{L}(\mathbf{y}, \mathbf{\hat{y}}) = - \sum_{i=1}^{C} \omega_i y_i \log(\hat{y}_i)
+    \end{equation}
+    Onde $\omega_i \ge 0$ são coeficientes de ponderação arbitrários (que podem representar pesos de classe, pesos de amostra ou termos de focalização).
+\end{definition}
+
+A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$ e $\omega_i$:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l}
+\textbf{Função de Perda} & \textbf{Configuração ($C, y, \omega$)} & \textbf{Interpretação} \\ \hline
+\textbf{BCE} & $C=2$, $\omega_i=1$ & Classificação Binária Padrão \\
+\textbf{WBCE} & $C=2$, $\omega_1 \neq \omega_2$ & Binária com classes desbalanceadas \\
+\textbf{CCE} & $C > 2$, $\omega_i=1$ & Multiclasse Padrão \\
+\textbf{WCCE} & $C > 2$, $\omega_i \propto \frac{1}{\text{freq}(i)}$ & Multiclasse com pesos fixos \\
+\textbf{ECCE} & $C > 2$, $\omega_i$ variável & Pesos dinâmicos baseados em entropia \\
+\end{tabular}
+\end{table}
+
+\begin{proposition}[Regularidade Global]
+    A família de perdas de Entropia Cruzada pertence à classe $C^\infty$ (suave) no domínio aberto $\hat{y}_i \in (0, 1)$.
+\end{proposition}
+
+\begin{proof}
+    A função $\mathcal{L}$ é uma combinação linear finita de funções logarítmicas elementares $f(t) = \log(t)$.
+    
+    Sabemos que a função logarítmica é infinitamente diferenciável em seu domínio positivo. Como a soma de funções $C^\infty$ e a multiplicação por escalares constantes (os pesos $\omega_i y_i$) preservam a diferenciabilidade, conclui-se que $\mathcal{L} \in C^\infty$.
+    
+    \textit{Nota Técnica:} A suavidade é garantida estritamente dentro do simplex de probabilidade. Nas bordas (onde $\hat{y}_i = 0$ ou $1$), a função não é definida (singularidade logarítmica), exigindo na prática o uso de \textit{clipping} ($\epsilon$-bound).
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A Entropia Cruzada Generalizada é convexa em relação às predições probabilísticas $\mathbf{\hat{y}}$.
+\end{proposition}
+
+\begin{proof}
+    Basta demonstrar que cada termo individual da soma é convexo, pois a soma ponderada não-negativa de funções convexas preserva a convexidade.
+    
+    Considere o termo $i$-ésimo: $g_i(\hat{y}_i) = - \omega_i y_i \log(\hat{y}_i)$.
+    Calculamos a segunda derivada em relação a $\hat{y}_i$:
+    \[ \frac{\partial g_i}{\partial \hat{y}_i} = - \frac{\omega_i y_i}{\hat{y}_i} \]
+    \[ \frac{\partial^2 g_i}{\partial \hat{y}_i^2} = \frac{\omega_i y_i}{\hat{y}_i^2} \]
+    
+    Dado que:
+    \begin{enumerate}
+        \item As probabilidades são positivas ($\hat{y}_i^2 > 0$);
+        \item Os alvos e pesos são não-negativos ($\omega_i y_i \ge 0$);
+    \end{enumerate}
+    Temos que a segunda derivada é sempre não-negativa:
+    \[ \frac{\partial^2 \mathcal{L}}{\partial \hat{y}_i^2} \ge 0 \]
+    
+    Portanto, a função é convexa. (Nota: Em relação aos \textit{logits} $z$ antes da softmax/sigmoide, a função é estritamente convexa, o que garante convergência global única em modelos lineares).
+\end{proof}
+
+\begin{proposition}[Não-Robustez e Explosão de Gradiente]
+    A família de perdas de Entropia Cruzada não é Lipschitz-contínua, sendo sensível a erros confiantes (\textit{confident mistakes}).
+\end{proposition}
+
+\begin{proof}
+    Analisamos a magnitude do gradiente parcial em relação a uma predição específica $\hat{y}_k$ correspondente à classe verdadeira ($y_k=1$):
+    \[ \left| \frac{\partial \mathcal{L}}{\partial \hat{y}_k} \right| = \left| - \frac{\omega_k}{\hat{y}_k} \right| = \frac{\omega_k}{\hat{y}_k} \]
+    
+    Examinamos o limite quando o modelo erra drasticamente (prevê probabilidade próxima de zero para a classe correta):
+    \[ \lim_{\hat{y}_k \to 0^+} \frac{\omega_k}{\hat{y}_k} = \infty \]
+    
+    Como o gradiente cresce indefinidamente sem cota superior, a função não satisfaz a condição de Lipschitz ($\sup |\nabla \mathcal{L}| \not\le K$). 
+    
+    Isso implica que \textit{outliers} ou exemplos mal rotulados que contradizem fortemente a predição do modelo geram atualizações de peso massivas, podendo desestabilizar o treinamento.
+\end{proof}
+
+\subsection{Perda Hinge (Hinge Loss)}%
+\label{ap:deducoes-perda-hinge}
+
+\begin{definition}
+    Em classificação binária onde $y \in \{-1, +1\}$ e $f(x) \in \mathbb{R}$ é o score bruto do modelo. Definimos a margem funcional como $z = y \cdot f(x)$. A Hinge Loss é definida por:
+    \begin{equation}
+        \mathcal{L}(z) = \max(0, 1 - z)
+    \end{equation}
+\end{definition}
+
+\begin{proposition}[Singularidade]
+    A função Hinge Loss pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
+\end{proposition}
+
+\begin{proof}
+    A função é contínua pela composição de funções contínuas. A não-diferenciabilidade ocorre no ponto de decisão da margem $z=1$ (onde a amostra está exatamente sobre a fronteira de decisão mais a margem de segurança).
+
+    Analisamos os limites laterais da derivada em relação à margem $z$:
+    \begin{itemize}
+        \item Para $z < 1$ (erro ou dentro da margem), $\mathcal{L}(z) = 1 - z \implies \mathcal{L}'(z) = -1$.
+        \item Para $z > 1$ (classificação correta e segura), $\mathcal{L}(z) = 0 \implies \mathcal{L}'(z) = 0$.
+    \end{itemize}
+
+    Calculando os limites em $z=1$:
+    \begin{align*}
+        \lim_{z \to 1^-} \mathcal{L}'(z) &= -1 \\
+        \lim_{z \to 1^+} \mathcal{L}'(z) &= 0
+    \end{align*}
+
+    Como os limites laterais diferem, a função apresenta um "bico" em $z=1$, não sendo diferenciável neste ponto ($\mathcal{L} \notin C^1$).
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A função Hinge Loss é convexa.
+\end{proposition}
+
+\begin{proof}
+    Utilizamos o \textbf{Teorema de Convexidade de Máximos} (definido na Seção \ref{sec:definicoes}).
+    A função é o máximo entre duas funções auxiliares:
+    \[ g_1(z) = 0 \quad \text{e} \quad g_2(z) = 1 - z \]
+
+    Ambas $g_1$ (constante) e $g_2$ (afim) são funções convexas. Como o operador máximo preserva a convexidade, $\mathcal{L}(z) = \max(g_1(z), g_2(z))$ é globalmente convexa. Isso garante que o problema de otimização do SVM tenha um mínimo global único (ou um conjunto convexo de mínimos).
+\end{proof}
+
+\begin{proposition}[Robustez e Esparsidade Dual]
+    A função Hinge Loss é Lipschitz-contínua e induz esparsidade nos vetores de suporte.
+\end{proposition}
+
+\begin{proof}
+    Analisamos o subdiferencial $\partial \mathcal{L}(z)$:
+    \[
+    \partial \mathcal{L}(z) = \begin{cases} 
+    \{-1\} & \text{se } z < 1 \\
+    [-1, 0] & \text{se } z = 1 \\
+    \{0\} & \text{se } z > 1 
+    \end{cases}
+    \]
+
+    \textbf{1. Robustez (Lipschitz):}
+    A magnitude do subgradiente é limitada superiormente por 1 ($|g| \le 1, \forall g \in \partial \mathcal{L}$). Portanto, a função é 1-Lipschitz contínua. Diferente da Entropia Cruzada (que explode para erros confiantes) ou do MSE quadrático, a Hinge Loss penaliza erros grosseiros apenas linearmente, sendo robusta a \textit{outliers} extremos.
+
+    \textbf{2. Esparsidade (Zona Morta):}
+    Para qualquer amostra corretamente classificada com margem de segurança ($z > 1$), o gradiente é exatamente 0. Isso significa que esses pontos não influenciam a atualização do modelo. O modelo é definido apenas pelos pontos onde $z \le 1$ (os chamados \textbf{Vetores de Suporte}), gerando eficiência computacional e de memória.
+\end{proof}
+
+\subsection{Perda Hinge quadrática (squared hinge loss)}
+\label{ap:deducoes-perda-hinge-quadratica}
+
+\begin{definition}
+    Mantendo a definição de margem funcional $z = y \cdot f(x)$, a função de perda Squared Hinge é definida pelo quadrado da parte positiva da Hinge padrão:
+    \begin{equation}
+        \mathcal{L}(z) = (\max(0, 1 - z))^2
+    \end{equation}
+    Explicitamente por partes:
+    \[
+    \mathcal{L}(z) = \begin{cases} 
+    (1 - z)^2 & \text{se } z < 1 \quad (\text{Erro ou Margem violada}) \\
+    0 & \text{se } z \ge 1 \quad (\text{Classificação segura})
+    \end{cases}
+    \]
+\end{definition}
+
+\begin{proposition}[Suavização e Regularidade]
+    A função Squared Hinge pertence à classe $C^1$ (continuamente diferenciável), superando a singularidade da Hinge padrão. Porém, não é $C^2$.
+\end{proposition}
+
+\begin{proof}
+    A função é composta por polinômios em cada região aberta. O ponto crítico de análise é a fronteira $z=1$.
+    
+    Calculamos a primeira derivada $\mathcal{L}'(z)$:
+    \[
+    \mathcal{L}'(z) = \begin{cases} 
+    \frac{d}{dz}(1 - z)^2 = 2(1-z)(-1) = 2(z-1) & \text{se } z < 1 \\
+    0 & \text{se } z > 1
+    \end{cases}
+    \]
+    
+    Verificamos a continuidade da derivada em $z=1$:
+    \begin{align*}
+        \lim_{z \to 1^-} 2(z-1) &= 0 \\
+        \lim_{z \to 1^+} 0 &= 0
+    \end{align*}
+    
+    Como os limites coincidem, a derivada existe e é contínua em todo o domínio ($\mathcal{L} \in C^1$).
+    
+    Entretanto, para a segunda derivada $\mathcal{L}''(z)$:
+    \[
+    \mathcal{L}''(z) = \begin{cases} 
+    2 & \text{se } z < 1 \\
+    0 & \text{se } z > 1
+    \end{cases}
+    \]
+    Existe uma descontinuidade de salto em $z=1$ ($2 \neq 0$). Portanto, a curvatura muda abruptamente, e $\mathcal{L} \notin C^2$.
+\end{proof}
+
+\begin{proposition}[Convexidade]
+    A função Squared Hinge é convexa.
+\end{proposition}
+
+\begin{proof}
+    Utilizamos a propriedade de composição e o critério de segunda ordem.
+    
+    Alternativamente, podemos observar que $\mathcal{L}(z) = (h(z))^2$, onde $h(z) = \max(0, 1-z)$ é a Hinge Loss padrão.
+    Sabemos que:
+    1. $h(z)$ é convexa e não-negativa ($h(z) \ge 0$).
+    2. A função quadrática $f(u) = u^2$ é convexa e não-decrescente para $u \ge 0$.
+    
+    A composição de uma função convexa com uma função convexa não-decrescente preserva a convexidade. 
+    
+    De forma mais direta, analisando a segunda derivada calculada anteriormente:
+    \[ \mathcal{L}''(z) \in \{0, 2\} \]
+    Como $\mathcal{L}''(z) \ge 0$ para todo $z$ onde é definida (e a função é $C^1$), a convexidade global é garantida.
+\end{proof}
+
+\begin{proposition}[Perda de Robustez]
+    Diferente da Hinge padrão, a Squared Hinge \textbf{não é Lipschitz-contínua}, sendo sensível a \textit{outliers}.
+\end{proposition}
+
+\begin{proof}
+    Analisamos o comportamento do gradiente para erros extremos ($z \to -\infty$, ou seja, amostras classificadas incorretamente com alta confiança).
+    
+    \[ \lim_{z \to -\infty} |\mathcal{L}'(z)| = \lim_{z \to -\infty} |2(z-1)| = \infty \]
+    
+    O gradiente cresce linearmente com o erro (comportamento quadrático na perda). Não existe uma constante $K$ que limite a derivada globalmente.
+    
+    \textit{Consequência Prática:} Embora a Squared Hinge facilite a otimização numérica por ser diferenciável, ela penaliza erros distantes muito mais severamente que a Hinge padrão (similar ao MSE). Isso torna o modelo L2-SVM menos robusto a dados ruidosos do que o L1-SVM clássico.
+\end{proof}
+
+\subsection{Perda multirótulo (multilabel loss)}%
+\label{ap:deducoes-multilabel-loss}
+
+\begin{definition}
+    Em problemas de classificação multirrótulo, cada instância pode pertencer a múltiplas classes simultaneamente. Seja $y \in \{0, 1\}^q$ o vetor de rótulos binários e $\hat{y} \in (0, 1)^q$ o vetor de probabilidades preditas para cada uma das $q$ classes. A função de perda é definida como a soma das entropias cruzadas binárias componente a componente:
+    \begin{equation}
+        \mathcal{L}_{\text{Multilabel}}(\mathbf{y}, \mathbf{\hat{y}}) = \sum_{j=1}^{q} \mathcal{L}_{\text{BCE}}(y_j, \hat{y}_j)
+    \end{equation}
+    Onde cada termo é dado por:
+    \[ \mathcal{L}_{\text{BCE}}(y_j, \hat{y}_j) = - [y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y}_j)] \]
+\end{definition}
+
+\begin{proposition}[Regularidade e Independência]
+    A função Multilabel Loss pertence à classe $C^\infty$ no hipercubo aberto $(0, 1)^q$.
+\end{proposition}
+
+\begin{proof}
+    A função $\mathcal{L}_{\text{Multilabel}}$ é uma combinação linear finita de funções elementares $\log(\cdot)$.
+    
+    Como demonstrado na prova da Entropia Cruzada Generalizada, cada componente individual $\mathcal{L}_{\text{BCE}}$ é $C^\infty$ em seu domínio $(0, 1)$. Uma vez que a soma finita de funções infinitamente diferenciáveis preserva a diferenciabilidade, conclui-se que $\mathcal{L}_{\text{Multilabel}} \in C^\infty$.
+    
+    \textit{Implicação Prática:} A regularidade permite o cálculo de gradientes independentes para cada saída $\hat{y}_j$, o que significa que o aprendizado de um rótulo (ex: "tem gato") não interfere matematicamente na derivada do outro (ex: "tem chuva"), exceto através do compartilhamento de pesos nas camadas anteriores da rede neural.
+\end{proof}
+
+\begin{proposition}[Convexidade Aditiva]
+    A função Multilabel Loss é convexa em relação ao vetor de predições $\mathbf{\hat{y}}$.
+\end{proposition}
+
+\begin{proof}
+    Utilizamos a propriedade de fechamento da convexidade sob adição não-negativa.
+    
+    1.  Sabemos que a função Binary Cross-Entropy individual $\ell_j(\hat{y}_j)$ é convexa em relação a $\hat{y}_j$ (verificada pela segunda derivada positiva $\frac{1}{\hat{y}_j(1-\hat{y}_j)}$).
+    2.  A função Multilabel é a soma: $\mathcal{L} = \sum_{j=1}^q \ell_j(\hat{y}_j)$.
+    
+    Pelo teorema da soma de funções convexas, se cada $\ell_j$ é convexa, então sua soma $\mathcal{L}$ também é convexa no domínio conjunto.
+    
+    Matricialmente, isso implica que a Matriz Hessiana da perda total é uma matriz diagonal onde todos os elementos da diagonal principal são positivos, confirmando a convexidade global.
+\end{proof}
+
+\begin{proposition}[Não-Robustez]
+    A função Multilabel Loss não é Lipschitz-contínua e herda a sensibilidade a \textit{outliers} da BCE.
+\end{proposition}
+
+\begin{proof}
+    Para analisar a continuidade de Lipschitz em um campo vetorial, examinamos a norma do gradiente $\|\nabla \mathcal{L}\|$.
+    O gradiente é o vetor das derivadas parciais:
+    \[ \nabla \mathcal{L} = \left[ \frac{\partial \mathcal{L}}{\partial \hat{y}_1}, \dots, \frac{\partial \mathcal{L}}{\partial \hat{y}_q} \right]^T \]
+    
+    Cada componente é dada por:
+    \[ \frac{\partial \mathcal{L}}{\partial \hat{y}_j} = \frac{\hat{y}_j - y_j}{\hat{y}_j(1 - \hat{y}_j)} \]
+    
+    Se o modelo cometer um erro confiante em \textbf{qualquer} uma das $q$ classes (por exemplo, para a classe $k$, $y_k=1$ mas $\hat{y}_k \to 0$), a componente correspondente do gradiente tende ao infinito:
+    \[ \lim_{\hat{y}_k \to 0} \left| \frac{\partial \mathcal{L}}{\partial \hat{y}_k} \right| = \infty \]
+    
+    Consequentemente, a norma do vetor gradiente $\|\nabla \mathcal{L}\| \to \infty$. Basta um único rótulo mal classificado com alta confiança para desestabilizar a atualização de pesos de toda a rede, provando que a função não é Lipschitz-contínua.
+\end{proof}
