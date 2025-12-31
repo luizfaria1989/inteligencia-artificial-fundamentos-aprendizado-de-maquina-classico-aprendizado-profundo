@@ -255,7 +255,11 @@ Como dito na seção de propriedades da perda BCE, ela apresenta a tendência de
 \index{Funções de Perda!Entropia-cruzada binária ponderada (WBCE)}%
 \label{sec:binary-weighted-cross-entropy}
 
-A \textbf{entropia-cruzada binária ponderada}, também chamada de \textbf{\textit{weighted binary cross-entropy}} (\textbf{WBCE}), é uma função de perda para classificação binária que tem como objetivo ser utilizada em casos de desbalanceamento de classes nos dados. Para fazer isso, a BCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-weighted-cross-entropy}. A classe menos presente recebe um peso maior, consequentemente seu gradiente também será maior em magnitude, forçando o modelo a aprender mais sobre os detalhes da classe em minoria. textcite{LossesArticle} explicam que a WBCE é utilizada em casos que os erros são caros e críticos.
+Considere o seguinte cenário: está sendo criado um modelo para detecção de câncer de pele em um dataset no qual 90\% das imagens são de pessoas saudáveis. O modelo criado está excelente em predizer se uma pessoa está saudável, de forma que acerta todas as predições para a classe saudável e erra todas as predições para câncer de pele. Na prática, ele está com uma acurácia de 90\%, o que é muito bom, exceto pelo fato de que ele não aprendeu a detectar nenhum câncer. 
+
+Utilizar a BCE com \textit{datasets} com classes desbalanceadas pode causar modelos enviesados, ótimos para reconhecer uma das classes mas péssimos para reconhecer a outra classe. Uma solução é adicionar pesos para as classes, a classe em maior presença recebe um peso baixo e a classe em desvantagem numérica recebe um peso alto. Essa é a solução por trás da \textbf{entropia-cruzada binária ponderada}, também chamada de \textbf{\textit{weighted binary cross-entropy}} (\textbf{WBCE}).
+
+A WBCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-weighted-cross-entropy}. A classe menos presente recebe um peso maior, consequentemente seu gradiente também será maior em magnitude, forçando o modelo a aprender mais sobre os detalhes da classe em minoria. textcite{LossesArticle} explicam que a WBCE é utilizada em casos que os erros são caros e críticos.
 
 \begin{equacaodestaque}{Entropia-cruzada binária ponderada}
     \mathcal{L}_{\text{wbce}} (y, \hat{y}) = - [\alpha_1 y \log (\hat{y}) + \alpha_0 (1 - y) \log (1 - \hat{y})]
@@ -272,6 +276,13 @@ Em que
     \item[$\alpha_1$] representa o peso para a classe 1.
 \end{description}
 
+Considerando que os hiperparâmetros $\alpha_0$ e $\alpha_1$ indicam a presença de cada uma das classes em um \textit{dataset} e que sua soma será sempre 1, \textcite{xie2015holisticallynestededgedetection} definem a WBCE com apenas um hiperparâmetro, sendo dada por
+
+\[
+    \mathcal{L}_{\text{wbce}} (y, \hat{y}) = - [\beta y \log (\hat{y}) + (1 - \beta) (1 - y) \log (1 - \hat{y})]
+\]
+
+Ambas as fórmulas calculam a entropia-cruzada binária para problemas de desbalanceamento de classes, sendo a segunda fórmula, mais resumida.
 
 Conforme são ajustados os hiperparâmetros $\alpha_0$ e $\alpha_1$, o gráfico que antes era simétrico, passa a apresentar uma curva maior que a outra. Como a Figura~\ref{fig:comparativo-entropia-cruzada-ponderada-binaria} mostra, a curva que atinge uma menor altura é a que apresenta um baixo valor para o peso $\alpha$, e vice-versa. Essa característica é essencial para permitir um gradiente em maior magnitude e com isso um melhor aprendizado da classe em desvantagem numérica.
 
@@ -374,7 +385,7 @@ A derivada parcial da WBCE em relação à predição é calculada através da E
 
 De forma semelhante à BCE, a WBCE pode ser aplicada em conjunto com a sigmoide logística garantir a saída do modelo no intervalo $[0,1]$ e com isso, evitar o problema dos gradientes explosivos. Essa variante da derivada está na Equação~\ref{eq:wbce-gradiente-com-simgoide}.
 
-\begin{equacaodestaque}{Gradiente da entropia-cruzada binária ponderada em relação à predição}
+\begin{equacaodestaque}{Gradiente da entropia-cruzada binária ponderada em relação à predição com sigmoide}
     \frac{\nabla}{\nabla \hat{y}} \mathcal{L}_{\text{wbce}} = 
         \begin{cases}
             \alpha_0 \cdot \hat{y} & \text{se} \quad y = 0 \\
@@ -469,8 +480,8 @@ Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} aprese
 \index{Aplicações práticas! Entropia-cruzada binária ponderada}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):]
-    \item[Aplicação 2 (Área):]
+    \item[Identificação de doenças toráxicas em raios-x (Saúde):] \textcite{li2025chex} criam um modelo de \textit{ensamble} em uma \textit{DenseNet} para identificar doenças em raios-x de tórax, como o \textit{dataset} utilizado, o NIH ChestX-ray14, apresenta dados que seguem uma distribuição assimétrica de cauda longa, os autores combinam a WBCE com a perda assimétrica para lidar com desequilíbrio de classes.
+    \item[Seguimentação de lesões de degeneração macular (Saúde):] \textcite{starodub2025surpassingstateartamd} criam arquiteturas U-Net para a segmentação de lesões de degeneração macular relacionada à idade (AMD), os autores optam pela WBCE ao invés da \textit{dice loss} pelo fato da segunda tender a ser instável em primeiros planos esparsos (\textit{sparse foregrounds}) devido à sua sensibilidade a erros de predição pequenos.
     \item[Aplicação 3 (Área):]
 \end{description}
 
