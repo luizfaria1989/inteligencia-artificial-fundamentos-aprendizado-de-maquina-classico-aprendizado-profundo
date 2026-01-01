@@ -87,10 +87,10 @@ A partir desses dois conceitos chegamos finalmente na entropia-cruzada binária,
 
 Em que
 
-\begin{itemize}
-    \item $y$ representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
-    \item $\hat{y}$ representa a probabilidade prevista para a amostra.
-\end{itemize}
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item[$\hat{y}$] representa a probabilidade prevista para a amostra.
+\end{description}
 
 Assim como visto no Capítulo~\ref{cap:perda-regressao}, neste capítulo representaremos as perdas para uma única predição. Contudo, no cenário de aprendizado de máquina, também podemos representar as perdas como a média do cálculo individual das perdas, como em
 
@@ -269,8 +269,8 @@ A WBCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-w
 Em que
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item $y$ representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
-    \item $\hat{y}$ representa a probabilidade prevista para a amostra.
+    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item[$\hat{y}$] representa a probabilidade prevista para a amostra.
     \item[$N$] representa o número de amostras;
     \item[$\alpha_0$] representa o peso para a classe 0;
     \item[$\alpha_1$] representa o peso para a classe 1.
@@ -482,10 +482,10 @@ Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} aprese
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Identificação de doenças toráxicas em raios-x (Saúde):] \textcite{li2025chex} criam um modelo de \textit{ensamble} em uma \textit{DenseNet} para identificar doenças em raios-x de tórax, como o \textit{dataset} utilizado, o NIH ChestX-ray14, apresenta dados que seguem uma distribuição assimétrica de cauda longa, os autores combinam a WBCE com a perda assimétrica para lidar com desequilíbrio de classes.
     \item[Seguimentação de lesões de degeneração macular (Saúde):] \textcite{starodub2025surpassingstateartamd} criam arquiteturas U-Net para a segmentação de lesões de degeneração macular relacionada à idade (AMD), os autores optam pela WBCE ao invés da \textit{dice loss} pelo fato da segunda tender a ser instável em primeiros planos esparsos (\textit{sparse foregrounds}) devido à sua sensibilidade a erros de predição pequenos.
-    \item[Aplicação 3 (Área):]
+    \item[Detecção de mudanças em imagens de satélite (Sensoriamento remoto)] \textcite{naveed2025adaptingsamcrossentropymasking} comparam a performance da WBCE com uma função de perda chamada \textit{Cross-Entropy Masking} (CEM) Levir-CD \textit{dataset}, um conjunto de dados para treinar modelos de sensoriamento remoto, com objetivo de detectar pequenas mudanças nas imagens.
 \end{description}
 
-\subsection{Perda Hinge (Hinge loss)}%
+\subsection{Perda hinge (Hinge loss)}%
 \index{Funções de Perda!Perda hinge}
 
 A \textbf{perda \textit{hinge}} é função de perda para de máquinas de vetores de suporte de classificação, sendo proposta no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. No trabalho, \textcite{HingeLoss} introduzem um problema os dados analisados podem ser separados sem erros, de forma que os autores querem então separar esses dados gerando a menor quantidade possível de erros. Para isso, \textcite{HingeLoss} introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$, e também a função que querem minimizar, denotada por
