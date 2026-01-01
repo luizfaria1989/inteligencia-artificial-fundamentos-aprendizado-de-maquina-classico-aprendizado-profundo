@@ -667,10 +667,12 @@ Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade
 \subsubsection*{Aplicações da perda hinge}%
 \index{Aplicações práticas! Perda hinge}
 
+A perda \textit{hinge} foi amplamente utilizada na criação das máquinas de vetores de suporte. Contudo, sua não-diferenciabilidade afeta negativamente que técnicas de otimização, como o gradiente descendente, sejam aplicadas com sucesso. Assim, surgem diversas variantes da perda \textit{hinge} que buscam estender seus conceitos de maximização de margem e ao mesmo tempo garantir uma função suave e diferenciável.
+
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Variante huberizada da perda \textit{hinge} (Área):] \textcite{Xu_2015} aborda as dificuldades de se utilizar a perda \textit{hinge} nas SVMs devido à sua não-diferenciabilidade em partes da função, o autor utiliza uma versão huberizada da perda \textit{hinge}, semelhante a perda de Huber (ver Seção-xx) que atua de forma quadrática para erros pequenos e linear para erros grandes. A versão huberizada da perda \textit{hinge} permite o uso do método do gradiente proximal (PG) com um tempo de convergência linear \parencite{Xu_2015}.
     \item[Variante suave da perda \textit{hinge} em classificação de textos (Área):] \textcite{luo2021learningsmoothhingelosses} apresentam duas perdas \textit{hinge} suaves que são infinitamente diferenciáveis obtendo duas máquinas de vetores de suporte suaves (SSVMs), os autores testam as SSVMs em tarefas de classificação de texto concluindo que os algoritmos criados são efetivos para aplicações do mundo real.
-    \item[Aplicação 3 (Área):]
+    \item[Variante sensível a custos da perda \textit{hinge} (Área):] \textcite{masnadishirazi2015costsensitivesupportvectormachines} estendem os conceitos da perda \textit{hinge} criando uma variante sensível ao custo (\textit{cost sensitive}), os autores explicam que cenários como diagnósticos médicos, detecção de fraudes e tomada de decisão de negócios uma falha, como um falso positivo pode afetar drasticamente mais que um falso positivo. Nessas situações a \textit{cost sensitive hinge loss} consegue minimizar o custo e o risco melhor que a perda \textit{hinge} tradicional \parencite{masnadishirazi2015costsensitivesupportvectormachines}. 
 \end{description}
 
 \subsection{Perda hinge quadrática (Squared hinge loss)}
