@@ -88,7 +88,7 @@ A partir desses dois conceitos chegamos finalmente na entropia-cruzada binária,
 Em que
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {0, +1}$;
     \item[$\hat{y}$] representa a probabilidade prevista para a amostra.
 \end{description}
 
@@ -259,7 +259,7 @@ Considere o seguinte cenário: está sendo criado um modelo para detecção de c
 
 Utilizar a BCE com \textit{datasets} com classes desbalanceadas pode causar modelos enviesados, ótimos para reconhecer uma das classes mas péssimos para reconhecer a outra classe. Uma solução é adicionar pesos para as classes, a classe em maior presença recebe um peso baixo e a classe em desvantagem numérica recebe um peso alto. Essa é a solução por trás da \textbf{entropia-cruzada binária ponderada}, também chamada de \textbf{\textit{weighted binary cross-entropy}} (\textbf{WBCE}).
 
-A WBCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-weighted-cross-entropy}. A classe menos presente recebe um peso maior, consequentemente seu gradiente também será maior em magnitude, forçando o modelo a aprender mais sobre os detalhes da classe em minoria. textcite{LossesArticle} explicam que a WBCE é utilizada em casos que os erros são caros e críticos.
+A WBCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-weighted-cross-entropy}. A classe menos presente recebe um peso maior, consequentemente seu gradiente também será maior em magnitude, forçando o modelo a aprender mais sobre os detalhes da classe em minoria. \textcite{LossesArticle} explicam que a WBCE é utilizada em casos que os erros são caros e críticos.
 
 \begin{equacaodestaque}{Entropia-cruzada binária ponderada}
     \mathcal{L}_{\text{wbce}} (y, \hat{y}) = - [\alpha_1 y \log (\hat{y}) + \alpha_0 (1 - y) \log (1 - \hat{y})]
@@ -269,7 +269,7 @@ A WBCE adiciona pesos a cada uma das classes, como na Equação~\ref{eq:binary-w
 Em que
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {-1, +1}$;
+    \item[$y$] representa os rótulos dos dados, segue o formato $y \in {0, +1}$;
     \item[$\hat{y}$] representa a probabilidade prevista para a amostra.
     \item[$N$] representa o número de amostras;
     \item[$\alpha_0$] representa o peso para a classe 0;
@@ -282,7 +282,10 @@ Considerando que os hiperparâmetros $\alpha_0$ e $\alpha_1$ indicam a presença
     \mathcal{L}_{\text{wbce}} (y, \hat{y}) = - [\beta y \log (\hat{y}) + (1 - \beta) (1 - y) \log (1 - \hat{y})]
 \]
 
-Ambas as fórmulas calculam a entropia-cruzada binária para problemas de desbalanceamento de classes, sendo a segunda fórmula, mais resumida.
+Nessa fórmula, o termo $\beta = \alpha_1$ enquanto $(1 - \beta) = \alpha_0$. Ambas as fórmulas calculam a entropia-cruzada binária para problemas de desbalanceamento de classes, sendo a segunda fórmula, mais resumida.
+
+Uma forma de definir os valores dos hiperparâmetros é considerar a frequência inversa de uma classe no \textit{dataset}. Por exemplo, na explicação do \textit{dataset} de câncer de pele, para cada 90 imagens de pessoas saudáveis, existem 10 de pessoas doentes. O peso da classe positiva (doente) pode ser $100/10= 10$ e da negativa (saudável) seria $100/90 = 1,11$. Uma técnica para lidar com o desbalanceamento de classes é utilizar o \textit{oversampling}, aumentando artificialmente a quantidade de dados em minoria, como duplicar os dados. Contudo, ao utilizar o \textit{oversampling} estaremos aumentando a quantidade de dados, e consequentemente o tempo de treino. Nesse sentido, a WBCE pode ser considerada como uma alternativa à essa técnica.
+
 
 Conforme são ajustados os hiperparâmetros $\alpha_0$ e $\alpha_1$, o gráfico que antes era simétrico, passa a apresentar uma curva maior que a outra. Como a Figura~\ref{fig:comparativo-entropia-cruzada-ponderada-binaria} mostra, a curva que atinge uma menor altura é a que apresenta um baixo valor para o peso $\alpha$, e vice-versa. Essa característica é essencial para permitir um gradiente em maior magnitude e com isso um melhor aprendizado da classe em desvantagem numérica.
 
@@ -361,7 +364,7 @@ Conforme são ajustados os hiperparâmetros $\alpha_0$ e $\alpha_1$, o gráfico 
         \label{fig:comparativo-entropia-cruzada-ponderada-binaria-com-alto-peso-para-classe-1}
     \end{subfigure}
     
-    \caption{Visualizações da função de perda entropia-cruda binária ponderada para diferentes valores de $\alpha_0$ e $\alpha_1$ }
+    \caption{Visualizações da função de perda entropia-cruzada binária ponderada para diferentes valores de $\alpha_0$ e $\alpha_1$ }
     \label{fig:comparativo-entropia-cruzada-ponderada-binaria}
 \end{figure}
 \subsubsection*{Características da entropia-cruzada binária ponderada}
@@ -371,7 +374,7 @@ Por ser uma variante da BCE, a entropia-cruzada binária ponderada herda suas ca
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Continuidade, suavidade e diferenciabilidade:] A WBCE é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Dessa forma, ao utilizar a WBCE tanto com otimizadores baseados em gradiente, quanto em otimizadores de segunda ordem, não serão encontrados problemas de não-diferenciabilidade, facilitando a aplicação desses métodos.
     \item[Convexidade:] A WBCE é uma função \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Esta é uma vantagem para a WBCE caso seja combinada com otimizadores baseados em gradiente. Contudo, devido às transformações não-lineares, sua convexidade pode ser afetada caso seja utilizada em redes neurais.
-    \item[Robustez:] A WBCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Assim como BCE, erros confiantes do modelo podem enviesar o treinamento, gerando explosões de gradientes e o mal ajuste dos parâmetros da rede.
+    \item[Robustez:] A WBCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}). Assim como BCE, erros confiantes do modelo podem enviesar o treinamento, gerando explosões de gradientes e o mal ajuste dos parâmetros da rede. Como a WBCE tem pesos, a classe em minoria irá apresentar um gradiente de crescimento mais acelerado, o que pode ser um problema caso os dados estejam rotulados incorretamente, aumentando o valor da perda.
 \end{description}
 
 \subsubsection*{Gradiente da entropia-cruzada binária ponderada}
@@ -394,7 +397,7 @@ De forma semelhante à BCE, a WBCE pode ser aplicada em conjunto com a sigmoide 
     \label{eq:wbce-gradiente-com-simgoide}
 \end{equacaodestaque}
 
-Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} apresenta, as curvas do gradiente da WBCE também são assimétricas. A curva mais alta, é que possui o maior valor de $\alpha$. Ao gerar um gradiente em maior magnitude para a classe em minoria, a WBCE permite uma variação maior na atualização dos parâmetros para esse classe. A classe em maioria aparece mais, e consequentemente gera mais atualizações nos pesos e vieses. Ao adicionar pesos, a WBCE garante que as duas classes recebam o mesmo grau de importância. Essa ideia é parecida com a dos otimizadores baseados em gradientes adaptativos, como o AdaGrad, vistos no Capítulo~\ref{cap:retropropagacao-gradiente}.
+Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} apresenta, as curvas do gradiente da WBCE também são assimétricas. A curva mais alta, é que possui o maior valor de $\alpha$. Ao gerar um gradiente em maior magnitude para a classe em minoria, a WBCE permite uma variação maior na atualização dos parâmetros para esse classe. A classe em maioria aparece mais, e consequentemente gera mais atualizações nos pesos e vieses. Ao adicionar pesos, a WBCE garante que as duas classes recebam o mesmo grau de importância. Essa ideia é parecida com a dos otimizadores baseados em gradientes adaptativos, como o AdaGrad, vistos no Capítulo~\ref{cap:retropropagacao-gradiente}. Nesse sentido, um gradiente maior, representa um ``passo'' maior, e uma curva mais íngreme, forçando o otimizador a fazer ajustes maiores para aprender os detalhes da classe em desvatagem.
 
 \begin{figure}[h!]
     \centering
@@ -481,8 +484,8 @@ Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} aprese
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Identificação de doenças toráxicas em raios-x (Saúde):] \textcite{li2025chex} criam um modelo de \textit{ensamble} em uma \textit{DenseNet} para identificar doenças em raios-x de tórax, como o \textit{dataset} utilizado, o NIH ChestX-ray14, apresenta dados que seguem uma distribuição assimétrica de cauda longa, os autores combinam a WBCE com a perda assimétrica para lidar com desequilíbrio de classes.
-    \item[Seguimentação de lesões de degeneração macular (Saúde):] \textcite{starodub2025surpassingstateartamd} criam arquiteturas U-Net para a segmentação de lesões de degeneração macular relacionada à idade (AMD), os autores optam pela WBCE ao invés da \textit{dice loss} pelo fato da segunda tender a ser instável em primeiros planos esparsos (\textit{sparse foregrounds}) devido à sua sensibilidade a erros de predição pequenos.
-    \item[Detecção de mudanças em imagens de satélite (Sensoriamento remoto)] \textcite{naveed2025adaptingsamcrossentropymasking} comparam a performance da WBCE com uma função de perda chamada \textit{Cross-Entropy Masking} (CEM) Levir-CD \textit{dataset}, um conjunto de dados para treinar modelos de sensoriamento remoto, com objetivo de detectar pequenas mudanças nas imagens.
+    \item[Segmentação de lesões de degeneração macular (Saúde):] \textcite{starodub2025surpassingstateartamd} criam arquiteturas U-Net para a segmentação de lesões de degeneração macular relacionada à idade (AMD), os autores optam pela WBCE ao invés da \textit{dice loss} pelo fato da segunda tender a ser instável em primeiros planos esparsos (\textit{sparse foregrounds}) devido à sua sensibilidade a erros de predição pequenos.
+    \item[Detecção de mudanças em imagens de satélite (Sensoriamento remoto)] \textcite{naveed2025adaptingsamcrossentropymasking} comparam a performance da WBCE com uma função de perda chamada \textit{Cross-Entropy Masking} (CEM) no Levir-CD \textit{dataset}, um conjunto de dados para treinar modelos de sensoriamento remoto, com objetivo de detectar pequenas mudanças nas imagens.
 \end{description}
 
 \subsection{Perda hinge (Hinge loss)}%
