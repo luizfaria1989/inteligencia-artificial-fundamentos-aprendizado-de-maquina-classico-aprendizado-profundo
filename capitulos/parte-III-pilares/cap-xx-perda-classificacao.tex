@@ -813,14 +813,14 @@ A Figura~\ref{fig:squared-hinge-loss-derivada} mostra que o gradiente da perda \
 \index{Aplicações práticas! Perda hinge quadrática}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):]
-    \item[Aplicação 2 (Área):]
-    \item[Aplicação 3 (Área):]
+    \item[SVMs com perda \textit{hinge} norma-$p$ (Área):] \textcite{sun2024psvmsoftmarginsvmspnorm} discutem as $p$SVMs, as quais generalizam a margem suave das SVMs ao introduzir a perda \textit{hinge} norma-$p$, essa nova função de perda tem um parâmetro $p$ cujo objetivo é elevar a perda \textit{hinge} ao exponente $p$. Os autores explicam que ao utilizar a perda \textit{hinge} norma-$p$ com $p = 1$ (perda \textit{hinge}) ou $p = 2$ (perda \textit{hinge} quadrática) o algoritmo de otimização SMO é simplificado em uma expressão linear, garantindo uma performance mais eficiente \parencite{sun2024psvmsoftmarginsvmspnorm}.
+    \item[\textit{Gradient boosting} com perda \textit{hinge} quadrática (Área):] \textcite{zeng2020fullycorrectivegradientboostingsquared} propõem um algoritmo de \textit{boosting} para classificação binária que utiliza a perda \textit{hinge} quadrática, como justificativa, os autores explicam que essa função permite o princípio da margem.
+    \item[Comparativo de funções de perda para classifação em aprendizado profundo (Área):] \textcite{janocha2017lossfunctionsdeepneural} investigam como a escolha de funções de perda afetam modelos profundos e suas dinâmicas de aprendizado, em testes realizados pelos autores foi concluído que a perda \textit{hinge} quadrática gerou modelos que poderiam ser treinados mais rapidamente quando comparada com outras funções, como a entropia-cruzada e a perda $L_1$. Além disso, as perdas que trabalham com a maximização da margem possuem a tendência de generalizar melhor, ultrapassando as outras famílias analisadas \parencite{janocha2017lossfunctionsdeepneural}.
 \end{description}
 
 \section{Funções de perda para classificação multi-classe}
 
-As perdas vistas até o momento são utilizadas em cenários nos quais temos apenas duas classes para serem identificadas. Mas, vão existir situações onde teremos um conjunto maior de classes para serem analisadas. Nesses casos, utilizaremos perdas de classificação multi-classe, como a entropia-cruzada categóricas e as suas variações.
+As perdas vistas até o momento são utilizadas em cenários nos quais temos apenas duas classes para serem identificadas. Mas, vão existir situações onde teremos um conjunto maior de classes para serem analisadas. Nesses casos, utilizaremos perdas de classificação multi-classe, como a entropia-cruzada categóricas e as suas variações. 
 
 \subsection{Exemplo ilustrativo:}
 
