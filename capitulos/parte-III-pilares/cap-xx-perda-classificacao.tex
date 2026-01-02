@@ -389,7 +389,7 @@ A derivada parcial da WBCE em relação à predição é calculada através da E
 De forma semelhante à BCE, a WBCE pode ser aplicada em conjunto com a sigmoide logística garantir a saída do modelo no intervalo $[0,1]$ e com isso, evitar o problema dos gradientes explosivos. Essa variante da derivada está na Equação~\ref{eq:wbce-gradiente-com-simgoide}.
 
 \begin{equacaodestaque}{Gradiente da entropia-cruzada binária ponderada em relação à predição com sigmoide}
-    \frac{\nabla}{\nabla \hat{y}} \mathcal{L}_{\text{wbce}} = 
+    \frac{\partial}{\partial \hat{y}} \mathcal{L}_{\text{wbce}} = 
         \begin{cases}
             \alpha_0 \cdot \hat{y} & \text{se} \quad y = 0 \\
             \alpha_1 \cdot (\hat{y} - 1) & \text{se} \quad y = 1 \\
@@ -491,13 +491,13 @@ Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} aprese
 \subsection{Perda hinge (Hinge loss)}%
 \index{Funções de Perda!Perda hinge}
 
-A \textbf{perda \textit{hinge}} é função de perda para de máquinas de vetores de suporte de classificação, sendo proposta no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. No trabalho, \textcite{HingeLoss} introduzem um problema os dados analisados podem ser separados sem erros, de forma que os autores querem então separar esses dados gerando a menor quantidade possível de erros. Para isso, \textcite{HingeLoss} introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$, e também a função que querem minimizar, denotada por
+A \textbf{perda \textit{hinge}} é função de perda para de máquinas de vetores de suporte para classificação binária, sendo proposta no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. No trabalho, \textcite{HingeLoss} analisam um conjunto de dados que não pode ser separado sem erros, de forma que os autores querem separá-los gerando a menor quantidade possível de erros. Para isso, \textcite{HingeLoss} introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$, e também a função que querem minimizar, denotada por
 
 \[
     `\Phi ' = \sum_{i = 1}^l \xi_i^{\sigma}
 \]
 
-Para $\sigma > 0$, são sujeitas as restrições:
+Para $\sigma > 0$, são sujeitas as restrições
 
 \[
     y_i (\textbf{w} \cdot \textbf{x}_i + b) \ge 1 - \xi_i, i = 1, 2, \cdots, l
@@ -527,9 +527,17 @@ Em que
     \item[$f(x)$] representa a saída bruta do modelo ou a função de decisão (geralmente the signed distance da barreira de decisão)
 \end{description}
 
-\textcite{LossesArticle} explicam que para calcular a margem para uma amostra $x$, deve ser calculado o produto $yf(x)$, uma classificação correta com uma margem suficiente gera um resultado positivo para esse produto, reduzindo a perda para zero.
+A perda \textit{hinge} tem três comportamentos distintos com base nas predições do modelo:
 
-Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos logaritmos, a Figura~\ref{fig:hinge-loss} evidencia que a perda \textit{hinge} é composta por retas.
+\begin{enumerate}
+    \item \textbf{Correta e confiante ($y \cdot f(x) \ge 1$)}: gera uma perda nula. Se o ponto classificado foi classificado com a classe correta e está longe da fronteira nada deve ser feito.
+    \item \textbf{Correta, mas arriscada ($0 < y \cdot f(x) < 1$)}: gera uma perda positiva. O ponto foi classificado com a classe correta, mas está dentro da margem. O modelo é forçado a empurrar a margem para mais longe desses pontos.
+    \item \textbf{Incorreta ($y \cdot f(x) \ge 0$)}: Gera uma perda que cresce linearmente com base no erro do modelo.
+\end{enumerate}
+
+Dessa forma, ao ser utilizada em uma SVM, a perda \textit{hinge} atua com o objetivo de maximizar a margem e fazer com que o modelo encontre o melhor hiperpalano que separe corretamente as duas classes de dados. Quando a \textit{hinge} penaliza predições corretas mas pouco confiantes, ela cria um corredor mais largo entre as classes. Isso melhora a generalizações do modelo, dado que ele não fica ajustado apenas aos dados de treino, mas é criada uma margem segura para novos dados.
+
+Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos logaritmos, a Figura~\ref{fig:hinge-loss} evidencia que a perda \textit{hinge} é composta por retas. Mais precisamente, essa função de perda tem o formato de uma dobradiça, por isso recebe o nome \textit{hinge}.
 
 \begin{figure}
     \begin{tikzpicture}
@@ -585,7 +593,7 @@ Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos lo
     \item[Continuidade, suavidade e diferenciabilidade:] A perda \textit{hinge} é uma função de classe $C^0$, \textbf{contínua} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Por utilizar a função $\max$ em sua fórmula, essa função de perda apresenta uma ``quinas'' em seu relevo, fazendo com que a perda \textit{hinge} não seja totalmente suave. Um fato que pode dificultar a otimização utilizando métodos de segunda ordem.
     \item[Convexidade:] A perda \textit{hinge} é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). A função $\max$ une duas funções convexas, garantindo como resultado uma função também convexa. Ao utilizar a perda \textit{hinge} em máquinas de vetores de suporte, é possível garantir um único ponto de mínimo.
     \item[Robustez:] A perda Hinge é uma função 1-Lipschitz-contínua, portanto, é \textbf{robusta a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Ao derivar a perda \textit{hinge} e calcular o seu gradiente no infinito, é visto que ele não cresce indefinidamente. Pelo contrário, ele fica constante em 1.
-    \item[Esparsidade:] Semelhante a perda $\epsilon$-insensível (ver Seção-xx) a perda \textit{hinge} promove gradientes esparsos (ver Apêndice-xx). Isso se dá devido à uma zona de perda zero que ocorre com o objetivo  
+    \item[Esparsidade:] Semelhante a perda $\epsilon$-insensível (ver Seção-xx) a perda \textit{hinge} promove gradientes esparsos (ver Apêndice-xx). Isso se dá devido à uma zona de perda zero que ocorre com o objetivo de separar os vetores de suporte. Neste caso, os vetores de suporte são os que estão dentro da margem ou foram classificados incorretamente. São eles que irão definir como os parâmetros do modelo serão atualizados.
 \end{description}
 
 \subsubsection*{Gradiente da perda Hinge}
