@@ -537,50 +537,51 @@ A perda \textit{hinge} tem três comportamentos distintos com base nas prediçõ
 
 Dessa forma, ao ser utilizada em uma SVM, a perda \textit{hinge} atua com o objetivo de maximizar a margem e fazer com que o modelo encontre o melhor hiperpalano que separe corretamente as duas classes de dados. Quando a \textit{hinge} penaliza predições corretas mas pouco confiantes, ela cria um corredor mais largo entre as classes. Isso melhora a generalizações do modelo, dado que ele não fica ajustado apenas aos dados de treino, mas é criada uma margem segura para novos dados.
 
-Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos logaritmos, a Figura~\ref{fig:hinge-loss} evidencia que a perda \textit{hinge} é composta por retas. Mais precisamente, essa função de perda tem o formato de uma dobradiça, por isso recebe o nome \textit{hinge}.
+Uma analogia para explicar o conceito por trás da perda \textit{hinge} é pensarmos em uma estrada de mão dupla. A perda \textit{hinge} não quer que estejamos apenas do lado correto, ela maximiza a margem, garantindo um espaço seguro do carro à linha do centro da pista. Mesmo dirigindo do lado correto, se estiver próximo do centro da pista, você será penalizado, esse seria o cenário da predição correta porém arriscada. Dessa forma, a \textit{hinge} atua consideravelmente diferente das perdas probabilísticas, como a BCE, ao calcular a distância entre duas distribuições de Bernoulli.
+
+Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos logaritmos, a Figura~\ref{fig:hinge-loss} evidencia que a perda \textit{hinge} é composta por retas. Mais precisamente, essa função de perda tem o formato de uma dobradiça, por isso recebe o nome \textit{hinge}. Assim como a perda $\epsilon$-insensível, que apresenta uma ``zona morta'', a \textit{hinge} também tem essa característica, a perda cresce linearmente, mas quando as predições estão corretas, é garantido uma zona de perda zero.
 
 \begin{figure}
     \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={Saída Bruta do Modelo ($f(x)$)},
-            ylabel={Perda ($\mathcal{L}$)},
-            axis lines=middle,    
-            grid=major,             
-            grid style={dashed, gray!40},
-            xmin=-3.5, xmax=3.5,      
-            ymin=-0.5, ymax=4.5,       
-            legend pos=north west,    
-            width=\linewidth,
-            height=7cm,             
-            title style={font=\bfseries},
-            label style={font=\small},
-            tick label style={font=\scriptsize}
+    \begin{axis}[
+        xlabel={Saída Bruta do Modelo ($f(x)$)},
+        ylabel={Perda ($\mathcal{L}$)},
+        axis lines=middle,
+        grid=major,
+        grid style={dashed, gray!40},
+        xmin=-3.5, xmax=3.5,
+        ymin=-0.5, ymax=4.5,
+        legend pos=north west,
+        width=\linewidth,
+        height=7cm,
+        title style={font=\bfseries},
+        label style={font=\small},
+        tick label style={font=\scriptsize}
         ]
-            % Curva para a classe real y=+1
-            \addplot[
-                domain=-3:3, 
-                samples=100, 
-                color=black, 
-                very thick
+        % Curva para a classe real y=+1
+        \addplot[
+            domain=-3:3,
+            samples=100,
+            color=black,
+            very thick
             ] {max(0, 1-x)};
-            \addlegendentry{Classe Real = 1}
+        \addlegendentry{Classe Real = 1}
 
-            % Curva para a classe real y=-1
-            \addplot[
-                domain=-3:3, 
-                samples=100, 
-                color=black, 
-                dashed
+        % Curva para a classe real y=-1
+        \addplot[
+            domain=-3:3,
+            samples=100,
+            color=black,
+            dashed
             ] {max(0, 1+x)};
-            \addlegendentry{Classe Real = -1}
-            
-            % Opcional: Linhas tracejadas para marcar as margens
-            \draw[dashed, gray!70] (axis cs:1, 0) -- (axis cs:1, 4.5);
-            \draw[dashed, gray!70] (axis cs:-1, 0) -- (axis cs:-1, 4.5);
-            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:1.1, 2) {Margem};
-            \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:-0.9, 2) {Margem};
-            
-        \end{axis}
+        \addlegendentry{Classe Real = -1}
+
+        % Opcional: Linhas tracejadas para marcar as margens
+        \draw[dashed, gray!70] (axis cs:1, 0) -- (axis cs:1, 4.5);
+        \draw[dashed, gray!70] (axis cs:-1, 0) -- (axis cs:-1, 4.5);
+        \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:1.1, 2) {Margem};
+        \node[above, gray!80, font=\tiny, rotate=90] at (axis cs:-0.9, 2) {Margem};
+    \end{axis}
     \end{tikzpicture}
     \caption{Visualização da função de perda \textit{hinge} no plano.}
     \label{fig:hinge-loss}
@@ -593,14 +594,14 @@ Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos lo
     \item[Continuidade, suavidade e diferenciabilidade:] A perda \textit{hinge} é uma função de classe $C^0$, \textbf{contínua} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Por utilizar a função $\max$ em sua fórmula, essa função de perda apresenta uma ``quinas'' em seu relevo, fazendo com que a perda \textit{hinge} não seja totalmente suave. Um fato que pode dificultar a otimização utilizando métodos de segunda ordem.
     \item[Convexidade:] A perda \textit{hinge} é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). A função $\max$ une duas funções convexas, garantindo como resultado uma função também convexa. Ao utilizar a perda \textit{hinge} em máquinas de vetores de suporte, é possível garantir um único ponto de mínimo.
     \item[Robustez:] A perda Hinge é uma função 1-Lipschitz-contínua, portanto, é \textbf{robusta a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Ao derivar a perda \textit{hinge} e calcular o seu gradiente no infinito, é visto que ele não cresce indefinidamente. Pelo contrário, ele fica constante em 1.
-    \item[Esparsidade:] Semelhante a perda $\epsilon$-insensível (ver Seção-xx) a perda \textit{hinge} promove gradientes esparsos (ver Apêndice-xx). Isso se dá devido à uma zona de perda zero que ocorre com o objetivo de separar os vetores de suporte. Neste caso, os vetores de suporte são os que estão dentro da margem ou foram classificados incorretamente. São eles que irão definir como os parâmetros do modelo serão atualizados.
+    \item[Esparsidade:] Semelhante a perda $\epsilon$-insensível (ver Seção-xx) a perda \textit{hinge} promove gradientes esparsos (ver Apêndice~\ref{ap:deducoes-perda-hinge}). Isso se dá devido à uma zona de perda zero que ocorre com o objetivo de separar os vetores de suporte. Neste caso, os vetores de suporte são os que estão dentro da margem ou foram classificados incorretamente. Ao definir quais são os vetores de suporte, a perda \textit{hinge} faz uma distinção entre os classificações fáceis (perda zero), das predições difíceis. Assim, os vetores de suporte deixam claro para o modelo quais classificações devem ser melhoradas, diferente de perdas como a BCE, que geram gradientes pequenos para todos os pontos, até mesmo os fáceis. Isso mantém o modelo ``ocupado'' em tentar melhorar todas as predições, a esparsidade da \textit{hinge} evita esse fenômeno.
 \end{description}
 
-\subsubsection*{Gradiente da perda Hinge}
+\subsubsection*{Gradiente da perda hinge}
 
 Da perda \textit{hinge} calculamos o seu gradiente em relação à saída bruta do modelo $f(x)$, o qual é dado através de uma função por partes. Como essa função apresenta um ponto de não-diferenciabilidade no caso $y \cdot f(x) = 1$ utilizamos o subgradiente para definir o intervalo de resultados possíveis para a derivada neste ponto. Essa derivada está na Equação~\ref{eq:hinge-loss-derivada}
 
-\begin{equacaodestaque}{Gradiente da perda Hinge em relação à saída bruta do modelo}
+\begin{equacaodestaque}{Gradiente da perda hinge em relação à saída bruta do modelo}
     \nabla_{f(x)} \mathcal{L} = 
     \begin{cases} 
       -y & \text{se } y \cdot f(x) < 1 \\
@@ -610,7 +611,7 @@ Da perda \textit{hinge} calculamos o seu gradiente em relação à saída bruta 
     \label{eq:hinge-loss-derivada}
 \end{equacaodestaque}
 
-Na prática, as bibliotecas tratam esses pontos de não-diferenciabilidade escolhendo um dos dois lados para garantir um valor definido. Isso pode ser visto em xx 
+Mesmo a definição correta para a derivada da perda \textit{hinge} no caso que $y \cdot f(x) = 1$ seja qualquer resultado no intervalo [-y, 0], bibliotecas como PyTorch e TensorFlow implementam essa decisão de forma arbitrária, considerando o gradiente como sendo 0 ou $y$. Uma situação semelhante acontece ao derivar a função de ativação ReLU.
 
 Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade de Lipschitz, a Figura~\ref{fig:hinge-loss-derivada-grafico} trás essa propriedade de forma gráfica. Na derivada, a perda \textit{hinge} deixa de ser duas retas conectas e torna-se uma espécie de degrau unitário para o cálculo do gradiente.
 
@@ -618,7 +619,7 @@ Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            width=\linewidth,  
+            width=\linewidth,
             height=7cm,
             xlabel={Saída Bruta do Modelo ($f(x)$)},
             ylabel={Gradiente ($\nabla_{f(x)} \mathcal{L}$)},
@@ -627,46 +628,44 @@ Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade
             grid style={dashed, gray!40},
             xmin=-3.5, xmax=3.5,
             ymin=-1.5, ymax=1.5, % Ajustado para mostrar valores negativos e positivos
-            ytick={-1, 0, 1},    % Mostra apenas os valores relevantes no eixo Y
+            ytick={-1, 0, 1}, % Mostra apenas os valores relevantes no eixo Y
             legend pos=north west,
             title style={font=\bfseries},
             label style={font=\small},
             tick label style={font=\scriptsize}
         ]
-        
-            % --- CASO 1: Classe Real y = +1 ---
-            % Se f(x) < 1, gradiente é -1. Se f(x) > 1, gradiente é 0.
-            \addplot[
-                domain=-3.5:3.5, 
-                samples=200, 
-                color=black, 
-                very thick
+        % --- CASO 1: Classe Real y = +1 ---
+        % Se f(x) < 1, gradiente é -1. Se f(x) > 1, gradiente é 0.
+        \addplot[
+            domain=-3.5:3.5,
+            samples=200,
+            color=black,
+            very thick
             ] {
-                (x < 1) * -1 + (x >= 1) * 0
+            (x < 1) * -1 + (x >= 1) * 0
             };
-            \addlegendentry{Para $y = 1$}
+        \addlegendentry{Para $y = 1$}
 
-            % --- CASO 2: Classe Real y = -1 ---
-            % Se f(x) > -1, o erro cresce com x, logo gradiente é +1.
-            % Se f(x) < -1, o erro é 0, logo gradiente é 0.
-            \addplot[
-                domain=-3.5:3.5, 
-                samples=200, 
-                color=black, 
-                dashed,
-                thick
+        % --- CASO 2: Classe Real y = -1 ---
+        % Se f(x) > -1, o erro cresce com x, logo gradiente é +1.
+        % Se f(x) < -1, o erro é 0, logo gradiente é 0.
+        \addplot[
+            domain=-3.5:3.5,
+            samples=200,
+            color=black,
+            dashed,
+            thick
             ] {
-                (x > -1) * 1 + (x <= -1) * 0
+            (x > -1) * 1 + (x <= -1) * 0
             };
-            \addlegendentry{Para $y = -1$}
+        \addlegendentry{Para $y = -1$}
 
-            % Linhas verticais de guia para as margens (opcional, ajuda a leitura)
-            \draw[dotted, gray] (axis cs:1, -1.5) -- (axis cs:1, 1.5);
-            \draw[dotted, gray] (axis cs:-1, -1.5) -- (axis cs:-1, 1.5);
-            
-            % Labels pequenos para indicar onde a margem "quebra"
-            \node[below, gray, font=\tiny] at (axis cs:1, 0) {Margem (+1)};
-            \node[below, gray, font=\tiny] at (axis cs:-1, 0) {Margem (-1)};
+        % Linhas verticais de guia para as margens (opcional, ajuda a leitura)
+        \draw[dotted, gray] (axis cs:1, -1.5) -- (axis cs:1, 1.5);
+        \draw[dotted, gray] (axis cs:-1, -1.5) -- (axis cs:-1, 1.5);
+        % Labels pequenos para indicar onde a margem "quebra"
+        \node[below, gray, font=\tiny] at (axis cs:1, 0) {Margem (+1)};
+        \node[below, gray, font=\tiny] at (axis cs:-1, 0) {Margem (-1)};
 
         \end{axis}
     \end{tikzpicture}
@@ -681,21 +680,31 @@ Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade
 A perda \textit{hinge} foi amplamente utilizada na criação das máquinas de vetores de suporte. Contudo, sua não-diferenciabilidade afeta negativamente que técnicas de otimização, como o gradiente descendente, sejam aplicadas com sucesso. Assim, surgem diversas variantes da perda \textit{hinge} que buscam estender seus conceitos de maximização de margem e ao mesmo tempo garantir uma função suave e diferenciável.
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Variante huberizada da perda \textit{hinge} (Área):] \textcite{Xu_2015} aborda as dificuldades de se utilizar a perda \textit{hinge} nas SVMs devido à sua não-diferenciabilidade em partes da função, o autor utiliza uma versão huberizada da perda \textit{hinge}, semelhante a perda de Huber (ver Seção-xx) que atua de forma quadrática para erros pequenos e linear para erros grandes. A versão huberizada da perda \textit{hinge} permite o uso do método do gradiente proximal (PG) com um tempo de convergência linear \parencite{Xu_2015}.
-    \item[Variante suave da perda \textit{hinge} em classificação de textos (Área):] \textcite{luo2021learningsmoothhingelosses} apresentam duas perdas \textit{hinge} suaves que são infinitamente diferenciáveis obtendo duas máquinas de vetores de suporte suaves (SSVMs), os autores testam as SSVMs em tarefas de classificação de texto concluindo que os algoritmos criados são efetivos para aplicações do mundo real.
-    \item[Variante sensível a custos da perda \textit{hinge} (Área):] \textcite{masnadishirazi2015costsensitivesupportvectormachines} estendem os conceitos da perda \textit{hinge} criando uma variante sensível ao custo (\textit{cost sensitive}), os autores explicam que cenários como diagnósticos médicos, detecção de fraudes e tomada de decisão de negócios uma falha, como um falso positivo pode afetar drasticamente mais que um falso positivo. Nessas situações a \textit{cost sensitive hinge loss} consegue minimizar o custo e o risco melhor que a perda \textit{hinge} tradicional \parencite{masnadishirazi2015costsensitivesupportvectormachines}. 
+    \item[Variante huberizada da perda \textit{hinge} (Aprendizado de máquina):] \textcite{Xu_2015} aborda as dificuldades de se utilizar a perda \textit{hinge} nas SVMs devido à sua não-diferenciabilidade em partes da função, o autor utiliza uma versão huberizada da perda \textit{hinge}, semelhante a perda de Huber (ver Seção-xx) que atua de forma quadrática para erros pequenos e linear para erros grandes. A versão huberizada da perda \textit{hinge} permite o uso do método do gradiente proximal (PG) com um tempo de convergência linear \parencite{Xu_2015}.
+    \item[Variante suave da perda \textit{hinge} em classificação de textos (Aprendizado de máquina):] \textcite{luo2021learningsmoothhingelosses} apresentam duas perdas \textit{hinge} suaves que são infinitamente diferenciáveis obtendo duas máquinas de vetores de suporte suaves (SSVMs), os autores testam as SSVMs em tarefas de classificação de texto concluindo que os algoritmos criados são efetivos para aplicações do mundo real.
+    \item[Variante sensível a custos da perda \textit{hinge} (Aprendizado de máquina):] \textcite{masnadishirazi2015costsensitivesupportvectormachines} estendem os conceitos da perda \textit{hinge} criando uma variante sensível ao custo (\textit{cost sensitive}), os autores explicam que cenários como diagnósticos médicos, detecção de fraudes e tomada de decisão de negócios uma falha, como um falso positivo pode afetar drasticamente mais que um falso positivo. Nessas situações a \textit{cost sensitive hinge loss} consegue minimizar o custo e o risco melhor que a perda \textit{hinge} tradicional \parencite{masnadishirazi2015costsensitivesupportvectormachines}. 
 \end{description}
 
 \subsection{Perda hinge quadrática (Squared hinge loss)}
 
-A fórmula da perda \textit{hinge} quadrática é dada pela Equação~\ref{eq:squared-hinge-loss}, sendo a perda \textit{hinge} elevada ao quadrado.
+A perda \textit{hinge} foi amplamente utilizada na construção das SVMs. Contudo, como visto nas aplicações dessa função, o seu ponto de não-diferenciabilidade em $y - \cdot f(x) = \pm 1$ afeta a otimização através do gradiente. Assim, com o passar do tempo foram surgindo alternativas para a perda \textit{hinge} que corrigem seus problemas de suavidade. Ainda em \textit{Support-Vector Networks}, mesmo artigo em que \textcite{HingeLoss} propõem a \textit{hinge}, os autores citam uma outra função da forma
+
+\[
+    \frac{1}{2} \textbf{w}^2 + CF \left( \sum_{i = 1}^l \xi_i^{\sigma} \right)
+\]
+
+no qual $F(u)$ é uma função convexa monotônica e $C$ é uma constante.
+
+Quando $\sigma = 1$ temos o cálculo da perda \textit{hinge} vista anteriormente. Contudo, quando $\sigma = 2$ temos a \textit{hinge} quadrática. No artigo, os autores focam em trabalhar com a perda \textit{hinge} para evitar lidar com um problema NP-Completo \parencite{HingeLoss}. Mesmo sendo não sendo trabalhada em maior profundidade no artigo de Vapnik, não demorou muito para que outros autores experimentassem outros índices para $\sigma$. Foi isso que aconteceu em \textit{Lagrangian support vector machines}, no trabalho \textcite{mangasarian2001lagrangian} utilizam a \textbf{perda \textit{hinge} quadrática}, levando-os para um algoritmo de interação lagraniano para otimização da perda. Ao mudar a função de perda, o problema passa a envolver uma matriz positiva definida, permitindo que a otimização seja feita de forma simples e rápida resolvendo um sistema de equações lineares \parencite{mangasarian2001lagrangian}.
+
+A perda \textit{hinge} quadrática trouxe para as máquinas de vetores de suporte um novo paradigma de otimização devido à sua suavidade. Essa função é definida como o quadrado da perda \textit{hinge}, como visto na Equação~\ref{eq:squared-hinge-loss}.
 
 \begin{equacaodestaque}{Perda hinge quadrática}
-    \mathcal{L}_{\text{squared hinge}}(y, f(x)) = (\max(0, 1 - y \cdot f(x)))^2
+    \mathcal{L}_{\text{hinge}^2}(y, f(x)) = (\max(0, 1 - y \cdot f(x)))^2
     \label{eq:squared-hinge-loss}
 \end{equacaodestaque}
 
-Por utilizar um termo quadrático para avaliar a perda, a Figura~\ref{fig:squared-hinge-loss} mostra que a perda \textit{hinge} quadrática possui um comportamento mais suave; o erro também aumenta de forma mais acelerada. 
+Por utilizar um termo quadrático para avaliar a perda, a Figura~\ref{fig:squared-hinge-loss} mostra que a perda \textit{hinge} quadrática possui um comportamento de curvas suaves. Desse modo, ela resolve o problema da não-diferenciabilidade no ponto $1 - y \cdot f(x) = 1$, permitindo que métodos de primeira ordem não encontrem problemas ao otimizar a função. Por outro lado, o erro cresce de forma mais acelerada que na perda \textit{hinge} tradicional, apresentando consequências no quesito de robustez da \textit{hinge} quadrática.
 
 \begin{figure}[h!]
     \centering
@@ -749,17 +758,17 @@ Por utilizar um termo quadrático para avaliar a perda, a Figura~\ref{fig:square
 \subsubsection*{Características da perda hinge quadrática}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda \textit{hinge} quadrática é uma função de classe $C^1$, \textbf{suave} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Ao elevar a perda \textit{hinge} ao quadrado, é garantido uma função de curvas suaves e sem ``bicos'', como resultado, não é necessário o uso de subgradiente para calcular as derivadas parciais da perda.
-    \item[Convexidade:] A perda \textit{hinge} quadrática é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Como essa função de perda é geralmente utilizada em classificação de vetores de suporte, a perda \textit{hinge} quadrática garante apenas um ponto de mínimo
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda \textit{hinge} quadrática é uma função de classe $C^1$, \textbf{suave} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Ao elevar a perda \textit{hinge} ao quadrado, é garantido uma função suave e sem ``bicos'', como resultado, não é necessário o uso de subgradiente para calcular as derivadas parciais da perda. Assim, métodos mais simples de otimização podem ser aplicados com essa perda.
+    \item[Convexidade:] A perda \textit{hinge} quadrática é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Desse modo, essa função de perda garante apenas um ponto de mínimo global, facilitando a otimização dos parâmetros do modelo.
     \item[Robustez:] A perda \textit{hinge} quadrática não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Quando a perda \textit{hinge} quadrática é derivada, os termos quadráticos tornam-se retas que tendem ao infinito conforme as probabilidades do modelo aumentam. Assim, erros confiantes podem enviesar o cálculo do gradiente, e até causar problemas de gradientes explosivos.
 \end{description}
 
 \subsubsection*{Gradiente da perda hinge quadrática}
 
-Para calcular a sua derivada deve-se aplicar a regra da cadeia, separando então termo ao quadrado da perda \textit{hinge} tradicional. Fazendo isso, encontramos a Equação~\ref{eq:squared-hinge-loss-derivada}.
+O cálculo das derivadas perda \textit{hinge} quadrática são mais simples que a função original. Para encontrar a derivada parcial em relação à saída do modelo devemos aplicar a regra da cadeia, separando o termo quadrático da perda \textit{hinge}. Fazendo isso, encontramos a Equação~\ref{eq:squared-hinge-loss-derivada}. No caso da perda \textit{hinge} tradicional, é visto que ela consegue escrever a derivada com apenas duas condições, não sendo necessária uma condição específica para $y \cdot f(x) = 1$. Isso justifica a não utilização do subgradiente na derivação.
 
 \begin{equacaodestaque}{Gradiente da perda hinge quadrática}
-    \nabla_{f(x)} \mathcal{L}_{\text{squared hinge}} = 
+    \nabla_{f(x)} \mathcal{L}_{\text{hinge}^2} = 
     \begin{cases} 
         -2y(1 - y \cdot f(x)) & \text{se } y \cdot f(x) < 1 \\
         0 & \text{se } y \cdot f(x) \ge 1
