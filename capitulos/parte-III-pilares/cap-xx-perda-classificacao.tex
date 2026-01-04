@@ -5,13 +5,19 @@
 \chapter{Funções de perda para classificação}%
 \label{cap:perda-classificacao}
 
-\section{Exemplo ilustrativo: cara ou coroa}
+
+
+\section{Funções de perda para classificação binária}
+
+Um dos problemas de classificação é o de classificação binária. Nele, queremos classificar as informações de um \textit{dataset} em dois grupos. Alguns cenários em que esses problemas incluem são: classificação de imagens de cachorros e gatos, classificação de imagens de exames de pessoas doentes e saudáveis, classificação de áreas desmatadas e áreas florestadas.
+
+Para esses problemas, temos majoritariamente duas escolhas para as funções de perda: as perdas derivadas da Entropia de Shannon (como a BCE e sua variante ponderada), e as perdas de maximização de margem (como a perda \textit{hinge} para as máquinas de vetores de suporte). Desse modo, esta seção foca em explicar essas duas vertentes de funções de perda para classificação binária.
+
+\subsection{Exemplo ilustrativo: cara ou coroa}
 
 Imagine que você decidiu apostar com seus amigos qual lado uma moeda irá cair. Contudo, você decidiu fazer um jogo mais complicado, ao invés de decidir apenas entre cara e coroa, serão analisadas probabilidades. Probabilidades próximas de 0 indicam que irá a nova rodada resultará em cara, já as próximas de 1 são referentes a coroa. Uma probabilidade muito alta, como 0,89 pode ser ser muito bom se cair coroa, pois irá ganhar mais pontos. Contudo, se cair cara, o prejuízo será grande, estará sendo feito um erro confiante.
 
 Nesse jogo, a entropia-binária cruzada é a juíza, é ela quem dita quem irá receber ou perder muitos pontos. Ela tem como principal função ser utilizada em problemas nos quais temos duas classes, como o do jogo da moeda. Ela também tem a tendência de penalizar mais as predições confiantes, gerando gradientes maiores em magnitude e até mesmo causar problemas de gradientes explosivos se não for utilizada da forma correta.
-
-\section{Funções de perda para classificação binária}
 
 \subsection{Entropia-cruzada binária (BCE)}%
 \index{Funções de Perda!Entropia-cruzada binária (BCE)}%
@@ -489,7 +495,7 @@ Como a Figura~\ref{fig:binary-weighted-cross-entropy-derivada-comparacao} aprese
 \end{description}
 
 \subsection{Perda hinge (Hinge loss)}%
-\index{Funções de Perda!Perda hinge}
+\index{Funções de Perda!Perda \textit{hinge}}
 
 A \textbf{perda \textit{hinge}} é função de perda para de máquinas de vetores de suporte para classificação binária, sendo proposta no artigo \textit{Support-Vector Networks} dos autores \textcite{HingeLoss}. No trabalho, \textcite{HingeLoss} analisam um conjunto de dados que não pode ser separado sem erros, de forma que os autores querem separá-los gerando a menor quantidade possível de erros. Para isso, \textcite{HingeLoss} introduzem um conjunto de variáveis não-negativas $\xi_i \ge 0, i = 1, 2, \cdots, l$, e também a função que querem minimizar, denotada por
 
@@ -685,9 +691,10 @@ A perda \textit{hinge} foi amplamente utilizada na criação das máquinas de ve
     \item[Variante sensível a custos da perda \textit{hinge} (Aprendizado de máquina):] \textcite{masnadishirazi2015costsensitivesupportvectormachines} estendem os conceitos da perda \textit{hinge} criando uma variante sensível ao custo (\textit{cost sensitive}), os autores explicam que cenários como diagnósticos médicos, detecção de fraudes e tomada de decisão de negócios uma falha, como um falso positivo pode afetar drasticamente mais que um falso positivo. Nessas situações a \textit{cost sensitive hinge loss} consegue minimizar o custo e o risco melhor que a perda \textit{hinge} tradicional \parencite{masnadishirazi2015costsensitivesupportvectormachines}. 
 \end{description}
 
-\subsection{Perda hinge quadrática (Squared hinge loss)}
+\subsection{Perda hinge quadrática (Squared hinge loss)}%
+\index{Funções de Perda!Perda \textit{hinge} quadrática}
 
-A perda \textit{hinge} foi amplamente utilizada na construção das SVMs. Contudo, como visto nas aplicações dessa função, o seu ponto de não-diferenciabilidade em $y - \cdot f(x) = \pm 1$ afeta a otimização através do gradiente. Assim, com o passar do tempo foram surgindo alternativas para a perda \textit{hinge} que corrigem seus problemas de suavidade. Ainda em \textit{Support-Vector Networks}, mesmo artigo em que \textcite{HingeLoss} propõem a \textit{hinge}, os autores citam uma outra função da forma
+A perda \textit{hinge} foi amplamente utilizada na construção das SVMs. Entretanto, como visto nas aplicações dessa função, o seu ponto de não-diferenciabilidade em $y - \cdot f(x) = \pm 1$ afeta a otimização através do gradiente. Assim, com o passar do tempo foram surgindo alternativas para a perda \textit{hinge} que corrigem seus problemas de suavidade. Ainda em \textit{Support-Vector Networks}, mesmo artigo em que \textcite{HingeLoss} propõem a \textit{hinge}, os autores citam uma função da forma
 
 \[
     \frac{1}{2} \textbf{w}^2 + CF \left( \sum_{i = 1}^l \xi_i^{\sigma} \right)
@@ -695,7 +702,7 @@ A perda \textit{hinge} foi amplamente utilizada na construção das SVMs. Contud
 
 no qual $F(u)$ é uma função convexa monotônica e $C$ é uma constante.
 
-Quando $\sigma = 1$ temos o cálculo da perda \textit{hinge} vista anteriormente. Contudo, quando $\sigma = 2$ temos a \textit{hinge} quadrática. No artigo, os autores focam em trabalhar com a perda \textit{hinge} para evitar lidar com um problema NP-Completo \parencite{HingeLoss}. Mesmo sendo não sendo trabalhada em maior profundidade no artigo de Vapnik, não demorou muito para que outros autores experimentassem outros índices para $\sigma$. Foi isso que aconteceu em \textit{Lagrangian support vector machines}, no trabalho \textcite{mangasarian2001lagrangian} utilizam a \textbf{perda \textit{hinge} quadrática}, levando-os para um algoritmo de interação lagraniano para otimização da perda. Ao mudar a função de perda, o problema passa a envolver uma matriz positiva definida, permitindo que a otimização seja feita de forma simples e rápida resolvendo um sistema de equações lineares \parencite{mangasarian2001lagrangian}.
+Quando $\sigma = 1$, temos o cálculo da perda \textit{hinge} vista anteriormente. Contudo, quando $\sigma = 2$, temos a \textit{hinge} quadrática. No artigo, os autores focam em trabalhar com a perda \textit{hinge} para evitar lidar com um problema NP-Completo \parencite{HingeLoss}. Mesmo sendo não sendo trabalhada em maior profundidade no artigo de Vapnik, não demorou muito para que outros autores experimentassem outros índices para $\sigma$. Foi isso que aconteceu em \textit{Lagrangian support vector machines}, no trabalho \textcite{mangasarian2001lagrangian} utilizam a \textbf{perda \textit{hinge} quadrática}, levando-os para um algoritmo de interação lagraniano para otimização da perda. Ao mudar a função de perda, o problema passa a envolver uma matriz positiva definida, permitindo que a otimização seja feita de forma simples e rápida resolvendo um sistema de equações lineares \parencite{mangasarian2001lagrangian}.
 
 A perda \textit{hinge} quadrática trouxe para as máquinas de vetores de suporte um novo paradigma de otimização devido à sua suavidade. Essa função é definida como o quadrado da perda \textit{hinge}, como visto na Equação~\ref{eq:squared-hinge-loss}.
 
@@ -703,6 +710,10 @@ A perda \textit{hinge} quadrática trouxe para as máquinas de vetores de suport
     \mathcal{L}_{\text{hinge}^2}(y, f(x)) = (\max(0, 1 - y \cdot f(x)))^2
     \label{eq:squared-hinge-loss}
 \end{equacaodestaque}
+
+Seguindo a analogia da estrada de mão dupla explicada na perda \textit{hinge}, ela se estende também para a sua variante quadrática. Neste caso, essa versão penaliza ainda mais os erros cometidos pelo modelo e também os acertos pouco confiantes (dentro da margem). Diferente da perda \textit{hinge} que calcula o erro linearmente, na \textit{hinge} quadrática o erro é elevado ao quadrado, isso significa que erros confiantes (que cruzam a margem) são fortemente penalizados. Dessa forma, a perda \textit{hinge} quadrática contribui para que o modelo evite ainda mais fazer previsões erradas, especialmente as confiantes.
+
+Essa relação linear x quadrática é a mesma vista no Capítulo~\ref{cap:perda-regressao} ao discutir o erro quadrático médio (MSE) e o erro absoluto médio (MAE). Por esse motivo essas duas perdas também são conhecidas como perda $L_1$ para a \textit{hinge} tradicional e perda $L_2$ para a \textit{hinge} quadrática.
 
 Por utilizar um termo quadrático para avaliar a perda, a Figura~\ref{fig:squared-hinge-loss} mostra que a perda \textit{hinge} quadrática possui um comportamento de curvas suaves. Desse modo, ela resolve o problema da não-diferenciabilidade no ponto $1 - y \cdot f(x) = 1$, permitindo que métodos de primeira ordem não encontrem problemas ao otimizar a função. Por outro lado, o erro cresce de forma mais acelerada que na perda \textit{hinge} tradicional, apresentando consequências no quesito de robustez da \textit{hinge} quadrática.
 
@@ -760,12 +771,12 @@ Por utilizar um termo quadrático para avaliar a perda, a Figura~\ref{fig:square
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Continuidade, suavidade e diferenciabilidade:] A perda \textit{hinge} quadrática é uma função de classe $C^1$, \textbf{suave} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Ao elevar a perda \textit{hinge} ao quadrado, é garantido uma função suave e sem ``bicos'', como resultado, não é necessário o uso de subgradiente para calcular as derivadas parciais da perda. Assim, métodos mais simples de otimização podem ser aplicados com essa perda.
     \item[Convexidade:] A perda \textit{hinge} quadrática é uma função \textbf{convexa} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Desse modo, essa função de perda garante apenas um ponto de mínimo global, facilitando a otimização dos parâmetros do modelo.
-    \item[Robustez:] A perda \textit{hinge} quadrática não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Quando a perda \textit{hinge} quadrática é derivada, os termos quadráticos tornam-se retas que tendem ao infinito conforme as probabilidades do modelo aumentam. Assim, erros confiantes podem enviesar o cálculo do gradiente, e até causar problemas de gradientes explosivos.
+    \item[Robustez:] A perda \textit{hinge} quadrática não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perda-hinge-quadratica}). Quando a perda \textit{hinge} quadrática é derivada, os termos quadráticos tornam-se retas que tendem ao infinito conforme as probabilidades do modelo aumentam. Assim, erros confiantes podem enviesar o cálculo do gradiente, e até causar problemas de gradientes explosivos. Essa situação é a mesma que acontece com o MAE, que é robusto, mas ao ser elevado ao quadrado tornando-se o MSE, perde a sua robustez.
 \end{description}
 
 \subsubsection*{Gradiente da perda hinge quadrática}
 
-O cálculo das derivadas perda \textit{hinge} quadrática são mais simples que a função original. Para encontrar a derivada parcial em relação à saída do modelo devemos aplicar a regra da cadeia, separando o termo quadrático da perda \textit{hinge}. Fazendo isso, encontramos a Equação~\ref{eq:squared-hinge-loss-derivada}. No caso da perda \textit{hinge} tradicional, é visto que ela consegue escrever a derivada com apenas duas condições, não sendo necessária uma condição específica para $y \cdot f(x) = 1$. Isso justifica a não utilização do subgradiente na derivação.
+O cálculo das derivadas perda \textit{hinge} quadrática são mais simples que a função original. Para encontrar a derivada parcial em relação à saída do modelo devemos aplicar a regra da cadeia, separando o termo quadrático da perda \textit{hinge}. Fazendo isso, encontramos a Equação~\ref{eq:squared-hinge-loss-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda hinge quadrática}
     \nabla_{f(x)} \mathcal{L}_{\text{hinge}^2} = 
@@ -776,7 +787,9 @@ O cálculo das derivadas perda \textit{hinge} quadrática são mais simples que 
     \label{eq:squared-hinge-loss-derivada}
 \end{equacaodestaque}
 
-A Figura~\ref{fig:squared-hinge-loss-derivada} mostra que o gradiente da perda \textit{hinge} quadrática cresce indefinidamente conforme os valores da saída do modelo aumentam, isso evidencia o fato dessa função de perda não ser Lipschitz-contínua como a perda \textit{hinge} tradicional.
+No caso da perda \textit{hinge} quadrática, ela descreve a derivada com apenas duas condições, não sendo necessária uma condição específica para $y \cdot f(x) = 1$. Isso justifica a não utilização do subgradiente na derivação. Com isso, a fronteira entre erro e margem é contínua, o gradiente não muda de forma drástica como acontecia na perda \textit{hinge} tradicional, uma grande vantagem para a \textit{hinge} quadrática e seu uso aliado à otimizadores baseados em gradiente.
+
+A Figura~\ref{fig:squared-hinge-loss-derivada} mostra que o gradiente da perda \textit{hinge} quadrática cresce indefinidamente conforme os valores da saída do modelo aumentam, isso evidencia o fato dessa função de perda não ser Lipschitz-contínua como a perda \textit{hinge} tradicional. Além disso, o seu gráfico é justamente o gráfico da perda \textit{hinge} tradicional porém com inclinações diferentes para a reta afim.
 
 \begin{figure}[h!]
     \centering
@@ -824,7 +837,7 @@ A Figura~\ref{fig:squared-hinge-loss-derivada} mostra que o gradiente da perda \
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Representação gráfica da derivada da função de perda Squared Hinge Loss. O gradiente é proporcional à distância da margem.}
+    \caption{Representação gráfica da derivada da função de perda \textit{hinge} quadrática.}
     \label{fig:squared-hinge-loss-derivada}
     \fonte{O autor (2025).}
 \end{figure}
@@ -833,9 +846,9 @@ A Figura~\ref{fig:squared-hinge-loss-derivada} mostra que o gradiente da perda \
 \index{Aplicações práticas! Perda hinge quadrática}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[SVMs com perda \textit{hinge} norma-$p$ (Área):] \textcite{sun2024psvmsoftmarginsvmspnorm} discutem as $p$SVMs, as quais generalizam a margem suave das SVMs ao introduzir a perda \textit{hinge} norma-$p$, essa nova função de perda tem um parâmetro $p$ cujo objetivo é elevar a perda \textit{hinge} ao exponente $p$. Os autores explicam que ao utilizar a perda \textit{hinge} norma-$p$ com $p = 1$ (perda \textit{hinge}) ou $p = 2$ (perda \textit{hinge} quadrática) o algoritmo de otimização SMO é simplificado em uma expressão linear, garantindo uma performance mais eficiente \parencite{sun2024psvmsoftmarginsvmspnorm}.
-    \item[\textit{Gradient boosting} com perda \textit{hinge} quadrática (Área):] \textcite{zeng2020fullycorrectivegradientboostingsquared} propõem um algoritmo de \textit{boosting} para classificação binária que utiliza a perda \textit{hinge} quadrática, como justificativa, os autores explicam que essa função permite o princípio da margem.
-    \item[Comparativo de funções de perda para classifação em aprendizado profundo (Área):] \textcite{janocha2017lossfunctionsdeepneural} investigam como a escolha de funções de perda afetam modelos profundos e suas dinâmicas de aprendizado, em testes realizados pelos autores foi concluído que a perda \textit{hinge} quadrática gerou modelos que poderiam ser treinados mais rapidamente quando comparada com outras funções, como a entropia-cruzada e a perda $L_1$. Além disso, as perdas que trabalham com a maximização da margem possuem a tendência de generalizar melhor, ultrapassando as outras famílias analisadas \parencite{janocha2017lossfunctionsdeepneural}.
+    \item[SVMs com perda \textit{hinge} norma-$p$ (Aprendizado de máquina):] \textcite{sun2024psvmsoftmarginsvmspnorm} discutem as $p$SVMs, as quais generalizam a margem suave das SVMs ao introduzir a perda \textit{hinge} norma-$p$, essa nova função de perda tem um parâmetro $p$ cujo objetivo é elevar a perda \textit{hinge} ao exponente $p$. Os autores explicam que ao utilizar a perda \textit{hinge} norma-$p$ com $p = 1$ (perda \textit{hinge}) ou $p = 2$ (perda \textit{hinge} quadrática) o algoritmo de otimização SMO é simplificado em uma expressão linear, garantindo uma performance mais eficiente \parencite{sun2024psvmsoftmarginsvmspnorm}.
+    \item[\textit{Gradient boosting} com perda \textit{hinge} quadrática (Aprendizado de máquina):] \textcite{zeng2020fullycorrectivegradientboostingsquared} propõem um algoritmo de \textit{boosting} para classificação binária que utiliza a perda \textit{hinge} quadrática, como justificativa, os autores explicam que essa função permite o princípio da margem.
+    \item[Comparativo de funções de perda para classifação em aprendizado profundo (Aprendizado de máquina):] \textcite{janocha2017lossfunctionsdeepneural} investigam como a escolha de funções de perda afetam modelos profundos e suas dinâmicas de aprendizado, em testes realizados pelos autores foi concluído que a perda \textit{hinge} quadrática gerou modelos que poderiam ser treinados mais rapidamente quando comparada com outras funções, como a entropia-cruzada e a perda $L_1$. Além disso, as perdas que trabalham com a maximização da margem possuem a tendência de generalizar melhor, ultrapassando as outras famílias analisadas \parencite{janocha2017lossfunctionsdeepneural}.
 \end{description}
 
 \section{Funções de perda para classificação multi-classe}
@@ -847,7 +860,7 @@ As perdas vistas até o momento são utilizadas em cenários nos quais temos ape
 \subsection{Entropia-cruzada categórica (CCE)}%
 \index{Funções de Perda!Entropia-cruzada categórica (CCE)}
 
-A entropia-cruzada categórica, também chamada de \textbf{\textit{categorical cross-entropy}} (\textbf{CCE}), estende os conceitos da BCE para lidar com $C$ diferentes classes em uma representação em formato \textit{one-hot}. A formatação \textit{one-hot} funciona da seguinte forma: para cada uma das classes presentes, é adicionada uma coluna binária responsável por marcar 1 se há presença daquela classe, ou 0, se há ausência da classe. Um exemplo dessa codificação está na Tabela~\ref{tab:one-hot-encoding-exemplo}.
+A \textbf{entropia-cruzada categórica}, também chamada de \textbf{\textit{categorical cross-entropy}} (\textbf{CCE}), estende os conceitos da BCE para lidar com $C$ diferentes classes em uma representação em formato \textit{one-hot}. A formatação \textit{one-hot} funciona da seguinte forma: para cada uma das classes presentes, é adicionada uma coluna binária responsável por marcar 1 se há presença daquela classe, ou 0, se há ausência da classe. Um exemplo dessa codificação está na Tabela~\ref{tab:one-hot-encoding-exemplo}.
 
 \begin{table}[htbp]
     \centering
@@ -1099,9 +1112,9 @@ Caso a \textit{categorical cross entropy} não seja utilizada em conjunto com a 
 \index{Aplicações práticas! Entropia Cruzada Categórica}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):]
-    \item[Aplicação 2 (Área):]
-    \item[Aplicação 3 (Área):]
+    \item[Classificação de imagens de lesões hepáticas (Saúde):] \textcite{heker2020jointliverlesionsegmentation} propõem um \textit{joint framework} para classificar em três tipos de lesões hepáticas, superando algoritmos como Y-Net, por se tratar de um problema de classificação multi-classe, os autores utilizam a CCE como função de perda.
+    \item[Classificação de imagens de células sanguíneas (Saúde):] \textcite{becirovic2025performancecomparisonmedicalimage} comparam a performance dos \textit{frameworks} TensorFlow com Keras, PyTorch e JAX, na classificação em oito classes de imagens de células sanguíneas no \textit{BloodMINNIST dataset}, os autores optaram pela CCE para calcular a perda do modelo.
+    \item[Classificação de doenças em folhas de tomateiro (Agronomia):] \textcite{oni2025optimizedcustomcnnrealtime} criam uma rede neural convolucional para classificar diferentes tipos de doenças que podem ocorrer nas folhas de tomateiros, os autores utilizam a CCE como função de perda para avaliar os erros do modelo.
 \end{description}
 
 Conhecida a CCE, uma das principais funções de perda para ser utilizada para problemas de classificação multi-classe, é possível se perguntar: O que acontece se os dados não estiverem codificados em formato \textit{one-hot}? Para contornar esse problema, uma solução é utilizar a \textit{sparse categorical cross-entropy}, a qual será explicada em sequência.
@@ -1319,4 +1332,3 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
     \end{threeparttable}
 \end{table}
 
-\section{Fluxograma: Escolhendo a Função de Perda Ideal}
