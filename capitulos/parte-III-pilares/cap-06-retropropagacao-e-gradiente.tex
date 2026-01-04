@@ -74,6 +74,17 @@ Em que:
 
 Note que assim como no método proposto por Cauchy, é pego como base o inverso do vetor gradiente. Isso ocorre pois o vetor gradiente é um vetor especial que tem como principal propriedade apontar para a direção de maior crescimento de uma função no ponto que está sendo calculada. Mas no método, o objetivo não é encontrar o ponto que irá gerar os maiores valores da função, e sim o contrário. Por isso, é tomado inverso do vetor gradiente, que, dessa forma, estará então apontando para a direção de menor crescimento de uma função.
 
+\subsubsection*{Características do método do gradiente}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
 Um ponto a ser destacado nesse método é na hora de escolher uma taxa de aprendizado para ser utilizada no método. Uma taxa de aprendizado muito pequena significa que o passo que o modelo irá dar de um ponto para outro será menor, e com isso implica que ele levará mais passos para encontrar um ponto de mínimo (essa situação pode ser vista na ilustração da esquerda da Figura~\ref{fig:comparativo-tamanho-do-passo}). É como se você fosse comparar a quantidade de passos que você gasta para andar do seu quarto até a sua cozinha com a quantidade de passos dados por uma formiga até lá, ambos vão chegar no local, mas a formiga certamente irá demorar bem mais. Considerando isso, surge então a hipótese de que quanto maior for o passo, mais rápido será a convergência, mas isso também não funciona muito bem, pois um passo muito largo pode ultrapassar o ponto de mínimo indo parar em outro canto da função, e ficará tentando chegar até o mínimo mas não irá conseguir pois caminha uma distância muito grande de uma só vez, de forma que é possível ver isso acontecendo na ilustração da direita da Figura~\ref{fig:comparativo-tamanho-do-passo}.
 
 \begin{figure}[h!]
@@ -606,6 +617,17 @@ Em que:
     \item $\alpha$: Representa um fator de decaimento exponencial entre 0 e 1 que determina a contribuição do gradiente passado para o gradiente futuro.
 \end{itemize}
 
+\subsubsection*{Características do método do gradiente com momento}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
 De forma semelhante ao método do gradiente, o método do gradiente com momento utilizando no artigo da retropropagação também pode ser expresso em forma de pseudocódigo como no Algoritmo~\ref{alg:metodo-do-gradiente-com-momento}. Perceba que ele recebe como parâmetros os mesmos do método do gradiente, a taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_0$, a função de perda $f(\theta)$, mas também recebe o coeficiente de momento $\alpha$. Em seguida, calculá-se o vetor gradiente para o instante $t-1$ e com base nele é feita a atualização do vetor de parâmetros seguindo a Equação~\ref{eq:metodo-do-gradiente-com-momentum-da-retropropagacao}.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
@@ -654,6 +676,17 @@ Em que:
     \item $\eta$: representa a taxa de aprendizado.
     \item $\nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})$: representa o gradiente da função de custo $J$ em relação aos parâmetros $\theta$. É calculado utilizando apenas uma única amostra $(x^{(i)}, y^{(i)})$ do conjunto de dados.
 \end{itemize}
+
+\subsubsection*{Características do método do gradiente estocástico}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
 
 Por ser um método que depende da aleatoriedade para calcular os parâmetros a serem atualizados, o SGD possui um comportamento mais imprevisível. Como pode ser visto na Figura~\ref{fig:comparativo-gd-sgd}, enquanto o gradiente em \textit{batch} segue um caminho suave encontrar o ponto de mínimo global, o gradiente estocástico segue uma trajetória irregular, justamente pelo fato de não considerar todos os parâmetros de uma vez. Na prática, isso pode acabar afetando o desempenho doSGD, o qual irá demorar mais para convergir, contudo, ele acaba compensando essa demora ao ser mais rápido para calcular as iterações do método.
 
@@ -725,7 +758,19 @@ Por utilizar mais parâmetros de uma vez para calcular o gradiente, o gradiente 
 
 Uma boa vantagem do \textit{GD mini-batch} está no fato que esses \textit{batches} podem ter tamanhos escolhidos pelo programador, de forma que caso a máquina que esteja usando possua uma quantidade maior de memória \textit{ram}, você pode utilizar \textit{batches} maiores, ajudando na convergência do modelo para melhores pontos de mínimo.
 
-\subsection{Gradiente Acelerado de Nesterov (NAG)} \index{Otimizadores!Gradiente Acelerado de Nesterov (NAG)}
+\subsubsection*{Características do método do gradiente em mini-batch}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsection{Gradiente Acelerado de Nesterov (NAG)}%
+\index{Otimizadores!Gradiente Acelerado de Nesterov (NAG)}
 
 Uma outra variante do método do gradiente é o \gls{gradiente-acelerado-de-nesterov} (NAG). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionalmente mais barata de resolver problemas de programação convexa. 
 
@@ -796,6 +841,17 @@ Para melhor entender o funcionamento do ponto de \textit{lookahead} do NAG, é p
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Características do gradiente acelerado de Nesterov}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
 Sabendo o funcionamento do NAG, também é possível desenvolver o seu pseudocódigo como no Algoritmo~\ref{alg:nag}. Ele irá receber como entradas uma taxa de aprendizado $\eta$, o coeficiente de momento $\mu$, o vetor contendo os parâmetros inicias $\theta_0$ e a função a ser otimizada $f(\theta)$. Com base nisso, se inicia o loop do gradiente acelerado de Nesterov, que começa calculando o vetor gradiente no ponto de \textit{lookahead}, que é seguido da atualização dos parâmetros $\textbf{m}_t$ os quais são utilizados para fazer a atualização do vetor de parâmetros $\theta$. Dessa forma, o loop termina após convergir para o ponto de mínimo, ou até atingir um número máximo de iterações.
 
 \begin{algorithm}[H] % A opção [H] tenta colocar o algoritmo exatamente aqui
@@ -860,7 +916,7 @@ Conforme os anos foram passando, foram surgindo novos otimizadores, também insp
 
 Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com esses algoritmos apresentassem um desempenho maior. Pois, para características que apareciam menos dos \textit{datasets} era possível atribuir taxas de aprendizados mais altas, como uma forma do modelo prestar mais atenção nessas características. Ao mesmo tempo que atribuir taxas de aprendizado menores para características mais comuns, permitia uma melhor convergência.
 
-\subsection{Adadptive Gradient Algorithm (AdaGrad)}%
+\subsection{Adaptive Gradient Algorithm (AdaGrad)}%
 \index{Otimizadores!Adpative Gradient Algorithm (AdaGrad)}
 
 Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \gls{adagrad}, foi descrito por \textcite{AdaGradMethod} como uma adaptação dos métodos iterativos baseados em gradiente, que nos permite encontrar ``agulhas em palheiros'' em forma de características muito preditivas, mas raramente vistas.
@@ -898,6 +954,19 @@ Com isso feito, é então iniciado o loop do AdaGrad, o qual irá terminar somen
 \end{algorithm}
 
 Note que $\eta$ quando está sendo utilizada para atualizar os parâmetros do modelo, passa a ser divida de elemento a elemento, isso faz com que elementos com um gradiente muito alto, recebam uma taxa de aprendizado baixa, enquanto elementos menos comuns, e consequentemente com o gradiente menor, recebam uma taxa de aprendizado mais alta. 
+
+\subsubsection*{Características do Adaptive Gradient Algorithm}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Adaptive Gradient Algorithm na pesquisa de \parencite{AdaGradMethod}}
 
 Para comprovar a eficácia do novo algoritmo desenvolvido, \textcite{AdaGradMethod} utilizam uma série de \textit{datasets} a fim de entender melhor em quais cenários, a aplicação do AdaGrad pode ser valiosa, para isso, os autores utilizam os \textit{datasets}: ImageNet (para classificação de imagens), MNIST (para classificação de dígitos manuscritos), o \textit{UCI repository} (para censo de income data), e \textit{Reuters RCV1} (para classificação de textos).
 
@@ -973,13 +1042,7 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
     \label{fig:curvas-de-aprendizado-adagrad-mnist}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações do AdaGrad em Otimização de Redes Neurais}%
+\subsubsection*{Aplicações do Adaptive Gradient Algorithm}%
 \index{Aplicações práticas! Adpative Gradient Algorithm (AdaGrad)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -987,12 +1050,6 @@ As curvas de aprendizado dos diferentes modelos treinados pelos autores podem se
     \item[Aplicação 2 (Área):] 
     \item[Aplicação 3 (Área):] 
 \end{description}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 O AdaGrad simbolizou não somente um avanço para os algoritmos de otimização, como também introduziu o conceito de diferentes taxas de aprendizado, permitindo com que um modelo possa aprender bem tanto características muito frequentes como características mais incomuns. Dessa forma, um novo período de otimizadores surgiu, seguindo os conceitos do AdaGrad mas buscando incrementar o seu algoritmo a fim de corrigir falhas que ficaram para trás. Ao longo dessa seção, serão vistos mais otimizadores que atuam de forma parecida ao AdaGrad, adicionando melhorias para o seu desempenho.
 
@@ -1032,13 +1089,18 @@ O último passo do \textit{RSMProp} consistem em atualizar os parâmetros de $\t
 
 Perceba que o RMSProp consegue corrigir um dos problemas do AdaGrad ao atualizar o vetor acumulador utilizando uma taxa de decaimento $\nu$. No AdaGrad o vetor acumulador só cresce, enquanto no RMSProp os termos mais antigos vão tendo seu valor reduzido gradativamente pelo coeficiente $\nu$. Dessa forma, é possível melhor focar nos termos mais recentes que fazem parte do vetor acumulador.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
+\subsubsection*{Características do Root Mean Square Propagation}
 
-\subsubsection{Algumas Aplicações do RMSProp em Otimização de Redes Neurais}%
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Aplicações do Root Mean Square Propagation}%
 \index{Aplicações práticas! RMSProp}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -1046,12 +1108,6 @@ Perceba que o RMSProp consegue corrigir um dos problemas do AdaGrad ao atualizar
     \item[Aplicação 2 (Área):] 
     \item[Aplicação 3 (Área):] 
 \end{description}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 \subsection{Adaptive Moment Estimation (Adam)}%
 \index{Otimizadores!Adaptive Moment Estimation (Adam)}
@@ -1107,6 +1163,19 @@ Esse método pode ser visto no bloco de algoritmo~\ref{alg:adam}.
     \end{algorithmic}
 \end{algorithm}
 
+\subsubsection*{Características do Adaptive Moment Estimation}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Adaptive Moment Estimation na pesquisa de \parencite{AdamMethod}}
+
 Para testar esse novo algoritmo, os pesquisadores \textcite{AdamMethod} prepararam uma série de experimentos, sendo alguns deles envolvendo uma regressão logística, uma rede neural multi-camadas e uma rede convolucional.
 
 No primeiro dos experimentos, os autores avaliam esse otimizador utilizado uma regularização L2 criando uma regressão logística para analisar o \textit{dataset} de dígitos manuscritos MNIST \parencite{AdamMethod}. Nos testes, \textcite{AdamMethod} comparam a sua técnica de otimização com o gradiente estocástico acelerado de Nesterov (SGDNesterov) e também como o AdaGrad; de forma que eles foram capazes de concluir que o Adam possui uma convergência similar ao SGDNesterov, enquanto o AdaGrad apresenta uma convergência mais demorada e com um maior custo de treino. Esse comparativo pode ser visto na Figura~\ref{fig:comparativo-adam-mnist}.
@@ -1151,13 +1220,7 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
     \label{fig:comparativo-adam-convnet}
 \end{figure}
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection{Algumas Aplicações do Adam em Otimização de Redes Neurais}%
+\subsubsection*{Aplicações do Adaptive Moment Estimation}%
 \index{Aplicações práticas! Adaptive Moment Esitmation (Adam)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -1165,12 +1228,6 @@ Já para a rede convolucional, \textcite{AdamMethod} criaram uma CNN com três c
     \item[Aplicação 2 (Área):] 
     \item[Aplicação 3 (Área):] 
 \end{description}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 Assim como os métodos AdaGrad e RMSProp foram grandes inspirações para o desenvolvimento do otimizador Adam, é inegável que o mesmo também passou a ser fonte de inspiração para pesquisas futuras, as quais o utilizam como base e faziam pequenos incrementos em seu método a fim de corrigir falhas. Dessa forma, a comunidade científica vive em um constante avanço incremental, pegando as partes boas e de um projeto e melhorando o que pode não estar tão bom. Os próximos otimizadores, são variantes do Adam, de forma que seguem esse mesmo princípio, de pegar algo que estava bom, mas falho em algumas partes e melhorá-lo.
 
@@ -1208,6 +1265,17 @@ A diferença do AdaMax está na próxima etapa, em que é atualizada a norma inf
     \State \Return $\theta_t$ \Comment{Parâmetros resultantes}
     \end{algorithmic}
 \end{algorithm}
+
+\subsubsection*{Características do AdaMax}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
 
 \subsection{Nesterov-accelerated Adaptive Moment Estimation (Nadam)}%
 \index{Otimizadores!Nesterov-accelerated Adaptive Moment Estimation (Nadam)}
@@ -1259,6 +1327,19 @@ O próximo passo do NAdam consiste em corrigir o viés, é nessa parte que ele a
     \end{algorithmic}
 \end{algorithm}
 
+\subsubsection*{Características do NAdam}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Nesterov-accelerated Adaptive Moment Estimation na pesquisa de \parencite{NadamMethod}}
+
 Utilizando os otimizadoresSGD, \textit{Momentum}, \textit{Nesterov}, RMSProp, Adam e NAdam, \textcite{NadamMethod} foi capaz de criar um \textit{autoencoder} convolucional com três camadas de convolução e duas camadas densas em cada encoder e o decoder para comprimir as imagens do \textit{dataset} MNIST em um espaço vetorial de 16 dimensões e com isso reconstruir a imagem original. Assim, os resultados da pesquisa do autor podem ser vistos nos gráficos da Figura~\ref{fig:comparativo-nadam-mnist}, note que comparando com o clássico gradiente estocástico, o NAdam consegue uma vantagem de cerca de 0.010 de diferença na taxa de erro utilizando a MSE para calcular o erro. Não somente isso, mas ele é o modelo que apresenta uma convergência mais acelerada quando comparado com os outros, perceba que que o decaimento da taxa de erro do NAdam é consideravelmente maior nas primeiras épocas, enquanto a partir das 10 épocas ele já começa a se estabilizar.
 
 \begin{figure}[h]
@@ -1275,13 +1356,7 @@ Utilizando os otimizadoresSGD, \textit{Momentum}, \textit{Nesterov}, RMSProp, Ad
  
 Comparando com o Adam tradicional, a principal diferença do NAdam com esse outro otimizador está justamente relacionada ao decaimento do erro, que é consideravelmente maior, enquanto o NAdam já estava se estabilizando com cerca de 10 épocas, o Adam parece demorar mais. De fato como apresentado por \textcite{NadamMethod}, o NAdam é capaz de acelerar as taxas de convergência do modelo que está sendo treinado.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações do NAdam em Otimização de Redes Neurais}%
+\subsubsection*{Aplicações do Nesterov-accelerated Adaptive Moment Estimation}%
 \index{Aplicações práticas! NAdam}
 \vspace{1em}
 
@@ -1290,12 +1365,6 @@ Comparando com o Adam tradicional, a principal diferença do NAdam com esse outr
     \item[Aplicação 2 (Área):] 
     \item[Aplicação 3 (Área):] 
 \end{description}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 \subsection{Adam With Decoupled Weight Decay (AdamW)}%
 \index{Otimizadores!Adam With Decoupled Weight Decay (AdamW)}
@@ -1348,6 +1417,19 @@ A diferença do AdamW está nessa próxima parte, o cálculo dos parâmetros $\t
     \end{algorithmic}
 \end{algorithm}
 
+\subsubsection*{Características do AdamW}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Adam With Decoupled Weight Decay na pesquisa de \parencite{AdamWMethod}}
+
 Para comparar a eficácia do desacoplamento de peso, \textcite{AdamWMethod} decidem avaliar o Adam com regularização L2 com a nova variante AdamW utilizando uma 26 2x64d ResNet no CIFAR-10 medida depois de 100 épocas, além disso, os autores avaliam também o SGD e sua variante com peso desacoplado, o SGDW, de forma que os resultados podem ser vistos na Figura~\ref{fig:comparativo-adamw-cifar-10}.
 
 \begin{figure}[h]
@@ -1374,13 +1456,7 @@ Agora se analisar o AdamW o resultado é bem mais positivo. Assim como o SGDW ex
 
 Assim, utilizar o AdamW pode ser uma excelente alternativa caso queira tentar taxas de aprendizado diferentes e ainda sim obter uma boa convergência do modelo. Por exemplo, se quiser você pode escolher uma taxa de aprendizado mais alta, permitindo com que o modelo dê passos mais largos e assim consiga convergir de forma mais rápida. Mas você ainda tem a oportunidade de utilizar taxas de aprendizado menores e provavelmente irá encontrar um ponto de mínimo.
 
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
-
-\subsubsection*{Algumas Aplicações do ADamW em Otimização de Redes Neurais}%
+\subsubsection*{Aplicações do Adam With Decoupled Weight Decay}%
 \index{Aplicações práticas! ADamW}
 \vspace{1em}
 
@@ -1389,12 +1465,6 @@ Assim, utilizar o AdamW pode ser uma excelente alternativa caso queira tentar ta
     \item[Aplicação 2 (Área):] 
     \item[Aplicação 3 (Área):] 
 \end{description}
-
-\medskip
-\begin{center}
- * * *
-\end{center}
-\medskip
 
 \subsection{Comparativo dos Otimizadores Modernos}%
 \index{Comparativos!Otimizadores Modernos}
