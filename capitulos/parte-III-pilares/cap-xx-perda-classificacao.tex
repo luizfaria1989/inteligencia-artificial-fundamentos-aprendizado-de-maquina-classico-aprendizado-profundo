@@ -1148,9 +1148,9 @@ Além dessa variante, a \textit{categorical cross-entropy} possui uma versão qu
 \index{Aplicações práticas! Entropia Cruzada Categórica Esparsa}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):]
-    \item[Aplicação 2 (Área):]
-    \item[Aplicação 3 (Área):]
+    \item[Predição de hashtags em e-comerces (Comércio):] \textcite{Camargo_2021} estudam sobre modelos como BiLSTM e BERT podem predizer hashtags em português brasileiro para sites de e-comerce, os autores aplicam uma tarefa de classificação utilizando a CCE esparsa com o intuito de refinar o BERT e sua habilidade de predizer palavras.
+    \item[Classificação de grãos de arroz (Agronomia):] \textcite{xia2025improvedpurefullyconnected} desenvolvem uma rede neural totalmente conectada para classificação de grãos de arroz, como se tratava de um problema de classificação multiclasse, os autores optam pela CCE esparsa como função de perda.
+    \item[Criação de CNN em sistemas IoT para detecção de intrusos (Segurança):] \textcite{naeem2025efficientiotintrusiondetection} criam uma CNN com arquitetura BiLSTM e recursos de atenção para identificar tipos de intrusão em sistemas IoT, os autores utilizam a CCE esparsa como função de perda. Em sistemas que possuem uma quantidade de memória RAM limitada, como em IoT, a CCE esparsa consegue ajudar a economia de memória. 
 \end{description}
 
 \subsection{Entropia-cruzada categórica ponderada (WCCE)}%
@@ -1185,9 +1185,9 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
 \index{Aplicações práticas! Entropia Cruzada Categórica Ponderada}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):]
-    \item[Aplicação 2 (Área):]
-    \item[Aplicação 3 (Área):]
+    \item[Segmentação de imagens médicas (Saúde):] \textcite{hosseini2024dilatedbalancedcrossentropy} utilizam um tipo de CCE ponderada chamada Dilated Balanced Cross Entropy para segmentação de imagem médica. a ponderação da DBCE para cada classe é baseada em uma área dilatada da máscara de cada classe, e pesos de balanceamento são atribuídos a cada classe juntamente com seus pixels vizinhos.
+    \item[Comparativo de perdas ponderadas em detecção de objetos (Veículos autônomos):] \textcite{phan2020resolvingclassimbalanceobject} exploram o uso de diferentes perdas CCE ponderadas, como Balanced Cross Entropy, Focal Loss e Class-Balanced Loss, em problemas de detecção de objetos no \textit{dataset} BDD100K, contendo imagens de câmeras de carros e outros veículos. 
+    \item[Classificação de expressões faciais (Área):] \textcite{farabi2025insideoutefficientnetv2sbaseddeep} desenvolvem uma EfficientNetV2-S para a classificação em sete classes de expressões faciais, para lidar com os dados desbalanceados no \textit{dataset}, os autores utilizam a class-weighted categorical cross entropy como perda.
 \end{description}
 
 \section{Perda multi-rótulo (multilabel loss)}%
