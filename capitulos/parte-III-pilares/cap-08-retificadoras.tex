@@ -210,7 +210,7 @@ Além da sua representação em forma de equação, é possível fazer também o
     \fonte{O autor (2025).}
 \end{figure}
 
-\subsubsection*{Algumas Aplicações da Rectified Linear Unit em Redes Neurais}%
+\subsubsection*{Aplicações da Rectified Linear Unit}%
 \index{Aplicações práticas! ReLU}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -221,7 +221,8 @@ Além da sua representação em forma de equação, é possível fazer também o
 
 Assim, com toda essa simplicidade e versatilidade, a ReLU se tornou uma função que é considerada padrão para a maioria das redes neurais \textit{feedforward} \parencite{DeepLearningBook}. Contudo, ela também apresenta problemas assim como as sigmoidais, sendo um desses problemas o dos ReLUs agonizantes, o qual será explicado em sequência.
 
-\section{O Problema dos ReLUs Agonizantes} \index{ReLUs agonizantes}
+\section{O Problema dos ReLUs Agonizantes}%
+\index{ReLUs agonizantes}
 
 Mesmo apresentando tantas propriedades úteis, como o fato de impedir o problema do desaparecimento de gradientes além de ser uma função computacionalmente barata, a ReLU não é perfeita. Ela é responsável por causar um problema conhecido como ReLUs agonizantes (\textit{Dying ReLUs problem}), que será explicado nessa seção. Para isso, é preciso lembrar primeiro da equação da camada densa:
 
@@ -343,6 +344,8 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Leaky ReLU na pesquisa de \parencite{LeakyReLUArticle}}
+
 Conhecendo a \textit{leaky ReLU} e suas propriedades, é possível agora entender como essa função se comporta quando comparada com outras em testes.
 
 Em testes de desempenho realizados por \textcite{LeakyReLUArticle} em seu trabalho, eles foram capazes de analisar como uma rede neural que faz uso dessa função pode performar quando comparada com a ReLU tradicional e também com redes que fazem uso da tangente hiperbólica, esse comparativo pode ser visto na Tabela~\ref{tab:leaky-relu-desempenho}. Note que as redes neurais que fizeram uso da \textit{Leaky ReLU} como função de ativação obtiveram melhores resultados quando comparadas com as redes que utilizaram a ReLU tradicional ou mesmo a tangente hiperbólica, veja que a rede que foi construída com 3 camadas utilizando a LReLU foi capaz de obter a menor taxa de erro de palavra (WER) no conjunto SWBD, com 17.8\%, esse resultado 0.3 pontos percentuais menor quando comparado com uma mesma rede de três camadas que utilizou a ReLU tradicional.
@@ -389,7 +392,7 @@ Agora comparando as redes que fazem uso de quatro camadas, cabe destacar os resu
 
 Ainda no grupo de redes que possuem quatro camadas, é possível ver um empate ao analisar a acurácia no conjunto de desenvolvimento (\textit{Dev Acc}), que é uma métrica responsável por medir a proporção das previsões corretas feitas pelo modelo quando comparadas com o total de previsões feitas. Assim, perceba que na Tabela~\ref{tab:leaky-relu-desempenho}, as redes que fizeram uso tanto da ReLU quanto da \textit{Leaky ReLU} obtiveram a mesma acurácia de 53.9\%, já quando comparadas com a tangente hiperbólica, é possível ver uma diferença de 4.1 pontos percentuais, indicando as funções retificadoras acabam sendo mais precisas para essa análise. Não somente elas são mais precisas, mas quando comparadas com a \textit{Leaky ReLU}, nota-se outros ganhos também, como menores taxas de erro de palavra (WER) tanto no conjunto \textit{Switchboard} (SWBD) quanto no conjunto de avaliação (\textit{EV}).
 
-\subsubsection*{Algumas Aplicações da Leaky ReLU em Redes Neurais}%
+\subsubsection*{Aplicações da Leaky ReLU}%
 \index{Aplicações práticas! Leaky ReLU (LReLU)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -501,6 +504,8 @@ Sabendo a fórmula da derivada da PReLU, é possível plotar o seu gráfico, o q
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Parametric ReLU na pesquisa de \parencite{PReLUArticle}}
+
 Ainda em \textit{Delving Deep into Rectifiers: Surpassing Human Level Performance on Image Net Classification}, os autores realizam testes comparando a ReLU tradicional com a PReLU utilizando como base o \textit{dataset} de 1000 classes do ImageNet 2012, o qual contêm cerca de 1.2 milhões de imagens de treino, 50.000 imagens de validação e 100.000 imagens de teste sem rótulos publicados \parencite{PReLUArticle}. Para isso, \textcite{PReLUArticle} criaram três modelos diferentes (A, B e C), baseados na arquitetura \textit{VGG-16} mas com variações entre si como diferentes números de camadas convolucionais e consequentemente complexidades distintas para cada algoritmo. Esses modelos podem ser vistos na Tabela~\ref{tab:arquitetura-prelu}. 
 
 \begin{table}
@@ -599,7 +604,7 @@ Um feito importante que deve ser destacado sobre a PReLU, que inclusive é o nom
 
 Assim, é nítido destacar que não somente a PReLU, mas as funções retificadoras de forma geral, foram capazes de trazer melhorias significativas para os modelos de aprendizado profundo quando comparadas com as funções sigmoides, as quais foram o padrão da indústria por muitos anos. De fato, a resolução do problema do desaparecimento do gradiente, possibilitou a criação de redes neurais ainda mais profundas, e com isso, sendo capazes de extrair mais informações e consequente melhores métricas, sendo capazes até de superar a capacidade humanas em algumas tarefas como no artigo de introdução da PReLU.
 
-\subsubsection*{Algumas Aplicações da Parametric ReLU em Redes Neurais}%
+\subsubsection*{Aplicações da Parametric ReLU}%
 \index{Aplicações práticas! Parametric ReLU (PReLU)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -734,6 +739,8 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Randomized Leaky ReLU na pesquisa de \parencite{XuRReLU}}
+
 Ainda no artigo, \textcite{XuRReLU} investigam a performance de diferentes funções retificadoras em uma rede neural convolucional, cuja arquitetura pode ser vista na Tabela~\ref{tab:nin_arquitetura}, para a classificação de imagens, os autores analisaram a ReLU tradicional, a \textit{Leaky ReLU}, a \textit{Parametric ReLU} e a \textit{Randomized Leaky ReLU}. Para fazer a análise dos modelos, foram escolhidos os datasets \textit{CIFAR-10} e \textit{CIFAR-100}, e o desempenho dessas funções nos respectivos datasets pode ser visto na Tabela~\ref{tab:rrelu-cifar-10} e na Tabela~\ref{tab:rrelu-cifar-100}.
 
 \begin{table}[ht]
@@ -848,7 +855,7 @@ Já ao analisar a Tabela~\ref{tab:rrelu-cifar-100}, que mostra a taxa de erro de
 
 Ainda em \textit{Empirical Evaluation of Rectified Activations in Convolutional Network} \textcite{XuRReLU} explicam que a RReLU é uma função que ajuda a combater o sobreajuste (overfitting) do modelo, mas ainda devem ser feitos mais testes para descobrir como a aleatoriedade afeta os processos de treino e teste \parencite{XuRReLU}. Essa característica de ajudar a combater o sobreajuste é uma vantagem que a RReLU possui, permitindo com que modelos maiores e mais profundos possam ser criados e mesmo assim obtenham resultados significativos. Provavelmente, um dos motivos dela possuir essa função está no fato de que ela introduz uma maior aleatoriedade para o modelo, ajudando a impedir que ele decore os padrões, como em imagens dos conjuntos \textit{CIFAR-10} e \textit{CIFAR-100}.
 
-\subsubsection*{Algumas Aplicações da Randomized Leaky ReLU em Redes Neurais}%
+\subsubsection*{Aplicações da Randomized Leaky ReLU}%
 \index{Aplicações práticas! Randomized Leaky ReLU (RReLU)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -963,6 +970,8 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Exponential Linear Unit na pesquisa de \parencite{ELUArticle}}
+
 Um dos testes realizados pelos autores para analisar o desempenho na ELU, foi na criação de uma CNN com 18 camadas convolucionais para fazer a classificação dos datasets \textit{CIFAR-10} e \textit{CIFAR-100}, para isso, outras técnicas foram utilizas em conjunto como o decaimento do peso L2 e reduções das taxas de aprendizado \parencite{ELUArticle}.
 
 Com base nessa CNN e seus experimentos, é possível ver os resultados na Tabela~\ref{tab:elu-cifar-comparativo}, em que \textcite{ELUArticle} comparam a ELU com outras redes no mesmo problema, como a AlexNet que foi vista anteriormente na explicação do surgimento da ReLU. Ao analisar esses resultados, nota-se que a ELU obteve um desempenho excelente no dataset \textit{CIFAR-100}, com uma diferença de 21.52 pontos percentuais quando comparada com a AlexNet, que ficou em último lugar. Já ao considerar o seu desempenho para um problema de classificação mais simples, como o \textit{CIFAR-10}, ela ficou em segundo lugar, estando atrás apenas da \textit{Fract. Max-Pooling}, mas ainda sim, apresentando uma diferença considerável de 2.05 pontos percentuais a mais de erro. 
@@ -1005,7 +1014,7 @@ Por fim, cabe destacar algumas afirmações realizadas pelos autores ainda em \t
 
 Mesmo apresentando um grande salto, quando comparada com a ReLU tradicional, a ELU também pode ser modificada para atender outros casos. Para isso, ela também tem variações, sendo uma delas a SELU, a qual adiciona a ELU um termo $\lambda$ para garantir uma autonormalização da rede que está sendo criada. Essa função será vista em seguida.
 
-\subsubsection*{Algumas Aplicações da Exponential Linear Unit em Redes Neurais}%
+\subsubsection*{Aplicações da Exponential Linear Unit}%
 \index{Aplicações práticas! Exponential Linear Unit (ELU)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -1116,6 +1125,8 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Scaled Exponential Linear Unit na pesquisa de \parencite{SELUArticle}}
+
 No texto da introdução da SELU, \textcite{SELUArticle}, comparam as redes neurais criadas por eles, as quais são chamadas de \textit{Self-Normalizing Neural Networks} (\textit{SNN}), com outras redes \textit{feedforward}, como \textit{MSRAinit} (uma \textit{FNN} que não possui técnicas de normalização, com funções de ativação ReLU, e que faz uso do \textit{Microsoft weight initialization}), a \textit{BatchNorm} (uma \textit{FNN} com normalização em lote), a \textit{LayerNorm} (uma \textit{FNN} com normalização nas camadas), a \textit{WightNorm} (uma \textit{FNN} com normalização nos pesos), a \textit{Highway} e também com redes residuais \textit{ResNet}. Para comparar essas redes, os autores escolhem 121 \textit{datasets} do \textit{UCI}, em que são apresentadas áreas de aplicação diversas como física e biologia, nesses \textit{datasets} o seus tamanhos podem variar de 10 até 130.000 pontos de dados com o número de features variando de 4 a 250. Na Tabela~\ref{tab:comparativo-selu}, é possível ver o ranking médio entre as \textit{SNNs} e as outras diferentes arquiteturas em 75 tarefas de classificação.
 
 \begin{table}[ht]
@@ -1154,7 +1165,7 @@ O interessante dessa comparação é analisar ela considerando aquelas redes que
 
 Voltando para o seu texto de introdução, os autores destacam propriedades importantes dessa nova função de ativação criada, como o fato de que de que elas possibilitam a criação de redes neurais mais profundas além de serem capazes de aplicar fortes esquemas de regularização \parencite{SELUArticle}. Por favorecer a criação de RNAs mais profundas, como consequência, a SELU se torna uma excelente alternativa para ser utilizada em problemas complexos, que possuem muitas características e por essa razão necessitam de que mais camadas sejam construídas a fim de garantir um melhor processamento e aprendizado dos dados e com base nisso, alcançar métricas maiores, como uma maior acurácia indicando uma generalização maior e também uma perda menor, indicando que o gradiente conseguiu uma convergência melhor.
 
-\subsubsection*{Algumas Aplicações da Scaled Exponential Linear Unit em Redes Neurais}%
+\subsubsection*{Aplicações da Scaled Exponential Linear Unit}%
 \index{Aplicações práticas! Scaled Exponential Linear Unit (SELU)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
@@ -1339,6 +1350,8 @@ Se a função da \textit{Noisy ReLU} no \textit{backward pass} será a mesma que
     \fonte{O autor (2025).}
 \end{figure}
 
+\subsubsection*{Noisy ReLU na pesquisa de \parencite{Nair2010}}
+
 No trabalho \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} exploram o desempenho da NReLU e ReLU utilizando o \textit{dataset NORB}, que é um \textit{dataset} para o reconhecimento de objetos 3D sintéticos que contém cinco classes: humanos, animais, carros, aviões e caminhões. No texto, os autores utilizam a versão \textit{Jittered-Cluttered NORB}, uma variante que tem imagens estereoscópicas em tons de cinza com fundo desorganizado e um objeto central que é aleatoriamente instável em posição, tamanho, intensidade de pixels \parencite{Nair2010}. O desempenho dessas funções nesse \textit{dataset} pode ser visto pela Tabela~\ref{tab:norb-error-rate} e pela Tabela~\ref{tab:nrelu-norb-comparativo}.
 
 A Tabela~\ref{tab:norb-error-rate}, mostra a taxa de erro dos diferentes modelos no \textit{dataset}, para isso, são construídos modelos com 4000 unidades ocultas treinados com imagens de dimensões $32\times32\times2$. Note ao analisar a tabela que é nítido que os modelos que são pré-treinados utilizando máquinas de Boltzmann restritas apresentam um melhor desempenho de forma geral, da mesma forma que a NReLU oferece uma perda menor quando comparada com a função binária em ambos os casos: pré-treinado ou não. 
@@ -1408,7 +1421,7 @@ Esse tópico de permitir a criação de redes mais profundas, que aconteceu just
 
 Ainda em \textit{Rectified Linear Units Improve Restricted Boltzmann Machines}, \textcite{Nair2010} citam que uma das propriedades interessantes da NReLU é a \textit{intensity equivarience} (equivariância de intensidade), a qual é bem útil para o reconhecimento de objetos. No texto, os autores destacam que um dos principais objetivos ao construir um sistema que faça o reconhecimento de objetos, é garantir que a saída seja invariante às propriedades da sua entrada, como localização, escala, iluminação e orientação, e a NReLU é uma das funções que quando adicionada em uma rede neural, garante que isso possa ser atingido \parencite{Nair2010}.
 
-\subsubsection*{Algumas Aplicações da Noisy ReLU em Redes Neurais}%
+\subsubsection*{Aplicações da Noisy ReLU}%
 \index{Aplicações práticas! Noisy ReLU (NReLU)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
