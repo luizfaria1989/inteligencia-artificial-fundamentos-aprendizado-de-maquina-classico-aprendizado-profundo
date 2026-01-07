@@ -1,7 +1,9 @@
 \chapter{Funções de perda para classificação}%
 \label{cap:perda-classificacao}
 
+No Capítulo~\ref{cap:perda-regressao} foram vistas diferentes funções de perda para problemas de regressão, os quais dado um conjunto de valores, queremos fazer uma previsão de um novo ponto. Contudo, existem outros tipos de problemas em aprendizado de máquina, um deles consiste em classificar um novo dado em diferentes classes. Eles estão presentes em veículos autônomos, para identificar pedestres e outros objetos na pista. Também estão em diagnósticos de imagens médicas para doenças além de problemas mais simples, como identificar se uma imagem é de um cachorro ou gato.
 
+Este capítulo é dividido em três seções principais. A primeira, explica as perdas para classificação binária, tendo foco da entropia-cruzada binária e a perda \textit{hinge}. A segunda parte, discute as perdas para classificação multi-classe, como a entropia-cruzada categórica. A terceira parte foca em explicar a perda multi-rótulo, utilizada para problemas de classificação multi-rótulo. Por último, é dedicada uma seção contendo uma tabela resumindo as perdas vistas no capítulo.
 
 \section{Funções de perda para classificação binária}
 
@@ -369,6 +371,7 @@ Conforme são ajustados os hiperparâmetros $\alpha_0$ e $\alpha_1$, o gráfico 
     \caption{Visualizações da função de perda entropia-cruzada binária ponderada para diferentes valores de $\alpha_0$ e $\alpha_1$ }%
     \label{fig:comparativo-entropia-cruzada-ponderada-binaria}
 \end{figure}
+
 \subsubsection*{Características da entropia-cruzada binária ponderada}
 
 Por ser uma variante da BCE, a entropia-cruzada binária ponderada herda suas características da função primária. 
@@ -1137,33 +1140,219 @@ Mesmo utilizando fórmulas diferentes, ambas as entropias-cruzadas categóricas 
 \subsection{Entropia-cruzada categórica ponderada (WCCE)}%
 \index{Funções de Perda!Entropia-cruzada categórica ponderada (WCCE)}
 
-A fórmula da \textit{weighted categorical cross-entropy} lembra bastante a fórmula da \textit{weighted binary cross-entropy}, pois sua única diferença com a variante original é a adição de um peso multiplicando o erro para aquela classe. Essa função de perda para uma amostra $j$ é dada pela Equação~\ref{eq:weighted-categorical-cross-entropy-per-sample}.
+No exemplo dessa seção a CCE foi explicada com jogo de apostas em uma corrida de cavalos. Naquele caso, foi considerado que todos os cavalos tinham a mesma chance de ganhar, eram igualmente bons. Mas em cenários em que alguns cavalos são melhores ou piores que a média, a CCE não seria a função ideal para julgar as apostas da corrida. Um cavalo ruim, deveria gerar maiores lucros para quem apostasse nele caso ganhasse, seria puramente sorte, e uma aposta arrisca. Por outro lado, ao apostar em um cavalo bom, existe uma grande chance de ganhar a aposta, não tem um alto risco. 
 
-\begin{equacaodestaque}{Entropia-cruzada categórica Ponderada}
-    \mathcal{L}_{\text{wcce}}(y, \hat{y}) = - \sum_{c=1}^{C} \alpha y_c \log(\hat{y}_c)%
-    \label{eq:weighted-categorical-cross-entropy-per-sample}
+Nessas situações, nas quais uma classe é melhor que outra, ou, no caso de aprendizado de máquina, que uma é mais frequente que a outra, devemos aplicar a ponderação de pesos para a CCE. Nesse sentido, é apresentada a \textbf{entropia-cruzada categórica ponderada} ou \textit{\textbf{weighted categorical cross-entropy}} (\textbf{WCCE}), que funciona de forma semelhante à WBCE, a diferente, é que ela lida com classificação multi-classe, ao invés de binária.
+
+A fórmula da WCCE é dada pela Equação~\ref{eq:weighted-categorical-cross-entropy}. Contudo, como será visto nos exemplos de usos dessa função, diferentes técnicas são utilizadas para a ponderação dos pesos, criando fórmulas diferentes. Na prática, essas funções seguem o mesmo raciocínio: utilizar pesos nas classes para lidar com o desbalanceamento.
+
+\begin{equacaodestaque}{Entropia-cruzada categórica ponderada}
+    \mathcal{L}_{\text{wcce}}(y, \hat{y}) = - \sum_{c=1}^{C} \alpha_c y_c \log(\hat{y}_c)%
+    \label{eq:weighted-categorical-cross-entropy}
 \end{equacaodestaque}
 
 Em que
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[$y_j$] representa o valor real da j-ésima amostra;
-    \item[$\hat{y}_j$] representa o valor predito pelo modelo;
-    \item[$N$] representa o número de amostras.
+    \item[$y_c$] representa o rótulo para a classe $c$, segue o formato $y \in {0, +1}$;
+    \item[$\hat{y}_j$] representa a probabilidade prevista para a classe $c$;
+    \item[$\alpha_c$] representa o peso atribuído para a classe $c$; 
+    \item[$C$] representa o número de classes.
 \end{description}
+
+Os pesos podem afetar consideravelmente como as curvas da WCCE crescem ou diminuem. Como a Figura~\ref{comparativo-wcce} apresenta, um peso alto gera uma curva mais inclinada e que cresce mais rapidamente para o infinito. Certamente esse curva será de uma classe que apresenta menor frequência no \textit{dataset}, que busca compensar esse fato com um peso maior, gerando maiores atualizações do gradiente. Por outro lado, quanto menor é o peso, mais próxima a curva fica do eixo das abscissas, com comportamento que se assemelha ao de uma reta constante.
+
+\begin{figure}[h!]
+    \centering
+    % Figura da Esquerda: Enfatizando Classes Raras (Alpha > 1)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \def\alphaNormal{1.0} % Peso padrão
+            \def\alphaAlta{5.0}   % Peso alto (ex: classe minoritária)
+            \begin{axis}[
+                xlabel={Probabilidade da Classe Correta ($\hat{y}_c$)},
+                ylabel={Perda $\mathcal{L}_{wcce}$},
+                axis lines=left,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=1,
+                ymin=0, ymax=15, % Focado na região de erro
+                legend pos=north east,
+                width=\textwidth,
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title style={font=\bfseries, yshift=-5pt},
+            ]
+                % Curva para Peso Alto (Classe Rara)
+                \addplot[
+                    domain=0.01:1.0, samples=100, color=black, very thick
+                ] {-\alphaAlta*ln(x)};
+                \addlegendentry{$\alpha_c=5.0$}
+
+                % Curva para Peso Normal
+                \addplot[
+                    domain=0.01:1.0, samples=100, color=black, dashed
+                ] {-\alphaNormal*ln(x)};
+                \addlegendentry{$\alpha_c=1.0$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Priorização de classes raras: o erro é amplificado ($\alpha > 1$).}%
+        \label{fig:wcce-alto-peso}
+    \end{subfigure}
+    \hfill 
+    % Figura da Direita: Atenuando Classes Frequentes (Alpha < 1)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \def\alphaNormal{1.0} % Peso padrão
+            \def\alphaBaixa{0.2}  % Peso baixo (ex: fundo/background)
+            \begin{axis}[
+                xlabel={Probabilidade da Classe Correta ($\hat{y}_c$)},
+                ylabel={Perda $\mathcal{L}_{wcce}$},
+                axis lines=left,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=1,
+                ymin=0, ymax=15, % Mesma escala para comparação
+                legend pos=north east,
+                width=\textwidth,
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title style={font=\bfseries, yshift=-5pt},
+            ]
+                % Curva para Peso Normal
+                \addplot[
+                    domain=0.01:1.0, samples=100, color=black, dashed
+                ] {-\alphaNormal*ln(x)};
+                \addlegendentry{$\alpha_c=1.0$}
+
+                % Curva para Peso Baixo (Classe Frequente)
+                \addplot[
+                    domain=0.01:1.0, samples=100, color=black, very thick
+                ] {-\alphaBaixa*ln(x)};
+                \addlegendentry{$\alpha_c=0.2$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Atenuação de classes frequentes: o erro é reduzido ($\alpha < 1$).}%
+        \label{fig:wcce-baixo-peso}
+    \end{subfigure}
+    
+    \caption{Comportamento da Entropia-cruzada Categórica Ponderada.}%
+    \label{fig:comparativo-wcce}
+\end{figure}
 
 \subsubsection*{Características da entropia-cruzada categórica ponderada}
 
+A WCCE herda as características matemáticas da CCE, que por sua vez herda da BCE.
+
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A WCCE é de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
-    \item[Convexidade:] A WCCE é \textbf{convexa} em relação predições $\hat{y}$ (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
-    \item[Robustez:] A WCCE não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Similaridades com a CCE:] Por ser uma variante da CCE, a WCCE possui as mesmas características matemáticas da função original. Assim, a A WCCE é de classe $C^{\infty}$, \textbf{infinitamente diferenciável} no domínio aberto $\hat{y}_i \in (0, 1)$, é \textbf{convexa} em relação predições $\hat{y}$ e não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-perdas-derivadas-da-kl-divergence}).
+    \item[Atenção os pesos:] Sendo uma perda ponderada, a CCE apresenta curvas que crescem de forma diferente. Desse modo, a classe que recebe os maiores pesos, pode ser responsável por causar enviesamento do modelo, caso os dados estejam rotulados incorretamente. Isso acontece, porque essa classe será mais sensível aos erros, apresentando uma curva com crescimento mais acelerado e também um maior gradiente. 
 \end{description}
 
-Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possível utilizar a sua variante multi-classe para ser trabalhada em cenários em que uma classe, ou um grupo de classes aparece de forma mais frequente que outro.
+\subsubsection*{Gradiente da entropia-cruzada categórica ponderada}
 
-\subsubsection*{Aplicações da Entropia-Cruzada Categórica Ponderada}%
-\index{Aplicações práticas! Entropia Cruzada Categórica Ponderada}
+Ao calcular a derivada parcial da WCCE em relação à predição, encontramos a Equação~\ref{eq:grad-weighted-categorical-cross-entropy}. No gradiente acontece o comportamento inverso, o parâmetro $\alpha_c$ é responsável por definir se a curva do gradiente será mais ou menos próxima do eixo das ordenadas.
+
+\begin{equacaodestaque}{Gradiente da entropia-cruzada categórica ponderada em relação à predição}
+    \nabla_{\hat{y}_c} \mathcal{L}_{\text{wcce}}(y, \hat{y}) = - \alpha_c \frac{y_c}{\hat{y}_c}
+    \label{eq:grad-weighted-categorical-cross-entropy}
+\end{equacaodestaque}
+
+Assim como as outras perdas categóricas, a WCCE também pode ser utilizada em conjunto com a \textit{softmax}, encontrando como derivada a Equação~\ref{eq:grad-weighted-categorical-cross-entropy}\footnote{A derivação exata com a \textit{softmax} e pesos arbitrários é mais complexa pois o peso de uma classe afeta o gradiente das outras devido à normalização da \textit{softmax}. Na prática, o erro, dado pelo termo ($\hat{y} - y$)} será escalado pelo peso $\alpha$.
+
+\begin{equacaodestaque}{Gradiente da entropia-cruzada categórica ponderada em relação à predição com softmax}
+    \nabla_{z_i} \mathcal{L}_{\text{wcce}}(y, \hat{y}) = - \alpha_c (\hat{y}_i - y_i)
+    \label{eq:grad-weighted-categorical-cross-entropy-with-softmax}
+\end{equacaodestaque}
+
+Os gráficos da derivada da WCCE indicam o tamanho da correção a ser feita conforme o modelo vai errando. A Figura~\ref{fig:wcce-derivada-comparacao} mostra que para classes abundantes, as correções são mais suaves, com um gradiente menor. Entretanto, para as classes raras, o gradiente é maior, e também será a correção.
+
+\begin{figure}[h!]
+    \centering
+    % Figura da Esquerda: Gradiente Agressivo (Peso Alto)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \def\alphaNormal{1.0} 
+            \def\alphaAlta{5.0}   
+            \begin{axis}[
+                title={Gradiente para Classes Raras ($\alpha > 1$)},
+                xlabel={Probabilidade Prevista ($\hat{y}_c$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
+                axis lines=left,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=1.1,
+                ymin=-60, ymax=0, % Gradiente é negativo (quer aumentar p)
+                legend pos=south east,
+                width=\textwidth,
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title style={font=\bfseries, yshift=-5pt},
+            ]
+                % Derivada Peso Alto
+                \addplot[
+                    domain=0.08:1, samples=100, color=black, very thick
+                ] {-\alphaAlta/x};
+                \addlegendentry{$\alpha_c=5.0$}
+
+                % Derivada Peso Normal
+                \addplot[
+                    domain=0.02:1, samples=100, color=black, dashed
+                ] {-\alphaNormal/x};
+                \addlegendentry{$\alpha_c=1.0$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Gradiente amplificado: O modelo recebe um sinal de correção 5x maior.}%
+        \label{fig:wcce-derivada-alto-peso}
+    \end{subfigure}
+    \hfill
+    % Figura da Direita: Gradiente Suave (Peso Baixo)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \def\alphaNormal{1.0} 
+            \def\alphaBaixa{0.2}   
+            \begin{axis}[
+                title={Gradiente para Classes Frequentes ($\alpha < 1$)},
+                xlabel={Probabilidade Prevista ($\hat{y}_c$)},
+                ylabel={Gradiente ($\nabla_{\hat{y}} \mathcal{L}$)},
+                axis lines=left,
+                grid=major,
+                grid style={dashed, gray!40},
+                xmin=0, xmax=1.1,
+                ymin=-60, ymax=0, % Mesma escala
+                legend pos=south east,
+                width=\textwidth,
+                label style={font=\small},
+                tick label style={font=\scriptsize},
+                title style={font=\bfseries, yshift=-5pt},
+            ]
+                % Derivada Peso Normal
+                \addplot[
+                    domain=0.02:1, samples=100, color=black, dashed
+                ] {-\alphaNormal/x};
+                \addlegendentry{$\alpha_c=1.0$}
+
+                % Derivada Peso Baixo
+                \addplot[
+                    domain=0.01:1, samples=100, color=black, very thick
+                ] {-\alphaBaixa/x};
+                \addlegendentry{$\alpha_c=0.2$}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Gradiente atenuado: O erro gera um sinal de correção pequeno.}%
+        \label{fig:wcce-derivada-baixo-peso}
+    \end{subfigure}
+    
+    \caption{Análise do gradiente da WCCE.}%
+    \label{fig:wcce-derivada-comparacao}
+\end{figure}
+
+\subsubsection*{Aplicações da entropia-cruzada categórica ponderada}%
+\index{Aplicações práticas! Entropia-cruzada categórica ponderada}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Segmentação de imagens médicas (Saúde):] \textcite{hosseini2024dilatedbalancedcrossentropy} utilizam um tipo de CCE ponderada chamada Dilated Balanced Cross Entropy para segmentação de imagem médica. a ponderação da DBCE para cada classe é baseada em uma área dilatada da máscara de cada classe, e pesos de balanceamento são atribuídos a cada classe juntamente com seus pixels vizinhos.
@@ -1171,13 +1360,27 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
     \item[Classificação de expressões faciais (Área):] \textcite{farabi2025insideoutefficientnetv2sbaseddeep} desenvolvem uma EfficientNetV2-S para a classificação em sete classes de expressões faciais, para lidar com os dados desbalanceados no \textit{dataset}, os autores utilizam a class-weighted categorical cross entropy como perda.
 \end{description}
 
-\section{Perda multi-rótulo (multilabel loss)}%
-\index{Funções de Perda!Multilabel Loss}
+\section{Perda multi-rótulo (Multi-label loss)}%
+\index{Funções de Perda!Perda multi-rótulo (Multi-label loss)}
+
+Imagine que você trabalha em um zoológico e está desenvolvendo uma rede convolucional para identificar os animais em seus viveiros. No total, você tem cerca de 50 diferentes animais e câmeras espalhadas por todo o zoológico. Alguns viveiros são próximos uns dos outros, de forma que em uma mesma filmagem de uma câmera podem ser identificados mais de um animal diferente. Isso é um problema de classificação, mas não se encaixa nem em uma classificação binária nem em uma multi-classe. Mais precisamente, é um problema de classificação multi-rótulo.
+
+Em problemas de classificação multi-rótulo queremos em uma mesma entrada, identificar mais de uma classe presente. Nesses casos, utilizamos a perda multi-rótulo, dada pela Equação~\ref{eq:multilabel-loss}. Essa função de perda faz o somatório de várias BCEs, de forma que para cada classe a ser identificada (no exemplo do zoológico serão aproximadamente 50) existe uma entropia-cruzada binária responsável por avaliar a probabilidade daquela classe estar ou não na entrada avaliada.
 
 \begin{equacaodestaque}{Perda multi-rótulo}
-    \mathcal{L}_{\text{multilabel}} = - \sum_{j=1}^{q} [y_j \log(\hat{y}_j) + (1 - y_j) \log(1 - \hat{y}_j)]%
+    \mathcal{L}_{\text{multi-label}} = - \sum_{r=1}^{R} [y_r \log(\hat{y}_r) + (1 - y_r) \log(1 - \hat{y}_r)]%
     \label{eq:multilabel-loss}
 \end{equacaodestaque}
+
+Em que 
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[$y_r$] representa o rótulo real para o rótulo $r$, onde $y_r \in \{0, 1\}$;
+    \item[$\hat{y}_r$] representa a probabilidade prevista para o rótulo $r$;
+    \item[$R$] representa o número total de rótulos possíveis.
+\end{description}
+
+Ao utilizar a soma de várias BCEs, a perda multi-rótulo apresenta gráficos parecidos com a entropia-cruzada binária. Na Figura~\ref{fig:multilabel-loss} é mostrado que ela possui o mesmo crescimento logaritmo característico das perdas derivadas da divergência KL.
 
 \begin{figure}[h!]
     \centering
@@ -1219,18 +1422,24 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
 
 \subsubsection*{Características da perda multi-rótulo}
 
+Por ser uma variante da BCE, a perda multi-rótulo herda suas características matemáticas da função primária.
+
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda multi-rótulo uma função de classe $C^\infty$, \textbf{infinitamente diferenciável}, no hipercubo aberto $(0, 1)^q$ (ver Apêndice~\ref{ap:deducoes-multilabel-loss}).
-    \item[Convexidade:] A perda multi-rótulo é uma função \textbf{convexa} em relação ao vetor de predições $\mathbf{\hat{y}}$ (ver Apêndice~\ref{ap:deducoes-multilabel-loss}).
-    \item[Robustez:] A perda multi-rótulo não é Lipschitz-contínua (ver Apêndice~\ref{ap:deducoes-multilabel-loss}).
+    \item[Continuidade, suavidade e diferenciabilidade:] A perda multi-rótulo uma função de classe $C^\infty$, \textbf{infinitamente diferenciável}, no hipercubo aberto $(0, 1)^q$ (ver Apêndice~\ref{ap:deducoes-multilabel-loss}). Como consequência, a perda multi-rótulo pode ser aplicada sem muitos problemas em modelos que são otimizados por gradiente ou por métodos de segunda ordem.
+    \item[Convexidade:] A perda multi-rótulo é uma função \textbf{convexa} em relação ao vetor de predições $\mathbf{\hat{y}}$ (ver Apêndice~\ref{ap:deducoes-multilabel-loss}). Essa é uma vantagem para a perda multi-rótulo, pois facilita a convergência dos modelos. Contudo, a convexidade pode ser afetada em modelos de aprendizado profundo devido às transformações não-lineares.
+    \item[Robustez:] A perda multi-rótulo não é Lipschitz-contínua, sendo \textbf{sensível a erros confiantes} (ver Apêndice~\ref{ap:deducoes-multilabel-loss}). Portanto, erros confiantes gerados pelo modelo podem enviesar o seu aprendizado e até gerar problemas de gradientes explosivos.
 \end{description}
 
 \subsubsection*{Gradiente da perda multi-rótulo}
 
+Semelhante a BCE, na qual utilizamos a sigmoide logística para simplificar os cálculos do gradiente, na perda multi-rótulo podemos aplicar essa mestra estratégia. Fazendo isso, encontramos a Equação~\ref{eq:multilabel-loss-derivada}, neste caso, a somatória está sendo omitida da equação.
+
 \begin{equacaodestaque}{Derivada da Perda Multirrótulo}
-    \nabla_{z_i} \mathcal{L}_{\text{Multilabel}}= \hat{y}_i - y_i%
+    \nabla_{z_i} \mathcal{L}_{\text{multi-label}} (y, \hat{y}) = \hat{y}_i - y_i%
     \label{eq:multilabel-loss-derivada}
 \end{equacaodestaque}
+
+Como a Figura~\ref{multilabel-loss-derivada} aponta, a derivada da multi-rótulo para um rótulo é o mesmo gráfico da derivada da BCE. Neste caso, está sendo considerado o gráfico para a Equação~\ref{eq:multilabel-loss-derivada}, na qual é utilizada a sigmoide logística em conjunto com a multi-rótulo. 
 
 \begin{figure}[h!]
     \centering
@@ -1270,9 +1479,9 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
 \index{Aplicações práticas! Multi-label}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Aplicação 1 (Área):]
-    \item[Aplicação 2 (Área):]
-    \item[Aplicação 3 (Área):]
+    \item[Reconhecimento de múltiplos objetos em imagens (Visão computacional):] \textcite{zhu2023multilabelselfsupervisedlearningscene} propõem o método \textit{Multi-Label Self-supervised learning} (MLS) para o reconhecimento de múltiplos objetos em uma única imagem, os autores aplicam diversas BCEs para permitir a identificação dos diferentes objetos do \textit{dataset} MS-COCO, desse modo, o MLS atinge resultados estado-da-arte nos \textit{benchmarks}.
+    \item[Reconhecimento de múltiplas patologias em raios-x toráxicos (Saúde):] \textcite{asadi2025clinicallyinspiredhierarchicalmultilabelclassification} desenvolvem \textit{Hierarchical Binary Cross-Entropy} (HBCE), uma função de perda que une a entropia-cruzada binária com termos de penalidade, como justificativa, os autores explicam que em tarefas de classificação multi-rótulo como em raios-x toráxicos, a presença de uma doença pode aumentar a presença de outra (como no caso de efusão pleural e pneumonia) criando uma espécie de hierarquia entre as patologias.
+    \item[Reconhecimento de múltiplos sons em um clipe de aúdio (Área):] \textcite{hou2018audiotaggingconnectionisttemporal} trabalham com a BCE para a etiquetagem de áudio com objetivo de identificar efeitos sonoros em um clipe, para isso eles criam uma rede neural convolucional recorrente (CRNN) e utilizam a BCE em cada \textit{frame} de modo que a perda total é dada pela soma das BCEs \textit{frame} a \textit{frame} permitindo a identificação de diferentes sons em um clipe.
 \end{description}
 
 \section{Comparativo: funções de perda para classificação}
@@ -1289,19 +1498,21 @@ Assim, de forma semelhante à \textit{weighted binary cross-entropy} é possíve
             \toprule
             \textbf{Função} & \textbf{Principais Características} \\
             \midrule
-            Entropia Cruzada Binária (BCE) & - \\
+            Entropia-cruzada binária (BCE) & Para problemas de classificação binária com classes de mesma frequência, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            entropia cruzada binária ponderada (\textit{WBCE}) & - \\
+            Entropia-cruzada binária ponderada (\textit{WBCE}) & Para problemas de classificação binária com classes de frequências diferentes, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            Perda Hinge (\textit{Hinge Loss}) & - \\
+            Perda \textit{hinge} (\textit{Hinge loss}) & Para problemas de classificação binária com SVMs, contínua ($C^0$), robusta a erros confiantes, convexa, promove a esparsidade do gradiente \\
             \addlinespace
-            Entropia Cruzada Categórica (CCE) & -  \\
+            Perda \textit{hinge} quadrática (\textit{Squared hinge loss}) & Para problemas de classificação binária com SVMs, suave ($C^1$), sensível a erros confiantes, convexa \\
             \addlinespace
-            Entropia Cruzada categórica Esparsa (\textit{Sparse CCE}) & - \\
+            Entropia-cruzada categórica (CCE) & Para problemas de classificação multi-classe com rótulos em formato \textit{one-hot encoding}, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa.  \\
             \addlinespace
-            Entropia Cruzada Categórica Ponderada (\textit{WCCE}) & - \\
+            Entropia-cruzada categórica esparsa (\textit{Sparse CCE}) & Para problemas de classificação multi-classe com rótulos inteiros, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            Perda Multirrótulo (\textit{Multilabel Loss}) & - \\
+            Entropia-cruzada categórica ponderada (\textit{WCCE}) & Para problemas de classificação multi-classe com classes de frequências diferentes, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
+            \addlinespace
+            Perda multi-rótulo (\textit{Multi-label loss}) & Para problemas de classificação multi-rótulo, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
         \end{tabularx}
         
