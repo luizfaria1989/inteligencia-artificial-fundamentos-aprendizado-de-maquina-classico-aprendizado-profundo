@@ -1458,7 +1458,6 @@ Assim, utilizar o AdamW pode ser uma excelente alternativa caso queira tentar ta
 
 \subsubsection*{Aplicações do Adam With Decoupled Weight Decay}%
 \index{Aplicações práticas! ADamW}
-\vspace{1em}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Aplicação 1 (Área):] 
@@ -1575,5 +1574,125 @@ Além disso, pelo fato do método de Newton envolver o cálculo das derivadas de
 
 Portanto ao criar uma rede neural devemos escolher com sabedoria qual método de otimização devemos usar. O método do gradiente pode ser eficiente para minimizar uma função de custo de uma rede neural, mas em casos que essa convergência seja lenta, o método de Newton-Raphson pode ser uma melhor alternativa.
 
-\textbf{Implementação em Python}
+\section{Métodos quasi-Newton}
+
+\subsection{Broyden–Fletcher–Goldfarb–Shanno (BFGS)}%
+\index{Otimizadores!Broyden–Fletcher–Goldfarb–Shanno (BFGS)}
+
+\subsubsection*{Características do BFGS}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Aplicações do BFGS}%
+\index{Aplicações práticas! BFGS}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
+
+\subsection{BFGS de memória limitada (L-BFGS)}%
+\index{Otimizadores!BFGS de memória limitada (L-BFGS)}
+
+\subsubsection*{Características do L-BFGS}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Aplicações do L-BFGS}%
+\index{Aplicações práticas!L-BFGS}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
+
+\subsection{Levenberg-Marquardt}%
+\index{Otimizadores!Levenberg-Marquardt}
+
+\subsubsection*{Características do Levenberg-Marquardt}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Aplicações do Levenberg-Marquardt}%
+\index{Aplicações práticas!Levenberg-Marquardt}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
+
+\subsection{Gradientes conjugados}%
+\index{Otimizadores!Gradientes conjugados}
+
+\subsubsection*{Características dos gradientes conjugados}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Aplicações dos gradientes conjugados}%
+\index{Aplicações práticas!Gradientes conjugados}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
+
+\subsection{AdaHessian}%
+\index{Otimizadores!AdaHessian}
+
+\subsubsection*{Características do AdaHessian}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Ordem da otimização:] ...
+    \item[Adaptabilidade da taxa de aprendizado:] ...
+    \item[Convergência:] ...
+    \item[Taxa de convergência:] ...
+    \item[Correção de viés:] ... 
+    \item[Adaptabilidade:] ... 
+\end{description}
+
+\subsubsection*{Aplicações do AdaHessian}%
+\index{Aplicações práticas!AdaHessian}
+
+\begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
+    \item[Aplicação 1 (Área):] 
+    \item[Aplicação 2 (Área):] 
+    \item[Aplicação 3 (Área):] 
+\end{description}
+
+\subsection{Comparativo: métodos quasi-Newton}%
+\index{Comparativos!Métodos quasi-Newton}
+
+
 
