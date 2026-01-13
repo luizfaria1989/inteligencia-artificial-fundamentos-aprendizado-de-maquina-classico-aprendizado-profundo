@@ -55,7 +55,7 @@ Como foi visto anteriormente no Capítulo~\ref{cap:ativacao-sigmoidais}, as fun�
 
 Essa equação mostra quando uma fibra nervosa irá disparar, para isso, deve-se olhar o limiar da fibra $h_{ij}$ e o estímulo total $\eta_i$, com base nesses valores e no que a fórmula apresenta, uma fibra irá disparar quando o estímulo total for maior que o seu limiar, quando isso não ocorrer, ela não irá disparar \parencite{Householder1941}. Além disso, \textcite{Householder1941} explica também sobre o termo $a_{ij}$, a saída dessa função, segundo o autor ele é utilizado para representar o parâmetro de atividade, sendo um valor diferente de zero, podendo ser positivo (quando a fibra possui ação excitatória), ou negativo (apresentando caráter inibitório).
 
-Essa equação criada por Householder, lembra bastante a expressão da função \gls{relu}, a qual é denotada pelas Equações~\ref{eq:relu}.
+Essa equação criada por Householder, lembra bastante a expressão da função ReLU, a qual é denotada pelas Equações~\ref{eq:relu}.
 
 \begin{equacaodestaque}{\textit{Rectified Linear Unit} (ReLU)}
     \mathcal{A}_{\text{ReLU}}(x_j) = \begin{cases}x_j, & \text{se } x_j > 0 \\0, & \text{se } x_j \leq 0\end{cases} \quad \text{ou} \quad \mathcal{A}_{\text{ReLU}}(x_j) = \max(0, x_j)%
@@ -152,7 +152,7 @@ Além de sua fórmula, é possível plotar o seu gráfico, que está presente na
     \end{tikzpicture}
     \caption{Função de ativação \textit{Rectified Linear Unit} (ReLU).}%
     \label{fig:relu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Rectified Linear Unit}
@@ -207,7 +207,7 @@ Além da sua representação em forma de equação, é possível fazer também o
     \end{tikzpicture}
         \caption{Derivada da função de ativação Rectified Linear Unit (ReLU).}%
     \label{fig:relu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da Rectified Linear Unit}%
@@ -245,7 +245,7 @@ Assim, essas variantes, como a \textit{Leaky ReLU} e a PReLU buscam tentar corri
 \subsection{Leaky ReLU (LReLU)}%
 \index{Funções de Ativação!Leaky ReLU (LReLU)}
 
-Seguindo adiante, é possível analisar agora a \gls{leaky-relu}, ela é uma variante da ReLU que foi criada com intuito de corrigir o problema do ReLUs agonizantes. Assim como a ReLU, que foi explicada com a analogia do vendedor de pipoca, é possível extender essa explicação para essa nova função, antes o limiar para comprar um pacote de pipoca era de R\$ 5,00, quem tivesse menos que isso não comprava nada. Mas agora, para garantir que todos possam comprar pipoca, você como vendedor definiu que quando uma pessoa tiver menos que R\$ 5,00 ela também será capaz de comprar pipoca, só que neste caso ela comprará um punhado de pipoca que será proporcional ao dinheiro que ela tem multiplicado por uma constante $\alpha$. Assim, uma pessoa com um valor próximo de R\$ 5,00 pode sair com um punhado de pipoca quase igual ao do pacote original se essa constante $\alpha$ for um valor muito proximo de um. Com isso, você como vendedor consegue obter lucro com uma nova clientela além de não perder clientes por não possuírem o valor total do pacote de pipoca. A \textit{Leaky ReLU} traz uma proposta parecida para resolver com o problema do ReLUs agonizantes.
+Seguindo adiante, é possível analisar agora a leaky ReLU, ela é uma variante da ReLU que foi criada com intuito de corrigir o problema do ReLUs agonizantes. Assim como a ReLU, que foi explicada com a analogia do vendedor de pipoca, é possível extender essa explicação para essa nova função, antes o limiar para comprar um pacote de pipoca era de R\$ 5,00, quem tivesse menos que isso não comprava nada. Mas agora, para garantir que todos possam comprar pipoca, você como vendedor definiu que quando uma pessoa tiver menos que R\$ 5,00 ela também será capaz de comprar pipoca, só que neste caso ela comprará um punhado de pipoca que será proporcional ao dinheiro que ela tem multiplicado por uma constante $\alpha$. Assim, uma pessoa com um valor próximo de R\$ 5,00 pode sair com um punhado de pipoca quase igual ao do pacote original se essa constante $\alpha$ for um valor muito proximo de um. Com isso, você como vendedor consegue obter lucro com uma nova clientela além de não perder clientes por não possuírem o valor total do pacote de pipoca. A \textit{Leaky ReLU} traz uma proposta parecida para resolver com o problema do ReLUs agonizantes.
 
 Essa função de ativação foi apresentada no artigo \textit{Rectfier Nonlinearites Improve Neural Networks Acustic Models}, em que os autores exploram o uso de redes retificadoras profundas como modelos acústicos para a tarefa de reconhecimento de fala conversacional \textit{switchboard} \parencite{LeakyReLUArticle}. Além disso, a sua principal diferença, como explicam \textcite{LeakyReLUArticle}, está no fato dela permitir que um pequeno gradiente diferente de zero flua quando a unidade está saturada e não ativa. Esse gradiente diferente de zero que flui quando a unidade está saturada e não ativa são os seus compradores de pipoca que não possuem o valor total mas são capazes de comprar um punhado dela, neste caso a unidade estará não ativa pois o valor de entrada é negativo mas irá retornar um valor diferente de zero, algo que não acontecia na ReLU.
 
@@ -290,7 +290,7 @@ Já para a sua representação gráfica, ela está presente na Figura~\ref{fig:l
     \end{tikzpicture}
     \caption{Função de ativação \textit{Leaky} ReLU (LReLU) com $\alpha = 0.1$.}
     \label{fig:leaky-relu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Leaky ReLU}
@@ -341,7 +341,7 @@ Já que a sua derivada é conhecida, pode-se também plotar o seu gráfico, o qu
     \end{tikzpicture}
     \caption{Derivada da função de ativação \textit{Leaky} ReLU (LReLU) com $\alpha = 0.1$.}%
     \label{fig:leaky-relu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Leaky ReLU na pesquisa de \parencite{LeakyReLUArticle}}
@@ -406,7 +406,7 @@ Assim, a \textit{Leaky ReLU} já é uma evolução quando comparamos com a ReLU 
 \subsection{Parametric ReLU (PReLU)}%
 \index{Funções de Ativação!Parametric ReLU (PReLU)}
 
-Continuando nas analogias do vendedor de pipoca para explicar as funções retificadoras, podemos também pensar uma para a \gls{parametric-relu}. Na LReLU nós tínhamos uma constante fixa, que valia para todos os valores de entrada e não mudava, era como se o vendedor de pipoca definisse um valor para a proporção de pipoca que a pessoa irá receber quando tiver com uma quantia menor de dinheiro que o limiar da venda. Mas agora, este vendedor está mais experiente, e sabe que pode ajustar essa constante sempre que quiser, assim, quando estiverem muitas pessoas na praça em que está vendendo pipoca, ele poderá colocar uma constante que será capaz de dar uma quantidade ainda maior de pipoca para aqueles que não possuem o valor total de um pacote, o que incentivaria a venda para as pessoas. Já quando estivesse em um lugar mais vazio, colocaria uma constante que daria menos pipoca, para maximizar o seu lucro. A Diferença da PReLU para a LReLU está justamente nessa constante e como ela irá se comportar.
+Continuando nas analogias do vendedor de pipoca para explicar as funções retificadoras, podemos também pensar uma para a parametric ReLU. Na LReLU nós tínhamos uma constante fixa, que valia para todos os valores de entrada e não mudava, era como se o vendedor de pipoca definisse um valor para a proporção de pipoca que a pessoa irá receber quando tiver com uma quantia menor de dinheiro que o limiar da venda. Mas agora, este vendedor está mais experiente, e sabe que pode ajustar essa constante sempre que quiser, assim, quando estiverem muitas pessoas na praça em que está vendendo pipoca, ele poderá colocar uma constante que será capaz de dar uma quantidade ainda maior de pipoca para aqueles que não possuem o valor total de um pacote, o que incentivaria a venda para as pessoas. Já quando estivesse em um lugar mais vazio, colocaria uma constante que daria menos pipoca, para maximizar o seu lucro. A Diferença da PReLU para a LReLU está justamente nessa constante e como ela irá se comportar.
 
 Proposta por \textcite{PReLUArticle} no artigo \textit{Delving Deep into Rectifiers: Surpassing Human Level Performance on Image Net Classification}, a PReLU surgiu como uma variação não somente da ReLU, mas também uma evolução da \textit{Leaky ReLU} que foi vista anteriormente, isso ocorre, pois diferente da LReLU que possuía uma constante $\alpha$ fixa que multiplicava o valor da entrada nos casos negativos, a PReLU trás essa mesma constante, mas neste caso ela é adaptável, se ajustando as particularidades de cada problema que uma rede neural está tentando resolver. Assim, a PReLU é como o pipoqueiro mais experiente, que ajusta como vai vender o seu punhado de pipoca em cada uma das situações para poder maximizar os seus lucros mas ao mesmo tempo garantir mais clientes para si.
 
@@ -449,7 +449,7 @@ Com base em sua equação, tem-se o gráfico da PReLU na Figura~\ref{fig:prelu},
     \end{tikzpicture}
     \caption{Função de ativação \textit{Parametric} ReLU (PReLU) com $\alpha=0.2$.}%
     \label{fig:prelu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Parametric ReLU}
@@ -501,7 +501,7 @@ Sabendo a fórmula da derivada da PReLU, é possível plotar o seu gráfico, o q
     \end{tikzpicture}
     \caption{Derivada da função de ativação \textit{Parametric} ReLU (PReLU) com $\alpha=0.2$.}%
     \label{fig:prelu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Parametric ReLU na pesquisa de \parencite{PReLUArticle}}
@@ -668,7 +668,7 @@ O gráfico da RReLU está presente na Figura~\ref{fig:rrelu}. Na representação
     \end{tikzpicture}
     \caption{Função de ativação \textit{Randomized Leaky} ReLU (RReLU) com diferentes inclinações aleatórias para a parte negativa.}%
     \label{fig:rrelu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Randomized Leaky ReLU}
@@ -736,7 +736,7 @@ Esse detalhe da aleatoriedade da constante $\alpha$ afetou o desenho do gráfico
     \end{tikzpicture}
     \caption{Derivada da função de ativação \textit{Randomized Leaky} ReLU (RReLU) com $l=0.1, u=0.3$.}%
     \label{fig:rrelu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Randomized Leaky ReLU na pesquisa de \parencite{XuRReLU}}
@@ -917,7 +917,7 @@ Conhecendo como é a fórmula da ELU, é possível também plotar o seu gráfico
     \end{tikzpicture}
     \caption{Função de ativação \textit{Exponential Linear Unit} (ELU) com $\alpha=1$.}%
     \label{fig:elu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Exponential Linear Unit}
@@ -967,7 +967,7 @@ Sabendo a sua derivada, pode-se também plotar o seu gráfico, para isso, ele es
     \end{tikzpicture}
     \caption{Derivada da função de ativação \textit{Exponential Linear Unit} (ELU) com $\alpha=1$.}%
     \label{fig:elu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Exponential Linear Unit na pesquisa de \parencite{ELUArticle}}
@@ -1071,7 +1071,7 @@ Pelo fato da SELU ter um comportamento que também retorna valores para a saída
     \end{tikzpicture}
     \caption{Função de ativação \textit{Scaled Exponential Linear Unit} (SELU) com $\alpha \approx 1.67 e \lambda \approx 1.05$.}%
     \label{fig:selu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Scaled Exponential Linear Unit}
@@ -1122,7 +1122,7 @@ Um ponto interessante dessa reta da segunda parte é que ela retorna justamente 
     \end{tikzpicture}
     \caption{Derivada da função de ativação Scaled Exponential Linear Unit (SELU) com $\alpha \approx 1.67, \lambda \approx 1.05$.}%
     \label{fig:selu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Scaled Exponential Linear Unit na pesquisa de \parencite{SELUArticle}}
@@ -1264,7 +1264,7 @@ A distribuição normal, com os parâmetros $\mu = 0$ e $\sigma=1$, é responsá
     \end{tikzpicture}
     \caption{Gráfico da Distribuição Gaussiana (ou Normal) para o caso padrão, com média 0 ($\mu = 0$) e desvio padrão 1 ($\sigma = 1$).}%
     \label{fig:distribuicao-normal-padrao}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Entendendo a estrutura e como funciona a \textit{Noisy ReLU}, é possível plotar o seu gráfico, o qual é dado pela Figura~\ref{fig:nrelu}. Note que ela compartilha a suavidade das funções ELU e SELU, apresentando uma curva para os casos em que a entrada é negativa, o que é bom, pois ela permite um vazamento de gradiente, evitando assim o o problema do ReLUs agonizantes. Já para os cenários que a entrada é positiva ela assume o comportamento de uma função identidade, lembrando bastante as outras variantes da ReLU. Contudo, como os autores destacam no texto, ela não é capaz de resolver o problema da descontinuidade em zero, para isso, em sua derivada que é utilizada na retropropagação, os casos em que sua entrada é zero irão retornar zero como saída \parencite{Nair2010}.
@@ -1296,7 +1296,7 @@ Entendendo a estrutura e como funciona a \textit{Noisy ReLU}, é possível plota
     \end{tikzpicture}
     \caption{Função de ativação \textit{Noisy} ReLU (NReLU).}%
     \label{fig:nrelu}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Noisy ReLU}
@@ -1347,7 +1347,7 @@ Se a função da \textit{Noisy ReLU} no \textit{backward pass} será a mesma que
     \end{tikzpicture}
     \caption{Função \textit{Backward Pass} da função de ativação \textit{Noisy} ReLU.}%
     \label{fig:nrelu-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Noisy ReLU na pesquisa de \parencite{Nair2010}}
@@ -1544,7 +1544,7 @@ Por fim, visto todas essas funções, é possível compilá-las na Tabela~\ref{t
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
