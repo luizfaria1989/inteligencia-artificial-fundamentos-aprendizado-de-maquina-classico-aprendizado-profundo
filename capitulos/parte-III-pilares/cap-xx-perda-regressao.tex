@@ -1,7 +1,3 @@
-% ===================================================================
-% Arquivo: capitulos/parte-III-pilares/cap-10-perda-binaria.tex
-% ===================================================================
-
 \chapter{Funções de perda para regressão}%
 \label{cap:perda-regressao}
 
@@ -9,7 +5,7 @@ Para garantir o funcionamento do algoritmo da retropropagação é necessário u
 
 Este capítulo foca em explicar as funções de perda utilizadas em problemas de regressão. Ele é dividido em quatro seções principais. A primeira explica as funções de perda padrão, que são utilizadas quando os dados seguem a distribuição Normal. Em seguida, é dedicada uma seção para explicar perdas assimétricas, para casos em que queremos penalizar em maior grau as subestimações ou as superestimações.
 
-A terceira seção explica a perda $\epsilon$-insensível, a função de perda para máquinas de vetores de suporte de regressão. A última seção aborda três funções de perda para outras distribuições de dados, são elas: a perda de Poisson, perda Gamma e perda de Tweedie. Por fim, o conteúdo é resumido em uma tabela, destacando as principais características das perdas apresentadas neste capítulo.
+A terceira seção explica a perda $\epsilon$-insensível, a função de perda para máquinas de vetores de suporte de regressão. A última seção aborda três funções de perda para outras distribuições de dados, são elas: desvio de Poisson, desvio Gamma e desvio de Tweedie. Por fim, o conteúdo é resumido em uma tabela, destacando as principais características das perdas apresentadas neste capítulo.
 
 \section{Exemplo ilustrativo: jogando dardos}
 
@@ -178,7 +174,7 @@ A Figura \ref{fig:mse} ilustra o comportamento do erro quadrático médio. O gr�
 
     \caption{Visualizações do erro quadrático médio em duas e em três dimensões.}%
     \label{fig:mse}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características do erro quadrático médio}
@@ -276,7 +272,7 @@ Os gráficos da derivada parcial do erro quadrático médio estão ilustrados na
 
     \caption{Visualizações do gradiente do erro quadrático médio em relação à predição.}%
     \label{fig:mse-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Raiz do erro quadrático médio (RMSE)}
@@ -413,7 +409,7 @@ Em que
 
     \caption{Visualizações da função de perda erro absoluto médio em duas e em três dimensões.}%
     \label{fig:mae}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características do erro absoluto médio}
@@ -531,7 +527,7 @@ Diferente do MSE que é uma parábola, e portanto, ao ser derivado, gera o gráf
 
     \caption{Visualizações do gradiente do erro absoluto médio em relação à predição.}%
     \label{fig:mae-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações do erro absoluto médio}%
@@ -659,7 +655,7 @@ Como a Figura~\ref{fig:huber-loss} evidencia, a perda de Huber é uma função `
 
     \caption{Visualizações da função de perda de Huber (com $\delta=1$) em duas e em três dimensões.}%
     \label{fig:huber-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber. Um valor alto, demonstrado na Figura~\ref{fig:huber-2d-d40}, torna a função muito sensível ao erro e também a \textit{outliers}. Ela também se assemelha com os gráficos do MSE, dado que para grande parte de seu domínio, ela calcula o erro de forma quadrática. Um valor pequeno para $\delta$, como na Figura~\ref{fig:huber-2d-d05}, faz com que a parábola da perda de Huber seja curta. Com isso, a função apresenta uma melhor robustez a \textit{outliers}, se assemelhando com o MAE.
@@ -800,7 +796,7 @@ O hiperparâmetro $\delta$ serve para ajustar a sensibilidade da perda de Huber.
     
     \caption{Visualização da Perda de Huber em duas e três dimensões variando o hiperparâmetro $\delta$.}%
     \label{fig:huber-grid-comparacao}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da perda de Huber}
@@ -916,7 +912,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
 
     \caption{Visualizações do gradiente da perda Huber em relação à predição (com $\delta = 1.0$).}%
     \label{fig:huber-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda de Huber}%
@@ -933,7 +929,7 @@ O comportamento híbrido da perda de Huber está presente em sua derivada, como 
 
 A perda de Huber consegue unir o melhor dos dois mundos quando trata-se das perdas MSE e MAE. É uma função que atua de forma quadrática até certo ponto e depois, de forma linear. Ela garante ser robusta a \textit{outliers}, uma excelente vantagem para essa função. Entretanto, ao utilizar um parâmetro $\delta$ para definir o comportamento da função, a perda de Huber aumenta a complexidade do modelo criado. Esse fato pode ser um empecilho, gerando mais hiperparâmetro para ser otimizado empiricamente, levando mais tempo de pesquisa. Uma solução para manter o comportamento híbrido da perda, mas, ainda diminuir o hiperparâmetro de robustez, é a perda log-cosh.
 
-\subsection{Perda log-cosh (log-cosh loss)}%
+\subsection{Perda log-cosh (Log-cosh loss)}%
 \index{Funções de Perda!Perda log-cosh (log-cosh loss)}%
 \label{sec:log-cosh-loss}
 
@@ -1027,7 +1023,7 @@ Esse comportamento variável para calcular os erros também é evidenciado nas s
     % --- Legenda e Fonte da Figura Principal ---
     \caption{Visualizações da função de perda log-cosh em duas e em três dimensões.}%
     \label{fig:log-cosh-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da perda log-cosh}
@@ -1052,7 +1048,7 @@ que se simplifica para o cálculo da tangente hiperbólica $\tanh(e)$.
 Expandindo o cálculo da derivada para o cenário de duas dimensões, chegamos na Equação~\ref{eq:log-cosh-derivada}.
 
 \begin{equacaodestaque}{Gradiente da perda log-cosh em relação à predição}
-    \nabla_{\hat{y}}\mathcal{L}_{\text{log-cosh}} = \tanh(y - \hat{y})%
+    \nabla_{\hat{y}}\mathcal{L}_{\text{log-cosh}} = \tanh(\hat{y} - y)%
     \label{eq:log-cosh-derivada}
 \end{equacaodestaque}
 
@@ -1128,7 +1124,7 @@ Os gráficos da derivada parcial da perda log-cosh, vistos na Figura~\ref{eq:log
 
     \caption{Visualizações do gradiente da perda log-cosh em relação à predição.}%
     \label{fig:log-cosh-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda log-cosh}%
@@ -1257,7 +1253,7 @@ A Figura~\ref{fig:msle-loss} evidencia a natureza assimétrica do erro quadráti
 
     \caption{Visualizações da função de perda erro quadrático logarítmico médio.}%
     \label{fig:msle-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Essa propriedade assimétrica dos logaritmos também é explorada ao descrever o comportamento da entropia cruzada binária e funções semelhantes (vistas com mais detalhes do Capítulo~\ref{cap:perda-classificacao}). Neste caso, a forma com que a função utiliza os logaritmos faz com que sejam punidas em maior peso as previsões confiantes que estão erradas.
@@ -1357,7 +1353,7 @@ O comportamento assimétrico do MSLE também está presente nos gráficos da sua
 
     \caption{Visualizações do gradiente da perda log-cosh em relação à predição.}%
     \label{fig:msle-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{O problema dos imóveis com o MSLE}
@@ -1382,7 +1378,7 @@ Com esse intuito, a Tabela~\ref{tab:comparativo-mse-msle} compara os dois cenár
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
@@ -1414,7 +1410,7 @@ Ao calcular a raiz quadrada do erro quadrático logarítmico médio tem-se uma n
 
 O erro quadrático logarítmico médio médio penaliza fortemente as subestimações feitas pelo modelo. Entretanto, pode ser necessário uma função que tenha a característica contrária: penalizar em maior grau as superestimações. Dessa forma, uma solução é utilizar a perda quantílica.
 
-\subsection{Perda quantílica (quantile/pinball loss)}%
+\subsection{Perda quantílica (Quantile/Pinball loss)}%
 \index{Funções de Perda!Perda quantílica (\textit{quantile loss})}
 
 Até agora todas as funções de perda presumiam que os dados seguiam a distribuição Normal, com a característica mais informativa estando no centro da distribuição. Contudo, e quando isso não for a realidade? E quando a caraterística mais comum estiver deslocada mais para à esquerda (como na Figura~\ref{fig:dist-skew-esquerda}), ou mais para à direita (como na Figura~\ref{fig:dist-skew-direita})?
@@ -1487,7 +1483,7 @@ Até agora todas as funções de perda presumiam que os dados seguiam a distribu
 
     \caption{Comparação matemática de assimetrias utilizando a distribuição Log-Normal.}
     \label{fig:distribuicoes-assimetricas}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Nestes casos, podemos utilizar a perda quantílica, pois ela consegue lidar com as situações em que a média e a mediana são divergentes. Com foco em estudar como a perda é calculada em diferentes quantis da distribuição. Ao utilizá-la, é definido o quantil que será analisado, escolhendo se ela irá funcionar de forma assimétrica, ou de forma parecida com o MAE.
@@ -1602,7 +1598,7 @@ A perda quantílica com $\tau = 0,5$ é retratada na Figura~\ref{fig:quantile-lo
 
     \caption{Visualizações da função de perda quantílica em duas e em três dimensões (com $\tau=0.5$ (MAE)).}%
     \label{fig:quantile-loss-tau05}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 O diferencial dessa função é quando ela precisa ser utilizada em cenários em que a distribuição de dados é irregular, e não segue a distribuição normal. Essa função tem a propriedade de se ajustar para penalizar de forma assimétrica os erros que um modelo comete. 
@@ -1734,7 +1730,7 @@ Um cenário contrário, em que a perda é ajustada para penalizar as superestima
 
     \caption{Visualizações das perdas quantílicas para os percentis 90 ($\tau=0.9$) e 10 ($\tau=0.1$).}%
     \label{fig:quantile-loss-grid}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da perda quantílica} 
@@ -1834,7 +1830,7 @@ O comportamento da derivada da perda quantílica também se assemelha com MAE. C
 
     \caption{Visualizações do gradiente da perda quantílica em relação à predição (com $\tau = 0.1$).}%
     \label{fig:quantile-loss-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda quantílica}%
@@ -1847,7 +1843,7 @@ O comportamento da derivada da perda quantílica também se assemelha com MAE. C
     \item[Avaliação de impacto em serviços médicos (Economia da Saúde):]  \textcite{WINKELMANN2006131} usa regressão quantílica para contagens para estimar o efeito de uma reforma na saúde sobre a frequência de consultas médicas individuais. O autor justifica a escolha da regressão quantílica, e não uma técnica mais comum, como a dos mínimos quadrados, pois ele considera que esse é um problema em que os efeitos da reforma são diferentes em cada uma das partes da distribuição \parencite{WINKELMANN2006131}.
 \end{description}
 
-\section{Perda epsilon-insensível (epsilon-insensitive loss): A perda para SVMs de regressão}%
+\section{Perda epsilon-insensível (Epsilon-insensitive loss): A perda para SVMs de regressão}%
 \index{Funções de Perda!Perda Epsilon-Insensível}
 
 A \textbf{perda epsilon-insensível}, também chamada \textbf{$\epsilon$-insensível} se relacionada diretamente com as máquinas de vetores de suporte, sendo essencial para possibilitar tarefas de regressão pelas SVMs. O trabalho \textit{Support Vector Regression Machines} dos pesquisadores \textcite{SupportVectorRegressionMachines} é um dos responsáveis por introduzir essa função de perda. Nele, os autores detalham um novo uso das máquinas de vetores desenvolvidas por Vapnik, as quais antes eram utilizadas para problemas de classificação \parencite{SupportVectorRegressionMachines}.
@@ -1967,7 +1963,7 @@ Como aponta a Figura~\ref{fig:epsilon-insensitive-loss} o seu gráfico lembra um
 
     \caption{Visualizações da função de perda epsilon-insensível (com $\epsilon=1$) em duas e em três dimensões.}%
     \label{fig:epsilon-insensitive-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Essa região em que o erro é ignorado, é chamada da literatura de Tubo-Epsilon (\textit{$\epsilon$-Tube}). Você pode imaginar um tubo de largura $2\epsilon$, que, qualquer ponto que caia dentro desse tubo não gere penalidade para o modelo.
@@ -2078,7 +2074,7 @@ Os gráficos da derivada parcial da $\epsilon$-insensível ajudam a evidenciar a
 
     \caption{Visualizações do gradiente da perda $\epsilon$-insensível em relação à predição (com $\epsilon = 1$).}%
     \label{fig:epsilon-derivada-completa}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda epsilon-insensível}%
@@ -2095,10 +2091,10 @@ Os gráficos da derivada parcial da $\epsilon$-insensível ajudam a evidenciar a
 
 Exceto pela perda $\epsilon$-insensível que trabalha com distribuições que não eram simétricas, a maioria das perdas apresentadas até agora são utilizadas para dados que seguem a distribuição Normal. Isso foi visto na explicação sobre o erro quadrático médio, e como Gauss prova que o método dos mínimos quadrados é uma solução ideal para ser utilizado em casos em que os dados seguem a distribuição Gaussiana.
 
-Contudo, mesmo a distribuição normal sendo a mais comum para modelar os diferentes problemas que envolvem regressão, existem outras distribuições que são igualmente importantes. Essa seção foca em explicar três funções de perda que são utilizadas para trabalhar com distribuições específicas, são elas: a perda de Poisson, a perda Gamma e a perda de Tweedie.
+Contudo, mesmo a distribuição normal sendo a mais comum para modelar os diferentes problemas que envolvem regressão, existem outras distribuições que são igualmente importantes. Essa seção foca em explicar três funções de perda que são utilizadas para trabalhar com distribuições específicas, são elas: a desvio de Poisson, a desvio Gamma e a desvio de Tweedie.
 
-\subsection{Perda de Poisson (Poisson deviance)}%
-\index{Funções de Perda!Perda de Poisson (\textit{Poisson deviance})}%
+\subsection{Desvio de Poisson (Poisson deviance)}%
+\index{Funções de Perda!Desvio de Poisson (\textit{Poisson deviance})}%
 \label{sec:poisson-loss}
 
 Imagine que você está procurando uma forma de modelar a quantidade de ligações que você pode receber em seu telefone por dia. Primeiro, você pensou que essa quantidade seguiria uma distribuição normal, mas encontrou um problema, a distribuição normal é contínua, e não tem como você receber $2,5$ ligações em um período. Além disso, você decidiu que precisava dividir o tempo em um conjunto de intervalos discretos, assim, todas as ligações que você receber das 14:00 as 14:59 ficarão no mesmo intervalo. Esse problema possui ainda uma terceira particularidade, não existe um limite de ligações que você pode receber, pode ser que das 13:00 as 13:59 você receba duas ligações, mas também pode ser que você receba 314 ligações naquele horário. Quando temos uma situação parecida com essa, nós estaremos trabalhando com o que os estatísticos chamam de \textbf{dados de contagem}. 
@@ -2123,7 +2119,7 @@ Em que
 
 A distribuição de Poisson segue a média, a variância e todos os cumulativos de $Y$ que são iguais a $\lambda$ \parencite{GeneralizedLinearModels}. Isso significa que a média e a variância dessa distribuição são iguais, consequentemente, o parâmetro $\lambda$ é o único responsável por controlar como a distribuição se comporta. Considerando a distribuição normal, que precisa de dois parâmetros ($\mu$ para a média e $\sigma^2$ para a variância), na Poisson o parâmetro $\lambda$ é quem dita a tendência central, onde os dados se agrupam, e também a dispersão, indicando se eles estão muito ou pouco espalhados.
 
-Quando utilizamos o MSE como função de perda, estamos supondo que os dados seguem a distribuição normal, e portanto a variância é constante em toda a distribuição. Se fazemos uso dessa função de perda para um cenário em que temos dados de contagem que seguem a distribuição de Poisson, o MSE irá penalizar excessivamente os erros em contagem alta (na qual o ruído é maior) e insuficientemente em contagem baixa. A perda de Poisson consegue corrigir esse problema, dado que ela leva em consideração a definição da função log-verossimilhança da distribuição de Poisson.
+Quando utilizamos o MSE como função de perda, estamos supondo que os dados seguem a distribuição normal, e portanto a variância é constante em toda a distribuição. Se fazemos uso dessa função de perda para um cenário em que temos dados de contagem que seguem a distribuição de Poisson, o MSE irá penalizar excessivamente os erros em contagem alta (na qual o ruído é maior) e insuficientemente em contagem baixa. A desvio de Poisson consegue corrigir esse problema, dado que ela leva em consideração a definição da função log-verossimilhança da distribuição de Poisson.
 
 Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele é baixo. Portanto, a média da distribuição é baixa, de forma que a maioria dos dados está próxima de zero. A variância também é baixa, indicando que os dados são representados no gráfico de forma assimétrica. Já na Figura~\ref{fig:poisson-high-lambda} o cenário é o inverso, o $\lambda$ é alto. Com isso, os dados ficam melhores distribuídos no gráfico, além de uma média maior. O gráfico passa a lembrar o de uma distribuição Normal, mas ainda assim, permanece discreto. Além disso, o parâmetro $\lambda$ é responsável por definir também a assimetria dos gráficos da distribuição, conforme seu valor aumenta, a assimetria diminui.
 
@@ -2186,14 +2182,14 @@ Na Figura~\ref{fig:poisson-low-lambda} o parâmetro $\lambda$ é igual a 1, ele 
     
     \caption{Comparação visual da Distribuição de Poisson com $\lambda$ baixo e alto.}
     \label{fig:poisson-comparison}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Perda de Poisson}
+\subsubsection*{Desvio de Poisson}
 
-Para chegar na definição da perda de Poisson, devemos começar com função log-verossimilhança da distribuição. Ela é dada por
+Para chegar na definição da desvio de Poisson, devemos começar com função log-verossimilhança da distribuição. Ela é dada por
 
-A função log-verossimilhança para a distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição da perda de Poisson.
+A função log-verossimilhança para a distribuição de Poisson está na Equação~\ref{eq:log-verossimilhanca-negativa-de-poisson}, é a partir dela que chegaremos na definição do desvio de Poisson.
 
 \[
     \log (P(y|\lambda)) =  -\lambda + y \log(\lambda) - \log(y!)
@@ -2205,9 +2201,9 @@ O termo $\log(y !)$ é constante em relação ao modelo, dado que o modelo não 
       -\lambda + y \log(\lambda)
 \]
 
-Como nosso intuito é minimizar a perda, devemos multiplicá-la por $-1$. Feito isso, encontramos que a perda de Poisson é dada pela Equação~\ref{eq:poisson-loss}. Neste caso, o termo $\lambda$ é dado pelo valor predito pelo modelo $\hat{y}$.
+Como nosso intuito é minimizar a perda, devemos multiplicá-la por $-1$. Feito isso, encontramos que o desvio de Poisson é dada pela Equação~\ref{eq:poisson-loss}. Neste caso, o termo $\lambda$ é dado pelo valor predito pelo modelo $\hat{y}$.
 
-\begin{equacaodestaque}{Perda de Poisson}
+\begin{equacaodestaque}{Desvio de Poisson}
     \mathcal{L}_{\text{poisson}}(y, \hat{y}) =  \hat{y} -y \log(\hat{y})%
     \label{eq:poisson-loss}
 \end{equacaodestaque}
@@ -2219,7 +2215,7 @@ Em que
     \item[$\hat{y}$] representa o valor predito para a amostra.  
 \end{description}
 
-Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando de iteração para iteração, vão existir diferentes gráficos de perda, isso está evidenciado na Figura~\ref{fig:poisson-comparison}. Quando o valor real é pequeno, a perda de Poisson possui uma convexidade mais ``apertada''. Já quando o valor real é grande, isso resulta em uma função mais ``larga''.
+Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando de iteração para iteração, vão existir diferentes gráficos de perda, isso está evidenciado na Figura~\ref{fig:poisson-comparison}. Quando o valor real é pequeno, o desvio de Poisson possui uma convexidade mais ``apertada''. Já quando o valor real é grande, isso resulta em uma função mais ``larga''.
 
 \begin{figure}[h!]
     \centering
@@ -2231,7 +2227,7 @@ Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando 
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda ($\mathcal{L}$)},
+                ylabel={Desvio ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2263,7 +2259,7 @@ Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando 
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Loss},
+                zlabel={Desvio},
                 grid=major,
                 view={135}{35}, % Angulo de visão
                 legend pos=north east,
@@ -2297,7 +2293,7 @@ Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando 
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda ($\mathcal{L}$)},
+                ylabel={Desvio ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2330,7 +2326,7 @@ Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando 
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Loss},
+                zlabel={Desvio},
                 grid=major,
                 view={135}{35},
                 title style={font=\bfseries\small},
@@ -2354,18 +2350,18 @@ Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando 
         \label{fig:poisson-3d-high}
     \end{subfigure}
 
-    \caption{Comparação da perda de Poisson para diferentes magnitudes de $y$.}%
+    \caption{Comparação do desvio de Poisson para diferentes magnitudes de $y$.}%
     \label{fig:poisson-loss-grid}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Características da perda de Poisson}
+\subsubsection*{Características do desvio de Poisson}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda de Poisson pertence à classe $C^\infty$, \textbf{infinitamente diferenciável} em seu domínio de definição $(0, \infty)$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Isso garante para essa função a possibilidade de ser utilizada tanto em métodos de otimização baseados em gradiente (que utilizam a primeira derivada) quanto em métodos de segunda ordem (que utilizam a segunda derivada).
-    \item[Convexidade:] A perda de Poisson é convexa, e estritamente convexa se $y > 0$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Esse fato está evidenciado nos gráficos da Figura~\ref{fig:poisson-comparison}, independentemente dos valores reais $y$, a perda segue um comportamento de uma função convexa, com o gráfico semelhante a um ``funil''.
-    \item[Robustez:] A perda de Poisson não é Lipschitz-contínua globalmente devido à singularidade na origem, portanto, é \textbf{sensível a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Para uma função ser Lipschitz-contínua, o seu gradiente deve ser limitado, algo que não acontece quando a predição aproxima de zero. Desse modo, ao utilizar essa função de perda, tenha em mente que o modelo criado estará susceptível a gradientes explosivos.
-    \item[Não-negatividade e funções de conexão:] Ao definir a perda de Poisson é utilizado o logaritmo, isso implica que o termo $\log(\hat{y})$ deve ser sempre positivo. Esse fato também é exposto ao definir a própria distribuição de Poisson, os dados de contagem não devem ser negativos. Em modelos lineares generalizados a função exponencial é comumente utilizada como uma função de conexão (\textit{link function}) para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Assim, cabe discutir uma definição alternativa para a perda de Poisson, em que consideramos a exponencial como uma função de conexão:
+    \item[Continuidade, suavidade e diferenciabilidade:] O desvio de Poisson pertence à classe $C^\infty$, \textbf{infinitamente diferenciável} em seu domínio de definição $(0, \infty)$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Isso garante para essa função a possibilidade de ser utilizada tanto em métodos de otimização baseados em gradiente (que utilizam a primeira derivada) quanto em métodos de segunda ordem (que utilizam a segunda derivada).
+    \item[Convexidade:] O desvio de Poisson é convexa, e estritamente convexa se $y > 0$ (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Esse fato está evidenciado nos gráficos da Figura~\ref{fig:poisson-comparison}, independentemente dos valores reais $y$, a perda segue um comportamento de uma função convexa, com o gráfico semelhante a um ``funil''.
+    \item[Robustez:] O desvio de Poisson não é Lipschitz-contínua globalmente devido à singularidade na origem, portanto, é \textbf{sensível a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-poisson-loss}). Para uma função ser Lipschitz-contínua, o seu gradiente deve ser limitado, algo que não acontece quando a predição aproxima de zero. Desse modo, ao utilizar essa função de perda, tenha em mente que o modelo criado estará susceptível a gradientes explosivos.
+    \item[Não-negatividade e funções de conexão:] Ao definir o desvio de Poisson é utilizado o logaritmo, isso implica que o termo $\log(\hat{y})$ deve ser sempre positivo. Esse fato também é exposto ao definir a própria distribuição de Poisson, os dados de contagem não devem ser negativos. Em modelos lineares generalizados a função exponencial é comumente utilizada como uma função de conexão (\textit{link function}) para garantir que esses valores se encaixem nesse intervalo \parencite{LossesArticle}. Assim, cabe discutir uma definição alternativa para o desvio de Poisson, em que consideramos a exponencial como uma função de conexão:
 
     Sabemos que um modelo de aprendizado de máquina, geralmente retorna algo que segue o padrão
  
@@ -2398,16 +2394,16 @@ Como o valor real $y$ não é controlado pelo modelo, conforme ele for variando 
     \]
 \end{description}
 
-\subsubsection*{Gradiente da perda de Poisson}
+\subsubsection*{Gradiente do desvio de Poisson}
 
-A derivada parcial da perda de Poisson em relação à predição $\hat{y}$ feita pelo modelo está representada na Equação~\ref{eq:poisson-loss-derivada}.
+A derivada parcial do desvio de Poisson em relação à predição $\hat{y}$ feita pelo modelo está representada na Equação~\ref{eq:poisson-loss-derivada}.
 
-\begin{equacaodestaque}{Gradiente da perda de Poisson em relação à predição}
+\begin{equacaodestaque}{Gradiente do desvio de Poisson em relação à predição}
     \nabla_{\hat{y}}\mathcal{L}_{\text{poisson}} (y, \hat{y}) = 1 -\frac{y}{\hat{y}} = \frac{\hat{y} -y}{\hat{y}}%
     \label{eq:poisson-loss-derivada}
 \end{equacaodestaque}
 
-Conforme os valores reais $y$ variam, a curva do gráfico da derivada da perda de Poisson também varia. A Figura~\ref{fig:poisson-loss-derivada} aponta que quanto maior é o valor de $y$ mais próximo do eixo das abscissas fica a curva da perda. Dessa forma, o gradiente é zero quando $\hat{y} = y$ e é assintótico quando $\hat{y} \to \infty$.
+Conforme os valores reais $y$ variam, a curva do gráfico da derivada do desvio de Poisson também varia. A Figura~\ref{fig:poisson-loss-derivada} aponta que quanto maior é o valor de $y$ mais próximo do eixo das abscissas fica a curva da perda. Dessa forma, o gradiente é zero quando $\hat{y} = y$ e é assintótico quando $\hat{y} \to \infty$.
 
 \begin{figure}[h!]
     \centering
@@ -2450,32 +2446,32 @@ Conforme os valores reais $y$ variam, a curva do gráfico da derivada da perda d
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Visualização da derivada da perda de Poisson para diferentes valores de $y$.}%
+    \caption{Visualização da derivada do desvio de Poisson para diferentes valores de $y$.}%
     \label{fig:poisson-loss-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-Como foi visto anteriormente, a função exponencial é utilizada como uma função de conexão para evitar com entradas negativas para a função logaritmo. Dessa forma, ao utilizá-la em conjunto com a perda de Poisson nós chegamos em uma derivada parcial ainda mais simples, apenas a diferença do valor predito $\hat{y}$ para o valor real $y$. Essa derivada está explicitada na Equação~\ref{eq:poisson-loss-com-link-function-derivada}.
+Como foi visto anteriormente, a função exponencial é utilizada como uma função de conexão para evitar com entradas negativas para a função logaritmo. Dessa forma, ao utilizá-la em conjunto com o desvio de Poisson nós chegamos em uma derivada parcial ainda mais simples, apenas a diferença do valor predito $\hat{y}$ para o valor real $y$. Essa derivada está explicitada na Equação~\ref{eq:poisson-loss-com-link-function-derivada}.
 
-\begin{equacaodestaque}{Gradiente da perda de Poisson em relação à predição com exp como função de conexão}
+\begin{equacaodestaque}{Gradiente do desvio de Poisson em relação à predição com exp como função de conexão}
     \nabla_{\hat{y}}\mathcal{L}_{\text{poisson}} (y, \hat{y}) = \hat{y} - y%
     \label{eq:poisson-loss-com-link-function-derivada}
 \end{equacaodestaque}
 
-\subsubsection*{Aplicações da perda de Poisson}%
-\index{Aplicações práticas! Perda de Poisson}
+\subsubsection*{Aplicações do desvio de Poisson}%
+\index{Aplicações práticas!Desvio de Poisson}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}]  
-    \item[Predição de índices epidemiológicos (saúde):] \textcite{poisson-regression-in-epidemiology} faz uso da regressão de poisson para estimar os efeitos dos fatores de risco em incidência ou em taxas de mortalidade. Além disso, a regressão de Poisson também é utilizada no artigo para avaliar a relação dose-resposta para variáveis que representam níveis quantitativos de exposição \parencite{poisson-regression-in-epidemiology}.
-    \item[Predição de taxas de crime (Área):] \textcite{poisson-regression-for-crime-rates} utiliza modelos baseados na regressão de Poisson para analisar taxas de crime agregadas. O autor explica que no cenário em que estava trabalhando, a técnica de regressão por mínimos quadrados (a qual faz uso do erro quadrático médio), não é ideal, uma vez o tamanho da população de uma unidade agregada é pequeno quando comparado relativamente com a taxa de ofensas; de forma que as taxas de crime devem ser computadas a partir de um pequeno número de ofensas \parencite{poisson-regression-for-crime-rates}.
+    \item[Predição de índices epidemiológicos (Saúde):] \textcite{poisson-regression-in-epidemiology} faz uso da regressão de poisson para estimar os efeitos dos fatores de risco em incidência ou em taxas de mortalidade. Além disso, a regressão de Poisson também é utilizada no artigo para avaliar a relação dose-resposta para variáveis que representam níveis quantitativos de exposição \parencite{poisson-regression-in-epidemiology}.
+    \item[Predição de taxas de crime (Crimilogia):] \textcite{poisson-regression-for-crime-rates} utiliza modelos baseados na regressão de Poisson para analisar taxas de crime agregadas. O autor explica que no cenário em que estava trabalhando, a técnica de regressão por mínimos quadrados (a qual faz uso do erro quadrático médio), não é ideal, uma vez o tamanho da população de uma unidade agregada é pequeno quando comparado relativamente com a taxa de ofensas; de forma que as taxas de crime devem ser computadas a partir de um pequeno número de ofensas \parencite{poisson-regression-for-crime-rates}.
     \item[Predição de sinistros em planos de saúde privados (Área):] \textcite{poisson-regression-and-zero-inflated-poisson-regression} utilizam a regressão de Poisson e uma técnica de regressão conhecida como regressão de Poisson zero-inflada, que é útil para dados que possuem um excesso de zeros. Para comparar e entender melhor qual técnica de regressão é mais interessante, os autores trabalham com o número de sinistros em um plano de saúde privado, no caso dos pesquisadores, o número de sinistros apresenta sobredispersão devido a predominância de zeros no conjunto de dados, de forma que a regressão de Poisson zero-inflada provou ser mais eficiente para lidar com esse tipo de problema \parencite{poisson-regression-and-zero-inflated-poisson-regression}.
 \end{description}
 
-\subsection{Perda Gamma (Gamma Deviance)}%
+\subsection{desvio Gamma (Gamma Deviance)}%
 \index{Funções de Perda!Deviância Gamma (\textit{Gamma Deviance})}%
 \label{sec:gamma-loss}
 
-Para falar da função de perda Gamma, é necessário compreender dois conceitos que se relacionam: a função Gamma e a distribuição Gamma.
+Para falar da função desvio Gamma, é necessário compreender dois conceitos que se relacionam: a função Gamma e a distribuição Gamma.
 
 \subsubsection*{A Função Gamma}%
 \index{Função Gamma}
@@ -2577,12 +2573,12 @@ Os parâmetros $\alpha$ e $\beta$ da FDP da distribuição gamma são responsáv
     
     \caption{Comparação visual da Distribuição Gamma variando o parâmetro de forma $\alpha$.}%
     \label{fig:gamma-comparison}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Perda Gamma}
+\subsubsection*{Desvio Gamma}
 
-Para encontramos a perda Gamma, devemos derivá-la da FDP da sua respectiva distribuição. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos ter a função em termos da média esperada $\hat{y}$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
+Para encontramos o desvio Gamma, devemos derivá-la da FDP da sua respectiva distribuição. O primeiro passo é considerar uma parametrização diferente para escrever a FDP, queremos ter a função em termos da média esperada $\hat{y}$. Sabemos que para a parametrização da Equação~\ref{eq:gamma-distribution-pdf} a média é calculada por
 
 \[
     \hat{y} = E[y] = \frac{\alpha}{\beta}
@@ -2614,9 +2610,9 @@ Nós queremos minimizar a perda, então multiplicados por $-1$ a expressão cheg
     \ln f(y) \varpropto \ln \hat{y} + \frac{y}{\hat{y}}
 \]
 
-Para finalizar, queremos que a perda seja zero quando a predição for perfeita ($y = \hat{y}$). Se substituirmos $\hat{y}$ por $y$ na equação anterior teremos $\ln y + 1$. Então subtraímos esse valor do numerador da fórmula, obtemos a Equação~\ref{eq:gamma-loss} para calcular a perda Gamma.
+Para finalizar, queremos que a perda seja zero quando a predição for perfeita ($y = \hat{y}$). Se substituirmos $\hat{y}$ por $y$ na equação anterior teremos $\ln y + 1$. Então subtraímos esse valor do numerador da fórmula, obtemos a Equação~\ref{eq:gamma-loss} para calcular o desvio Gamma.
 
-\begin{equacaodestaque}{Perda Gamma}
+\begin{equacaodestaque}{Desvio Gamma}
     \mathcal{L}_{\text{gamma}}(y, \hat{y}) =  \log\left(\frac{\hat{y}}{y}\right) + \frac{y}{\hat{y}} -1%
     \label{eq:gamma-loss}
 \end{equacaodestaque}
@@ -2628,7 +2624,7 @@ Em que
     \item[$\hat{y}$] representa o valor predito para a amostra.  
 \end{description}
 
-Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na Figura~\ref{fig:gamma-loss-grid}, analisamos as curvas/superfícies da perda considerando diferentes valores reais fixos $y$. Conforme o valor real se aproxima de zero, a função se aproxima do eixo das ordenadas, além disso, é a partir dos valores reais que é definido onde será o mínimo da função de perda. A penalidade da perda Gamma também é assimétrica, semelhante ao MSLE, a curva sobe de forma abrupta à esquerda e de forma suave à direita. Dessa forma, ela apresenta a tendência de penalizar em maior grau as subestimações feitas pelo modelo.
+Assim como na desvio de Poisson, nos gráficos do desvio Gamma, representados na Figura~\ref{fig:gamma-loss-grid}, analisamos as curvas/superfícies da perda considerando diferentes valores reais fixos $y$. Conforme o valor real se aproxima de zero, a função se aproxima do eixo das ordenadas, além disso, é a partir dos valores reais que é definido onde será o mínimo da função de perda. A penalidade do desvio Gamma também é assimétrica, semelhante ao MSLE, a curva sobe de forma abrupta à esquerda e de forma suave à direita. Dessa forma, ela apresenta a tendência de penalizar em maior grau as subestimações feitas pelo modelo.
 
 \begin{figure}[h!]
     \centering
@@ -2641,7 +2637,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda ($\mathcal{L}$)},
+                ylabel={Desvio ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2676,7 +2672,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Loss},
+                zlabel={Desvio},
                 grid=major,
                 view={140}{40}, % Melhor ângulo para ver o vale
                 title style={font=\bfseries\small},
@@ -2712,7 +2708,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda ($\mathcal{L}$)},
+                ylabel={Desvio ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2744,7 +2740,7 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Loss},
+                zlabel={Desvio},
                 grid=major,
                 view={140}{40},
                 title style={font=\bfseries\small},
@@ -2769,17 +2765,17 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
         \label{fig:gamma-3d-high}
     \end{subfigure}
 
-    \caption{Visualização da perda Gamma para diferentes valores reais $y$.}%
+    \caption{Visualização do desvio Gamma para diferentes valores reais $y$.}%
     \label{fig:gamma-loss-grid}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Características da perda gamma}
+\subsubsection*{Características do desvio Gamma}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda Gamma é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Essa propriedade garante para a perda a possibilidade de ser utilizada em conjunto com otimizadores baseados em gradiente sem ocorrer muitos problemas, dado que as suas derivadas também serão contínuas.
-    \item[Convexidade:] A perda Gamma \textbf{não é convexa} em relação à predição $\hat{y}$ globalmente, tornando-se côncava para grandes superestimativas (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Mais precisamente, existe uma mudança de curvatura quando a predição excede o dobro do alvo, indicando que a otimização direta em $\hat{y}$ pode ser instável para métodos de segunda ordem (como Newton-Raphson).
-    \item[Robustez:] A perda Gamma não é Lipschitz-contínua devido à singularidade na origem, portanto, \textbf{não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Contudo, o seu gradiente tende a zero no infinito, de forma que ela é robusta para erros onde $\hat{y} \gg y$.
+    \item[Continuidade, suavidade e diferenciabilidade:] O desvio Gamma é uma função de classe $C^{\infty}$, \textbf{infinitamente diferenciável} (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Essa propriedade garante para a perda a possibilidade de ser utilizada em conjunto com otimizadores baseados em gradiente sem ocorrer muitos problemas, dado que as suas derivadas também serão contínuas.
+    \item[Convexidade:] O desvio Gamma \textbf{não é convexa} em relação à predição $\hat{y}$ globalmente, tornando-se côncava para grandes superestimativas (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Mais precisamente, existe uma mudança de curvatura quando a predição excede o dobro do alvo, indicando que a otimização direta em $\hat{y}$ pode ser instável para métodos de segunda ordem (como Newton-Raphson).
+    \item[Robustez:] O desvio Gamma não é Lipschitz-contínua devido à singularidade na origem, portanto, \textbf{não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-gamma-loss}). Contudo, o seu gradiente tende a zero no infinito, de forma que ela é robusta para erros onde $\hat{y} \gg y$.
     \item[$\log$ como função de ligação:] Para contornar o problema da não convexidade, podemos utilizar o logaritmo como uma função de ligação. Para isso, modelamos o logaritmo da média ($z = \log \hat{y}$). Substituindo $\hat{y} = e^z$, a função torna-se $G(z) = y e^{-z} + z$. Sua segunda derivada é $G''(z) = y e^{-z}$, que é estritamente positiva para todo $z$. 
     Substituindo essa relação na Equação \ref{eq:gamma-loss} e removendo as constantes que não dependem de $z$, obtemos a função de perda transformada $L(z)$:
 
@@ -2790,19 +2786,19 @@ Assim como na perda de Poisson, nos gráficos da perda Gamma, representados na F
     A grande vantagem dessa transformação é a convexidade. A segunda derivada dessa função é $L''(z) = y e^{-z_j}$, que é estritamente positiva para todo $y > 0$, garantindo um único mínimo global.
 \end{description}
 
-\subsubsection*{Gradiente da perda Gamma}
+\subsubsection*{Gradiente do desvio Gamma}
 
-Uma das formas de encontrar a derivada da perda Gamma é aplicar as técnicas tradicionais de derivação na função de perda, encontrando a Equação~\ref{eq:gamma-loss-derivada}.
+Uma das formas de encontrar a derivada do desvio Gamma é aplicar as técnicas tradicionais de derivação na função de perda, encontrando a Equação~\ref{eq:gamma-loss-derivada}.
 
-\begin{equacaodestaque}{Gradiente da perda Gamma em relação à predição}
+\begin{equacaodestaque}{Gradiente do desvio Gamma em relação à predição}
     \nabla_{\hat{y}}\mathcal{L}_{\text{gamma}} (y, \hat{y}) = \frac{1}{\hat{y}} -\frac{y}{\hat{y}^2} = \frac{\hat{y} -y}{\hat{y}^2}%
     \label{eq:gamma-loss-derivada}
 \end{equacaodestaque}
 
-Entretanto, também podemos considerar a derivação para o cenário em que a perda Gamma é aplicada em conjunto com a função logaritmo, neste caso, temos a Equação~\ref{eq:gradiente-gamma-link}. A derivada, é simplesmente a diferença relativa entre 1 e a razão entre o valor real $y$ e o previsto $\hat{y}$
+Entretanto, também podemos considerar a derivação para o cenário em que o desvio Gamma é aplicada em conjunto com a função logaritmo, neste caso, temos a Equação~\ref{eq:gradiente-gamma-link}. A derivada, é simplesmente a diferença relativa entre 1 e a razão entre o valor real $y$ e o previsto $\hat{y}$
 
 
-\begin{equacaodestaque}{Gradiente da perda Gamma em relação à predição com $\log$ como função de ligação}
+\begin{equacaodestaque}{Gradiente do desvio Gamma em relação à predição com $\log$ como função de ligação}
     \nabla_{z_j} \mathcal{L} (y, \hat{y}) = 1 - \frac{y}{\hat{y}}%
     \label{eq:gradiente-gamma-link}
 \end{equacaodestaque}
@@ -2813,7 +2809,7 @@ Entretanto, também podemos considerar a derivação para o cenário em que a pe
     \item Se $\hat{y} > y$ (superestimação), o termo $y/\hat{y} < 1$, gerando gradiente positivo, o que diminui $z$.
 \end{itemize}
 
-A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme os valores reais são alterados. Ao aproximar o valor real de zero, o gráfico se desloca à esquerda. Além disso, ela justifica algumas das propriedades da perda Gamma, como a sua assimetria (penalização maior para as subestimações), continuidade, e também como o gradiente tende a zero quando o $\hat{y} \to \infty$.
+A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme os valores reais são alterados. Ao aproximar o valor real de zero, o gráfico se desloca à esquerda. Além disso, ela justifica algumas das propriedades do desvio Gamma, como a sua assimetria (penalização maior para as subestimações), continuidade, e também como o gradiente tende a zero quando o $\hat{y} \to \infty$.
 
 \begin{figure}[h!]
     \centering
@@ -2849,22 +2845,22 @@ A Figura~\ref{fig:gamma-loss-derivada} explicita como o gradiente muda conforme 
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Gráfico da derivada da perda Gamma. O gradiente é zero quando $\hat{y}=y$ e assintótico a 0 para $\hat{y} \to \infty$.}%
+    \caption{Gráfico da derivada do desvio Gamma. O gradiente é zero quando $\hat{y}=y$ e assintótico a 0 para $\hat{y} \to \infty$.}%
     \label{fig:gamma-loss-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Aplicações da perda gamma em aprendizado de máquina}%
+\subsubsection*{Aplicações do desvio Gamma em aprendizado de máquina}%
 \index{Aplicações práticas! Deviância Gamma}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Previsão de chuvas (Metereologia):] \textcite{yang2019predictive} combinam regressão logística com regressão Gamma para prever ocorrência e quantidade de chuvas no pacífico tropical. 
     \item[Previsão de reivindicações de seguros (Seguros):] \textcite{davoudikakhki2018analyzing} utilizam modelos lineares gerais GLMs com a distribuição Gamma em um \textit{dataset} de reivindicações de seguros de uma empresa de especializada em seguros para indústrias \textit{agrobusiness} encontrando o maior índice preditivo ($R^2 = 0.79$) dentre as alternativas analisadas.
-    \item[Previsão de custos de planos de saúde (Saúde):] Em um relatório técnico divulgado por \textcite{herc_cost_data}, foi discutido que os custos de planos de saúde não são normalmente distribuídos, de forma que uma maneira de fazer a previsão desses valores é utilizando GLMs com a perda Gamma e $\log$ como função de ligação.
+    \item[Previsão de custos de planos de saúde (Saúde):] Em um relatório técnico divulgado por \textcite{herc_cost_data}, foi discutido que os custos de planos de saúde não são normalmente distribuídos, de forma que uma maneira de fazer a previsão desses valores é utilizando GLMs com o desvio Gamma e $\log$ como função de ligação.
 \end{description}
 
-\subsection{Perda de Tweedie (Tweedie deviance)}%
-\index{Funções de Perda!Perda de Tweedie (\textit{Tweedie deviance})}
+\subsection{Desvio de Tweedie (Tweedie deviance)}%
+\index{Funções de Perda!Desvio de Tweedie (\textit{Tweedie deviance})}
 
 Estudadas por Maurice C. K. Tweedie nos anos 80, as distribuições de Tweedie são uma família de distribuições de probabilidade que incluem: a distribuição Normal, Poisson, Gamma, Poisson-Gamma, e Gaussiana Puramente Inversa. Essas distribuições são unidas pela relação da variância elevada a um índice $p$, como na expressão
 
@@ -2879,9 +2875,9 @@ Estudadas por Maurice C. K. Tweedie nos anos 80, as distribuições de Tweedie s
     \item[Quando $1 < p < 2$] temos a distribuição Poisson-Gamma. Neste caso, a Tweedie modela os dados que são uma mistura de zeros (como na Poisson) e também contínuos (como na Gamma).  
 \end{description}
 
-Da distribuição de Tweedie derivamos a sua perda, vista na Equação~\ref{eq:tweedie-loss}\footnote{Perceba que neste caso, não derivamos a perda de Tweedie de sua FDP nem de sua log-verossimilhança. Isso acontece porque a FDP da distribuição de Tweedie não apresenta uma fórmula fechada simples, como nos outros dois cenários anteriores.}. A perda de Tweedie une as outras duas distribuições que vimos anteriormente, pois dela, podemos escrever a perda Gamma e também a perda de Poisson com uma simples mudança no índice do parâmetro $p$.
+Da distribuição de Tweedie derivamos a sua perda, vista na Equação~\ref{eq:tweedie-loss}\footnote{Perceba que neste caso, não derivamos o desvio de Tweedie de sua FDP nem de sua log-verossimilhança. Isso acontece porque a FDP da distribuição de Tweedie não apresenta uma fórmula fechada simples, como nos outros dois cenários anteriores.}. O desvio de Tweedie une as outras duas distribuições que vimos anteriormente, pois dela, podemos escrever a desvio Gamma e também a desvio de Poisson com uma simples mudança no índice do parâmetro $p$.
 
-\begin{equacaodestaque}{Perda de Tweedie}
+\begin{equacaodestaque}{Desvio de Tweedie}
     \mathcal{L}_{\text{tweedie}}(y, \hat{y}) = -\frac{y \cdot \hat{y}^{1-p}}{1-p} + \frac{\hat{y}^{2-p}}{2-p}%
     \label{eq:tweedie-loss}
 \end{equacaodestaque}
@@ -2905,7 +2901,7 @@ Em que
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda ($\mathcal{L}$)},
+                ylabel={Desvio ($\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -2940,7 +2936,7 @@ Em que
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda ($\mathcal{L}$)},
+                zlabel={Desvio ($\mathcal{L}$)},
                 grid=major,
                 view={140}{40}, 
                 title style={font=\bfseries\small},
@@ -2977,7 +2973,7 @@ Em que
                 width=\linewidth,  
                 height=7cm,
                 xlabel={Valor Previsto ($\hat{y}$)},
-                ylabel={Perda( $\mathcal{L}$)},
+                ylabel={Desvio( $\mathcal{L}$)},
                 axis lines=middle,
                 grid=major,
                 grid style={dashed, gray!40},
@@ -3010,7 +3006,7 @@ Em que
                 height=7cm,
                 xlabel={$y$ (Real)},
                 ylabel={$\hat{y}$ (Previsto)},
-                zlabel={Perda( $\mathcal{L}$)},
+                zlabel={Desvio( $\mathcal{L}$)},
                 grid=major,
                 view={140}{40},
                 title style={font=\bfseries\small},
@@ -3035,20 +3031,20 @@ Em que
         \label{fig:tweedie-3d-high}
     \end{subfigure}
 
-    \caption{Visualização da perda Tweedie ($p=1.5$) para diferentes valores reais $y$.}%
+    \caption{Visualização do desvio de Tweedie ($p=1.5$) para diferentes valores reais $y$.}%
     \label{fig:tweedie-loss-grid}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Características da Perda de Tweedie}
+\subsubsection*{Características do desvio de Tweedie}
 
-Nessa seção será analisado os casos em que $1 < p < 2$ para a perda de Tweedie, configurando-a para a distribuição Poisson-Gamma. Para a situação em que $p = 1$ (perda de Poisson), veja a Seção~\ref{sec:poisson-loss}. Já para a situação em que $p = 2$ (perda Gamma), veja a Seção~\ref{sec:gamma-loss}.
+Nessa seção será analisado os casos em que $1 < p < 2$ para o desvio de Tweedie, configurando-a para a distribuição Poisson-Gamma. Para a situação em que $p = 1$ (desvio de Poisson), veja a Seção~\ref{sec:poisson-loss}. Já para a situação em que $p = 2$ (desvio Gamma), veja a Seção~\ref{sec:gamma-loss}.
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
-    \item[Continuidade, suavidade e diferenciabilidade:] A perda de Tweedie pertence à classe $C^\infty$, \textbf{infinitamente diferenciável}, no domínio $\hat{y} \in (0, \infty)$ para $p \in (1, 2)$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Dessa forma, as derivadas parciais existem e são contínuas, evitando o uso de técnicas como o subgradiente para poder calcular as derivadas.
-    \item[Convexidade:] A perda de Tweedie \textbf{não é globalmente convexa} em relação a $\hat{y}$ para $1 < p < 2$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}).  A função é convexa apenas localmente, quando a predição não está muito longe do alvo. Se o modelo superestimar grosseiramente o valor ($\hat{y} > \frac{p}{p-1}y$), a função entra em uma região côncava.
-    \item[Robustez:] A perda de Tweedie não é Lipschitz-contínua, portanto, \textbf{Não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Contudo, assim como a perda Gamma, quando o valor da predição $\hat{y} \to \infty$ temos que o gradiente tende a zero. Indicando que superestimações não serão fortemente penalizadas.
-    \item[$\log$ como função de ligação]: Semelhante à perda Gamma, podemos utilizar a função logaritmo para lidar com o problema da não-convexidade da perda de Tweedie em $1 < p < 2$. Substituindo essa relação na Equação \ref{eq:tweedie-loss}, obtemos a perda em função do \textit{logit} $z$:
+    \item[Continuidade, suavidade e diferenciabilidade:] O desvio de Tweedie pertence à classe $C^\infty$, \textbf{infinitamente diferenciável}, no domínio $\hat{y} \in (0, \infty)$ para $p \in (1, 2)$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Dessa forma, as derivadas parciais existem e são contínuas, evitando o uso de técnicas como o subgradiente para poder calcular as derivadas.
+    \item[Convexidade:] O desvio de Tweedie \textbf{não é globalmente convexa} em relação a $\hat{y}$ para $1 < p < 2$ (ver Apêndice~\ref{ap:deducoes-tweedie-loss}).  A função é convexa apenas localmente, quando a predição não está muito longe do alvo. Se o modelo superestimar grosseiramente o valor ($\hat{y} > \frac{p}{p-1}y$), a função entra em uma região côncava.
+    \item[Robustez:] O desvio de Tweedie não é Lipschitz-contínua, portanto, \textbf{Não é robusta a \textit{outliers}} (ver Apêndice~\ref{ap:deducoes-tweedie-loss}). Contudo, assim como a desvio Gamma, quando o valor da predição $\hat{y} \to \infty$ temos que o gradiente tende a zero. Indicando que superestimações não serão fortemente penalizadas.
+    \item[$\log$ como função de ligação]: Semelhante à desvio Gamma, podemos utilizar a função logaritmo para lidar com o problema da não-convexidade do desvio de Tweedie em $1 < p < 2$. Substituindo essa relação na Equação \ref{eq:tweedie-loss}, obtemos a perda em função do \textit{logit} $z$:
 
     \begin{equation}
         L(z_j) = -y \frac{e^{z_j(1-p)}}{1-p} + \frac{e^{z_j(2-p)}}{2-p}
@@ -3057,23 +3053,23 @@ Nessa seção será analisado os casos em que $1 < p < 2$ para a perda de Tweedi
 Essa transformação torna a função estritamente convexa para valores de $p$ no intervalo $(1, 2)$, garantindo a convergência para um mínimo global.
 \end{description}
 
-\subsubsection*{Gradiente da perda de Tweedie}
+\subsubsection*{Gradiente do desvio de Tweedie}
 
-A derivada da parcial da perda de Tweedie em relação à predição está representada na Equação~\ref{eq:tweedie-loss-derivada}. 
+A derivada da parcial do desvio de Tweedie em relação à predição está representada na Equação~\ref{eq:tweedie-loss-derivada}. 
 
-\begin{equacaodestaque}{Gradiente da perda de Tweedie em relação à predição}
+\begin{equacaodestaque}{Gradiente do desvio de Tweedie em relação à predição}
     \nabla_{\hat{y}} \mathcal{L}_{\text{tweedie}} (y, \hat{y}) = \hat{y}^{-p}(\hat{y} -y)%
     \label{eq:tweedie-loss-derivada}
 \end{equacaodestaque}
 
-Contudo, a forma mais comum que está presente nas bibliotecas de aprendizado de máquina é a derivada em relação ao logit. Ela usa o logaritmo como função de ligação para lidar com a convexidade da função, ela está na Equação~\ref{eq:tweedie-loss-derivada-logit}. Neste caso, essa derivada se relaciona com as equações já vistas para o gradiente da perda de Poisson (na Equação~\ref{eq:poisson-loss-com-link-function-derivada}) e para a perda Gamma (na Equação~\ref{eq:gradiente-gamma-link}).
+Contudo, a forma mais comum que está presente nas bibliotecas de aprendizado de máquina é a derivada em relação ao logit. Ela usa o logaritmo como função de ligação para lidar com a convexidade da função, ela está na Equação~\ref{eq:tweedie-loss-derivada-logit}. Neste caso, essa derivada se relaciona com as equações já vistas para o gradiente da desvio de Poisson (na Equação~\ref{eq:poisson-loss-com-link-function-derivada}) e para a desvio Gamma (na Equação~\ref{eq:gradiente-gamma-link}).
 
-\begin{equacaodestaque}{Gradiente da perda de Tweedie em relação ao logit}
+\begin{equacaodestaque}{Gradiente do desvio de Tweedie em relação ao logit}
     \nabla_{z_j} \mathcal{L}_{\text{tweedie}} (y, \hat{y}) = \hat{y}^{1-p} (\hat{y} - y)%
     \label{eq:tweedie-loss-derivada-logit}
 \end{equacaodestaque}
 
-Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y$ indica não só o ponto de mínimo da perda, mas também para qual direção a assimetria da função irá se deslocar.
+Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada do desvio de Tweedie compartilha características em comum com as perdas de Poisson e Gamma. Uma delas é o fato do gradiente tender a zero, quando o valor predito aumenta (também explicitado ao discutir as características da perda). Além disso, conforme os valores reais se aproximam de zero, a curva também se desloca para o eixo das ordenas. $y$ indica não só o ponto de mínimo da perda, mas também para qual direção a assimetria da função irá se deslocar.
 
 \begin{figure}[h!]
     \centering
@@ -3112,13 +3108,13 @@ Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Twee
             
         \end{axis}
     \end{tikzpicture}
-    \caption{Visualizações da derivada da Perda de Tweedie para $p=1.5$ no plano.}%
+    \caption{Visualizações da derivada do desvio de Tweedie para $p=1.5$ no plano.}%
     \label{fig:tweedie-loss-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
-\subsubsection*{Aplicações da Perda de Tweedie}%
-\index{Aplicações práticas! Perda de Tweedie}
+\subsubsection*{Aplicações do desvio de Tweedie}%
+\index{Aplicações práticas!Desvio de Tweedie}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Previsão da captura de animais marinhos (Biologia marinha):] \textcite{SHONO2008154} aplica a distribuição de Tweedie em um modelo linear generalizado para prever a captura por unidade de esforço, \textit{Catch per unit effort} (CPUE), do atum de barbatana amarela no Oceano Índico usando dados de captura e esforço capturados por embarcações comerciais japonesas e também para tubarões sedosos no Oceano Pacífico Norte.
@@ -3126,12 +3122,12 @@ Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Twee
     \item[Previsão de custos médicos (Saúde):] \textcite{kurz2017tweedie} cria um GLM com a distribuição de Tweedie para comparar com os modelos Tobit, e de Duas Partes, em previsões de despesas médias, demonstrando que modelos baseados na distribuição de Tweedie são interessantes em análises de dados de custo de cuidados de saúde semicontínuos, especialmente quando a correlação entre usuários e não usuários da utilização de cuidados de saúde é alta e a proporção desses não usuários é baixa.
 \end{description}
 
-\section{Comparativo: Funções de Perda para Regressão}
+\section{Comparativo: funções de perda para regressão}
 
 \begin{table}[htbp]
     \centering
     \begin{threeparttable}
-        \caption{Comparativo das funções das funções de perda para problemas de regressão}%
+        \caption{Comparativo das funções das funções de perda para regressão}%
         \label{tab:comparativo-funcoes-de-perda-para-regressao}
 
         \begin{tabularx}{\textwidth}{p{3.2cm} *{1}{>{\raggedright\arraybackslash}X}}
@@ -3152,17 +3148,17 @@ Como a Figura~\ref{fig:tweedie-loss-derivada} aponta a derivada da perda de Twee
             \addlinespace
             Perda $\epsilon$-insensível (\textit{$\epsilon$-insensitive}) & Contínua ($C^0$), robusta a \textit{outliers}, convexa, promove gradientes esparsos, pode ter o tamanho do tubo $\epsilon$ ao ajustar o hiperparâmetro $\epsilon$, \\
             \addlinespace
-            Perda de Poisson (\textit{Poisson deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, convexa (e estritamente convexa se $y > 0$), utilizada quando os dados seguem a distribuição de Poisson, \\
+            Desvio de Poisson (\textit{Poisson deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, convexa (e estritamente convexa se $y > 0$), utilizada quando os dados seguem a distribuição de Poisson, \\
             \addlinespace
-            Perda Gamma (\textit{Gamma deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), utilizada quando os dados seguem a distribuição Gamma, \\
+            Desvio Gamma (\textit{Gamma deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), utilizada quando os dados seguem a distribuição Gamma, \\
             \addlinespace
-            Perda de Tweedie (\textit{Tweedie deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), utilizada para substituir as perdas de Poisson e Gamma, utilizada quando os dados seguem a distribuição Poisson-Gamma, \\
+            Desvio de Tweedie (\textit{Tweedie deviance}) & Infinitamente diferenciável ($C^{\infty}$), sensível a \textit{outliers}, não convexa (solução: usar $\log$ como função de ligação), utilizada para substituir as perdas de Poisson e Gamma, utilizada quando os dados seguem a distribuição Poisson-Gamma, \\
             \addlinespace
         \end{tabularx}
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
