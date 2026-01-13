@@ -28,7 +28,7 @@
 % --- INFORMAÇÕES DO DOCUMENTO (para a folha de rosto) ---
 \title{INTELIGÊNCIA ARTIFICIAL \\ 
     \large Fundamentos Teóricos, Técnicas de Aprendizado de Máquina Clássico e Aprendizado Profundo}
-\author{Luiz Guilherme Morais da Costa Faria}
+\author{Luiz G. M. C. Faria}
 \date{\today} % Usa a data atual no momento da compilação
 
 % Informações adicionais que o abntex2 usa (opcional)
@@ -39,8 +39,6 @@
 % INÍCIO DO DOCUMENTO
 % ===================================================================
 \begin{document}
-% Adiciona entradas do glossário
-\input{glossario.tex}
 
 % --- ELEMENTOS PRÉ-TEXTUAIS ---
 % O comando \frontmatter inicia a contagem de páginas em algarismos romanos (i, ii, ...)
@@ -82,12 +80,6 @@
 
 % Gera o Sumário automaticamente com base nos comandos \part, \chapter, \section, etc.
 \tableofcontents
-
-% --- IMPRIMIR A LISTA DE SIGLAS ---
-\cleardoublepage
-\phantomsection
-\chapter*{Lista de Siglas}
-\addcontentsline{toc}{chapter}{Lista de Siglas}
 
 % --- ELEMENTOS TEXTUAIS (O CONTEÚDO PRINCIPAL DO LIVRO) ---
 % O comando \mainmatter reinicia a contagem de páginas em algarismos arábicos (1, 2, ...)
@@ -181,16 +173,7 @@
 % formatada no estilo ABNT pelo biblatex.
 \printbibliography[title={Referências}]
 
-% --- IMPRIMIR O GLOSSÁRIO ---
-\cleardoublepage % Começar em página nova
-\phantomsection % Ajuda links
-\printglossaries % Este comando imprime TODAS as listas de glossário definidas
-% Não precisa de \addcontentsline se usou a opção [toc] no \usepackage
-
 \printindex
 
 
 \end{document}
-% ===================================================================
-% FIM DO DOCUMENTO
-% ===================================================================
