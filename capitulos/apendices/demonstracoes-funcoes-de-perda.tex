@@ -1,12 +1,12 @@
-\chapter{Propriedades Analíticas das Funções de Perda}%
+\chapter{Propriedades analíticas das funções de perda}%
 \label{apendice:propriedades-analiticas-funcoes-de-perda}
 
-\section{Definições Preliminares e Notação}%
+\section{Definições preliminares e notação}%
 \label{sec:definicoes}
 
 Para assegurar a precisão matemática necessária, harmonizamos as definições clássicas de Análise Real com a notação moderna de Aprendizado Profundo.
 
-\subsection{Classes de Diferenciabilidade}
+\subsection{Classes de diferenciabilidade}
 
 Embora a literatura clássica, como \textcite{rudin1976principles}, utilize a notação $\mathscr{C}'$ e $\mathscr{C}''$ para denotar espaços de funções continuamente diferenciáveis, adotamos a notação moderna $C^k$, comum em otimização, para facilitar a leitura.
 
@@ -16,13 +16,13 @@ Embora a literatura clássica, como \textcite{rudin1976principles}, utilize a no
         \item $C^0$: Funções contínuas.
         \item $C^1$: Funções com gradiente contínuo (Rudin $\mathscr{C}'$).
         \item $C^2$: Funções com Hessiana contínua (Rudin $\mathscr{C}''$).
-        \item $C^\infty$: Funções infinitamente diferenciáveis (Suaves).
+        \item $C^\infty$: Funções infinitamente diferenciáveis.
     \end{itemize}
 \end{definition}
 
-\subsection{Robustez e Continuidade de Lipschitz}
+\subsection{Robustez e continuidade de Lipschitz}
 
-Em Deep Learning, a estabilidade do treinamento está ligada à limitação da taxa de variação da função de perda. Adotamos a definição vetorial encontrada em \textcite{DeepLearningBook}, adaptando a notação da constante para evitar ambiguidade com a função de perda $\Loss$.
+Em Deep Learning, a estabilidade do treinamento está ligada à limitação da taxa de variação da função de perda. Adotamos a definição vetorial encontrada em \textcite{DeepLearningBook}, adaptando a notação da constante para evitar ambiguidade com a função de perda $\mathcal{L}$.
 
 \begin{definition}[Continuidade de Lipschitz]
     Uma função $f: \mathbb{R}^n \to \mathbb{R}$ é dita \textbf{Lipschitz-contínua} se existe uma constante $K \in \mathbb{R}^+$ (chamada constante de Lipschitz) tal que, para todos $\boldsymbol{x}, \boldsymbol{y}$ no domínio:
@@ -36,7 +36,7 @@ Em Deep Learning, a estabilidade do treinamento está ligada à limitação da t
     Nas demonstrações deste apêndice, onde analisamos o erro $e \in \mathbb{R}$ (escalar), a norma Euclidiana reduz-se ao valor absoluto: $\|\boldsymbol{x} - \boldsymbol{y}\|_2 \to |x - y|$. A condição torna-se $|f(x) - f(y)| \le K |x - y|$.
 \end{remark}
 
-\subsection{Critérios de Verificação de Convexidade}
+\subsection{Critérios de verificação de convexidade}
 
 Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente à definição geométrica, utilizaremos três teoremas fundamentais de operações que preservam a convexidade, conforme estabelecido em \textcite{boyd2004convex}\footnote{Apresentamos aqui as versões escalares dos teoremas de convexidade de \textcite{boyd2004convex}, simplificadas para o contexto de funções de perda unidimensionais. Para a formulação geral vetorial envolvendo Matrizes Hessianas, consulte o texto original, Capítulo 3.}.
 
@@ -62,56 +62,56 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \label{ap:deducoes-mse}
 
 \begin{definition}
-    Seja $e = \hat{y} - y$ o resíduo entre a predição e o alvo. A função de perda erro quadrático médio é definida por $\Loss(e) = e^2$.
+    Seja $e = y - \hat{y}$ o resíduo entre a alvo e predição. A função de perda erro quadrático médio é definida por $\mathcal{L}(e) = e^2$.
 \end{definition}
 
 \begin{proposition}[Regularidade]
-    A função erro quadrático médio pertence à classe $C^{\infty}$ (é infinitamente diferenciável).
+    A função erro quadrático médio pertence à classe $C^{\infty}$ (infinitamente diferenciável).
 \end{proposition}
 
 \begin{proof}
-    Para provar que $\Loss \in C^{\infty}$ devemos demonstrar que existem derivadas contínuas de todas as ordens $k \in \mathbb{N}$.
+    Para provar que $\mathcal{L} \in C^{\infty}$ devemos demonstrar que existem derivadas contínuas de todas as ordens $k \in \mathbb{N}$.
 
-    Calculamos as derivadas sucessivas de $\Loss(e)$ em relação a $e$:
+    Calculamos as derivadas sucessivas de $\mathcal{L}(e)$ em relação a $e$:
 
     \begin{align*}
-        \Loss'(e) &= \frac{d}{de} (e^2) = 2e \\
-        \Loss''(e) &= \frac{d}{de} (2e) = 2 \\
-        \Loss^{(k)}(e) &= 0, \quad \forall k \ge 3
+        \mathcal{L}'(e) &= \frac{d}{de} (e^2) = 2e \\
+        \mathcal{L}''(e) &= \frac{d}{de} (2e) = 2 \\
+        \mathcal{L}^{(k)}(e) &= 0, \quad \forall k \ge 3
     \end{align*}
 
     Analisamos a continuidade das funções resultantes:
 
     \begin{itemize}
-        \item $\Loss'(e) = 2e$, é polinômio linear, contínuo em todo $\mathbb{R}$.
-        \item $\Loss''(e) = 2$ e $\mathcal{L}^{(k)}(e) = 0$ são funções constantes, contínuas em todo $\mathbb{R}$.
+        \item $\mathcal{L}'(e) = 2e$, é polinômio linear, contínuo em todo $\mathbb{R}$.
+        \item $\mathcal{L}''(e) = 2$ e $\mathcal{L}^{(k)}(e) = 0$ são funções constantes, contínuas em todo $\mathbb{R}$.
     \end{itemize}
 
-    Como $\Loss^{(k)}$ existe e é contínua para todo $k \ge 1$, conclui-se que $\mathcal{L} \in C^{\infty}$.
+    Como $\mathcal{L}^{(k)}$ existe e é contínua para todo $k \ge 1$, conclui-se que $\mathcal{L} \in C^{\infty}$.
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função erro quadrático médio é estritamente convexa.
+    A função erro quadrático médio é estritamente convexo.
 \end{proposition}
 
 \begin{proof}
     Utilizamos o critério da segunda derivada. Uma função duas vezes diferenciável é estritamente convexa se, e somente se, sua segunda derivada for estritamente positiva em todo o domínio.
     
     Da proposição anterior, temos:
-    \[ \Loss''(e) = 2 \]
+    \[ \mathcal{L}''(e) = 2 \]
 
     Observamos que $2 > 0$ para todo $e \in \mathbb{R}$. Portanto, a função possui curvatura positiva constante, satisfazendo a condição de convexidade estrita.
 \end{proof}
 
 \begin{proposition}[Robustez]
-    A função erro quadrático médio não é Lipschitz-contínua (não é robusta a \textit{outliers})
+    A função erro quadrático médio não é Lipschitz-contínua (sensível a \textit{outliers})
 \end{proposition}
 
 \begin{proof}
     Uma função diferenciável é Lipschitz-contínua se existir uma constante $K \in \mathbb{R}$ tal que $\sup_{e} |\mathcal{L}'(e)| \le K$.
     
     Analisamos o comportamento assintótico da magnitude do gradiente:
-    \[ \lim_{e \to \infty} |\Loss'(e)| = \lim_{e \to \infty} |2e| = \infty \]
+    \[ \lim_{e \to \infty} |\mathcal{L}'(e)| = \lim_{e \to \infty} |2e| = \infty \]
 
     Como o gradiente cresce indefinidamente à medida que o erro aumenta, não existe uma constante $K$ que limite a derivada superiormente. Logo, a função não é Lipschitz-contínua.
 \end{proof}
@@ -120,7 +120,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \label{ap:deducoes-mae}
 
 \begin{definition}
-    Seja $e = \hat{y} - y$ o resíduo entre a predição e o alvo. A função de perda erro absoluto médio é definida por $\Loss(e) = |e|$.
+    Seja $e = y - \hat{y}$ o resíduo entre a alvo e predição. A função de perda erro absoluto médio é definida por $\mathcal{L}(e) = |e|$.
 \end{definition}
 
 \begin{proposition}[Regularidade]
@@ -128,7 +128,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proposition}
 
 \begin{proof}
-    A função módulo é contínua por definição, logo $\Loss \in C^0$. Para verificar se é $C^1$, analisamos a derivada no ponto $e=0$.
+    A função módulo é contínua por definição, logo $\mathcal{L} \in C^0$. Para verificar se é $C^1$, analisamos a derivada no ponto $e=0$.
     Calculamos os limites laterais da derivada:
     \begin{align*}
         \lim_{e \to 0^+} \frac{d}{de}(e) &= 1 \\
@@ -138,7 +138,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função Erro Absoluto Médio é convexa.
+    A função erro absoluto médio é convexo.
 \end{proposition}
 
 \begin{proof}
@@ -148,7 +148,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Robustez]
-    A função erro absoluto médio é Lipschitz-contínua (é robusta a \textit{outliers}).
+    A função erro absoluto médio é Lipschitz-contínua (robusta a \textit{outliers}).
 \end{proposition}
 
 \begin{proof}
@@ -169,7 +169,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \label{ap:deducoes-huber-loss}
 
 \begin{definition}
-    Seja $\delta > 0$ um hiperparâmetro de transição. A função de perda de Huber é definida por partes:
+    Seja $\delta > 0$ um hiperparâmetro de transição, e $e = y - \hat{y}$ o resíduo entre a alvo e predição. A função de perda de Huber é definida por partes:
     \begin{equation}
         \mathcal{L}_\delta(e) = \begin{cases} 
         \frac{1}{2}e^2 & \text{se } |e| \le \delta \\
@@ -179,7 +179,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{definition}
 
 \begin{proposition}[Regularidade e Colagem Suave]
-    A função de Huber pertence à classe $C^1$ (continuamente diferenciável), mas não pertence à classe $C^2$.
+    A função perda de Huber pertence à classe $C^1$ (suave), mas não pertence à classe $C^2$.
 \end{proposition}
 
 \begin{proof}
@@ -210,7 +210,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função de Huber é convexa em todo o domínio $\mathbb{R}$.
+    A função perda de Huber é convexa em todo o domínio $\mathbb{R}$.
 \end{proposition}
 
 \begin{proof}
@@ -223,7 +223,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Robustez]
-    A função de Huber é Lipschitz-contínua com constante $K=\delta$, sendo robusta a \textit{outliers}.
+    A função perda de Huber é Lipschitz-contínua com constante $K=\delta$ (robusta a \textit{outliers}).
 \end{proposition}
 
 \begin{proof}
@@ -233,21 +233,21 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     Portanto, o valor absoluto da derivada é limitado superiormente pelo hiperparâmetro $\delta$:
     \[ |\mathcal{L}'(e)| \le \delta, \quad \forall e \in \mathbb{R} \]
     
-    Pelo critério do gradiente limitado (Seção \ref{sec:definicoes}), a função é Lipschitz-contínua. Diferente do MSE, onde o gradiente cresce indefinidamente, a Huber Loss satura a força da penalidade em $\delta$, garantindo estabilidade frente a grandes erros.
+    Pelo critério do gradiente limitado (Seção \ref{sec:definicoes}), a função é Lipschitz-contínua. Diferente do erro quadrático médio, onde o gradiente cresce indefinidamente, a perda de Huber satura a força da penalidade em $\delta$, garantindo estabilidade frente a grandes erros.
 \end{proof}
 
-\subsection{Perda log-cosh (log-cosh loss)}%
+\subsection{Perda log-cosh (Log-cosh loss)}%
 \label{ap:deducoes-log-cosh}
 
 \begin{definition}
-    Seja $e = \hat{y} - y$ o resíduo. A função de perda Log-Cosh é definida pelo logaritmo natural do cosseno hiperbólico do erro:
+    Seja $e = y - \hat{y}$ o resíduo entre a alvo e predição. A função de perda log-cosh é definida pelo logaritmo natural do cosseno hiperbólico do erro:
     \begin{equation}
         \mathcal{L}(e) = \log(\cosh(e))
     \end{equation}
 \end{definition}
 
 \begin{proposition}[Regularidade e Suavidade]
-    A função Log-Cosh pertence à classe $C^\infty$ (é infinitamente diferenciável em todo o domínio).
+    A função perda log-cosh pertence à classe $C^\infty$ (infinitamente diferenciável).
 \end{proposition}
 
 \begin{proof}
@@ -263,12 +263,12 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função Log-Cosh é estritamente convexa.
+    A função log-cosh é estritamente convexa.
 \end{proposition}
 
 \begin{proof}
     Utilizamos o critério da segunda derivada. Da demonstração anterior, temos:
-    \[ \Loss''(e) = \text{sech}^2(e) = \frac{1}{\cosh^2(e)} \]
+    \[ \mathcal{L}''(e) = \text{sech}^2(e) = \frac{1}{\cosh^2(e)} \]
     
     Sabemos que $\cosh(e) \ge 1$ para todo número real, o que implica $1 \le \cosh^2(e) < \infty$. Consequentemente, o inverso quadrado é estritamente positivo:
     \[ 0 < \frac{1}{\cosh^2(e)} \le 1 \]
@@ -277,7 +277,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Robustez]
-    A função Log-Cosh é Lipschitz-contínua e robusta a \textit{outliers}.
+    A função log-cosh é Lipschitz-contínua (robusta a \textit{outliers}).
 \end{proposition}
 
 \begin{proof}
@@ -287,14 +287,14 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     
     Como a derivada é limitada globalmente por $K=1$, a função é 1-Lipschitz contínua. 
     
-    \textit{Observação:} Note que assintoticamente, quando $|e| \to \infty$, a derivada se aproxima de $\pm 1$ (comportamento do MAE), mas na origem ela se aproxima de $0$ linearmente (comportamento do MSE), combinando as melhores propriedades de ambas sem perder a diferenciabilidade.
+    \textit{Observação:} Note que assintoticamente, quando $|e| \to \infty$, a derivada se aproxima de $\pm 1$ (comportamento do erro absoluto médio), mas na origem ela se aproxima de $0$ linearmente (comportamento do erro quadrático médio), combinando as melhores propriedades de ambas sem perder a diferenciabilidade.
 \end{proof}
 
-\subsection{Erro quadrático logarítmico médio (MSLE)}
+\subsection{Erro quadrático logarítmico médio (MSLE)}%
 \label{ap:deducoes-msle}
 
 \begin{definition}
-    Seja $y \ge 0$ o valor alvo e $\hat{y} \ge 0$ a predição (com a restrição de não-negatividade usual para dados log-normais). A função MSLE é definida por:
+    Seja $y \ge 0$ o valor alvo e $\hat{y} \ge 0$ a predição (com a restrição de não-negatividade usual para dados log-normais). A função erro quadrático logarítmico médio é definida por:
     \begin{equation}
         \mathcal{L}(y, \hat{y}) = (\log(1 + y) - \log(1 + \hat{y}))^2
     \end{equation}
@@ -302,7 +302,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{definition}
 
 \begin{proposition}[Regularidade]
-    A função MSLE pertence à classe $C^{\infty}$ no domínio $\hat{y} > -1$.
+    A função erro quadrático logarítmico médio pertence à classe $C^{\infty}$ no domínio $\hat{y} > -1$.
 \end{proposition}
 
 \begin{proof}
@@ -318,7 +318,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade no Espaço Logarítmico]
-    A função MSLE é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$.
+    A função erro quadrático logarítmico médio é convexa em relação à predição transformada $z = \log(1+\hat{y})$, mas não é globalmente convexa em relação a $\hat{y}$.
 \end{proposition}
 
 \begin{proof}
@@ -330,7 +330,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     A derivada segunda em relação a $z$ é:
     \[ G''(z) = 2 > 0 \]
     
-    Portanto, a MSLE é estritamente convexa \textit{no espaço logarítmico}. Isso justifica seu uso em problemas onde a magnitude das variáveis varia exponencialmente, pois a otimização se comporta como um MSE sobre os expoentes.
+    Portanto, o erro quadrático logarítmico médio é estritamente convexa \textit{no espaço logarítmico}. Isso justifica seu uso em problemas onde a magnitude das variáveis varia exponencialmente, pois a otimização se comporta como um MSE sobre os expoentes.
 \end{proof}
 
 \begin{proposition}[Robustez e Continuidade de Lipschitz]
@@ -352,14 +352,14 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     
     Pelo Teorema de Weierstrass generalizado, uma função contínua que tende a zero no infinito é necessariamente limitada (possui um máximo e um mínimo globais finitos). 
     
-    Portanto, existe uma constante máxima $K$ (o pico da derivada) tal que $|\mathcal{L}'(\hat{y})| \le K$ para todo $\hat{y}$. Isso classifica a MSLE como Lipschitz-contínua. Diferente do MAE (onde o gradiente trava em 1), na MSLE o gradiente diminui para erros muito grandes, o que pode ser visto como uma "super-robustez" ou um risco de o modelo parar de aprender se o erro inicial for absurdo.
+    Portanto, existe uma constante máxima $K$ (o pico da derivada) tal que $|\mathcal{L}'(\hat{y})| \le K$ para todo $\hat{y}$. Isso classifica o erro quadrático logarítmico médio como Lipschitz-contínuo. Diferente do erro absoluto médio (onde o gradiente trava em 1), no erro quadrático logarítmico médio o gradiente diminui para erros muito grandes, o que pode ser visto como uma ``super-robustez'' ou um risco de o modelo parar de aprender se o erro inicial for absurdo.
 \end{proof}
 
-\subsection{Perda quantílica (quantile loss)}
+\subsection{Perda quantílica (Quantile/Pinball loss)}%
 \label{ap:deducoes-quantile-loss}
 
 \begin{definition}
-    Seja $e = \hat{y} - y$ o resíduo e $\tau \in (0, 1)$ o parâmetro do quantil desejado. A função de perda quantílica é definida como o máximo entre duas funções lineares:
+    Seja $e = y - \hat{y}$ o resíduo entre a alvo e predição e $\tau \in (0, 1)$ o parâmetro do quantil desejado. A função de perda quantílica é definida como o máximo entre duas funções lineares:
     \begin{equation}
         \mathcal{L}_\tau(e) = \max(\tau e, (\tau - 1)e)
     \end{equation}
@@ -373,7 +373,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{definition}
 
 \begin{proposition}[Singularidade]
-    A função Perda Quantílica pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
+    A função perda quantílica pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
 \end{proposition}
 
 \begin{proof}
@@ -389,11 +389,11 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função Perda Quantílica é convexa.
+    A função perda quantílica é convexa.
 \end{proposition}
 
 \begin{proof}
-    Utilizamos a propriedade de preservação de convexidade em operações de máximo (Teorema \ref{thm:convex_tools}).
+    Utilizamos a propriedade de preservação de convexidade em operações de máximo (Teorema~\ref{thm:convex_tools}).
     
     Definimos duas funções auxiliares:
     \[ f_1(e) = \tau e \quad \text{e} \quad f_2(e) = (\tau - 1)e \]
@@ -402,11 +402,11 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Robustez via Subgradiente]
-    A função Perda Quantílica é Lipschitz-contínua e robusta a \textit{outliers}.
+    A função perda quantílica é Lipschitz-contínua (robusta a \textit{outliers}).
 \end{proposition}
 
 \begin{proof}
-    Analisamos o \textbf{Subdiferencial} na origem e as derivadas nas caudas. O subgradiente é dado por:
+    Analisamos o subdiferencial na origem e as derivadas nas caudas. O subgradiente é dado por:
     \[
     \partial \mathcal{L}_\tau(e) = \begin{cases} 
     \{\tau - 1\} & \text{se } e < 0 \\
@@ -419,14 +419,14 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     Observamos que:
     \[ |g| \le K < 1, \quad \forall g \in \partial \mathcal{L}_\tau(e) \]
     
-    Como a inclinação é globalmente limitada, a função é Lipschitz-contínua. Isso garante robustez similar ao MAE, penalizando erros linearmente, mas com pesos assimétricos para superestimação e subestimação.
+    Como a inclinação é globalmente limitada, a função é Lipschitz-contínua. Isso garante robustez similar ao erro absoluto médio, penalizando erros linearmente, mas com pesos assimétricos para superestimação e subestimação.
 \end{proof}
 
-\subsection{Perda epsilon-insensível (epsilon-insensitive)}
+\subsection{Perda epsilon-insensível (Epsilon-insensitive)}%
 \label{ap:deducoes-epsilon-insensitive}
 
 \begin{definition}
-    Seja $\epsilon > 0$ um limiar de tolerância. A função de perda $\epsilon$-Insensitive ignora erros cuja magnitude seja menor que $\epsilon$, penalizando linearmente o excedente. É definida por:
+    Seja $\epsilon > 0$ um limiar de tolerância, e $e = y - \hat{y}$ o resíduo entre a alvo e predição. A função de perda $\epsilon$-insensível ignora erros cuja magnitude seja menor que $\epsilon$, penalizando linearmente o excedente. É definida por:
     \begin{equation}
         \mathcal{L}_\epsilon(e) = \max(0, |e| - \epsilon)
     \end{equation}
@@ -440,7 +440,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{definition}
 
 \begin{proposition}[Singularidade]
-    A função $\epsilon$-Insensitive pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
+    A função $\epsilon$-insensível pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
 \end{proposition}
 
 \begin{proof}
@@ -456,11 +456,11 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função $\epsilon$-Insensitive é convexa (embora não estritamente convexa).
+    A função $\epsilon$-insensível é convexa (embora não estritamente convexa).
 \end{proposition}
 
 \begin{proof}
-    Utilizamos o \textbf{Teorema de Convexidade de Máximos} (Seção \ref{sec:definicoes}).
+    Utilizamos o \textbf{Teorema de Convexidade de Máximos} (Seção~\ref{sec:definicoes}).
     A função é definida como o máximo pontual entre duas funções:
     \[ f_1(e) = 0 \quad \text{e} \quad f_2(e) = |e| - \epsilon \]
     
@@ -473,7 +473,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Robustez e Esparsidade]
-    A função é Lipschitz-contínua (robusta) e induz esparsidade no gradiente.
+    A função $\epsilon$-insensível é Lipschitz-contínua (robusta a \textit{outliers}) e induz esparsidade no gradiente.
 \end{proposition}
 
 \begin{proof}
@@ -489,14 +489,14 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     
     \textbf{1. Robustez:} O valor absoluto de qualquer subgradiente é limitado por 1 ($|g| \le 1$). Portanto, a função é 1-Lipschitz contínua, garantindo robustez a \textit{outliers}.
     
-    \textbf{2. Esparsidade:} Diferente do MAE (cujo gradiente é quase sempre não-nulo), a $\epsilon$-Insensitive possui uma região de medida positiva ($[-\epsilon, \epsilon]$) onde o gradiente é exatamente zero. Isso significa que erros pequenos não provocam atualizações nos pesos, uma propriedade fundamental para a eficiência e generalização das Support Vector Machines (SVM).
+    \textbf{2. Esparsidade:} Diferente do erro absoluto médio (cujo gradiente é quase sempre não-nulo), a $\epsilon$-insensível possui uma região de medida positiva ($[-\epsilon, \epsilon]$) onde o gradiente é exatamente zero. Isso significa que erros pequenos não provocam atualizações nos pesos, uma propriedade fundamental para a eficiência e generalização das máquinas de vetores de suporte (SVM).
 \end{proof}
 
-\subsection{Perda de Poisson (Poisson loss)}
+\subsection{Desvio de Poisson (Poisson deviance)}%
 \label{ap:deducoes-poisson-loss}
 
 \begin{definition}
-    Seja $y \in \mathbb{N}_0$ o alvo (número de contagens) e $\hat{y} \in \mathbb{R}^+$ a predição (taxa esperada). A função de perda é derivada da verossimilhança negativa da distribuição de Poisson. Descartando o termo $\log(y!)$ que independe do modelo, definimos:
+    Seja $y \in \mathbb{N}_0$ o alvo (número de contagens) e $\hat{y} \in \mathbb{R}^+$ a predição (taxa esperada). O desvio de Poisson é derivado da verossimilhança negativa da distribuição de Poisson. Descartando o termo $\log(y!)$ que independe do modelo, definimos:
     \begin{equation}
         \mathcal{L}(\hat{y}) = \hat{y} - y\log(\hat{y})
     \end{equation}
@@ -504,7 +504,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{definition}
 
 \begin{proposition}[Regularidade]
-    A função Poisson Loss pertence à classe $C^\infty$ (suave) em seu domínio de definição $(0, \infty)$.
+    O desvio de Poisson pertence à classe $C^\infty$ (infinitamente diferenciável) em seu domínio de definição $(0, \infty)$.
 \end{proposition}
 
 \begin{proof}
@@ -521,7 +521,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função Poisson Loss é convexa (e estritamente convexa se $y > 0$).
+    O desvio de Poisson é convexo (e estritamente convexo se $y > 0$).
 \end{proposition}
 
 \begin{proof}
@@ -538,7 +538,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Não-Robustez na Origem]
-    A função Poisson Loss não é Lipschitz-contínua globalmente devido à singularidade na origem.
+    O desvio de Poisson não é Lipschitz-contínuo (sensível a \textit{outliers}) globalmente devido à singularidade na origem.
 \end{proposition}
 
 \begin{proof}
@@ -553,11 +553,11 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     Como o gradiente explode negativamente quando a predição se aproxima de zero (contradizendo a evidência $y$), não existe uma constante $K$ que limite a derivada. Portanto, a função não é Lipschitz-contínua. Isso exige cuidado numérico (como adicionar um $\epsilon$ de estabilidade ou usar a função de ativação Softplus) para evitar instabilidade numérica.
 \end{proof}
 
-\subsection{Perda Gamma (Gamma loss)}
+\subsection{Desvio Gamma (Gamma deviance)}%
 \label{ap:deducoes-gamma-loss}
 
 \begin{definition}
-    Seja $y > 0$ o valor alvo e $\hat{y} > 0$ a predição. A função de perda Gamma deriva da \textit{Negative Log-Likelihood} da distribuição Gamma. Ignorando termos constantes que dependem apenas de $y$, a forma canônica para minimização é:
+    Seja $y > 0$ o valor alvo e $\hat{y} > 0$ a predição. O desvio Gamma deriva da \textit{Negative Log-Likelihood} da distribuição Gamma. Ignorando termos constantes que dependem apenas de $y$, a forma canônica para minimização é:
     \begin{equation}
         \mathcal{L}(y, \hat{y}) = \frac{y}{\hat{y}} + \log(\hat{y})
     \end{equation}
@@ -565,7 +565,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{definition}
 
 \begin{proposition}[Regularidade]
-    A função Gamma Loss pertence à classe $C^\infty$ (suave) em seu domínio $(0, \infty)$.
+    O desvio Gamma pertence à classe $C^\infty$ (infinitamente diferenciável) em seu domínio $(0, \infty)$.
 \end{proposition}
 
 \begin{proof}
@@ -581,7 +581,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Não-Convexidade Global]
-    A função Gamma Loss \textbf{não é convexa} em relação à predição $\hat{y}$ globalmente, tornando-se côncava para grandes superestimativas.
+    O desvio Gamma não é convexo em relação à predição $\hat{y}$ globalmente, tornando-se côncavo para grandes superestimativas.
 \end{proposition}
 
 \begin{proof}
@@ -598,11 +598,11 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{remark}[Convexidade no Espaço Logarítmico]
-    Em Deep Learning e GLMs, contornamos a não-convexidade modelando o logaritmo da média ($z = \log \hat{y}$). Substituindo $\hat{y} = e^z$, a função torna-se $G(z) = y e^{-z} + z$. Sua segunda derivada é $G''(z) = y e^{-z}$, que é estritamente positiva para todo $z$. Portanto, a Gamma Loss é canonicamente usada com uma função de ligação logarítmica.
+    Em Deep Learning e GLMs, contornamos a não-convexidade modelando o logaritmo da média ($z = \log \hat{y}$). Substituindo $\hat{y} = e^z$, a função torna-se $G(z) = y e^{-z} + z$. Sua segunda derivada é $G''(z) = y e^{-z}$, que é estritamente positiva para todo $z$. Portanto, o desvio Gamma é canonicamente usado com uma função de ligação logarítmica.
 \end{remark}
 
 \begin{proposition}[Assimetria de Robustez]
-    A função Gamma Loss não é Lipschitz-contínua devido à singularidade na origem, mas possui gradientes que tendem a zero no infinito.
+    O desvio Gamma não é Lipschitz-contínuo (sensível a \textit{outliers}) devido à singularidade na origem, mas possui gradientes que tendem a zero no infinito.
 \end{proposition}
 
 \begin{proof}
@@ -621,19 +621,19 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
     Conclui-se que a função penaliza severamente erros onde $\hat{y} \ll y$, mas é leniente (robusta) com erros onde $\hat{y} \gg y$.
 \end{proof}
 
-\subsection{Perda de Tweedie (Tweedie loss)}%
+\subsection{Desvio de Tweedie (Tweedie deviance)}%
 \label{ap:deducoes-tweedie-loss}
 
 \begin{definition}
-    Seja $y \ge 0$ o alvo e $\hat{y} > 0$ a predição. A família de perdas Tweedie é indexada pelo parâmetro de potência de variância $p$. Para o caso de interesse em dados com excesso de zeros (Composta Poisson-Gamma), onde $1 < p < 2$, a função é definida por:
+    Seja $y \ge 0$ o alvo e $\hat{y} > 0$ a predição. A família de desvios Tweedie é indexada pelo parâmetro de potência de variância $p$. Para o caso de interesse em dados com excesso de zeros (Composta Poisson-Gamma), onde $1 < p < 2$, a função é definida por:
     \begin{equation}
         \mathcal{L}_p(y, \hat{y}) = -y \frac{\hat{y}^{1-p}}{1-p} + \frac{\hat{y}^{2-p}}{2-p}
     \end{equation}
-    Esta fórmula deriva da \textit{Deviance} dos Modelos Lineares Generalizados (GLM) sob a suposição $\text{Var}(Y) \propto \mu^p$.
+    Esta fórmula deriva da \textit{deviance} dos Modelos Lineares Generalizados (GLM) sob a suposição $\text{Var}(Y) \propto \mu^p$.
 \end{definition}
 
 \begin{proposition}[Regularidade]
-    Para $p \in (1, 2)$, a função Tweedie Loss pertence à classe $C^\infty$ no domínio $\hat{y} \in (0, \infty)$.
+    Para $p \in (1, 2)$, a função o desvio de Tweedie pertence à classe $C^\infty$ no domínio $\hat{y} \in (0, \infty)$.
 \end{proposition}
 
 \begin{proof}
@@ -650,7 +650,7 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{proposition}[Não-Convexidade Global]
-    Para $1 < p < 2$, a função Tweedie Loss \textbf{não é globalmente convexa} em relação a $\hat{y}$.
+    Para $1 < p < 2$, o desvio de Tweedie não é globalmente convexo em relação a $\hat{y}$.
 \end{proposition}
 
 \begin{proof}
@@ -666,11 +666,11 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
 \end{proof}
 
 \begin{remark}
-    Assim como na Perda Gamma, a não-convexidade é resolvida na prática modelando o logaritmo da média. A Tweedie Loss é estritamente convexa em relação a $z = \log(\hat{y})$.
+    Assim como na perda Gamma, a não-convexidade é resolvida na prática modelando o logaritmo da média. O desvio de Tweedie é estritamente convexo em relação a $z = \log(\hat{y})$.
 \end{remark}
 
 \begin{proposition}[Robustez Assimétrica]
-    A função não é Lipschitz-contínua na origem, mas apresenta gradientes evanescentes no infinito.
+    O desvio de Tweedie não é Lipschitz-contínuo (sensível a \textit{outliers}) na origem, mas apresenta gradientes evanescentes no infinito.
 \end{proposition}
 
 \begin{proof}
@@ -687,15 +687,15 @@ Para demonstrar a convexidade das funções de perda sem recorrer exaustivamente
         \[ \lim_{\hat{y} \to \infty} |\mathcal{L}'(\hat{y})| = 0 \]
     \end{enumerate}
     
-    A função exibe o comportamento clássico de perdas geradas por famílias exponenciais: pune severamente o erro "impossível" (prever 0 para alvo positivo) e é robusta/indulgente com erros de magnitude na cauda direita.
+    A função exibe o comportamento clássico de perdas geradas por famílias exponenciais: pune severamente o erro ``impossível'' (prever 0 para alvo positivo) e é robusta/indulgente com erros de magnitude na cauda direita.
 \end{proof}
 
 \section{Perdas para classificação}
 
-\subsection{Unificação das Perdas de Classificação derivadas da divergência KL}%
+\subsection{Unificação das perdas de classificação derivadas da divergência KL}%
 \label{ap:deducoes-perdas-derivadas-da-kl-divergence}
 
-Observamos que Binary Cross-Entropy (BCE), Categorical Cross-Entropy (CCE) e suas variantes ponderadas (WBCE, WCCE, ECCE) compartilham a mesma estrutura algébrica fundamental. Elas são instâncias da \textit{Entropia Cruzada Generalizada}.
+Observamos que entropia-cruzada binária (BCE), entropia-cruzada categórica (CCE) e suas variantes ponderadas (WBCE, WCCE, ECCE) compartilham a mesma estrutura algébrica fundamental. Elas são instâncias da \textit{Entropia Cruzada Generalizada}.
 
 Para evitar repetições, definimos uma forma canônica e demonstramos as propriedades de regularidade, convexidade e robustez para toda a família de uma só vez.
 
@@ -712,19 +712,19 @@ Para evitar repetições, definimos uma forma canônica e demonstramos as propri
 A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$ e $\omega_i$:
 
 \begin{table}[h]
-\centering
-\begin{tabular}{l|l|l}
-\textbf{Função de Perda} & \textbf{Configuração ($C, y, \omega$)} & \textbf{Interpretação} \\ \hline
-\textbf{BCE} & $C=2$, $\omega_i=1$ & Classificação Binária Padrão \\
-\textbf{WBCE} & $C=2$, $\omega_1 \neq \omega_2$ & Binária com classes desbalanceadas \\
-\textbf{CCE} & $C > 2$, $\omega_i=1$ & Multiclasse Padrão \\
-\textbf{WCCE} & $C > 2$, $\omega_i \propto \frac{1}{\text{freq}(i)}$ & Multiclasse com pesos fixos \\
-\textbf{ECCE} & $C > 2$, $\omega_i$ variável & Pesos dinâmicos baseados em entropia \\
-\end{tabular}
+    \centering
+    \begin{tabular}{l|l|l}
+        \textbf{Função de Perda} & \textbf{Configuração ($C, y, \omega$)} & \textbf{Interpretação} \\ \hline
+        \textbf{BCE} & $C=2$, $\omega_i=1$ & Classificação Binária Padrão \\
+        \textbf{WBCE} & $C=2$, $\omega_1 \neq \omega_2$ & Binária com classes desbalanceadas \\
+        \textbf{CCE} & $C > 2$, $\omega_i=1$ & Multiclasse Padrão \\
+        \textbf{WCCE} & $C > 2$, $\omega_i \propto \frac{1}{\text{freq}(i)}$ & Multiclasse com pesos fixos \\
+        \textbf{ECCE} & $C > 2$, $\omega_i$ variável & Pesos dinâmicos baseados em entropia \\
+    \end{tabular}
 \end{table}
 
 \begin{proposition}[Regularidade Global]
-    A família de perdas de Entropia Cruzada pertence à classe $C^\infty$ (suave) no domínio aberto $\hat{y}_i \in (0, 1)$.
+    A família de perdas de entropia cruzada pertence à classe $C^\infty$ (infinitamente diferenciável) no domínio aberto $\hat{y}_i \in (0, 1)$.
 \end{proposition}
 
 \begin{proof}
@@ -736,7 +736,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A Entropia Cruzada Generalizada é convexa em relação às predições probabilísticas $\mathbf{\hat{y}}$.
+    A entropia cruzada generalizada é convexa em relação às predições probabilísticas $\mathbf{\hat{y}}$.
 \end{proposition}
 
 \begin{proof}
@@ -759,7 +759,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{proof}
 
 \begin{proposition}[Não-Robustez e Explosão de Gradiente]
-    A família de perdas de Entropia Cruzada não é Lipschitz-contínua, sendo sensível a erros confiantes (\textit{confident mistakes}).
+    A família de perdas de entropia-cruzada não é Lipschitz-contínua (sensível a erros confiantes).
 \end{proposition}
 
 \begin{proof}
@@ -774,18 +774,18 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
     Isso implica que \textit{outliers} ou exemplos mal rotulados que contradizem fortemente a predição do modelo geram atualizações de peso massivas, podendo desestabilizar o treinamento.
 \end{proof}
 
-\subsection{Perda Hinge (Hinge Loss)}%
+\subsection{Perda Hinge (Hinge loss)}%
 \label{ap:deducoes-perda-hinge}
 
 \begin{definition}
-    Em classificação binária onde $y \in \{-1, +1\}$ e $f(x) \in \mathbb{R}$ é o score bruto do modelo. Definimos a margem funcional como $z = y \cdot f(x)$. A Hinge Loss é definida por:
+    Em classificação binária onde $y \in \{-1, +1\}$ e $f(x) \in \mathbb{R}$ é o score bruto do modelo. Definimos a margem funcional como $z = y \cdot f(x)$. A perda \textit{hinge} é definida por:
     \begin{equation}
         \mathcal{L}(z) = \max(0, 1 - z)
     \end{equation}
 \end{definition}
 
 \begin{proposition}[Singularidade]
-    A função Hinge Loss pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
+    A função perda \textit{hinge} pertence à classe $C^0$ (contínua), mas não pertence à classe $C^1$.
 \end{proposition}
 
 \begin{proof}
@@ -803,15 +803,15 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
         \lim_{z \to 1^+} \mathcal{L}'(z) &= 0
     \end{align*}
 
-    Como os limites laterais diferem, a função apresenta um "bico" em $z=1$, não sendo diferenciável neste ponto ($\mathcal{L} \notin C^1$).
+    Como os limites laterais diferem, a função apresenta um ``bico'' em $z=1$, não sendo diferenciável neste ponto ($\mathcal{L} \notin C^1$).
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função Hinge Loss é convexa.
+    A função perda \textit{hinge} é convexa.
 \end{proposition}
 
 \begin{proof}
-    Utilizamos o \textbf{Teorema de Convexidade de Máximos} (definido na Seção \ref{sec:definicoes}).
+    Utilizamos o \textbf{Teorema de Convexidade de Máximos} (definido na Seção~\ref{sec:definicoes}).
     A função é o máximo entre duas funções auxiliares:
     \[ g_1(z) = 0 \quad \text{e} \quad g_2(z) = 1 - z \]
 
@@ -819,7 +819,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{proof}
 
 \begin{proposition}[Robustez e Esparsidade Dual]
-    A função Hinge Loss é Lipschitz-contínua e induz esparsidade nos vetores de suporte.
+    A função perda \textit{hinge} é Lipschitz-contínua (robusta a erros confiantes) e induz esparsidade nos vetores de suporte.
 \end{proposition}
 
 \begin{proof}
@@ -836,14 +836,14 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
     A magnitude do subgradiente é limitada superiormente por 1 ($|g| \le 1, \forall g \in \partial \mathcal{L}$). Portanto, a função é 1-Lipschitz contínua. Diferente da Entropia Cruzada (que explode para erros confiantes) ou do MSE quadrático, a Hinge Loss penaliza erros grosseiros apenas linearmente, sendo robusta a \textit{outliers} extremos.
 
     \textbf{2. Esparsidade (Zona Morta):}
-    Para qualquer amostra corretamente classificada com margem de segurança ($z > 1$), o gradiente é exatamente 0. Isso significa que esses pontos não influenciam a atualização do modelo. O modelo é definido apenas pelos pontos onde $z \le 1$ (os chamados \textbf{Vetores de Suporte}), gerando eficiência computacional e de memória.
+    Para qualquer amostra corretamente classificada com margem de segurança ($z > 1$), o gradiente é exatamente 0. Isso significa que esses pontos não influenciam a atualização do modelo. O modelo é definido apenas pelos pontos onde $z \le 1$ (os chamados vetores de suporte), gerando eficiência computacional e de memória.
 \end{proof}
 
-\subsection{Perda Hinge quadrática (squared hinge loss)}
+\subsection{Perda hinge quadrática (Squared hinge loss)}%
 \label{ap:deducoes-perda-hinge-quadratica}
 
 \begin{definition}
-    Mantendo a definição de margem funcional $z = y \cdot f(x)$, a função de perda Squared Hinge é definida pelo quadrado da parte positiva da Hinge padrão:
+    Mantendo a definição de margem funcional $z = y \cdot f(x)$, a função perda \textit{hinge} quadrática é definida pelo quadrado da parte positiva da \textit{hinge} padrão:
     \begin{equation}
         \mathcal{L}(z) = (\max(0, 1 - z))^2
     \end{equation}
@@ -857,7 +857,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{definition}
 
 \begin{proposition}[Suavização e Regularidade]
-    A função Squared Hinge pertence à classe $C^1$ (continuamente diferenciável), superando a singularidade da Hinge padrão. Porém, não é $C^2$.
+    A função perda \textit{hinge} quadrática pertence à classe $C^1$ (suave), superando a singularidade da \textit{hinge} padrão. Porém, não é $C^2$.
 \end{proposition}
 
 \begin{proof}
@@ -890,7 +890,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{proof}
 
 \begin{proposition}[Convexidade]
-    A função Squared Hinge é convexa.
+    A função perda \textit{hinge} quadrática é convexa.
 \end{proposition}
 
 \begin{proof}
@@ -909,7 +909,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{proof}
 
 \begin{proposition}[Perda de Robustez]
-    Diferente da Hinge padrão, a Squared Hinge \textbf{não é Lipschitz-contínua}, sendo sensível a \textit{outliers}.
+    A perda \textit{hinge} quadrática não é Lipschitz-contínua (sensível a erros confiantes).
 \end{proposition}
 
 \begin{proof}
@@ -922,7 +922,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
     \textit{Consequência Prática:} Embora a Squared Hinge facilite a otimização numérica por ser diferenciável, ela penaliza erros distantes muito mais severamente que a Hinge padrão (similar ao MSE). Isso torna o modelo L2-SVM menos robusto a dados ruidosos do que o L1-SVM clássico.
 \end{proof}
 
-\subsection{Perda multirótulo (multilabel loss)}%
+\subsection{Perda multirrótulo (Multilabel loss)}%
 \label{ap:deducoes-multilabel-loss}
 
 \begin{definition}
@@ -935,7 +935,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{definition}
 
 \begin{proposition}[Regularidade e Independência]
-    A função Multilabel Loss pertence à classe $C^\infty$ no hipercubo aberto $(0, 1)^q$.
+    A perda multirrótulo pertence à classe $C^\infty$ (infinitamente diferenciável) no hipercubo aberto $(0, 1)^q$.
 \end{proposition}
 
 \begin{proof}
@@ -943,18 +943,18 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
     
     Como demonstrado na prova da Entropia Cruzada Generalizada, cada componente individual $\mathcal{L}_{\text{BCE}}$ é $C^\infty$ em seu domínio $(0, 1)$. Uma vez que a soma finita de funções infinitamente diferenciáveis preserva a diferenciabilidade, conclui-se que $\mathcal{L}_{\text{Multilabel}} \in C^\infty$.
     
-    \textit{Implicação Prática:} A regularidade permite o cálculo de gradientes independentes para cada saída $\hat{y}_j$, o que significa que o aprendizado de um rótulo (ex: "tem gato") não interfere matematicamente na derivada do outro (ex: "tem chuva"), exceto através do compartilhamento de pesos nas camadas anteriores da rede neural.
+    \textit{Implicação Prática:} A regularidade permite o cálculo de gradientes independentes para cada saída $\hat{y}_j$, o que significa que o aprendizado de um rótulo (ex: ``tem gato'') não interfere matematicamente na derivada do outro (ex: ``tem chuva''), exceto através do compartilhamento de pesos nas camadas anteriores da rede neural.
 \end{proof}
 
 \begin{proposition}[Convexidade Aditiva]
-    A função Multilabel Loss é convexa em relação ao vetor de predições $\mathbf{\hat{y}}$.
+    A perda multirrótulo é convexa em relação ao vetor de predições $\mathbf{\hat{y}}$.
 \end{proposition}
 
 \begin{proof}
     Utilizamos a propriedade de fechamento da convexidade sob adição não-negativa.
     
     1.  Sabemos que a função Binary Cross-Entropy individual $\ell_j(\hat{y}_j)$ é convexa em relação a $\hat{y}_j$ (verificada pela segunda derivada positiva $\frac{1}{\hat{y}_j(1-\hat{y}_j)}$).
-    2.  A função Multilabel é a soma: $\mathcal{L} = \sum_{j=1}^q \ell_j(\hat{y}_j)$.
+    2.  A perda multirrótulo é a soma: $\mathcal{L} = \sum_{j=1}^q \ell_j(\hat{y}_j)$.
     
     Pelo teorema da soma de funções convexas, se cada $\ell_j$ é convexa, então sua soma $\mathcal{L}$ também é convexa no domínio conjunto.
     
@@ -962,7 +962,7 @@ A tabela abaixo demonstra como recuperar as funções específicas ajustando $C$
 \end{proof}
 
 \begin{proposition}[Não-Robustez]
-    A função Multilabel Loss não é Lipschitz-contínua e herda a sensibilidade a \textit{outliers} da BCE.
+    A perda multirrótulo não é Lipschitz-contínua (sensível a erros confiantes).
 \end{proposition}
 
 \begin{proof}
