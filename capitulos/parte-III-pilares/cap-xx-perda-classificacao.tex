@@ -143,7 +143,7 @@ O gráfico da entropia-cruzada binária apresenta duas curvas distintas, como ev
     \end{tikzpicture}
     \caption{Visualizações da função de perda entropia-cruzada binária no plano.}%
     \label{fig:binary-cross-entropy}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da entropia-cruzada binária}
@@ -222,7 +222,7 @@ Essa situação na qual ocorre a explosão do gradiente está apresentada na Fig
     \end{tikzpicture}
     \caption{Visualização do gradiente de perda entropia-cruzada binária no plano.}%
     \label{fig:binary-cross-entropy-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Uma maneira de tratar a explosão do gradiente ao calcular a derivada da perda é utilizar a sigmoide na camada de saída. Visto que a sigmoide irá garantir que as saídas do modelo estejam no intervalo $[0, 1]$, além disso, ao combinar essa função de ativação com a BCE é garantido um cálculo mais simples para o gradiente. Essa nova derivada está representada na Equação~\ref{eq:bce-derivada-com-sigmoide}, o gradiente torna-se a diferença da predição com o valor real. Esse gradiente será sempre limitado, pois $\hat{y}$ está entre 0 e 1 e $y$ é 1 ou 0, de forma que o gradiente estará no intervalo $[-1, 1]$.
@@ -588,7 +588,7 @@ Diferente dos gráficos da BCE que apresentam curvas suaves devido ao uso dos lo
     \end{tikzpicture}
     \caption{Visualização da função de perda \textit{hinge} no plano.}%
     \label{fig:hinge-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da perda hinge}
@@ -674,7 +674,7 @@ Além da Equação~\ref{eq:hinge-loss-derivada} que já evidencia a continuidade
     \end{tikzpicture}
     \caption{Relação linear por partes do gradiente da função de perda \textit{hinge}.}%
     \label{fig:hinge-loss-derivada-grafico}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda hinge}%
@@ -767,7 +767,7 @@ Por utilizar um termo quadrático para avaliar a perda, a Figura~\ref{fig:square
     \end{tikzpicture}
     \caption{Visualização da função perda hinge quadrática no plano.}%
     \label{fig:squared-hinge-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da perda hinge quadrática}
@@ -843,7 +843,7 @@ A Figura~\ref{fig:squared-hinge-loss-derivada} mostra que o gradiente da perda \
     \end{tikzpicture}
     \caption{Relação linear por partes do gradiente da função de perda \textit{hinge} quadrática.}
     \label{fig:squared-hinge-loss-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda hinge quadrática}%
@@ -891,7 +891,7 @@ A \textbf{entropia-cruzada categórica}, também chamada de \textbf{\textit{cate
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
@@ -955,7 +955,7 @@ Representar o gráfico da CCE em uma figura é algo complexo, visto que, ele pod
 
     \caption{Visualização da função de perda entropia-cruzada categórica no plano para uma única entropia-cruzada.}%
     \label{fig:categorical-cross-entropy}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 
 \end{figure}
 
@@ -1091,7 +1091,7 @@ A Figura~\ref{fig:categorical-cross-entropy-derivada-com-softmax} aponta que ess
     \end{tikzpicture}
     \caption{Relação linear do gradiente da função de perda entropia-cruzada categórica ao utilizar a função \textit{softmax} na camada de saída.}%
     \label{fig:categorical-cross-entropy-derivada-com-softmax}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da entropia-cruzada categórica}%
@@ -1420,7 +1420,7 @@ Ao utilizar a soma de várias BCEs, a perda multirrótulo apresenta gráficos pa
     \end{tikzpicture}
     \caption{Visualização da perda multirrótulo no plano.}%
     \label{fig:multilabel-loss}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da perda multirrótulo}
@@ -1474,11 +1474,11 @@ Como a Figura~\ref{fig:multilabel-loss-derivada} aponta, a derivada da multirró
     \end{tikzpicture}
     \caption{Relação linear por partes do gradiente da perda multirrótulo para um rótulo.}%
     \label{fig:multilabel-loss-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da perda multirrótulo}%
-\index{Aplicações práticas! Multi-label}
+\index{Aplicações práticas!Perda multirrótulo (Multilabel loss)}
 
 \begin{description}[style=sameline, leftmargin=1.5em, font=\bfseries\color{black}] 
     \item[Reconhecimento de múltiplos objetos em imagens (Visão computacional):] \textcite{zhu2023multilabelselfsupervisedlearningscene} propõem o método \textit{Multi-Label Self-supervised learning} (MLS) para o reconhecimento de múltiplos objetos em uma única imagem, os autores aplicam diversas BCEs para permitir a identificação dos diferentes objetos do \textit{dataset} MS-COCO, desse modo, o MLS atinge resultados estado-da-arte nos \textit{benchmarks}.
@@ -1491,7 +1491,7 @@ Como a Figura~\ref{fig:multilabel-loss-derivada} aponta, a derivada da multirró
 \begin{table}[htbp]
     \centering
     \begin{threeparttable}
-        \caption{Comparativo das funções de perda para problemas de classificação}%
+        \caption{Comparativo das funções de perda para classificação}%
         \label{tab:comparativo-funcoes-de-perda-para-classificacao}
         % p{3.2cm} define uma largura fixa para a primeira coluna.
         % As 3 colunas 'X' restantes dividem o espaço que sobra de forma flexível.
@@ -1500,27 +1500,27 @@ Como a Figura~\ref{fig:multilabel-loss-derivada} aponta, a derivada da multirró
             \toprule
             \textbf{Função} & \textbf{Principais Características} \\
             \midrule
-            Entropia-cruzada binária (BCE) & Para problemas de classificação binária com classes de mesma frequência, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
+            Entropia-cruzada binária (BCE) & Para classificação binária com classes de mesma frequência, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            Entropia-cruzada binária ponderada (\textit{WBCE}) & Para problemas de classificação binária com classes de frequências diferentes, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
+            Entropia-cruzada binária ponderada (\textit{WBCE}) & Para classificação binária com classes de frequências diferentes, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            Perda \textit{hinge} (\textit{Hinge loss}) & Para problemas de classificação binária com SVMs, contínua ($C^0$), robusta a erros confiantes, convexa, promove a esparsidade do gradiente \\
+            Perda \textit{hinge} (\textit{Hinge loss}) & Para classificação binária com SVMs, contínua ($C^0$), robusta a erros confiantes, convexa, promove a esparsidade do gradiente \\
             \addlinespace
-            Perda \textit{hinge} quadrática (\textit{Squared hinge loss}) & Para problemas de classificação binária com SVMs, suave ($C^1$), sensível a erros confiantes, convexa \\
+            Perda \textit{hinge} quadrática (\textit{Squared hinge loss}) & Para classificação binária com SVMs, suave ($C^1$), sensível a erros confiantes, convexa \\
             \addlinespace
-            Entropia-cruzada categórica (CCE) & Para problemas de classificação multi-classe com rótulos em formato \textit{one-hot encoding}, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa.  \\
+            Entropia-cruzada categórica (CCE) & Para classificação multi-classe com rótulos em formato \textit{one-hot encoding}, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa.  \\
             \addlinespace
-            Entropia-cruzada categórica esparsa (\textit{Sparse CCE}) & Para problemas de classificação multi-classe com rótulos inteiros, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
+            Entropia-cruzada categórica esparsa (\textit{Sparse CCE}) & Para classificação multi-classe com rótulos inteiros, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            Entropia-cruzada categórica ponderada (\textit{WCCE}) & Para problemas de classificação multi-classe com classes de frequências diferentes, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
+            Entropia-cruzada categórica ponderada (\textit{WCCE}) & Para classificação multi-classe com classes de frequências diferentes, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
-            Perda multirrótulo (\textit{Multi-label loss}) & Para problemas de classificação multirrótulo, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
+            Perda multirrótulo (\textit{Multi-label loss}) & Para classificação multirrótulo, infinitamente diferenciável ($C^{\infty}$), sensível a erros confiantes, convexa. \\
             \addlinespace
         \end{tabularx}
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
