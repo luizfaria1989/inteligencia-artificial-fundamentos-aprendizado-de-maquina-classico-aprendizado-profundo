@@ -61,7 +61,7 @@ Pense que temos os pontos dispostos no gráfico da Figura~\ref{fig: pontos_addpl
     \end{tikzpicture}
     \caption{Conjunto de pontos dispostos no plano cartesiano.}%
     \label{fig: pontos_addplot}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Existe uma técnica que permite que nos façamos isso, ela se chama regressão linear (a qual é um dos tópicos discutidos no Capítulo~\ref{cap:regressao}), e com base nela, é possível dado um conjunto de pontos em um plano, traçar uma reta que se aproxime igualmente de cada um desses pontos. Existem diferentes técnicas de regressão linear, neste caso aplicaremos a dos mínimos quadrados e encontramos a expressão:
@@ -103,7 +103,7 @@ Com base nessa função que encontramos, podemos desenhá-la junto ao gráfico d
     \end{tikzpicture}
     \caption{Conjunto de pontos dispostos no plano cartesiano.}%
     \label{fig: regressao-linear}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Existem diversas aproximações além da regressão linear, se quisermos, podemos tentar aproximar esses pontos utilizando uma função quadrática, cúbica ou até mesmo exponencial.
@@ -168,7 +168,7 @@ Na matemática, as funções do tipo sigmoide são excelentes para esse tipo de 
 \section{A Sigmoide Logística: Ótima para Classificações Binárias}%
 \index{Funções de Ativação!Sigmoide Logística}
 
-Por mais que a \gls{sigmoide} hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textit{Recherches mathématiques sur la loi d'accroissement de la population} (Pesquisas matemáticas sobre a lei de crescimento da população), em que \textcite{SigmoidVerhulst1845} propõe a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em ``S'' característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
+Por mais que a sigmoide logística hoje em dia seja bem comum em redes neurais, seu uso não começou nesse cenário. A sigmoide tem suas origens a analise de crescimento populacional e demografia, ela nao surgiu em um artigo em especifico, sendo mais uma evolução presente em vários artigos do matemático belga Pierre François Verhulst dentre os anos de 1838 e 1847. Contudo, existe um artigo desse matemático, intitulado \textit{Recherches mathématiques sur la loi d'accroissement de la population} (Pesquisas matemáticas sobre a lei de crescimento da população), em que \textcite{SigmoidVerhulst1845} propõe a função logística como um modelo para descrever o crescimento populacional, levando em consideração a capacidade de suporte de um ambiente, isso gerou a curva em ``S'' característica da sigmoide. Contudo, foi somente no próximo século, que sigmoide passou a ser utilizada na area da ciência da computação.
 
 Nos anos 1980, estavam ocorrendo mudanças com as funções que eram utilizadas para construir uma rede neural, um desses motivos foi a introdução da retropropagação pelos pesquisadores David Rumelhart, Geoffrey Hinton e Ronald Williams. A retropropagação era uma técnica que permitia que um modelo aprendesse com base nos seus erros, ajustando automaticamente os seus parâmetros em busca de conseguir uma melhor acurácia \parencite{BackpropagationArticle}. 
 
@@ -247,7 +247,7 @@ Cabe destacar também que, as sigmoidais nao foram as primeiras funções de ati
     \end{tikzpicture}
     \caption{Gráfico da função degrau unitário (\textit{heavside}).}
     \label{fig:degrau-unitario}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Ao comparar a degrau unitário com a sigmoide, é possível notar uma diferença crucial, a sigmoide é uma função contínua em todos os pontos, podemos dizer que para desenhar seu gráfico não precisamos tirar o lápis do papel nenhuma vez, algo que não ocorre com a \textit{heavside}. Além disso, a derivada da \textit{heavside} é zero em quase todos os seus pontos, por esse motivo, ela impossibilitava a retropropagação do erro, uma vez que quando fossemos calcular o gradiente para uma parte de um modelo que usasse essa função, ele provavelmente seria zero.
@@ -290,7 +290,7 @@ O gráfico da sigmoide está presente na Figura~\ref{fig:sigmoide}, note que ele
     \end{tikzpicture}
     \caption{Função de ativação sigmoide logística.}%
     \label{fig:sigmoide}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Sigmoide Logística}
@@ -345,7 +345,7 @@ Tendo a sua derivada, cabe também plotar o seu gráfico para ver o seu comporta
     \end{tikzpicture}
     \caption{Derivada da função de ativação sigmoide logística.}%
     \label{fig:sigmoide-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações da Sigmoide Logística}%
@@ -366,7 +366,7 @@ Para isso, será vista primeira a tangente hiperbólica, e como ela melhora uma 
 \section{Tangente Hiperbólica: A Pioneira nas Redes Convolucionais}%
 \index{Funções de Ativação!Tangente Hiperbólica (tanh)}
 
-Assim como a função sigmoide, a \gls{tangente-hiperbolica} não possui suas origens voltadas para o uso em redes neurais. Neste caso, um dos matemáticos que ficou reconhecido por criar a notação das funções hiperbólicas, seno, cosseno e tangente, foi o suíço Johann Heinrich Lambert no trabalho de 1769 \textit{Mémoire sur quelques propriétés remarquables des quantités transcendantes circulaires et logarithmiques} (Memória sobre algumas propriedades notáveis de grandezas transcendentais circulares e logarítmicas), em que provou que muitas das identidades trigonométricas possuíam suas equivalentes hiperbólicas \parencite{TanhLambert}.
+Assim como a função sigmoide, a tangente hiperbólica não possui suas origens voltadas para o uso em redes neurais. Neste caso, um dos matemáticos que ficou reconhecido por criar a notação das funções hiperbólicas, seno, cosseno e tangente, foi o suíço Johann Heinrich Lambert no trabalho de 1769 \textit{Mémoire sur quelques propriétés remarquables des quantités transcendantes circulaires et logarithmiques} (Memória sobre algumas propriedades notáveis de grandezas transcendentais circulares e logarítmicas), em que provou que muitas das identidades trigonométricas possuíam suas equivalentes hiperbólicas \parencite{TanhLambert}.
 
 Passado mais de dois séculos, a tangente hiperbólica já estava sendo utilizada em diversas redes neurais, ela inclusive fez parte da primeira rede neural convolucional criada, estando presente na \textit{Le-Net-5}, uma rede neural criada para identificar e classificar imagens de cheques em caixas eletrônicos \parencite{LecunLeNet1998}. No artigo acadêmico \textit{Gradient-based learning applied to document recognition} de 1998, os cientistas \textcite{LecunLeNet1998} explicam a criação dessa rede além de destacar suas métricas alcançadas.
 
@@ -408,7 +408,7 @@ Semelhante a sigmoide, a tangente hiperbólica possui várias propriedades parec
     \end{tikzpicture}
     \caption{Função de ativação tangente hiperbólica (tanh).}%
     \label{fig:tanh}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Tangente Hiperbólica}
@@ -466,7 +466,7 @@ Tendo as equações da derivada da tangente hiperbólica, o próximo passo é pl
     \end{tikzpicture}
     \caption{Derivada da função de ativação tangente hiperbólica (tanh).}%
     \label{fig:tanh-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Semelhante a sigmoide, os valores da tangente hiperbólica também se aproximam de zero conforme aumentam ou diminuem na sua derivada. Eles atingem um pico de 1, e conforme as entradas se aproximam de $\pm 4$ a saída da derivada da tangente hiperbólica também fica próxima de zero. Mais uma vez, nota-se que a tangente hiperbólica não atinge valores muito altos em sua derivada, isso acaba por gerar um problema conhecido como desaparecimento do gradiente, o qual será explicado em seções futuras.
@@ -528,7 +528,7 @@ A \textit{softsign} também possui uma representação gráfica, como vista na F
     \end{tikzpicture}
     \caption{Gráfico da função de ativação \textit{softsign}.}
     \label{fig:softsign}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Softsign}
@@ -575,7 +575,7 @@ Tendo a sua derivada, cabe também plotar o gráfico da derivada da \textit{soft
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{softsign}.}%
     \label{fig:softsign-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Além disso, essa função também sofre do mesmo problema das outras duas funções de ativação vistas até agora, o problema do desaparecimento do gradiente. Esse é um ponto que é corrigido com uma outra família de funções de ativação, as retificadoras, as quais são tema principal do Capítulo~\ref{cap:ativacao-retificadoras}.
@@ -598,7 +598,7 @@ Seguindo na proposta de ver funções sigmoidais que são mais ``baratas'', a pr
 \index{Funções de Ativação!Hard Sigmoid}%
 \index{Funções de Ativação!Hard Tanh}
 
-Agora será visto duas funções sigmoidais, criadas no contexto de redes neurais, cujo o seu intuito é ser trazer velocidade para o modelo que está sendo criado, elas são a \gls{hard-sigmoid} e \gls{hard-tanh}. Elas são inspiradas nas suas versões originais ou \textit{soft}, com o mesmo intuito de variar até um certo ponto e depois saturar. Contudo, não garantem a mesma suavidade que as outras funções.
+Agora será visto duas funções sigmoidais, criadas no contexto de redes neurais, cujo o seu intuito é ser trazer velocidade para o modelo que está sendo criado, elas são a hard sigmoid e hard tanh. Elas são inspiradas nas suas versões originais ou \textit{soft}, com o mesmo intuito de variar até um certo ponto e depois saturar. Contudo, não garantem a mesma suavidade que as outras funções.
 
 A primeira é a \textit{hard sigmoid}. Como pode ser visto na Equação~\ref{eq:hard-sigmoid}, a qual está presente na documentação do \textcite{PyTorchHardSigmoid}, ela pode ser escrita juntando 3 diferentes funções, duas delas sendo funções constantes e uma terceira sendo a função identidade. Note que ela perde a suavidade da função seno, possuindo bicos que a impedem de ser derivada em todos os seus pontos, contudo, seus cálculos são bem mais simples quando comparados com a sigmoide tradicional, não tem nenhuma exponencial para atrasar as respostas da função. Mas note que também existe um crescimento linear quando os valores estão entre -3 e 3.
 
@@ -642,7 +642,7 @@ Além disso, sabendo a sua fórmula, é possível também plotar o seu gráfico,
     \end{tikzpicture}
     \caption{Gráfico da função de ativação \textit{hard sigmoid}.}%
     \label{fig:hard-sigmoid}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Hard Sigmoid}
@@ -692,7 +692,7 @@ Tendo a sua derivada, cabe também plotar o seu gráfico, o qual está presente 
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{hard sigmoid}.}%
     \label{fig:hard-sigmoid-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \medskip
@@ -744,7 +744,7 @@ O seu gráfico também é parecido com o da \textit{hard sigmoid}. Como é poss�
     \end{tikzpicture}
     \caption{Gráfico da função de ativação \textit{hard tanh}.}%
     \label{fig:hard-tanh}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características da Hard Tanh}
@@ -801,7 +801,7 @@ Tendo a derivada, o próximo passo é plotar o seu gráfico, que pode ser visto 
     \end{tikzpicture}
     \caption{Gráfico da derivada da função de ativação \textit{hard-tanh}.}%
     \label{fig:hard-tanh-derivada}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Aplicações das Funções Hard Sigmoid e Hard Tanh em Redes Neurais}%
@@ -893,7 +893,7 @@ Quando o gradiente é muito pequeno em valor absoluto, ou até mesmo igual a zer
 
 Isso se torna um problema, pois, quando criamos uma rede neural, utilizamos as primeiras camadas para que elas sejam responsáveis por aprender características básicas/simples de uma determinada amostra de dados. Se o gradiente é próximo de zero, o calculo da atualização dos pesos e dos vises irá gerar valores muito próximos dos originais. Como esses valores não irão atualizar corretamente, a rede neural não irá aprender características básicas de um cenário.
 
-Nesse sentido, o Capítulo~\ref{cap:ativacao-retificadoras} busca explicar as funções retificadoras, começando pela \textit{ReLU}, e como elas vieram como uma alternativa para contornar o \gls{vanishing-gradient-problem}. Contudo, elas também não foram perfeitas, e acabaram por introduzir os seus próprios problemas ao serem aplicadas em uma rede neural. Neste caso, um dos problemas que pode ocorrer ao se utilizar uma função retificadora é o problema da explosão do gradiente, e considerando a \textit{ReLU}, ela também pode causar um problema conhecido como \textit{ReLUs} agonizantes.
+Nesse sentido, o Capítulo~\ref{cap:ativacao-retificadoras} busca explicar as funções retificadoras, começando pela \textit{ReLU}, e como elas vieram como uma alternativa para contornar o problema do desaparecimento do gradiente. Contudo, elas também não foram perfeitas, e acabaram por introduzir os seus próprios problemas ao serem aplicadas em uma rede neural. Neste caso, um dos problemas que pode ocorrer ao se utilizar uma função retificadora é o problema da explosão do gradiente, e considerando a \textit{ReLU}, ela também pode causar um problema conhecido como \textit{ReLUs} agonizantes.
 
 Assim, o último passo ao conhecer todas essas funções, é resumir o seu conteúdo para melhor entendimento. Este resumo pode ser visto na próxima seção.
 
@@ -924,7 +924,7 @@ Tendo visto diferentes funções de ativação sigmoidais, é possível compilá
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
