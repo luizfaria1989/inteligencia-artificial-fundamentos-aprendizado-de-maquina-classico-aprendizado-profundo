@@ -31,7 +31,7 @@ Conhecendo esses dois tópicos, é possível aprofundar em métodos mais elabora
 \section{O Método do Gradiente Descendente: O Motor da Retropropagação}%
 \index{Otimizadores!Método do Gradiente}
 
-O \gls{gradiente-descendente} faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em português) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
+O gradiente descendente faz parte de uma série de métodos numéricos que possuem como função otimizar diferentes funções. Métodos dessa forma veem sendo estudados a séculos, um exemplo disso é o trabalho \textit{M{\'e}thode g{\'e}n{\'e}rale pour la r{\'e}solution des syst{\`e}mes d'{\'e}quations simultan{\'e}es} (Método geral para resolução de sistemas de equações simultâneos em português) do matemático francês do século XVIII \textcite{CauchyMetodoDoGradiente}, em que o autor apresenta um método que pode ser considerado um precursor para o método do gradiente atual.
 
 Nesse texto, o autor discute uma forma de minimizar uma função de múltiplas variáveis ($u=f(x,y,z)$) que não assume valores negativos, para fazer isso, ele faz uso do cálculo de derivadas parciais dessa função de cada um dos seus componentes ($D_x u, D_y u, D_z u$), em seguida, ele realiza um passo de atualização, de forma que os os valores de cada uma das variáveis sejam ligeiramente incrementados por valores ($\alpha, \beta, \gamma$) \parencite{CauchyMetodoDoGradiente}. Um ponto importante destacado por \textcite{CauchyMetodoDoGradiente} é de que esses incrementos devem ser proporcionais ao negativo das suas respectivas derivadas parciais, ele descreve que esse processo de calcular as derivadas e fazer pequenos incrementos deve ser feito de forma iterativa, assim, calculá-se as derivadas, faz-se os incrementos, e o passo é repetido até convergir para o valor mínimo de $u$.
 
@@ -92,7 +92,7 @@ Um ponto a ser destacado nesse método é na hora de escolher uma taxa de aprend
     \includegraphics[width=1\linewidth]{../imagens/retropropagacao-gradiente/comparativo-de-passos.png}
     \caption{Comparativo do tamanho de passos em uma função polinomial.}%
     \label{fig:comparativo-tamanho-do-passo}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 Na prática, escolher o valor da taxa de aprendizado é uma tarefa que irá depender de modelo em modelo, também irá variar com os diferentes métodos de otimização além da topologia da rede neural que está sendo construída. É sempre recomendado então experimentar diferentes tamanhos de passo, de forma que seja encontrado um que melhor se ajusta ao cenário que está sendo trabalhado.
@@ -167,7 +167,7 @@ Outro ponto que deve-se atentar é com relação as funções que estão sendo a
 \end{minipage}
 \caption{Comparação entre funções 3D convexas e não-convexas.}%
 \label{fig:funcao-convexa-nao-convexa}
-\fonte{O autor (2025).}
+\fonte{O autor (2026).}
 \end{figure}
 
 Além de ser representado utilizando equações, o método do gradiente pode ser expresso também utilizando pseudocódigo para escrever o Algoritmo~\ref{alg:metodo-do-gradiente}. Perceba que ele recebe como parâmetros de entrada uma taxa de aprendizado $\eta$, o vetor contendo os parâmetros iniciais $\theta_t$ e uma função de perda $f(\theta)$ a ser otimizada.
@@ -199,7 +199,7 @@ Conhecendo o funcionamento do método do gradiente, é possível agora entender 
 \section{A Retropropagação: Aprendendo com os Erros}%
 \index{Retropropagação}
 
-Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de rede neural, existe uma ferramenta que trabalha justamente com esse processo, ela é a \gls{retropapagacao} ou \textit{backpropagation} em inglês.
+Ainda no contexto de utilizar com o vetor gradiente para otimizar um modelo de rede neural, existe uma ferramenta que trabalha justamente com esse processo, ela é retropropagação ou \textit{backpropagation} em inglês.
 
 \begin{definicaomoderna}{\textbf{Definição:}}
 A \textbf{retropropagação} é uma ferramenta que veio para permitir que redes que fazem o uso de unidades de neurônios possam aprender, para isso, o procedimento ajusta repetidamente os pesos das conexões da rede para minimizar a diferença entre o valor atual da saída do vetor da rede neural com o valor real desejado \parencite{BackpropagationArticle}.
@@ -574,7 +574,7 @@ Assim, essa seção busca introduzir esses novos métodos, de forma que sejam de
 \subsection{Método do Gradiente com Momento}%
 \index{Otimizadores!Método do Gradiente com Momento}
 
-Uma boa analogia para entender como o \gls{metodo-do-gradiente-com-momento} funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganhando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida com a pedra rolando morro abaixo.
+Uma boa analogia para entender como o método do gradiente com momento funciona é pensar é uma pedra rolando morro abaixo. No começo, quando ela não havia pegado muita velocidade, ela demorava para rolar e dependendo podia quase parar em algum pedaço do morro, mas conforme foi descendo, foi ganhando mais velocidade, de forma que quando chegar no final do morro, a sua velocidade será bem maior do que quando estava no topo do mesmo. Essa variante funciona de forma parecida com a pedra rolando morro abaixo.
 
 Da mesma forma que o método do gradiente não surgiu originalmente no contexto do aprendizado de máquina, a sua variante com momento não foi diferente. Um os artigos que trabalha com esse conceito de utilizar o momento para acelerar a velocidade do método do gradiente e com isso obter uma convergência mais rápida é o \textit{Some methods of speeding up the convergence of iteration methods}, do pesquisador da URSS \textcite{polyak1964}, nele o autor busca criar métodos iterativos mais rápidos para resolver equações funcionais. Para isso, ele introduz um método de ``dois passos'', que consiste na junção do método do gradiente com um segundo termo que dá inércia ao método, por último, ele justifica que esse método trás de fato uma convergência mais veloz quando comparado com métodos como o do gradiente.
 
@@ -655,7 +655,7 @@ Sabendo o método do gradiente como momento, é possível também conhecer outra
 
 \subsection{Método do Gradiente Estocástico (SGD)} \index{Otimizadores!Método do Gradiente Estocástico (SGD)}
 
-Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o \gls{metodo-do-gradiente-estocastico} também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
+Assim como o método do gradiente que faz uso do momento para acelerar a convergência e com isso diminuir um número de iterações gastas para se encontrar o ponto de mínimo, o método do gradiente estocástico também não surgiu no contexto do aprendizado de máquina. Esse método fez sua primeira aparição no trabalho \textit{A Stochastic Approximation Method}, dos autores \textcite{StochasticGradientDescentMethod}, em que eles introduzem uma forma de encontrar as raízes de uma função quando esta não pode ser observada de forma direta, mas apenas através de medições com ruído.
 
 Contudo, apenas nos anos 60 métodos que se baseiam no cálculo de funções de erro com ruido passaram a aparecer no cenário de aprendizado de máquina, como foi o caso dos pesquisadores \textcite{Adeline} com \textit{ADALINE (Adaptive Linear Neuron)}. Nele, os autores buscam otimizar os valores dos pesos dos neurônios de uma rede em que ao calcular o erro do modelo, este era afetado por ruído \parencite{Adeline}
 
@@ -747,12 +747,12 @@ Por ser um método que depende da aleatoriedade para calcular os parâmetros a s
     \end{tikzpicture}
     \caption{Comparação visual entre a trajetória suave do Gradiente em Batch e a trajetória ruidosa do Gradiente Estocástico (SGD) para encontrar o mínimo de uma função de custo.}%
     \label{fig:comparativo-gd-sgd}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsection{Método do Gradiente em Mini-Batch (GD mini-batch)} \index{Otimizadores!Método do Gradiente em Mini-Batch (GD mini-batch)}
 
-Entendendo como funciona oSGD, o próximo passo é conhecer o \gls{metodo-do-gradiente-em-mini-batch}, que busca ser uma alternativa entre o gradiente estocástico e o gradiente em \textit{batch}. Como explica \textcite{MaosAObra}, o \textit{GD mini-batch} calcula os gradientes para pequenos conjuntos aleatórios, chamados \textit{mini-batches}, que fazem parte do conjunto total de parâmetros.
+Entendendo como funciona oSGD, o próximo passo é conhecer o método do gradiente em mini-lote, que busca ser uma alternativa entre o gradiente estocástico e o gradiente em \textit{batch}. Como explica \textcite{MaosAObra}, o \textit{GD mini-batch} calcula os gradientes para pequenos conjuntos aleatórios, chamados \textit{mini-batches}, que fazem parte do conjunto total de parâmetros.
 
 Por utilizar mais parâmetros de uma vez para calcular o gradiente, o gradiente em \textit{mini-batch} possui uma vantagem quando comparado com o gradiente estocástico, ele irá apresentar um progresso de parâmetros menos irregular \parencite{MaosAObra}. Dessa forma, o gradiente em \textit{mini-batch} consegue chegar um pouco mais perto dos pontos de mínimo, ajudando na convergência.
 
@@ -772,7 +772,7 @@ Uma boa vantagem do \textit{GD mini-batch} está no fato que esses \textit{batch
 \subsection{Gradiente Acelerado de Nesterov (NAG)}%
 \index{Otimizadores!Gradiente Acelerado de Nesterov (NAG)}
 
-Uma outra variante do método do gradiente é o \gls{gradiente-acelerado-de-nesterov} (NAG). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionalmente mais barata de resolver problemas de programação convexa. 
+Uma outra variante do método do gradiente é o gradiente acelerado de Nesterov (NAG). Ele foi introduzido no artigo \textit{A method for solving the convex programming problem with convergence rate $O(1/k^2)$} do autor \textcite{NAGMethod}, em que é apresentado como uma forma computacionalmente mais barata de resolver problemas de programação convexa. 
 
 No texto, o autor trás a adição de um novo conceito para encontrar os pontos de mínimos, o chamado ponto de \textit{lookahead} (olhar para frente em português), o qual serve de base para os cálculos do gradiente \parencite{NAGMethod}. Assim o NAG possui dois passos: o primeiro consiste no cálculo da predição futura (no ponto de \textit{lookahead}), dando um passo na direção do momento anterior, em seguida, com base nesse novo ponto calculado, é possível encontrar o valor do gradiente e com isso, atualizar os parâmetros da rede neural.
 
@@ -838,7 +838,7 @@ Para melhor entender o funcionamento do ponto de \textit{lookahead} do NAG, é p
     \end{tikzpicture}
     \caption{Representação visual do funcionamento do gradiente acelerado de Nesterov. Em azul está representado o primeiro passo em direção ao ponto de \textit{lookahead} utilizando o momento. Em vermelho está o segundo passo, com a atualização utilizando o vetor gradiente para corrigir a direção.}%
     \label{fig:funcionamento-nag}
-    \fonte{O autor (2025).}
+    \fonte{O autor (2026).}
 \end{figure}
 
 \subsubsection*{Características do gradiente acelerado de Nesterov}
@@ -902,7 +902,7 @@ Por fim, é possível compilar as características desses otimizadores vistos na
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
@@ -919,7 +919,7 @@ Fazer uso de diferentes taxas de aprendizado permitiu que os modelos criados com
 \subsection{Adaptive Gradient Algorithm (AdaGrad)}%
 \index{Otimizadores!Adpative Gradient Algorithm (AdaGrad)}
 
-Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, \gls{adagrad}, foi descrito por \textcite{AdaGradMethod} como uma adaptação dos métodos iterativos baseados em gradiente, que nos permite encontrar ``agulhas em palheiros'' em forma de características muito preditivas, mas raramente vistas.
+Apresentado para a comunidade científica no texto \textit{Adaptive Subgradient Methods for Online Learning and Stochastic Optimization}, Adam, foi descrito por \textcite{AdaGradMethod} como uma adaptação dos métodos iterativos baseados em gradiente, que nos permite encontrar ``agulhas em palheiros'' em forma de características muito preditivas, mas raramente vistas.
 
 O que os autores se referem ao ato de encontrar ``agulhas em palheiros'', está ligado diretamente na forma como o AdaGrad atua para melhorar o desempenho de um modelo tanto para reconhecer características que são muito frequentes nos dados de treino quando características que são mais raras. Como \textcite{AdaGradMethod} explicam, esse método faz uso de múltiplas taxas de aprendizado, assim características muito frequentes recebem uma taxa de aprendizado pequena, enquanto caraterísticas menos frequentes recebem uma taxa de aprendizado maior.
 
@@ -1494,7 +1494,7 @@ Por fim, com base nos otimizadores vistos nessa seção, assim como foi feito na
         
         \begin{tablenotes}[para]
             \small
-            \item[] Fonte: O autor (2025).
+            \item[] Fonte: O autor (2026).
         \end{tablenotes}
 
     \end{threeparttable}
